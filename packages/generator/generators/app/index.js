@@ -30,7 +30,7 @@ module.exports = class extends Generator {
   writing() {
     this.log('Scaffolding new component', this.answers.exportName)
     const files = [
-      'package.json',
+      '__package.json',
       'readme.md',
       'tsconfig.json',
       'vite.config.ts',
@@ -42,7 +42,11 @@ module.exports = class extends Generator {
       this.fs.copyTpl(
         this.templatePath(filename),
         this.destinationPath(
-          path.join(this.answers.hierarchy, this.answers.pkgName, filename)
+          path.join(
+            this.answers.hierarchy,
+            this.answers.pkgName,
+            filename.split('__').pop()
+          )
         ),
         {...this.answers}
       )
