@@ -1,7 +1,7 @@
 {
   "name": "generator-urban-ui",
   "version": "1.0.0",
-  "description": "",
+  "description": "Creates urban-ui packages. Will not work without modification outside of the urban-ui monorepo.",
   "files": [
     "generators"
   ],

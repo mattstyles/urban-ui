@@ -14,7 +14,7 @@ importers:
       prettier: 2.8.4
       turbo: 1.8.3
 
-  apps/docs:
+  apps/testground:
     specifiers:
       '@babel/core': ^7.0.0
       '@types/node': ^17.0.12
