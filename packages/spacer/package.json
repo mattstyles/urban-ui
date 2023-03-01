@@ -1,17 +1,20 @@
 {
   "name": "@urban-ui/spacer",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha-2",
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/@urban-ui/spacer/spacer.js",
-  "module": "./dist/@urban-ui/spacer/spacer.js",
+  "main": "./dist/@urban-ui/spacer.js",
+  "module": "./dist/@urban-ui/spacer.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/@urban-ui/spacer/spacer.js",
-      "export": "./dist/@urban-ui/spacer/spacer.cjs"
+      "import": "./dist/@urban-ui/spacer.js",
+      "export": "./dist/@urban-ui/spacer.cjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "author": "Matt Styles",
   "keywords": [
@@ -34,28 +37,16 @@
   },
   "devDependencies": {
     "@testing-library/react": "^14.0.0",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
+    "@types/react": "^18.0.28",
     "@types/testing-library__jest-dom": "^5.14.5",
     "config-eslint": "workspace:*",
     "config-ts": "workspace:*",
     "config-vite": "workspace:*",
     "del-cli": "^5.0.0",
-    "jsdom": "^21.1.0",
-    "react-dom": "18.2.0",
-    "typescript": "^4.9.5",
     "vite": "^4.1.4",
     "vitest": "^0.29.1"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "tsup": {
-    "clean": true,
-    "target": "es2019",
-    "format": [
-      "cjs",
-      "esm"
-    ]
   }
 }
