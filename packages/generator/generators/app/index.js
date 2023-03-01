@@ -11,6 +11,11 @@ module.exports = class extends Generator {
       },
       {
         type: 'input',
+        name: 'description',
+        message: 'What is the brief description of the package?',
+      },
+      {
+        type: 'input',
         name: 'exportName',
         message: 'What is the component name?',
       },
@@ -36,7 +41,9 @@ module.exports = class extends Generator {
     for (let filename of files) {
       this.fs.copyTpl(
         this.templatePath(filename),
-        this.destinationPath(path.join(this.answers.pkgName, filename)),
+        this.destinationPath(
+          path.join(this.answers.hierarchy, this.answers.pkgName, filename)
+        ),
         {...this.answers}
       )
     }

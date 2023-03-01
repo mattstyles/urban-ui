@@ -1,6 +1,7 @@
 {
   "name": "@urban-ui/<%= pkgName %>",
   "version": "0.0.1",
+  "description": "<%= description %>",
   "type": "module",
   "sideEffects": false,
   "main": "./dist/@urban-ui/<%= pkgName %>.js",
@@ -9,14 +10,26 @@
   "exports": {
     ".": {
       "import": "./dist/@urban-ui/<%= pkgName %>.js",
-      "export": "./dist/@urban-ui/<%= pkgName %>.cjs"
+      "export": "./dist/@urban-ui/<%= pkgName %>.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "files": [
     "dist"
   ],
   "license": "MIT",
-  "author": "Matt Styles",
+  "author": {
+    "name": "Matt Styles",
+    "url": "https://github.com/mattstyles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattstyles/urban-ui.git",
+    "directory": "packages/components/<%= pkgName %>"
+  },
+  "bugs": {
+    "url": "https://github.com/mattstyles/urban-ui/issues"
+  },
   "keywords": [
     "ui",
     "react",

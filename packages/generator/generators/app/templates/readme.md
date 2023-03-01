@@ -6,6 +6,8 @@
 [![minzip size](https://img.shields.io/bundlephobia/minzip/@urban-ui/<%= pkgName %>?style=flat-square)](https://bundlephobia.com/result?p=@urban-ui/<%= pkgName %>)
 [![License](https://img.shields.io/github/license/mattstyles/urban-ui.svg?style=flat-square)](https://github.com/mattstyles/urban-ui/blob/master/license.md)
 
+> <%= description %>
+
 ## Getting started
 
 ```sh
@@ -21,3 +23,11 @@ export function MyComponent() {
 ```
 
 ## Details
+
+@TODO details about the component
+
+## API
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+|      |      |             |
