@@ -1,18 +1,28 @@
 {
   "name": "urban-ui",
+  "description": "UI components powered by stitches and radix-ui",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
+  "author": "Matt Styles",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattstyles/urban-ui.git"
+  },
   "scripts": {
+    "test": "CI=true turbo run test",
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "dev": "turbo run clean && turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "publish-packages": "CI=true turbo run build lint test && changeset version && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.0",
     "config-eslint": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
