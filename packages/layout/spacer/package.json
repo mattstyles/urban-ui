@@ -1,20 +1,22 @@
 {
-  "name": "@urban-ui/<%= pkgName %>",
+  "name": "@urban-ui/spacer",
   "version": "0.0.1",
-  "description": "<%= description %>",
+  "description": "Used to provide space between components",
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/@urban-ui/<%= pkgName %>.js",
-  "module": "./dist/@urban-ui/<%= pkgName %>.js",
+  "main": "./dist/@urban-ui/spacer.js",
+  "module": "./dist/@urban-ui/spacer.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/@urban-ui/<%= pkgName %>.js",
-      "export": "./dist/@urban-ui/<%= pkgName %>.cjs",
+      "import": "./dist/@urban-ui/spacer.js",
+      "export": "./dist/@urban-ui/spacer.cjs",
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "author": {
     "name": "Matt Styles",
@@ -23,12 +25,19 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattstyles/urban-ui.git",
-    "directory": "packages/components/<%= pkgName %>"
+    "directory": "packages/components/spacer"
   },
   "bugs": {
     "url": "https://github.com/mattstyles/urban-ui/issues"
   },
-  "keywords": ["ui", "react", "components", "urban-ui", "stitches", "radix-ui"],
+  "keywords": [
+    "ui",
+    "react",
+    "components",
+    "urban-ui",
+    "stitches",
+    "radix-ui"
+  ],
   "scripts": {
     "lint": "eslint *.ts*",
     "clean": "del dist",

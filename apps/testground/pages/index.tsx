@@ -5,7 +5,8 @@ export default function Docs() {
     <div>
       <h1>Testground</h1>
       <p>Dev environment for mucking with components</p>
-      <Spacer str='Hello spacer' />
+      <Spacer />
+      <p>More text down here</p>
     </div>
   )
 }
