@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import {Spacer} from '@urban-ui/spacer'
 
 export default function Docs() {
@@ -7,6 +9,8 @@ export default function Docs() {
       <p>Dev environment for mucking with components</p>
       <Spacer />
       <p>More text down here</p>
+      <Spacer />
+      <Link href='/flex'>Flex</Link>
     </div>
   )
 }

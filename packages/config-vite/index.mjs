@@ -44,9 +44,9 @@ export function createLibraryConfig({entry, pkg}) {
     test: {
       environment: 'jsdom',
       setupFiles: path.resolve(__dirname, './src/setupTests.ts'),
-      // speed up since tests don't rely on css
+      // We need css to we will enable it (but it is slow). Might need to conditionally enable it depending on how many packages need it. - stitches won't output CSS to jsdom anyway.
+      // https://github.com/stitchesjs/stitches/issues/874
       // https://github.com/vitest-dev/vitest/blob/main/examples/react-testing-lib/vite.config.ts#L14-L16
-      // Will need to enable this to run screenshot tests
       css: false,
     },
   })

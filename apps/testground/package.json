@@ -9,19 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.2.0",
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/spacer": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
     "next": "^13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@urban-ui/spacer": "workspace:*",
-    "@urban-ui/theme": "workspace:*"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "config-eslint": "workspace:*",
-    "config-ts": "workspace:*",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "config-eslint": "workspace:*",
+    "config-ts": "workspace:*",
     "typescript": "^4.5.3"
   }
 }

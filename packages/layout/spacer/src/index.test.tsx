@@ -3,7 +3,8 @@ import {render, screen} from '@testing-library/react'
 
 import {Spacer} from './index'
 
-test('loads and displays greeting', async () => {
+// Not too useful really :rofl: @TODO
+test('Checks that spacer renders a div', async () => {
   // ARRANGE
   const {container} = render(<Spacer />)
 

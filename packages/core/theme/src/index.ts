@@ -7,7 +7,16 @@ import {fonts, fontSizes, lineHeights, kerning} from './typography'
 import {radii, space} from './scales'
 import {breakpoints} from './breakpoints'
 
-export const {styled, config, globalCss, keyframes} = createStitches({
+export const {
+  styled,
+  css,
+  config,
+  globalCss,
+  keyframes,
+  getCssText,
+  createTheme,
+  theme,
+} = createStitches({
   theme: {
     // Colours
     colors: colours,
