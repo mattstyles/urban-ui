@@ -6,7 +6,7 @@ export const Flex = styled('div', {
   display: 'flex',
 
   defaultVariants: {
-    orientation: 'v',
+    orientation: 'h',
   },
 
   variants: {

@@ -1,12 +1,12 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 
-import {<%= exportName %>} from './index'
+import {Stack} from './index'
 
-describe('[<%= exportName %>]', () => {
+describe('[Stack]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<<%= exportName %> data-testid='some-id' />)
+    render(<Stack data-testid='some-id' />)
 
     // ACT
 

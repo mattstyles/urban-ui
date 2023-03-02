@@ -11,6 +11,7 @@ export default function Docs() {
       <p>More text down here</p>
       <Spacer />
       <Link href='/flex'>Flex</Link>
+      <Link href='/stack'>Stack</Link>
     </div>
   )
 }
