@@ -5,7 +5,7 @@ import {reset} from './reset'
 import {colours} from './colours'
 import {fonts, fontSizes, lineHeights, kerning} from './typography'
 import {radii, space} from './scales'
-import {breakpoints} from './breakpoints'
+import {media} from './media'
 
 export const {
   styled,
@@ -17,6 +17,7 @@ export const {
   createTheme,
   theme,
 } = createStitches({
+  media: media,
   theme: {
     // Colours
     colors: colours,
@@ -40,9 +41,6 @@ export const {
     // Misc
     // shadows,
     // transitions,
-    media: {
-      ...breakpoints,
-    },
   },
 })
 

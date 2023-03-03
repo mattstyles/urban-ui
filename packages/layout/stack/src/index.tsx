@@ -21,7 +21,7 @@ export const Stack = styled(Flex, {
         gap: '$5',
       },
     },
-    // https://github.com/stitchesjs/stitches/issues/882 we want to specify a different default variant than Flex does, and everything will work but TS won't understand the properties properly leading to TS errors. So we need to respecify here so that TS can correctly understand this component API.
+    // https://github.com/stitchesjs/stitches/issues/882 we want to specify a different default variant than Flex does, and everything will work but TS won't understand the properties properly leading to TS errors. So we need to re-specify here so that TS can correctly understand this component API.
     orientation: {
       h: {
         flexDirection: 'row',
@@ -31,6 +31,22 @@ export const Stack = styled(Flex, {
       },
     },
 
+    color: {
+      primary: {
+        color: 'white',
+      },
+      accent: {
+        color: 'blue',
+      },
+    },
+
     // @TODO add collapse mechanism to fold from horizontal to vertical at a given breakpoint
+    collapse: {
+      true: {
+        '@sm': {
+          flexDirection: 'column',
+        },
+      },
+    },
   },
 })
