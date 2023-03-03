@@ -30,20 +30,23 @@ export const Stack = styled(Flex, {
         flexDirection: 'column',
       },
     },
-
-    color: {
-      primary: {
-        color: 'white',
-      },
-      accent: {
-        color: 'blue',
-      },
-    },
-
-    // @TODO add collapse mechanism to fold from horizontal to vertical at a given breakpoint
     collapse: {
       true: {
         '@sm': {
+          flexDirection: 'column',
+        },
+      },
+      sm: {
+        '@sm': {
+          flexDirection: 'column',
+        },
+      },
+      md: {
+        // This is a hangover from range queries, md *only* matches on the medium breakpoints and does not include small.
+        '@sm': {
+          flexDirection: 'column',
+        },
+        '@md': {
           flexDirection: 'column',
         },
       },
