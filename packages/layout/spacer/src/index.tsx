@@ -10,55 +10,55 @@ export const Spacer = styled('div', {
 
   variants: {
     size: {
-      small: {},
-      medium: {},
-      large: {},
+      sm: {},
+      md: {},
+      lg: {},
     },
     orientation: {
-      h: {},
-      v: {
+      h: {
         display: 'inline-block',
       },
+      v: {},
     },
   },
   compoundVariants: [
     {
-      size: 'small',
+      size: 'sm',
       orientation: 'v',
       css: {
         padding: '$2 0',
       },
     },
     {
-      size: 'medium',
+      size: 'md',
       orientation: 'v',
       css: {
         padding: '$3 0',
       },
     },
     {
-      size: 'large',
+      size: 'lg',
       orientation: 'v',
       css: {
         padding: '$5 0',
       },
     },
     {
-      size: 'small',
+      size: 'sm',
       orientation: 'h',
       css: {
         padding: '0 $2',
       },
     },
     {
-      size: 'medium',
+      size: 'md',
       orientation: 'h',
       css: {
         padding: '0 $3',
       },
     },
     {
-      size: 'large',
+      size: 'lg',
       orientation: 'h',
       css: {
         padding: '0 $5',

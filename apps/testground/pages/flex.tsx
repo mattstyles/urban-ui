@@ -9,7 +9,7 @@ export default function FlexPage() {
       <p>Alignment</p>
       <Flex alignment='center' orientation='h'>
         <StitchesLogoIcon />
-        <Spacer orientation='h' size='small' />
+        <Spacer orientation='h' size='sm' />
         <span>Hello world</span>
       </Flex>
       <Flex data-testid='someID'>

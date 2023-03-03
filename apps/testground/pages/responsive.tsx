@@ -98,14 +98,14 @@ export default function ResponsiveTest() {
         }}
       />
 
-      <Spacer size='large' />
+      <Spacer size='lg' />
       <p>
         Media config also supports a few other queries, try setting dark or
         light mode for the next block.
       </p>
       <Block color={{'@initial': 'hotpink', '@dark': 'aqua'}} />
 
-      <Spacer size='large' />
+      <Spacer size='lg' />
       <p>
         This next block specifies its own response to changes in window size.
       </p>

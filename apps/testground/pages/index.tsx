@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import {useMemo} from 'react'
 
 import {Spacer} from '@urban-ui/spacer'
 
@@ -10,8 +11,27 @@ export default function Docs() {
       <Spacer />
       <p>More text down here</p>
       <Spacer />
-      <Link href='/flex'>Flex</Link>
-      <Link href='/stack'>Stack</Link>
+      <TOC links={toc} />
     </div>
   )
+}
+
+type LinkType = {name: string; link: string}
+const toc: Array<LinkType> = [
+  {name: 'Spacer', link: '/spacer'},
+  {name: 'Flex', link: '/flex'},
+  {name: 'Stack', link: '/stack'},
+]
+function TOC({links}: {links: Array<LinkType>}) {
+  const content = useMemo(() => {
+    return links.map((link) => {
+      return (
+        <li key={link.name}>
+          <Link href={link.link}>{link.name}</Link>
+        </li>
+      )
+    })
+  }, [])
+
+  return <ul>{content}</ul>
 }

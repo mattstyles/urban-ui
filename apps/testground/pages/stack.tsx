@@ -44,14 +44,14 @@ export default function FlexPage() {
           <FigmaLogoIcon />
         </Stack>
       </Stack>
-      <Spacer size='large' />
+      <Spacer size='lg' />
       <Stack orientation='h' collapse>
         <h1>Collapse prop</h1>
         <p>Collapse will be horizontal on larger screens</p>
         <p>But stack vertically on smaller screens</p>
         <p>Try changing the screen size</p>
       </Stack>
-      <Spacer size='large' />
+      <Spacer size='lg' />
       <Stack orientation='h' collapse='md'>
         <h1>Collapse prop</h1>
         <p>Collapse will also accept a range.</p>
