@@ -2,8 +2,7 @@ import {styled} from '@urban-ui/theme'
 import {Spacer} from '@urban-ui/spacer'
 
 const Block = styled('div', {
-  width: 100,
-  height: 100,
+  size: 100,
   margin: 8,
 
   variants: {
@@ -31,8 +30,8 @@ const Block = styled('div', {
 })
 
 const Block2 = styled('div', {
-  width: 100,
-  height: 100,
+  size: 100,
+  borderRadius: '$round',
   margin: 8,
 
   background: 'blue',

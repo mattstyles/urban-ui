@@ -6,6 +6,7 @@ import {colours} from './colours'
 import {fonts, fontSizes, lineHeights, kerning} from './typography'
 import {radii, space} from './scales'
 import {media} from './media'
+import {utils} from './utils'
 
 export const {
   styled,
@@ -17,7 +18,8 @@ export const {
   createTheme,
   theme,
 } = createStitches({
-  media: media,
+  media,
+  utils,
   theme: {
     // Colours
     colors: colours,
