@@ -8,6 +8,7 @@
  */
 
 import {styled} from '@urban-ui/theme'
+import {Flex} from '@urban-ui/flex'
 
 export const Root = styled('div', {
   display: 'grid',
@@ -25,12 +26,19 @@ export const Root = styled('div', {
   },
 })
 
-export const Aside = styled('aside', {
+export const Aside = styled(Flex, {
   position: 'sticky',
   top: 0,
   left: 0,
   right: 0,
-  height: '100vh',
+
+  '@md+': {
+    height: '100vh',
+  },
+
+  defaultVariants: {
+    orientation: 'v',
+  },
 })
 
 export const Main = styled('main', {})

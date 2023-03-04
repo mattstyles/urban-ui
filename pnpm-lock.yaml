@@ -210,6 +210,7 @@ importers:
       '@types/node': ^17.0.12
       '@types/react': ^18.0.28
       '@types/testing-library__jest-dom': ^5.14.5
+      '@urban-ui/flex': workspace:*
       '@urban-ui/theme': workspace:*
       config-eslint: workspace:*
       config-ts: workspace:*
@@ -218,6 +219,7 @@ importers:
       vite: ^4.1.4
       vitest: ^0.29.1
     dependencies:
+      '@urban-ui/flex': link:../flex
       '@urban-ui/theme': link:../../core/theme
     devDependencies:
       '@stitches/react': 1.2.8

@@ -1,5 +1,6 @@
 import {useMemo} from 'react'
 import {LoremIpsum} from 'lorem-ipsum'
+import Link from 'next/link'
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -19,4 +20,24 @@ export function TextBlock({size = 5}: {size: number}) {
     })
   }, [size])
   return <div>{content}</div>
+}
+
+export function NavBlock({size = 15}: {size: number}) {
+  const content = useMemo(() => {
+    return lorem
+      .generateWords(size)
+      .split(' ')
+      .map((word, idx) => {
+        return (
+          <li key={idx}>
+            <Link href='#'>{word}</Link>
+          </li>
+        )
+      })
+  }, [size])
+  return (
+    <nav>
+      <ul style={{listStyleType: 'none'}}>{content}</ul>
+    </nav>
+  )
 }
