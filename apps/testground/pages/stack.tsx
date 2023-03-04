@@ -10,35 +10,35 @@ export default function FlexPage() {
   return (
     <div style={{padding: 8}}>
       <h1>Stack</h1>
-      <Spacer size='medium' />
-      <Stack size='small' orientation='h'>
+      <Spacer size='md' />
+      <Stack size='sm' orientation='h'>
         <StitchesLogoIcon />
         <GitHubLogoIcon />
         <FigmaLogoIcon />
       </Stack>
-      <Stack size='medium' orientation='h'>
+      <Stack size='md' orientation='h'>
         <StitchesLogoIcon />
         <GitHubLogoIcon />
         <FigmaLogoIcon />
       </Stack>
-      <Stack size='large' orientation='h'>
+      <Stack size='lg' orientation='h'>
         <StitchesLogoIcon />
         <GitHubLogoIcon />
         <FigmaLogoIcon />
       </Stack>
-      <Spacer size='large' />
+      <Spacer size='lg' />
       <Stack orientation='h'>
-        <Stack size='small'>
+        <Stack size='sm'>
           <StitchesLogoIcon />
           <GitHubLogoIcon />
           <FigmaLogoIcon />
         </Stack>
-        <Stack size='medium'>
+        <Stack size='md'>
           <StitchesLogoIcon />
           <GitHubLogoIcon />
           <FigmaLogoIcon />
         </Stack>
-        <Stack size='large'>
+        <Stack size='lg'>
           <StitchesLogoIcon />
           <GitHubLogoIcon />
           <FigmaLogoIcon />
@@ -47,8 +47,8 @@ export default function FlexPage() {
       <Spacer size='lg' />
       <Stack orientation='h' collapse>
         <h1>Collapse prop</h1>
-        <p>Collapse will be horizontal on larger screens</p>
-        <p>But stack vertically on smaller screens</p>
+        <p>Collapse will be horizontal on lgr screens</p>
+        <p>But stack vertically on smer screens</p>
         <p>Try changing the screen size</p>
       </Stack>
       <Spacer size='lg' />
