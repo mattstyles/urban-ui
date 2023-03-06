@@ -1,5 +1,10 @@
 import {TextBlock, NavBlock} from 'components/lorem'
-import {StitchesLogoIcon, HamburgerMenuIcon} from '@radix-ui/react-icons'
+import {
+  StitchesLogoIcon,
+  GitHubLogoIcon,
+  FigmaLogoIcon,
+  DiscordLogoIcon,
+} from '@radix-ui/react-icons'
 import {Aside} from '@urban-ui/page'
 import {Spacer} from '@urban-ui/spacer'
 import {Stack} from '@urban-ui/stack'
@@ -11,7 +16,17 @@ export default function Page() {
     <Aside.Root>
       <Aside.Header fixed css={{backgroundColor: 'aquamarine'}}>
         <Aside.HeaderContent>
-          <div>Some header stuff</div>
+          <Aside.HeaderLogo>
+            <StitchesLogoIcon />
+          </Aside.HeaderLogo>
+          <HeaderNav>
+            <div>Some header stuff</div>
+            <Stack orientation='h' alignment='center'>
+              <GitHubLogoIcon />
+              <FigmaLogoIcon />
+              <DiscordLogoIcon />
+            </Stack>
+          </HeaderNav>
         </Aside.HeaderContent>
       </Aside.Header>
       <Aside.Aside css={{backgroundColor: 'hotpink'}}>
@@ -26,7 +41,7 @@ export default function Page() {
           <Spacer />
           <TextBlock size={10} />
         </Aside.Article>
-        <Aside.MainAside>
+        <Aside.MainAside css={{backgroundColor: 'hsla(0, 0%, 0%, 0.3)'}}>
           <div>Some more aside stuff</div>
           <NavBlock size={45} />
         </Aside.MainAside>
@@ -34,3 +49,12 @@ export default function Page() {
     </Aside.Root>
   )
 }
+
+const HeaderNav = styled(Flex, {
+  padding: '$3',
+  paddingRight: '$6',
+  defaultVariants: {
+    justify: 'spread',
+    size: 'full',
+  },
+})

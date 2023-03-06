@@ -15,6 +15,7 @@ export const Root = styled(Flex, {
 })
 
 export const Header = styled('header', {
+  display: 'flex',
   position: 'relative',
   width: '100vw',
   height: '$tokens$header2',
@@ -36,9 +37,28 @@ export const Header = styled('header', {
 export const HeaderContent = styled(Flex, {
   marginLeft: 'auto',
   marginRight: 'auto',
+  width: '100%',
 
   '@md+': {
     maxWidth: '$tokens$page1',
+  },
+
+  defaultVariants: {
+    alignment: 'center',
+  },
+})
+
+export const HeaderLogo = styled(Flex, {
+  width: 'auto',
+  paddingLeft: '$3',
+  paddingRight: '$3',
+
+  '@lg+': {
+    width: '$tokens$aside2',
+  },
+
+  defaultVariants: {
+    alignment: 'center',
   },
 })
 
@@ -75,7 +95,7 @@ export const Main = styled(Flex, {
   },
 
   defaultVariants: {
-    orientation: 'v',
+    orientation: 'h',
     size: 'full',
   },
 })
