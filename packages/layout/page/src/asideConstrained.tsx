@@ -28,7 +28,6 @@ export const Header = styled('header', {
   top: 0,
   width: '100vw',
   gridArea: 'hd',
-  backgroundColor: 'aquamarine',
 })
 
 export const HeaderContent = styled(Flex, {
@@ -64,7 +63,6 @@ export const Aside = styled('aside', {
   display: 'none',
   alignItems: 'flex-end',
   flexDirection: 'column',
-  backgroundColor: 'hotpink',
 
   '@lg+': {
     display: 'flex',
@@ -74,7 +72,6 @@ export const AsideContent = styled('div', {
   position: 'sticky',
   top: '$tokens$header2', // 0 if header is position block, but 64 (headerheight) if position sticky and adjust height
   width: '$tokens$aside2',
-  backgroundColor: 'hsla(0, 0%, 0%, 0.1)',
   height: 'calc(100vh - $tokens$header2)',
   // height: '100vh',
   overflowY: 'scroll',
@@ -82,7 +79,6 @@ export const AsideContent = styled('div', {
 
 export const Main = styled('main', {
   gridArea: 'main',
-  backgroundColor: 'cornsilk',
   padding: '0 $7',
 })
 export const Article = styled('article', {
@@ -93,7 +89,6 @@ export const Article = styled('article', {
 
 export const MainAside = styled('aside', {
   gridArea: 'mas',
-  backgroundColor: 'cornsilk',
   display: 'none',
 
   '@max': {
