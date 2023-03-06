@@ -33,7 +33,9 @@ export default function Page() {
         </Triple.Article>
       </Triple.Main>
       <Triple.Additional css={{backgroundColor: 'rebeccapurple'}}>
-        Some additional content
+        <NavContainer>
+          <NavBlock size={45} />
+        </NavContainer>
       </Triple.Additional>
     </Triple.Root>
   )

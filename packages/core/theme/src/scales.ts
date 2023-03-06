@@ -18,3 +18,11 @@ export const radii = {
   2: '5px',
   round: '9999px',
 }
+
+export const layoutSizes = {
+  aside1: '12em',
+  aside2: '20em',
+  content1: '40em',
+  content2: '42em',
+  content3: '56em',
+}

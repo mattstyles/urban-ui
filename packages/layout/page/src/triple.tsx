@@ -15,14 +15,14 @@ export const Root = styled('div', {
   gridTemplateColumns: 'auto',
 
   '@md': {
-    gridTemplateColumns: '12em auto',
+    gridTemplateColumns: '$tokens$aside1 auto',
   },
   '@lg': {
-    gridTemplateColumns: '20em auto',
+    gridTemplateColumns: '$tokens$aside2 auto',
   },
 
   '@max': {
-    gridTemplateColumns: '20em auto 20em',
+    gridTemplateColumns: '$tokens$aside2 auto $tokens$aside2',
   },
 })
 
@@ -45,7 +45,7 @@ export const Main = styled('main', {})
 export const Article = styled('article', {
   padding: '$3 $5',
   marginLeft: 0,
-  maxWidth: '56em',
+  maxWidth: '$tokens$content3',
 
   '@max': {
     marginLeft: 'auto',
@@ -53,10 +53,19 @@ export const Article = styled('article', {
   },
 })
 
-export const Additional = styled('aside', {
+export const Additional = styled(Flex, {
   display: 'none',
 
   '@max': {
-    display: 'block',
+    display: 'flex',
+    position: 'sticky',
+    height: '100vh',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+
+  defaultVariants: {
+    orientation: 'v',
   },
 })
