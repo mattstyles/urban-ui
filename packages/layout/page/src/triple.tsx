@@ -18,11 +18,11 @@ export const Root = styled('div', {
     gridTemplateColumns: '$tokens$aside1 auto',
   },
   '@lg': {
-    gridTemplateColumns: '$tokens$aside2 auto',
+    gridTemplateColumns: '$tokens$aside3 auto',
   },
 
   '@max': {
-    gridTemplateColumns: '$tokens$aside2 auto $tokens$aside2',
+    gridTemplateColumns: '$tokens$aside3 auto $tokens$aside3',
   },
 })
 

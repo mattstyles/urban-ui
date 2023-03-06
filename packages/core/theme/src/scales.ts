@@ -22,7 +22,8 @@ export const radii = {
 export const layoutSizes = {
   // Aside widths
   aside1: '12em',
-  aside2: '20em',
+  aside2: '18em',
+  aside3: '20em',
 
   // Main content area widths
   content1: '40em',

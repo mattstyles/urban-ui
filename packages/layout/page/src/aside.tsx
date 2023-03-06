@@ -54,7 +54,7 @@ export const HeaderLogo = styled(Flex, {
   paddingRight: '$3',
 
   '@lg+': {
-    width: '$tokens$aside2',
+    width: '$tokens$aside3',
   },
 
   defaultVariants: {
@@ -68,14 +68,14 @@ export const Aside = styled(Flex, {
   left: 0,
   right: 0,
   paddingTop: '$tokens$header2',
-  minWidth: '$tokens$aside2',
+  minWidth: '$tokens$aside3',
   height: '100vh',
   overflowY: 'scroll',
   display: 'none',
 
   '@lg+': {
     height: '100vh',
-    width: 'calc( (100vw - $tokens$page1) / 2 + $tokens$aside2 )',
+    width: 'calc((100vw - $tokens$page1) / 2 + $tokens$aside3)',
     paddingLeft: 'calc((100vw - $tokens$page1) / 2)',
     display: 'block',
   },
@@ -90,7 +90,7 @@ export const Main = styled(Flex, {
 
   '@max': {
     width:
-      'calc(((100vw - $tokens$page1) / 2) - $tokens$aside2 + $tokens$page1)',
+      'calc(((100vw - $tokens$page1) / 2) - $tokens$aside3 + $tokens$page1)',
     paddingRight: 'calc((100vw - $tokens$page1) / 2)',
   },
 
@@ -121,7 +121,7 @@ export const MainAside = styled(Flex, {
   left: 0,
   right: 0,
   paddingTop: '$tokens$header2',
-  minWidth: '$tokens$aside2',
+  minWidth: '$tokens$aside3',
   height: '100vh',
   overflowY: 'scroll',
   display: 'none',

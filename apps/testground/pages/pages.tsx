@@ -14,6 +14,9 @@ export default function Pages() {
         <li>
           <Link href='/pages/aside'>Aside</Link>
         </li>
+        <li>
+          <Link href='/pages/constrainedAside'>Constrained Aside</Link>
+        </li>
       </ul>
     </Container>
   )
