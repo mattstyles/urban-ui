@@ -11,6 +11,9 @@ export default function Pages() {
         <li>
           <Link href='/pages/triple'>Triple</Link>
         </li>
+        <li>
+          <Link href='/pages/aside'>Aside</Link>
+        </li>
       </ul>
     </Container>
   )

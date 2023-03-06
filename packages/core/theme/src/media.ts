@@ -12,6 +12,7 @@ export const media = {
   // Specific breakpoints, need to be careful with these, they should probably *not* be specified alongside the regular breakpoints
   max: '(96em <= width)',
   'md+': '(40em <= width)',
+  'lg+': '(52em <= width)',
 
   // Additional media queries
   motion: '(prefers-reduced-motion)',

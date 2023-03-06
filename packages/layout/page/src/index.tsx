@@ -2,3 +2,4 @@
 import type {} from '@stitches/react'
 
 export * as Triple from './triple'
+export * as Aside from './aside'

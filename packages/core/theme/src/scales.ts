@@ -20,9 +20,19 @@ export const radii = {
 }
 
 export const layoutSizes = {
+  // Aside widths
   aside1: '12em',
   aside2: '20em',
+
+  // Main content area widths
   content1: '40em',
   content2: '42em',
   content3: '56em',
+
+  // Header bar heights
+  header1: '2.75em',
+  header2: '4em',
+
+  // Page widths
+  page1: '90em',
 }
