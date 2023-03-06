@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.2.0",
+    "@urban-ui/container": "workspace:*",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/page": "workspace:*",
+    "@urban-ui/screen": "workspace:*",
     "@urban-ui/spacer": "workspace:*",
     "@urban-ui/stack": "workspace:*",
     "@urban-ui/theme": "workspace:*",

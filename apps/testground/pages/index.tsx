@@ -9,8 +9,6 @@ export default function Docs() {
       <h1>Testground</h1>
       <p>Dev environment for mucking with components</p>
       <Spacer />
-      <p>More text down here</p>
-      <Spacer />
       <TOC links={toc} />
     </div>
   )
@@ -21,6 +19,7 @@ const toc: Array<LinkType> = [
   {name: 'Spacer', link: '/spacer'},
   {name: 'Flex', link: '/flex'},
   {name: 'Stack', link: '/stack'},
+  {name: 'Layout examples', link: '/pages'},
 ]
 function TOC({links}: {links: Array<LinkType>}) {
   const content = useMemo(() => {

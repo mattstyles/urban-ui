@@ -1,13 +1,17 @@
 import Link from 'next/link'
+import {Spacer} from '@urban-ui/spacer'
+import {Container} from '@urban-ui/container'
 
 export default function Pages() {
   return (
-    <div>
+    <Container>
+      <h1>Page layout examples</h1>
+      <Spacer />
       <ul>
         <li>
-          <Link href='/pages/docs'>Docs Full</Link>
+          <Link href='/pages/triple'>Triple</Link>
         </li>
       </ul>
-    </div>
+    </Container>
   )
 }

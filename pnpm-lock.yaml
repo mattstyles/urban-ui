@@ -21,8 +21,10 @@ importers:
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
+      '@urban-ui/container': workspace:*
       '@urban-ui/flex': workspace:*
       '@urban-ui/page': workspace:*
+      '@urban-ui/screen': workspace:*
       '@urban-ui/spacer': workspace:*
       '@urban-ui/stack': workspace:*
       '@urban-ui/theme': workspace:*
@@ -35,8 +37,10 @@ importers:
       typescript: ^4.5.3
     dependencies:
       '@radix-ui/react-icons': 1.2.0_react@18.2.0
+      '@urban-ui/container': link:../../packages/layout/container
       '@urban-ui/flex': link:../../packages/layout/flex
       '@urban-ui/page': link:../../packages/layout/page
+      '@urban-ui/screen': link:../../packages/layout/screen
       '@urban-ui/spacer': link:../../packages/layout/spacer
       '@urban-ui/stack': link:../../packages/layout/stack
       '@urban-ui/theme': link:../../packages/core/theme

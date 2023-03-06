@@ -4,6 +4,10 @@ import {styled} from '@urban-ui/theme'
 import {Flex} from '@urban-ui/flex'
 
 export const Container = styled(Flex, {
+  defaultVariants: {
+    orientation: 'v',
+  },
+
   variants: {
     padding: {
       sm: {
@@ -27,6 +31,16 @@ export const Container = styled(Flex, {
       },
       v: {
         width: '100%',
+      },
+    },
+
+    // Duplication here is currently necessary for defaultVariants to pass TS spec :(
+    orientation: {
+      h: {
+        flexDirection: 'row',
+      },
+      v: {
+        flexDirection: 'column',
       },
     },
   },

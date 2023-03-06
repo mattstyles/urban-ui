@@ -4,7 +4,7 @@ import {styled} from '@urban-ui/theme'
 
 export const Spacer = styled('div', {
   defaultVariants: {
-    size: 'medium',
+    size: 'md',
     orientation: 'v',
   },
 
