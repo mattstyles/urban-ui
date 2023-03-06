@@ -35,5 +35,6 @@ export const layoutSizes = {
   header2: '4em',
 
   // Page widths
-  page1: '90em',
+  page1: '68em',
+  page2: '90em',
 }

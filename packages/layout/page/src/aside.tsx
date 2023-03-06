@@ -40,7 +40,7 @@ export const HeaderContent = styled(Flex, {
   width: '100%',
 
   '@md+': {
-    maxWidth: '$tokens$page1',
+    maxWidth: '$tokens$page2',
   },
 
   defaultVariants: {
@@ -75,8 +75,8 @@ export const Aside = styled(Flex, {
 
   '@lg+': {
     height: '100vh',
-    width: 'calc((100vw - $tokens$page1) / 2 + $tokens$aside3)',
-    paddingLeft: 'calc((100vw - $tokens$page1) / 2)',
+    width: 'calc((100vw - $tokens$page2) / 2 + $tokens$aside3)',
+    paddingLeft: 'calc((100vw - $tokens$page2) / 2)',
     display: 'block',
   },
 
@@ -90,8 +90,8 @@ export const Main = styled(Flex, {
 
   '@max': {
     width:
-      'calc(((100vw - $tokens$page1) / 2) - $tokens$aside3 + $tokens$page1)',
-    paddingRight: 'calc((100vw - $tokens$page1) / 2)',
+      'calc(((100vw - $tokens$page2) / 2) - $tokens$aside3 + $tokens$page2)',
+    paddingRight: 'calc((100vw - $tokens$page2) / 2)',
   },
 
   defaultVariants: {

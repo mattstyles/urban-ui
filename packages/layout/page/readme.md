@@ -159,3 +159,47 @@ export function MyPage() {
 | Main          | Main content container      |                                  |
 | Article       | Inner content container     | `width: content2`                |
 | MainAside     | Right aside                 | `width: aside2`                  |
+
+## Single full bleed
+
+Single column ideal for reading, with the ability to embed wider "full-bleed" elements within the content.
+
+```js
+import {FullBleed} from '@urban-ui/page'
+
+export function MyPage() {
+  return (
+    <FullBleed.Root>
+      <FullBleed.Header fixed>
+        <HeaderContent>
+          {// e.g. Header stuff}
+        </HeaderContent>
+      </FullBleed.Header>
+      <FullBleed.Main>
+        {// e.g. Content}
+        <FullBleed.Full>
+          <img
+            src='https://picsum.photos/1600/400'
+            style={{width: '100%', aspectRatio: '4 / 1'}}
+          />
+        </FullBleed.Full>
+        <FullBleed.Full>
+          <FullBleed.Bleed css={{backgroundColor: 'grey'}}>
+            <pre style={{color: 'white'}}>
+              {// Content here will have vertical rhythm}
+            </pre>
+          </FullBleed.Bleed>
+        </FullBleed.Full>
+      </FullBleed.Main>
+    </FullBleed.Root>
+  )
+}
+```
+
+| Component | Description                 | Tokens            |
+| --------- | --------------------------- | ----------------- |
+| Root      | Responsible for main layout |                   |
+| Header    | Top header bar              | `height: header2` |
+| Main      | Main content container      |                   |
+| Full      | Full-width element          |                   |
+| Bleed     | Constrianed element         |                   |
