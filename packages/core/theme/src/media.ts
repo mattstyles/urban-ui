@@ -7,7 +7,7 @@ export const media = {
   // Breakpoints
   sm: '(width < 40em)',
   md: '(40em <= width < 52em)',
-  lg: '(52em <= width)',
+  lg: '(52em <= width < 96em)',
 
   // Specific breakpoints, need to be careful with these, they should probably *not* be specified alongside the regular breakpoints
   max: '(96em <= width)',
