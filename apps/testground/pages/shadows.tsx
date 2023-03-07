@@ -12,7 +12,7 @@ export default function Page() {
           .map((_, idx) => idx)
           .map((size) => {
             const Comp = Shadows[size]
-            return <Comp>{size}</Comp>
+            return <Comp key={size}>{size}</Comp>
           })}
       </Stack>
     </Container>

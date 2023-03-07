@@ -19,6 +19,7 @@ export default function Page() {
         <TextBlock size={2} />
         <FullBleed.Full>
           <img
+            alt='Randomly selected picture of a set width to demonstrate behaviour when content is wider than the main column width'
             src='https://picsum.photos/1600/400'
             style={{width: '100%', aspectRatio: '4 / 1'}}
           />

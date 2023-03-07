@@ -31,7 +31,7 @@ function TOC({links}: {links: Array<LinkType>}) {
         </li>
       )
     })
-  }, [])
+  }, [links])
 
   return <ul>{content}</ul>
 }

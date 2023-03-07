@@ -14,7 +14,9 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "author": {
     "name": "Matt Styles",
@@ -28,7 +30,14 @@
   "bugs": {
     "url": "https://github.com/mattstyles/urban-ui/issues"
   },
-  "keywords": ["ui", "react", "components", "urban-ui", "stitches", "radix-ui"],
+  "keywords": [
+    "ui",
+    "react",
+    "components",
+    "urban-ui",
+    "stitches",
+    "radix-ui"
+  ],
   "scripts": {
     "lint": "eslint *.ts*",
     "clean": "del dist",
@@ -52,6 +61,7 @@
     "config-ts": "workspace:*",
     "config-vite": "workspace:*",
     "del-cli": "^5.0.0",
+    "eslint": "^7.23.0",
     "vite": "^4.1.4",
     "vitest": "^0.29.1"
   },

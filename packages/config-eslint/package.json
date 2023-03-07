@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
+  "files": [
+    "eslint-preset.js"
+  ],
   "license": "MIT",
   "dependencies": {
     "eslint": "^7.23.0",
