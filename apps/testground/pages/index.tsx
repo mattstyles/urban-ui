@@ -19,6 +19,7 @@ const toc: Array<LinkType> = [
   {name: 'Spacer', link: '/spacer'},
   {name: 'Flex', link: '/flex'},
   {name: 'Stack', link: '/stack'},
+  {name: 'Shadows', link: '/shadows'},
   {name: 'Layout examples', link: '/pages'},
 ]
 function TOC({links}: {links: Array<LinkType>}) {
