@@ -5,4 +5,16 @@ import {styled} from '@urban-ui/theme'
 export const Screen = styled('div', {
   height: '100vh',
   width: '100vw',
+
+  variants: {
+    grow: {
+      true: {
+        minHeight: '100vh',
+        minWidth: '100vw',
+        height: 'auto',
+        width: 'auto',
+        overflow: 'auto',
+      },
+    },
+  },
 })
