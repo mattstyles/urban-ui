@@ -14,7 +14,7 @@ describe('[Flex] check for component style properties', () => {
     const el = screen.getByTestId('test')
     expect(el).toHaveAttribute(
       'class',
-      expect.stringContaining('orientation-v')
+      expect.stringContaining('orientation-h')
     )
   })
 })
