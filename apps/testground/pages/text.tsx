@@ -34,7 +34,9 @@ export default function Page() {
         </Text>
         <Text>For example, the following is contained within a stack:</Text>
         <Stack css={{backgroundColor: '$bg2'}}>
-          <Heading type='h2'>Some heading</Heading>
+          <Heading type='h2' color='primary'>
+            Some heading
+          </Heading>
           <Text type='mono'>Some monospaced text</Text>
           <Text>{lorem.generateWords(20)}</Text>
           <Text>

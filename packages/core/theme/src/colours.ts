@@ -1,4 +1,4 @@
-import {blackA, whiteA, crimson, mauve} from '@radix-ui/colors'
+import {blackA, whiteA, crimson, mauve, teal} from '@radix-ui/colors'
 
 function createColourScaleAlias(
   alias: string,
@@ -28,6 +28,8 @@ export const tokens = {
   // Type colours
   textLowContrast: bg.bg11,
   text: bg.bg12,
+  textHighlight: '$primary11',
+  textPrimary: '$primary12',
 
   // Colour scale aliases
   ...createColourScaleAlias('primary', crimson),

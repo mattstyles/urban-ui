@@ -2,15 +2,23 @@ import Link from 'next/link'
 import {useMemo} from 'react'
 
 import {Spacer} from '@urban-ui/spacer'
+import {Container} from '@urban-ui/container'
+import {Content} from '@urban-ui/content'
+import {Anchor, Text, Heading} from '@urban-ui/text'
+import {Stack} from '@urban-ui/stack'
 
 export default function Docs() {
   return (
-    <div>
-      <h1>Testground</h1>
-      <p>Dev environment for mucking with components</p>
-      <Spacer />
-      <TOC links={toc} />
-    </div>
+    <Container padding='lg' alignment='center'>
+      <Content>
+        <Stack>
+          <Heading as='h1'>Testground</Heading>
+          <Text as='p'>Dev environment for developing components</Text>
+        </Stack>
+        <Spacer />
+        <TOC links={toc} />
+      </Content>
+    </Container>
   )
 }
 
@@ -27,12 +35,18 @@ function TOC({links}: {links: Array<LinkType>}) {
   const content = useMemo(() => {
     return links.map((link) => {
       return (
-        <li key={link.name}>
-          <Link href={link.link}>{link.name}</Link>
-        </li>
+        <Text key={link.name} as='li'>
+          <Anchor as={Link} href={link.link}>
+            {link.name}
+          </Anchor>
+        </Text>
       )
     })
   }, [links])
 
-  return <ul>{content}</ul>
+  return (
+    <Stack as='ul' css={{listStyleType: 'none', padding: 0}}>
+      {content}
+    </Stack>
+  )
 }

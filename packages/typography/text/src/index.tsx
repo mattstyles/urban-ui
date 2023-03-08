@@ -22,11 +22,14 @@ export const Text = styled('span', {
       text: {
         color: '$text',
       },
-      primary: {
-        color: '$primary12',
-      },
       subtle: {
         color: '$textLowContrast',
+      },
+      primary: {
+        color: '$textPrimary',
+      },
+      highlight: {
+        color: '$textHighlight',
       },
     },
     size: {
@@ -69,12 +72,12 @@ export const Anchor = styled('a', {
         boxShadow: '0 1px 0 0 currentcolor',
 
         '&:hover': {
-          color: '$primary11',
+          color: '$textHighlight',
           boxShadow: '0 0 0 0 currentcolor',
         },
       },
       highlight: {
-        color: '$primary11',
+        color: '$textHighlight',
         boxShadow: '0 0 0 0 currentcolor',
 
         '&:hover': {
@@ -117,7 +120,10 @@ export const Heading = styled('span', {
         color: '$textLowContrast',
       },
       primary: {
-        color: '$primary12',
+        color: '$textPrimary',
+      },
+      highlight: {
+        color: '$textHighlight',
       },
     },
   },
