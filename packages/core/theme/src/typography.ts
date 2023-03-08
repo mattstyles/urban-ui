@@ -55,6 +55,6 @@ export const kerning = {
 export const fontWeights = {
   light: 300,
   standard: 400,
-  semiBold: 500,
+  semibold: 500,
   bold: 600,
 }

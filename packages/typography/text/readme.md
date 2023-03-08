@@ -24,14 +24,17 @@ Text components, sets default styling for components.
 
 The copy text elements are functional, but boring. You will likely want to apply some additional styling if you want long-form copy to spice things up a bit and add some character.
 
-| Exports | Description             |
-| ------- | ----------------------- |
-| Text    | Generic text component  |
-| Heading | Used to render headings |
-| H1      | Heading h1              |
-| H2      | Heading h2              |
-| H3      | Heading h3              |
-| P       | Paragraph               |
+| Exports  | Description              |
+| -------- | ------------------------ |
+| Text     | Generic text component   |
+| Heading  | Used to render headings  |
+| Strong   | Adds bold                |
+| Emphasis | Adds italic              |
+| Anchor   | Generic anchor component |
+| H1       | Heading h1               |
+| H2       | Heading h2               |
+| H3       | Heading h3               |
+| P        | Paragraph                |
 
 ## Components
 
@@ -75,6 +78,48 @@ There are no margins applied which allows this component to be used within a lay
 | ----- | ------------------------------- | ----------- |
 | type  | 'h1' \| 'h2' \| 'h3'            |             |
 | color | 'text' \| 'subtle' \| 'primary' |             |
+
+### Strong, Emphasis
+
+```js
+import {Text, Strong, Emphasis} from '@urban-ui/text'
+
+export function MyComponent() {
+  return (
+    <Text>
+      Text with <Strong>bold</Strong> and <Emphasis>italic</Emphasis> parts.
+    </Text>
+  )
+}
+```
+
+`Strong` and `Emphasis` inherit from `Text` components.
+
+Note that these components set the font weight and style so that you get faux-bold and faux-italic. You may want to use proper font variants.
+
+### Anchor
+
+```js
+import Link from 'next/link'
+import {Text, Anchor} from '@urban-ui/text'
+
+export function MyComponent() {
+  return (
+    <div>
+      <Text>
+        Text with an <Anchor href='#'>anchor</Anchor> contained within it.
+      </Text>
+      <Anchor as={Link} href='#'>
+        Pass Next/Link to the as prop.
+      </Anchor>
+    </div>
+  )
+}
+```
+
+| Prop | Type                    | Description    |
+| ---- | ----------------------- | -------------- |
+| type | 'highlight' \| 'inline' | Style variants |
 
 ### P
 

@@ -1,5 +1,17 @@
+import Link from 'Next/link'
+
 import {Container} from '@urban-ui/container'
-import {Text, Heading, P, H1, H2, H3} from '@urban-ui/text'
+import {
+  Text,
+  Strong,
+  Emphasis,
+  Anchor,
+  Heading,
+  P,
+  H1,
+  H2,
+  H3,
+} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
 import {Stack} from '@urban-ui/stack'
 
@@ -25,6 +37,28 @@ export default function Page() {
           <Heading type='h2'>Some heading</Heading>
           <Text type='mono'>Some monospaced text</Text>
           <Text>{lorem.generateWords(20)}</Text>
+          <Text>
+            Text with <Strong>strong</Strong> and <Emphasis>emphasis</Emphasis>{' '}
+            elements in it.
+          </Text>
+          <Text>
+            Text can also contain <Anchor href='#'>anchors</Anchor> in the copy.
+            Anchors have an{' '}
+            <Anchor type='inline' href='#'>
+              inline variant
+            </Anchor>
+            .
+          </Text>
+          <Text size='xl'>
+            <Anchor href='#'>Anchors</Anchor> will follow text styling.
+          </Text>
+          <Text>
+            Next/link can be used in text,{' '}
+            <Anchor as={Link} href='/'>
+              Go to home
+            </Anchor>
+            .
+          </Text>
         </Stack>
 
         <div>

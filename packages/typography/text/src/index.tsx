@@ -46,6 +46,45 @@ export const Text = styled('span', {
   },
 })
 
+export const Strong = styled(Text, {
+  fontWeight: '$bold',
+})
+
+export const Emphasis = styled(Text, {
+  fontStyle: 'italic',
+})
+
+export const Anchor = styled('a', {
+  textDecoration: 'none',
+  transition: 'box-shadow 120ms ease-out, color 120ms ease-out',
+
+  defaultVariants: {
+    type: 'highlight',
+  },
+
+  variants: {
+    type: {
+      inline: {
+        color: '$currentcolor',
+        boxShadow: '0 1px 0 0 currentcolor',
+
+        '&:hover': {
+          color: '$primary11',
+          boxShadow: '0 0 0 0 currentcolor',
+        },
+      },
+      highlight: {
+        color: '$primary11',
+        boxShadow: '0 0 0 0 currentcolor',
+
+        '&:hover': {
+          boxShadow: '0 1px 0 0 currentcolor',
+        },
+      },
+    },
+  },
+})
+
 export const Heading = styled('span', {
   letterSpacing: '$narrow',
   fontWeight: '$bold',
