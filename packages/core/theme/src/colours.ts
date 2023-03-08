@@ -17,11 +17,17 @@ function createColourScaleAlias(
   return output
 }
 
+const bg = createColourScaleAlias('bg', mauve)
+
 export const tokens = {
   transparent: 'transparent',
   current: 'current',
   white: 'hsl(0, 0%, 100%)',
   black: 'hsl(0, 0%, 0%)',
+
+  // Type colours
+  textLowContrast: bg.bg11,
+  text: bg.bg12,
 
   // Colour scale aliases
   ...createColourScaleAlias('primary', crimson),

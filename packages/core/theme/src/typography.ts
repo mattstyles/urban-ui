@@ -14,14 +14,14 @@ export const fontSizes = {
   7: '26px',
   8: '32px',
   xs: '$1',
-  s: '$2',
-  m: '$3',
-  l: '$4',
+  sm: '$2',
+  md: '$3',
+  lg: '$4',
   xl: '$5',
 
-  h1: '$7',
-  h2: '$6',
-  h3: '$5',
+  h1: '$8',
+  h2: '$7',
+  h3: '$6',
 }
 
 export const lineHeights = {
@@ -34,13 +34,14 @@ export const lineHeights = {
   7: '36px',
   8: '48px',
   xs: '$1',
-  s: '$2',
-  m: '$3',
-  l: '$4',
+  sm: '$2',
+  md: '$3',
+  lg: '$4',
   xl: '$5',
-  h1: '$7',
-  h2: '$6',
-  h3: '$5',
+
+  h1: '$8',
+  h2: '$7',
+  h3: '$6',
 }
 
 export const kerning = {
@@ -49,4 +50,11 @@ export const kerning = {
   standard: '0px',
   loose: '1px',
   expanded: '2.5px',
+}
+
+export const fontWeights = {
+  light: 300,
+  standard: 400,
+  semiBold: 500,
+  bold: 600,
 }

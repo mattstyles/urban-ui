@@ -27,9 +27,9 @@ export const layoutSizes = {
   aside3: '20em',
 
   // Main content area widths
-  content1: '40em',
-  content2: '42em',
-  content3: '56em',
+  content1: '40em', // ~60ch
+  content2: '42em', // ~64ch
+  content3: '56em', // ~87ch
 
   // Header bar heights
   header1: '2.75em',

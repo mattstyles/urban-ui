@@ -3,7 +3,7 @@ import type * as Stitches from '@stitches/react'
 import {createStitches} from '@stitches/react'
 import {reset} from './reset'
 import {colours} from './colours'
-import {fonts, fontSizes, lineHeights, kerning} from './typography'
+import {fonts, fontSizes, lineHeights, kerning, fontWeights} from './typography'
 import {radii, space, layoutSizes} from './scales'
 import {shadows} from './shadows'
 import {media} from './media'
@@ -29,6 +29,7 @@ export const {
     fonts,
     fontSizes,
     lineHeights,
+    fontWeights,
     letterSpacings: kerning,
 
     // Scales

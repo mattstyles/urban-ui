@@ -2,7 +2,7 @@ import {useMemo} from 'react'
 import {LoremIpsum} from 'lorem-ipsum'
 import Link from 'next/link'
 
-const lorem = new LoremIpsum({
+export const lorem = new LoremIpsum({
   sentencesPerParagraph: {
     max: 8,
     min: 4,
