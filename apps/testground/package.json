@@ -15,6 +15,7 @@
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/page": "workspace:*",
     "@urban-ui/screen": "workspace:*",
+    "@urban-ui/scrollable": "workspace:*",
     "@urban-ui/spacer": "workspace:*",
     "@urban-ui/stack": "workspace:*",
     "@urban-ui/text": "workspace:*",

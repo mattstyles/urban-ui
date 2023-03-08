@@ -26,10 +26,10 @@ export const Container = styled(Flex, {
         width: '100%',
         height: '100%',
       },
-      h: {
+      v: {
         height: '100%',
       },
-      v: {
+      h: {
         width: '100%',
       },
     },
