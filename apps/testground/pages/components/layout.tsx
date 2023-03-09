@@ -24,11 +24,11 @@ export function Layout({children}: {children: React.ReactNode}) {
             </button>
           </Container>
           <AsideContent isOpen={isOpen}>
-            <Links />
+            <Links onClick={() => setIsOpen(false)} />
           </AsideContent>
         </Aside>
         <Spacer size='lg' orientation='h' />
-        <div>{children}</div>
+        {children}
       </Container>
     </Screen>
   )
@@ -47,7 +47,7 @@ const toc: Array<LinkType> = [
 ]
 
 const Aside = styled('aside', {
-  width: '$tokens$aside2',
+  minWidth: '$tokens$aside2',
   position: 'sticky',
   top: 0,
   height: '100vh',
@@ -92,7 +92,7 @@ const AsideContent = styled('div', {
   },
 })
 
-function Links() {
+function Links({onClick}: {onClick?: () => void}) {
   return (
     <Stack
       as='ul'
@@ -105,7 +105,7 @@ function Links() {
       }}>
       {toc.map(({name, link}) => {
         return (
-          <NavLink key={name} href={link}>
+          <NavLink key={name} href={link} onClick={onClick}>
             {name}
           </NavLink>
         )
@@ -132,12 +132,21 @@ const StyledLink = styled('a', {
   },
 })
 
-function NavLink({children, href}: {children: React.ReactNode; href: string}) {
+function NavLink({
+  children,
+  href,
+  onClick,
+}: {
+  children: React.ReactNode
+  href: string
+  onClick?: () => void
+}) {
   const {asPath, push} = useRouter()
   return (
     <StyledLink
       as={Link}
       aria-current={asPath === href ? 'page' : undefined}
+      onClick={onClick}
       href={href}>
       {children}
     </StyledLink>
