@@ -13,34 +13,34 @@ export default function Page() {
     <div style={{padding: 8}}>
       <h1>Stack</h1>
       <Spacer size='md' />
-      <Stack size='sm' orientation='h'>
+      <Stack gap='sm' orientation='h'>
         <StitchesLogoIcon />
         <GitHubLogoIcon />
         <FigmaLogoIcon />
       </Stack>
-      <Stack size='md' orientation='h'>
+      <Stack gap='md' orientation='h'>
         <StitchesLogoIcon />
         <GitHubLogoIcon />
         <FigmaLogoIcon />
       </Stack>
-      <Stack size='lg' orientation='h'>
+      <Stack gap='lg' orientation='h'>
         <StitchesLogoIcon />
         <GitHubLogoIcon />
         <FigmaLogoIcon />
       </Stack>
       <Spacer size='lg' />
       <Stack orientation='h'>
-        <Stack size='sm'>
+        <Stack gap='sm'>
           <StitchesLogoIcon />
           <GitHubLogoIcon />
           <FigmaLogoIcon />
         </Stack>
-        <Stack size='md'>
+        <Stack gap='md'>
           <StitchesLogoIcon />
           <GitHubLogoIcon />
           <FigmaLogoIcon />
         </Stack>
-        <Stack size='lg'>
+        <Stack gap='lg'>
           <StitchesLogoIcon />
           <GitHubLogoIcon />
           <FigmaLogoIcon />

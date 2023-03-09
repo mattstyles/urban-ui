@@ -6,11 +6,11 @@ import {styled} from '@urban-ui/theme'
 
 export const Stack = styled(Flex, {
   defaultVariants: {
-    size: 'sm',
+    gap: 'sm',
     orientation: 'v',
   },
   variants: {
-    size: {
+    gap: {
       sm: {
         gap: '$2',
       },

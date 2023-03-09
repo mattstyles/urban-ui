@@ -16,7 +16,7 @@ export default function Page() {
           General scale, can be used for overlays but also for other elements
           like screen hierarchy elements
         </p>
-        <Stack size='lg' alignment='center' orientation='h'>
+        <Stack gap='lg' alignment='center' orientation='h'>
           {Array.from({length: 6})
             .map((_, idx) => idx)
             .map((size) => {
@@ -42,7 +42,7 @@ export default function Page() {
           (i.e. overlays)
         </p>
         <Spacer size='sm' />
-        <Stack size='lg' alignment='center' orientation='h'>
+        <Stack gap='lg' alignment='center' orientation='h'>
           {['sm', 'md', 'lg'].map((size, idx) => {
             // @ts-ignore
             const Comp = Shadows[size]

@@ -1,7 +1,6 @@
 import {StitchesLogoIcon} from '@radix-ui/react-icons'
 import {TextBlock, NavBlock} from 'components/lorem'
 import {FullBleed} from '@urban-ui/page'
-import {Flex} from '@urban-ui/flex'
 import {Stack} from '@urban-ui/stack'
 import {styled} from '@urban-ui/theme'
 

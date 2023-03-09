@@ -107,8 +107,8 @@ function AsideFooter() {
     <Flex
       orientation='v'
       alignment='center'
-      css={{padding: '$8', color: '$white'}}>
-      <Stack size='md' orientation='h'>
+      css={{padding: '$8 $5', color: '$white'}}>
+      <Stack gap='md' orientation='h'>
         <Flex alignment='center' justify='center' css={{size: '$6'}}>
           <StitchesLogoIcon color='currentcolor' width='100%' height='100%' />
         </Flex>
@@ -117,7 +117,7 @@ function AsideFooter() {
         </Flex>
       </Stack>
       <Spacer size='lg' />
-      <Text color='currentcolor'>
+      <Text color='currentcolor' size='sm'>
         Powered by{' '}
         <Anchor
           type='inline'

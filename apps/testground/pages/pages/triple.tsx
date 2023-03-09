@@ -59,7 +59,7 @@ function NavTop() {
       </StyledMenuButton>
       <Flex orientation='v'>
         <Spacer size={{'@initial': 'sm', '@md+': 'lg'}} />
-        <Stack orientation='h' size='md' alignment='center'>
+        <Stack orientation='h' gap='md' alignment='center'>
           <StitchesLogoIcon />
           <span>Urban UI</span>
         </Stack>

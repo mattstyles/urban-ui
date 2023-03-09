@@ -58,7 +58,7 @@ export function NavGroup({onClick, group}: NavGroupProps) {
   return (
     <Stack
       as='ul'
-      size='md'
+      gap='md'
       css={{
         listStyleType: 'none',
         paddingInlineStart: 0,

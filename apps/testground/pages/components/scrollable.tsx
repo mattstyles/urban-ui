@@ -11,7 +11,7 @@ export default function Page() {
   const [numItems, setNumItems] = useState<number>(4)
   return (
     <Container padding='lg' css={{backgroundColor: '$bg2'}}>
-      <Stack size='lg'>
+      <Stack gap='lg'>
         <Stack>
           <Text>Standard scroll area with defaults</Text>
           <Container
