@@ -5,6 +5,8 @@ import {Container} from '@urban-ui/container'
 import {Stack} from '@urban-ui/stack'
 import * as Scrollable from '@urban-ui/scrollable'
 
+import {Layout} from './layout'
+
 export default function Page() {
   const [numItems, setNumItems] = useState<number>(4)
   return (
@@ -81,6 +83,10 @@ export default function Page() {
       </Stack>
     </Container>
   )
+}
+
+Page.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }
 
 function Content({

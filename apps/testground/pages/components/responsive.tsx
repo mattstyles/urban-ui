@@ -1,6 +1,8 @@
 import {styled} from '@urban-ui/theme'
 import {Spacer} from '@urban-ui/spacer'
 
+import {Layout} from './layout'
+
 const Block = styled('div', {
   size: 100,
   margin: 8,
@@ -111,4 +113,8 @@ export default function ResponsiveTest() {
       <Block2 />
     </div>
   )
+}
+
+ResponsiveTest.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }

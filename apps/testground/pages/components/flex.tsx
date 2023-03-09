@@ -1,6 +1,7 @@
 import {StitchesLogoIcon} from '@radix-ui/react-icons'
 import {Flex} from '@urban-ui/flex'
 import {Spacer} from '@urban-ui/spacer'
+import {Layout} from './layout'
 
 export default function FlexPage() {
   return (
@@ -18,4 +19,8 @@ export default function FlexPage() {
       </Flex>
     </div>
   )
+}
+
+FlexPage.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }

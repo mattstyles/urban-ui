@@ -16,6 +16,7 @@ import {Content} from '@urban-ui/content'
 import {Stack} from '@urban-ui/stack'
 
 import {lorem} from 'components/lorem'
+import {Layout} from './layout'
 
 export default function Page() {
   return (
@@ -100,4 +101,8 @@ export default function Page() {
       </Container>
     </div>
   )
+}
+
+Page.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }

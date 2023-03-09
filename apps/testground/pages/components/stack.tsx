@@ -6,7 +6,9 @@ import {
 import {Stack} from '@urban-ui/stack'
 import {Spacer} from '@urban-ui/spacer'
 
-export default function FlexPage() {
+import {Layout} from './layout'
+
+export default function Page() {
   return (
     <div style={{padding: 8}}>
       <h1>Stack</h1>
@@ -58,4 +60,8 @@ export default function FlexPage() {
       </Stack>
     </div>
   )
+}
+
+Page.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }

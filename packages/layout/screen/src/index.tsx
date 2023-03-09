@@ -9,11 +9,17 @@ export const Screen = styled('div', {
   variants: {
     grow: {
       true: {
-        minHeight: '100vh',
         minWidth: '100vw',
-        height: 'auto',
+        minHeight: '100vh',
         width: 'auto',
+        height: 'auto',
         overflow: 'auto',
+      },
+    },
+    min: {
+      true: {
+        minWidth: '100vw',
+        minHeight: '100vh',
       },
     },
   },

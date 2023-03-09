@@ -4,6 +4,7 @@ import {Stack} from '@urban-ui/stack'
 import {Screen} from '@urban-ui/screen'
 import {Spacer} from '@urban-ui/spacer'
 
+import {Layout} from './layout'
 import Link from 'next/link'
 
 export default function Page() {
@@ -58,6 +59,10 @@ export default function Page() {
       </Container>
     </Screen>
   )
+}
+
+Page.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }
 
 const baseHeight = 90

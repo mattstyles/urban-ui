@@ -7,6 +7,8 @@ import {
 import {Spacer} from '@urban-ui/spacer'
 import {Flex} from '@urban-ui/flex'
 
+import {Layout} from './layout'
+
 export default function SpacerPage() {
   return (
     <div style={{padding: 8}}>
@@ -30,4 +32,8 @@ export default function SpacerPage() {
       </Flex>
     </div>
   )
+}
+
+SpacerPage.getLayout = function getLayout(page: React.ReactElement) {
+  return <Layout>{page}</Layout>
 }
