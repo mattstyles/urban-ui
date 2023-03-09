@@ -36,6 +36,10 @@ export const Text = styled('span', {
       },
     },
     size: {
+      xs: {
+        fontSize: '$xs',
+        lineHeight: '$xs',
+      },
       sm: {
         fontSize: '$sm',
         lineHeight: '$sm',
@@ -47,6 +51,10 @@ export const Text = styled('span', {
       lg: {
         fontSize: '$lg',
         lineHeight: '$lg',
+      },
+      xl: {
+        fontSize: '$xl',
+        lineHeight: '$xl',
       },
     },
   },

@@ -11,6 +11,7 @@ const nav: NavType = [
       {name: 'Stack', link: '/components/stack'},
       {name: 'Shadows', link: '/components/shadows'},
       {name: 'Text', link: '/components/text'},
+      {name: 'Text Scales', link: '/components/textScales'},
       {name: 'Responsive', link: '/components/responsive'},
       {name: 'Scrollable', link: '/components/scrollable'},
     ],

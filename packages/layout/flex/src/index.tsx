@@ -28,6 +28,9 @@ export const Flex = styled('div', {
       end: {
         alignItems: 'flex-end',
       },
+      baseline: {
+        alignItems: 'baseline',
+      },
     },
     justify: {
       start: {
