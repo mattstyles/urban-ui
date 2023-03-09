@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import {useState} from 'react'
-import {HamburgerMenuIcon} from '@radix-ui/react-icons'
+import {HamburgerMenuIcon, StitchesLogoIcon} from '@radix-ui/react-icons'
 
 import {Container} from '@urban-ui/container'
 import {Screen} from '@urban-ui/screen'
 import {Stack} from '@urban-ui/stack'
-import {Content} from '@urban-ui/content'
+import {Flex} from '@urban-ui/flex'
 import {Spacer} from '@urban-ui/spacer'
+import {Text, Anchor} from '@urban-ui/text'
 import * as Scrollable from '@urban-ui/scrollable'
 import {styled} from '@urban-ui/theme'
 
@@ -24,7 +25,10 @@ export function Layout({children}: {children: React.ReactNode}) {
             </button>
           </Container>
           <AsideContent isOpen={isOpen}>
-            <Links onClick={() => setIsOpen(false)} />
+            <Flex size='full'>
+              <Links onClick={() => setIsOpen(false)} />
+            </Flex>
+            <AsideFooter />
           </AsideContent>
         </Aside>
         <Spacer size='lg' orientation='h' />
@@ -66,6 +70,7 @@ const Aside = styled('aside', {
 const AsideContent = styled('div', {
   display: 'flex',
   flex: 1,
+  flexDirection: 'column',
   borderRadius: '$3',
   backgroundColor: '$primary10',
 
@@ -152,3 +157,29 @@ function NavLink({
     </StyledLink>
   )
 }
+
+function AsideFooter() {
+  return (
+    <Flex
+      orientation='v'
+      alignment='center'
+      css={{padding: '$8', color: '$white'}}>
+      <Flex alignment='center' justify='center' css={{size: '$6'}}>
+        <StitchesLogoIcon color='currentcolor' width='100%' height='100%' />
+      </Flex>
+      <Spacer size='lg' />
+      <Text color='currentcolor'>
+        Powered by{' '}
+        <Anchor
+          type='inline'
+          href='https://stitches.dev/'
+          target='_blank'
+          css={{$$textHighlight: '$white'}}>
+          stitches
+        </Anchor>
+      </Text>
+    </Flex>
+  )
+}
+
+const Box = styled('div', {})

@@ -31,6 +31,9 @@ export const Text = styled('span', {
       highlight: {
         color: '$textHighlight',
       },
+      currentcolor: {
+        color: 'currentcolor',
+      },
     },
     size: {
       sm: {
@@ -58,6 +61,7 @@ export const Emphasis = styled(Text, {
 })
 
 export const Anchor = styled('a', {
+  $$textHighlight: '$textHighlight',
   textDecoration: 'none',
   transition: 'box-shadow 120ms ease-out, color 120ms ease-out',
 
@@ -72,12 +76,12 @@ export const Anchor = styled('a', {
         boxShadow: '0 1px 0 0 currentcolor',
 
         '&:hover': {
-          color: '$textHighlight',
+          color: '$$textHighlight',
           boxShadow: '0 0 0 0 currentcolor',
         },
       },
       highlight: {
-        color: '$textHighlight',
+        color: '$$textHighlight',
         boxShadow: '0 0 0 0 currentcolor',
 
         '&:hover': {
