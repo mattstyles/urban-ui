@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import {useRouter} from 'next/router'
+import {useState} from 'react'
+import {HamburgerMenuIcon} from '@radix-ui/react-icons'
 
 import {Container} from '@urban-ui/container'
 import {Screen} from '@urban-ui/screen'
@@ -10,11 +12,20 @@ import * as Scrollable from '@urban-ui/scrollable'
 import {styled} from '@urban-ui/theme'
 
 export function Layout({children}: {children: React.ReactNode}) {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <Screen min>
-      <Container fill='all' padding='md' orientation='h'>
+      <Container orientation={{'@initial': 'h', '@sm': 'v'}}>
         <Aside>
-          <Links />
+          <Container css={{'@md+': {display: 'none'}}}>
+            <button onClick={() => setIsOpen(!isOpen)}>
+              <HamburgerMenuIcon />
+            </button>
+          </Container>
+          <AsideContent isOpen={isOpen}>
+            <Links />
+          </AsideContent>
         </Aside>
         <Spacer size='lg' orientation='h' />
         <div>{children}</div>
@@ -37,8 +48,48 @@ const toc: Array<LinkType> = [
 
 const Aside = styled('aside', {
   width: '$tokens$aside2',
+  position: 'sticky',
+  top: 0,
+  height: '100vh',
+  padding: '$3',
+  display: 'flex',
+
+  '@sm': {
+    height: '$tokens$header2',
+    width: 'auto',
+    backgroundColor: '$bg2',
+    boxShadow: '$md',
+    left: 0,
+    right: 0,
+  },
+})
+const AsideContent = styled('div', {
+  display: 'flex',
+  flex: 1,
   borderRadius: '$3',
   backgroundColor: '$primary10',
+
+  '@sm': {
+    position: 'absolute',
+    left: 'calc($tokens$aside2 * -1)',
+    transition: 'left 150ms ease-out',
+    top: '$tokens$header2',
+    width: '$tokens$aside2',
+    height: 'calc(100vh - $tokens$header2)',
+    backgroundColor: '$bg10',
+    boxShadow: 'md',
+    borderRadius: '$0',
+    justifyContent: 'center',
+  },
+
+  variants: {
+    isOpen: {
+      true: {
+        left: 0,
+        width: '100vw',
+      },
+    },
+  },
 })
 
 function Links() {
@@ -46,7 +97,12 @@ function Links() {
     <Stack
       as='ul'
       size='md'
-      css={{listStyleType: 'none', paddingInlineStart: 0, padding: '$3'}}>
+      css={{
+        listStyleType: 'none',
+        paddingInlineStart: 0,
+        padding: '$3',
+        width: '100%',
+      }}>
       {toc.map(({name, link}) => {
         return (
           <NavLink key={name} href={link}>

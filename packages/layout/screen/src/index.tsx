@@ -20,6 +20,8 @@ export const Screen = styled('div', {
       true: {
         minWidth: '100vw',
         minHeight: '100vh',
+        width: 'auto',
+        height: 'auto',
       },
     },
   },
