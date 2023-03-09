@@ -1,9 +1,9 @@
 import type {NavType} from 'components/navigation'
 
+import {Container} from '@urban-ui/container'
 import {Spacer} from '@urban-ui/spacer'
-import {Flex} from '@urban-ui/flex'
 import {Text, Heading} from '@urban-ui/text'
-import {Stack} from '@urban-ui/stack'
+import {Content} from '@urban-ui/content'
 
 import {Layout} from 'components/layoutPrimary'
 
@@ -20,13 +20,13 @@ const nav: NavType = [
 export default function Testground() {
   return (
     <Layout nav={nav}>
-      <Flex orientation='v'>
-        <Spacer size='lg' />
-        <Stack>
+      <Container alignment='center' padding='md' size='full'>
+        <Content>
+          <Spacer size='lg' />
           <Heading as='h1'>Testground</Heading>
           <Text as='p'>Dev environment for developing components</Text>
-        </Stack>
-      </Flex>
+        </Content>
+      </Container>
     </Layout>
   )
 }

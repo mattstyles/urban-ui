@@ -80,7 +80,7 @@ const StyledLink = styled('a', {
   padding: '$2 $5',
   backgroundColor: '$transparent',
   color: '$white',
-  transition: 'backgroundColor 150ms linear',
+  transition: 'background 150ms ease-out, color 150ms ease-out',
   borderRadius: '$2',
   textDecoration: 'none',
 

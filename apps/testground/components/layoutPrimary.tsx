@@ -54,6 +54,7 @@ export function Layout({children, nav}: LayoutProps) {
 
 const Aside = styled('aside', {
   minWidth: '$tokens$aside2',
+  width: '$tokens$aside2',
   position: 'sticky',
   top: 0,
   height: '100vh',
