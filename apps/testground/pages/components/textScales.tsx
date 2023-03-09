@@ -56,7 +56,7 @@ export default function Page() {
             <Heading>Heading types</Heading>
             {headingTypes.map((type) => {
               return (
-                <Heading key={size} type={type}>
+                <Heading key={type} type={type}>
                   {type}
                 </Heading>
               )
@@ -64,7 +64,7 @@ export default function Page() {
             <Stack orientation='h' gap='sm' alignment='end'>
               {headingTypes.map((type) => {
                 return (
-                  <Heading key={size} type={type}>
+                  <Heading key={type} type={type}>
                     {type}
                   </Heading>
                 )
