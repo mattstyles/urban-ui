@@ -68,7 +68,7 @@ export default function Page() {
           </Stack>
           <Container
             css={{backgroundColor: '$bg1', width: '200px', height: '250px'}}>
-            <Scrollable.Root round type='auto'>
+            <Scrollable.Root type='auto'>
               <Scrollable.Viewport>
                 <Container css={{backgroundColor: '$primary3'}} fill='v'>
                   <Content num={numItems} />

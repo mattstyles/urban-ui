@@ -129,6 +129,9 @@ export const Heading = styled('span', {
       highlight: {
         color: '$textHighlight',
       },
+      currentcolor: {
+        color: 'currentcolor',
+      },
     },
   },
 })
