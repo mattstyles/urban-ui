@@ -14,6 +14,7 @@ const nav: NavType = [
       {name: 'Text Scales', link: '/components/textScales'},
       {name: 'Responsive', link: '/components/responsive'},
       {name: 'Scrollable', link: '/components/scrollable'},
+      {name: 'Panel', link: '/components/panel'},
     ],
   },
 ]

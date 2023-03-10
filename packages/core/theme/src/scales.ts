@@ -10,6 +10,12 @@ export const space = {
   7: '32px',
   8: '48px',
   9: '72px',
+
+  xs: '$2',
+  sm: '$3',
+  md: '$4',
+  lg: '$5',
+  xl: '$7',
 }
 
 export const radii = {
