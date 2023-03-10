@@ -5,6 +5,7 @@ import {HamburgerMenuIcon, StitchesLogoIcon} from '@radix-ui/react-icons'
 import {RadixLogoIcon} from 'components/radixLogoIcon'
 import {Nav} from './navigation'
 
+import {Center} from '@urban-ui/center'
 import {Container} from '@urban-ui/container'
 import {Screen} from '@urban-ui/screen'
 import {Stack} from '@urban-ui/stack'
@@ -107,14 +108,14 @@ function AsideFooter() {
     <Flex
       orientation='v'
       alignment='center'
-      css={{padding: '$8 $5', color: '$white'}}>
+      css={{px: '$5', py: '$8', color: '$white'}}>
       <Stack gap='md' orientation='h'>
-        <Flex alignment='center' justify='center' css={{size: '$6'}}>
+        <Center css={{size: '$6'}}>
           <StitchesLogoIcon color='currentcolor' width='100%' height='100%' />
-        </Flex>
-        <Flex alignment='center' justify='center' css={{size: '$6'}}>
+        </Center>
+        <Center css={{size: '$6'}}>
           <RadixLogoIcon width='100%' height='100%' />
-        </Flex>
+        </Center>
       </Stack>
       <Spacer size='lg' />
       <Text color='currentcolor' size='sm'>

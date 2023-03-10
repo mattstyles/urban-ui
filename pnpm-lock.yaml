@@ -22,6 +22,7 @@ importers:
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
       '@urban-ui/box': workspace:*
+      '@urban-ui/center': workspace:*
       '@urban-ui/container': workspace:*
       '@urban-ui/content': workspace:*
       '@urban-ui/flex': workspace:*
@@ -44,6 +45,7 @@ importers:
     dependencies:
       '@radix-ui/react-icons': 1.2.0_react@18.2.0
       '@urban-ui/box': link:../../packages/layout/box
+      '@urban-ui/center': link:../../packages/layout/center
       '@urban-ui/container': link:../../packages/layout/container
       '@urban-ui/content': link:../../packages/typography/content
       '@urban-ui/flex': link:../../packages/layout/flex
@@ -174,6 +176,37 @@ importers:
       vite: ^4.1.4
       vitest: ^0.29.1
     dependencies:
+      '@urban-ui/theme': link:../../core/theme
+    devDependencies:
+      '@stitches/react': 1.2.8
+      '@testing-library/react': 14.0.0
+      '@types/node': 17.0.45
+      '@types/react': 18.0.28
+      '@types/testing-library__jest-dom': 5.14.5
+      config-eslint: link:../../config-eslint
+      config-ts: link:../../config-ts
+      config-vite: link:../../config-vite
+      del-cli: 5.0.0
+      vite: 4.1.4_@types+node@17.0.45
+      vitest: 0.29.2
+
+  packages/layout/center:
+    specifiers:
+      '@stitches/react': ^1.2.8
+      '@testing-library/react': ^14.0.0
+      '@types/node': ^17.0.12
+      '@types/react': ^18.0.28
+      '@types/testing-library__jest-dom': ^5.14.5
+      '@urban-ui/flex': workspace:*
+      '@urban-ui/theme': workspace:*
+      config-eslint: workspace:*
+      config-ts: workspace:*
+      config-vite: workspace:*
+      del-cli: ^5.0.0
+      vite: ^4.1.4
+      vitest: ^0.29.1
+    dependencies:
+      '@urban-ui/flex': link:../flex
       '@urban-ui/theme': link:../../core/theme
     devDependencies:
       '@stitches/react': 1.2.8

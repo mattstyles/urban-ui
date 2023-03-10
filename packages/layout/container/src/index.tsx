@@ -11,19 +11,19 @@ export const Container = styled(Flex, {
   variants: {
     padding: {
       xs: {
-        padding: '$xs',
+        p: '$xs',
       },
       sm: {
-        padding: '$sm',
+        p: '$sm',
       },
       md: {
-        padding: '$md',
+        p: '$md',
       },
       lg: {
-        padding: '$lg',
+        p: '$lg',
       },
       xl: {
-        padding: '$xl',
+        p: '$xl',
       },
     },
 
@@ -51,3 +51,5 @@ export const Container = styled(Flex, {
     },
   },
 })
+
+Container.displayName = 'Container'
