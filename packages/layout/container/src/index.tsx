@@ -10,14 +10,20 @@ export const Container = styled(Flex, {
 
   variants: {
     padding: {
+      xs: {
+        padding: '$xs',
+      },
       sm: {
-        padding: '$2',
+        padding: '$sm',
       },
       md: {
-        padding: '$3',
+        padding: '$md',
       },
       lg: {
-        padding: '$5',
+        padding: '$lg',
+      },
+      xl: {
+        padding: '$xl',
       },
     },
 
