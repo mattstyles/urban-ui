@@ -6,8 +6,8 @@ import {Text, Heading} from '@urban-ui/text'
 
 import {Layout} from './layout'
 
-const textSizes = ['xs', 'sm', 'md', 'lg', 'xl']
-const headingTypes = ['h1', 'h2', 'h3']
+const textSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
+const headingTypes = ['h1', 'h2', 'h3'] as const
 
 export default function Page() {
   return (
