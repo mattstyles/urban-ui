@@ -32,7 +32,7 @@ export const Text = styled('span', {
         color: '$textHighlight',
       },
       currentcolor: {
-        color: 'currentcolor',
+        color: '$currentcolor',
       },
     },
     size: {

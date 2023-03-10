@@ -1,4 +1,4 @@
-import {blackA, whiteA, crimson, mauve, teal} from '@radix-ui/colors'
+import {blackA, whiteA, red, crimson, mauve, mauveDark} from '@radix-ui/colors'
 
 function createColourScaleAlias(
   alias: string,
@@ -17,23 +17,40 @@ function createColourScaleAlias(
   return output
 }
 
-const bg = createColourScaleAlias('bg', mauve)
-
 export const tokens = {
   transparent: 'transparent',
-  current: 'current',
+  currentcolor: 'currentcolor',
   white: 'hsl(0, 0%, 100%)',
   black: 'hsl(0, 0%, 0%)',
+  focus: '-webkit-focus-ring-color',
+
+  // These are slightly red. Our default colour scheme uses Crimson as a primary colour, which then uses Mauve for backgrounds so we're in the red hue by default.
+  highContrast: 'hsla(0, 4%, 19%, 0.96)',
+  lowContrast: 'hsla(0, 4%, 30%, 0.88)',
+  highContrastInverse: 'hsla(8, 10%, 98%, 0.98)',
+  lowContrastInverse: 'hsla(10, 3%, 88%, 0.88)',
+
+  // Contrast aliases
+  hc: '$highContrast',
+  lc: '$lowContrast',
+  hci: '$highContrastInverse',
+  lci: '$lowContrastInverse',
 
   // Type colours
-  textLowContrast: bg.bg11,
-  text: bg.bg12,
-  textHighlight: '$primary11',
-  textPrimary: '$primary12',
+  text: '$highContrast',
+  textLowContrast: '$lowContrast',
+  textInverse: '$highContrastInverse',
+  textLowConstrastInverse: '$lowContrastInverse',
 
-  // Colour scale aliases
-  ...createColourScaleAlias('primary', crimson),
+  textPrimary: '$primary12',
+  textHighlight: '$primary11',
+
+  // Tonality
   ...createColourScaleAlias('bg', mauve),
+  ...createColourScaleAlias('bgInv', mauveDark),
+  ...createColourScaleAlias('primary', crimson),
+  ...createColourScaleAlias('critical', red),
+  ...createColourScaleAlias('neutral', mauve),
 }
 
 export const colours = {

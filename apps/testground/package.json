@@ -11,6 +11,7 @@
   "dependencies": {
     "@radix-ui/react-icons": "^1.2.0",
     "@urban-ui/box": "workspace:*",
+    "@urban-ui/button": "workspace:*",
     "@urban-ui/center": "workspace:*",
     "@urban-ui/container": "workspace:*",
     "@urban-ui/content": "workspace:*",
