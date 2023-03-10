@@ -25,6 +25,12 @@ export const Text = styled('span', {
       subtle: {
         color: '$textLowContrast',
       },
+      inverse: {
+        color: '$textInverse',
+      },
+      inverseSubtle: {
+        color: '$textLowConstrastInverse',
+      },
       primary: {
         color: '$textPrimary',
       },
@@ -131,6 +137,12 @@ export const Heading = styled('span', {
       subtle: {
         color: '$textLowContrast',
       },
+      inverse: {
+        color: '$textInverse',
+      },
+      inverseSubtle: {
+        color: '$textLowConstrastInverse',
+      },
       primary: {
         color: '$textPrimary',
       },
@@ -138,7 +150,7 @@ export const Heading = styled('span', {
         color: '$textHighlight',
       },
       currentcolor: {
-        color: 'currentcolor',
+        color: '$currentcolor',
       },
     },
   },
