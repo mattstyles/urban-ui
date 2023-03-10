@@ -13,6 +13,7 @@ export const Button = React.forwardRef<
 
 const StyledButton = styled('button', {
   whiteSpace: 'nowrap',
+  textDecoration: 'none',
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',

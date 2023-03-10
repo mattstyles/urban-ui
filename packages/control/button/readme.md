@@ -31,6 +31,16 @@ Buttons are 36px high currently, which is problematic in 2 ways:
 
 The default height is liable to change, and will become configurable to align with the underlying grid (this is important for establishing vertical rhythm).
 
+### Link and anchors
+
+Use the `as` prop to specify that your button should be an anchor. Styling will persist so it will _look_ like a button but actually be an anchor (it even gets the correct cursor).
+
+```js
+<Button as='a' type='transparent' href='#'>
+  I'm an anchor
+</Button>
+```
+
 ## API
 
 | Prop | Type | Description |

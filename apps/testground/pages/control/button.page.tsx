@@ -29,6 +29,9 @@ export default function ButtonPage() {
               <Spacer orientation='h' size='xs' />
               With logo
             </Button>
+            <Button as='a' href='#' type='transparent'>
+              As an anchor link
+            </Button>
           </Stack>
           <Stack orientation='h' justify='end'>
             <Button tone='neutral' type='ghost'>
