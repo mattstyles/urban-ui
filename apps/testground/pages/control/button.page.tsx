@@ -36,10 +36,26 @@ export default function ButtonPage() {
             <Button as='a' href='#' type='transparent'>
               As an anchor link
             </Button>
-            <Stack orientation='h'>
-              <CustomButton type='transparent'>Custom button</CustomButton>
-              <CustomButton type='secondary'>Custom button</CustomButton>
-            </Stack>
+          </Stack>
+          <Stack orientation='h'>
+            <Button>
+              <StitchesLogoIcon />
+            </Button>
+            <Button type='transparent'>
+              <Center css={{color: '$primary12'}}>
+                <StitchesLogoIcon color='currentcolor' />
+              </Center>
+            </Button>
+            <Button square>
+              <StitchesLogoIcon />
+            </Button>
+            <Button square round>
+              <StitchesLogoIcon />
+            </Button>
+          </Stack>
+          <Stack orientation='h'>
+            <CustomButton type='transparent'>Custom button</CustomButton>
+            <CustomButton type='secondary'>Custom button</CustomButton>
           </Stack>
           <Stack orientation='h' justify='end'>
             <Button tone='neutral' type='ghost'>
