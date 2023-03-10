@@ -7,7 +7,6 @@ import {Heading} from '@urban-ui/text'
 import {Stack} from '@urban-ui/stack'
 import {Spacer} from '@urban-ui/spacer'
 import * as Scrollable from '@urban-ui/scrollable'
-import {Button} from '@urban-ui/button'
 import {styled} from '@urban-ui/theme'
 
 export type LinkType = {name: string; link: string}
@@ -35,10 +34,6 @@ export function Nav({onClick, nav}: NavProps) {
               </Heading>
             </Flex>
             <NavGroup onClick={onClick} group={group.block} />
-            <Flex css={{px: '$3'}} orientation='v'>
-              <Button>click me</Button>
-              <Button type='ghost'>Clifk me</Button>
-            </Flex>
           </Stack>
         </nav>
       )

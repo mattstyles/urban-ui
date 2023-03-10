@@ -6,6 +6,7 @@ import {Content} from '@urban-ui/content'
 import {Stack} from '@urban-ui/stack'
 import {Text, H1, H2, H3, P} from '@urban-ui/text'
 import {Button} from '@urban-ui/button'
+import {Box} from '@urban-ui/box'
 import {Layout} from './layout'
 
 export default function ButtonPage() {
@@ -50,6 +51,24 @@ export default function ButtonPage() {
           <TonalVariants tone='critical' />
           <TonalVariants tone='neutral' />
         </Stack>
+        <H2>Wrapping</H2>
+        <P>
+          Default is no-wrap. Use <Text type='mono'>wrap</Text> prop to alter.
+        </P>
+        <Box css={{p: '$3', background: '$bg10', width: '320px'}}>
+          <Button>No wrapping. Text will break out of the container.</Button>
+          <Spacer size='sm' />
+          <Button wrap>
+            Will wrapping. Container will shrink, but will not grow in height.
+          </Button>
+          <Spacer size='sm' />
+          <Box css={{width: '100%'}}>
+            <Button wrap fill>
+              Wrap and fill. Button will fit its container, allowing multi-line
+              buttons.
+            </Button>
+          </Box>
+        </Box>
       </Content>
     </Container>
   )
@@ -72,9 +91,15 @@ function onClick(
   }
 }
 
-function TonalVariants({tone}: {tone: 'primary' | 'critical' | 'neutral'}) {
+function TonalVariants({
+  tone,
+  orientation = 'v',
+}: {
+  tone: 'primary' | 'critical' | 'neutral'
+  orientation?: 'h' | 'v'
+}) {
   return (
-    <Flex orientation='v'>
+    <Flex orientation={orientation}>
       <H3>{tone}</H3>
       <Stack orientation='h'>
         <Button tone={tone} type='solid' onClick={onClick(`${tone} solid`)}>

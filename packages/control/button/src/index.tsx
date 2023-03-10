@@ -64,6 +64,17 @@ const StyledButton = styled('button', {
         borderRadius: '$round',
       },
     },
+    wrap: {
+      true: {
+        whiteSpace: 'normal',
+      },
+    },
+    fill: {
+      true: {
+        width: '100%',
+        height: '100%',
+      },
+    },
 
     width: {
       none: {},
