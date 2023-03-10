@@ -1,10 +1,12 @@
 import {StitchesLogoIcon} from '@radix-ui/react-icons'
+import {Absolute} from '@urban-ui/absolute'
 import {Flex} from '@urban-ui/flex'
 import {Spacer} from '@urban-ui/spacer'
 import {Container} from '@urban-ui/container'
 import {Content} from '@urban-ui/content'
 import {Stack} from '@urban-ui/stack'
-import {Text, H2, H3, P} from '@urban-ui/text'
+import {Text, Heading, H2, H3, P} from '@urban-ui/text'
+import {Center} from '@urban-ui/center'
 import {Button} from '@urban-ui/button'
 import {Box} from '@urban-ui/box'
 import {styled} from '@urban-ui/theme'
@@ -74,6 +76,37 @@ export default function ButtonPage() {
             </Button>
           </Box>
         </Box>
+        <H2>Other clickables</H2>
+        <P>
+          Sometimes you want other elements to be clickable and labelled up
+          correctly as a button.
+        </P>
+        <Button type='clear' onClick={onClick('Clear type')}>
+          <Center
+            css={{width: 400, height: 300}}
+            justify='center'
+            alignment='center'>
+            <Absolute fit>
+              <img
+                alt='Randomly selected picture of a set width to demonstrate behaviour when content is wider than the main column width'
+                src='https://picsum.photos/400/300'
+                style={{width: '100%', aspectRatio: '4 / 3'}}
+              />
+            </Absolute>
+            <Absolute
+              fit
+              css={{
+                background: 'radial-gradient($blackA4, $blackA11)',
+                zIndex: 10,
+                transition: 'inset 150ms linear',
+                '&:hover': {inset: 10},
+              }}
+            />
+            <Box css={{zIndex: 1000}}>
+              <Heading color='inverse'>Type = clear</Heading>
+            </Box>
+          </Center>
+        </Button>
       </Content>
     </Container>
   )

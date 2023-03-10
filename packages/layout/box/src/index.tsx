@@ -2,4 +2,6 @@
 import type {} from '@stitches/react'
 import {styled} from '@urban-ui/theme'
 
-export const Box = styled('div', {})
+export const Box = styled('div', {
+  position: 'relative',
+})

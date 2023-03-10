@@ -4,6 +4,7 @@ import {styled} from '@urban-ui/theme'
 
 export const Flex = styled('div', {
   display: 'flex',
+  position: 'relative',
 
   defaultVariants: {
     orientation: 'h',

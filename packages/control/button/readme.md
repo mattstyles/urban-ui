@@ -31,6 +31,25 @@ Buttons are 36px high currently, which is problematic in 2 ways:
 
 The default height is liable to change, and will become configurable to align with the underlying grid (this is important for establishing vertical rhythm).
 
+### Variants
+
+#### Tone
+
+- Primary -> Uses the primary colour scale
+- Critical -> For destructive actions, uses the critical scale (usually red)
+- Neutral -> Often for secondary actions, or de-emphasis. Uses the background scale.
+
+#### Type
+
+Uses the specified tonal colour
+
+- Solid -> Solid fill of the tonal colour
+- Transparent -> Transparent fill, hover colour on hover
+- Outline -> Border colour outline, transparent to hover colour
+- Ghost -> Uses UI element background and hovers
+- Emphasis -> Uses UI elements but shifted 1 step more colourful
+- Clear -> Clears most applied styling, useful for wrapping other clickable elements
+
 ### Link and anchors
 
 Use the `as` prop to specify that your button should be an anchor. Styling will persist so it will _look_ like a button but actually be an anchor (it even gets the correct cursor).
@@ -78,9 +97,9 @@ Stitches won't allow you to specify variants _and_ keep the original Button vari
 
 ## API
 
-| Prop | Type                                                           | Description                                |
-| ---- | -------------------------------------------------------------- | ------------------------------------------ |
-| tone | 'primary' \| 'critical' \| 'neutral'                           |                                            |
-| type | 'solid' \| 'transparent' \| 'outline' \| 'ghost' \| 'emphasis' |                                            |
-| wrap | boolean                                                        | Defaults to false                          |
-| fill | boolean                                                        | Defaults to false. Will fit its container. |
+| Prop | Type                                                                      | Description                                |
+| ---- | ------------------------------------------------------------------------- | ------------------------------------------ |
+| tone | 'primary' \| 'critical' \| 'neutral'                                      |                                            |
+| type | 'solid' \| 'transparent' \| 'outline' \| 'ghost' \| 'emphasis' \| 'clear' |                                            |
+| wrap | boolean                                                                   | Defaults to false                          |
+| fill | boolean                                                                   | Defaults to false. Will fit its container. |

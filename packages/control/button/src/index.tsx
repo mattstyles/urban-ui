@@ -27,11 +27,14 @@ const StyledButton = styled('button', {
   fontWeight: '$semibold',
   fontSize: '$md',
 
-  // @TODO important might cause problems for composition, we could duplicate these in each compound variant (this would allow tonal disabled states, although we are going for a single disabled state for consistency and don't really want to support tonal disabled states)
   '&:disabled': {
-    backgroundColor: '$bg7 !important',
-    color: '$textLowContrast !important',
+    backgroundColor: '$bg7',
+    color: '$textLowContrast',
     cursor: 'not-allowed',
+
+    '&:hover': {
+      backgroundColor: '$bg7',
+    },
   },
 
   defaultVariants: {
@@ -52,6 +55,12 @@ const StyledButton = styled('button', {
       outline: {},
       ghost: {},
       emphasis: {},
+      clear: {
+        backgroundColor: '$transparent',
+        p: '$0',
+        m: '$0',
+        height: 'auto',
+      },
     },
     tone: {
       primary: {},
@@ -89,6 +98,8 @@ const StyledButton = styled('button', {
       },
     },
   },
+
+  // @TODO important might cause problems for composition, we could duplicate these in each compound variant (this would allow tonal disabled states, although we are going for a single disabled state for consistency and don't really want to support tonal disabled states)
 })
 
 function makeSolidVariant(colour: string) {
