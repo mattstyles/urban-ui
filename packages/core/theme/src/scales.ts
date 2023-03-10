@@ -23,7 +23,11 @@ export const radii = {
   1: '3px',
   2: '5px',
   3: '12px',
+
   round: '9999px',
+  sm: '$1',
+  md: '$2',
+  lg: '$3',
 }
 
 export const layoutSizes = {

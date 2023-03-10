@@ -11,14 +11,20 @@ export const Stack = styled(Flex, {
   },
   variants: {
     gap: {
+      xs: {
+        gap: '$xs',
+      },
       sm: {
-        gap: '$2',
+        gap: '$sm',
       },
       md: {
-        gap: '$3',
+        gap: '$md',
       },
       lg: {
-        gap: '$5',
+        gap: '$lg',
+      },
+      xl: {
+        gap: '$xl',
       },
     },
     // https://github.com/stitchesjs/stitches/issues/882 we want to specify a different default variant than Flex does, and everything will work but TS won't understand the properties properly leading to TS errors. So we need to re-specify here so that TS can correctly understand this component API.

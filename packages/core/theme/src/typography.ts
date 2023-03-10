@@ -13,6 +13,7 @@ export const fontSizes = {
   6: '21px',
   7: '26px',
   8: '32px',
+
   xs: '$1',
   sm: '$2',
   md: '$3',
@@ -33,6 +34,7 @@ export const lineHeights = {
   6: '32px',
   7: '36px',
   8: '48px',
+
   xs: '$1',
   sm: '$2',
   md: '$3',

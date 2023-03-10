@@ -10,9 +10,11 @@ export const Spacer = styled('div', {
 
   variants: {
     size: {
+      xs: {},
       sm: {},
       md: {},
       lg: {},
+      xl: {},
     },
     orientation: {
       h: {
@@ -23,45 +25,73 @@ export const Spacer = styled('div', {
   },
   compoundVariants: [
     {
+      size: 'xs',
+      orientation: 'v',
+      css: {
+        padding: '$xs 0',
+      },
+    },
+    {
       size: 'sm',
       orientation: 'v',
       css: {
-        padding: '$2 0',
+        padding: '$sm 0',
       },
     },
     {
       size: 'md',
       orientation: 'v',
       css: {
-        padding: '$3 0',
+        padding: '$md 0',
       },
     },
     {
       size: 'lg',
       orientation: 'v',
       css: {
-        padding: '$5 0',
+        padding: '$lg 0',
+      },
+    },
+    {
+      size: 'xl',
+      orientation: 'v',
+      css: {
+        padding: '$xl 0',
+      },
+    },
+    {
+      size: 'xs',
+      orientation: 'h',
+      css: {
+        padding: '0 $xs',
       },
     },
     {
       size: 'sm',
       orientation: 'h',
       css: {
-        padding: '0 $2',
+        padding: '0 $sm',
       },
     },
     {
       size: 'md',
       orientation: 'h',
       css: {
-        padding: '0 $3',
+        padding: '0 $md',
       },
     },
     {
       size: 'lg',
       orientation: 'h',
       css: {
-        padding: '0 $5',
+        padding: '0 $lg',
+      },
+    },
+    {
+      size: 'xl',
+      orientation: 'h',
+      css: {
+        padding: '0 $xl',
       },
     },
   ],
