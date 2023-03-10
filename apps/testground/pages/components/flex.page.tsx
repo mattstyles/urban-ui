@@ -1,23 +1,28 @@
 import {StitchesLogoIcon} from '@radix-ui/react-icons'
 import {Flex} from '@urban-ui/flex'
 import {Spacer} from '@urban-ui/spacer'
+import {Container} from '@urban-ui/container'
+import {Content} from '@urban-ui/content'
+import {Text, H1, H2} from '@urban-ui/text'
 import {Layout} from './layout'
 
 export default function FlexPage() {
   return (
-    <div style={{padding: 8}}>
-      <h1>Flex</h1>
-      <p>Alignment</p>
-      <Flex alignment='center' orientation='h'>
-        <StitchesLogoIcon />
-        <Spacer orientation='h' size='sm' />
-        <span>Hello world</span>
-      </Flex>
-      <Flex data-testid='someID'>
-        <StitchesLogoIcon />
-        <span>Hello world</span>
-      </Flex>
-    </div>
+    <Container padding='md' alignment='center'>
+      <Content>
+        <H1>Flex</H1>
+        <H2>Alignment</H2>
+        <Flex alignment='center'>
+          <StitchesLogoIcon />
+          <Text>Center</Text>
+        </Flex>
+        <Spacer size='sm' />
+        <Flex>
+          <StitchesLogoIcon />
+          <Text>Default alignment</Text>
+        </Flex>
+      </Content>
+    </Container>
   )
 }
 
