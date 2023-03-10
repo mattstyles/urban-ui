@@ -1,5 +1,15 @@
 # @urban-ui/stack
 
+## 0.0.3
+
+### Patch Changes
+
+- 4657d4d: update :boom: change stack size prop to gap
+- Updated dependencies [6d733d9]
+- Updated dependencies [94dc662]
+  - @urban-ui/flex@0.0.3
+  - @urban-ui/theme@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

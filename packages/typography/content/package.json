@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/content",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Content container for copy text",
   "type": "module",
   "sideEffects": false,
@@ -14,7 +14,9 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "author": {
     "name": "Matt Styles",
@@ -28,7 +30,14 @@
   "bugs": {
     "url": "https://github.com/mattstyles/urban-ui/issues"
   },
-  "keywords": ["ui", "react", "components", "urban-ui", "stitches", "radix-ui"],
+  "keywords": [
+    "ui",
+    "react",
+    "components",
+    "urban-ui",
+    "stitches",
+    "radix-ui"
+  ],
   "scripts": {
     "lint": "eslint *.ts*",
     "clean": "del dist",

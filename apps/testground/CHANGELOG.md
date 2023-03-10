@@ -1,5 +1,25 @@
 # docs
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [6d733d9]
+- Updated dependencies [94dc662]
+- Updated dependencies [94dc662]
+- Updated dependencies [4657d4d]
+- Updated dependencies [de7a853]
+  - @urban-ui/text@0.0.2
+  - @urban-ui/flex@0.0.3
+  - @urban-ui/content@0.0.2
+  - @urban-ui/theme@0.0.3
+  - @urban-ui/stack@0.0.3
+  - @urban-ui/scrollable@0.0.2
+  - @urban-ui/container@0.0.3
+  - @urban-ui/page@0.0.3
+  - @urban-ui/screen@0.0.3
+  - @urban-ui/spacer@0.0.3
+
 ## 0.0.1
 
 ### Patch Changes

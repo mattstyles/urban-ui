@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/theme",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Theme specification for urban-ui components",
   "type": "module",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/container",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generic container component",
   "type": "module",
   "sideEffects": false,

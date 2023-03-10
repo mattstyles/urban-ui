@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/scrollable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Creates a scrollable area",
   "type": "module",
   "sideEffects": false,
