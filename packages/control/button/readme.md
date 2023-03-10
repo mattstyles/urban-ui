@@ -57,8 +57,30 @@ Note that setting `wrap` to true will not cause the button to grow in height if 
 </Box>
 ```
 
+### Disabled
+
+Disabled state is consistent across all buttons. This uses `!important`, which makes it impossible to style otherwise.
+
+### Creating additional semantic buttons
+
+Extend the button component to add additional restrictions and semantics based on your design language.
+
+```js
+import {Button as UrbanButton} from '@urban-ui/button'
+
+const SecondaryButton = styled(UrbanButton, {
+  backgroundColor: 'rebeccapurple',
+  color: 'white
+})
+```
+
+Stitches won't allow you to specify variants _and_ keep the original Button variants, but you can specify your own variant set.
+
 ## API
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-|      |      |             |
+| Prop | Type                                                           | Description                                |
+| ---- | -------------------------------------------------------------- | ------------------------------------------ |
+| tone | 'primary' \| 'critical' \| 'neutral'                           |                                            |
+| type | 'solid' \| 'transparent' \| 'outline' \| 'ghost' \| 'emphasis' |                                            |
+| wrap | boolean                                                        | Defaults to false                          |
+| fill | boolean                                                        | Defaults to false. Will fit its container. |

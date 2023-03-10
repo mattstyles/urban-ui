@@ -4,9 +4,10 @@ import {Spacer} from '@urban-ui/spacer'
 import {Container} from '@urban-ui/container'
 import {Content} from '@urban-ui/content'
 import {Stack} from '@urban-ui/stack'
-import {Text, H1, H2, H3, P} from '@urban-ui/text'
+import {Text, H2, H3, P} from '@urban-ui/text'
 import {Button} from '@urban-ui/button'
 import {Box} from '@urban-ui/box'
+import {styled} from '@urban-ui/theme'
 import {Layout} from './layout'
 
 export default function ButtonPage() {
@@ -33,6 +34,10 @@ export default function ButtonPage() {
             <Button as='a' href='#' type='transparent'>
               As an anchor link
             </Button>
+            <Stack orientation='h'>
+              <CustomButton type='transparent'>Custom button</CustomButton>
+              <CustomButton type='secondary'>Custom button</CustomButton>
+            </Stack>
           </Stack>
           <Stack orientation='h' justify='end'>
             <Button tone='neutral' type='ghost'>
@@ -41,7 +46,7 @@ export default function ButtonPage() {
             <Button tone='critical' type='solid'>
               Delete
             </Button>
-            <button>default</button>
+            <button>browser styled button</button>
           </Stack>
         </Stack>
         <H2>Tonality</H2>
@@ -127,3 +132,8 @@ function TonalVariants({
     </Flex>
   )
 }
+
+const CustomButton = styled(Button, {
+  backgroundColor: 'rebeccapurple',
+  color: 'white',
+})
