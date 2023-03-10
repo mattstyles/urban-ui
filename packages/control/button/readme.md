@@ -60,6 +60,28 @@ Use the `as` prop to specify that your button should be an anchor. Styling will 
 </Button>
 ```
 
+### Icons
+
+There is no complicated syntax or special props for adding icons to your button, put them in as children and `button` will render them.
+
+```jsx
+import {Button} from '@urban-ui/button'
+import {Spacer} from '@urban-ui/spacer'
+import {StitchesLogoIcon} from '@radix-ui/react-icons'
+
+function someComponent() {
+  return (
+    <Button>
+      <StitchesLogoIcon />
+      <Spacer orientation='h' size='xs' />
+      With logo
+    </Button>
+  )
+}
+```
+
+You can use a stack to add a gap but remember to set the orientation and alignment properties.
+
 ### Text wrapping
 
 Defaults to `no-wrap` which will mean that content can 'break-out' from the layout.
