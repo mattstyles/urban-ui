@@ -23,3 +23,4 @@ export const RadixLogoIcon = React.forwardRef<
     </svg>
   )
 })
+RadixLogoIcon.displayName = 'RadixLogoIcon'

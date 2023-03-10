@@ -34,7 +34,7 @@ export default function Page() {
         <h1>Comeau scale</h1>
         <p>
           <Link href='https://www.joshwcomeau.com/shadow-palette/'>
-            Josh Comeau's shadow palette generator
+            Josh Comeau&#39s shadow palette generator
           </Link>
         </p>
         <p>

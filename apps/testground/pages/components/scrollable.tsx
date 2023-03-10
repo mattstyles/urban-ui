@@ -50,7 +50,9 @@ export default function Page() {
         </Stack>
         <Stack>
           <Text>Type (inherits from radix-ui/scrollarea)</Text>
-          <Text>'Auto' will only appear when the item is scrollable</Text>
+          <Text>
+            &lsquoAuto&rsquo will only appear when the item is scrollable
+          </Text>
           <Text>Also note that the container will not be full height</Text>
           <Stack orientation='h'>
             <button
