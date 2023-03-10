@@ -1,12 +1,12 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 
-import {Scrollable} from './index'
+import * as Scrollable from './index'
 
 describe('[Scrollable]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Scrollable data-testid='some-id' />)
+    render(<Scrollable.Root data-testid='some-id' />)
 
     // ACT
 
