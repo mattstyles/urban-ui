@@ -14,6 +14,7 @@ export const Button = React.forwardRef<
 const StyledButton = styled('button', {
   textDecoration: 'none',
   display: 'inline-flex',
+  alignSelf: 'flex-start',
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '$1',
@@ -21,7 +22,6 @@ const StyledButton = styled('button', {
   borderWidth: '2px',
   borderStyle: 'solid',
   padding: '0 $md',
-  minHeight: '$7',
   letterSpacing: '-0.2px',
   fontWeight: '$semibold',
   fontSize: '$md',
@@ -39,6 +39,7 @@ const StyledButton = styled('button', {
   defaultVariants: {
     type: 'solid',
     tone: 'primary',
+    size: 'md',
   },
 
   compoundVariants: [
@@ -97,6 +98,30 @@ const StyledButton = styled('button', {
       },
       lg: {
         minWidth: '$tokens$buttonWidthLg',
+      },
+    },
+
+    size: {
+      sm: {
+        minHeight: '$tokens$buttonSizeSm',
+
+        '@sm': {
+          minHeight: '$tokens$buttonTouchSizeSm',
+        },
+      },
+      md: {
+        minHeight: '$tokens$buttonSizeMd',
+
+        '@sm': {
+          minHeight: '$tokens$buttonTouchSizeMd',
+        },
+      },
+      lg: {
+        minHeight: '$tokens$buttonSizeLg',
+
+        '@sm': {
+          minHeight: '$tokens$buttonTouchSizeLg',
+        },
       },
     },
   },

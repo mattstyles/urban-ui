@@ -84,19 +84,29 @@ export default function ButtonPage() {
           <Button width='md'>md</Button>
           <Button width='lg'>lg</Button>
         </Stack>
+        <H2>Sizes</H2>
+        <P>
+          Sets a minimum height for the button. Will increase size on touch
+          devices.
+        </P>
+        <Stack orientation='h'>
+          <Button size='sm'>sm</Button>
+          <Button size='md'>md</Button>
+          <Button size='lg'>lg</Button>
+        </Stack>
         <H2>Wrapping</H2>
         <P>
           Default is no-wrap. Use <Text type='mono'>wrap</Text> prop to alter.
         </P>
         <Box css={{p: '$3', background: '$bg10', width: '320px'}}>
-          <Button>No wrapping. Text will break out of the container.</Button>
+          <Button>Will wrap the button if there is enough text to wrap.</Button>
           <Spacer size='sm' />
-          <Button wrap>
+          <Button>
             Will wrapping. Container will shrink, but will not grow in height.
           </Button>
           <Spacer size='sm' />
           <Box css={{width: '100%'}}>
-            <Button wrap fill>
+            <Button fill>
               Wrap and fill. Button will fit its container, allowing multi-line
               buttons.
             </Button>

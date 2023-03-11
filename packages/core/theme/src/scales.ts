@@ -54,4 +54,10 @@ export const tokens = {
   buttonWidthSm: '40px',
   buttonWidthMd: '100px',
   buttonWidthLg: '180px',
+  buttonSizeSm: '32px',
+  buttonSizeMd: '40px',
+  buttonSizeLg: '48px',
+  buttonTouchSizeSm: '40px',
+  buttonTouchSizeMd: '44px',
+  buttonTouchSizeLg: '48px',
 }
