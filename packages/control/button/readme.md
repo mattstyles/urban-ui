@@ -50,6 +50,13 @@ Uses the specified tonal colour
 - Emphasis -> Uses UI elements but shifted 1 step more colourful
 - Clear -> Clears most applied styling, useful for wrapping other clickable elements
 
+There is no clear nomenclature on these terms, here are some synonyms used in other design systems:
+
+- Solid -> Filled, Fill
+- Transparent -> Plain, Ghost
+- Outline -> Outline, Ghost
+- Ghost -> Soft, Tinted
+
 ### Link and anchors
 
 Use the `as` prop to specify that your button should be an anchor. Styling will persist so it will _look_ like a button but actually be an anchor (it even gets the correct cursor).
@@ -60,7 +67,7 @@ Use the `as` prop to specify that your button should be an anchor. Styling will 
 </Button>
 ```
 
-### Icons
+### Icons with text
 
 There is no complicated syntax or special props for adding icons to your button, put them in as children and `button` will render them.
 
@@ -81,6 +88,15 @@ function someComponent() {
 ```
 
 You can use a stack to add a gap but remember to set the orientation and alignment properties.
+
+### Icons
+
+If your button _only_ contains an icon then you likely want a square (or rounded square) button. Use the `square` prop to equalise height and width.
+
+```js
+<Button square><StitchesLogoIcon /></Button>
+<Button square round><StitchesLogoIcon /></Button>
+```
 
 ### Text wrapping
 

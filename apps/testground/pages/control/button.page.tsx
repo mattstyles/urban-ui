@@ -28,6 +28,9 @@ export default function ButtonPage() {
                 Larger text
               </Text>
             </Button>
+            <Button round onClick={onClick('round')}>
+              Rounded / Pill
+            </Button>
             <Button>
               <StitchesLogoIcon />
               <Spacer orientation='h' size='xs' />
@@ -74,6 +77,13 @@ export default function ButtonPage() {
           <TonalVariants tone='critical' />
           <TonalVariants tone='neutral' />
         </Stack>
+        <H2>Width</H2>
+        <P>Sets a minimum width for the button</P>
+        <Stack orientation='h'>
+          <Button width='sm'>sm</Button>
+          <Button width='md'>md</Button>
+          <Button width='lg'>lg</Button>
+        </Stack>
         <H2>Wrapping</H2>
         <P>
           Default is no-wrap. Use <Text type='mono'>wrap</Text> prop to alter.
@@ -97,9 +107,9 @@ export default function ButtonPage() {
           Sometimes you want other elements to be clickable and labelled up
           correctly as a button.
         </P>
-        <Button type='clear' onClick={onClick('Clear type')}>
+        <Button fill type='clear' onClick={onClick('Clear type')}>
           <Center
-            css={{width: 400, height: 300}}
+            css={{width: 400, maxWidth: '100%', aspectRatio: '4 / 3'}}
             justify='center'
             alignment='center'>
             <Absolute fit>
@@ -155,7 +165,7 @@ function TonalVariants({
   return (
     <Flex orientation={orientation}>
       <H3>{tone}</H3>
-      <Stack orientation='h'>
+      <Stack orientation='h' collapse>
         <Button tone={tone} type='solid' onClick={onClick(`${tone} solid`)}>
           {`${tone} solid`}
         </Button>

@@ -60,6 +60,8 @@ const StyledButton = styled('button', {
         p: '$0',
         m: '$0',
         height: 'auto',
+        alignItems: 'unset',
+        justifyContent: 'unset',
       },
     },
     tone: {
@@ -75,7 +77,8 @@ const StyledButton = styled('button', {
     },
     square: {
       true: {
-        width: '$7',
+        aspectRatio: 1,
+        padding: '$0',
       },
     },
     wrap: {
@@ -93,13 +96,13 @@ const StyledButton = styled('button', {
     width: {
       none: {},
       sm: {
-        minWidth: 40,
+        minWidth: '$tokens$buttonWidthSm',
       },
       md: {
-        minWidth: 100,
+        minWidth: '$tokens$buttonWidthMd',
       },
       lg: {
-        minWidth: 180,
+        minWidth: '$tokens$buttonWidthLg',
       },
     },
   },

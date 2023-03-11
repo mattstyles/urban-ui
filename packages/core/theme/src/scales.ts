@@ -49,3 +49,9 @@ export const layoutSizes = {
   page1: '68em',
   page2: '90em',
 }
+
+export const tokens = {
+  buttonWidthSm: '40px',
+  buttonWidthMd: '100px',
+  buttonWidthLg: '180px',
+}
