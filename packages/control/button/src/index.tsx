@@ -26,6 +26,9 @@ const StyledButton = styled('button', {
   fontWeight: '$semibold',
   fontSize: '$md',
 
+  transition:
+    'background $tokens$transitionDuration-md $tokens$transitionEasing-easeIn, border-color $tokens$transitionDuration-md $tokens$transitionEasing-easeIn',
+
   '&:disabled': {
     backgroundColor: '$bg7',
     color: '$textLowContrast',

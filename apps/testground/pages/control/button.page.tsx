@@ -52,7 +52,7 @@ export default function ButtonPage() {
             <Button square>
               <StitchesLogoIcon />
             </Button>
-            <Button square round>
+            <Button square round size='sm'>
               <StitchesLogoIcon />
             </Button>
           </Stack>
@@ -143,7 +143,8 @@ export default function ButtonPage() {
               css={{
                 background: 'radial-gradient($blackA4, $blackA11)',
                 zIndex: 10,
-                transition: 'inset 150ms linear',
+                transition:
+                  'inset $tokens$transitionDuration-lg $tokens$transitionEasing-pop',
                 '&:hover': {inset: 10},
               }}
             />
