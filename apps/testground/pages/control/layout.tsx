@@ -5,7 +5,10 @@ import {Layout as PrimaryLayout} from 'components/layoutPrimary'
 const nav: NavType = [
   {
     title: 'Controls',
-    block: [{name: 'Button', link: '/control/button'}],
+    block: [
+      {name: 'Button', link: '/control/button'},
+      {name: 'Loading Button', link: '/control/loadingButton'},
+    ],
   },
 ]
 

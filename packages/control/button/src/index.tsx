@@ -27,7 +27,7 @@ const StyledButton = styled('button', {
   fontSize: '$md',
 
   transition:
-    'background $tokens$transitionDuration-md $tokens$transitionEasing-easeIn, border-color $tokens$transitionDuration-md $tokens$transitionEasing-easeIn',
+    'background $tokens$transitionDuration-md $tokens$transitionEasing-easeIn, border-color $tokens$transitionDuration-md $tokens$transitionEasing-easeIn, width $tokens$transitionDuration-md $tokens$transitionEasing-easeIn',
 
   '&:disabled': {
     backgroundColor: '$bg7',
