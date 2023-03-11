@@ -93,6 +93,15 @@ export default function ButtonPage() {
           <Button size='sm'>sm</Button>
           <Button size='md'>md</Button>
           <Button size='lg'>lg</Button>
+          <Button size='sm' round square>
+            <StitchesLogoIcon />
+          </Button>
+          <Button size='md' round square>
+            <StitchesLogoIcon />
+          </Button>
+          <Button size='lg' round square>
+            <StitchesLogoIcon />
+          </Button>
         </Stack>
         <H2>Wrapping</H2>
         <P>
