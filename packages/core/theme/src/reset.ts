@@ -1,9 +1,12 @@
 /*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
+  
 */
 
 export const reset = {
+  /**
+   * Josh's Custom CSS Reset
+   * https://www.joshwcomeau.com/css/custom-css-reset/
+   */
   '*, *::before, *::after': {
     boxSizing: 'border-box',
   },
@@ -29,5 +32,18 @@ export const reset = {
   },
   '.js-root, #root, #__next': {
     isolation: 'isolate',
+  },
+
+  /**
+   * Eric Bailey, CSS Tricks
+   * https://css-tricks.com/revisiting-prefers-reduced-motion/
+   */
+  '@media screen and (prefers-reduced-motion: reduce), (update: slow)': {
+    '*': {
+      animationDuration: '0.001ms !important',
+      animationIterationCount:
+        '1 !important' /* Hat tip Nick/cssremedy (https://css-tricks.com/revisiting-prefers-reduced-motion-the-reduced-motion-media-query/#comment-1700170) */,
+      transitionDuration: '0.001ms !important',
+    },
   },
 }
