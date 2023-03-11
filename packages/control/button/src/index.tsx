@@ -12,7 +12,6 @@ export const Button = React.forwardRef<
 })
 
 const StyledButton = styled('button', {
-  whiteSpace: 'nowrap',
   textDecoration: 'none',
   display: 'inline-flex',
   alignItems: 'center',
@@ -22,7 +21,7 @@ const StyledButton = styled('button', {
   borderWidth: '2px',
   borderStyle: 'solid',
   padding: '0 $md',
-  height: '$7',
+  minHeight: '$7',
   letterSpacing: '-0.2px',
   fontWeight: '$semibold',
   fontSize: '$md',
@@ -79,11 +78,6 @@ const StyledButton = styled('button', {
       true: {
         aspectRatio: 1,
         padding: '$0',
-      },
-    },
-    wrap: {
-      true: {
-        whiteSpace: 'normal',
       },
     },
     fill: {

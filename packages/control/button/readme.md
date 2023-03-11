@@ -98,17 +98,13 @@ If your button _only_ contains an icon then you likely want a square (or rounded
 <Button square round><StitchesLogoIcon /></Button>
 ```
 
-### Text wrapping
+### Fill
 
-Defaults to `no-wrap` which will mean that content can 'break-out' from the layout.
-
-Generally you should not hit this constraint but if you have a special circumstance where you need a lot of text content within a button then you can tell the button to wrap using the `wrap` boolean prop.
-
-Note that setting `wrap` to true will not cause the button to grow in height if wrapping occurs. To work around this use the `fill` prop and use a layout component to size the button.
+Layout components are powerful and you can use 'fill' to ensure that a button component matches the size of the parent layout component.
 
 ```js
 <Box css={{width: '200px'}}>
-  <Button wrap fill>
+  <Button fill>
     Button component with a lot of text that will break on to multiple lines
   </Button>
 </Box>
