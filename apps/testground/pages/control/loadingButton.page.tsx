@@ -1,6 +1,7 @@
 import {useState, useRef, useEffect} from 'react'
 import type {VariantProps} from '@stitches/react'
 import {StitchesLogoIcon} from '@radix-ui/react-icons'
+import {motion, AnimatePresence} from 'framer-motion'
 
 import {Flex} from '@urban-ui/flex'
 import {Center} from '@urban-ui/center'
@@ -15,6 +16,7 @@ import {keyframes} from '@urban-ui/theme'
 import {Layout} from './layout'
 
 export default function ButtonPage() {
+  const [isVisible, setIsVisible] = useState(false)
   return (
     <Container padding='md' alignment='center' size='full'>
       <Content>
@@ -140,24 +142,70 @@ function AnimatedContainer({children}: {children: React.ReactNode}) {
   )
 }
 
+const variants = {
+  enter: (isLoading: boolean) => {
+    return {
+      opacity: 0,
+      y: isLoading ? 100 : -100,
+    }
+  },
+  animate: {
+    opacity: 1,
+    y: 1,
+  },
+  exit: (isLoading: boolean) => {
+    return {
+      opacity: 0,
+      y: isLoading ? 100 : -100,
+    }
+  },
+}
+
 function LoadingSwapButton({children, ...props}: VariantProps<typeof Button>) {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
     <Button width='md' {...props} onClick={() => setIsLoading(!isLoading)}>
-      {isLoading ? (
-        <Center>
-          <Box
-            css={{
-              size: 15,
-              animation: ` ${spin} $tokens$transitionDuration-lg infinite linear`,
-            }}>
-            <StitchesLogoIcon />
-          </Box>
-        </Center>
-      ) : (
-        children
-      )}
+      <AnimatePresence initial={false}>
+        <Flex orientation='h'>
+          {isLoading ? (
+            <motion.div
+              key='isLoading'
+              custom={isLoading}
+              initial='enter'
+              animate='animate'
+              exit='exit'
+              variants={variants}
+              transition={{
+                y: {type: 'spring', stiffness: 300, damping: 30},
+                opacity: {duration: 0.3},
+              }}>
+              <Center key='loading'>
+                <Box
+                  css={{
+                    size: 15,
+                    animation: ` ${spin} $tokens$transitionDuration-xl infinite linear`,
+                  }}>
+                  <StitchesLogoIcon />
+                </Box>
+              </Center>
+            </motion.div>
+          ) : (
+            <motion.div
+              key='content'
+              initial='enter'
+              animate='animate'
+              exit='exit'
+              variants={variants}
+              transition={{
+                y: {type: 'spring', stiffness: 300, damping: 30},
+                opacity: {duration: 0.3},
+              }}>
+              <div key='children'>{children}</div>
+            </motion.div>
+          )}
+        </Flex>
+      </AnimatePresence>
     </Button>
   )
 }
