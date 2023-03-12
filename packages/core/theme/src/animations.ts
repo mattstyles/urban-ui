@@ -3,7 +3,7 @@ export const durations = {
   sm: '100ms',
   md: '150ms',
   lg: '300ms',
-  xl: '1000ms',
+  xl: '500ms',
 }
 
 export const easings = {

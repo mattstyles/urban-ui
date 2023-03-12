@@ -1,6 +1,6 @@
 import {useState, useRef, useEffect} from 'react'
 import type {VariantProps} from '@stitches/react'
-import {StitchesLogoIcon} from '@radix-ui/react-icons'
+import {StitchesLogoIcon, ReloadIcon, UpdateIcon} from '@radix-ui/react-icons'
 import {motion, AnimatePresence} from 'framer-motion'
 
 import {Flex} from '@urban-ui/flex'
@@ -42,8 +42,12 @@ function LoadingButton({children, ...props}: VariantProps<typeof Button>) {
     <Button width='md' {...props} onClick={() => setIsLoading(!isLoading)}>
       {isLoading && (
         <>
-          <Box css={{size: 15}}>
-            <StitchesLogoIcon />
+          <Box
+            css={{
+              size: 15,
+              animation: ` ${spin} $tokens$transitionDuration-xl infinite linear`,
+            }}>
+            <UpdateIcon />
           </Box>
           <Spacer orientation='h' size='sm' />
         </>
@@ -71,9 +75,9 @@ function AnimatedLoadingButton({
               <Box
                 css={{
                   opacity: 0,
-                  animation: `${appear} $tokens$transitionDuration-md ease-in forwards $tokens$transitionDuration-md, ${spin} $tokens$transitionDuration-lg infinite linear`,
+                  animation: `${appear} $tokens$transitionDuration-md ease-in forwards $tokens$transitionDuration-md, ${spin} 500ms infinite linear`,
                 }}>
-                <StitchesLogoIcon width='100%' height='100%' />
+                <ReloadIcon width='100%' height='100%' />
               </Box>
             </Box>
             <Spacer orientation='h' size='sm' />
@@ -146,7 +150,7 @@ const variants = {
   enter: (isLoading: boolean) => {
     return {
       opacity: 0,
-      y: isLoading ? 100 : -100,
+      y: isLoading ? 50 : -50,
     }
   },
   animate: {
@@ -156,7 +160,7 @@ const variants = {
   exit: (isLoading: boolean) => {
     return {
       opacity: 0,
-      y: isLoading ? 100 : -100,
+      y: isLoading ? 20 : -20,
     }
   },
 }
@@ -166,7 +170,7 @@ function LoadingSwapButton({children, ...props}: VariantProps<typeof Button>) {
 
   return (
     <Button width='md' {...props} onClick={() => setIsLoading(!isLoading)}>
-      <AnimatePresence initial={false}>
+      <AnimatePresence initial={false} mode='wait'>
         <Flex orientation='h'>
           {isLoading ? (
             <motion.div
@@ -174,11 +178,11 @@ function LoadingSwapButton({children, ...props}: VariantProps<typeof Button>) {
               custom={isLoading}
               initial='enter'
               animate='animate'
-              exit='exit'
+              exit={{opacity: 0}}
               variants={variants}
               transition={{
                 y: {type: 'spring', stiffness: 300, damping: 30},
-                opacity: {duration: 0.3},
+                opacity: {duration: 1.3},
               }}>
               <Center key='loading'>
                 <Box
@@ -186,7 +190,7 @@ function LoadingSwapButton({children, ...props}: VariantProps<typeof Button>) {
                     size: 15,
                     animation: ` ${spin} $tokens$transitionDuration-xl infinite linear`,
                   }}>
-                  <StitchesLogoIcon />
+                  <ReloadIcon />
                 </Box>
               </Center>
             </motion.div>
@@ -201,7 +205,7 @@ function LoadingSwapButton({children, ...props}: VariantProps<typeof Button>) {
                 y: {type: 'spring', stiffness: 300, damping: 30},
                 opacity: {duration: 0.3},
               }}>
-              <div key='children'>{children}</div>
+              {children}
             </motion.div>
           )}
         </Flex>
