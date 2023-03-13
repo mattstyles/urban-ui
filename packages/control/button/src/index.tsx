@@ -5,7 +5,7 @@ import {styled} from '@urban-ui/theme'
 
 export const Button = React.forwardRef<
   HTMLButtonElement,
-  VariantProps<typeof StyledButton> & React.ComponentPropsWithoutRef<'button'>
+  React.ComponentProps<typeof StyledButton> & {as?: string; href?: string}
 >((props, ref) => {
   return <StyledButton role='button' ref={ref} {...props} />
 })

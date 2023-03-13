@@ -10,7 +10,7 @@ import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Center} from '@urban-ui/center'
 import {Button} from '@urban-ui/button'
 import {Box} from '@urban-ui/box'
-import {styled, keyframes} from '@urban-ui/theme'
+import {styled} from '@urban-ui/theme'
 import {Layout} from './layout'
 
 export default function ButtonPage() {
@@ -59,7 +59,7 @@ export default function ButtonPage() {
           </Stack>
           <Stack orientation='h'>
             <CustomButton type='transparent'>Custom button</CustomButton>
-            <CustomButton type='secondary'>Custom button</CustomButton>
+            <CustomButton>Custom button</CustomButton>
           </Stack>
           <Stack orientation='h' justify='end'>
             <Button tone='neutral' type='ghost'>
