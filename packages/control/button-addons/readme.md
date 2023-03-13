@@ -15,10 +15,10 @@ pnpm add -S @urban-ui/button-addons
 ```
 
 ```js
-import {Button} from '@urban-ui/button-addons'
+import {LoadingButton} from '@urban-ui/button-addons'
 
 export function MyComponent() {
-  return <Button />
+  return <LoadingButton onClick={() => {}}>Load</LoadingButton>
 }
 ```
 
