@@ -12,7 +12,7 @@ import {keyframes} from '@urban-ui/theme'
 type WorkButtonProps = {
   isWorking: boolean
   icon: React.ReactNode
-  'data-testid': string
+  'data-testid'?: string
 }
 export function WorkButton({
   children,
