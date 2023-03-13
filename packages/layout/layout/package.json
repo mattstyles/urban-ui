@@ -1,16 +1,16 @@
 {
-  "name": "@urban-ui/absolute",
+  "name": "@urban-ui/layout",
   "version": "0.0.1",
-  "description": "Helper for absolutely positioned elements",
+  "description": "All urban-ui layout components in a  single module",
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/@urban-ui/absolute.js",
-  "module": "./dist/@urban-ui/absolute.js",
+  "main": "./dist/@urban-ui/layout.js",
+  "module": "./dist/@urban-ui/layout.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/@urban-ui/absolute.js",
-      "export": "./dist/@urban-ui/absolute.cjs",
+      "import": "./dist/@urban-ui/layout.js",
+      "export": "./dist/@urban-ui/layout.cjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -25,7 +25,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattstyles/urban-ui.git",
-    "directory": "packages/components/absolute"
+    "directory": "packages/components/layout"
   },
   "bugs": {
     "url": "https://github.com/mattstyles/urban-ui/issues"
@@ -42,11 +42,19 @@
     "lint": "eslint *.ts*",
     "clean": "del dist",
     "dev": "vite build --watch",
-    "build": "vite build",
-    "test": "vitest run src"
+    "build": "vite build"
   },
   "dependencies": {
-    "@urban-ui/theme": "workspace:*"
+    "@urban-ui/absolute": "workspace:*",
+    "@urban-ui/box": "workspace:*",
+    "@urban-ui/center": "workspace:*",
+    "@urban-ui/container": "workspace:*",
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/panel": "workspace:*",
+    "@urban-ui/screen": "workspace:*",
+    "@urban-ui/scrollable": "workspace:*",
+    "@urban-ui/spacer": "workspace:*",
+    "@urban-ui/stack": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.2.0"

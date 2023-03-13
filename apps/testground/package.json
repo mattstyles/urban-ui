@@ -19,6 +19,7 @@
     "@urban-ui/container": "workspace:*",
     "@urban-ui/content": "workspace:*",
     "@urban-ui/flex": "workspace:*",
+    "@urban-ui/layout": "workspace:*",
     "@urban-ui/page": "workspace:*",
     "@urban-ui/panel": "workspace:*",
     "@urban-ui/screen": "workspace:*",
