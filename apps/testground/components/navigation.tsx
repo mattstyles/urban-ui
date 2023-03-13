@@ -12,7 +12,7 @@ import {styled} from '@urban-ui/theme'
 export type LinkType = {name: string; link: string}
 export type NavGroup = Array<LinkType>
 export type NavType = Array<{
-  title: string
+  title: LinkType
   block: NavGroup
 }>
 
@@ -24,14 +24,15 @@ export function Nav({onClick, nav}: NavProps) {
   const content = useMemo(() => {
     return nav.map((group) => {
       return (
-        <nav key={group.title}>
+        <nav key={group.title.name}>
           <Stack>
             <Spacer size='md' />
-            <Flex
-              css={{paddingLeft: '$6', paddingRight: '$6', color: '$white'}}>
-              <Heading as='h2' type='h3' color='currentcolor'>
-                {group.title}
-              </Heading>
+            <Flex css={{color: '$white', padding: '$3'}}>
+              <NavLink href={group.title.link} onClick={onClick} heading={true}>
+                <Heading as='h2' type='h3' color='currentcolor'>
+                  {group.title.name}
+                </Heading>
+              </NavLink>
             </Flex>
             <NavGroup onClick={onClick} group={group.block} />
           </Stack>
@@ -84,6 +85,20 @@ const StyledLink = styled('a', {
   borderRadius: '$2',
   textDecoration: 'none',
 
+  variants: {
+    heading: {
+      true: {
+        backgroundColor: '$transparent !important',
+        color: '$white !important',
+        width: '100%',
+
+        '&:hover': {
+          backgroundColor: '$whiteA8 !important',
+        },
+      },
+    },
+  },
+
   '&:hover': {
     backgroundColor: '$whiteA8',
   },
@@ -97,17 +112,21 @@ const StyledLink = styled('a', {
 function NavLink({
   children,
   href,
+  heading,
   onClick,
 }: {
   children: React.ReactNode
   href: string
+  heading?: boolean
   onClick?: () => void
 }) {
+  console.log({heading, href})
   const {asPath, push} = useRouter()
   return (
     <StyledLink
       as={Link}
       aria-current={asPath === href ? 'page' : undefined}
+      heading={heading}
       onClick={onClick}
       href={href}>
       {children}

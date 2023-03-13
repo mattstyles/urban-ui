@@ -9,7 +9,7 @@ import {Layout} from 'components/layoutPrimary'
 
 const nav: NavType = [
   {
-    title: '',
+    title: {name: '', link: '#'},
     block: [
       {name: 'Components', link: '/components'},
       {name: 'Controls', link: '/control'},

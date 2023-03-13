@@ -4,7 +4,7 @@ import {Layout as PrimaryLayout} from 'components/layoutPrimary'
 
 const nav: NavType = [
   {
-    title: 'Layouts',
+    title: {name: 'Page Layouts', link: '/pages'},
     block: [
       {name: 'Triple', link: '/pages/triple'},
       {name: 'Aside', link: '/pages/aside'},

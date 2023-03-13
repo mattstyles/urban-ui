@@ -1,15 +1,18 @@
 import {Spacer} from '@urban-ui/spacer'
+import {Container} from '@urban-ui/container'
 import {Content} from '@urban-ui/content'
 import {Heading} from '@urban-ui/text'
 import {Layout} from './layout'
 
 export default function Page() {
   return (
-    <Content>
-      <Spacer size='lg' />
-      <Heading>Components</Heading>
-      <div>stuff</div>
-    </Content>
+    <Container alignment='center' padding='md' size='full'>
+      <Content>
+        <Spacer size='lg' />
+        <Heading>Components</Heading>
+        <div>stuff</div>
+      </Content>
+    </Container>
   )
 }
 

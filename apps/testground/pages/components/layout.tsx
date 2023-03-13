@@ -4,7 +4,7 @@ import {Layout as PrimaryLayout} from 'components/layoutPrimary'
 
 const nav: NavType = [
   {
-    title: 'Layout',
+    title: {name: 'Layout', link: '/components'},
     block: [
       {name: 'Spacer', link: '/components/spacer'},
       {name: 'Flex', link: '/components/flex'},
