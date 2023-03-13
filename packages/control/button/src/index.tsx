@@ -72,15 +72,15 @@ const StyledButton = styled('button', {
       neutral: {},
     },
 
-    round: {
-      true: {
-        borderRadius: '$round',
-      },
-    },
     square: {
       true: {
         aspectRatio: 1,
         padding: '$0',
+      },
+    },
+    round: {
+      true: {
+        borderRadius: '$round',
       },
     },
     fill: {

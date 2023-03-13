@@ -25,6 +25,7 @@ export const radii = {
   3: '12px',
 
   round: '9999px',
+  none: 0,
   sm: '$1',
   md: '$2',
   lg: '$3',

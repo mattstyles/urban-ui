@@ -10,6 +10,11 @@ export const Stack = styled(Flex, {
     orientation: 'v',
   },
   variants: {
+    inline: {
+      true: {
+        display: 'inline-flex',
+      },
+    },
     gap: {
       xs: {
         gap: '$xs',

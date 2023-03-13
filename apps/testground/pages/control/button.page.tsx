@@ -1,4 +1,5 @@
-import {StitchesLogoIcon} from '@radix-ui/react-icons'
+import {StitchesLogoIcon, FigmaLogoIcon} from '@radix-ui/react-icons'
+import {RadixLogoIcon} from '@/components/radixLogoIcon'
 
 import {Absolute} from '@urban-ui/absolute'
 import {Flex} from '@urban-ui/flex'
@@ -9,6 +10,7 @@ import {Stack} from '@urban-ui/stack'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Center} from '@urban-ui/center'
 import {Button} from '@urban-ui/button'
+import {ButtonGroup} from '@urban-ui/button-group'
 import {Box} from '@urban-ui/box'
 import {styled} from '@urban-ui/theme'
 import {Layout} from './layout'
@@ -154,6 +156,46 @@ export default function ButtonPage() {
             </Box>
           </Center>
         </Button>
+        <H2>Group styling</H2>
+        <Stack inline gap='lg' orientation='h'>
+          <Box>
+            <ButtonGroup>
+              <Button type='transparent' square>
+                <Center css={{color: '$primary12'}}>
+                  <StitchesLogoIcon color='currentcolor' />
+                </Center>
+              </Button>
+              <Button type='transparent' square>
+                <Center css={{color: '$primary12'}}>
+                  <FigmaLogoIcon color='currentcolor' />
+                </Center>
+              </Button>
+            </ButtonGroup>
+          </Box>
+          <ButtonGroup radius='lg'>
+            <Button type='transparent' square>
+              <Center css={{color: '$primary12'}}>
+                <StitchesLogoIcon color='currentcolor' />
+              </Center>
+            </Button>
+            <Button type='transparent' square>
+              <Center css={{color: '$primary12'}}>
+                <StitchesLogoIcon color='currentcolor' />
+              </Center>
+            </Button>
+            <Button type='transparent' square>
+              <Center css={{color: '$primary12'}}>
+                <FigmaLogoIcon color='currentcolor' />
+              </Center>
+            </Button>
+            <Button type='transparent' square>
+              <Center css={{color: '$primary12', size: 15}}>
+                <RadixLogoIcon color='currentcolor' />
+              </Center>
+            </Button>
+          </ButtonGroup>
+        </Stack>
+        <Spacer size='xl' />
       </Content>
     </Container>
   )

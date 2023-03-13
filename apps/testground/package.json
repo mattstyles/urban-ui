@@ -15,6 +15,7 @@
     "@urban-ui/box": "workspace:*",
     "@urban-ui/button": "workspace:*",
     "@urban-ui/button-extras": "workspace:*",
+    "@urban-ui/button-group": "workspace:*",
     "@urban-ui/center": "workspace:*",
     "@urban-ui/container": "workspace:*",
     "@urban-ui/content": "workspace:*",

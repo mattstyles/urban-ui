@@ -120,7 +120,6 @@ function NavLink({
   heading?: boolean
   onClick?: () => void
 }) {
-  console.log({heading, href})
   const {asPath, push} = useRouter()
   return (
     <StyledLink

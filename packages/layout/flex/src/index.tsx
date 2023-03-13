@@ -11,6 +11,11 @@ export const Flex = styled('div', {
   },
 
   variants: {
+    inline: {
+      true: {
+        display: 'inline-flex',
+      },
+    },
     orientation: {
       h: {
         flexDirection: 'row',
