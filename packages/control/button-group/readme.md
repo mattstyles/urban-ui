@@ -41,7 +41,7 @@ Due to how CSS flexbox works there can be cases where ButtonGroup does not have 
 
 ## API
 
-| Prop   | Type   | Description                     |
-| ------ | ------ | ------------------------------- | ---- | ---- | --------------------------------- |
-| radius | 'none' | 'sm'                            | 'md' | 'lg' | The themed border-radius to apply |
-| color  | string | The theme colour for the border |
+| Prop   | Type                           | Description                       |
+| ------ | ------------------------------ | --------------------------------- |
+| radius | 'none' \| 'sm' \| 'md' \| 'lg' | The themed border-radius to apply |
+| color  | string                         | The theme colour for the border   |
