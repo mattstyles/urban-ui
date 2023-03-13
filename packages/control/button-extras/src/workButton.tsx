@@ -9,29 +9,28 @@ import {Flex} from '@urban-ui/flex'
 import {Spacer} from '@urban-ui/spacer'
 import {keyframes} from '@urban-ui/theme'
 
-export function LoadingButton({
+type WorkButtonProps = {
+  isWorking: boolean
+  icon: React.ReactNode
+  'data-testid': string
+}
+export function WorkButton({
   children,
-  onClick,
+  isWorking,
+  icon,
   ...props
-}: React.ComponentProps<typeof Button>) {
-  const [isLoading, setIsLoading] = useState(false)
-
+}: React.ComponentProps<typeof Button> & WorkButtonProps) {
   return (
-    <Button {...props} onClick={() => setIsLoading(!isLoading)}>
+    <Button {...props}>
       <AnimatedContainer>
-        {isLoading && (
+        {isWorking && (
           <>
             <Box
               css={{
-                size: 15,
+                opacity: 0,
+                animation: `${appear} $tokens$transitionDuration-md ease-in forwards $tokens$transitionDuration-md, ${spin} 500ms infinite linear`,
               }}>
-              <Box
-                css={{
-                  opacity: 0,
-                  animation: `${appear} $tokens$transitionDuration-md ease-in forwards $tokens$transitionDuration-md, ${spin} 500ms infinite linear`,
-                }}>
-                <ReloadIcon width='100%' height='100%' />
-              </Box>
+              {icon}
             </Box>
             <Spacer orientation='h' size='sm' />
           </>

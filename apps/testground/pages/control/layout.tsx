@@ -7,7 +7,7 @@ const nav: NavType = [
     title: 'Controls',
     block: [
       {name: 'Button', link: '/control/button'},
-      {name: 'Loading Button', link: '/control/loadingButton'},
+      {name: 'Button extras', link: '/control/buttonExtras'},
     ],
   },
 ]

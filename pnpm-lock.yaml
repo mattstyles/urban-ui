@@ -25,7 +25,7 @@ importers:
       '@urban-ui/absolute': workspace:*
       '@urban-ui/box': workspace:*
       '@urban-ui/button': workspace:*
-      '@urban-ui/button-addons': workspace:*
+      '@urban-ui/button-extras': workspace:*
       '@urban-ui/center': workspace:*
       '@urban-ui/container': workspace:*
       '@urban-ui/content': workspace:*
@@ -53,7 +53,7 @@ importers:
       '@urban-ui/absolute': link:../../packages/layout/absolute
       '@urban-ui/box': link:../../packages/layout/box
       '@urban-ui/button': link:../../packages/control/button
-      '@urban-ui/button-addons': link:../../packages/control/button-addons
+      '@urban-ui/button-extras': link:../../packages/control/button-extras
       '@urban-ui/center': link:../../packages/layout/center
       '@urban-ui/container': link:../../packages/layout/container
       '@urban-ui/content': link:../../packages/typography/content
@@ -160,7 +160,7 @@ importers:
       vite: 4.1.4_@types+node@17.0.45
       vitest: 0.29.2
 
-  packages/control/button-addons:
+  packages/control/button-extras:
     specifiers:
       '@radix-ui/react-icons': ^1.2.0
       '@stitches/react': ^1.2.8
@@ -181,7 +181,6 @@ importers:
       vite: ^4.1.4
       vitest: ^0.29.1
     dependencies:
-      '@radix-ui/react-icons': 1.2.0_react@18.2.0
       '@stitches/react': 1.2.8_react@18.2.0
       '@urban-ui/box': link:../../layout/box
       '@urban-ui/button': link:../button
@@ -190,6 +189,7 @@ importers:
       '@urban-ui/theme': link:../../core/theme
       react: 18.2.0
     devDependencies:
+      '@radix-ui/react-icons': 1.2.0_react@18.2.0
       '@testing-library/react': 14.0.0_react@18.2.0
       '@types/node': 17.0.45
       '@types/react': 18.0.28
@@ -1698,7 +1698,6 @@ packages:
       react: ^16.x || ^17.x || ^18.x
     dependencies:
       react: 18.2.0
-    dev: false
 
   /@radix-ui/react-presence/1.0.0:
     resolution: {integrity: sha512-A+6XEvN01NfVWiKu38ybawfHsBjWum42MRPnEuqPsBZ4eV7e/7K321B5VgYMPv3Xx5An6o1/l9ZuDBgmcmWK3w==}

@@ -1,12 +1,19 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
+import {ReloadIcon} from '@radix-ui/react-icons'
 
-import {LoadingButton} from './index'
+import {WorkButton} from './index'
 
 describe('[Button]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<LoadingButton data-testid='some-id' />)
+    render(
+      <WorkButton
+        isWorking={false}
+        icon={<ReloadIcon />}
+        data-testid='some-id'
+      />
+    )
 
     // ACT
 

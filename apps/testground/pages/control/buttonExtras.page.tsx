@@ -3,6 +3,7 @@ import type {VariantProps} from '@stitches/react'
 import {StitchesLogoIcon, ReloadIcon, UpdateIcon} from '@radix-ui/react-icons'
 import {motion, AnimatePresence} from 'framer-motion'
 
+import {WorkButton} from '@urban-ui/button-extras'
 import {Flex} from '@urban-ui/flex'
 import {Center} from '@urban-ui/center'
 import {Spacer} from '@urban-ui/spacer'
@@ -23,7 +24,7 @@ export default function ButtonPage() {
         <H2>Loading buttons</H2>
         <Stack orientation='h'>
           <LoadingButton>Loading</LoadingButton>
-          <AnimatedLoadingButton>Animated</AnimatedLoadingButton>
+          <WorkButtonExample />
           <LoadingSwapButton>Transition</LoadingSwapButton>
         </Stack>
       </Content>
@@ -35,7 +36,30 @@ ButtonPage.getLayout = function getLayout(page: React.ReactElement) {
   return <Layout>{page}</Layout>
 }
 
-function LoadingButton({children, ...props}: VariantProps<typeof Button>) {
+function WorkButtonExample() {
+  const [isWorking, setIsWorking] = useState(false)
+  return (
+    <WorkButton
+      round
+      icon={
+        <Box
+          css={{
+            size: 15,
+          }}>
+          <ReloadIcon width='100%' height='100%' />
+        </Box>
+      }
+      isWorking={isWorking}
+      onClick={() => setIsWorking(!isWorking)}>
+      Working
+    </WorkButton>
+  )
+}
+
+function LoadingButton({
+  children,
+  ...props
+}: React.ComponentProps<typeof Button>) {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
@@ -57,38 +81,6 @@ function LoadingButton({children, ...props}: VariantProps<typeof Button>) {
   )
 }
 
-function AnimatedLoadingButton({
-  children,
-  ...props
-}: VariantProps<typeof Button>) {
-  const [isLoading, setIsLoading] = useState(false)
-
-  return (
-    <Button {...props} onClick={() => setIsLoading(!isLoading)}>
-      <AnimatedContainer>
-        {isLoading && (
-          <>
-            <Box
-              css={{
-                size: 15,
-              }}>
-              <Box
-                css={{
-                  opacity: 0,
-                  animation: `${appear} $tokens$transitionDuration-md ease-in forwards $tokens$transitionDuration-md, ${spin} 500ms infinite linear`,
-                }}>
-                <ReloadIcon width='100%' height='100%' />
-              </Box>
-            </Box>
-            <Spacer orientation='h' size='sm' />
-          </>
-        )}
-        {children}
-      </AnimatedContainer>
-    </Button>
-  )
-}
-
 const spin = keyframes({
   from: {
     transform: 'rotate(0deg)',
@@ -105,46 +97,6 @@ const appear = keyframes({
     opacity: 1,
   },
 })
-
-function AnimatedContainer({children}: {children: React.ReactNode}) {
-  const contentRef = useRef<HTMLDivElement>(null)
-  const [rect, setRect] = useState({width: 0, height: 0})
-  const [transition, setTransition] = useState('0ms')
-
-  useEffect(() => {
-    if (contentRef.current == null) {
-      return
-    }
-    const size = contentRef.current.getBoundingClientRect()
-    setRect(size)
-
-    // Necessary to stop the element transitioning from 0 size to its rendered size
-    const timeout = setTimeout(() => {
-      setTransition('$tokens$transitionDuration-md')
-    }, 10)
-    return () => {
-      clearTimeout(timeout)
-    }
-  }, [children])
-
-  return (
-    <Flex
-      justify='end'
-      css={{
-        width: `${rect.width}px`,
-        height: `${rect.height}px`,
-        transitionDuration: transition,
-        overflow: 'hidden',
-      }}>
-      <Flex
-        ref={contentRef}
-        alignment='center'
-        css={{width: 'fit-content', height: 'fit-content'}}>
-        {children}
-      </Flex>
-    </Flex>
-  )
-}
 
 const variants = {
   enter: (isLoading: boolean) => {
@@ -165,7 +117,10 @@ const variants = {
   },
 }
 
-function LoadingSwapButton({children, ...props}: VariantProps<typeof Button>) {
+function LoadingSwapButton({
+  children,
+  ...props
+}: React.ComponentProps<typeof Button>) {
   const [isLoading, setIsLoading] = useState(false)
 
   return (
