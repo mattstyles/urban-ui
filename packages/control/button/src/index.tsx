@@ -3,10 +3,9 @@ import type {VariantProps} from '@stitches/react'
 import * as React from 'react'
 import {styled} from '@urban-ui/theme'
 
-// @TODO how to apply a role or type attribute to a styled button without wrapping?
 export const Button = React.forwardRef<
   HTMLButtonElement,
-  VariantProps<typeof StyledButton>
+  VariantProps<typeof StyledButton> & React.ComponentPropsWithoutRef<'button'>
 >((props, ref) => {
   return <StyledButton role='button' ref={ref} {...props} />
 })

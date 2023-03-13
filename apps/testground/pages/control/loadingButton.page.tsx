@@ -182,7 +182,7 @@ function LoadingSwapButton({children, ...props}: VariantProps<typeof Button>) {
               variants={variants}
               transition={{
                 y: {type: 'spring', stiffness: 300, damping: 30},
-                opacity: {duration: 1.3},
+                opacity: {duration: 0.3},
               }}>
               <Center key='loading'>
                 <Box

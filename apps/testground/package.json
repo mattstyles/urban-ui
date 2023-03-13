@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.2.0",
+    "@stitches/react": "^1.2.8",
     "@urban-ui/absolute": "workspace:*",
     "@urban-ui/box": "workspace:*",
     "@urban-ui/button": "workspace:*",
