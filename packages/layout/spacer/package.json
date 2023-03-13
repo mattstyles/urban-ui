@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/spacer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Used to provide space between components",
   "type": "module",
   "sideEffects": false,

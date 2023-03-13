@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/text",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Component for rendering text",
   "type": "module",
   "sideEffects": false,

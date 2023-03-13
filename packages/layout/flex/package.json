@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/flex",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Flex-based container component",
   "type": "module",
   "sideEffects": false,

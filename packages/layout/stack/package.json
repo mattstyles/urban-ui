@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/stack",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Handles orientation and spacing of children",
   "type": "module",
   "sideEffects": false,

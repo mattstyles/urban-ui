@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/content",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Content container for copy text",
   "type": "module",
   "sideEffects": false,

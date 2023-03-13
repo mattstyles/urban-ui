@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/screen",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Container component that matches the screen size",
   "type": "module",
   "sideEffects": false,
