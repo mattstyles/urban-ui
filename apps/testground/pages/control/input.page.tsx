@@ -1,4 +1,5 @@
-import {MagnifyingGlassIcon} from '@radix-ui/react-icons'
+import {useState} from 'react'
+import {MagnifyingGlassIcon, Cross1Icon} from '@radix-ui/react-icons'
 
 import {
   Container,
@@ -93,6 +94,7 @@ export default function Page() {
         <H2>With icon</H2>
         <Stack>
           <WithIcon />
+          <WithClearButton />
         </Stack>
         <Spacer size='xl' />
       </Content>
@@ -106,17 +108,78 @@ Page.getLayout = function getLayout(page: React.ReactElement) {
 
 function WithIcon(props: React.ComponentProps<typeof Input>) {
   return (
-    <Flex css={{position: 'relative'}} size='full'>
-      <Absolute>
-        <Center css={{size: '$tokens$controlFieldSizeMd'}}>
+    <Flex css={{position: 'relative'}}>
+      <Absolute css={{left: '2px'}}>
+        <Center
+          css={{
+            size: '$tokens$controlFieldSizeMd',
+            '@sm': {
+              size: '$tokens$controlFieldTouchSizeMd',
+            },
+          }}>
           <Box css={{size: '$5'}}>
             <MagnifyingGlassIcon width='100%' height='100%' />
           </Box>
         </Center>
       </Absolute>
       <Input
+        {...props}
+        width='full'
         defaultValue='with icon'
-        css={{pl: '$tokens$controlFieldSizeMd'}}
+        css={{
+          pl: '$tokens$controlFieldSizeMd',
+          '@sm': {
+            pl: '$tokens$controlFieldTouchSizeMd',
+          },
+        }}
+      />
+    </Flex>
+  )
+}
+
+function WithClearButton(props: React.ComponentProps<typeof Input>) {
+  const [value, setValue] = useState<string>('With clear button')
+
+  return (
+    <Flex css={{position: 'relative'}}>
+      {value != '' && (
+        <Absolute top right>
+          <Center
+            css={{
+              size: '$tokens$controlFieldSizeMd',
+              '@sm': {
+                size: '$tokens$controlFieldTouchSizeMd',
+              },
+            }}>
+            <Button
+              size='sm'
+              round
+              square
+              type='transparent'
+              tone='neutral'
+              css={{alignSelf: 'auto'}}
+              onClick={() => setValue('')}>
+              <Box css={{size: '$5'}}>
+                <Cross1Icon width='100%' height='100%' />
+              </Box>
+            </Button>
+          </Center>
+        </Absolute>
+      )}
+
+      <Input
+        {...props}
+        onChange={(event) => {
+          setValue(event.target.value)
+        }}
+        width='full'
+        value={value}
+        css={{
+          pr: value != '' ? '$tokens$controlFieldSizeMd' : '$3',
+          '@sm': {
+            pr: value != '' ? '$tokens$controlFieldTouchSizeMd' : '$3',
+          },
+        }}
       />
     </Flex>
   )

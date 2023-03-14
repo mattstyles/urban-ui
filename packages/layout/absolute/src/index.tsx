@@ -6,6 +6,26 @@ export const Absolute = styled('div', {
   position: 'absolute',
 
   variants: {
+    top: {
+      true: {
+        top: 0,
+      },
+    },
+    right: {
+      true: {
+        right: 0,
+      },
+    },
+    bottom: {
+      true: {
+        bottom: 0,
+      },
+    },
+    left: {
+      true: {
+        left: 0,
+      },
+    },
     fit: {
       true: {
         inset: 0,
