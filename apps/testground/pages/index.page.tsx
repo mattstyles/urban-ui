@@ -14,6 +14,7 @@ const nav: NavType = [
       {name: 'Components', link: '/components'},
       {name: 'Controls', link: '/control'},
       {name: 'Layout examples', link: '/pages'},
+      {name: 'Scratch', link: '/scratch'},
     ],
   },
 ]
