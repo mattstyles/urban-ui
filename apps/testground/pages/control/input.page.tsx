@@ -47,6 +47,7 @@ export default function Page() {
           <Input tone='primary' defaultValue='primary' />
           <Input tone='critical' defaultValue='critical' />
           <Input tone='neutral' defaultValue='neutral' />
+          <Input tone='highlight' defaultValue='highlight' />
         </Stack>
         <H2>With labels</H2>
         <P>No special syntax, create your own labels.</P>

@@ -48,6 +48,7 @@ const StyledButton = styled('button', {
     ...makeVariants('primary', 'primary'),
     ...makeVariants('critical', 'critical'),
     ...makeVariants('neutral', 'neutral'),
+    ...makeVariants('highlight', 'highlight'),
   ],
 
   variants: {

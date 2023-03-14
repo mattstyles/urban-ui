@@ -1,5 +1,6 @@
 import {StitchesLogoIcon, FigmaLogoIcon} from '@radix-ui/react-icons'
 import {RadixLogoIcon} from '@/components/radixLogoIcon'
+import {VariantProps} from '@stitches/react'
 
 import {Absolute} from '@urban-ui/absolute'
 import {Flex} from '@urban-ui/flex'
@@ -79,6 +80,7 @@ export default function ButtonPage() {
           <TonalVariants tone='primary' />
           <TonalVariants tone='critical' />
           <TonalVariants tone='neutral' />
+          <TonalVariants tone='highlight' />
         </Stack>
         <H2>Width</H2>
         <P>Sets a minimum width for the button</P>
@@ -134,7 +136,7 @@ export default function ButtonPage() {
           Sometimes you want other elements to be clickable and labelled up
           correctly as a button.
         </P>
-        <Button fill type='clear' onClick={onClick('Clear type')}>
+        <Button type='clear' onClick={onClick('Clear type')}>
           <Center
             css={{width: 400, maxWidth: '100%', aspectRatio: '4 / 3'}}
             justify='center'
@@ -227,7 +229,7 @@ function TonalVariants({
   tone,
   orientation = 'v',
 }: {
-  tone: 'primary' | 'critical' | 'neutral'
+  tone: 'primary' | 'critical' | 'neutral' | 'highlight'
   orientation?: 'h' | 'v'
 }) {
   return (

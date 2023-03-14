@@ -50,6 +50,10 @@ export const Input = styled('input', {
       neutral: {
         borderColor: '$neutral7',
       },
+      highlight: {
+        borderColor: '$highlight7',
+        color: '$textHighlight',
+      },
     },
     width: {
       full: {

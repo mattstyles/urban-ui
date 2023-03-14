@@ -1,4 +1,12 @@
-import {blackA, whiteA, red, crimson, mauve, mauveDark} from '@radix-ui/colors'
+import {
+  blackA,
+  whiteA,
+  red,
+  crimson,
+  indigo,
+  mauve,
+  mauveDark,
+} from '@radix-ui/colors'
 
 function createColourScaleAlias(
   alias: string,
@@ -41,14 +49,16 @@ export const tokens = {
   textLowContrast: '$lowContrast',
   textInverse: '$highContrastInverse',
   textLowConstrastInverse: '$lowContrastInverse',
-
   textPrimary: '$primary12',
-  textHighlight: '$primary11',
+  textPrimaryLowContrast: '$primary11',
+  textHighlight: '$highlight12',
+  textHighlightLowContrast: '$highlight11',
 
   // Tonality
   ...createColourScaleAlias('bg', mauve),
   ...createColourScaleAlias('bgInv', mauveDark),
   ...createColourScaleAlias('primary', crimson),
+  ...createColourScaleAlias('highlight', indigo),
   ...createColourScaleAlias('critical', red),
   ...createColourScaleAlias('neutral', mauve),
 }
