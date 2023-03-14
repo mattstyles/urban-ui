@@ -1,5 +1,10 @@
 import {useState} from 'react'
-import {MagnifyingGlassIcon, Cross1Icon} from '@radix-ui/react-icons'
+import {
+  MagnifyingGlassIcon,
+  Cross1Icon,
+  EyeOpenIcon,
+  EyeNoneIcon,
+} from '@radix-ui/react-icons'
 
 import {
   Container,
@@ -95,6 +100,7 @@ export default function Page() {
         <Stack>
           <WithIcon />
           <WithClearButton />
+          <WithPasswordButton />
         </Stack>
         <Spacer size='xl' />
       </Content>
@@ -169,8 +175,8 @@ function WithClearButton(props: React.ComponentProps<typeof Input>) {
 
       <Input
         {...props}
-        onChange={(event) => {
-          setValue(event.target.value)
+        onChange={(event: React.FormEvent<HTMLInputElement>) => {
+          setValue(event.currentTarget.value)
         }}
         width='full'
         value={value}
@@ -178,6 +184,58 @@ function WithClearButton(props: React.ComponentProps<typeof Input>) {
           pr: value != '' ? '$tokens$controlFieldSizeMd' : '$3',
           '@sm': {
             pr: value != '' ? '$tokens$controlFieldTouchSizeMd' : '$3',
+          },
+        }}
+      />
+    </Flex>
+  )
+}
+
+function WithPasswordButton(props: React.ComponentProps<typeof Input>) {
+  const [value, setValue] = useState<string>('With password eye')
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+
+  return (
+    <Flex css={{position: 'relative'}}>
+      <Absolute top right>
+        <Center
+          css={{
+            size: '$tokens$controlFieldSizeMd',
+            '@sm': {
+              size: '$tokens$controlFieldTouchSizeMd',
+            },
+          }}>
+          <Button
+            size='sm'
+            round
+            square
+            type='transparent'
+            tone='neutral'
+            css={{alignSelf: 'auto'}}
+            onClick={() => setIsVisible(!isVisible)}>
+            <Box css={{size: '$5'}}>
+              {isVisible ? (
+                <EyeNoneIcon width='100%' height='100%' />
+              ) : (
+                <EyeOpenIcon width='100%' height='100%' />
+              )}
+            </Box>
+          </Button>
+        </Center>
+      </Absolute>
+
+      <Input
+        {...props}
+        onChange={(event: React.FormEvent<HTMLInputElement>) => {
+          setValue(event.currentTarget.value)
+        }}
+        width='full'
+        type={isVisible ? 'text' : 'password'}
+        value={value}
+        css={{
+          pr: '$tokens$controlFieldSizeMd',
+          '@sm': {
+            pr: '$tokens$controlFieldTouchSizeMd',
           },
         }}
       />

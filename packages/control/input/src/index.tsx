@@ -34,8 +34,8 @@ export const Input = styled('input', {
   },
 
   variants: {
-    type: {
-      transparent: {
+    transparent: {
+      true: {
         backgroundColor: '$transparent',
       },
     },
