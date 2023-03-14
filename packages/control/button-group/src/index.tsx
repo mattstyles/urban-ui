@@ -17,7 +17,6 @@ export function ButtonGroup({children, radius = 'md', color = '$bg7'}: Props) {
       css={{
         borderRadius: r,
         border: `1px solid ${color}`,
-        overflow: 'hidden',
 
         '*': {
           borderWidth: '0',
@@ -26,6 +25,16 @@ export function ButtonGroup({children, radius = 'md', color = '$bg7'}: Props) {
 
         '*:not(:last-child)': {
           borderRight: `1px solid ${color}`,
+        },
+
+        '*:first-child': {
+          borderTopLeftRadius: r,
+          borderBottomLeftRadius: r,
+        },
+
+        '*:last-child': {
+          borderTopRightRadius: r,
+          borderBottomRightRadius: r,
         },
       }}>
       {children}

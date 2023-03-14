@@ -35,7 +35,7 @@ ButtonGroup only applies some border styling to a collection of buttons. For gen
 
 ButtonGroup is designed to work best with children that are all urban-ui buttons. Typescript will not enforce this in case you want to extend Button to include your own button types.
 
-ButtonGroup works by applying styling to children via `'*'`, this has the potential to break in some use-cases but is generally fine.
+ButtonGroup works by applying styling to children via `'*'`, this has the potential to break in some use-cases but is generally fine. Part of the reason for this is to ensure that focus states work without clipping.
 
 Due to how CSS flexbox works there can be cases where ButtonGroup does not have the width you might expect (leading to a broken UI), in most cases surrounding in a `Box` component will fix this.
 
