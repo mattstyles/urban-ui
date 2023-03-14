@@ -55,10 +55,11 @@ export const tokens = {
   buttonWidthSm: '40px',
   buttonWidthMd: '100px',
   buttonWidthLg: '180px',
-  buttonSizeSm: '32px',
-  buttonSizeMd: '40px',
-  buttonSizeLg: '48px',
-  buttonTouchSizeSm: '40px',
-  buttonTouchSizeMd: '44px',
-  buttonTouchSizeLg: '48px',
+
+  controlFieldSizeSm: '32px',
+  controlFieldSizeMd: '40px',
+  controlFieldSizeLg: '48px',
+  controlFieldTouchSizeSm: '40px',
+  controlFieldTouchSizeMd: '44px',
+  controlFieldTouchSizeLg: '48px',
 }

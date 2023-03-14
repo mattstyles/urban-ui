@@ -101,28 +101,31 @@ const StyledButton = styled('button', {
       lg: {
         minWidth: '$tokens$buttonWidthLg',
       },
+      full: {
+        flex: 1,
+      },
     },
 
     size: {
       sm: {
-        minHeight: '$tokens$buttonSizeSm',
+        minHeight: '$tokens$controlFieldSizeSm',
 
         '@sm': {
-          minHeight: '$tokens$buttonTouchSizeSm',
+          minHeight: '$tokens$controlFieldTouchSizeSm',
         },
       },
       md: {
-        minHeight: '$tokens$buttonSizeMd',
+        minHeight: '$tokens$controlFieldSizeMd',
 
         '@sm': {
-          minHeight: '$tokens$buttonTouchSizeMd',
+          minHeight: '$tokens$controlFieldTouchSizeMd',
         },
       },
       lg: {
-        minHeight: '$tokens$buttonSizeLg',
+        minHeight: '$tokens$controlFieldSizeLg',
 
         '@sm': {
-          minHeight: '$tokens$buttonTouchSizeLg',
+          minHeight: '$tokens$controlFieldTouchSizeLg',
         },
       },
     },

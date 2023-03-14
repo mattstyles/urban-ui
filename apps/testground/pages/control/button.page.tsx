@@ -82,10 +82,15 @@ export default function ButtonPage() {
         </Stack>
         <H2>Width</H2>
         <P>Sets a minimum width for the button</P>
-        <Stack orientation='h'>
-          <Button width='sm'>sm</Button>
-          <Button width='md'>md</Button>
-          <Button width='lg'>lg</Button>
+        <Stack>
+          <Stack orientation='h'>
+            <Button width='sm'>sm</Button>
+            <Button width='md'>md</Button>
+            <Button width='lg'>lg</Button>
+          </Stack>
+          <Flex>
+            <Button width='full'>Full width</Button>
+          </Flex>
         </Stack>
         <H2>Sizes</H2>
         <P>

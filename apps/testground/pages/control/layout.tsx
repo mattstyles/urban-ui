@@ -8,6 +8,7 @@ const nav: NavType = [
     block: [
       {name: 'Button', link: '/control/button'},
       {name: 'Button extras', link: '/control/buttonExtras'},
+      {name: 'Input', link: '/control/input'},
     ],
   },
 ]
