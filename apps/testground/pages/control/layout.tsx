@@ -12,6 +12,10 @@ const nav: NavType = [
       {name: 'Checkbox', link: '/control/checkbox'},
     ],
   },
+  {
+    title: {name: 'Collection', link: '/control'},
+    block: [{name: 'Consistency', link: '/control/consistency'}],
+  },
 ]
 
 export function Layout({children}: {children: React.ReactNode}) {

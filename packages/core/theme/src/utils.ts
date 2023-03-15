@@ -8,6 +8,17 @@ export const utils = {
       height: value,
     }
   },
+  minSize: (value: number | string) => {
+    return {
+      minWidth: value,
+      minHeight: value,
+    }
+  },
+
+  // Colors
+  bg: (value: string) => ({
+    backgroundColor: value,
+  }),
 
   // Abbreviated padding properties
   p: (value: string) => ({

@@ -104,6 +104,7 @@ const StyledButton = styled('button', {
       },
       full: {
         flex: 1,
+        alignSelf: 'normal',
       },
     },
 

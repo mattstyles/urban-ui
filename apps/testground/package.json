@@ -20,6 +20,7 @@
     "@urban-ui/checkbox": "workspace:*",
     "@urban-ui/container": "workspace:*",
     "@urban-ui/content": "workspace:*",
+    "@urban-ui/control": "workspace:*",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/input": "workspace:*",
     "@urban-ui/layout": "workspace:*",

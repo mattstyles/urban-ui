@@ -6,7 +6,6 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 export const RadixRoot = styled(CheckboxPrimitive.Root, {
   textDecoration: 'none',
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '$1',
   borderColor: '$neutral7',
@@ -101,25 +100,25 @@ export const RadixRoot = styled(CheckboxPrimitive.Root, {
     },
     size: {
       sm: {
-        size: '$tokens$controlSelectionSizeSm',
+        minSize: '$tokens$controlSelectionSizeSm',
         borderWidth: '1px',
 
         '@sm': {
-          size: '$tokens$controlSelectionTouchSizeSm',
+          minSize: '$tokens$controlSelectionTouchSizeSm',
         },
       },
       md: {
-        size: '$tokens$controlSelectionSizeMd',
+        minSize: '$tokens$controlSelectionSizeMd',
 
         '@sm': {
-          size: '$tokens$controlSelectionTouchSizeMd',
+          minSize: '$tokens$controlSelectionTouchSizeMd',
         },
       },
       lg: {
-        size: '$tokens$controlSelectionSizeLg',
+        minSize: '$tokens$controlSelectionSizeLg',
 
         '@sm': {
-          size: '$tokens$controlSelectionTouchSizeLg',
+          minSize: '$tokens$controlSelectionTouchSizeLg',
         },
       },
     },
@@ -159,36 +158,70 @@ export const TouchZone = styled('label', {
   variants: {
     size: {
       sm: {
-        size: '$tokens$controlFieldSizeSm',
+        minSize: '$tokens$controlFieldSizeSm',
         marginLeft:
           'calc(($tokens$controlFieldSizeSm - $tokens$controlSelectionSizeSm) * -0.5)',
 
         '@sm': {
-          size: '$tokens$controlFieldTouchSizeSm',
+          minSize: '$tokens$controlFieldTouchSizeSm',
           marginLeft:
             'calc(($tokens$controlFieldTouchSizeSm - $tokens$controlSelectionTouchSizeSm) * -0.5)',
         },
       },
       md: {
-        size: '$tokens$controlFieldSizeMd',
+        minSize: '$tokens$controlFieldSizeMd',
         marginLeft:
           'calc(($tokens$controlFieldSizeMd - $tokens$controlSelectionSizeMd) * -0.5)',
 
         '@sm': {
-          size: '$tokens$controlFieldTouchSizeMd',
+          minSize: '$tokens$controlFieldTouchSizeMd',
           marginLeft:
             'calc(($tokens$controlFieldTouchSizeSm - $tokens$controlSelectionTouchSizeSm) * -0.5)',
         },
       },
       lg: {
-        size: '$tokens$controlFieldSizeLg',
+        minSize: '$tokens$controlFieldSizeLg',
         marginLeft:
           'calc(($tokens$controlFieldSizeLg - $tokens$controlSelectionSizeLg) * -0.5)',
 
         '@sm': {
-          size: '$tokens$controlFieldTouchSizeLg',
+          minSize: '$tokens$controlFieldTouchSizeLg',
           marginLeft:
             'calc(($tokens$controlFieldTouchSizeLg - $tokens$controlSelectionTouchSizeLg) * -0.5)',
+        },
+      },
+    },
+  },
+})
+
+export const Content = styled('div', {
+  display: 'flex',
+
+  defaultVariants: {
+    size: 'md',
+  },
+
+  variants: {
+    size: {
+      sm: {
+        mt: 'calc(($tokens$controlFieldSizeSm - $tokens$controlSelectionSizeSm) * 0.4)',
+
+        '@sm': {
+          mt: 'calc(($tokens$controlFieldTouchSizeSm - $tokens$controlSelectionTouchSizeSm) * 0.4)',
+        },
+      },
+      md: {
+        mt: 'calc(($tokens$controlFieldSizeMd - $tokens$controlSelectionSizeMd) * 0.5)',
+
+        '@sm': {
+          mt: 'calc(($tokens$controlFieldTouchSizeMd - $tokens$controlSelectionTouchSizeMd) * 0.5)',
+        },
+      },
+      lg: {
+        mt: 'calc(($tokens$controlFieldSizeLg - $tokens$controlSelectionSizeLg) * 0.7)',
+
+        '@sm': {
+          mt: 'calc(($tokens$controlFieldTouchSizeLg - $tokens$controlSelectionTouchSizeLg) * 0.7)',
         },
       },
     },
