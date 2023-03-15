@@ -15,7 +15,7 @@ export default function Page() {
           Urban-ui control components are all designed to look and feel like a
           cohesive set of components. They share sizing and tone where possible.
         </P>
-        <Stack gap='lg' css={{width: 400}}>
+        <Stack gap='lg'>
           <Stack orientation='h' alignment='center'>
             <Checkbox.Root id='a1' tone='neutral'>
               <Checkbox.Indicator>
@@ -47,6 +47,17 @@ export default function Page() {
           <Button tone='neutral' width='full'>
             Neutral tone button
           </Button>
+          <Stack orientation='h' alignment='center' gap='lg'>
+            <Text as='label' htmlFor='b2'>
+              Label:
+            </Text>
+            <Input
+              id='b2'
+              tone='neutral'
+              placeholder='Neutral tone input'
+              width='full'
+            />
+          </Stack>
           <Input tone='neutral' placeholder='Neutral tone input' width='full' />
         </Stack>
       </Content>
