@@ -62,4 +62,11 @@ export const tokens = {
   controlFieldTouchSizeSm: '40px',
   controlFieldTouchSizeMd: '44px',
   controlFieldTouchSizeLg: '48px',
+
+  controlSelectionSizeSm: '14px',
+  controlSelectionSizeMd: '20px',
+  controlSelectionSizeLg: '28px',
+  controlSelectionTouchSizeSm: '16px',
+  controlSelectionTouchSizeMd: '20px',
+  controlSelectionTouchSizeLg: '28px',
 }

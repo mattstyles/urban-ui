@@ -28,6 +28,7 @@ importers:
       '@urban-ui/button-extras': workspace:*
       '@urban-ui/button-group': workspace:*
       '@urban-ui/center': workspace:*
+      '@urban-ui/checkbox': workspace:*
       '@urban-ui/container': workspace:*
       '@urban-ui/content': workspace:*
       '@urban-ui/flex': workspace:*
@@ -60,6 +61,7 @@ importers:
       '@urban-ui/button-extras': link:../../packages/control/button-extras
       '@urban-ui/button-group': link:../../packages/control/button-group
       '@urban-ui/center': link:../../packages/layout/center
+      '@urban-ui/checkbox': link:../../packages/control/checkbox
       '@urban-ui/container': link:../../packages/layout/container
       '@urban-ui/content': link:../../packages/typography/content
       '@urban-ui/flex': link:../../packages/layout/flex
@@ -225,6 +227,37 @@ importers:
       vitest: ^0.29.1
     dependencies:
       '@urban-ui/flex': link:../../layout/flex
+    devDependencies:
+      '@stitches/react': 1.2.8
+      '@testing-library/react': 14.0.0
+      '@types/node': 17.0.45
+      '@types/react': 18.0.28
+      '@types/testing-library__jest-dom': 5.14.5
+      config-eslint: link:../../config-eslint
+      config-ts: link:../../config-ts
+      config-vite: link:../../config-vite
+      del-cli: 5.0.0
+      vite: 4.1.4_@types+node@17.0.45
+      vitest: 0.29.2
+
+  packages/control/checkbox:
+    specifiers:
+      '@radix-ui/react-checkbox': ^1.0.3
+      '@stitches/react': ^1.2.8
+      '@testing-library/react': ^14.0.0
+      '@types/node': ^17.0.12
+      '@types/react': ^18.0.28
+      '@types/testing-library__jest-dom': ^5.14.5
+      '@urban-ui/theme': workspace:*
+      config-eslint: workspace:*
+      config-ts: workspace:*
+      config-vite: workspace:*
+      del-cli: ^5.0.0
+      vite: ^4.1.4
+      vitest: ^0.29.1
+    dependencies:
+      '@radix-ui/react-checkbox': 1.0.3
+      '@urban-ui/theme': link:../../core/theme
     devDependencies:
       '@stitches/react': 1.2.8
       '@testing-library/react': 14.0.0
@@ -1781,6 +1814,23 @@ packages:
       '@babel/runtime': 7.21.0
     dev: false
 
+  /@radix-ui/react-checkbox/1.0.3:
+    resolution: {integrity: sha512-55B8/vKzTuzxllH5sGJO4zaBf9gYpJuJRRzaOKm+0oAefRnMvbf+Kgww7IOANVN0w3z7agFJgtnXaZl8Uj95AA==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': 7.21.0
+      '@radix-ui/primitive': 1.0.0
+      '@radix-ui/react-compose-refs': 1.0.0
+      '@radix-ui/react-context': 1.0.0
+      '@radix-ui/react-presence': 1.0.0
+      '@radix-ui/react-primitive': 1.0.2
+      '@radix-ui/react-use-controllable-state': 1.0.0
+      '@radix-ui/react-use-previous': 1.0.0
+      '@radix-ui/react-use-size': 1.0.0
+    dev: false
+
   /@radix-ui/react-compose-refs/1.0.0:
     resolution: {integrity: sha512-0KaSv6sx787/hK3eF53iOkiSLwAGlFMx5lotrqD2pTjB18KbybKoEIgkNZTKC60YECDQTKGTRcDBILwZVqVKvA==}
     peerDependencies:
@@ -1868,12 +1918,38 @@ packages:
       '@babel/runtime': 7.21.0
     dev: false
 
+  /@radix-ui/react-use-controllable-state/1.0.0:
+    resolution: {integrity: sha512-FohDoZvk3mEXh9AWAVyRTYR4Sq7/gavuofglmiXB2g1aKyboUD4YtgWxKj8O5n+Uak52gXQ4wKz5IFST4vtJHg==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': 7.21.0
+      '@radix-ui/react-use-callback-ref': 1.0.0
+    dev: false
+
   /@radix-ui/react-use-layout-effect/1.0.0:
     resolution: {integrity: sha512-6Tpkq+R6LOlmQb1R5NNETLG0B4YP0wc+klfXafpUCj6JGyaUc8il7/kUZ7m59rGbXGczE9Bs+iz2qloqsZBduQ==}
     peerDependencies:
       react: ^16.8 || ^17.0 || ^18.0
     dependencies:
       '@babel/runtime': 7.21.0
+    dev: false
+
+  /@radix-ui/react-use-previous/1.0.0:
+    resolution: {integrity: sha512-RG2K8z/K7InnOKpq6YLDmT49HGjNmrK+fr82UCVKT2sW0GYfVnYp4wZWBooT/EYfQ5faA9uIjvsuMMhH61rheg==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': 7.21.0
+    dev: false
+
+  /@radix-ui/react-use-size/1.0.0:
+    resolution: {integrity: sha512-imZ3aYcoYCKhhgNpkNDh/aTiU05qw9hX+HHI1QDBTyIlcFjgeFlKKySNGMwTp7nYFLQg/j0VA2FmCY4WPDDHMg==}
+    peerDependencies:
+      react: ^16.8 || ^17.0 || ^18.0
+    dependencies:
+      '@babel/runtime': 7.21.0
+      '@radix-ui/react-use-layout-effect': 1.0.0
     dev: false
 
   /@rollup/pluginutils/5.0.2:

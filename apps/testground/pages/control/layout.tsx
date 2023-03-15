@@ -9,6 +9,7 @@ const nav: NavType = [
       {name: 'Button', link: '/control/button'},
       {name: 'Button extras', link: '/control/buttonExtras'},
       {name: 'Input', link: '/control/input'},
+      {name: 'Checkbox', link: '/control/checkbox'},
     ],
   },
 ]

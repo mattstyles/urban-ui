@@ -17,6 +17,7 @@
     "@urban-ui/button-extras": "workspace:*",
     "@urban-ui/button-group": "workspace:*",
     "@urban-ui/center": "workspace:*",
+    "@urban-ui/checkbox": "workspace:*",
     "@urban-ui/container": "workspace:*",
     "@urban-ui/content": "workspace:*",
     "@urban-ui/flex": "workspace:*",
