@@ -99,7 +99,7 @@ export default function Page() {
           <ShortOrLongAlignmentTest />
           <H3>Complex label content</H3>
           <Stack orientation='h' alignment='start' gap='sm'>
-            <Checkbox.Root id='e2' tone='neutral' size='lg' alignment='start'>
+            <Checkbox.Root id='e2' tone='neutral' size='lg'>
               <Checkbox.Indicator size='lg'>
                 <CheckIcon width='100%' height='100%' />
               </Checkbox.Indicator>
