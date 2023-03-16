@@ -15,8 +15,10 @@ export function ButtonGroup({children, radius = 'md', color = '$bg7'}: Props) {
     <Flex
       inline
       css={{
-        borderRadius: r,
-        border: `1px solid ${color}`,
+        borderRadius: `calc(${r} + 2px)`,
+        borderWidth: '2px',
+        borderStyle: 'solid',
+        borderColor: color,
 
         '*': {
           borderWidth: '0',
@@ -24,7 +26,9 @@ export function ButtonGroup({children, radius = 'md', color = '$bg7'}: Props) {
         },
 
         '*:not(:last-child)': {
-          borderRight: `1px solid ${color}`,
+          borderRightWidth: '2px',
+          borderStyle: 'solid',
+          borderColor: color,
         },
 
         '*:first-child': {

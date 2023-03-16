@@ -1,6 +1,13 @@
-import {StitchesLogoIcon, FigmaLogoIcon} from '@radix-ui/react-icons'
+import {
+  StitchesLogoIcon,
+  FigmaLogoIcon,
+  TextAlignLeftIcon,
+  TextAlignCenterIcon,
+  TextAlignRightIcon,
+  TextAlignJustifyIcon,
+} from '@radix-ui/react-icons'
 import {RadixLogoIcon} from '@/components/radixLogoIcon'
-import {VariantProps} from '@stitches/react'
+import {useState} from 'react'
 
 import {Absolute} from '@urban-ui/absolute'
 import {Flex} from '@urban-ui/flex'
@@ -8,6 +15,7 @@ import {Spacer} from '@urban-ui/spacer'
 import {Container} from '@urban-ui/container'
 import {Content} from '@urban-ui/content'
 import {Stack} from '@urban-ui/stack'
+import {Icon} from '@urban-ui/icon'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Center} from '@urban-ui/center'
 import {Button} from '@urban-ui/button'
@@ -202,6 +210,18 @@ export default function ButtonPage() {
             </Button>
           </ButtonGroup>
         </Stack>
+        <H2>Toggle buttons</H2>
+        <P>
+          These can be created by controlling the type of button depending on
+          some state. As this state is typically external to the button there is
+          little point in creating an abstraction in this library.
+        </P>
+        <Stack inline>
+          <ToggleButton>
+            <StitchesLogoIcon width='100%' height='100%' />
+          </ToggleButton>
+          <ToggleGroup />
+        </Stack>
         <Spacer size='xl' />
       </Content>
     </Container>
@@ -266,3 +286,45 @@ const CustomButton = styled(Button, {
   backgroundColor: 'rebeccapurple',
   color: 'white',
 })
+
+function ToggleButton({children}: {children: React.ReactNode}) {
+  const [isSelected, setIsSelected] = useState(false)
+
+  return (
+    <Button
+      square
+      type={isSelected ? 'solid' : 'transparent'}
+      onClick={() => setIsSelected(!isSelected)}>
+      <Icon size='md'>{children}</Icon>
+    </Button>
+  )
+}
+
+function ToggleGroup() {
+  const buttons = [
+    {id: 'left', Shape: TextAlignLeftIcon},
+    {id: 'center', Shape: TextAlignCenterIcon},
+    {id: 'right', Shape: TextAlignRightIcon},
+    {id: 'justify', Shape: TextAlignJustifyIcon},
+  ]
+  const [selected, setSelected] = useState(buttons[0].id)
+
+  return (
+    <ButtonGroup radius='lg'>
+      {buttons.map(({id, Shape}) => {
+        return (
+          <Button
+            key={id}
+            square
+            tone='primary'
+            type={id === selected ? 'solid' : 'transparent'}
+            onClick={() => setSelected(id)}>
+            <Icon size='md'>
+              <Shape width='100%' height='100%' />
+            </Icon>
+          </Button>
+        )
+      })}
+    </ButtonGroup>
+  )
+}

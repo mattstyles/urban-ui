@@ -1,7 +1,7 @@
-import {CheckIcon} from '@radix-ui/react-icons'
+import {CheckIcon, StitchesLogoIcon} from '@radix-ui/react-icons'
 import {useState} from 'react'
 
-import {Container, Stack, Spacer, Flex} from '@urban-ui/layout'
+import {Container, Stack, Spacer, Flex, Icon} from '@urban-ui/layout'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
 import * as Checkbox from '@urban-ui/checkbox'
@@ -218,6 +218,17 @@ export default function Page() {
           </Flex>
         </Stack>
 
+        <H2>Alternatives</H2>
+        <P>
+          Consider checkbox, a toggle button, or a slider, to denote a boolean
+          state.
+        </P>
+        <Stack>
+          <ToggleButton>
+            <StitchesLogoIcon width='100%' height='100%' />
+          </ToggleButton>
+        </Stack>
+
         <Spacer size='lg' />
       </Content>
     </Container>
@@ -285,5 +296,18 @@ function ShortOrLongAlignmentTest() {
       </Stack>
       <Button onClick={() => setIsLong(!isLong)}>Set text length</Button>
     </Stack>
+  )
+}
+
+function ToggleButton({children}: {children: React.ReactNode}) {
+  const [isSelected, setIsSelected] = useState(false)
+
+  return (
+    <Button
+      square
+      type={isSelected ? 'solid' : 'transparent'}
+      onClick={() => setIsSelected(!isSelected)}>
+      <Icon size='md'>{children}</Icon>
+    </Button>
   )
 }
