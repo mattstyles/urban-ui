@@ -9,7 +9,7 @@ export const Input = styled('input', {
   background: '$white',
   borderRadius: '$1',
   borderColor: '$transparent',
-  borderWidth: '2px',
+  borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
   padding: '0 $3',
   fontSize: '$md',

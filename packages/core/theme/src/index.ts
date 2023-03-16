@@ -4,7 +4,13 @@ import {createStitches} from '@stitches/react'
 import {reset} from './reset'
 import {colours} from './colours'
 import {fonts, fontSizes, lineHeights, kerning, fontWeights} from './typography'
-import {radii, space, layoutSizes, tokens as scaleTokens} from './scales'
+import {
+  radii,
+  space,
+  layoutSizes,
+  tokens as scaleTokens,
+  borderWidths,
+} from './scales'
 import {shadows} from './shadows'
 import {durations, easings} from './animations'
 import {media} from './media'
@@ -40,7 +46,7 @@ export const {
     // zIndices,
 
     // Borders
-    // borderWidths,
+    borderWidths,
     // borderStyles,
 
     // Misc

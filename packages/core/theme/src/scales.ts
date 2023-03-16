@@ -31,6 +31,18 @@ export const radii = {
   lg: '$3',
 }
 
+export const borderWidths = {
+  0: 0,
+  1: '1px',
+  2: '2px',
+  3: '5px',
+
+  none: 0,
+  sm: '$1',
+  md: '$2',
+  lg: '$3',
+}
+
 export const layoutSizes = {
   // Aside widths
   aside1: '12em',
@@ -62,6 +74,7 @@ export const tokens = {
   controlFieldTouchSizeSm: '40px',
   controlFieldTouchSizeMd: '44px',
   controlFieldTouchSizeLg: '48px',
+  controlFieldBorderSize: '2px',
 
   controlSelectionSizeSm: '16px',
   controlSelectionSizeMd: '24px',

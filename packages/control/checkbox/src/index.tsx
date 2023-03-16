@@ -10,7 +10,7 @@ export const RadixRoot = styled(CheckboxPrimitive.Root, {
   justifyContent: 'center',
   borderRadius: '$1',
   borderColor: '$neutral7',
-  borderWidth: '2px',
+  borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
   padding: 0,
 

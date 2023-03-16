@@ -16,7 +16,7 @@ export function ButtonGroup({children, radius = 'md', color = '$bg7'}: Props) {
       inline
       css={{
         borderRadius: `calc(${r} + 2px)`,
-        borderWidth: '2px',
+        borderWidth: '$tokens$controlFieldBorderSize',
         borderStyle: 'solid',
         borderColor: color,
 
@@ -26,7 +26,7 @@ export function ButtonGroup({children, radius = 'md', color = '$bg7'}: Props) {
         },
 
         '*:not(:last-child)': {
-          borderRightWidth: '2px',
+          borderRightWidth: '$tokens$controlFieldBorderSize',
           borderStyle: 'solid',
           borderColor: color,
         },

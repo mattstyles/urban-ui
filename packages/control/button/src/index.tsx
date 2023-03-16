@@ -18,7 +18,7 @@ const StyledButton = styled('button', {
   justifyContent: 'center',
   borderRadius: '$1',
   borderColor: '$transparent',
-  borderWidth: '2px',
+  borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
   padding: '0 $md',
   letterSpacing: '-0.2px',
