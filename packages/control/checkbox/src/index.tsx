@@ -102,7 +102,6 @@ export const RadixRoot = styled(CheckboxPrimitive.Root, {
     size: {
       sm: {
         minSize: '$tokens$controlSelectionSizeSm',
-        borderWidth: '1px',
 
         '@sm': {
           minSize: '$tokens$controlSelectionTouchSizeSm',
@@ -127,6 +126,10 @@ export const RadixRoot = styled(CheckboxPrimitive.Root, {
 })
 
 export const Indicator = styled(CheckboxPrimitive.Indicator, {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+
   defaultVariants: {
     size: 'md',
   },

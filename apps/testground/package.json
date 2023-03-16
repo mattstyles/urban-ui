@@ -22,6 +22,7 @@
     "@urban-ui/content": "workspace:*",
     "@urban-ui/control": "workspace:*",
     "@urban-ui/flex": "workspace:*",
+    "@urban-ui/icon": "workspace:*",
     "@urban-ui/input": "workspace:*",
     "@urban-ui/layout": "workspace:*",
     "@urban-ui/page": "workspace:*",

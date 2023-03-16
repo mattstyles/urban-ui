@@ -99,13 +99,13 @@ export default function Page() {
           <ShortOrLongAlignmentTest />
           <H3>Complex label content</H3>
           <Stack orientation='h' alignment='start' gap='sm'>
-            <Checkbox.Root id='e2' tone='neutral' size='lg'>
+            <Checkbox.Root id='b5' tone='neutral' size='lg'>
               <Checkbox.Indicator size='lg'>
                 <CheckIcon width='100%' height='100%' />
               </Checkbox.Indicator>
             </Checkbox.Root>
             <Checkbox.Content size='lg'>
-              <Stack as='label' htmlFor='e2'>
+              <Stack as='label' htmlFor='b5'>
                 <Text>Checkbox content can be more complex.</Text>
                 <Text>
                   Use the <Text type='mono'>Checkbox.Content</Text> component to
