@@ -11,7 +11,7 @@ export const Input = styled('input', {
   borderColor: '$transparent',
   borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
-  padding: '0 $3',
+  padding: '0 $tokens$controlFieldPaddingX',
   fontSize: '$md',
 
   '&:disabled': {

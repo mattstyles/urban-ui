@@ -20,7 +20,7 @@ const StyledButton = styled('button', {
   borderColor: '$transparent',
   borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
-  padding: '0 $md',
+  padding: '0 $tokens$controlFieldPaddingX',
   letterSpacing: '-0.2px',
   fontWeight: '$semibold',
   fontSize: '$md',
