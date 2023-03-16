@@ -71,6 +71,7 @@ const StyledButton = styled('button', {
       primary: {},
       critical: {},
       neutral: {},
+      highlight: {},
     },
 
     square: {
