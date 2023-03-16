@@ -27,7 +27,7 @@ export function Nav({onClick, nav}: NavProps) {
         <nav key={group.title.name}>
           <Stack>
             <Spacer size='md' />
-            <Flex css={{color: '$white', padding: '$3'}}>
+            <Flex css={{color: '$white', px: '$3'}}>
               <NavLink href={group.title.link} onClick={onClick} heading={true}>
                 <Heading as='h2' type='h3' color='currentcolor'>
                   {group.title.name}
@@ -63,7 +63,7 @@ export function NavGroup({onClick, group}: NavGroupProps) {
       css={{
         listStyleType: 'none',
         paddingInlineStart: 0,
-        padding: '$3',
+        px: '$3',
         width: '100%',
       }}>
       {group.map(({name, link}) => {
