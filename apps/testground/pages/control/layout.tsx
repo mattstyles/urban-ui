@@ -10,6 +10,7 @@ const nav: NavType = [
       {name: 'Button extras', link: '/control/buttonExtras'},
       {name: 'Input', link: '/control/input'},
       {name: 'Checkbox', link: '/control/checkbox'},
+      {name: 'Switch', link: '/control/switch'},
     ],
   },
   {

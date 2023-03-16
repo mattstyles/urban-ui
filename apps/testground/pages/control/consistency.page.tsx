@@ -3,7 +3,7 @@ import {CheckIcon} from '@radix-ui/react-icons'
 import {Container, Stack, Spacer, Flex} from '@urban-ui/layout'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
-import {Button, Checkbox, Input} from '@urban-ui/control'
+import {Button, Checkbox, Input, Switch} from '@urban-ui/control'
 import {Layout} from './layout'
 
 export default function Page() {
@@ -24,6 +24,14 @@ export default function Page() {
             </Checkbox.Root>
             <Text as='label' htmlFor='a1'>
               Neutral tone checkbox
+            </Text>
+          </Stack>
+          <Stack orientation='h' alignment='center'>
+            <Switch.Root id='a2' tone='neutral'>
+              <Switch.Thumb />
+            </Switch.Root>
+            <Text as='label' htmlFor='a2'>
+              Neutral tone switch
             </Text>
           </Stack>
           <Button tone='neutral'>Neutral tone button</Button>

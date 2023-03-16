@@ -58,6 +58,9 @@ export const RadixRoot = styled(CheckboxPrimitive.Root, {
           borderColor: '$highlight10',
           color: '$textInverse',
         },
+        '&:focus': {
+          outlineColor: 'red',
+        },
       },
       primary: {
         borderColor: '$primary7',

@@ -31,6 +31,7 @@
     "@urban-ui/scrollable": "workspace:*",
     "@urban-ui/spacer": "workspace:*",
     "@urban-ui/stack": "workspace:*",
+    "@urban-ui/switch": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
     "framer-motion": "^10.2.4",
