@@ -52,7 +52,7 @@ export default function Page() {
           <P>
             Uses negative margin-left, not super happy about that, would rather
             wrap with an absolutely positioned input element, but Radix creates
-            that for us and we'd have to use some inheritance to do it.
+            that for us and we&apos;d have to use some inheritance to do it.
           </P>
           <Stack gap='xl'>
             <form style={{borderLeft: '1px solid red'}}>
@@ -170,8 +170,8 @@ export default function Page() {
         </P>
         <P>
           A spacer could be used instead of relying on stack, but, in the case
-          of checkbox it has a minimum width and height set so won't collapse
-          beyond that minimum.
+          of checkbox it has a minimum width and height set so won&apos;t
+          collapse beyond that minimum.
         </P>
         <Stack
           css={{
