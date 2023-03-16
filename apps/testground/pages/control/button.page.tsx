@@ -317,7 +317,7 @@ function ToggleGroup() {
             key={id}
             square
             tone='primary'
-            type={id === selected ? 'solid' : 'transparent'}
+            type={id === selected ? 'ghost' : 'transparent'}
             onClick={() => setSelected(id)}>
             <Icon size='md'>
               <Shape width='100%' height='100%' />
