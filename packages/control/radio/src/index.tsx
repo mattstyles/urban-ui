@@ -1,20 +1,29 @@
 // https://github.com/microsoft/TypeScript/issues/48212, https://github.com/stitchesjs/stitches/issues/1055#issuecomment-1243663948
 import type {} from '@stitches/react'
 import {styled} from '@urban-ui/theme'
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
+import {Stack} from '@urban-ui/stack'
+import * as RadioPrimitive from '@radix-ui/react-radio-group'
 
-export const RadixRoot = styled(CheckboxPrimitive.Root, {
+// @TODO see if we can import and use stack here, i.e. styled(Root, Stack)
+export const Root = styled(RadioPrimitive.Root, Stack, {
+  defaultVariants: {
+    gap: 'none',
+  },
+})
+
+export const RadixItem = styled(RadioPrimitive.Item, {
   textDecoration: 'none',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: '$tokens$controlFieldRadius',
+  padding: 0,
+  backgroundColor: 'white',
+  borderRadius: '$round',
   borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
-  padding: 0,
 
   transition:
-    'background $tokens$transitionDuration-md $tokens$transitionEasing-easeIn, border-color $tokens$transitionDuration-md $tokens$transitionEasing-easeIn',
+    'background $tokens$transitionDuration-md $tokens$transitionEasing-easeIn, border-color $tokens$transitionDuration-md $tokens$transitionEasing-easeIn, border-width $tokens$transitionDuration-md $tokens$transitionEasing-easeIn',
 
   '&:disabled': {
     backgroundColor: '$bg7',
@@ -33,17 +42,6 @@ export const RadixRoot = styled(CheckboxPrimitive.Root, {
   },
 
   variants: {
-    round: {
-      true: {
-        borderRadius: '$round',
-      },
-    },
-    fill: {
-      true: {
-        width: '100%',
-        height: '100%',
-      },
-    },
     tone: {
       highlight: {
         borderColor: '$highlight7',
@@ -127,10 +125,25 @@ export const RadixRoot = styled(CheckboxPrimitive.Root, {
   },
 })
 
-export const Indicator = styled(CheckboxPrimitive.Indicator, {
+export function Item(props: React.ComponentProps<typeof RadixItem>) {
+  return (
+    <TouchZone size={props.size} htmlFor={props.id}>
+      <RadixItem {...props} />
+    </TouchZone>
+  )
+}
+
+export const Indicator = styled(RadioPrimitive.Indicator, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  flex: 1,
+  position: 'relative',
+})
+
+export const Dot = styled('div', {
+  borderRadius: '$round',
+  backgroundColor: '$white',
 
   defaultVariants: {
     size: 'md',
@@ -139,13 +152,25 @@ export const Indicator = styled(CheckboxPrimitive.Indicator, {
   variants: {
     size: {
       sm: {
-        size: '$4',
+        minSize: 'calc($tokens$controlSelectionSizeSm * 0.5)',
+
+        '@sm': {
+          minSize: 'calc($tokens$controlSelectionTouchSizeSm * 0.5)',
+        },
       },
       md: {
-        size: '$5',
+        minSize: 'calc($tokens$controlSelectionSizeMd * 0.4)',
+
+        '@sm': {
+          minSize: 'calc($tokens$controlSelectionTouchSizeMd * 0.4)',
+        },
       },
       lg: {
-        size: '$6',
+        minSize: 'calc($tokens$controlSelectionSizeLg * 0.4)',
+
+        '@sm': {
+          minSize: 'calc($tokens$controlSelectionTouchSizeLg * 0.4)',
+        },
       },
     },
   },
@@ -227,11 +252,3 @@ export const Content = styled('div', {
     },
   },
 })
-
-export function Root(props: React.ComponentProps<typeof RadixRoot>) {
-  return (
-    <TouchZone size={props.size} htmlFor={props.id}>
-      <RadixRoot {...props} />
-    </TouchZone>
-  )
-}

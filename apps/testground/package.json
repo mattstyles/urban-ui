@@ -27,6 +27,7 @@
     "@urban-ui/layout": "workspace:*",
     "@urban-ui/page": "workspace:*",
     "@urban-ui/panel": "workspace:*",
+    "@urban-ui/radio": "workspace:*",
     "@urban-ui/screen": "workspace:*",
     "@urban-ui/scrollable": "workspace:*",
     "@urban-ui/spacer": "workspace:*",
@@ -39,13 +40,15 @@
     "next": "^13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sketch-react-app": "^0.5.0"
+    "sketch-react-app": "^0.5.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@types/node": "^17.0.12",
     "@types/react": "^18.0.22",
     "@types/react-dom": "^18.0.7",
+    "@types/uuid": "^9.0.1",
     "config-eslint": "workspace:*",
     "config-ts": "workspace:*",
     "eslint": "^7.23.0",

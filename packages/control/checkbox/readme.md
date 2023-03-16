@@ -65,6 +65,7 @@ Support for an indeterminate state is the same as [radix-ui checkbox](https://ww
 
 | Prop  | Type                                                | Description                                |
 | ----- | --------------------------------------------------- | ------------------------------------------ |
-| tone  | 'primary' \| 'critical' \| 'neutral' \| 'highlight' |                                            |
+| tone  | 'primary' \| 'critical' \| 'neutral' \| 'highlight' | Defaults to neutral                        |
+| size  | 'sm' \| 'md' \| 'lg                                 | Defaults to md                             |
 | round | boolean                                             | Defaults to false                          |
 | fill  | boolean                                             | Defaults to false. Will fit its container. |

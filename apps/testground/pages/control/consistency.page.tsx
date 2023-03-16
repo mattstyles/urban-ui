@@ -3,7 +3,7 @@ import {CheckIcon} from '@radix-ui/react-icons'
 import {Container, Stack, Spacer, Flex} from '@urban-ui/layout'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
-import {Button, Checkbox, Input, Switch} from '@urban-ui/control'
+import {Button, Checkbox, Input, Switch, Radio} from '@urban-ui/control'
 import {Layout} from './layout'
 
 export default function Page() {
@@ -36,6 +36,38 @@ export default function Page() {
           </Stack>
           <Button tone='neutral'>Neutral tone button</Button>
           <Input tone='neutral' placeholder='Neutral tone input' />
+          <Radio.Root defaultValue='one' orientation='h' gap='xl'>
+            <Stack orientation='h' alignment='center'>
+              <Radio.Item value='one' id='r1'>
+                <Radio.Indicator>
+                  <Radio.Dot />
+                </Radio.Indicator>
+              </Radio.Item>
+              <Text as='label' htmlFor='r1'>
+                Neutral
+              </Text>
+            </Stack>
+            <Stack orientation='h' alignment='center'>
+              <Radio.Item value='two' id='r2'>
+                <Radio.Indicator>
+                  <Radio.Dot />
+                </Radio.Indicator>
+              </Radio.Item>
+              <Text as='label' htmlFor='r2'>
+                Radio
+              </Text>
+            </Stack>
+            <Stack orientation='h' alignment='center'>
+              <Radio.Item value='three' id='r3'>
+                <Radio.Indicator>
+                  <Radio.Dot />
+                </Radio.Indicator>
+              </Radio.Item>
+              <Text as='label' htmlFor='r3'>
+                Group
+              </Text>
+            </Stack>
+          </Radio.Root>
         </Stack>
         <Spacer size='xl' />
         <H2>Width</H2>
