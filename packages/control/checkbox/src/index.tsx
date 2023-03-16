@@ -6,6 +6,7 @@ import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 export const RadixRoot = styled(CheckboxPrimitive.Root, {
   textDecoration: 'none',
   display: 'flex',
+  alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '$1',
   borderColor: '$neutral7',
@@ -205,17 +206,17 @@ export const Content = styled('div', {
         },
       },
       md: {
-        mt: 'calc(($tokens$controlFieldSizeMd - $tokens$controlSelectionSizeMd) * 0.5)',
+        mt: 'calc(($tokens$controlFieldSizeMd - $tokens$controlSelectionSizeMd) * 0.65)',
 
         '@sm': {
-          mt: 'calc(($tokens$controlFieldTouchSizeMd - $tokens$controlSelectionTouchSizeMd) * 0.5)',
+          mt: 'calc(($tokens$controlFieldTouchSizeMd - $tokens$controlSelectionTouchSizeMd) * 0.65)',
         },
       },
       lg: {
-        mt: 'calc(($tokens$controlFieldSizeLg - $tokens$controlSelectionSizeLg) * 0.7)',
+        mt: 'calc(($tokens$controlFieldSizeLg - $tokens$controlSelectionSizeLg) * 0.85)',
 
         '@sm': {
-          mt: 'calc(($tokens$controlFieldTouchSizeLg - $tokens$controlSelectionTouchSizeLg) * 0.7)',
+          mt: 'calc(($tokens$controlFieldTouchSizeLg - $tokens$controlSelectionTouchSizeLg) * 0.85)',
         },
       },
     },
