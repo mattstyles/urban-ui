@@ -192,25 +192,25 @@ export default function Page() {
             </Text>
           </Stack>
           <Stack orientation='h' alignment='center' gap='lg'>
-            <Checkbox.Root id='d1' tone='primary' size='md'>
+            <Checkbox.Root id='d2' tone='primary' size='md'>
               <Checkbox.Indicator>
                 <CheckIcon width='100%' height='100%' />
               </Checkbox.Indicator>
             </Checkbox.Root>
-            <Text as='label' htmlFor='d1'>
+            <Text as='label' htmlFor='d2'>
               With stack and a really long label that will be too long to fit on
               one line and will collapse the gap created by the surrounding
               stack component.
             </Text>
           </Stack>
           <Flex alignment='center'>
-            <Checkbox.Root id='d2' tone='primary'>
+            <Checkbox.Root id='d3' tone='primary'>
               <Checkbox.Indicator>
                 <CheckIcon width='100%' height='100%' />
               </Checkbox.Indicator>
             </Checkbox.Root>
             <Spacer orientation='h' />
-            <Text as='label' htmlFor='d2'>
+            <Text as='label' htmlFor='d3'>
               This checkbox uses flex to align things centrally on and then uses
               a spacer to create separation. A spacer uses padding and will not
               collapse even when inside a flex component.
@@ -256,13 +256,13 @@ function ShortOrLongAlignmentTest() {
         </Checkbox.Content>
       </Stack>
       <Stack orientation='h' alignment='start' gap='sm'>
-        <Checkbox.Root id='e1' tone='primary'>
+        <Checkbox.Root id='e2' tone='primary'>
           <Checkbox.Indicator>
             <CheckIcon width='100%' height='100%' />
           </Checkbox.Indicator>
         </Checkbox.Root>
         <Checkbox.Content>
-          <Text as='label' htmlFor='e1'>
+          <Text as='label' htmlFor='e2'>
             {isLong
               ? 'This is some really long text as a label that will overflow the into multiple lines, more than 2 lines, probably 3.'
               : 'Short text'}
@@ -270,13 +270,13 @@ function ShortOrLongAlignmentTest() {
         </Checkbox.Content>
       </Stack>
       <Stack orientation='h' alignment='start' gap='sm'>
-        <Checkbox.Root id='e1' tone='primary' size='lg' alignment='start'>
+        <Checkbox.Root id='e3' tone='primary' size='lg'>
           <Checkbox.Indicator size='lg'>
             <CheckIcon width='100%' height='100%' />
           </Checkbox.Indicator>
         </Checkbox.Root>
         <Checkbox.Content size='lg'>
-          <Text as='label' htmlFor='e1'>
+          <Text as='label' htmlFor='e3'>
             {isLong
               ? 'This is some really long text as a label that will overflow the into multiple lines, more than 2 lines, probably 3.'
               : 'Short text'}

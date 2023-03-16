@@ -159,35 +159,29 @@ export const TouchZone = styled('label', {
     size: {
       sm: {
         minSize: '$tokens$controlFieldSizeSm',
-        marginLeft:
-          'calc(($tokens$controlFieldSizeSm - $tokens$controlSelectionSizeSm) * -0.5)',
+        mx: 'calc(($tokens$controlFieldSizeSm - $tokens$controlSelectionSizeSm) * -0.5)',
 
         '@sm': {
           minSize: '$tokens$controlFieldTouchSizeSm',
-          marginLeft:
-            'calc(($tokens$controlFieldTouchSizeSm - $tokens$controlSelectionTouchSizeSm) * -0.5)',
+          mx: 'calc(($tokens$controlFieldTouchSizeSm - $tokens$controlSelectionTouchSizeSm) * -0.5)',
         },
       },
       md: {
         minSize: '$tokens$controlFieldSizeMd',
-        marginLeft:
-          'calc(($tokens$controlFieldSizeMd - $tokens$controlSelectionSizeMd) * -0.5)',
+        mx: 'calc(($tokens$controlFieldSizeMd - $tokens$controlSelectionSizeMd) * -0.5)',
 
         '@sm': {
           minSize: '$tokens$controlFieldTouchSizeMd',
-          marginLeft:
-            'calc(($tokens$controlFieldTouchSizeSm - $tokens$controlSelectionTouchSizeSm) * -0.5)',
+          mx: 'calc(($tokens$controlFieldTouchSizeSm - $tokens$controlSelectionTouchSizeSm) * -0.5)',
         },
       },
       lg: {
         minSize: '$tokens$controlFieldSizeLg',
-        marginLeft:
-          'calc(($tokens$controlFieldSizeLg - $tokens$controlSelectionSizeLg) * -0.5)',
+        mx: 'calc(($tokens$controlFieldSizeLg - $tokens$controlSelectionSizeLg) * -0.5)',
 
         '@sm': {
           minSize: '$tokens$controlFieldTouchSizeLg',
-          marginLeft:
-            'calc(($tokens$controlFieldTouchSizeLg - $tokens$controlSelectionTouchSizeLg) * -0.5)',
+          mx: 'calc(($tokens$controlFieldTouchSizeLg - $tokens$controlSelectionTouchSizeLg) * -0.5)',
         },
       },
     },
