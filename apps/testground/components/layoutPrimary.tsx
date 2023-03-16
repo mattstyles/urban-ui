@@ -5,6 +5,7 @@ import {HamburgerMenuIcon, StitchesLogoIcon} from '@radix-ui/react-icons'
 import {RadixLogoIcon} from 'components/radixLogoIcon'
 import {Nav} from './navigation'
 
+import {Button} from '@urban-ui/button'
 import {Center} from '@urban-ui/center'
 import {Container} from '@urban-ui/container'
 import {Screen} from '@urban-ui/screen'
@@ -29,10 +30,20 @@ export function Layout({children, nav}: LayoutProps) {
     <Screen min>
       <Container orientation={{'@initial': 'h', '@sm': 'v'}}>
         <Aside>
-          <Container css={{'@md+': {display: 'none'}}}>
-            <button onClick={() => setIsOpen(!isOpen)}>
-              <HamburgerMenuIcon />
-            </button>
+          <Container
+            css={{'@md+': {display: 'none'}}}
+            alignment='center'
+            orientation='h'>
+            <Flex orientation='h'>
+              <Button
+                onClick={() => setIsOpen(!isOpen)}
+                type={isOpen ? 'solid' : 'transparent'}
+                tone='primary'
+                square
+                round>
+                <HamburgerMenuIcon />
+              </Button>
+            </Flex>
           </Container>
           <AsideContent isOpen={isOpen}>
             <Scrollable.Root type='auto'>
