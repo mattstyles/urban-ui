@@ -6,6 +6,7 @@ import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
 import * as Checkbox from '@urban-ui/checkbox'
 import {Button} from '@urban-ui/button'
+import * as Switch from '@urban-ui/switch'
 import {Layout} from './layout'
 
 export default function Page() {
@@ -220,13 +221,16 @@ export default function Page() {
 
         <H2>Alternatives</H2>
         <P>
-          Consider checkbox, a toggle button, or a slider, to denote a boolean
+          Consider checkbox, a toggle button, or a switch, to denote a boolean
           state.
         </P>
         <Stack>
           <ToggleButton>
             <StitchesLogoIcon width='100%' height='100%' />
           </ToggleButton>
+          <Switch.Root>
+            <Switch.Thumb />
+          </Switch.Root>
         </Stack>
 
         <Spacer size='lg' />

@@ -12,7 +12,7 @@ import {
   Stack,
   Icon,
 } from '@urban-ui/layout'
-import {Button, Input, Checkbox} from '@urban-ui/control'
+import {Button, Input, Checkbox, Switch} from '@urban-ui/control'
 import {Text} from '@urban-ui/text'
 import {Layout} from './layout'
 
@@ -69,6 +69,32 @@ export default function Page() {
                 </Checkbox.Indicator>
               </Checkbox.Root>
               <Text as='label'>Lg 48</Text>
+            </Stack>
+          </Stack>
+          <Stack orientation='h' alignment='start' gap='lg'>
+            <Stack orientation='h' alignment='center'>
+              <Switch.Root id='c1' size='sm'>
+                <Switch.Thumb size='sm' />
+              </Switch.Root>
+              <Text as='label' htmlFor='c1'>
+                Sm
+              </Text>
+            </Stack>
+            <Stack orientation='h' alignment='center'>
+              <Switch.Root id='c2' size='md'>
+                <Switch.Thumb size='md' />
+              </Switch.Root>
+              <Text as='label' htmlFor='c2'>
+                Md
+              </Text>
+            </Stack>
+            <Stack orientation='h' alignment='center'>
+              <Switch.Root id='c3' size='lg'>
+                <Switch.Thumb size='lg' />
+              </Switch.Root>
+              <Text as='label' htmlFor='c3'>
+                Lg
+              </Text>
             </Stack>
           </Stack>
           <Text size='lg'>Icon sizes</Text>

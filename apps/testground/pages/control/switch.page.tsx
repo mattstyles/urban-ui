@@ -45,10 +45,10 @@ export default function Page() {
             </Text>
           </Stack>
           <Stack orientation='h' alignment='center'>
-            <Switch.Root id='b2' size='lg'>
+            <Switch.Root id='b3' size='lg'>
               <Switch.Thumb size='lg' />
             </Switch.Root>
-            <Text as='label' htmlFor='b2'>
+            <Text as='label' htmlFor='b3'>
               Lg
             </Text>
           </Stack>
