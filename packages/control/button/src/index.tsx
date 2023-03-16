@@ -16,7 +16,7 @@ const StyledButton = styled('button', {
   alignSelf: 'flex-start',
   alignItems: 'center',
   justifyContent: 'center',
-  borderRadius: '$1',
+  borderRadius: '$tokens$controlFieldRadius',
   borderColor: '$transparent',
   borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',

@@ -7,7 +7,7 @@ export const Input = styled('input', {
   alignSelf: 'flex-start',
   color: '$text',
   background: '$white',
-  borderRadius: '$1',
+  borderRadius: '$tokens$controlFieldRadius',
   borderColor: '$transparent',
   borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
