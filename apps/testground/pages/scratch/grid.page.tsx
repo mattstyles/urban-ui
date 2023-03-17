@@ -14,6 +14,7 @@ import {
 } from '@urban-ui/layout'
 import {Button, Input, Checkbox, Switch} from '@urban-ui/control'
 import {Text} from '@urban-ui/text'
+import {Separator} from '@urban-ui/separator'
 import {Layout} from './layout'
 
 export default function Page() {
@@ -31,6 +32,7 @@ export default function Page() {
           <Text>2x default height aligns</Text>
           <Text size='lg'>lg 24</Text>
           <Text size='xl'>lg 32</Text>
+          <Text size='lg'>Spacers</Text>
           <Spacer size='md' />
           <Spacer size='lg' />
           <Spacer size='sm' />
@@ -109,6 +111,12 @@ export default function Page() {
               <StitchesLogoIcon width='100%' height='100%' />
             </Icon>
           </Stack>
+          <Text size='lg'>Separators</Text>
+          <Separator size='xs' />
+          <Separator size='sm' />
+          <Separator size='md' />
+          <Separator size='lg' />
+          <Separator size='xl' />
         </Container>
       </Screen>
     </SketchProvider>

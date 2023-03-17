@@ -13,6 +13,7 @@ const nav: NavType = [
     block: [
       {name: 'Components', link: '/components'},
       {name: 'Controls', link: '/control'},
+      {name: 'Content', link: '/content'},
       {name: 'Layout examples', link: '/pages'},
       {name: 'Scratch', link: '/scratch'},
     ],
