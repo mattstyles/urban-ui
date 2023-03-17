@@ -3,7 +3,7 @@ import {CheckIcon} from '@radix-ui/react-icons'
 import {Container, Stack, Spacer, Flex} from '@urban-ui/layout'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
-import {Button, Checkbox, Input, Switch, Radio} from '@urban-ui/control'
+import {Button, Checkbox, Input, Switch, Radio, Slider} from '@urban-ui/control'
 import {Layout} from './layout'
 
 export default function Page() {
@@ -68,6 +68,16 @@ export default function Page() {
               </Text>
             </Stack>
           </Radio.Root>
+          <Slider.Root
+            defaultValue={[50]}
+            max={100}
+            step={1}
+            aria-label='Volume'>
+            <Slider.Track>
+              <Slider.Range />
+            </Slider.Track>
+            <Slider.Thumb />
+          </Slider.Root>
         </Stack>
         <Spacer size='xl' />
         <H2>Width</H2>
@@ -99,6 +109,17 @@ export default function Page() {
             />
           </Stack>
           <Input tone='neutral' placeholder='Neutral tone input' width='full' />
+          <Slider.Root
+            width='full'
+            defaultValue={[50]}
+            max={100}
+            step={1}
+            aria-label='Volume'>
+            <Slider.Track>
+              <Slider.Range />
+            </Slider.Track>
+            <Slider.Thumb />
+          </Slider.Root>
         </Stack>
       </Content>
     </Container>

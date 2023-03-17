@@ -12,6 +12,7 @@ const nav: NavType = [
       {name: 'Checkbox', link: '/control/checkbox'},
       {name: 'Switch', link: '/control/switch'},
       {name: 'Radio', link: '/control/radio'},
+      {name: 'Slider', link: '/control/slider'},
     ],
   },
   {

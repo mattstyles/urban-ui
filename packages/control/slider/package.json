@@ -1,16 +1,16 @@
 {
-  "name": "@urban-ui/control",
+  "name": "@urban-ui/slider",
   "version": "0.0.1",
-  "description": "Composite package of all urban-ui control components",
+  "description": "Styled version of radix-ui/slider",
   "type": "module",
   "sideEffects": false,
-  "main": "./dist/@urban-ui/control.js",
-  "module": "./dist/@urban-ui/control.js",
+  "main": "./dist/@urban-ui/slider.js",
+  "module": "./dist/@urban-ui/slider.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/@urban-ui/control.js",
-      "export": "./dist/@urban-ui/control.cjs",
+      "import": "./dist/@urban-ui/slider.js",
+      "export": "./dist/@urban-ui/slider.cjs",
       "types": "./dist/index.d.ts"
     }
   },
@@ -25,7 +25,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattstyles/urban-ui.git",
-    "directory": "packages/components/control"
+    "directory": "packages/components/slider"
   },
   "bugs": {
     "url": "https://github.com/mattstyles/urban-ui/issues"
@@ -46,13 +46,7 @@
     "test": "vitest run src"
   },
   "dependencies": {
-    "@urban-ui/button": "workspace:*",
-    "@urban-ui/button-group": "workspace:*",
-    "@urban-ui/checkbox": "workspace:*",
-    "@urban-ui/input": "workspace:*",
-    "@urban-ui/radio": "workspace:*",
-    "@urban-ui/slider": "workspace:*",
-    "@urban-ui/switch": "workspace:*",
+    "@radix-ui/react-slider": "^1.1.1",
     "@urban-ui/theme": "workspace:*"
   },
   "peerDependencies": {
