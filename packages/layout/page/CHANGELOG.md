@@ -1,5 +1,17 @@
 # @urban-ui/page
 
+## 0.1.0
+
+### Minor Changes
+
+- 661b6c1: 0.1.0
+
+### Patch Changes
+
+- Updated dependencies [661b6c1]
+  - @urban-ui/theme@0.1.0
+  - @urban-ui/flex@0.1.0
+
 ## 0.0.5
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # generator-urban-ui
 
+## 1.0.2
+
+### Patch Changes
+
+- 661b6c1: 0.1.0
+
 ## 1.0.1
 
 ### Patch Changes

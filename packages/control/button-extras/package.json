@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/button-extras",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Additional button examples. These extend the default button package to cover more use-cases. They can be used as examples of extending the button package or as standalone button types.",
   "type": "module",
   "sideEffects": false,

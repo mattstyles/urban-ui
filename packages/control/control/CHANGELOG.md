@@ -1,5 +1,24 @@
 # @urban-ui/control
 
+## 0.1.0
+
+### Minor Changes
+
+- 661b6c1: 0.1.0
+
+### Patch Changes
+
+- Updated dependencies [661b6c1]
+  - @urban-ui/button@0.1.0
+  - @urban-ui/button-group@0.1.0
+  - @urban-ui/checkbox@0.1.0
+  - @urban-ui/input@0.1.0
+  - @urban-ui/radio@0.1.0
+  - @urban-ui/select@0.1.0
+  - @urban-ui/slider@0.1.0
+  - @urban-ui/switch@0.1.0
+  - @urban-ui/theme@0.1.0
+
 ## 0.0.2
 
 ### Patch Changes

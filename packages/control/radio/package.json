@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/radio",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Styled radio wrapper around radix-ui radio components",
   "type": "module",
   "sideEffects": false,

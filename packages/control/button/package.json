@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/button",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Button component",
   "type": "module",
   "sideEffects": false,

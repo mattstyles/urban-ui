@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/switch",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Boolean toggle component that looks like a switch",
   "type": "module",
   "sideEffects": false,

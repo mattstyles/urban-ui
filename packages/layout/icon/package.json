@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/icon",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Wrapper around icon token size",
   "type": "module",
   "sideEffects": false,

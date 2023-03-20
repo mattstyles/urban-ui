@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/checkbox",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Checkbox component - styles radi-uix checkbox",
   "type": "module",
   "sideEffects": false,
