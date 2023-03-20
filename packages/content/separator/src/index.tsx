@@ -253,9 +253,12 @@ const Orient = styled('div', {
   },
 })
 
-export function Separator(props: React.ComponentProps<typeof StyledSeparator>) {
+export function Separator({
+  'data-testid': testid,
+  ...props
+}: React.ComponentProps<typeof StyledSeparator> & {'data-testid'?: string}) {
   return (
-    <Orient orientation={props.orientation}>
+    <Orient orientation={props.orientation} data-testid={testid}>
       <StyledSeparator {...props} />
       <Spacer {...props} />
     </Orient>

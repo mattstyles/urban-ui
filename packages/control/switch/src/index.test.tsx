@@ -1,12 +1,12 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 
-import {Switch} from './index'
+import * as Switch from './index'
 
 describe('[Switch]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Switch data-testid='some-id' />)
+    render(<Switch.Root data-testid='some-id' />)
 
     // ACT
 

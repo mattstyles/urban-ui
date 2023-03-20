@@ -42,8 +42,7 @@
     "lint": "eslint *.ts*",
     "clean": "del dist",
     "dev": "vite build --watch",
-    "build": "vite build",
-    "test": "vitest run src"
+    "build": "vite build"
   },
   "dependencies": {
     "@urban-ui/button": "workspace:*",

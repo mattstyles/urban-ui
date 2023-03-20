@@ -8,11 +8,18 @@ type Props = {
   children: Array<React.ReactNode>
   radius?: RadiusSize
   color?: string
+  'data-testid'?: string
 }
-export function ButtonGroup({children, radius = 'md', color = '$bg7'}: Props) {
+export function ButtonGroup({
+  children,
+  radius = 'md',
+  color = '$bg7',
+  'data-testid': testid,
+}: Props) {
   const r = getRadius(radius)
   return (
     <Flex
+      data-testid={testid}
       inline
       css={{
         borderRadius: `calc(${r} + 2px)`,

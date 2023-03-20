@@ -15,19 +15,14 @@ pnpm add -S @urban-ui/control
 ```
 
 ```js
-import {Control} from '@urban-ui/control'
-
-export function MyComponent() {
-  return <Control />
-}
+import {
+  Button,
+  ButtonGroup,
+  Checkbox,
+  Input,
+  Radio,
+  Select,
+  Slider,
+  Switch,
+} from '@urban-ui/control'
 ```
-
-## Details
-
-@TODO details about the component
-
-## API
-
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-|      |      |             |

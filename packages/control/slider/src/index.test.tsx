@@ -1,12 +1,12 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 
-import {Slider} from './index'
+import * as Slider from './index'
 
 describe('[Slider]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Slider data-testid='some-id' />)
+    render(<Slider.Root data-testid='some-id' />)
 
     // ACT
 

@@ -6,7 +6,12 @@ import {ButtonGroup} from './index'
 describe('[ButtonGroup]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<ButtonGroup data-testid='some-id' />)
+    render(
+      <ButtonGroup data-testid='some-id'>
+        <div />
+        <div />
+      </ButtonGroup>
+    )
 
     // ACT
 
