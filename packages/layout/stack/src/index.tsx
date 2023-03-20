@@ -16,6 +16,9 @@ export const Stack = styled(Flex, {
       },
     },
     gap: {
+      none: {
+        gap: 0,
+      },
       xs: {
         gap: '$xs',
       },

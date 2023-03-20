@@ -91,6 +91,7 @@ const Select = React.forwardRef<
     </SelectPrimitive.Root>
   )
 })
+Select.displayName = 'select'
 
 const SelectItem = React.forwardRef<
   HTMLDivElement,
@@ -105,6 +106,7 @@ const SelectItem = React.forwardRef<
     </SelectPrimitive.Item>
   )
 })
+SelectItem.displayName = 'select-item'
 
 const Radio = React.forwardRef<
   HTMLDivElement,
@@ -112,9 +114,10 @@ const Radio = React.forwardRef<
 >(({children, ...props}, forwardedRef) => {
   return <RadioPrimitive.Root {...props}>{children}</RadioPrimitive.Root>
 })
+Radio.displayName = 'radio'
 
 const RadioItem = React.forwardRef<
-  HTMLDivElement,
+  HTMLButtonElement,
   React.ComponentProps<typeof RadioPrimitive.Root> & {value: string}
 >(({children, value, ...props}, forwardedRef) => {
   return (
@@ -125,7 +128,7 @@ const RadioItem = React.forwardRef<
         size='sm'
         tone='primary'
         ref={forwardedRef}>
-        <RadioPrimitive.Indicator size='sm'>
+        <RadioPrimitive.Indicator>
           <RadioPrimitive.Dot size='sm' />
         </RadioPrimitive.Indicator>
       </RadioPrimitive.Item>
@@ -135,9 +138,10 @@ const RadioItem = React.forwardRef<
     </Stack>
   )
 })
+RadioItem.displayName = 'radio-item'
 
 const Checkbox = React.forwardRef<
-  HTMLDivElement,
+  HTMLButtonElement,
   React.ComponentProps<typeof CheckboxPrimitive.Root> & {value: string}
 >(({children, value, ...props}, forwardedRef) => {
   return (
@@ -159,3 +163,4 @@ const Checkbox = React.forwardRef<
     </Stack>
   )
 })
+Checkbox.displayName = 'checkbox'

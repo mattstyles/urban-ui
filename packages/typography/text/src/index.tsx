@@ -40,6 +40,9 @@ export const Text = styled('span', {
       currentcolor: {
         color: '$currentcolor',
       },
+      current: {
+        color: '$currentcolor',
+      },
     },
     size: {
       xs: {

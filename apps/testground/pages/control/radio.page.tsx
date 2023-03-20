@@ -156,14 +156,14 @@ function Group({
   tone?: 'neutral' | 'highlight' | 'primary' | 'critical'
   size?: 'sm' | 'md' | 'lg'
   orientation?: 'h' | 'v'
-  gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
+  gap?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'xs'
 }) {
   const id = uuid()
   return (
     <Radio.Root defaultValue='one' orientation={orientation} gap={gap}>
       <Stack orientation='h' alignment='center'>
         <Radio.Item value='one' id={`${id}1`} tone={tone} size={size}>
-          <Radio.Indicator size={size}>
+          <Radio.Indicator>
             <Radio.Dot size={size} />
           </Radio.Indicator>
         </Radio.Item>
@@ -173,7 +173,7 @@ function Group({
       </Stack>
       <Stack orientation='h' alignment='center'>
         <Radio.Item value='two' id={`${id}2`} tone={tone} size={size}>
-          <Radio.Indicator size={size}>
+          <Radio.Indicator>
             <Radio.Dot size={size} />
           </Radio.Indicator>
         </Radio.Item>
@@ -183,7 +183,7 @@ function Group({
       </Stack>
       <Stack orientation='h' alignment='center'>
         <Radio.Item value='three' id={`${id}3`} size={size} tone={tone}>
-          <Radio.Indicator size={size}>
+          <Radio.Indicator>
             <Radio.Dot size={size} />
           </Radio.Indicator>
         </Radio.Item>

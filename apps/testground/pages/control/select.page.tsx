@@ -96,7 +96,7 @@ const Item = React.forwardRef<
 })
 
 function Tone() {
-  const [tone, setTone] = useState('neutral')
+  const [tone, setTone] = useState<string>('neutral')
 
   return (
     <form>
@@ -105,7 +105,11 @@ function Tone() {
           Tonality
         </Text>
         <Select.Root value={tone} onValueChange={setTone}>
-          <Select.Trigger id='a1' aria-label='Tones' size='md' tone={tone}>
+          <Select.Trigger
+            id='a1'
+            aria-label='Tones'
+            size='md'
+            tone={tone as 'highlight' | 'primary' | 'neutral' | 'critical'}>
             <Select.Value placeholder='Select a tone…' />
             <Select.Icon>
               <ChevronDownIcon />
