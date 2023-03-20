@@ -1,12 +1,12 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 
-import {Checkbox} from './index'
+import * as Checkbox from './index'
 
 describe('[Checkbox]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Checkbox data-testid='some-id' />)
+    render(<Checkbox.Root data-testid='some-id' />)
 
     // ACT
 

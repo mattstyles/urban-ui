@@ -1,12 +1,12 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 
-import {Radio} from './index'
+import * as Radio from './index'
 
 describe('[Radio]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Radio data-testid='some-id' />)
+    render(<Radio.Root data-testid='some-id' />)
 
     // ACT
 
