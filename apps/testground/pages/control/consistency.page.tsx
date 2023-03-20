@@ -1,9 +1,17 @@
-import {CheckIcon} from '@radix-ui/react-icons'
+import {CheckIcon, ChevronDownIcon} from '@radix-ui/react-icons'
 
 import {Container, Stack, Spacer, Flex} from '@urban-ui/layout'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
-import {Button, Checkbox, Input, Switch, Radio, Slider} from '@urban-ui/control'
+import {
+  Button,
+  Checkbox,
+  Input,
+  Switch,
+  Radio,
+  Slider,
+  Select,
+} from '@urban-ui/control'
 import {Layout} from './layout'
 
 export default function Page() {
@@ -120,6 +128,32 @@ export default function Page() {
             </Slider.Track>
             <Slider.Thumb />
           </Slider.Root>
+          <Select.Root>
+            <Select.Trigger aria-label='Tones' size='md' width='full'>
+              <Select.Value placeholder='Select…' />
+              <Select.Icon>
+                <ChevronDownIcon />
+              </Select.Icon>
+            </Select.Trigger>
+            <Select.Portal>
+              <Select.Content>
+                <Select.Viewport>
+                  <Select.Item value='one'>
+                    <Select.ItemText>One</Select.ItemText>
+                    <Select.ItemIndicator>
+                      <CheckIcon />
+                    </Select.ItemIndicator>
+                  </Select.Item>
+                  <Select.Item value='two'>
+                    <Select.ItemText>Two</Select.ItemText>
+                    <Select.ItemIndicator>
+                      <CheckIcon />
+                    </Select.ItemIndicator>
+                  </Select.Item>
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
         </Stack>
       </Content>
     </Container>

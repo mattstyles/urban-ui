@@ -70,6 +70,8 @@ export default function Page() {
           </form>
 
           <Tone />
+          <IndicatorOnly />
+          <Popper />
         </Stack>
       </Content>
     </Container>
@@ -133,5 +135,102 @@ function Tone() {
         </Select.Root>
       </Stack>
     </form>
+  )
+}
+
+function IndicatorOnly() {
+  return (
+    <Stack>
+      <div>
+        <H2>Indicator</H2>
+        <P>
+          To indicate the selected status you can specify between using an icon
+          and using only background colour (or both).
+        </P>
+      </div>
+      <form>
+        <Stack orientation='h' alignment='center'>
+          <Text as='label' htmlFor='b1'>
+            Indicator
+          </Text>
+          <Select.Root>
+            <Select.Trigger id='b1' aria-label='Tones' size='md' tone='primary'>
+              <Select.Value placeholder='Indicator…' />
+              <Select.Icon>
+                <ChevronDownIcon />
+              </Select.Icon>
+            </Select.Trigger>
+            <Select.Portal>
+              <Select.Content>
+                <Select.ScrollUpButton>
+                  <ChevronUpIcon />
+                </Select.ScrollUpButton>
+                <Select.Viewport>
+                  <Item value='primary' tone='primary' indicatorBackground>
+                    With background indicator
+                  </Item>
+                  <Item value='highlight' tone='primary'>
+                    With icon only indicator
+                  </Item>
+                </Select.Viewport>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
+        </Stack>
+      </form>
+    </Stack>
+  )
+}
+
+function Popper() {
+  return (
+    <Stack>
+      <div>
+        <H2>Popper</H2>
+        <P>
+          Content <Text type='mono'>position: popper</Text> prop will be
+          forwarded to allow the same customisation as radix-ui allows.
+        </P>
+      </div>
+      <form>
+        <Stack orientation='h' alignment='center'>
+          <Text as='label' htmlFor='c1'>
+            Popper
+          </Text>
+          <Select.Root>
+            <Select.Trigger id='c1' aria-label='Tones' size='md' tone='primary'>
+              <Select.Value placeholder='Names…' />
+              <Select.Icon>
+                <ChevronDownIcon />
+              </Select.Icon>
+            </Select.Trigger>
+            <Select.Portal>
+              <Select.Content position='popper' sideOffset={6}>
+                <Select.ScrollUpButton>
+                  <ChevronUpIcon />
+                </Select.ScrollUpButton>
+                <Select.Viewport>
+                  <Item value='amy' tone='primary'>
+                    Amy
+                  </Item>
+                  <Item value='benito' tone='primary'>
+                    Benito
+                  </Item>
+                  <Item value='colin' tone='primary'>
+                    Colin
+                  </Item>
+                  <Item value='davina' tone='primary'>
+                    Davina
+                  </Item>
+                </Select.Viewport>
+                <Select.ScrollDownButton>
+                  <ChevronDownIcon />
+                </Select.ScrollDownButton>
+              </Select.Content>
+            </Select.Portal>
+          </Select.Root>
+        </Stack>
+      </form>
+    </Stack>
   )
 }

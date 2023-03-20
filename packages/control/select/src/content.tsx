@@ -19,9 +19,29 @@ const scrollButtonStyles = {
   alignItems: 'center',
   justifyContent: 'center',
   height: '$6',
-  backgroundColor: 'white',
-  color: '$neutral11',
+  backgroundColor: '$transparent',
   cursor: 'default',
+
+  defaultVariants: {
+    tone: 'neutral',
+  },
+
+  variants: {
+    tone: {
+      primary: {
+        color: '$textPrimary',
+      },
+      highlight: {
+        color: '$textHighlight',
+      },
+      critical: {
+        color: '$text',
+      },
+      neutral: {
+        color: '$text',
+      },
+    },
+  },
 }
 
 export const ScrollUpButton = styled(

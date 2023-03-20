@@ -33,12 +33,12 @@ export const Item = styled(SelectPrimitive.Item, {
 
   defaultVariants: {
     tone: 'neutral',
-    indicatorOnly: false,
+    indicatorBackground: false,
   },
 
   variants: {
-    indicatorOnly: {
-      true: {
+    indicatorBackground: {
+      false: {
         '&[data-state="checked"]': {
           backgroundColor: '$transparent !important',
         },
@@ -98,8 +98,28 @@ export const Label = styled(SelectPrimitive.Label, {
 
 export const Separator = styled(SelectPrimitive.Separator, {
   height: 1,
-  backgroundColor: '$neutral6',
   m: '$md',
+
+  defaultVariants: {
+    tone: 'neutral',
+  },
+
+  variants: {
+    tone: {
+      primary: {
+        backgroundColor: '$primary6',
+      },
+      highlight: {
+        backgroundColor: '$highlight6',
+      },
+      critical: {
+        backgroundColor: '$critical6',
+      },
+      neutral: {
+        backgroundColor: '$neutral6',
+      },
+    },
+  },
 })
 
 export const ItemIndicator = styled(SelectPrimitive.ItemIndicator, {
@@ -109,4 +129,25 @@ export const ItemIndicator = styled(SelectPrimitive.ItemIndicator, {
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
+
+  defaultVariants: {
+    tone: 'neutral',
+  },
+
+  variants: {
+    tone: {
+      primary: {
+        color: '$textPrimary',
+      },
+      highlight: {
+        color: '$textHighlight',
+      },
+      critical: {
+        color: '$text',
+      },
+      neutral: {
+        color: '$text',
+      },
+    },
+  },
 })
