@@ -6,7 +6,7 @@ import {Button} from './index'
 describe('[Button]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Button data-testid='some-id' />)
+    render(<Button data-testid='some-id'>button</Button>)
 
     // ACT
 

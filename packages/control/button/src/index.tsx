@@ -1,5 +1,5 @@
 // https://github.com/microsoft/TypeScript/issues/48212, https://github.com/stitchesjs/stitches/issues/1055#issuecomment-1243663948
-import type {VariantProps} from '@stitches/react'
+import type {} from '@stitches/react'
 import * as React from 'react'
 import {styled} from '@urban-ui/theme'
 
