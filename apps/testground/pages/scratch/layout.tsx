@@ -5,7 +5,10 @@ import {Layout as PrimaryLayout} from 'components/layoutPrimary'
 const nav: NavType = [
   {
     title: {name: 'Scratch', link: '/scratch'},
-    block: [{name: 'Grid Alignment', link: '/scratch/grid'}],
+    block: [
+      {name: 'Grid Alignment', link: '/scratch/grid'},
+      {name: 'Custom API', link: '/scratch/customAPI'},
+    ],
   },
 ]
 
