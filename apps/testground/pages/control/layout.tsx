@@ -13,6 +13,7 @@ const nav: NavType = [
       {name: 'Switch', link: '/control/switch'},
       {name: 'Radio', link: '/control/radio'},
       {name: 'Slider', link: '/control/slider'},
+      {name: 'Select', link: '/control/select'},
     ],
   },
   {

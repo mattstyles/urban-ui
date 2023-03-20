@@ -30,6 +30,7 @@
     "@urban-ui/radio": "workspace:*",
     "@urban-ui/screen": "workspace:*",
     "@urban-ui/scrollable": "workspace:*",
+    "@urban-ui/select": "workspace:*",
     "@urban-ui/separator": "workspace:*",
     "@urban-ui/slider": "workspace:*",
     "@urban-ui/spacer": "workspace:*",

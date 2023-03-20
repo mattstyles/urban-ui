@@ -1,18 +1,27 @@
-// https://github.com/microsoft/TypeScript/issues/48212, https://github.com/stitchesjs/stitches/issues/1055#issuecomment-1243663948
-import type {} from '@stitches/react'
 import {styled} from '@urban-ui/theme'
+import * as SelectPrimitive from '@radix-ui/react-select'
 
-export const Input = styled('input', {
+export const Trigger = styled(SelectPrimitive.SelectTrigger, {
   display: 'inline-flex',
   alignSelf: 'flex-start',
-  color: '$text',
+  alignItems: 'center',
+  justifyContent: 'space-between',
   background: '$white',
   borderRadius: '$tokens$controlFieldRadius',
-  borderColor: '$transparent',
+  borderColor: '$neutral7',
   borderWidth: '$tokens$controlFieldBorderSize',
   borderStyle: 'solid',
+  backgroundColor: 'white',
+  color: '$text',
+
   padding: '0 $tokens$controlFieldPaddingX',
   fontSize: '$md',
+  gap: '$sm',
+
+  '&:hover': {backgroundColor: '$neutral3'},
+  '&[data-placeholder]': {
+    color: '$textLowContrast',
+  },
 
   '&:disabled': {
     backgroundColor: '$bg7',
@@ -20,7 +29,7 @@ export const Input = styled('input', {
     color: '$textLowContrast',
     cursor: 'not-allowed',
 
-    '&::placholder': {
+    '&[data-placeholder]': {
       color: '$textLowContrast',
     },
 
@@ -30,8 +39,9 @@ export const Input = styled('input', {
   },
 
   defaultVariants: {
-    size: 'md',
     tone: 'neutral',
+    size: 'md',
+    width: 'normal',
   },
 
   variants: {
@@ -44,9 +54,13 @@ export const Input = styled('input', {
       primary: {
         borderColor: '$primary7',
         color: '$textPrimary',
+
+        '&[data-placeholder]': {
+          color: '$textPrimaryLowContrast',
+        },
       },
       critical: {
-        borderColor: '$critical10',
+        borderColor: '$critical7',
       },
       neutral: {
         borderColor: '$neutral7',
@@ -54,9 +68,16 @@ export const Input = styled('input', {
       highlight: {
         borderColor: '$highlight7',
         color: '$textHighlight',
+
+        '&[data-placeholder]': {
+          color: '$textHighlightLowContrast',
+        },
       },
     },
     width: {
+      normal: {
+        minWidth: 180,
+      },
       full: {
         flex: 1,
         alignSelf: 'normal',
@@ -87,3 +108,9 @@ export const Input = styled('input', {
     },
   },
 })
+
+export const Icon = styled(SelectPrimitive.SelectIcon, {
+  color: '$current',
+})
+
+export const Value = SelectPrimitive.Value

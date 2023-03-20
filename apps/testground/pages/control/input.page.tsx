@@ -29,7 +29,7 @@ export default function Page() {
         <P>Default is size=md and tone=neutral</P>
         <Stack>
           <Input placeholder='Default input' />
-          <Input disabled placeholder='disabled' />
+          <Input disabled placeholder='disabled' tone='primary' />
         </Stack>
         <H2>Sizes</H2>
         <Stack>
