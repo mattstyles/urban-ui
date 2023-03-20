@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/center",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Centers content both horizontally and vertically",
   "type": "module",
   "sideEffects": false,

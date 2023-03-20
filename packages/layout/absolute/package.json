@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/absolute",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Helper for absolutely positioned elements",
   "type": "module",
   "sideEffects": false,

@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/layout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "All urban-ui layout components in a  single module",
   "type": "module",
   "sideEffects": false,

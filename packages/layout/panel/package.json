@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/panel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Floating panel for content",
   "type": "module",
   "sideEffects": false,

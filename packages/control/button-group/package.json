@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/button-group",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Styling for a group of buttons",
   "type": "module",
   "sideEffects": false,

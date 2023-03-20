@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/slider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Styled version of radix-ui/slider",
   "type": "module",
   "sideEffects": false,

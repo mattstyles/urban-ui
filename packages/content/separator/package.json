@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/separator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Styled wrapper around radix-ui/separator",
   "type": "module",
   "sideEffects": false,

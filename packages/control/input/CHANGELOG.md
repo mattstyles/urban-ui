@@ -1,9 +1,12 @@
-# @urban-ui/panel
+# @urban-ui/input
 
-## 0.0.3
+## 0.0.2
 
 ### Patch Changes
 
+- 0ac89c6: add :rocket: select component
+- 07e8f3e: add highlight tone colour scale
+- 2b95bae: Expose tokens for control elements
 - Updated dependencies [9cb48a5]
 - Updated dependencies [07e8f3e]
 - Updated dependencies [d5ea276]
@@ -11,16 +14,4 @@
 - Updated dependencies [44042db]
 - Updated dependencies [2b95bae]
 - Updated dependencies [17dfc18]
-  - @urban-ui/flex@0.0.5
   - @urban-ui/theme@0.0.5
-
-## 0.0.2
-
-### Patch Changes
-
-- d6bc01f: add :rocket: panel component
-- Updated dependencies [010947e]
-- Updated dependencies [eca33a8]
-- Updated dependencies [9856b24]
-  - @urban-ui/theme@0.0.4
-  - @urban-ui/flex@0.0.4

@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/control",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Composite package of all urban-ui control components",
   "type": "module",
   "sideEffects": false,
