@@ -8,6 +8,7 @@ const nav: NavType = [
     block: [
       {name: 'Grid Alignment', link: '/scratch/grid'},
       {name: 'Custom API', link: '/scratch/customAPI'},
+      {name: 'Data Loading', link: '/scratch/dataloading'},
     ],
   },
 ]

@@ -39,12 +39,18 @@
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
     "framer-motion": "^10.2.4",
+    "idb": "^7.1.1",
     "lorem-ipsum": "^2.0.8",
     "next": "^13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-error-boundary": "^3.1.4",
+    "react-feather": "^2.0.10",
     "sketch-react-app": "^0.5.0",
-    "uuid": "^9.0.0"
+    "swr": "^2.1.0",
+    "tiny-component-router": "1.0.0-alpha.1",
+    "uuid": "^9.0.0",
+    "valtio": "^1.10.3"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
