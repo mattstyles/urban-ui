@@ -60,12 +60,7 @@ const StyledButton = styled('button', {
       ghost: {},
       emphasis: {},
       clear: {
-        backgroundColor: '$transparent',
-        p: '$0',
-        m: '$0',
-        height: 'auto',
-        alignItems: 'unset',
-        justifyContent: 'unset',
+        all: 'unset',
       },
     },
     tone: {
