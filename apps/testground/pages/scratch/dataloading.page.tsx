@@ -3,7 +3,14 @@ import type {RouteProps} from 'tiny-component-router'
 import {Inbox, Hexagon, User, Info, Loader, UserPlus} from 'react-feather'
 import {proxy, useSnapshot} from 'valtio'
 import {TinyComponentRouter} from 'tiny-component-router'
-import {useCallback, useMemo, useState, Suspense} from 'react'
+import {
+  useCallback,
+  useMemo,
+  useState,
+  useEffect,
+  Suspense,
+  startTransition,
+} from 'react'
 import {ErrorBoundary} from 'react-error-boundary'
 import {v4 as uuid} from 'uuid'
 import useSWR from 'swr'
@@ -13,16 +20,50 @@ import {Button} from '@urban-ui/control'
 import {Separator} from '@urban-ui/separator'
 import {Content} from '@urban-ui/content'
 import {Text, H2, P, Heading} from '@urban-ui/text'
-import {Container, Stack, Center, Flex, Spacer, Icon} from '@urban-ui/layout'
+import {
+  Container,
+  Stack,
+  Center,
+  Flex,
+  Spacer,
+  Icon,
+  Box,
+} from '@urban-ui/layout'
 import {styled} from '@urban-ui/theme'
 
 type SubPageType = 'people' | 'threads'
 type PageType = 'info' | 'admin' | 'comms'
-type StateType = {page: PageType; subpage: SubPageType}
-const state = proxy<StateType>({
-  page: 'info',
-  subpage: 'people',
+type StateType = {
+  page: PageType
+  subpage: SubPageType
+  selectedPersonId: string | null
+}
+const state: StateType = proxy({
+  page: getPage(),
+  subpage: getSubpage(),
+  selectedPersonId: null,
 })
+
+function setPage(page: PageType) {
+  localStorage.setItem('page', page)
+  state.page = page
+}
+function getPage(): PageType {
+  if (typeof localStorage == 'undefined') {
+    return 'info'
+  }
+  return (localStorage.getItem('page') as PageType) || 'info'
+}
+function setSubpage(subpage: SubPageType) {
+  localStorage.setItem('subpage', subpage)
+  state.subpage = subpage
+}
+function getSubpage(): SubPageType {
+  if (typeof localStorage == 'undefined') {
+    return 'people'
+  }
+  return (localStorage.getItem('subpage') as SubPageType) || 'people'
+}
 
 type Person = {
   id: string
@@ -44,51 +85,64 @@ type Thread = {
 const threads = new PersistData<Thread>('urban-ui', 'inbox-threads')
 const people = new PersistData<Person>('urban-ui', 'inbox-people')
 
+// As we're using client APIs we'll just wrap the whole thing to avoid hydration errors. This probably isn't what you want to do in a real app but handle things properly instead.
+function ClientOnly({children}: {children: React.ReactNode}) {
+  const [isMounted, setIsMounted] = useState(false)
+  useEffect(() => {
+    startTransition(() => {
+      setIsMounted(true)
+    })
+  }, [isMounted])
+  return isMounted ? <>{children}</> : null
+}
+
 export default function page() {
   const {page} = useSnapshot(state)
 
   return (
     <Screen>
-      <Aside as='aside'>
-        <AsideContainer>
-          <AsideHeader as='header'>
-            <Container fill='all'>
+      <ClientOnly>
+        <Aside as='aside'>
+          <AsideContainer>
+            <AsideHeader as='header'>
+              <Container fill='all'>
+                <Center size='full'>
+                  <Hexagon />
+                </Center>
+              </Container>
+            </AsideHeader>
+            <AsideNav as='nav'>
+              <Stack gap='lg'>
+                <NavLink href='#' Icon={Info} to='info'>
+                  Info
+                </NavLink>
+                <NavLink href='#' Icon={Inbox} to='comms'>
+                  Comms
+                </NavLink>
+                <NavLink href='#' Icon={User} to='admin'>
+                  Admin
+                </NavLink>
+              </Stack>
+            </AsideNav>
+            <AsideFooter>
               <Center size='full'>
-                <Hexagon />
+                <Avatar />
               </Center>
-            </Container>
-          </AsideHeader>
-          <AsideNav as='nav'>
-            <Stack gap='lg'>
-              <NavLink href='#' Icon={Info} to='info'>
-                Info
-              </NavLink>
-              <NavLink href='#' Icon={Inbox} to='comms'>
-                Comms
-              </NavLink>
-              <NavLink href='#' Icon={User} to='admin'>
-                Admin
-              </NavLink>
-            </Stack>
-          </AsideNav>
-          <AsideFooter>
-            <Center size='full'>
-              <div>@TODO avatar</div>
-            </Center>
-          </AsideFooter>
-        </AsideContainer>
-      </Aside>
-      <Main as='main'>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <Suspense fallback={<Loading />}>
-            <TinyComponentRouter match={page}>
-              <InfoRoute match='info' />
-              <CommsRoute match='comms' />
-              <AdminRoute match='admin' />
-            </TinyComponentRouter>
-          </Suspense>
-        </ErrorBoundary>
-      </Main>
+            </AsideFooter>
+          </AsideContainer>
+        </Aside>
+        <Main as='main'>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Suspense fallback={<Loading />}>
+              <TinyComponentRouter match={page}>
+                <InfoRoute match='info' />
+                <CommsRoute match='comms' />
+                <AdminRoute match='admin' />
+              </TinyComponentRouter>
+            </Suspense>
+          </ErrorBoundary>
+        </Main>
+      </ClientOnly>
     </Screen>
   )
 }
@@ -140,6 +194,7 @@ const Main = styled(Container, {
 const Article = styled(Container, {
   flex: 1,
   minWidth: 400,
+  maxWidth: 700,
   height: '100vh',
   py: '$lg',
 })
@@ -214,7 +269,7 @@ function NavLink({
 }) {
   const {page} = useSnapshot(state)
   const onClick = useCallback(() => {
-    state.page = to
+    setPage(to)
   }, [to])
 
   return (
@@ -256,7 +311,7 @@ function SubNavLink({
 }) {
   const {subpage} = useSnapshot(state)
   const onClick = useCallback(() => {
-    state.subpage = to
+    setSubpage(to)
   }, [to])
 
   return (
@@ -274,6 +329,14 @@ function SubNavLink({
     </StyledNavLink>
   )
 }
+
+const Avatar = styled(Box, {
+  aspectRatio: 1,
+  bg: '$bg10',
+  width: '$6',
+  height: '$6',
+  borderRadius: '$round',
+})
 
 function ErrorFallback({error}: {error: Error}) {
   return (
@@ -301,29 +364,7 @@ function Loading() {
 const MainAside = styled(Container, {
   height: '100vh',
   flex: 1,
-  // minWidth: 240,
-  // maxWidth: 300,
   py: '$lg',
-
-  // defaultVariants: {
-  //   size: 'md',
-  // },
-  // variants: {
-  //   size: {
-  //     sm: {
-  //       minWidth: 200,
-  //       maxWidth: 260,
-  //     },
-  //     md: {
-  //       minWidth: 240,
-  //       maxWidth: 300,
-  //     },
-  //     lg: {
-  //       minWidth: 300,
-  //       maxWidth: 380,
-  //     },
-  //   },
-  // },
 })
 const MainAsideContainer = styled(Container, {
   flex: 1,
@@ -434,6 +475,7 @@ function AdminRoute(props: RouteProps) {
 }
 
 function AdminPeopleTask(props: RouteProps) {
+  console.log('adin people task')
   const {data, mutate} = useSWR(
     'all-people',
     async () => {
@@ -466,7 +508,7 @@ function AdminPeopleTask(props: RouteProps) {
                 name: id,
               }
               await people.set(person)
-              await mutate([person])
+              await mutate()
             }}>
             <Icon>
               <UserPlus />
@@ -504,25 +546,28 @@ function PeopleSelect({people}: {people: Array<Person>}) {
 }
 
 function PersonSelect({person}: {person: Person}) {
+  const {selectedPersonId} = useSnapshot(state)
+
   return (
-    <PersonCard>
-      <Stack orientation='h' gap='lg' alignment='center'>
-        <div
-          style={{
-            borderRadius: 2000,
-            width: 32,
-            height: 32,
-            background: 'gray',
-          }}
-        />
-        <Stack>
-          <Text color='subtle' size='xs'>
-            {person.id.slice(0, 8)}
-          </Text>
-          <Text>{person.name}</Text>
+    <Button
+      type='clear'
+      onClick={() => {
+        startTransition(() => {
+          state.selectedPersonId = person.id
+        })
+      }}>
+      <PersonCard isSelected={selectedPersonId === person.id}>
+        <Stack orientation='h' gap='lg' alignment='center'>
+          <Avatar />
+          <Stack>
+            <Text color='subtle' size='xs'>
+              {person.id.slice(0, 8)}
+            </Text>
+            <Text>{person.name}</Text>
+          </Stack>
         </Stack>
-      </Stack>
-    </PersonCard>
+      </PersonCard>
+    </Button>
   )
 }
 
@@ -554,6 +599,71 @@ const PersonCard = styled(Flex, {
   },
 })
 
+function AdminPeople(props: RouteProps) {
+  const {selectedPersonId} = useSnapshot(state)
+
+  const content = useMemo(() => {
+    if (selectedPersonId == null) {
+      return <Text color='subtle'>Select a person to edit</Text>
+    }
+
+    return <AdminPeopleMain id={selectedPersonId} />
+  }, [selectedPersonId])
+
+  return (
+    <Container alignment='center' size='full'>
+      <Article as='article' css={{px: '$lg'}}>
+        <AsideHeader>
+          <Container
+            padding='lg'
+            alignment='start'
+            justify='center'
+            size='full'></Container>
+        </AsideHeader>
+        <Separator size='xs' />
+        <Spacer size='lg' />
+        <Suspense fallback={<Loading />}>{content}</Suspense>
+      </Article>
+    </Container>
+  )
+}
+
+function AdminPeopleMain({id}: {id: string}) {
+  const {data: person} = useSWR(
+    id,
+    async (key) => {
+      return await people.get(key)
+    },
+    {suspense: true}
+  )
+
+  if (person == null) {
+    return (
+      <Container
+        css={{
+          bg: '$critical3',
+          color: '$critical12',
+          px: '$lg',
+          md: '$md',
+          borderRadius: '$lg',
+        }}>
+        <Text color='current'>Id not recognised</Text>
+      </Container>
+    )
+  }
+
+  return (
+    <Container>
+      <Stack>
+        <Text color='subtle' size='sm'>
+          {person.id}
+        </Text>
+        <Text>{person.name}</Text>
+      </Stack>
+    </Container>
+  )
+}
+
 function AdminThreadsTask(props: RouteProps) {
   return (
     <Container size='full'>
@@ -570,23 +680,6 @@ function AdminThreadsTask(props: RouteProps) {
         <div>Content</div>
       </Container>
     </Container>
-  )
-}
-
-function AdminPeople(props: RouteProps) {
-  return (
-    <Article as='article'>
-      <AsideHeader>
-        <Container padding='lg' alignment='start' justify='center' size='full'>
-          <Heading as='h3' type='h3'>
-            People
-          </Heading>
-        </Container>
-      </AsideHeader>
-      <Separator size='xs' />
-      <Spacer size='lg' />
-      <H2>People</H2>
-    </Article>
   )
 }
 
