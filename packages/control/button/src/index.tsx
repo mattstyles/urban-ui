@@ -42,6 +42,7 @@ const StyledButton = styled('button', {
     type: 'solid',
     tone: 'primary',
     size: 'md',
+    justify: 'center',
   },
 
   compoundVariants: [
@@ -130,6 +131,18 @@ const StyledButton = styled('button', {
         '@sm': {
           minHeight: '$tokens$controlFieldTouchSizeLg',
         },
+      },
+    },
+
+    justify: {
+      start: {
+        justifyContent: 'flex-start',
+      },
+      center: {
+        justifyContent: 'center',
+      },
+      end: {
+        justifyContent: 'flex-end',
       },
     },
   },
