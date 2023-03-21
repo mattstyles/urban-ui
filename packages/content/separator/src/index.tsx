@@ -7,6 +7,13 @@ const compoundVariants = [
   // Vertical
   {
     orientation: 'v',
+    size: 'none',
+    css: {
+      width: '$0',
+    },
+  },
+  {
+    orientation: 'v',
     size: 'xs',
     css: {
       width: '$xs',
@@ -41,6 +48,13 @@ const compoundVariants = [
     },
   },
   // Horizontal
+  {
+    orientation: 'h',
+    size: 'none',
+    css: {
+      height: '$0',
+    },
+  },
   {
     orientation: 'h',
     size: 'xs',
@@ -214,6 +228,7 @@ const StyledSeparator = styled(SeparatorPrimitive.Root, {
       },
     },
     size: {
+      none: {},
       xs: {},
       sm: {},
       md: {},
