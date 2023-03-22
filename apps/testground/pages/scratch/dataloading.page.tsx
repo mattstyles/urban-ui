@@ -28,6 +28,7 @@ import {
   Spacer,
   Icon,
   Box,
+  Scrollable,
 } from '@urban-ui/layout'
 import {styled} from '@urban-ui/theme'
 
@@ -425,7 +426,7 @@ function AdminRoute(props: RouteProps) {
   const {subpage} = useSnapshot(state)
 
   return (
-    <Container size='full' orientation='h'>
+    <Container fill='v' orientation='h'>
       <Flex
         orientation={{'@initial': 'v', '@lg+': 'h'}}
         size='full'
@@ -475,7 +476,6 @@ function AdminRoute(props: RouteProps) {
 }
 
 function AdminPeopleTask(props: RouteProps) {
-  console.log('adin people task')
   const {data, mutate} = useSWR(
     'all-people',
     async () => {
@@ -517,8 +517,7 @@ function AdminPeopleTask(props: RouteProps) {
         </Flex>
       </AsideHeader>
       <Separator size='xs' />
-      <Spacer size='lg' />
-      <Container css={{px: '$lg'}} size='full'>
+      <Container size='full' css={{overflow: 'hidden', flexBasis: 0}}>
         <PeopleSelect people={data} />
       </Container>
     </Container>
@@ -542,7 +541,18 @@ function PeopleSelect({people}: {people: Array<Person>}) {
     ))
   }, [people])
 
-  return <Stack>{content}</Stack>
+  return (
+    <Scrollable.Root>
+      <Scrollable.Viewport>
+        <Spacer size='lg' />
+        <Stack css={{px: '$lg'}}>{content}</Stack>
+        <Spacer size='lg' />
+      </Scrollable.Viewport>
+      <Scrollable.Scrollbar>
+        <Scrollable.Thumb />
+      </Scrollable.Scrollbar>
+    </Scrollable.Root>
+  )
 }
 
 function PersonSelect({person}: {person: Person}) {
