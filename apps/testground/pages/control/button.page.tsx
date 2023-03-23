@@ -45,7 +45,7 @@ export default function ButtonPage() {
             </Button>
             <Button>
               <StitchesLogoIcon />
-              <Spacer orientation='h' size='xs' />
+              <Spacer orientation='h' gap='xs' />
               With logo
             </Button>
             <Button as='a' href='#' type='transparent'>
@@ -222,7 +222,7 @@ export default function ButtonPage() {
           </ToggleButton>
           <ToggleGroup />
         </Stack>
-        <Spacer size='xl' />
+        <Spacer gap='xl' />
       </Content>
     </Container>
   )

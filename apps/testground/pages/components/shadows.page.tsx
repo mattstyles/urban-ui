@@ -41,7 +41,7 @@ export default function Page() {
           A stronger scale, useful for more deliberate separation of elements
           (i.e. overlays)
         </p>
-        <Spacer size='sm' />
+        <Spacer gap='sm' />
         <Stack gap='lg' alignment='center' orientation='h'>
           {['sm', 'md', 'lg'].map((size, idx) => {
             // @ts-ignore

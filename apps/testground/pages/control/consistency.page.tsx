@@ -1,7 +1,7 @@
 import {CheckIcon, ChevronDownIcon} from '@radix-ui/react-icons'
 
-import {Container, Stack, Spacer, Flex} from '@urban-ui/layout'
-import {Text, Heading, H2, H3, P} from '@urban-ui/text'
+import {Container, Stack, Spacer} from '@urban-ui/layout'
+import {Text, H2, P} from '@urban-ui/text'
 import {Content} from '@urban-ui/content'
 import {
   Button,
@@ -87,7 +87,7 @@ export default function Page() {
             <Slider.Thumb />
           </Slider.Root>
         </Stack>
-        <Spacer size='xl' />
+        <Spacer gap='xl' />
         <H2>Width</H2>
         <P>Components can fit their containers using the same prop.</P>
         <Stack gap='lg'>

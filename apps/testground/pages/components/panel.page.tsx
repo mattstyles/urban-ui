@@ -22,7 +22,7 @@ export default function FlexPage() {
             <Text>Panel</Text>
             <Text>Positioned top right</Text>
             <Text>No gap</Text>
-            <Spacer size='sm' />
+            <Spacer gap='sm' />
             <Flex alignment='center' justify='center'>
               <Flex css={{size: '$6'}}>
                 <StitchesLogoIcon width='100%' height='100%' />
@@ -35,7 +35,7 @@ export default function FlexPage() {
             <Text>Panel</Text>
             <Text>Positioned top right</Text>
             <Text>No gap</Text>
-            <Spacer size='sm' />
+            <Spacer gap='sm' />
             <Flex alignment='center' justify='center'>
               <Flex css={{size: '$6'}}>
                 <StitchesLogoIcon width='100%' height='100%' />

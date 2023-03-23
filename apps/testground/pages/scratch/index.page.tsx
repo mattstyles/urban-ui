@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <Container alignment='center' padding='md' size='full'>
       <Content>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <H1>Scratch</H1>
         <P>Example pages to help with development</P>
       </Content>

@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <Container alignment='center' padding='md' size='full'>
       <Content>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <H1>Control</H1>
         <P>
           Control elements are interactive elements such as button, select, and

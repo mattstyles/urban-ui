@@ -2,9 +2,9 @@ import {CheckIcon, ChevronDownIcon, ChevronUpIcon} from '@radix-ui/react-icons'
 import * as React from 'react'
 import {useState} from 'react'
 
-import {Container, Stack, Icon, Spacer} from '@urban-ui/layout'
+import {Container, Stack} from '@urban-ui/layout'
 import {Content} from '@urban-ui/content'
-import {Text, Heading, H2, H3, P} from '@urban-ui/text'
+import {Text, H2, P} from '@urban-ui/text'
 import * as Select from '@urban-ui/select'
 import {Layout} from './layout'
 

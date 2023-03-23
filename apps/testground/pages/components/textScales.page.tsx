@@ -23,7 +23,7 @@ export default function Page() {
                 </Text>
               )
             })}
-            <Spacer size='sm' />
+            <Spacer gap='sm' />
             <Text>
               The following scale rises because it is aligned to bottom and the
               line-heights differ.
@@ -37,7 +37,7 @@ export default function Page() {
                 )
               })}
             </Stack>
-            <Spacer size='sm' />
+            <Spacer gap='sm' />
             <Text>
               The following scale aligns to the baseline which makes it a little
               easier to discern font size differences.

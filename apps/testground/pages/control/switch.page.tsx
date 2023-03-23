@@ -1,6 +1,6 @@
-import {Container, Stack, Flex, Spacer} from '@urban-ui/layout'
+import {Container, Stack, Flex} from '@urban-ui/layout'
 import {Content} from '@urban-ui/content'
-import {Text, Heading, H2, H3, P} from '@urban-ui/text'
+import {Text, H2} from '@urban-ui/text'
 import * as Switch from '@urban-ui/switch'
 
 import {Layout} from './layout'

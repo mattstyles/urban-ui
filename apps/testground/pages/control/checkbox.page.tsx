@@ -233,7 +233,7 @@ export default function Page() {
           </Switch.Root>
         </Stack>
 
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
       </Content>
     </Container>
   )

@@ -26,7 +26,7 @@ export function Nav({onClick, nav}: NavProps) {
       return (
         <nav key={group.title.name}>
           <Stack>
-            <Spacer size='md' />
+            <Spacer gap='md' />
             <Flex css={{color: '$white', px: '$3'}}>
               <NavLink href={group.title.link} onClick={onClick} heading={true}>
                 <Heading as='h2' type='h3' color='currentcolor'>

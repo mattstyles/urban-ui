@@ -4,8 +4,6 @@ import {v4 as uuid} from 'uuid'
 import {Container, Stack, Icon} from '@urban-ui/layout'
 import {Content} from '@urban-ui/content'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
-import {Button} from '@urban-ui/button'
-import {Input} from '@urban-ui/input'
 import * as Radio from '@urban-ui/radio'
 import {Layout} from './layout'
 

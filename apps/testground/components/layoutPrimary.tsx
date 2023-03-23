@@ -57,7 +57,7 @@ export function Layout({children, nav}: LayoutProps) {
             <AsideFooter />
           </AsideContent>
         </Aside>
-        <Spacer size='lg' orientation='h' />
+        <Spacer gap='lg' orientation='h' />
         {children}
       </Container>
     </Screen>
@@ -128,7 +128,7 @@ function AsideFooter() {
           <RadixLogoIcon width='100%' height='100%' />
         </Center>
       </Stack>
-      <Spacer size='lg' />
+      <Spacer gap='lg' />
       <Text color='currentcolor' size='sm'>
         Powered by{' '}
         <Anchor

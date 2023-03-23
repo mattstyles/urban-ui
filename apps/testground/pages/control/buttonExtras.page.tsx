@@ -73,7 +73,7 @@ function LoadingButton({
             }}>
             <UpdateIcon />
           </Box>
-          <Spacer orientation='h' size='sm' />
+          <Spacer orientation='h' gap='sm' />
         </>
       )}
       {children}

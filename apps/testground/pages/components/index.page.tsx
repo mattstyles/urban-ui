@@ -8,9 +8,8 @@ export default function Page() {
   return (
     <Container alignment='center' padding='md' size='full'>
       <Content>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <Heading>Components</Heading>
-        <div>stuff</div>
       </Content>
     </Container>
   )

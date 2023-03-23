@@ -86,7 +86,7 @@ export default function Page() {
               </Text>
               <Input id='example-password' type='password' width='full' />
             </Stack>
-            <Spacer size='sm' />
+            <Spacer gap='sm' />
             <Stack orientation='h' justify='end'>
               <Button tone='neutral' type='transparent'>
                 Cancel
@@ -103,7 +103,7 @@ export default function Page() {
           <WithClearButton />
           <WithPasswordButton />
         </Stack>
-        <Spacer size='xl' />
+        <Spacer gap='xl' />
       </Content>
     </Container>
   )

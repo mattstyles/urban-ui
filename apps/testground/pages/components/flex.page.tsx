@@ -16,7 +16,7 @@ export default function FlexPage() {
           <StitchesLogoIcon />
           <Text>Center</Text>
         </Flex>
-        <Spacer size='sm' />
+        <Spacer gap='sm' />
         <Flex>
           <StitchesLogoIcon />
           <Text>Default alignment</Text>

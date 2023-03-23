@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div style={{padding: 8}}>
       <h1>Stack</h1>
-      <Spacer size='md' />
+      <Spacer gap='md' />
       <Stack gap='sm' orientation='h'>
         <StitchesLogoIcon />
         <GitHubLogoIcon />
@@ -28,7 +28,7 @@ export default function Page() {
         <GitHubLogoIcon />
         <FigmaLogoIcon />
       </Stack>
-      <Spacer size='lg' />
+      <Spacer gap='lg' />
       <Stack orientation='h'>
         <Stack gap='sm'>
           <StitchesLogoIcon />
@@ -46,14 +46,14 @@ export default function Page() {
           <FigmaLogoIcon />
         </Stack>
       </Stack>
-      <Spacer size='lg' />
+      <Spacer gap='lg' />
       <Stack orientation='h' collapse>
         <h1>Collapse prop</h1>
         <p>Collapse will be horizontal on lgr screens</p>
         <p>But stack vertically on smer screens</p>
         <p>Try changing the screen size</p>
       </Stack>
-      <Spacer size='lg' />
+      <Spacer gap='lg' />
       <Stack orientation='h' collapse='md'>
         <h1>Collapse prop</h1>
         <p>Collapse will also accept a range.</p>

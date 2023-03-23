@@ -33,9 +33,9 @@ export default function Page() {
           <Text size='lg'>lg 24</Text>
           <Text size='xl'>lg 32</Text>
           <Text size='lg'>Spacers</Text>
-          <Spacer size='md' />
-          <Spacer size='lg' />
-          <Spacer size='sm' />
+          <Spacer gap='md' />
+          <Spacer gap='lg' />
+          <Spacer gap='sm' />
           <Text size='lg'>Controls</Text>
           <Stack orientation='h'>
             <Button size='sm'>Sm 32</Button>

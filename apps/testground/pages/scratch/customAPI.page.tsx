@@ -3,7 +3,7 @@ import * as React from 'react'
 import {useState} from 'react'
 import type {} from '@stitches/react'
 
-import {Container, Stack, Icon, Spacer} from '@urban-ui/layout'
+import {Container, Stack} from '@urban-ui/layout'
 import {Content} from '@urban-ui/content'
 import {Text, Heading, H2, H3, P} from '@urban-ui/text'
 import * as SelectPrimitive from '@urban-ui/select'

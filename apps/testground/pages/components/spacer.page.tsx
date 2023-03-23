@@ -19,49 +19,49 @@ export default function SpacerPage() {
       <Content>
         <H1>Spacer</H1>
         <P>Default is horizontal spacing</P>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <StitchesLogoIcon />
-        <Spacer size='md' />
+        <Spacer gap='md' />
         <GitHubLogoIcon />
-        <Spacer size='sm' />
+        <Spacer gap='sm' />
         <FigmaLogoIcon />
-        <Spacer size='md' />
+        <Spacer gap='md' />
         <P>Also works horizontally</P>
         <Flex>
           <StitchesLogoIcon />
-          <Spacer orientation='h' size='xs' />
+          <Spacer orientation='h' gap='xs' />
           <Text>xs</Text>
         </Flex>
         <Flex>
           <StitchesLogoIcon />
-          <Spacer orientation='h' size='lg' />
+          <Spacer orientation='h' gap='lg' />
           <Text>lg</Text>
         </Flex>
         <P>Scale xs, sm, md, lg, xl</P>
         <Stack orientation='h' gap='md'>
           <Spacer
             orientation='h'
-            size='xs'
+            gap='xs'
             css={{background: '$primary10', height: '$xl'}}
           />
           <Spacer
             orientation='h'
-            size='sm'
+            gap='sm'
             css={{background: '$primary10', height: '$xl'}}
           />
           <Spacer
             orientation='h'
-            size='md'
+            gap='md'
             css={{background: '$primary10', height: '$xl'}}
           />
           <Spacer
             orientation='h'
-            size='lg'
+            gap='lg'
             css={{background: '$primary10', height: '$xl'}}
           />
           <Spacer
             orientation='h'
-            size='xl'
+            gap='xl'
             css={{background: '$primary10', height: '$xl'}}
           />
         </Stack>

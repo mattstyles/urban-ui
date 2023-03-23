@@ -25,7 +25,7 @@ export default function Testground() {
     <Layout nav={nav}>
       <Container alignment='center' padding='md' size='full'>
         <Content>
-          <Spacer size='lg' />
+          <Spacer gap='lg' />
           <Heading as='h1'>Testground</Heading>
           <Text as='p'>Dev environment for developing components</Text>
         </Content>
