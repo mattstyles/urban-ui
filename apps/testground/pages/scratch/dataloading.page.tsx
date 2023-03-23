@@ -1,6 +1,14 @@
 import type {RouteProps} from 'tiny-component-router'
 
-import {Inbox, Hexagon, User, Info, Loader, UserPlus} from 'react-feather'
+import {
+  Inbox,
+  Hexagon,
+  User,
+  Info,
+  Loader,
+  UserPlus,
+  Edit3,
+} from 'react-feather'
 import {proxy, useSnapshot} from 'valtio'
 import {TinyComponentRouter} from 'tiny-component-router'
 import {
@@ -16,7 +24,7 @@ import {v4 as uuid} from 'uuid'
 import useSWR from 'swr'
 
 import {PersistData} from 'components/persist'
-import {Button} from '@urban-ui/control'
+import {Button, Input} from '@urban-ui/control'
 import {Separator} from '@urban-ui/separator'
 import {Content} from '@urban-ui/content'
 import {Text, H2, P, Heading} from '@urban-ui/text'
@@ -194,6 +202,7 @@ const Main = styled(Container, {
 
 const Article = styled(Container, {
   flex: 1,
+  width: '100%',
   minWidth: 400,
   maxWidth: 700,
   height: '100vh',
@@ -287,7 +296,7 @@ function NavLink({
           <VisualIcon color='currentcolor' width='100%' height='100%' />
         </Icon>
         <Text
-          color='$current'
+          color='current'
           css={{
             '@container (max-width: 100px)': {
               display: 'none',
@@ -325,7 +334,7 @@ function SubNavLink({
         <Icon size='md'>
           <VisualIcon color='currentcolor' width='100%' height='100%' />
         </Icon>
-        <Text color='$current'>{children}</Text>
+        <Text color='current'>{children}</Text>
       </Stack>
     </StyledNavLink>
   )
@@ -466,7 +475,7 @@ function AdminRoute(props: RouteProps) {
         </MainAside>
       </Flex>
 
-      <Spacer orientation='h' gap='md' />
+      <Spacer orientation='h' size='md' />
       <TinyComponentRouter match={subpage}>
         <AdminPeople match='people' />
         <AdminThreads match='threads' />
@@ -525,6 +534,12 @@ function AdminPeopleTask(props: RouteProps) {
 }
 
 function PeopleSelect({people}: {people: Array<Person>}) {
+  const content = useMemo(() => {
+    return people.map((person) => (
+      <PersonSelect key={person.id} person={person} />
+    ))
+  }, [people])
+
   if (people.length === 0) {
     return (
       <PersonCard isSelected>
@@ -534,12 +549,6 @@ function PeopleSelect({people}: {people: Array<Person>}) {
       </PersonCard>
     )
   }
-
-  const content = useMemo(() => {
-    return people.map((person) => (
-      <PersonSelect key={person.id} person={person} />
-    ))
-  }, [people])
 
   return (
     <Scrollable.Root>
@@ -639,7 +648,7 @@ function AdminPeople(props: RouteProps) {
 }
 
 function AdminPeopleMain({id}: {id: string}) {
-  const {data: person} = useSWR(
+  const {data: person, mutate} = useSWR(
     id,
     async (key) => {
       return await people.get(key)
@@ -665,12 +674,74 @@ function AdminPeopleMain({id}: {id: string}) {
   return (
     <Container>
       <Stack>
-        <Text color='subtle' size='sm'>
-          {person.id}
-        </Text>
-        <Text>{person.name}</Text>
+        <Editable
+          value={person.id}
+          onChange={(value) => {
+            const changed = {...person, id: value}
+            people.set(changed)
+            mutate(changed)
+          }}>
+          <Text color='subtle' size='sm'>
+            {person.id}
+          </Text>
+        </Editable>
+        <Editable
+          value={person.name}
+          onChange={(value) => {
+            const changed = {...person, name: value}
+            people.set(changed)
+            mutate(changed)
+          }}>
+          <Text>{person.name}</Text>
+        </Editable>
       </Stack>
     </Container>
+  )
+}
+
+function Editable({
+  children,
+  value,
+  onChange,
+}: {
+  children: React.ReactNode
+  value: string
+  onChange: (text: string) => void
+}) {
+  const [isEditing, setIsEditing] = useState(false)
+  const content = useMemo(() => {
+    return isEditing ? (
+      <Input
+        autoFocus
+        value={value}
+        onChange={(event) => {
+          onChange(event.currentTarget.value)
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') {
+            setIsEditing(false)
+          }
+        }}
+      />
+    ) : (
+      children
+    )
+  }, [isEditing, value])
+  return (
+    <Stack orientation='h' alignment='center' gap='lg'>
+      <Button
+        round
+        square
+        size='sm'
+        type={isEditing ? 'solid' : 'transparent'}
+        css={{alignSelf: 'auto'}}
+        onClick={() => setIsEditing(!isEditing)}>
+        <Icon size='md'>
+          <Edit3 />
+        </Icon>
+      </Button>
+      {content}
+    </Stack>
   )
 }
 
