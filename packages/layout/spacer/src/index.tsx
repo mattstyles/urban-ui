@@ -9,6 +9,13 @@ export const Spacer = styled('div', {
   },
 
   variants: {
+    gap: {
+      xs: {},
+      sm: {},
+      md: {},
+      lg: {},
+      xl: {},
+    },
     size: {
       xs: {},
       sm: {},
@@ -89,6 +96,77 @@ export const Spacer = styled('div', {
     },
     {
       size: 'xl',
+      orientation: 'h',
+      css: {
+        padding: '0 $xl',
+      },
+    },
+
+    {
+      gap: 'xs',
+      orientation: 'v',
+      css: {
+        padding: '$xs 0',
+      },
+    },
+    {
+      gap: 'sm',
+      orientation: 'v',
+      css: {
+        padding: '$sm 0',
+      },
+    },
+    {
+      gap: 'md',
+      orientation: 'v',
+      css: {
+        padding: '$md 0',
+      },
+    },
+    {
+      gap: 'lg',
+      orientation: 'v',
+      css: {
+        padding: '$lg 0',
+      },
+    },
+    {
+      gap: 'xl',
+      orientation: 'v',
+      css: {
+        padding: '$xl 0',
+      },
+    },
+    {
+      gap: 'xs',
+      orientation: 'h',
+      css: {
+        padding: '0 $xs',
+      },
+    },
+    {
+      gap: 'sm',
+      orientation: 'h',
+      css: {
+        padding: '0 $sm',
+      },
+    },
+    {
+      gap: 'md',
+      orientation: 'h',
+      css: {
+        padding: '0 $md',
+      },
+    },
+    {
+      gap: 'lg',
+      orientation: 'h',
+      css: {
+        padding: '0 $lg',
+      },
+    },
+    {
+      gap: 'xl',
       orientation: 'h',
       css: {
         padding: '0 $xl',
