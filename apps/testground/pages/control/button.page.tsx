@@ -8,6 +8,7 @@ import {
 } from '@radix-ui/react-icons'
 import {RadixLogoIcon} from '@/components/radixLogoIcon'
 import {useState} from 'react'
+import Image from 'next/image'
 
 import {Absolute} from '@urban-ui/absolute'
 import {Flex} from '@urban-ui/flex'
@@ -150,9 +151,11 @@ export default function ButtonPage() {
             justify='center'
             alignment='center'>
             <Absolute fit>
-              <img
+              <Image
                 alt='Randomly selected picture of a set width to demonstrate behaviour when content is wider than the main column width'
                 src='https://picsum.photos/400/300'
+                width={400}
+                height={300}
                 style={{width: '100%', aspectRatio: '4 / 3'}}
               />
             </Absolute>

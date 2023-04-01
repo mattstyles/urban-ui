@@ -1,4 +1,6 @@
 import {StitchesLogoIcon} from '@radix-ui/react-icons'
+import Image from 'next/image'
+
 import {TextBlock, NavBlock} from 'components/lorem'
 import {FullBleed} from '@urban-ui/page'
 import {Stack} from '@urban-ui/stack'
@@ -17,9 +19,11 @@ export default function Page() {
         <h1>Full bleed header text</h1>
         <TextBlock size={2} />
         <FullBleed.Full>
-          <img
+          <Image
             alt='Randomly selected picture of a set width to demonstrate behaviour when content is wider than the main column width'
             src='https://picsum.photos/1600/400'
+            width={1600}
+            height={400}
             style={{width: '100%', aspectRatio: '4 / 1'}}
           />
         </FullBleed.Full>
