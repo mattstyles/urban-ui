@@ -127,11 +127,11 @@ export default function ButtonPage() {
         </P>
         <Box css={{p: '$3', background: '$bg10', width: '320px'}}>
           <Button>Will wrap the button if there is enough text to wrap.</Button>
-          <Spacer size='sm' />
+          <Spacer gap='sm' />
           <Button>
             Will wrapping. Container will shrink, but will not grow in height.
           </Button>
-          <Spacer size='sm' />
+          <Spacer gap='sm' />
           <Box css={{width: '100%'}}>
             <Button fill>
               Wrap and fill. Button will fit its container, allowing multi-line

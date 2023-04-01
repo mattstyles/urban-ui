@@ -105,7 +105,7 @@ function ClientOnly({children}: {children: React.ReactNode}) {
   return isMounted ? <>{children}</> : null
 }
 
-export default function page() {
+export default function Page() {
   const {page} = useSnapshot(state)
 
   return (
@@ -454,7 +454,7 @@ function AdminRoute(props: RouteProps) {
               </Flex>
             </AsideHeader>
             <Separator size='xs' />
-            <Spacer size='lg' />
+            <Spacer gap='lg' />
             <Stack gap='md'>
               <SubNavLink href='#' to='people' Icon={User}>
                 People
@@ -475,7 +475,7 @@ function AdminRoute(props: RouteProps) {
         </MainAside>
       </Flex>
 
-      <Spacer orientation='h' size='md' />
+      <Spacer orientation='h' gap='md' />
       <TinyComponentRouter match={subpage}>
         <AdminPeople match='people' />
         <AdminThreads match='threads' />
@@ -553,9 +553,9 @@ function PeopleSelect({people}: {people: Array<Person>}) {
   return (
     <Scrollable.Root>
       <Scrollable.Viewport>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <Stack css={{px: '$lg'}}>{content}</Stack>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
       </Scrollable.Viewport>
       <Scrollable.Scrollbar>
         <Scrollable.Thumb />
@@ -640,7 +640,7 @@ function AdminPeople(props: RouteProps) {
             size='full'></Container>
         </AsideHeader>
         <Separator size='xs' />
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <Suspense fallback={<Loading />}>{content}</Suspense>
       </Article>
     </Container>
@@ -726,7 +726,7 @@ function Editable({
     ) : (
       children
     )
-  }, [isEditing, value])
+  }, [isEditing, value, children, onChange])
   return (
     <Stack orientation='h' alignment='center' gap='lg'>
       <Button
@@ -756,7 +756,7 @@ function AdminThreadsTask(props: RouteProps) {
         </Center>
       </AsideHeader>
       <Separator size='xs' />
-      <Spacer size='lg' />
+      <Spacer gap='lg' />
       <Container padding='lg' size='full'>
         <div>Content</div>
       </Container>

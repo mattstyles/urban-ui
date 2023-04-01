@@ -94,6 +94,7 @@ const Item = React.forwardRef<
     </Select.Item>
   )
 })
+Item.displayName = 'SelectExampleItem'
 
 function Tone() {
   const [tone, setTone] = useState<string>('neutral')
