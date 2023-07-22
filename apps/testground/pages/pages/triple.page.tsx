@@ -58,13 +58,13 @@ function NavTop() {
         <HamburgerMenuIcon />
       </StyledMenuButton>
       <Flex orientation='v'>
-        <Spacer size={{'@initial': 'sm', '@md+': 'lg'}} />
+        <Spacer gap={{'@initial': 'sm', '@md+': 'lg'}} />
         <Stack orientation='h' gap='md' alignment='center'>
           <StitchesLogoIcon />
           <span>Urban UI</span>
         </Stack>
         <p>Built with Stitches</p>
-        <Spacer size={{'@initial': 'sm', '@md+': 'lg'}} />
+        <Spacer gap={{'@initial': 'sm', '@md+': 'lg'}} />
       </Flex>
     </Flex>
   )

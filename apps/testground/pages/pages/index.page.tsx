@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <Container alignment='center' padding='md' size='full'>
       <Content>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <Heading as='h1'>Page layout examples</Heading>
         <Text as='p'>Generic page layouts as components to compose</Text>
       </Content>

@@ -105,7 +105,7 @@ export default function Page() {
           <Text color='current'>Top</Text>
           <Separator orientation='h' type='transparent' size='lg' />
           <Text color='current'>Bottom</Text>
-          <Spacer size='lg' />
+          <Spacer gap='lg' />
           <Flex orientation='h'>
             <Text color='current'>Top</Text>
             <Separator orientation='v' type='transparent' size='lg' />
@@ -133,7 +133,7 @@ export default function Page() {
           </Text>
         </Flex>
 
-        <Spacer size='xl' />
+        <Spacer gap='xl' />
 
         <div
           style={{

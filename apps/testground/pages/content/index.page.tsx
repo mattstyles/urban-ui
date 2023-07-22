@@ -7,7 +7,7 @@ export default function Page() {
   return (
     <Container alignment='center' padding='md' size='full'>
       <Content>
-        <Spacer size='lg' />
+        <Spacer gap='lg' />
         <H2>Content</H2>
         <P>Components related to page/feature content</P>
       </Content>
