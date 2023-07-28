@@ -1,0 +1,10 @@
+{
+  "eslint.workingDirectories": [
+    {"pattern": "apps/**/*"},
+    {"pattern": "packages/*/"},
+    {"pattern": "packages/**/*"}
+  ],
+  "typescript.disableAutomaticTypeAcquisition": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

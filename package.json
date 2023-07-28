@@ -27,7 +27,8 @@
     "@turbo/gen": "latest",
     "config-eslint": "workspace:*",
     "prettier": "latest",
-    "turbo": "latest"
+    "turbo": "latest",
+    "typescript": "^5.1.6"
   },
   "engines": {
     "node": ">=18.0.0"
