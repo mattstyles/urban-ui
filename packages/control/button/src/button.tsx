@@ -11,10 +11,12 @@ import * as styles from './button.css'
 
 export interface ButtonProps
   extends Omit<AriaButtonProps, 'children'>,
-    React.PropsWithChildren {}
+    React.PropsWithChildren {
+  defaultTest: boolean
+}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({children, ...props}, passRef) => {
+  ({children, defaultTest = true, ...props}, passRef) => {
     const innerRef = useRef<HTMLButtonElement>(null)
     const ref = useObjectRef(
       useMemo(() => {
