@@ -12,7 +12,7 @@ import * as styles from './button.css'
 export interface ButtonProps
   extends Omit<AriaButtonProps, 'children'>,
     React.PropsWithChildren {
-  defaultTest: boolean
+  defaultTest?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

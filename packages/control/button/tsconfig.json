@@ -3,6 +3,6 @@
   "compilerOptions": {
     "baseUrl": "."
   },
-  "include": ["./**/*", "./*", "./package.json"],
+  "include": [".", "./package.json"],
   "exclude": ["dist", "build", "node_modules"]
 }

@@ -22,10 +22,10 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     lib: {
-      entry: './src/index.tsx',
+      entry: './src/button.tsx',
       formats: ['cjs', 'es'],
       // fileName: pkg.name,
-      fileName: 'index',
+      fileName: 'button',
     },
     rollupOptions: {
       external: externals([
