@@ -9,7 +9,9 @@ import {useButton} from '@react-aria/button'
 import {useRef, forwardRef, useMemo} from 'react'
 import * as styles from './button.css'
 
-export interface ButtonProps extends AriaButtonProps, React.PropsWithChildren {}
+export interface ButtonProps
+  extends Omit<AriaButtonProps, 'children'>,
+    React.PropsWithChildren {}
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({children, ...props}, passRef) => {
