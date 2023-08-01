@@ -2,19 +2,21 @@
   "name": "config-eslint",
   "version": "0.0.2",
   "private": true,
-  "main": "index.js",
+  "type": "module",
+  "main": "eslint-preset.js",
   "files": [
-    "eslint-preset.js"
+    "eslint-preset.cjs",
+    "eslint-library.cjs"
   ],
   "license": "MIT",
   "dependencies": {
-    "eslint": "^7.23.0",
-    "eslint-config-next": "13.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-react": "7.31.8",
-    "eslint-config-turbo": "latest"
-  },
-  "devDependencies": {
-    "typescript": "^4.7.4"
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "eslint": "^8.46.0",
+    "eslint-config-next": "^13.4.12",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-config-turbo": "^1.10.12",
+    "eslint-plugin-react": "^7.33.1",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

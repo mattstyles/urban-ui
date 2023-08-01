@@ -8,8 +8,8 @@
   "exports": {
     ".": {
       "types": "./dist/button.d.ts",
-      "import": "./src/button.tsx",
-      "require": "./src/button.tsx"
+      "import": "./src/index.tsx",
+      "require": "./src/index.tsx"
     },
     "./build": {
       "types": "./dist/button.d.ts",
@@ -50,7 +50,7 @@
     "@vitejs/plugin-react": "^4.0.1",
     "del-cli": "^5.0.0",
     "esbuild": "^0.18.8",
-    "eslint": "^7.32.0",
+    "eslint": "^8.46.0",
     "config-eslint": "workspace:*",
     "config-ts": "workspace:*",
     "react": "^18.2.0",
