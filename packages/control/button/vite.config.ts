@@ -22,16 +22,17 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     lib: {
-      entry: './src/button.tsx',
+      entry: './src/index.tsx',
       formats: ['cjs', 'es'],
       // fileName: pkg.name,
-      fileName: 'button',
+      fileName: 'index',
     },
     rollupOptions: {
       external: externals([
         ...Object.keys(pkg.dependencies ?? {}),
         ...Object.keys(pkg.peerDependencies ?? {}),
       ]),
+      // @ts-expect-error module does export types for nodenext as expected
       plugins: [preserveDirectives()],
       output: {
         preserveModules: true,
@@ -39,6 +40,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    // @ts-expect-error module does export types for nodenext as expected
     react(),
     dts({
       insertTypesEntry: true,

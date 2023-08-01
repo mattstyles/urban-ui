@@ -5,8 +5,11 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "lib": ["ES2015", "dom", "dom.iterable", "esnext"],
-    "module": "ESNext",
     "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true
   }
 }

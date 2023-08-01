@@ -9,12 +9,6 @@ import {useButton} from '@react-aria/button'
 import {useRef, forwardRef, useMemo} from 'react'
 import * as styles from './button.css.ts'
 
-// export {Clamp} from './clamp.tsx'
-
-// const noop = () => {}
-console.log('hello')
-function noop() {}
-
 export interface ButtonProps
   extends Omit<AriaButtonProps, 'children'>,
     React.PropsWithChildren {
@@ -23,7 +17,6 @@ export interface ButtonProps
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({children, defaultTest = true, ...props}, passRef) => {
-    noop()
     const innerRef = useRef<HTMLButtonElement>(null)
     const ref = useObjectRef(
       useMemo(() => {
