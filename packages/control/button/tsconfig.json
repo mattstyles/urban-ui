@@ -1,8 +1,12 @@
 {
   "extends": "config-ts/react-library.json",
   "compilerOptions": {
+    "module": "esnext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
     "baseUrl": "."
   },
-  "include": [".", "./package.json"],
+  "include": [".", "./package.json", ".eslintrc.js"],
   "exclude": ["dist", "build", "node_modules"]
 }

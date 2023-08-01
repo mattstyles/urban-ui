@@ -12,6 +12,7 @@ type Props = {
   typegen: Array<ComponentDoc>
 }
 export function Content({typegen}: Props) {
+  // console.log('client typegen', typegen)
   return (
     <div>
       <pre>{JSON.stringify(typegen, null, '  ')}</pre>
