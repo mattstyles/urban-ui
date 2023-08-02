@@ -13,6 +13,7 @@ import {Button} from '@urban-ui/button'
 // import '@urban-ui/button/styles'
 
 import {Foo} from './something.tsx'
+import ButtonContent from './button.mdx'
 
 type Props = {
   typegen: Array<ComponentDoc>
@@ -28,6 +29,7 @@ export function Content({typegen}: Props) {
           h1: ({children}) => <h1 style={{color: 'green'}}>{children}</h1>,
         }}>
         <File />
+        <ButtonContent name='button!!' />
       </MDXProvider>
       <pre>{JSON.stringify(typegen, null, '  ')}</pre>
       <Button onPress={() => alert('clicking')}>Click me</Button>
