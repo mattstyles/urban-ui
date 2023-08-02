@@ -16,8 +16,12 @@ import {Button} from '@urban-ui/button'
 import {Foo} from './something.tsx'
 import ButtonContent from './button.mdx'
 
-const liveScope = {
+const components = {
   Button: Button,
+  Foo: Foo,
+  h1: ({children}: React.PropsWithChildren) => (
+    <h1 style={{color: 'green'}}>{children}</h1>
+  ),
 }
 const code = `
   <div>
@@ -32,20 +36,15 @@ export function Content({typegen}: Props) {
   // console.log('client typegen', typegen)
   return (
     <div>
-      <MDXProvider
-        components={{
-          Foo: Foo,
-          Button: Button,
-          h1: ({children}) => <h1 style={{color: 'green'}}>{children}</h1>,
-        }}>
-        <LiveProvider code={code} scope={liveScope}>
-          <LiveEditor />
-          <LiveError />
-          <LivePreview />
-        </LiveProvider>
+      <MDXProvider components={components}>
         <File />
         <ButtonContent name='button!!' />
       </MDXProvider>
+      <LiveProvider code={code} scope={components}>
+        <LiveEditor />
+        <LiveError />
+        <LivePreview />
+      </LiveProvider>
       <pre>{JSON.stringify(typegen, null, '  ')}</pre>
       <Button onPress={() => alert('clicking')}>Click me</Button>
     </div>

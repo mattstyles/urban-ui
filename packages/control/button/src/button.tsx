@@ -31,7 +31,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={styles.base}
-        {...mergeProps(buttonProps, hoverProps, focusProps)}
+        {...mergeProps(buttonProps, hoverProps, focusProps, props)}
         ref={ref}
         data-pressed={isPressed}
         data-hovered={isHovered}

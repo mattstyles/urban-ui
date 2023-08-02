@@ -1,7 +1,7 @@
-export function Foo() {
+export function Foo({children}: React.PropsWithChildren) {
   return (
     <div>
-      <h2>Foo</h2>
+      <h2>{children}</h2>
     </div>
   )
 }
