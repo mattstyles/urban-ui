@@ -4,6 +4,8 @@ import {parse} from 'react-docgen-typescript'
 import {Content} from './content.tsx'
 import {pathname as root} from '~/root.ts'
 
+// import File from './test.mdx'
+
 // const dirname = path.resolve(root, './src/app/components/button')
 const packages = path.resolve(root, '../../packages/control/button/src')
 
@@ -16,5 +18,10 @@ export default async function ButtonPage() {
   const file = parse(pathname, options)
   console.log(file.map((f) => f.filePath).join(', '), file.length)
 
-  return <Content typegen={file} />
+  return (
+    <>
+      {/* <File /> */}
+      <Content typegen={file} />
+    </>
+  )
 }
