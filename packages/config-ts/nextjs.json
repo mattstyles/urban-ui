@@ -4,7 +4,10 @@
   "extends": "./base.json",
   "compilerOptions": {
     "plugins": [{"name": "next"}],
-    "target": "es5",
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "nodenext",
+    "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -12,7 +15,6 @@
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "incremental": true,
-    "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve"

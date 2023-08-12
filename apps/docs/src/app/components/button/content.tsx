@@ -8,6 +8,7 @@ import File from './test2.mdx'
 
 // ESM import, with typescript support
 import {Button} from '@urban-ui/button'
+import {Flex} from '@urban-ui/flex'
 
 // If built then these will import everything the button needs
 // import {Button} from '@urban-ui/button/build'
@@ -35,7 +36,7 @@ type Props = {
 export function Content({typegen}: Props) {
   // console.log('client typegen', typegen)
   return (
-    <div>
+    <Flex orientation='v'>
       <MDXProvider components={components}>
         <File />
         <ButtonContent name='button!!' />
@@ -47,6 +48,6 @@ export function Content({typegen}: Props) {
       </LiveProvider>
       <pre>{JSON.stringify(typegen, null, '  ')}</pre>
       <Button onPress={() => alert('clicking')}>Click me</Button>
-    </div>
+    </Flex>
   )
 }

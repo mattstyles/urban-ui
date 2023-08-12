@@ -23,5 +23,8 @@ module.exports = {
     // Unused vars are ok
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
+    // Hoisting is fine
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-use-before-declare': 'off',
   },
 }

@@ -34,7 +34,10 @@
     "@react-aria/focus": "^3.13.0",
     "@react-aria/interactions": "^3.16.0",
     "@react-aria/utils": "^3.18.0",
-    "@vanilla-extract/css": "^1.11.1"
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
+    "@vanilla-extract/css": "^1.11.1",
+    "cva": "npm:class-variance-authority@^0.7.0"
   },
   "peerDependencies": {
     "react": "^18.2.0"
@@ -45,10 +48,10 @@
     "@types/react-dom": "^18.2.0",
     "@vanilla-extract/vite-plugin": "^3.8.2",
     "@vitejs/plugin-react": "^4.0.1",
-    "del-cli": "^5.0.0",
-    "eslint": "^8.46.0",
     "config-eslint": "workspace:*",
     "config-ts": "workspace:*",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.46.0",
     "react": "^18.2.0",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "tiny-glob": "^0.2.9",
