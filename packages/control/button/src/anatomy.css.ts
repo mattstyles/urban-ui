@@ -7,7 +7,7 @@ const color = createThemeContract({
 })
 
 const border = createThemeContract({
-  borderColor: color,
+  borderColor: null,
   borderWidth: null,
 })
 
@@ -17,3 +17,5 @@ export const anatomy = createThemeContract({
   fg: color,
   border,
 })
+
+// Add sizes for padding, such as height

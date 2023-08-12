@@ -8,10 +8,11 @@ import {useHover} from '@react-aria/interactions'
 import {useFocusRing} from '@react-aria/focus'
 import {mergeProps, useObjectRef, mergeRefs} from '@react-aria/utils'
 import {useButton} from '@react-aria/button'
+import {tones} from '@urban-ui/theme'
+import {Text} from '@urban-ui/text'
 import {cva} from 'cva'
 import {base} from './button.css.ts'
 import {solid, ghost, transparent, outline} from './variants.css.ts'
-import {tones} from '@urban-ui/theme'
 
 const variants = cva([base], {
   variants: {
@@ -33,9 +34,9 @@ const variants = cva([base], {
 
 export interface ButtonProps
   extends Omit<AriaButtonProps, 'children'>,
-    VariantProps<typeof variants>,
-    React.PropsWithChildren {
+    VariantProps<typeof variants> {
   className?: string
+  children: string
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -60,7 +61,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-hovered={isHovered}
         data-focused={isFocused}
         data-focus-visible={isFocusVisible}>
-        {children}
+        <Text>{children}</Text>
       </button>
     )
   },

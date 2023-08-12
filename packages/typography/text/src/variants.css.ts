@@ -28,7 +28,7 @@ export const font = mapValues(theme.type.font, (value) => {
   })
 })
 
-export const weights = mapValues(theme.type.fontWeights, (value) => {
+export const weights = mapValues(theme.type.weight, (value) => {
   return style({
     vars: {
       [anatomy.weight]: value,

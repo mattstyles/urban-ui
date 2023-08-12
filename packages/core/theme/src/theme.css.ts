@@ -43,7 +43,7 @@ export const theme = createThemeContract({
     /**
      * Primary is often used as brand colours or accent colours.
      */
-    // primary: tone,
+    primary: tone,
   },
 
   // Typography

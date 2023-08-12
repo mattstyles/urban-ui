@@ -5,9 +5,17 @@ import {anatomy} from './anatomy.css.ts'
 export const solid = style([
   {
     vars: assignVars(anatomy.bg, {
-      base: theme.colors.base.tone.bg.base,
-      hover: theme.colors.base.tone.bg.aux,
-      press: theme.colors.base.tone.bg.emphasis,
+      base: theme.colors.base.element.base,
+      hover: theme.colors.base.element.hover,
+      press: theme.colors.base.element.press,
+    }),
+  },
+  {
+    // This should actually be from the global white scale, as tonal colour hi won’t necessarily work against the element bg base colour
+    vars: assignVars(anatomy.fg, {
+      base: theme.colors.base.fg.invert.hi,
+      hover: theme.colors.base.fg.invert.hi,
+      press: theme.colors.base.fg.invert.hi,
     }),
   },
 ])
@@ -16,15 +24,15 @@ export const ghost = style([
   {
     vars: assignVars(anatomy.bg, {
       base: theme.colors.transparency.accent[0],
-      hover: theme.colors.base.muted.bg.aux,
-      press: theme.colors.base.muted.bg.emphasis,
+      hover: theme.colors.base.element.muted.hover,
+      press: theme.colors.base.element.muted.press,
     }),
   },
   {
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.base.muted.fg.lo,
-      hover: theme.colors.base.muted.fg.lo,
-      press: theme.colors.base.muted.fg.lo,
+      base: theme.colors.base.fg.hi,
+      hover: theme.colors.base.fg.hi,
+      press: theme.colors.base.fg.hi,
     }),
   },
 ])
@@ -39,9 +47,9 @@ export const transparent = style([
   },
   {
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.base.muted.fg.hi,
-      hover: theme.colors.base.muted.fg.hi,
-      press: theme.colors.base.muted.fg.hi,
+      base: theme.colors.base.fg.hi,
+      hover: theme.colors.base.fg.hi,
+      press: theme.colors.base.fg.hi,
     }),
   },
 ])
@@ -56,18 +64,14 @@ export const outline = style([
   },
   {
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.base.muted.fg.hi,
-      hover: theme.colors.base.muted.fg.hi,
-      press: theme.colors.base.muted.fg.hi,
+      base: theme.colors.base.fg.hi,
+      hover: theme.colors.base.fg.hi,
+      press: theme.colors.base.fg.hi,
     }),
   },
   {
     vars: assignVars(anatomy.border, {
-      borderColor: {
-        base: theme.colors.base.border.base,
-        hover: theme.colors.base.border.aux,
-        press: theme.colors.base.border.emphasis,
-      },
+      borderColor: theme.colors.base.border.emphasis,
       // @TODO should pull from a border width theme variable
       borderWidth: theme.space.xs,
     }),

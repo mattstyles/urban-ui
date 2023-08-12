@@ -38,13 +38,16 @@ export const typography = createThemeContract({
   size: mapValues(semanticScale, () => {
     return typeCapsize
   }),
+  capHeight: mapValues(semanticScale, () => {
+    return null
+  }),
   font: {
     system: null,
     heading: null,
     copy: null,
     mono: null,
   },
-  fontWeights: {
+  weight: {
     light: null,
     normal: null,
     semibold: null,
@@ -121,16 +124,20 @@ export const tone = createThemeContract({
   // border: bg,
   // disabled: null,
 
-  foreground: {
+  // Refers to top-level foreground components like text and icons
+  fg: {
     invert: fg,
     ...fg,
   },
+  // Background element backgrounds (panels, surfaces, etc)
   surface: background,
-  bg: {
+  // Foreground element backgrounds (buttons, badges, etc)
+  element: {
     muted: interaction,
-    strong: interaction,
+    ...interaction,
   },
-  border: interaction,
+  // Mid-range lightness borders
+  border: background,
 })
 
 export const textColor = createThemeContract({
