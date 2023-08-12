@@ -92,7 +92,7 @@ export function Schema({tone}: SwatchProps) {
         filter=''
         colors={makeFlatTone(baseTheme.colors.base, '')}
       />
-      <LightnessDistancing height={2400} filter='text' colors={colors} />
+      <LightnessDistancing height={2400} filter='critical' colors={colors} />
       <LightnessDistancing height={2400} filter='info' colors={colors} />
     </Flex>
   )
