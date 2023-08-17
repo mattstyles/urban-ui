@@ -6,7 +6,7 @@ import {
   tone,
   background,
   coreColor,
-  textColor,
+  foreground,
 } from './system.css.ts'
 
 export const theme = createThemeContract({
@@ -23,8 +23,8 @@ export const theme = createThemeContract({
     // Core colours
     core: coreColor,
 
-    // Core text colours
-    text: textColor,
+    // Core foreground colours
+    foreground: foreground,
 
     /**
      * Base is a dynamic tonal field.

@@ -4,8 +4,19 @@ import {createThemeContract} from '@vanilla-extract/css'
 // import mapValues from 'just-map-values'
 import {mapValues} from '@urban-ui/utils'
 import {precomputeValues} from '@capsizecss/core'
-import {semanticScale, extendedSemanticScale, numericScale} from './shared.ts'
+import {sizeScale, extendedSizeScale, numericScale} from './shared.ts'
 
+/**
+ * Semantic space scale for UI elements
+ */
+export const space = createThemeContract({
+  none: null,
+  ...extendedSizeScale,
+})
+
+/**
+ * Font size is controlled by capsize
+ */
 export type Capsize = ReturnType<typeof precomputeValues>
 const typeCapsize: MapType<Capsize, null> = {
   fontSize: null,
@@ -15,30 +26,13 @@ const typeCapsize: MapType<Capsize, null> = {
 }
 
 /**
- * Semantic space scale for UI elements
- */
-export const space = createThemeContract({
-  none: null,
-  ...extendedSemanticScale,
-})
-
-/**
- * Transparency is not a semantic scale
- */
-export const alpha = createThemeContract({
-  50: null,
-  75: null,
-  ...numericScale,
-})
-
-/**
  * Typography has a couple of different variables it supports
  */
 export const typography = createThemeContract({
-  size: mapValues(semanticScale, () => {
+  size: mapValues(sizeScale, () => {
     return typeCapsize
   }),
-  capHeight: mapValues(semanticScale, () => {
+  capHeight: mapValues(sizeScale, () => {
     return null
   }),
   font: {
@@ -63,30 +57,12 @@ export const typography = createThemeContract({
 })
 
 /**
- * Background colours have 2 primary modes: base and active.
- * There are 2 additional colours that must be defined to denote hover and disabled states.
+ * Transparency is not a semantic scale
  */
-export const bg = createThemeContract({
-  base: null,
-  aux: null,
-  emphasis: null,
-})
-
-/**
- * Foreground colours have two modes, either high or low contrast.
- * Foreground colours should have enough contrast with every background colour to meet accessibility standards.
- */
-export const fg = createThemeContract({
-  hi: null,
-  lo: null,
-})
-
-/**
- * A colour must define background and foreground colours, 4 bg, 2 fg.
- */
-export const color = createThemeContract({
-  bg,
-  fg,
+export const alpha = createThemeContract({
+  50: null,
+  75: null,
+  ...numericScale,
 })
 
 /**
@@ -101,6 +77,9 @@ export const background = createThemeContract({
   emphasis: null,
 })
 
+/**
+ * Interactive state colours
+ */
 export const interaction = {
   base: null,
   hover: null,
@@ -109,26 +88,29 @@ export const interaction = {
 }
 
 /**
+ * Refers to elements which are always foreground, primarily text and iconography.
+ * High and low contrast modes should be supplied, note that low contrast should still pass accessibility standards.
+ */
+export const foreground = createThemeContract({
+  invert: {
+    hi: null,
+    lo: null,
+  },
+  hi: null,
+  lo: null,
+})
+
+/**
  * Colour tone.
- * Each colour has a muted and block colour mode, and within each mode are 2 primary colours (base and emphasis). Aux forms an intermediary between the two.
- *
- * This gives 4 primary colours, 2 muted and 2 block colours.
- * Each of these pairs must define foreground colours.
- * There are 2 additional colours, intermediary colours between base and emphasised colours for each colour.
- * `tone.base` has the most chroma of any value defined within a tone.
- * Each tone must define a disabled colour to act as background for disabled elements.
+ * Each tone is comprised of surface, element, border, and foreground components.
+ * Surfaces are designed as backdrops for background elements.
+ * Element are backdrops for foreground elements (comprised of muted and standard colours, with interaction states).
+ * Foreground colours are for both foreground and background components, such as text on buttons and icons on surfaces.
+ * Borders represent component borders and support a couple of prominences.
  */
 export const tone = createThemeContract({
-  // muted: color,
-  // tone: color,
-  // border: bg,
-  // disabled: null,
-
   // Refers to top-level foreground components like text and icons
-  fg: {
-    invert: fg,
-    ...fg,
-  },
+  fg: foreground,
   // Background element backgrounds (panels, surfaces, etc)
   surface: background,
   // Foreground element backgrounds (buttons, badges, etc)
@@ -140,12 +122,9 @@ export const tone = createThemeContract({
   border: background,
 })
 
-export const textColor = createThemeContract({
-  muted: fg,
-  tone: fg,
-  disabled: null,
-})
-
+/**
+ * Core colour values are shared across the entire system colour spectrum
+ */
 export const coreColor = createThemeContract({
   transparent: null,
   current: null,

@@ -2,19 +2,19 @@ export type MapType<Scale, T> = {
   [Property in keyof Scale]: T
 }
 
-export const restrictedSemanticScale = {
+export const restrictedSizeScale = {
   sm: null,
   md: null,
   lg: null,
 }
-export const semanticScale = {
+export const sizeScale = {
   xs: null,
-  ...restrictedSemanticScale,
+  ...restrictedSizeScale,
   xl: null,
 }
-export const extendedSemanticScale = {
+export const extendedSizeScale = {
   xxs: null,
-  ...semanticScale,
+  ...sizeScale,
   xxl: null,
 }
 

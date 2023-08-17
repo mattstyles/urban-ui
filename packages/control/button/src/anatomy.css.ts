@@ -18,4 +18,4 @@ export const anatomy = createThemeContract({
   border,
 })
 
-// Add sizes for padding, such as height
+// Add sizes for padding, such as height and text-to-edge variables

@@ -57,9 +57,9 @@ export const transparent = style([
 export const outline = style([
   {
     vars: assignVars(anatomy.bg, {
-      base: theme.colors.core.transparent,
-      hover: theme.colors.transparency.deepen[50],
-      press: theme.colors.transparency.deepen[75],
+      base: theme.colors.transparency.accent[0],
+      hover: theme.colors.base.element.muted.hover,
+      press: theme.colors.base.element.muted.press,
     }),
   },
   {

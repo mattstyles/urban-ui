@@ -6,6 +6,7 @@ import {theme} from './theme.css.ts'
 import {accent, deepen} from './primitives/colors.ts'
 import {space} from './primitives/space.ts'
 import {type, fonts, weights, kerning} from './primitives/typography.ts'
+import {px} from '@urban-ui/utils'
 
 const pink = {
   pink1: 'hsl(322, 100%, 99.4%)',
@@ -49,17 +50,15 @@ export const base = {
       subtle: 'hsl(0, 0%, 91%)',
       emphasis: 'hsl(0, 0%, 82%)',
     },
-    text: {
-      muted: {
+    foreground: {
+      invert: {
         hi: 'hsl(0, 0%, 23%)',
         lo: 'hsl(0, 0%, 38%)',
       },
-      tone: {
-        hi: 'hsl(0, 0%, 97%)',
-        lo: 'hsl(0, 0%, 86%)',
-      },
-      disabled: 'hsl(0, 0%, 45%)',
+      hi: 'hsl(0, 0%, 97%)',
+      lo: 'hsl(0, 0%, 86%)',
     },
+    // @TODO should be current, not base
     base: {
       // muted: {
       //   bg: {
@@ -188,10 +187,8 @@ export const base = {
 
   type: {
     size: mapValues(type, precomputeValues),
-    capHeight: mapValues(
-      type,
-      (t) =>
-        getCapHeight({fontSize: t.fontSize, fontMetrics: t.fontMetrics}) + 'px',
+    capHeight: mapValues(type, ({fontSize, fontMetrics}) =>
+      px(getCapHeight({fontSize, fontMetrics})),
     ),
     font: {
       system: fonts.system,

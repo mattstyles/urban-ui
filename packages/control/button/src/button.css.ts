@@ -20,12 +20,6 @@ export const base = style([
     vars: assignVars(textAnatomy.size, theme.type.size.md),
   },
   {
-    appearance: 'none',
-    outline: 'none',
-
-    userSelect: 'none',
-    WebkitUserSelect: 'none',
-
     paddingTop: calc(height)
       .subtract(textAnatomy.capHeight)
       .divide(2)
@@ -36,6 +30,13 @@ export const base = style([
       .toString(),
     paddingLeft: theme.space.xl,
     paddingRight: theme.space.xl,
+  },
+  {
+    appearance: 'none',
+    outline: 'none',
+
+    userSelect: 'none',
+    WebkitUserSelect: 'none',
 
     backgroundColor: fallbackVar(
       anatomy.bg.base,
