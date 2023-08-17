@@ -3,37 +3,36 @@ import {calc} from '@vanilla-extract/css-utils'
 import {atoms} from '@urban-ui/theme/atoms'
 import {theme} from '@urban-ui/theme'
 import {anatomy as textAnatomy} from '@urban-ui/text/anatomy'
-import {px} from '@urban-ui/utils'
 import {anatomy} from './anatomy.css.ts'
 
-const border = createVar()
 const height = createVar()
+const padding = createVar()
 
 export const base = style([
   atoms({
-    display: 'inline-flex',
+    position: 'relative',
+    display: 'inline-block',
     placeItems: 'center',
     flex: 'none',
-    type: 'md',
+    fontWeight: 'semibold',
+    kerning: 'md',
   }),
   {
     vars: assignVars(textAnatomy.size, theme.type.size.md),
   },
   {
-    paddingTop: calc(height)
-      .subtract(textAnatomy.capHeight)
-      .divide(2)
-      .toString(),
-    paddingBottom: calc(height)
-      .subtract(textAnatomy.capHeight)
-      .divide(2)
-      .toString(),
-    paddingLeft: theme.space.xl,
-    paddingRight: theme.space.xl,
+    vars: assignVars(anatomy.border, {
+      width: '2px',
+      color: theme.colors.core.transparent,
+    }),
   },
+
   {
     appearance: 'none',
     outline: 'none',
+
+    fontSize: textAnatomy.size.fontSize,
+    lineHeight: textAnatomy.size.lineHeight,
 
     userSelect: 'none',
     WebkitUserSelect: 'none',
@@ -46,40 +45,104 @@ export const base = style([
 
     borderRadius: 6,
     border: 'none',
-    boxShadow: fallbackVar(border, '0px 0px 0px 0px transparent'),
-
-    transition:
-      'background-color 150ms ease-in-out, box-shadow 150ms ease-in-out',
+    margin: 0,
+    padding: 0,
+    WebkitTapHighlightColor: 'transparent',
 
     vars: {
-      [border]: `0px 0px 0px 1px ${anatomy.border.borderColor}`,
-      [height]: px(44),
-      [textAnatomy.weight]: theme.type.weight.bold,
-      [textAnatomy.kerning]: theme.type.kerning.sm,
+      [padding]: calc(
+        calc(height)
+          .subtract(textAnatomy.capHeight)
+          .subtract(calc(anatomy.border.width).multiply(2))
+          .divide(2),
+      ).toString(),
+      [height]: fallbackVar(anatomy.size.height, theme.sizes.control.md),
+      [textAnatomy.weight]: theme.type.weight.semibold,
+      [textAnatomy.kerning]: theme.type.kerning.md,
       [textAnatomy.capHeight]: theme.type.capHeight.md,
     },
 
     selectors: {
       '&[data-focus-visible=true]': {
+        // @TODO focus rings from theme, use several if possible
         outline: '2px solid blue',
         outlineOffset: 2,
       },
       '&[data-hovered=true]': {
-        backgroundColor: fallbackVar(
-          anatomy.bg.hover,
-          theme.colors.current.element.hover,
-        ),
         color: fallbackVar(anatomy.fg.hover, theme.colors.current.fg.invert.hi),
-        boxShadow: fallbackVar(border, '0px 0px 0px 0px transparent'),
       },
       '&[data-pressed=true]': {
-        backgroundColor: fallbackVar(
-          anatomy.bg.press,
-          theme.colors.current.element.press,
-        ),
         color: fallbackVar(anatomy.fg.press, theme.colors.current.fg.invert.hi),
-        boxShadow: fallbackVar(border, '0px 0px 0px 0px transparent'),
       },
+      // @TODO disabled
     },
   },
 ])
+
+const overlay = style([
+  atoms({
+    position: 'absolute',
+    inset: 0,
+  }),
+  {
+    pointerEvents: 'none',
+    borderRadius: 6,
+    transition: 'background-color 150ms ease-in-out, opacity 150ms ease-in-out',
+  },
+])
+
+export const components = {
+  hover: style([
+    overlay,
+    {
+      backgroundColor: fallbackVar(
+        anatomy.bg.hover,
+        theme.colors.current.element.hover,
+      ),
+      opacity: 0,
+      selectors: {
+        [`${base}[data-hovered=true] &`]: {
+          opacity: 1,
+        },
+      },
+    },
+  ]),
+  press: style([
+    overlay,
+    {
+      backgroundColor: fallbackVar(
+        anatomy.bg.press,
+        theme.colors.current.element.press,
+      ),
+      opacity: 0,
+      selectors: {
+        [`${base}[data-pressed=true] &`]: {
+          opacity: 1,
+        },
+      },
+    },
+  ]),
+  border: style([
+    overlay,
+    {
+      borderColor: fallbackVar(
+        anatomy.border.color,
+        theme.colors.core.transparent,
+      ),
+      borderStyle: 'solid',
+      borderWidth: fallbackVar(anatomy.border.width, '2px'),
+    },
+  ]),
+  foreground: style([
+    atoms({
+      display: 'flex',
+      position: 'relative',
+    }),
+    {
+      paddingTop: padding,
+      paddingBottom: padding,
+      paddingLeft: theme.space.xl,
+      paddingRight: theme.space.xl,
+    },
+  ]),
+}

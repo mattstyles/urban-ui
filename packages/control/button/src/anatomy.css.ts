@@ -7,15 +7,27 @@ const color = createThemeContract({
 })
 
 const border = createThemeContract({
-  borderColor: null,
-  borderWidth: null,
+  color: null,
+  width: null,
 })
 
-// Component level vars
+const transition = createThemeContract({
+  color: null,
+  transform: null,
+})
+
+// Add sizes for padding, such as height and text-to-edge variables
+const size = createThemeContract({
+  height: null,
+})
+
+/**
+ * Button component anatomy
+ */
 export const anatomy = createThemeContract({
   bg: color,
   fg: color,
   border,
+  size,
+  transition,
 })
-
-// Add sizes for padding, such as height and text-to-edge variables

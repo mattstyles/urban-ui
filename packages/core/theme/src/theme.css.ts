@@ -1,6 +1,7 @@
 import {createThemeContract} from '@vanilla-extract/css'
 import {
   space,
+  sizes,
   alpha,
   typography,
   tone,
@@ -11,6 +12,7 @@ import {
 
 export const theme = createThemeContract({
   space: space,
+  sizes: sizes,
 
   // Base colors
   colors: {

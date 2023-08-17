@@ -5,6 +5,7 @@ import {mapValues} from '@urban-ui/utils'
 import {theme} from './theme.css.ts'
 import {accent, deepen} from './primitives/colors.ts'
 import {space} from './primitives/space.ts'
+import {control} from './primitives/size.ts'
 import {type, fonts, weights, kerning} from './primitives/typography.ts'
 import {px} from '@urban-ui/utils'
 
@@ -14,6 +15,10 @@ globalStyle('body', {
 
 export const base = {
   space: space,
+
+  sizes: {
+    control: control,
+  },
 
   colors: {
     core: {

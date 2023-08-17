@@ -29,6 +29,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@capsizecss/vanilla-extract": "^1.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@react-aria/button": "^3.8.0",
     "@react-aria/focus": "^3.13.0",

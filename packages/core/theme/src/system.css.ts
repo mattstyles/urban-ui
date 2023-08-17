@@ -1,10 +1,14 @@
 import type {MapType} from './shared.ts'
 
 import {createThemeContract} from '@vanilla-extract/css'
-// import mapValues from 'just-map-values'
 import {mapValues} from '@urban-ui/utils'
 import {precomputeValues} from '@capsizecss/core'
-import {sizeScale, extendedSizeScale, numericScale} from './shared.ts'
+import {
+  sizeScale,
+  extendedSizeScale,
+  restrictedSizeScale,
+  numericScale,
+} from './shared.ts'
 
 /**
  * Semantic space scale for UI elements
@@ -12,6 +16,13 @@ import {sizeScale, extendedSizeScale, numericScale} from './shared.ts'
 export const space = createThemeContract({
   none: null,
   ...extendedSizeScale,
+})
+
+/**
+ * Semantic sizes for UI elements
+ */
+export const sizes = createThemeContract({
+  control: restrictedSizeScale,
 })
 
 /**

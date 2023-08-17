@@ -1,6 +1,7 @@
 import {style, assignVars} from '@vanilla-extract/css'
 import {theme} from '@urban-ui/theme'
 import {anatomy} from './anatomy.css.ts'
+import {anatomy as textAnatomy} from '@urban-ui/text/anatomy'
 
 export const solid = style([
   {
@@ -71,9 +72,55 @@ export const outline = style([
   },
   {
     vars: assignVars(anatomy.border, {
-      borderColor: theme.colors.current.border.emphasis,
+      color: theme.colors.current.border.emphasis,
       // @TODO should pull from a border width theme variable
-      borderWidth: theme.space.xs,
+      width: theme.space.xxs,
     }),
   },
 ])
+
+const small = style([
+  {
+    vars: assignVars(anatomy.size, {
+      height: theme.sizes.control.sm,
+    }),
+  },
+  {
+    vars: assignVars(textAnatomy.size, theme.type.size.md),
+  },
+])
+
+const standard = style([
+  {
+    vars: assignVars(anatomy.size, {
+      height: theme.sizes.control.md,
+    }),
+  },
+  {
+    vars: assignVars(textAnatomy.size, theme.type.size.md),
+  },
+])
+
+const large = style([
+  {
+    vars: assignVars(anatomy.size, {
+      height: theme.sizes.control.lg,
+    }),
+  },
+  {
+    vars: assignVars(textAnatomy.size, theme.type.size.lg),
+  },
+])
+
+export const sizes = {small, standard, large}
+
+export const scale = style({
+  transition: 'transform 200ms cubic-bezier(.34,1.56,1,1.65)',
+  selectors: {
+    '&[data-pressed=true]': {
+      transform: 'scale(0.97)',
+    },
+  },
+})
+
+export const effects = {scale}

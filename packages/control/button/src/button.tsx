@@ -11,8 +11,15 @@ import {useButton} from '@react-aria/button'
 import {tones} from '@urban-ui/theme'
 import {Text} from '@urban-ui/text'
 import {cva} from 'cva'
-import {base} from './button.css.ts'
-import {solid, ghost, transparent, outline} from './variants.css.ts'
+import {base, components} from './button.css.ts'
+import {
+  solid,
+  ghost,
+  transparent,
+  outline,
+  sizes,
+  effects,
+} from './variants.css.ts'
 
 const variants = cva([base], {
   variants: {
@@ -29,6 +36,14 @@ const variants = cva([base], {
       positive: '',
       caution: '',
     },
+    size: {
+      sm: sizes.small,
+      md: sizes.standard,
+      lg: sizes.large,
+    },
+    effect: {
+      scale: effects.scale,
+    },
   },
 })
 
@@ -40,7 +55,18 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({children, variant = 'solid', tone, className, ...props}, passRef) => {
+  (
+    {
+      children,
+      variant = 'solid',
+      size = 'md',
+      tone,
+      effect,
+      className,
+      ...props
+    },
+    passRef,
+  ) => {
     const innerRef = useRef<HTMLButtonElement>(null)
     const ref = useObjectRef(
       useMemo(() => {
@@ -54,14 +80,19 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <button
-        className={variants({variant, tone, className})}
+        className={variants({variant, size, tone, effect, className})}
         {...mergeProps(buttonProps, hoverProps, focusProps, props)}
         ref={ref}
         data-pressed={isPressed}
         data-hovered={isHovered}
         data-focused={isFocused}
         data-focus-visible={isFocusVisible}>
-        <Text>{children}</Text>
+        <span className={components.hover} />
+        <span className={components.press} />
+        <span className={components.border} />
+        <span className={components.foreground}>
+          <Text>{children}</Text>
+        </span>
       </button>
     )
   },
