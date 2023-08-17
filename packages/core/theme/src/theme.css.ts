@@ -27,11 +27,11 @@ export const theme = createThemeContract({
     foreground: foreground,
 
     /**
-     * Base is a dynamic tonal field.
-     * Most components will inherit from the base tone, which can change based on context to be another tone. This gives the ability to customise components externally when required.
+     * Current is a dynamic tonal field.
+     * Most components will inherit from the current tone, which can change based on context to be another tone. This gives the ability to customise components externally when required.
      * Typically a tone will always be supplied, meaning that base is a placeholder to be injected with real values dynamically.
      */
-    base: tone,
+    current: tone,
 
     /**
      * App colours denote background colours on a scale of lightess/saturation.

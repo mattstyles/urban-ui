@@ -40,9 +40,9 @@ export const base = style([
 
     backgroundColor: fallbackVar(
       anatomy.bg.base,
-      theme.colors.base.element.base,
+      theme.colors.current.element.base,
     ),
-    color: fallbackVar(anatomy.fg.base, theme.colors.base.fg.invert.hi),
+    color: fallbackVar(anatomy.fg.base, theme.colors.current.fg.invert.hi),
 
     borderRadius: 6,
     border: 'none',
@@ -67,17 +67,17 @@ export const base = style([
       '&[data-hovered=true]': {
         backgroundColor: fallbackVar(
           anatomy.bg.hover,
-          theme.colors.base.element.hover,
+          theme.colors.current.element.hover,
         ),
-        color: fallbackVar(anatomy.fg.hover, theme.colors.base.fg.invert.hi),
+        color: fallbackVar(anatomy.fg.hover, theme.colors.current.fg.invert.hi),
         boxShadow: fallbackVar(border, '0px 0px 0px 0px transparent'),
       },
       '&[data-pressed=true]': {
         backgroundColor: fallbackVar(
           anatomy.bg.press,
-          theme.colors.base.element.press,
+          theme.colors.current.element.press,
         ),
-        color: fallbackVar(anatomy.fg.press, theme.colors.base.fg.invert.hi),
+        color: fallbackVar(anatomy.fg.press, theme.colors.current.fg.invert.hi),
         boxShadow: fallbackVar(border, '0px 0px 0px 0px transparent'),
       },
     },
