@@ -9,6 +9,7 @@ import interMetrics from '@capsizecss/metrics/inter'
  * The entire anatomy can be applied as a theme and inherited by the text component children.
  */
 export const customTextTheme = createTheme(anatomy, {
+  ...anatomy,
   size: precomputeValues({
     fontSize: 28,
     leading: 42,
@@ -24,7 +25,7 @@ export const custom = style([
     vars: {
       [anatomy.weight]: '900',
     },
-    color: theme.colors.primary.muted.fg.lo,
+    color: theme.colors.primary.fg.lo,
   },
   // {
   //   // Assign manually or use capsize precompute values

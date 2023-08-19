@@ -11,6 +11,13 @@ const config = {
   },
   reactStrictMode: true,
   transpilePackages: ['@urban-ui/button'],
+  webpack(config) {
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts'],
+      '.jsx': ['.jsx', '.tsx'],
+    }
+    return config
+  },
 }
 
 const withMDX = createMDX({

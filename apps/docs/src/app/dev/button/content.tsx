@@ -1,8 +1,14 @@
 'use client'
 
+// import Link from 'next/link.js'
 import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
 import {Text} from '@urban-ui/text'
+import {custom, customTextStyle} from './content.css.ts'
+
+// Nodenext module resolution hack @see https://github.com/vercel/next.js/discussions/41189#discussioncomment-4026895
+import _x from 'next/link.js'
+const Link = _x as unknown as typeof _x.default
 
 export function Content() {
   return (
@@ -70,13 +76,27 @@ export function Content() {
         </Flex>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
-        <Text>Effects</Text>
+        <Text size='xl'>Effects</Text>
         <Flex alignment='center' gap='md'>
           <Button effect='scale'>Scale</Button>
           <Button effect='scale' variant='outline'>
             Scale
           </Button>
         </Flex>
+      </Flex>
+      <Flex orientation='v' gap='md'>
+        <Text size='xl'>Anatomy overwrites</Text>
+        <Flex gap='md' className={custom}>
+          <Button>From parent</Button>
+          <Button variant='outline'>Outline variant wins</Button>
+        </Flex>
+        <Flex gap='md'>
+          <Button className={customTextStyle}>Big text</Button>
+        </Flex>
+      </Flex>
+      <Flex orientation='v' gap='md'>
+        <Text size='xl'>Link</Text>
+        <Link href='/dev/type'>Type link</Link>
       </Flex>
     </Flex>
   )

@@ -133,6 +133,18 @@ export const base = {
     weight: weights,
     kerning: kerning,
   },
+
+  transition: {
+    duration: {
+      sm: '120ms',
+      md: '200ms',
+      lg: '360ms',
+    },
+    easing: {
+      easeInOut: 'ease-in-out',
+      bounce: 'cubic-bezier(.34,1.56,1,1.65)',
+    },
+  },
 }
 
 createGlobalTheme(':root', theme, base)

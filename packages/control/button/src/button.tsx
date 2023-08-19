@@ -49,7 +49,8 @@ const variants = cva([base], {
 
 export interface ButtonProps
   extends Omit<AriaButtonProps, 'children'>,
-    VariantProps<typeof variants> {
+    VariantProps<typeof variants>,
+    React.PropsWithChildren {
   className?: string
   children: string
 }
@@ -58,10 +59,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      variant = 'solid',
-      size = 'md',
+      // variant = 'solid',
+      // size = 'md',
+      effect = 'scale',
+      variant,
+      size,
       tone,
-      effect,
       className,
       ...props
     },

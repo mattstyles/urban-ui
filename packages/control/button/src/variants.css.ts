@@ -115,10 +115,14 @@ const large = style([
 export const sizes = {small, standard, large}
 
 export const scale = style({
-  transition: 'transform 200ms cubic-bezier(.34,1.56,1,1.65)',
+  transition: `transform ${theme.transition.duration.sm} ${theme.transition.easing.bounce}`,
+
+  vars: {
+    [anatomy.transition.transform]: 'scale(0.97)',
+  },
   selectors: {
     '&[data-pressed=true]': {
-      transform: 'scale(0.97)',
+      transform: anatomy.transition.transform,
     },
   },
 })

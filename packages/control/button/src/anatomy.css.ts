@@ -1,23 +1,23 @@
 import {createThemeContract} from '@vanilla-extract/css'
 
-const color = createThemeContract({
+export const color = createThemeContract({
   base: null,
   hover: null,
   press: null,
 })
 
-const border = createThemeContract({
+export const border = createThemeContract({
   color: null,
   width: null,
 })
 
-const transition = createThemeContract({
+export const transition = createThemeContract({
   color: null,
   transform: null,
 })
 
 // Add sizes for padding, such as height and text-to-edge variables
-const size = createThemeContract({
+export const size = createThemeContract({
   height: null,
 })
 

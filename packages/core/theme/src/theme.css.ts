@@ -8,6 +8,7 @@ import {
   background,
   coreColor,
   foreground,
+  transition,
 } from './system.css.ts'
 
 export const theme = createThemeContract({
@@ -50,4 +51,7 @@ export const theme = createThemeContract({
 
   // Typography
   type: typography,
+
+  // Transition components
+  transition: transition,
 })

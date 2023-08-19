@@ -145,3 +145,11 @@ export const coreColor = createThemeContract({
     fg: null,
   },
 })
+
+export const transition = createThemeContract({
+  duration: restrictedSizeScale,
+  easing: {
+    easeInOut: null,
+    bounce: null,
+  },
+})

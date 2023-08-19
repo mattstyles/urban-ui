@@ -11,15 +11,15 @@ const padding = createVar()
 export const base = style([
   atoms({
     position: 'relative',
-    display: 'inline-block',
+    display: 'inline-flex',
     placeItems: 'center',
     flex: 'none',
     fontWeight: 'semibold',
     kerning: 'md',
   }),
-  {
-    vars: assignVars(textAnatomy.size, theme.type.size.md),
-  },
+  // {
+  //   vars: assignVars(textAnatomy.size, theme.type.size.md),
+  // },
   {
     vars: assignVars(anatomy.border, {
       width: '2px',
@@ -31,6 +31,7 @@ export const base = style([
     appearance: 'none',
     outline: 'none',
 
+    // @TODO add fallback vars
     fontSize: textAnatomy.size.fontSize,
     lineHeight: textAnatomy.size.lineHeight,
 
@@ -87,7 +88,7 @@ const overlay = style([
   {
     pointerEvents: 'none',
     borderRadius: 6,
-    transition: 'background-color 150ms ease-in-out, opacity 150ms ease-in-out',
+    transition: `background-color ${theme.transition.duration.sm} ease-in-out, opacity ${theme.transition.duration.sm} ease-in-out`,
   },
 ])
 
