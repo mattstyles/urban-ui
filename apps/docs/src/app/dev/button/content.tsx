@@ -14,8 +14,11 @@ export function Content() {
   return (
     <Flex orientation='v' gap='xl'>
       <Flex orientation='v' gap='md' alignment='start'>
-        <Text size='xl'>Solid</Text>
+        <Text size='xl'>Default</Text>
         <Button>Default</Button>
+      </Flex>
+      <Flex orientation='v' gap='md' alignment='start'>
+        <Text size='xl'>Solid</Text>
         <Button tone='primary'>Primary</Button>
         <Button tone='neutral'>Neutral</Button>
       </Flex>
