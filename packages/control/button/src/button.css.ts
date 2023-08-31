@@ -30,6 +30,7 @@ export const base = style([
   {
     appearance: 'none',
     outline: 'none',
+    textDecoration: 'none',
 
     // @TODO add fallback vars
     fontSize: textAnatomy.size.fontSize,

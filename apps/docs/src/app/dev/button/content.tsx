@@ -1,5 +1,7 @@
 'use client'
 
+import * as React from 'react'
+
 // import Link from 'next/link.js'
 import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
@@ -99,7 +101,11 @@ export function Content() {
       </Flex>
       <Flex orientation='v' gap='md'>
         <Text size='xl'>Link</Text>
-        <Link href='/dev/type'>Type link</Link>
+        <Flex alignment='center' gap='md'>
+          <Button asChild>
+            <Link href='/dev/type'>Button as Link</Link>
+          </Button>
+        </Flex>
       </Flex>
     </Flex>
   )

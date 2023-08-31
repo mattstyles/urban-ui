@@ -3,6 +3,7 @@
 import type {VariantProps} from 'cva'
 import type {AriaButtonProps} from '@react-aria/button'
 
+import * as React from 'react'
 import {useRef, forwardRef, useMemo} from 'react'
 import {useHover} from '@react-aria/interactions'
 import {useFocusRing} from '@react-aria/focus'
@@ -11,6 +12,7 @@ import {useButton} from '@react-aria/button'
 import {tones} from '@urban-ui/theme'
 import {Text} from '@urban-ui/text'
 import {cva} from 'cva'
+import {Slot} from '@radix-ui/react-slot'
 import {base, components} from './button.css.ts'
 import {
   solid,
@@ -52,7 +54,9 @@ export interface ButtonProps
     VariantProps<typeof variants>,
     React.PropsWithChildren {
   className?: string
-  children: string
+  // children: string
+  children: React.ReactNode
+  asChild?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -66,6 +70,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       size,
       tone,
       className,
+      asChild,
       ...props
     },
     passRef,
@@ -81,10 +86,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const {hoverProps, isHovered} = useHover(props)
     const {focusProps, isFocusVisible, isFocused} = useFocusRing(props)
 
+    let Comp: Slot | 'button' = 'button'
+    let passProps: {children?: React.ReactNode} = {}
+
+    if (asChild === true) {
+      const Slot = slot(children)
+      if (Slot != null) {
+        Comp = Slot.Comp
+        passProps = Slot.passProps
+      }
+    }
+
     return (
-      <button
+      <Comp
         className={variants({variant, size, tone, effect, className})}
-        {...mergeProps(buttonProps, hoverProps, focusProps, props)}
+        {...mergeProps(buttonProps, hoverProps, focusProps, props, passProps)}
         ref={ref}
         data-pressed={isPressed}
         data-hovered={isHovered}
@@ -94,10 +110,35 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <span className={components.press} />
         <span className={components.border} />
         <span className={components.foreground}>
-          <Text>{children}</Text>
+          <Text>{passProps?.children ?? children}</Text>
         </span>
-      </button>
+      </Comp>
     )
   },
 )
 Button.displayName = 'Urban-Button'
+
+type Slot = React.ForwardRefExoticComponent<
+  React.PropsWithChildren & React.RefAttributes<HTMLElement>
+>
+type PassPropsType = {
+  children?: React.ReactNode
+}
+
+function slot(children: React.ReactNode): {
+  Comp: Slot
+  passProps: PassPropsType
+} | null {
+  const childArray = React.Children.toArray(children)
+  const head = childArray[0]
+
+  if (!React.isValidElement(head)) {
+    throw new Error('Invalid component passed to Slot asChild')
+  }
+
+  return {
+    // @ts-expect-error default exists for the type of component we should pass
+    Comp: head.type.default,
+    passProps: head.props,
+  }
+}
