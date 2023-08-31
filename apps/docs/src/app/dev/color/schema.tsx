@@ -30,7 +30,7 @@ function makeFlatTone(tone: Object, name: string) {
 
 // console.log(makeFlatTone(baseTheme.colors.primary, ''))
 
-type ITone = typeof baseTheme.colors.base
+type ITone = typeof baseTheme.colors.primary
 
 type SwatchProps = {
   tone: ITone
@@ -90,7 +90,7 @@ export function Schema({tone}: SwatchProps) {
       <LightnessDistancing
         height={2400}
         filter=''
-        colors={makeFlatTone(baseTheme.colors.base, '')}
+        colors={makeFlatTone(baseTheme.colors.primary, '')}
       />
       <LightnessDistancing height={2400} filter='critical' colors={colors} />
       <LightnessDistancing height={2400} filter='info' colors={colors} />

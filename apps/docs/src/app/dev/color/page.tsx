@@ -11,7 +11,7 @@ export default function ColorPage() {
   return (
     <Flex orientation='v' gap='md' className={atoms({p: 'md'})}>
       {/* <Content /> */}
-      <Schema tone={baseTheme.colors.base} />
+      <Schema tone={baseTheme.colors.primary} />
     </Flex>
   )
 }

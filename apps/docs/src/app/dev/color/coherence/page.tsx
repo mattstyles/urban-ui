@@ -6,7 +6,10 @@ import * as styles from './styles.css.ts'
 
 export default function ColorPage() {
   return (
-    <Flex orientation='v' gap='xl' className={atoms({p: 'md'})}>
+    <Flex
+      orientation='v'
+      gap='xl'
+      className={cx(atoms({p: 'md'}), styles.primary)}>
       <Flex style={{width: 240}} orientation='v' gap='md'>
         <button className={cx(styles.button, styles.buttonSolid)}>
           Solid strong colour button

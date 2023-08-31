@@ -87,7 +87,7 @@ export const base = {
       fg: {
         invert: {
           hi: 'hsl(300, 82%, 96%)',
-          lo: 'hsl(310, 82%, 69%)',
+          lo: 'hsl(310, 72%, 69%)',
         },
         hi: 'hsl(320, 70%, 42%)',
         lo: 'hsl(323, 75%, 55%)',
