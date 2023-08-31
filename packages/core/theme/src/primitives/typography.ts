@@ -1,7 +1,27 @@
-// @ts-expect-error importing directly with ts creates a type error, probably due to nodenext-style import
+// Ignore the ts error if you have it, the build does not fail
 import arialMetrics from '@capsizecss/metrics/arial'
 
-export const type = {
+// import type {ArialMetrics} from '@capsizecss/metrics/arial.d.ts'
+interface FontMetrics {
+  familyName: string
+  category: string
+  capHeight: number
+  ascent: number
+  descent: number
+  lineGap: number
+  unitsPerEm: number
+  xHeight: number
+  xWidthAvg: number
+}
+
+export const type: Record<
+  'xs' | 'sm' | 'md' | 'lg' | 'xl',
+  {
+    fontSize: number
+    leading: number
+    fontMetrics: FontMetrics
+  }
+> = {
   xs: {
     fontSize: 11,
     leading: 16,

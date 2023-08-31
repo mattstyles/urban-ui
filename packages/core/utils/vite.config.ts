@@ -17,7 +17,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     lib: {
-      entry: './src/index.tsx',
+      entry: './src/index.ts',
       formats: ['cjs', 'es'],
       // fileName: pkg.name,
       fileName: 'index',
