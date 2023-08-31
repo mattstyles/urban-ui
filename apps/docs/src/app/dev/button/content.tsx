@@ -18,6 +18,7 @@ export function Content() {
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Default</Text>
         <Button>Default</Button>
+        <Button isDisabled>Disabled</Button>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Solid</Text>

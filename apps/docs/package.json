@@ -32,6 +32,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@urban-ui/button": "workspace:*",
     "@urban-ui/flex": "workspace:*",
+    "@urban-ui/input": "workspace:*",
     "@urban-ui/spacer": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",

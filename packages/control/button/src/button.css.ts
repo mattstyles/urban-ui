@@ -77,6 +77,11 @@ export const base = style([
         color: fallbackVar(anatomy.fg.press, theme.colors.current.fg.invert.hi),
       },
       // @TODO disabled
+      '&[disabled]': {
+        background: theme.colors.core.disabled.bg,
+        color: theme.colors.core.disabled.fg,
+        cursor: 'not-allowed',
+      },
     },
   },
 ])

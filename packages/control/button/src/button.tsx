@@ -54,9 +54,8 @@ export interface ButtonProps
     VariantProps<typeof variants>,
     React.PropsWithChildren {
   className?: string
-  // children: string
-  children: React.ReactNode
   asChild?: boolean
+  children: React.ReactNode
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
