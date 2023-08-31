@@ -11,6 +11,7 @@ import {px} from '@urban-ui/utils'
 
 globalStyle('body', {
   fontFamily: fonts.system,
+  backgroundColor: theme.colors.app.base,
 })
 
 export const base = {
@@ -48,7 +49,6 @@ export const base = {
       hi: 'hsl(0, 0%, 97%)',
       lo: 'hsl(0, 0%, 86%)',
     },
-    // @TODO should be current, not base
     current: {
       fg: {
         invert: {

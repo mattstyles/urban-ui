@@ -321,6 +321,12 @@ importers:
       '@capsizecss/vanilla-extract':
         specifier: ^1.0.0
         version: 1.0.0(@vanilla-extract/css@1.11.1)
+      '@react-aria/focus':
+        specifier: ^3.13.0
+        version: 3.14.0(react@18.2.0)
+      '@react-aria/interactions':
+        specifier: ^3.16.0
+        version: 3.17.0(react@18.2.0)
       '@react-aria/textfield':
         specifier: ^3.11.0
         version: 3.11.0(react@18.2.0)
@@ -2112,8 +2118,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-aria/focus': 3.13.0(react@18.2.0)
-      '@react-aria/interactions': 3.16.0(react@18.2.0)
+      '@react-aria/focus': 3.14.0(react@18.2.0)
+      '@react-aria/interactions': 3.17.0(react@18.2.0)
       '@react-aria/utils': 3.19.0(react@18.2.0)
       '@react-stately/toggle': 3.6.0(react@18.2.0)
       '@react-types/button': 3.7.3(react@18.2.0)
@@ -2127,7 +2133,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-aria/interactions': 3.16.0(react@18.2.0)
+      '@react-aria/interactions': 3.17.0(react@18.2.0)
       '@react-aria/utils': 3.19.0(react@18.2.0)
       '@react-types/shared': 3.18.1(react@18.2.0)
       '@swc/helpers': 0.5.1
@@ -2278,7 +2284,7 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
     dependencies:
-      '@react-types/shared': 3.18.1(react@18.2.0)
+      '@react-types/shared': 3.19.0(react@18.2.0)
       react: 18.2.0
     dev: false
 

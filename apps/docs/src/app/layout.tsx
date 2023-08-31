@@ -3,6 +3,7 @@ import type {Metadata} from 'next'
 // import {Inter} from 'next/font/google'
 import {inter} from '~/app/font.ts'
 import cx from 'clsx'
+import {atoms} from '@urban-ui/theme/atoms'
 
 // @TODO base create a global theme currently, which is css variables only, should it also create global style? primarily this would be to set the default font family as beyond the reset we don't really want to apply anything that will be inherited.
 import '@urban-ui/theme/base'

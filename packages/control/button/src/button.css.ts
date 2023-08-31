@@ -76,7 +76,6 @@ export const base = style([
       '&[data-pressed=true]': {
         color: fallbackVar(anatomy.fg.press, theme.colors.current.fg.invert.hi),
       },
-      // @TODO disabled
       '&[disabled]': {
         background: theme.colors.core.disabled.bg,
         color: theme.colors.core.disabled.fg,
