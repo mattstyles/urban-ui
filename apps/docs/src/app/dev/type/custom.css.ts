@@ -31,9 +31,10 @@ export const custom = style([
     vars: {
       [anatomy.weight]: '900',
       // [anatomy.color.hi]: 'rebeccapurple',
+      // [theme.colors.foreground.hi]: 'rebeccapurple'
     },
-    // Color won't affect text, setting the anatomy color will though
-    color: theme.colors.primary.fg.lo,
+    // Color won't affect text, setting the anatomy color (or global foregroudn colour) will though
+    color: 'blue',
   },
   // {
   //   // Assign manually or use capsize precompute values

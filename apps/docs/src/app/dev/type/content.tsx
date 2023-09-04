@@ -69,7 +69,7 @@ export function Content() {
           <Flex
             orientation='v'
             gap='md'
-            className={cx(styles.darkPanel, atoms({p: 'md'}))}>
+            className={cx(styles.customPanel, atoms({p: 'md'}))}>
             <Text contrast='hi' invert>
               High contrast
             </Text>
@@ -101,7 +101,21 @@ export function Content() {
               styles.lightPanel,
             )}>
             <Text size='lg'>Default tonal</Text>
-            <Text>Within a tonal block</Text>
+            <Text contrast='lo'>Within a tonal block</Text>
+          </Flex>
+          <Flex
+            orientation='v'
+            gap='md'
+            className={cx(atoms({p: 'lg'}), styles.darkPanel)}>
+            <Text size='lg'>Inheritted colour</Text>
+            <Text contrast='lo'>From text anatomy colour</Text>
+          </Flex>
+          <Flex
+            orientation='v'
+            gap='md'
+            className={cx(atoms({p: 'lg'}), styles.darkPanel2)}>
+            <Text size='lg'>Inheritted colour</Text>
+            <Text contrast='lo'>From global foreground</Text>
           </Flex>
         </Flex>
       </Flex>

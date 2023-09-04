@@ -1,4 +1,4 @@
-import {style, fallbackVar, assignVars} from '@vanilla-extract/css'
+import {style, fallbackVar} from '@vanilla-extract/css'
 import {createTextStyle} from '@capsizecss/vanilla-extract'
 import {anatomy} from './anatomy.css.ts'
 import {sizeVars} from './variants.css.ts'
@@ -32,17 +32,10 @@ export const fallbackSize = style({
 // This creates duplicate capsize classes (here and via the global theme style generation)
 export const base = style([
   createTextStyle(sizeVars, 'text_base'),
-  // {
-  //   vars: assignVars(anatomy.color, {
-  //     hi: theme.colors.foreground.hi,
-  //     lo: theme.colors.foreground.lo,
-  //   }),
-  // },
   {
     fontWeight: fallbackVar(anatomy.weight, 'inherit'),
     fontStyle: fallbackVar(anatomy.style, 'inherit'),
     fontFamily: fallbackVar(anatomy.font, 'inherit'),
     letterSpacing: fallbackVar(anatomy.kerning, 'inherit'),
-    // color: fallbackVar(anatomy.color, theme.colors.foreground.hi),
   },
 ])

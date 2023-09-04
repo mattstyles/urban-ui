@@ -1,5 +1,5 @@
 import {defineProperties} from '@vanilla-extract/sprinkles'
-import {style, assignVars} from '@vanilla-extract/css'
+import {assignVars} from '@vanilla-extract/css'
 import {theme} from '../theme.css.ts'
 import {mapValues} from '@urban-ui/utils'
 
@@ -16,16 +16,35 @@ export const background = defineProperties({
   },
 })
 
-// @TODO foreground colours
+export const foreground = defineProperties({
+  properties: {
+    fg: {
+      hi: {
+        color: theme.colors.foreground.hi,
+      },
+      lo: {
+        color: theme.colors.foreground.lo,
+      },
+    },
+    invert: {
+      true: {
+        vars: assignVars(
+          theme.colors.foreground,
+          theme.colors.current.fg.invert,
+        ),
+      },
+    },
+  },
+})
 
 export const tone = defineProperties({
   properties: {
     tone: {
-      critical: {
-        color: 'red',
-      },
       primary: {
-        vars: assignVars(theme.colors.current, theme.colors.primary),
+        vars: {
+          ...assignVars(theme.colors.current, theme.colors.primary),
+          ...assignVars(theme.colors.foreground, theme.colors.primary.fg.base),
+        },
       },
     },
   },

@@ -39,12 +39,11 @@ const variants = cva([base], {
       lo: colors.fg.lo,
     },
     invert: {
-      true: {},
+      true: atoms({invert: 'true'}),
     },
     tone: {
       true: {},
       inherit: {},
-      // primary: colors.tone.primary,
       primary: atoms({tone: 'primary'}),
       critical: {},
     },
@@ -83,16 +82,11 @@ export function Text({
   invert = false,
   className,
 }: TextProps) {
-  const color = useMemo(
-    () => getContrast({contrast, tone, invert}),
-    [tone, contrast, invert],
-  )
   const Comp = getChild({asChild, strong, em})
 
   return (
     <Comp
       className={cx(
-        color,
         variants({
           size,
           font,
@@ -103,6 +97,7 @@ export function Text({
           fontStyle,
           contrast,
           tone,
+          invert,
           className,
         }),
       )}>
@@ -130,108 +125,3 @@ function getChild({
 
   return 'span'
 }
-
-function getContrast({
-  contrast,
-  tone,
-  invert,
-}: Pick<TextVariants, 'contrast' | 'tone' | 'invert'>) {
-  // if (tone == null) {
-  // }
-  if (tone === 'inherit') {
-    return colors.inherit
-  }
-  // // Base colours
-  if (tone == null) {
-    // return findColorVariant(colorVariants, {contrast, invert})
-    return invert ? colors.invert : null
-  }
-
-  return invert ? colors.toneInvert : null
-  // return findColorVariant(toneVariants, {contrast, invert})
-}
-
-// function findColorVariant(
-//   list: Array<ColorVariant>,
-//   conditions: {
-//     contrast: TextVariants['contrast']
-//     invert: TextVariants['invert']
-//   },
-// ) {
-//   const variant = list.find((variant) => {
-//     return (
-//       variant.conditions.contrast === conditions.contrast &&
-//       variant.conditions.invert === conditions.invert
-//     )
-//   })
-//   return variant?.className ?? null
-// }
-
-// type ColorVariant = {
-//   conditions: {
-//     contrast: TextVariants['contrast']
-//     invert: TextVariants['invert']
-//   }
-//   className: string
-// }
-// const colorVariants: Array<ColorVariant> = [
-//   {
-//     conditions: {
-//       contrast: 'hi',
-//       invert: false,
-//     },
-//     className: colors.fg.hi,
-//   },
-//   {
-//     conditions: {
-//       contrast: 'lo',
-//       invert: false,
-//     },
-//     className: colors.fg.lo,
-//   },
-//   {
-//     conditions: {
-//       contrast: 'hi',
-//       invert: true,
-//     },
-//     className: colors.fg.invert.hi,
-//   },
-//   {
-//     conditions: {
-//       contrast: 'lo',
-//       invert: true,
-//     },
-//     className: colors.fg.invert.lo,
-//   },
-// ]
-
-// const toneVariants: Array<ColorVariant> = [
-//   {
-//     conditions: {
-//       contrast: 'hi',
-//       invert: false,
-//     },
-//     className: colors.tone.hi,
-//   },
-//   {
-//     conditions: {
-//       contrast: 'lo',
-//       invert: false,
-//     },
-//     className: colors.tone.lo,
-//   },
-//   {
-//     conditions: {
-//       contrast: 'hi',
-//       invert: true,
-//     },
-//     className: colors.tone.invert.hi,
-//   },
-//   {
-//     conditions: {
-//       contrast: 'lo',
-//       invert: true,
-//     },
-//     className: colors.tone.invert.lo,
-//   },
-// ]

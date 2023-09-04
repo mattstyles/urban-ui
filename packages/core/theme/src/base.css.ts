@@ -47,22 +47,16 @@ export const base = {
       emphasis: 'hsl(0, 0%, 82%)',
     },
     foreground: {
-      invert: {
-        hi: 'hsl(0, 0%, 97%)',
-        lo: 'hsl(0, 0%, 86%)',
-      },
-
       hi: 'hsl(0, 0%, 23%)',
       lo: 'hsl(0, 0%, 38%)',
     },
     current: {
       fg: {
         invert: {
-          hi: 'hsl(0, 0%, 96%)',
-          lo: 'hsl(0, 0%, 79%)',
+          hi: 'hsl(0, 0%, 97%)',
+          lo: 'hsl(0, 0%, 86%)',
         },
-        hi: 'hsl(0, 0%, 22%)',
-        lo: 'hsl(0, 0%, 45%)',
+        base: {hi: 'hsl(0, 0%, 23%)', lo: 'hsl(0, 0%, 38%)'},
       },
       surface: {
         muted: 'hsl(0, 0%, 96%)',
@@ -95,8 +89,7 @@ export const base = {
           hi: 'hsl(300, 82%, 96%)',
           lo: 'hsl(310, 72%, 69%)',
         },
-        hi: 'hsl(320, 70%, 42%)',
-        lo: 'hsl(323, 75%, 55%)',
+        base: {hi: 'hsl(320, 70%, 42%)', lo: 'hsl(323, 75%, 55%)'},
       },
       surface: {
         muted: 'hsl(322, 100%, 99.4%)',

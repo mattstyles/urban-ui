@@ -45,7 +45,6 @@ export const base = style([
       anatomy.bg.base,
       theme.colors.current.element.base,
     ),
-    color: fallbackVar(anatomy.fg.base, theme.colors.current.fg.invert.hi),
 
     border: 'none',
     margin: 0,
@@ -63,14 +62,30 @@ export const base = style([
       [textAnatomy.weight]: theme.type.weight.semibold,
       [textAnatomy.kerning]: theme.type.kerning.md,
       [textAnatomy.capHeight]: theme.type.capHeight.md,
+
+      // @TODO sort out foreground colours, use neutral scale for white/black on top of tonal background (neutral variant has inverted foreground styles)
+      [theme.colors.foreground.hi]: fallbackVar(
+        anatomy.fg.base,
+        theme.colors.current.fg.invert.hi,
+      ),
     },
 
     selectors: {
       '&[data-hovered=true]': {
-        color: fallbackVar(anatomy.fg.hover, theme.colors.current.fg.invert.hi),
+        vars: {
+          [theme.colors.foreground.hi]: fallbackVar(
+            anatomy.fg.hover,
+            theme.colors.current.fg.invert.hi,
+          ),
+        },
       },
       '&[data-pressed=true]': {
-        color: fallbackVar(anatomy.fg.press, theme.colors.current.fg.invert.hi),
+        vars: {
+          [theme.colors.foreground.hi]: fallbackVar(
+            anatomy.fg.press,
+            theme.colors.current.fg.invert.hi,
+          ),
+        },
       },
       '&[disabled]': {
         background: theme.colors.core.disabled.bg,

@@ -6,7 +6,7 @@ import {type} from './atoms/text.css.ts'
 import {focus} from './atoms/focus.css.ts'
 import {radii} from './atoms/radii.css.ts'
 import {pointer} from './atoms/pointer.css.ts'
-import {background, tone} from './atoms/colors.css.ts'
+import {background, foreground, tone} from './atoms/colors.css.ts'
 
 export const atoms = createSprinkles(
   // Display
@@ -20,6 +20,7 @@ export const atoms = createSprinkles(
 
   // Colors
   background,
+  foreground,
   tone,
 
   // Typography

@@ -14,9 +14,9 @@ export const solid = style([
   {
     // This should actually be from the global white scale, as tonal colour hi won’t necessarily work against the element bg current colour
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.current.fg.invert.hi,
-      hover: theme.colors.current.fg.invert.hi,
-      press: theme.colors.current.fg.invert.hi,
+      base: theme.colors.foreground.hi,
+      hover: theme.colors.foreground.hi,
+      press: theme.colors.foreground.hi,
     }),
   },
 ])
@@ -31,9 +31,9 @@ export const ghost = style([
   },
   {
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.current.fg.hi,
-      hover: theme.colors.current.fg.hi,
-      press: theme.colors.current.fg.hi,
+      base: theme.colors.current.fg.base.hi,
+      hover: theme.colors.current.fg.base.hi,
+      press: theme.colors.current.fg.base.hi,
     }),
   },
 ])
@@ -48,9 +48,9 @@ export const transparent = style([
   },
   {
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.current.fg.hi,
-      hover: theme.colors.current.fg.hi,
-      press: theme.colors.current.fg.hi,
+      base: theme.colors.current.fg.base.hi,
+      hover: theme.colors.current.fg.base.hi,
+      press: theme.colors.current.fg.base.hi,
     }),
   },
 ])
@@ -65,9 +65,9 @@ export const outline = style([
   },
   {
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.current.fg.hi,
-      hover: theme.colors.current.fg.hi,
-      press: theme.colors.current.fg.hi,
+      base: theme.colors.current.fg.base.hi,
+      hover: theme.colors.current.fg.base.hi,
+      press: theme.colors.current.fg.base.hi,
     }),
   },
   {
