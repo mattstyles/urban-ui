@@ -23,6 +23,7 @@ export const space = createThemeContract({
  */
 export const sizes = createThemeContract({
   control: restrictedSizeScale,
+  focusRing: null,
 })
 
 /**
@@ -144,6 +145,7 @@ export const coreColor = createThemeContract({
     bg: null,
     fg: null,
   },
+  focus: null,
 })
 
 export const transition = createThemeContract({
@@ -152,4 +154,9 @@ export const transition = createThemeContract({
     easeInOut: null,
     bounce: null,
   },
+})
+
+export const radii = createThemeContract({
+  circular: null,
+  ...restrictedSizeScale,
 })

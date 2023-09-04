@@ -6,6 +6,7 @@ import {theme} from './theme.css.ts'
 import {accent, deepen} from './primitives/colors.ts'
 import {space} from './primitives/space.ts'
 import {control} from './primitives/size.ts'
+import {radii} from './primitives/radii.ts'
 import {type, fonts, weights, kerning} from './primitives/typography.ts'
 import {px} from '@urban-ui/utils'
 
@@ -19,7 +20,10 @@ export const base = {
 
   sizes: {
     control: control,
+    focusRing: '2px',
   },
+
+  radii: radii,
 
   colors: {
     core: {
@@ -30,6 +34,7 @@ export const base = {
         fg: 'hsl(0, 0%, 42%)',
         bg: 'hsl(0, 0%, 76%)',
       },
+      focus: 'black',
     },
     transparency: {
       accent: accent,
@@ -43,11 +48,12 @@ export const base = {
     },
     foreground: {
       invert: {
-        hi: 'hsl(0, 0%, 23%)',
-        lo: 'hsl(0, 0%, 38%)',
+        hi: 'hsl(0, 0%, 97%)',
+        lo: 'hsl(0, 0%, 86%)',
       },
-      hi: 'hsl(0, 0%, 97%)',
-      lo: 'hsl(0, 0%, 86%)',
+
+      hi: 'hsl(0, 0%, 23%)',
+      lo: 'hsl(0, 0%, 38%)',
     },
     current: {
       fg: {

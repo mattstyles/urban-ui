@@ -56,12 +56,16 @@ export const Input = forwardRef<ElementType, InputProps>(
 
     const {inputProps} = useTextField(props, ref)
     const {hoverProps, isHovered} = useHover(props)
-    const {focusProps, isFocusVisible, isFocused} = useFocusRing(props)
+    const {focusProps, isFocusVisible, isFocused} = useFocusRing(
+      mergeProps(props, {
+        isTextInput: true,
+      }),
+    )
 
     return (
       <input
         className={variants({size, background, className})}
-        {...mergeProps(inputProps, hoverProps, focusProps, props)}
+        {...mergeProps(inputProps, hoverProps, focusProps)}
         ref={ref}
         data-hovered={isHovered}
         data-focused={isFocused}

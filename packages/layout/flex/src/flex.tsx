@@ -75,6 +75,11 @@ const variants = cva(
           display: 'inline-flex',
         }),
       },
+      fit: {
+        true: atoms({
+          width: 'fit',
+        }),
+      },
       flex: {
         full: atoms({
           flex: 'full',
@@ -108,6 +113,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
       justify,
       gap,
       inline,
+      fit,
       flex,
       asChild,
       className,
@@ -126,6 +132,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
           justify,
           gap,
           inline,
+          fit,
           flex,
           className,
         })}

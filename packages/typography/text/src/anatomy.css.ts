@@ -13,6 +13,10 @@ export const style = createVar()
 export const font = createVar()
 export const kerning = createVar()
 export const capHeight = createVar()
+export const color = createThemeContract({
+  hi: null,
+  lo: null,
+})
 
 export const anatomy = createThemeContract({
   size,
@@ -21,4 +25,5 @@ export const anatomy = createThemeContract({
   style,
   kerning,
   capHeight,
+  color,
 })

@@ -22,9 +22,17 @@ export const customTextTheme = createTheme(anatomy, {
 
 export const custom = style([
   {
+    vars: assignVars(anatomy.color, {
+      hi: 'rebeccapurple',
+      lo: 'hotpink',
+    }),
+  },
+  {
     vars: {
       [anatomy.weight]: '900',
+      // [anatomy.color.hi]: 'rebeccapurple',
     },
+    // Color won't affect text, setting the anatomy color will though
     color: theme.colors.primary.fg.lo,
   },
   // {

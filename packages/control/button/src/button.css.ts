@@ -16,6 +16,8 @@ export const base = style([
     flex: 'none',
     fontWeight: 'semibold',
     kerning: 'md',
+    focusRing: 'visible',
+    borderRadius: 'md',
   }),
   // {
   //   vars: assignVars(textAnatomy.size, theme.type.size.md),
@@ -45,7 +47,6 @@ export const base = style([
     ),
     color: fallbackVar(anatomy.fg.base, theme.colors.current.fg.invert.hi),
 
-    borderRadius: 6,
     border: 'none',
     margin: 0,
     padding: 0,
@@ -65,11 +66,6 @@ export const base = style([
     },
 
     selectors: {
-      '&[data-focus-visible=true]': {
-        // @TODO focus rings from theme, use several if possible
-        outline: '2px solid blue',
-        outlineOffset: 2,
-      },
       '&[data-hovered=true]': {
         color: fallbackVar(anatomy.fg.hover, theme.colors.current.fg.invert.hi),
       },
@@ -89,10 +85,10 @@ const overlay = style([
   atoms({
     position: 'absolute',
     inset: 0,
+    borderRadius: 'md',
   }),
   {
     pointerEvents: 'none',
-    borderRadius: 6,
     transition: `background-color ${theme.transition.duration.sm} ease-in-out, opacity ${theme.transition.duration.sm} ease-in-out`,
   },
 ])

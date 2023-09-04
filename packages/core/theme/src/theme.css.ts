@@ -9,11 +9,13 @@ import {
   coreColor,
   foreground,
   transition,
+  radii,
 } from './system.css.ts'
 
 export const theme = createThemeContract({
   space: space,
   sizes: sizes,
+  radii: radii,
 
   // Base colors
   colors: {

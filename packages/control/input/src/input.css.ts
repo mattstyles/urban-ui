@@ -13,12 +13,13 @@ export const base = style([
   atoms({
     fontWeight: 'normal',
     kerning: 'md',
+    focusRing: 'visible',
+    borderRadius: 'sm',
   }),
   {
     borderColor: anatomy.border.color,
     borderStyle: 'solid',
     borderWidth: anatomy.border.width,
-    borderRadius: 6,
 
     vars: assignVars(anatomy.border, {
       width: theme.space.xxs,
@@ -63,11 +64,6 @@ export const base = style([
     },
 
     selectors: {
-      '&[data-focus-visible=true]': {
-        // @TODO focus rings from theme, use several if possible
-        outline: '2px solid blue',
-        outlineOffset: 2,
-      },
       '&[data-hovered=true]': {
         vars: assignVars(anatomy.border, {
           width: theme.space.xxs,

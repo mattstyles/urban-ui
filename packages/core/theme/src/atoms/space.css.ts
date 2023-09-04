@@ -23,8 +23,18 @@ export const space = defineProperties({
 
 export const size = defineProperties({
   properties: {
-    width: theme.space,
-    height: theme.space,
+    width: {
+      ...theme.space,
+      fit: 'fit-content',
+      max: 'max-content',
+      min: 'min-content',
+    },
+    height: {
+      ...theme.space,
+      fit: 'fit-content',
+      max: 'max-content',
+      min: 'min-content',
+    },
   },
   shorthands: {
     size: ['width', 'height'],
