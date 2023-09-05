@@ -18,6 +18,17 @@ export function Content() {
           Some description
         </Text>
       </Field.Root>
+
+      <Field.Root orientation='v' gap='sm' alignment='start'>
+        <Text asChild slot='label'>
+          <label>Another label</label>
+        </Text>
+        <Input slot='field' />
+        <Text slot='description'>Some description</Text>
+        <Text slot='errorMessage' tone='primary'>
+          Some description
+        </Text>
+      </Field.Root>
     </Flex>
   )
 }
