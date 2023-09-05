@@ -42,6 +42,7 @@ export interface InputProps
   extends Omit<AriaTextFieldProps, 'children'>,
     VariantProps<typeof variants> {
   className?: string
+  slot?: string
 }
 
 type ElementType = HTMLInputElement

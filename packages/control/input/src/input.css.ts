@@ -43,7 +43,7 @@ export const base = style([
 
     backgroundColor: fallbackVar(
       theme.colors.current.surface.muted,
-      theme.colors.app.muted,
+      theme.colors.app.bg.muted,
     ),
 
     vars: {

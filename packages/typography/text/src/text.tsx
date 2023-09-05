@@ -46,7 +46,7 @@ const variants = cva([base], {
     tone: {
       true: {},
       inherit: {},
-      primary: atoms({tone: 'primary'}),
+      primary: atoms({fg: 'primary'}),
       critical: {},
     },
   },
@@ -65,7 +65,7 @@ type TextVariants = VariantProps<typeof variants>
 export interface TextProps
   extends TextVariants,
     React.PropsWithChildren,
-    React.HTMLAttributes<'span'> {
+    React.HTMLAttributes<HTMLElement> {
   asChild?: boolean
 }
 
@@ -83,6 +83,7 @@ export function Text({
   tone,
   invert = false,
   className,
+  ...props
 }: TextProps) {
   const Comp = useMemo(
     () => getChild({asChild, strong, em}),
@@ -111,7 +112,8 @@ export function Text({
           className,
         }),
         invertedClass,
-      )}>
+      )}
+      {...props}>
       {children}
     </Comp>
   )
