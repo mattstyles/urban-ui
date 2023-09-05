@@ -53,6 +53,15 @@ export function Content() {
         </Button>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
+        <Text size='xl'>Foreground</Text>
+        <Button variant='foreground' tone='primary'>
+          Primary
+        </Button>
+        <Button variant='foreground' tone='neutral'>
+          Neutral
+        </Button>
+      </Flex>
+      <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Heights</Text>
         <Flex gap='md'>
           <Button variant='solid' tone='primary'>

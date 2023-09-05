@@ -43,7 +43,7 @@ export const base = style([
 
     backgroundColor: fallbackVar(
       anatomy.bg.base,
-      theme.colors.current.element.base,
+      theme.colors.current.element.strong.base,
     ),
 
     border: 'none',
@@ -114,7 +114,7 @@ export const components = {
     {
       backgroundColor: fallbackVar(
         anatomy.bg.hover,
-        theme.colors.current.element.hover,
+        theme.colors.current.element.strong.hover,
       ),
       opacity: 0,
       selectors: {
@@ -129,7 +129,7 @@ export const components = {
     {
       backgroundColor: fallbackVar(
         anatomy.bg.press,
-        theme.colors.current.element.press,
+        theme.colors.current.element.strong.press,
       ),
       opacity: 0,
       selectors: {

@@ -6,17 +6,17 @@ import {anatomy as textAnatomy} from '@urban-ui/text/anatomy'
 export const solid = style([
   {
     vars: assignVars(anatomy.bg, {
-      base: theme.colors.current.element.base,
-      hover: theme.colors.current.element.hover,
-      press: theme.colors.current.element.press,
+      base: theme.colors.current.element.strong.base,
+      hover: theme.colors.current.element.strong.hover,
+      press: theme.colors.current.element.strong.press,
     }),
   },
   {
     // This should actually be from the global white scale, as tonal colour hi won’t necessarily work against the element bg current colour
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.fg.hi,
-      hover: theme.colors.fg.hi,
-      press: theme.colors.fg.hi,
+      base: theme.colors.app.fg.invert.hi,
+      hover: theme.colors.app.fg.invert.hi,
+      press: theme.colors.app.fg.invert.hi,
     }),
   },
 ])
@@ -52,6 +52,24 @@ export const transparent = style([
       hover: theme.colors.current.fg.base.hi,
       press: theme.colors.current.fg.base.hi,
     }),
+  },
+])
+
+// This uses tonal foreground colours, we may want a way to specify inverted colours (or even app global colours inverted or not)
+export const foreground = style([
+  {
+    vars: {
+      ...assignVars(anatomy.bg, {
+        base: theme.colors.core.transparent,
+        hover: theme.colors.core.transparent,
+        press: theme.colors.core.transparent,
+      }),
+      ...assignVars(anatomy.fg, {
+        base: theme.colors.current.fg.base.lo,
+        hover: theme.colors.current.fg.base.hi,
+        press: theme.colors.current.fg.base.hi,
+      }),
+    },
   },
 ])
 

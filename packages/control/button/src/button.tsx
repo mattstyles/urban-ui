@@ -19,6 +19,7 @@ import {
   ghost,
   transparent,
   outline,
+  foreground,
   sizes,
   effects,
 } from './variants.css.ts'
@@ -30,6 +31,7 @@ const variants = cva([base], {
       transparent: transparent,
       ghost: ghost,
       outline: outline,
+      foreground: foreground,
     },
     tone: {
       primary: tones.primary,
