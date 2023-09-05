@@ -64,7 +64,7 @@ export const base = style([
       [textAnatomy.capHeight]: theme.type.capHeight.md,
 
       // @TODO sort out foreground colours, use neutral scale for white/black on top of tonal background (neutral variant has inverted foreground styles)
-      [theme.colors.foreground.hi]: fallbackVar(
+      [theme.colors.fg.hi]: fallbackVar(
         anatomy.fg.base,
         theme.colors.current.fg.invert.hi,
       ),
@@ -73,7 +73,7 @@ export const base = style([
     selectors: {
       '&[data-hovered=true]': {
         vars: {
-          [theme.colors.foreground.hi]: fallbackVar(
+          [theme.colors.fg.hi]: fallbackVar(
             anatomy.fg.hover,
             theme.colors.current.fg.invert.hi,
           ),
@@ -81,7 +81,7 @@ export const base = style([
       },
       '&[data-pressed=true]': {
         vars: {
-          [theme.colors.foreground.hi]: fallbackVar(
+          [theme.colors.fg.hi]: fallbackVar(
             anatomy.fg.press,
             theme.colors.current.fg.invert.hi,
           ),

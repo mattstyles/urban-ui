@@ -34,3 +34,71 @@ export const deepen = {
   800: 'hsla(0, 0%, 0%, 0.565)',
   900: 'hsla(0, 0%, 0%, 0.910)',
 }
+
+export const core = {
+  transparent: 'transparent',
+  current: 'currentcolor',
+  currentcolor: 'currentcolor',
+  disabled: {
+    fg: 'hsl(0, 0%, 42%)',
+    bg: 'hsl(0, 0%, 76%)',
+  },
+  focus: 'hsl(0, 0%, 0%)',
+}
+
+export const coreApp = {
+  bg: {
+    muted: 'hsl(0, 0%, 100%)',
+    base: 'hsl(0, 0%, 96%)',
+    subtle: 'hsl(0, 0%, 91%)',
+    emphasis: 'hsl(0, 0%, 82%)',
+  },
+  fg: {
+    base: {
+      hi: 'hsl(0, 0%, 23%)',
+      lo: 'hsl(0, 0%, 38%)',
+    },
+    invert: {
+      hi: 'hsl(0, 0%, 100%)',
+      lo: 'hsl(0, 0%, 72%)',
+    },
+  },
+}
+
+export const tones = {
+  primary: {
+    fg: {
+      invert: {
+        hi: 'hsl(300, 82%, 96%)',
+        lo: 'hsl(310, 72%, 69%)',
+      },
+      base: {hi: 'hsl(320, 70%, 42%)', lo: 'hsl(323, 75%, 55%)'},
+    },
+    surface: {
+      muted: 'hsl(322, 100%, 99.4%)',
+      base: 'hsl(323, 100%, 98.4%)',
+      subtle: 'hsl(317, 97%, 96%)',
+      emphasis: 'hsl(319, 99%, 93%)',
+    },
+    element: {
+      muted: {
+        base: 'hsl(323, 86.3%, 96.5%)',
+        hover: 'hsl(323, 78.7%, 94.2%)',
+        press: 'hsl(323, 72.2%, 91.1%)',
+        selected: 'hsl(323, 66.3%, 86.6%)',
+      },
+      strong: {
+        base: 'hsl(322, 65.0%, 54.5%)',
+        hover: 'hsl(322, 63.9%, 50.7%)',
+        press: 'hsl(323, 61.9%, 46.7%)',
+        selected: 'hsl(321, 60.9%, 42.7%)',
+      },
+    },
+    border: {
+      muted: 'hsl(323, 70.6%, 90.6%)',
+      base: 'hsl(323, 66.3%, 86.6%)',
+      subtle: 'hsl(323, 62.0%, 80.1%)',
+      emphasis: 'hsl(323, 60.3%, 72.4%)',
+    },
+  },
+}

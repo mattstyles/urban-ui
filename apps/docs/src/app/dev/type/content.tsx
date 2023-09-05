@@ -106,6 +106,13 @@ export function Content() {
           <Flex
             orientation='v'
             gap='md'
+            className={cx(atoms({p: 'lg'}), styles.lightPanel2)}>
+            <Text size='lg'>Inheritted colour</Text>
+            <Text contrast='lo'>Using atoms</Text>
+          </Flex>
+          <Flex
+            orientation='v'
+            gap='md'
             className={cx(atoms({p: 'lg'}), styles.darkPanel)}>
             <Text size='lg'>Inheritted colour</Text>
             <Text contrast='lo'>From text anatomy colour</Text>

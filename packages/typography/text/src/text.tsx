@@ -39,7 +39,9 @@ const variants = cva([base], {
       lo: colors.fg.lo,
     },
     invert: {
-      true: atoms({invert: 'true'}),
+      true: {},
+      // app: atoms({invert: 'app'}),
+      // tone: atoms({invert: 'tone'})
     },
     tone: {
       true: {},
@@ -82,7 +84,15 @@ export function Text({
   invert = false,
   className,
 }: TextProps) {
-  const Comp = getChild({asChild, strong, em})
+  const Comp = useMemo(
+    () => getChild({asChild, strong, em}),
+    [asChild, strong, em],
+  )
+
+  const invertedClass = useMemo(
+    () => getInvertedClass({tone, invert}),
+    [tone, invert],
+  )
 
   return (
     <Comp
@@ -100,6 +110,7 @@ export function Text({
           invert,
           className,
         }),
+        invertedClass,
       )}>
       {children}
     </Comp>
@@ -124,4 +135,12 @@ function getChild({
   }
 
   return 'span'
+}
+
+function getInvertedClass({tone, invert}: Pick<TextProps, 'tone' | 'invert'>) {
+  if (invert === false) {
+    return null
+  }
+
+  return tone != null ? atoms({invert: 'tone'}) : atoms({invert: 'app'})
 }

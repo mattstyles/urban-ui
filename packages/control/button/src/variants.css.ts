@@ -14,9 +14,9 @@ export const solid = style([
   {
     // This should actually be from the global white scale, as tonal colour hi won’t necessarily work against the element bg current colour
     vars: assignVars(anatomy.fg, {
-      base: theme.colors.foreground.hi,
-      hover: theme.colors.foreground.hi,
-      press: theme.colors.foreground.hi,
+      base: theme.colors.fg.hi,
+      hover: theme.colors.fg.hi,
+      press: theme.colors.fg.hi,
     }),
   },
 ])

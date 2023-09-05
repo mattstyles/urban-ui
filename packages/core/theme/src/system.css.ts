@@ -108,6 +108,11 @@ export const foreground = createThemeContract({
   lo: null,
 })
 
+export const fullForeground = createThemeContract({
+  base: foreground,
+  invert: foreground,
+})
+
 /**
  * Colour tone.
  * Each tone is comprised of surface, element, border, and foreground components.
@@ -118,16 +123,13 @@ export const foreground = createThemeContract({
  */
 export const tone = createThemeContract({
   // Refers to top-level foreground components like text and icons
-  fg: {
-    invert: foreground,
-    base: foreground,
-  },
+  fg: fullForeground,
   // Background element backgrounds (panels, surfaces, etc)
   surface: background,
   // Foreground element backgrounds (buttons, badges, etc)
   element: {
     muted: interaction,
-    ...interaction,
+    strong: interaction,
   },
   // Mid-range lightness borders
   border: background,

@@ -8,6 +8,7 @@ import {
   background,
   coreColor,
   foreground,
+  fullForeground,
   transition,
   radii,
 } from './system.css.ts'
@@ -19,7 +20,9 @@ export const theme = createThemeContract({
 
   // Base colors
   colors: {
-    // Alpha transparency scales
+    /** --------------------------- Core --------------------------- */
+
+    // Core alpha transparency scales
     transparency: {
       accent: alpha,
       deepen: alpha,
@@ -28,27 +31,31 @@ export const theme = createThemeContract({
     // Core colours
     core: coreColor,
 
-    // Core foreground colours
-    foreground: foreground,
-
     /**
-     * Current is a dynamic tonal field.
-     * Most components will inherit from the current tone, which can change based on context to be another tone. This gives the ability to customise components externally when required.
-     * Typically a tone will always be supplied, meaning that base is a placeholder to be injected with real values dynamically.
-     */
-    current: tone,
-
-    /**
+     * Core application colours.
+     * 4 backgrounds + 2 foreground colours for high and low contrast.
      * App colours denote background colours on a scale of lightess/saturation.
      */
-    app: background,
+    app: {
+      bg: background,
+      fg: fullForeground,
+    },
 
-    /** -- Tones -- */
+    /** --------------------------- Tones --------------------------- */
 
-    /**
-     * Primary is often used as brand colours or accent colours.
-     */
+    // Primary is often used as brand colours or accent colours.
     primary: tone,
+
+    /** --------------------------- Dynamic --------------------------- */
+    /**
+     * Dynamic colours change based on context.
+     */
+
+    // Dynamic dynamic tonal field.
+    current: tone,
+
+    // Dynamic foreground colours
+    fg: foreground,
   },
 
   // Typography

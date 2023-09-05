@@ -67,19 +67,20 @@ export const colors = {
     hi: style({
       color: fallbackVar(
         anatomy.color.hi,
-        theme.colors.foreground.hi,
+        theme.colors.fg.hi,
+        // Currently colors.fg.hi is _always_ set so this additional fallback is unnecessary
         theme.colors.current.fg.base.hi,
       ),
     }),
     lo: style({
       color: fallbackVar(
         anatomy.color.lo,
-        theme.colors.foreground.lo,
+        theme.colors.fg.lo,
         theme.colors.current.fg.base.lo,
       ),
     }),
   },
-  invert: style({
-    vars: assignVars(anatomy.color, theme.colors.current.fg.invert),
-  }),
+  // invert: style({
+  //   vars: assignVars(anatomy.color, theme.colors.current.fg.invert),
+  // }),
 }
