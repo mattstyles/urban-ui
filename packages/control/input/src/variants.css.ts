@@ -41,7 +41,7 @@ export const sizes = {small, standard, large}
 export const colors = {
   app: style([
     {
-      backgroundColor: theme.colors.app.muted,
+      backgroundColor: theme.colors.app.bg.muted,
     },
   ]),
   surface: style([

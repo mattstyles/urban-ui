@@ -56,8 +56,14 @@ export function Content() {
           gap='md'
           fit
           className={cx(
-            atoms({px: 'lg', py: 'lg', surface: 'base', radii: 'sm'}),
-            styles.primary,
+            atoms({
+              px: 'lg',
+              py: 'lg',
+              surface: 'base',
+              radii: 'sm',
+              tone: 'primary',
+              // fg: 'primary',
+            }),
           )}>
           <Text size='lg'>Panel</Text>
           <Text size='md'>Applying a tone</Text>
