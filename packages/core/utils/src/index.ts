@@ -1,4 +1,5 @@
 export {mapValues} from './map.ts'
+export {useSlotProps, useSlots} from './useSlotProps.ts'
 
 export function px(value: string | number) {
   return value + 'px'

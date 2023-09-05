@@ -25,7 +25,9 @@
     "build": "vite build",
     "test": "vitest"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@react-aria/utils": "^3.18.0"
+  },
   "peerDependencies": {
     "react": "^18.2.0"
   },
