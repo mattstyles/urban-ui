@@ -8,11 +8,11 @@ import {Text} from '@urban-ui/text'
 export function Content() {
   return (
     <Flex orientation='v' gap='xl'>
-      <Field.Root orientation='v' gap='sm' alignment='start'>
+      <Field.Root orientation='v' gap='sm' alignment='start' id='footy'>
         <Text asChild slot='label'>
           <label>Some label</label>
         </Text>
-        <Input slot='control' />
+        <Input slot='field' />
         <Text slot='description'>Some description</Text>
         <Text slot='errorMessage' tone='primary'>
           Some description

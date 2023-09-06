@@ -7,6 +7,7 @@ type SlotTypes<T, U> = {
 /**
  * Do not use, typing needs some work.
  * What this should do is return a mapped type based on the found slot children.
+ * It's not quite there, doesn't understand the return type of the function.
  */
 export function useSlots<
   T extends Record<
@@ -14,7 +15,7 @@ export function useSlots<
     (
       child:
         | React.ReactElement<
-            unknown,
+            HTMLElement,
             string | React.JSXElementConstructor<unknown>
           >
         | React.ReactPortal,
