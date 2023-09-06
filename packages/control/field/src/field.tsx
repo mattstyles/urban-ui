@@ -3,7 +3,7 @@ import type {FlexProps} from '@urban-ui/flex'
 import * as React from 'react'
 import {useField} from '@react-aria/label'
 import {Flex} from '@urban-ui/flex'
-import {useSlotProps, useSlots} from '@urban-ui/utils'
+import {useSlotProps} from '@urban-ui/utils'
 
 export interface RootProps extends React.PropsWithChildren, FlexProps {}
 export function Root({children, id, ...props}: RootProps) {

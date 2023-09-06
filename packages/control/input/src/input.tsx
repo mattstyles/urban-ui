@@ -77,3 +77,37 @@ export const Input = forwardRef<ElementType, InputProps>(
   },
 )
 Input.displayName = 'Input'
+
+export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
+  ({className, size, background, ...props}, passRef) => {
+    const innerRef = useRef<HTMLTextAreaElement>(null)
+    const ref = useObjectRef(
+      useMemo(() => {
+        return mergeRefs(passRef, innerRef)
+      }, [passRef, innerRef]),
+    )
+
+    const {inputProps} = useTextField(
+      {...props, inputElementType: 'textarea'},
+      ref,
+    )
+    const {hoverProps, isHovered} = useHover(props)
+    const {focusProps, isFocusVisible, isFocused} = useFocusRing(
+      mergeProps(props, {
+        isTextInput: true,
+      }),
+    )
+
+    return (
+      <textarea
+        className={variants({size, background, className})}
+        {...mergeProps(inputProps, hoverProps, focusProps)}
+        ref={ref}
+        data-hovered={isHovered}
+        data-focused={isFocused}
+        data-focus-visible={isFocusVisible}
+      />
+    )
+  },
+)
+TextArea.displayName = 'TextArea'
