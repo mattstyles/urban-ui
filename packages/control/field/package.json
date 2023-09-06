@@ -47,6 +47,7 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@react-types/shared": "^3.19.0",
     "@types/node": "^17.0.12",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
