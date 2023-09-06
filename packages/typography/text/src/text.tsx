@@ -1,4 +1,5 @@
 import type {VariantProps} from 'cva'
+import type {Slot as SlotType} from '@urban-ui/utils'
 
 import {useMemo} from 'react'
 import cx from 'clsx'
@@ -67,6 +68,7 @@ export interface TextProps
     React.PropsWithChildren,
     React.HTMLAttributes<HTMLElement> {
   asChild?: boolean
+  slot?: Extract<SlotType, 'description' | 'label' | 'errorMessage'>
 }
 
 export function Text({

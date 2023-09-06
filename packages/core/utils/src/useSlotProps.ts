@@ -1,6 +1,8 @@
 import {useMemo, Children, cloneElement, isValidElement} from 'react'
 import {mergeProps} from '@react-aria/utils'
 
+export type Slot = 'field' | 'label' | 'description' | 'errorMessage'
+
 type SlotTypes<T, U> = {
   [Property in keyof T]: U
 }
@@ -11,7 +13,7 @@ type SlotTypes<T, U> = {
  */
 export function useSlots<
   T extends Record<
-    string,
+    Slot,
     (
       child:
         | React.ReactElement<
@@ -30,7 +32,7 @@ export function useSlots<
     }
 
     if (child.props && child.props.slot) {
-      const fn = slots[child.props.slot]
+      const fn = slots[child.props.slot as Slot]
 
       if (fn == null) {
         return
@@ -49,7 +51,7 @@ export function useSlots<
  */
 export function useSlotProps(
   children: React.ReactNode,
-  props: Record<string, React.HTMLAttributes<HTMLElement>>,
+  props: Record<Slot, React.HTMLAttributes<HTMLElement>>,
 ) {
   return useMemo(
     () =>
@@ -59,7 +61,7 @@ export function useSlotProps(
         }
 
         if (child.props && child.props.slot) {
-          const p = props[child.props.slot]
+          const p = props[child.props.slot as Slot]
 
           if (p == null) {
             return child

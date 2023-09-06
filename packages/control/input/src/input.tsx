@@ -2,6 +2,7 @@
 
 import type {VariantProps} from 'cva'
 import type {AriaTextFieldProps} from '@react-aria/textfield'
+import type {Slot} from '@urban-ui/utils'
 
 import {forwardRef, useRef, useMemo} from 'react'
 import {tones} from '@urban-ui/theme'
@@ -42,7 +43,7 @@ export interface InputProps
   extends Omit<AriaTextFieldProps, 'children'>,
     VariantProps<typeof variants> {
   className?: string
-  slot?: string
+  slot?: Extract<Slot, 'field'>
 }
 
 type ElementType = HTMLInputElement
