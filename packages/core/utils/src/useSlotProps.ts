@@ -1,49 +1,63 @@
-import {useMemo, Children, cloneElement, isValidElement} from 'react'
+import React, {useMemo, Children, cloneElement, isValidElement} from 'react'
 import {mergeProps} from '@react-aria/utils'
 
 export type Slot = 'field' | 'label' | 'description' | 'errorMessage'
 
-type SlotTypes<T, U> = {
+type SlotTypes<T, U = React.ReactElement> = Partial<{
   [Property in keyof T]: U
-}
+}>
+
 /**
- * Do not use, typing needs some work.
- * What this should do is return a mapped type based on the found slot children.
- * It's not quite there, doesn't understand the return type of the function.
+ * Mapper over slots.
+ * Finds each child with a slot property and runs the supplied mapper on it.
+ *
+ * @example
+ * ```
+ * function Foo({children}: React.PropsWithChildren) {
+ *   const {label} = useSlots({
+ *     label: (child) => <label>{child}</label>
+ *   })
+ *
+ *   return (
+ *     <Field>
+ *       {label}
+ *       <Input ... />
+ *     </Field>
+ *   )
+ * }
+ *
+ * // Example render function
+ * return (
+ *   <Foo>
+ *     <Text slot='label'>Label</Text>
+ *   </Foo>
+ * )
+ * ```
  */
 export function useSlots<
-  T extends Record<
-    Slot,
-    (
-      child:
-        | React.ReactElement<
-            HTMLElement,
-            string | React.JSXElementConstructor<unknown>
-          >
-        | React.ReactPortal,
-    ) => U
+  T extends Partial<
+    Record<Slot, (child: React.ReactElement) => React.ReactElement>
   >,
-  U,
->(children: React.ReactNode, slots: T): SlotTypes<T, U> {
-  const output: object = {}
+>(children: React.ReactNode, slots: T): SlotTypes<T> {
+  const output: Partial<SlotTypes<T>> = {}
   Children.forEach(children, (child) => {
     if (!isValidElement(child)) {
       return
     }
 
     if (child.props && child.props.slot) {
-      const fn = slots[child.props.slot as Slot]
+      const slot = child.props.slot as Slot
+      const fn = slots[slot]
 
       if (fn == null) {
         return
       }
 
-      // @ts-expect-error ignore this for now
-      output[child.props.slot] = fn(child)
+      output[slot] = fn(child)
     }
   })
 
-  return output as SlotTypes<T, U>
+  return output as SlotTypes<T>
 }
 
 /**
@@ -51,7 +65,7 @@ export function useSlots<
  */
 export function useSlotProps(
   children: React.ReactNode,
-  props: Record<Slot, React.HTMLAttributes<HTMLElement>>,
+  props: Partial<Record<Slot, React.HTMLAttributes<HTMLElement>>>,
 ) {
   return useMemo(
     () =>

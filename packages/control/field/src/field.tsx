@@ -4,11 +4,11 @@ import type {Validation, InputBase} from '@react-types/shared'
 import type {FieldAria} from '@react-aria/label'
 import type {FlexProps} from '@urban-ui/flex'
 
-import * as React from 'react'
+import {useMemo} from 'react'
 import {useField} from '@react-aria/label'
 import {mergeProps} from '@react-aria/utils'
 import {Flex} from '@urban-ui/flex'
-import {useSlotProps} from '@urban-ui/utils'
+import {useSlotProps, useSlots} from '@urban-ui/utils'
 
 export interface RootProps
   extends React.PropsWithChildren,
@@ -20,6 +20,15 @@ export interface RootProps
 //   validationState?: 'invalid' | 'valid'
 // }
 export function Root({children, id, ...props}: RootProps) {
+  const output = useSlots(children, {
+    label: (child) => child,
+    // field: (child) => child,
+    // description: (child) => child,
+    // errorMessage: (child) => child
+  })
+
+  console.log(output)
+
   // The actual content of the label does not seem to matter here, react-aria will generate a unique id anyway.
   // If an id is passed in then it will be used.
   const {labelProps, fieldProps, descriptionProps, errorMessageProps} =
@@ -46,6 +55,7 @@ export function Root({children, id, ...props}: RootProps) {
     description: descriptionProps,
     errorMessage: errorMessageProps,
   })
+
   return <Flex {...rest}>{computedChildren}</Flex>
 }
 
@@ -59,6 +69,3 @@ function mergeFieldProps(
 ) {
   return mergeProps(fieldProps, props)
 }
-
-// @TODO handle validation state
-// stop rendering description and start rendering error message _if_ error message exists
