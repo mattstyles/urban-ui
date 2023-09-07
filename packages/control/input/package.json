@@ -39,6 +39,7 @@
     "@react-aria/textfield": "^3.11.0",
     "@react-aria/utils": "^3.18.0",
     "@urban-ui/flex": "workspace:*",
+    "@urban-ui/slot": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
     "@urban-ui/utils": "workspace:*",

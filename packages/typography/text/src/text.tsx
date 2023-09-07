@@ -1,5 +1,5 @@
 import type {VariantProps} from 'cva'
-import type {Slot as SlotType} from '@urban-ui/utils'
+import type {Slot as SlotType} from '@urban-ui/slot'
 
 import {useMemo} from 'react'
 import cx from 'clsx'

@@ -2,7 +2,7 @@
 
 import type {VariantProps} from 'cva'
 import type {AriaTextFieldProps} from '@react-aria/textfield'
-import type {Slot} from '@urban-ui/utils'
+import type {Slot} from '@urban-ui/slot'
 
 import {forwardRef, useRef, useMemo} from 'react'
 import {tones} from '@urban-ui/theme'
