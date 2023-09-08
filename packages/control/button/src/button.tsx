@@ -10,6 +10,7 @@ import {useFocusRing} from '@react-aria/focus'
 import {mergeProps, useObjectRef, mergeRefs} from '@react-aria/utils'
 import {useButton} from '@react-aria/button'
 import {tones} from '@urban-ui/theme'
+import {atoms} from '@urban-ui/theme/atoms'
 import {Text} from '@urban-ui/text'
 import {cva} from 'cva'
 import {Slot} from '@radix-ui/react-slot'
@@ -34,9 +35,10 @@ const variants = cva([base], {
       foreground: foreground,
     },
     tone: {
-      primary: tones.primary,
-      neutral: '',
-      critical: '',
+      // primary: tones.primary,
+      primary: atoms({tone: 'primary'}),
+      neutral: atoms({tone: 'neutral'}),
+      critical: atoms({tone: 'critical'}),
       positive: '',
       caution: '',
     },
@@ -101,7 +103,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={variants({variant, size, tone, effect, className})}
-        {...mergeProps(buttonProps, hoverProps, focusProps, props, passProps)}
+        {...mergeProps(buttonProps, hoverProps, focusProps, passProps)}
         ref={ref}
         data-pressed={isPressed}
         data-hovered={isHovered}

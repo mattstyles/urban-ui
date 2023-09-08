@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import type {ButtonProps} from '@urban-ui/button'
 
 // import Link from 'next/link.js'
 import {Flex} from '@urban-ui/flex'
@@ -17,49 +18,70 @@ export function Content() {
     <Flex orientation='v' gap='xl'>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Default</Text>
-        <Button>Default</Button>
-        <Button isDisabled>Disabled</Button>
+        <Flex gap='md'>
+          <Button>Default</Button>
+          <Button isDisabled>Disabled</Button>
+        </Flex>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Solid</Text>
-        <Button tone='primary'>Primary</Button>
-        <Button tone='neutral'>Neutral</Button>
+        <Flex gap='md'>
+          {tones.map((tone) => {
+            return (
+              <Button key={tone} tone={tone}>
+                {cap(tone as string)}
+              </Button>
+            )
+          })}
+        </Flex>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Ghost</Text>
-        <Button variant='ghost' tone='primary'>
-          Primary
-        </Button>
-        <Button variant='ghost' tone='neutral'>
-          Neutral
-        </Button>
+        <Flex gap='md'>
+          {tones.map((tone) => {
+            return (
+              <Button key={tone} variant='ghost' tone={tone}>
+                {cap(tone as string)}
+              </Button>
+            )
+          })}
+        </Flex>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Transparent</Text>
-        <Button variant='transparent' tone='primary'>
-          Primary
-        </Button>
-        <Button variant='transparent' tone='neutral'>
-          Neutral
-        </Button>
+        <Flex gap='md'>
+          {tones.map((tone) => {
+            return (
+              <Button key={tone} variant='transparent' tone={tone}>
+                {cap(tone as string)}
+              </Button>
+            )
+          })}
+        </Flex>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Outline</Text>
-        <Button variant='outline' tone='primary'>
-          Primary
-        </Button>
-        <Button variant='outline' tone='neutral'>
-          Neutral
-        </Button>
+        <Flex gap='md'>
+          {tones.map((tone) => {
+            return (
+              <Button key={tone} variant='outline' tone={tone}>
+                {cap(tone as string)}
+              </Button>
+            )
+          })}
+        </Flex>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Foreground</Text>
-        <Button variant='foreground' tone='primary'>
-          Primary
-        </Button>
-        <Button variant='foreground' tone='neutral'>
-          Neutral
-        </Button>
+        <Flex gap='md'>
+          {tones.map((tone) => {
+            return (
+              <Button key={tone} variant='foreground' tone={tone}>
+                {cap(tone as string)}
+              </Button>
+            )
+          })}
+        </Flex>
       </Flex>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Heights</Text>
@@ -119,4 +141,10 @@ export function Content() {
       </Flex>
     </Flex>
   )
+}
+
+const tones: Array<ButtonProps['tone']> = ['primary', 'neutral', 'critical']
+
+function cap(str: string) {
+  return str.replace(/^./, (char) => char.toUpperCase())
 }
