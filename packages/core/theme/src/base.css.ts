@@ -41,43 +41,11 @@ export const base = {
 
     /** --------------------------- Tones --------------------------- */
     primary: tones.primary,
+    neutral: tones.neutral,
+    critical: tones.critical,
 
     /** --------------------------- Dynamic --------------------------- */
-    current: {
-      fg: {
-        invert: {
-          hi: 'hsl(0, 0%, 97%)',
-          lo: 'hsl(0, 0%, 86%)',
-        },
-        base: {hi: 'hsl(0, 0%, 23%)', lo: 'hsl(0, 0%, 38%)'},
-      },
-      surface: {
-        muted: 'hsl(0, 0%, 96%)',
-        base: 'hsl(0, 0%, 94%)',
-        subtle: 'hsl(0, 0%, 91%)',
-        emphasis: 'hsl(0, 0%, 86%)',
-      },
-      element: {
-        muted: {
-          base: 'hsl(0, 0%, 80%)',
-          hover: 'hsl(0, 0%, 78%)',
-          press: 'hsl(0, 0%, 75%)',
-          selected: 'hsl(0, 0%, 71%)',
-        },
-        strong: {
-          base: 'hsl(0, 0%, 52%)',
-          hover: 'hsl(0, 0%, 49%)',
-          press: 'hsl(0, 0%, 45%)',
-          selected: 'hsl(0, 0%, 42%)',
-        },
-      },
-      border: {
-        muted: 'hsl(0, 0%, 88%)',
-        base: 'hsl(0, 0%, 82%)',
-        subtle: 'hsl(0, 0%, 79%)',
-        emphasis: 'hsl(0, 0%, 72%)',
-      },
-    },
+    current: tones.neutral,
   },
 
   type: {

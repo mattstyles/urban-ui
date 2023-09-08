@@ -9,9 +9,10 @@ import {baseTheme} from '@urban-ui/theme'
 
 export default function ColorPage() {
   return (
-    <Flex orientation='v' gap='md' className={atoms({p: 'md'})}>
+    <Flex orientation='h' gap='md' className={atoms({p: 'md'})}>
       {/* <Content /> */}
-      <Schema tone={baseTheme.colors.primary} />
+      <Schema tone={baseTheme.colors.primary} title='Primary' />
+      <Schema tone={baseTheme.colors.neutral} title='Neutral' />
     </Flex>
   )
 }

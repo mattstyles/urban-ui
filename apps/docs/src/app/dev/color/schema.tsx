@@ -34,66 +34,47 @@ type ITone = typeof baseTheme.colors.primary
 
 type SwatchProps = {
   tone: ITone
+  title: string
 }
-export function Schema({tone}: SwatchProps) {
+export function Schema({tone, title}: SwatchProps) {
   const swatch = useToneSwatch(tone)
 
-  const colors = mapKeys(shopifyColors, (_, key) => {
-    return key.replace('--p-color-', '')
-  })
-
   return (
-    <Flex orientation='h' gap='md'>
-      <Flex orientation='v' gap='none' justify='start'>
-        {swatch.ordered.lightness.map((color) => {
-          return (
-            <Flex key={color.id} gap='sm' alignment='center'>
-              <Flex style={{gap: 1}}>
-                <ColorBox color={chroma.hsl(...color.hsl)} />
-                <ColorBox color={chroma.hsl(...color.hsl).set('hsl.s', 0)} />
-              </Flex>
-              <Text size='sm' weight='semibold' kerning='sm'>
-                {color.id}
-              </Text>
-            </Flex>
-          )
-        })}
-      </Flex>
-      <Flex style={{height: 400, gap: 1}} orientation='h'>
-        <div
-          style={{
-            height: 800,
-            width: 16,
-            background: 'linear-gradient(black, white)',
-          }}
-        />
-        <Flex
-          flex='full'
-          style={{width: 150}}
-          className={atoms({position: 'relative'})}>
-          {swatch.ordered.lightness.map((color) => {
-            const y = 800 * color.hsl[2]
-            return (
-              <Flex
-                key={color.id}
-                alignment='center'
-                gap='xs'
-                className={atoms({position: 'absolute'})}
-                style={{transform: `translateY(-50%) translateY(${y}px)`}}>
-                <div style={{width: 12, height: 2, backgroundColor: 'blue'}} />
-                <Text>{color.id.split('.').slice(1).join('.')}</Text>
-              </Flex>
-            )
-          })}
+    <Flex orientation='v' gap='lg'>
+      <Text size='xl' weight='semibold'>
+        {title}
+      </Text>
+      <Flex orientation='h' gap='md'>
+        <Flex orientation='v' gap='md'>
+          <Text>Lightness scale</Text>
+          <Flex orientation='v' gap='none' justify='start'>
+            {swatch.ordered.lightness.map((color) => {
+              return (
+                <Flex key={color.id} gap='sm' alignment='center'>
+                  <Flex style={{gap: 1}}>
+                    <ColorBox color={chroma.hsl(...color.hsl)} />
+                    <ColorBox
+                      color={chroma.hsl(...color.hsl).set('hsl.s', 0)}
+                    />
+                  </Flex>
+                  <Text size='sm' weight='semibold' kerning='sm'>
+                    {color.id}
+                  </Text>
+                </Flex>
+              )
+            })}
+          </Flex>
+        </Flex>
+
+        <Flex orientation='v' gap='md'>
+          <Text>Distancing</Text>
+          <LightnessDistancing
+            height={2400}
+            filter=''
+            colors={makeFlatTone(tone, '')}
+          />
         </Flex>
       </Flex>
-      <LightnessDistancing
-        height={2400}
-        filter=''
-        colors={makeFlatTone(baseTheme.colors.primary, '')}
-      />
-      <LightnessDistancing height={2400} filter='critical' colors={colors} />
-      <LightnessDistancing height={2400} filter='info' colors={colors} />
     </Flex>
   )
 }
@@ -192,6 +173,19 @@ function LightnessDistancing({
             )
           })}
       </Flex>
+    </Flex>
+  )
+}
+
+export function ShopifyComparison() {
+  const colors = mapKeys(shopifyColors, (_, key) => {
+    return key.replace('--p-color-', '')
+  })
+
+  return (
+    <Flex orientation='h' gap='md'>
+      <LightnessDistancing height={2400} filter='critical' colors={colors} />
+      <LightnessDistancing height={2400} filter='info' colors={colors} />
     </Flex>
   )
 }

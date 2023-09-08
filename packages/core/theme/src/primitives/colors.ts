@@ -101,4 +101,76 @@ export const tones = {
       emphasis: 'hsl(323, 60.3%, 72.4%)',
     },
   },
+
+  neutral: {
+    fg: {
+      invert: {
+        hi: 'hsl(0, 0%, 97%)',
+        lo: 'hsl(0, 0%, 86%)',
+      },
+      base: {hi: 'hsl(0, 0%, 23%)', lo: 'hsl(0, 0%, 38%)'},
+    },
+    surface: {
+      muted: 'hsl(0, 0%, 96%)',
+      base: 'hsl(0, 0%, 94%)',
+      subtle: 'hsl(0, 0%, 91%)',
+      emphasis: 'hsl(0, 0%, 86%)',
+    },
+    element: {
+      muted: {
+        base: 'hsl(0, 0%, 80%)',
+        hover: 'hsl(0, 0%, 78%)',
+        press: 'hsl(0, 0%, 75%)',
+        selected: 'hsl(0, 0%, 71%)',
+      },
+      strong: {
+        base: 'hsl(0, 0%, 52%)',
+        hover: 'hsl(0, 0%, 49%)',
+        press: 'hsl(0, 0%, 45%)',
+        selected: 'hsl(0, 0%, 42%)',
+      },
+    },
+    border: {
+      muted: 'hsl(0, 0%, 88%)',
+      base: 'hsl(0, 0%, 82%)',
+      subtle: 'hsl(0, 0%, 79%)',
+      emphasis: 'hsl(0, 0%, 72%)',
+    },
+  },
+
+  critical: {
+    fg: {
+      invert: {
+        hi: 'hsl(345, 84.9%, 97%)',
+        lo: 'hsl(339, 73.9%, 71.7%)',
+      },
+      base: {hi: 'hsl(344, 63.0%, 24.0%)', lo: 'hsl(345, 70.0%, 46.5%)'},
+    },
+    surface: {
+      muted: 'hsl(348, 100%, 99.5%)',
+      base: 'hsl(345, 100%, 98.4%)',
+      subtle: 'hsl(340, 97%, 96.4%)',
+      emphasis: 'hsl(340, 98%, 93%)',
+    },
+    element: {
+      muted: {
+        base: 'hsl(345, 89.9%, 96.7%)',
+        hover: 'hsl(346, 82.6%, 94.4%)',
+        press: 'hsl(346, 75.8%, 91.4%)',
+        selected: 'hsl(347, 69.3%, 87.1%)',
+      },
+      strong: {
+        base: 'hsl(348, 75.0%, 58.5%)',
+        hover: 'hsl(347, 68.6%, 55.1%)',
+        press: 'hsl(346, 64.6%, 50.1%)',
+        selected: 'hsl(347, 68.6%, 44.7%)',
+      },
+    },
+    border: {
+      muted: 'hsl(347, 72.3%, 91.1%)',
+      base: 'hsl(347, 69.3%, 87.1%)',
+      subtle: 'hsl(348, 64.3%, 80.9%)',
+      emphasis: 'hsl(348, 61.3%, 72.9%)',
+    },
+  },
 }

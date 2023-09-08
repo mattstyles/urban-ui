@@ -46,6 +46,12 @@ export const theme = createThemeContract({
     // Primary is often used as brand colours or accent colours.
     primary: tone,
 
+    // Neutral scale, need not be grayscale though, give it a little flavour to match your app scale hues
+    neutral: tone,
+
+    // Components with this tone require immediate attention or represent destructive actions
+    critical: tone,
+
     /** --------------------------- Dynamic --------------------------- */
     /**
      * Dynamic colours change based on context.

@@ -9,7 +9,7 @@ import {TextField} from '@urban-ui/text-field'
 export function Content() {
   return (
     <Flex orientation='h' gap='xl'>
-      {/* <Flex orientation='v' gap='xl'>
+      <Flex orientation='v' gap='xl'>
         <Field.Root
           orientation='v'
           gap='sm'
@@ -49,7 +49,7 @@ export function Content() {
             Some description
           </Text>
         </Field.Root>
-      </Flex> */}
+      </Flex>
       <Flex orientation='v' gap='xl'>
         <TextField
           label='TextField label'

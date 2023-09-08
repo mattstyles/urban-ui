@@ -25,8 +25,15 @@ export const foreground = defineProperties({
       lo: {
         color: theme.colors.fg.lo,
       },
+      // Tones
       primary: {
         vars: assignVars(theme.colors.fg, theme.colors.primary.fg.base),
+      },
+      neutral: {
+        vars: assignVars(theme.colors.fg, theme.colors.neutral.fg.base),
+      },
+      critical: {
+        vars: assignVars(theme.colors.fg, theme.colors.critical.fg.base),
       },
     },
     invert: {
@@ -49,6 +56,12 @@ export const tone = defineProperties({
         //   ...assignVars(theme.colors.current, theme.colors.primary),
         //   ...assignVars(theme.colors.fg, theme.colors.primary.fg.base),
         // },
+      },
+      neutral: {
+        vars: assignVars(theme.colors.current, theme.colors.neutral),
+      },
+      critical: {
+        vars: assignVars(theme.colors.current, theme.colors.critical),
       },
     },
   },

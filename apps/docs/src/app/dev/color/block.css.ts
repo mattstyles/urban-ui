@@ -2,8 +2,8 @@ import {style, assignVars, createTheme} from '@vanilla-extract/css'
 import {theme} from '@urban-ui/theme'
 
 export const block = style({
-  backgroundColor: theme.colors.base.muted.bg.base,
-  color: theme.colors.base.muted.fg.hi,
+  backgroundColor: theme.colors.current.surface.base,
+  color: theme.colors.current.fg.base.hi,
 })
 
 export const highlightBlock = style({
@@ -21,7 +21,7 @@ export const highlightBlock = style({
 })
 
 export const primary = style({
-  vars: assignVars(theme.colors.base.muted, theme.colors.primary.muted),
+  vars: assignVars(theme.colors.current, theme.colors.primary),
 })
 
 // export const cyberColorMode = createTheme(theme.colors, {
