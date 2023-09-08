@@ -48,7 +48,8 @@ const variants = cva([base], {
       true: {},
       inherit: {},
       primary: atoms({fg: 'primary'}),
-      critical: {},
+      neutral: atoms({fg: 'neutral'}),
+      critical: atoms({fg: 'critical'}),
     },
   },
   defaultVariants: {

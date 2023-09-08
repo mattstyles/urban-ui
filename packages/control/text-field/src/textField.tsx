@@ -21,8 +21,6 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const inputValidationProps = useValidation(validation, props.defaultValue)
     const inputProps = mergeProps(inputValidationProps, props)
 
-    console.log(inputProps.validationState)
-
     return (
       <Field.Root
         orientation='v'

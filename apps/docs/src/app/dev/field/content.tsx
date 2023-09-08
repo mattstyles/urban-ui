@@ -30,12 +30,12 @@ export function Content() {
           alignment='start'
           validationState='invalid'>
           <Text asChild slot='label'>
-            <label>Input label</label>
+            <label>Passing invalid state</label>
           </Text>
           <Input slot='field' />
           <Text slot='description'>Some description</Text>
           <Text slot='errorMessage' tone='primary'>
-            Some description
+            Some error message
           </Text>
         </Field.Root>
 

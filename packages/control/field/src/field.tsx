@@ -53,9 +53,13 @@ export function Root({children, id, ...props}: RootProps) {
       validationState,
       isReadOnly,
       isRequired,
+      tone: validationState === 'invalid' ? 'critical' : null,
     }),
     description: descriptionProps,
-    errorMessage: errorMessageProps,
+    errorMessage: mergeProps(errorMessageProps, {
+      tone: 'critical',
+      contrast: 'lo',
+    }),
   })
 
   return <Flex {...rest}>{proppedChildren}</Flex>
@@ -64,7 +68,7 @@ export function Root({children, id, ...props}: RootProps) {
 type FieldProps = Pick<
   RootProps,
   'isDisabled' | 'validationState' | 'isReadOnly' | 'isRequired'
->
+> & {tone?: string | null}
 function mergeFieldProps(
   fieldProps: FieldAria['fieldProps'],
   props: FieldProps,
