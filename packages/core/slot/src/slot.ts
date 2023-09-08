@@ -34,6 +34,8 @@ export function useSlots<
 
         return fn(child)
       }
+
+      return child
     })
   }, [children, slots])
 }
