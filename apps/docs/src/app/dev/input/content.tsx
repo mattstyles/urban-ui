@@ -32,13 +32,20 @@ export function Content() {
       <Flex orientation='v' gap='md' alignment='start'>
         <Text asChild>
           <label id='primaryinputlabel' htmlFor='primaryinput'>
-            Primary tone manually applied
+            Tone manually applied
           </label>
         </Text>
         <Input
           id='primaryinput'
           aria-labelledby='primaryinputlabel'
           tone='primary'
+          placeholder='primary'
+        />
+        <Input
+          id='primaryinput'
+          aria-labelledby='primaryinputlabel'
+          tone='critical'
+          placeholder='critical'
         />
       </Flex>
       <Flex

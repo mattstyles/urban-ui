@@ -56,3 +56,25 @@ export const colors = {
     }),
   },
 }
+
+export const critical = style({
+  vars: assignVars(anatomy.border, {
+    width: theme.space.xxs,
+    color: theme.colors.critical.element.strong.base,
+  }),
+
+  selectors: {
+    '&[data-hovered=true]': {
+      vars: assignVars(anatomy.border, {
+        width: theme.space.xxs,
+        color: theme.colors.critical.element.strong.hover,
+      }),
+    },
+    '&[data-focused=true]': {
+      vars: assignVars(anatomy.border, {
+        width: theme.space.xxs,
+        color: theme.colors.critical.element.strong.press,
+      }),
+    },
+  },
+})

@@ -5,14 +5,14 @@ import type {AriaTextFieldProps} from '@react-aria/textfield'
 import type {Slot} from '@urban-ui/slot'
 
 import {forwardRef, useRef, useMemo} from 'react'
-import {tones} from '@urban-ui/theme'
+import {atoms} from '@urban-ui/theme/atoms'
 import {useTextField} from '@react-aria/textfield'
 import {useHover} from '@react-aria/interactions'
 import {useFocusRing} from '@react-aria/focus'
 import {mergeProps, useObjectRef, mergeRefs} from '@react-aria/utils'
 import {cva} from 'cva'
 import {base} from './input.css.ts'
-import {sizes, colors} from './variants.css.ts'
+import {sizes, colors, critical} from './variants.css.ts'
 
 const variants = cva([base], {
   variants: {
@@ -22,9 +22,9 @@ const variants = cva([base], {
     },
     muted: {true: null, false: null},
     tone: {
-      primary: tones.primary,
-      neutral: '',
-      critical: '',
+      primary: atoms({tone: 'primary'}),
+      neutral: atoms({tone: 'neutral'}),
+      critical: [atoms({tone: 'critical'}), critical],
       positive: '',
       caution: '',
     },
