@@ -35,7 +35,6 @@ const variants = cva([base], {
       foreground: foreground,
     },
     tone: {
-      // primary: tones.primary,
       primary: atoms({tone: 'primary'}),
       neutral: atoms({tone: 'neutral'}),
       critical: atoms({tone: 'critical'}),
