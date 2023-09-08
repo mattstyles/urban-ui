@@ -29,6 +29,43 @@ export function Content() {
       <Flex>
         <ControlledInput />
       </Flex>
+      <Flex orientation='v' gap='md' alignment='start'>
+        <Text asChild>
+          <label id='primaryinputlabel' htmlFor='primaryinput'>
+            Primary tone manually applied
+          </label>
+        </Text>
+        <Input
+          id='primaryinput'
+          aria-labelledby='primaryinputlabel'
+          tone='primary'
+        />
+      </Flex>
+      <Flex
+        orientation='v'
+        gap='md'
+        alignment='start'
+        style={{background: 'white'}}
+        className={atoms({p: 'lg'})}>
+        <Text asChild>
+          <label id='eminputlabel' htmlFor='eminput'>
+            Background tonal colour applied
+          </label>
+        </Text>
+        <Input
+          id='eminput'
+          aria-labelledby='eminputlabel'
+          background='surface'
+          placeholder='surface, muted'
+        />
+        <Input
+          id='eminput'
+          aria-labelledby='eminputlabel'
+          placeholder='app, not muted'
+          background='app'
+          muted={false}
+        />
+      </Flex>
 
       <Flex gap='md'>
         <Flex
@@ -75,6 +112,36 @@ export function Content() {
               id='i1'
               aria-labelledby='l1'
               placeholder='placeholder text'
+            />
+          </Flex>
+        </Flex>
+        <Flex
+          orientation='v'
+          alignment='start'
+          gap='md'
+          fit
+          className={cx(
+            atoms({
+              px: 'lg',
+              py: 'lg',
+              surface: 'muted',
+              radii: 'sm',
+              tone: 'primary',
+              fg: 'primary',
+            }),
+          )}>
+          <Text size='lg'>Panel</Text>
+          <Text size='md'>Applying a tone from panel</Text>
+          <Flex orientation='v' gap='xs'>
+            <label id='l2' htmlFor='i2'>
+              <Text>Input:</Text>
+            </label>
+            <Input
+              id='i2'
+              aria-labelledby='l2'
+              placeholder='placeholder text'
+              background='surface'
+              muted={false}
             />
           </Flex>
         </Flex>

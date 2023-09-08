@@ -39,19 +39,20 @@ const large = style([
 export const sizes = {small, standard, large}
 
 export const colors = {
-  app: style([
-    {
+  app: {
+    muted: style({
       backgroundColor: theme.colors.app.bg.muted,
-    },
-  ]),
-  surface: style([
-    {
+    }),
+    base: style({
+      backgroundColor: theme.colors.app.bg.base,
+    }),
+  },
+  surface: {
+    muted: style({
       backgroundColor: theme.colors.current.surface.muted,
-    },
-  ]),
-  emphasis: style([
-    {
-      backgroundColor: theme.colors.current.surface.emphasis,
-    },
-  ]),
+    }),
+    base: style({
+      backgroundColor: theme.colors.current.surface.base,
+    }),
+  },
 }

@@ -17,10 +17,10 @@ import {sizes, colors} from './variants.css.ts'
 const variants = cva([base], {
   variants: {
     background: {
-      app: colors.app,
-      surface: colors.surface,
-      emphasis: colors.emphasis,
+      app: {},
+      surface: {},
     },
+    muted: {true: null, false: null},
     tone: {
       primary: tones.primary,
       neutral: '',
@@ -34,8 +34,31 @@ const variants = cva([base], {
       lg: sizes.large,
     },
   },
+  compoundVariants: [
+    {
+      background: 'app',
+      muted: true,
+      className: colors.app.muted,
+    },
+    {
+      background: 'app',
+      muted: false,
+      className: colors.app.base,
+    },
+    {
+      background: 'surface',
+      muted: true,
+      className: colors.surface.muted,
+    },
+    {
+      background: 'surface',
+      muted: false,
+      className: colors.surface.base,
+    },
+  ],
   defaultVariants: {
     background: 'app',
+    muted: true,
   },
 })
 
@@ -48,7 +71,7 @@ export interface InputProps
 
 type ElementType = HTMLInputElement
 export const Input = forwardRef<ElementType, InputProps>(
-  ({className, size, background, ...props}, passRef) => {
+  ({className, size, background, muted, tone, ...props}, passRef) => {
     const innerRef = useRef<ElementType>(null)
     const ref = useObjectRef(
       useMemo(() => {
@@ -66,7 +89,7 @@ export const Input = forwardRef<ElementType, InputProps>(
 
     return (
       <input
-        className={variants({size, background, className})}
+        className={variants({size, background, muted, tone, className})}
         {...mergeProps(inputProps, hoverProps, focusProps)}
         ref={ref}
         data-hovered={isHovered}
