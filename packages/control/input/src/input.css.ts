@@ -45,6 +45,7 @@ export const base = style([
       theme.colors.current.surface.muted,
       theme.colors.app.bg.muted,
     ),
+    color: theme.colors.fg.hi,
 
     vars: {
       [padding]: calc(
