@@ -37,7 +37,7 @@ type SwatchProps = {
   title: string
 }
 export function Schema({tone, title}: SwatchProps) {
-  const swatch = useToneSwatch(tone)
+  const swatch = useToneSwatch(tone, title)
 
   return (
     <Flex orientation='v' gap='lg'>
@@ -86,9 +86,9 @@ function ColorBox({color}: {color: chroma.Color}) {
   )
 }
 
-function useToneSwatch(tone: ITone) {
+function useToneSwatch(tone: ITone, title: string) {
   return useMemo(() => {
-    const flat = makeFlatTone(tone, 'primary')
+    const flat = makeFlatTone(tone, title)
     const hsl = mapValues(flat, (value) => {
       return chroma(value).hsl()
     })
@@ -103,7 +103,7 @@ function useToneSwatch(tone: ITone) {
         lightness,
       },
     }
-  }, [tone])
+  }, [tone, title])
 }
 
 function toObjArray<T extends Object>(
