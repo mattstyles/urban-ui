@@ -27,12 +27,15 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         orientation='v'
         gap='sm'
         alignment='start'
-        validationState={inputProps.validationState}>
+        validationState={inputProps.validationState}
+        isRequired={inputProps.isRequired}
+        isDisabled={inputProps.isDisabled}
+        isReadOnly={inputProps.isReadOnly}>
         <Flex gap='sm' alignment='end' id='foobarbaz'>
           <Text asChild slot='label'>
             <label>{label}</label>
           </Text>
-          <Text size='sm' tone='critical' slot='requiredLabel'>
+          <Text size='sm' slot='requiredLabel'>
             required
           </Text>
         </Flex>

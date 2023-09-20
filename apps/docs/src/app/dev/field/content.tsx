@@ -7,7 +7,6 @@ import {Input, TextArea} from '@urban-ui/input'
 import {Text} from '@urban-ui/text'
 import {TextField} from '@urban-ui/text-field'
 import {Button} from '@urban-ui/button'
-import {mapAllChildren} from '@urban-ui/slot'
 
 export function Content() {
   return (
@@ -61,14 +60,12 @@ export function Content() {
           validation={validation.maxLength(10)}
           isRequired
         />
-        {/* <TestChildMap>
-          <div id='foo'>
-            <div>
-              <div id='target'>Hello</div>
-            </div>
-          </div>
-          <div id='bar'>World</div>
-        </TestChildMap> */}
+        <TextField
+          label='TextField label'
+          description='maximum length of 10'
+          errorMessage='exceeds maximum length of 10'
+          validation={validation.maxLength(10)}
+        />
       </Flex>
       {/* <Flex orientation='v' gap='xl'>
         <Text size='xl' weight='semibold'>
@@ -99,24 +96,4 @@ const validation = {
   maxLength: (len: number) => (value: string) => {
     return value.length <= len
   },
-}
-
-function TestChildMap({children}: React.PropsWithChildren) {
-  const mappedChildren = React.useMemo(() => {
-    return mapAllChildren(children, (child) => {
-      console.log('mapping children', child)
-
-      if (child.props.id === 'target') {
-        return React.cloneElement(child, {
-          style: {color: 'blue'},
-        })
-      }
-
-      return React.cloneElement(child, {
-        style: {color: 'red'},
-      })
-    })
-  }, [children])
-
-  return mappedChildren
 }

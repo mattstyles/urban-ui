@@ -39,6 +39,9 @@ export function Root({children, id, ...props}: RootProps) {
       return cloneElement(child, mergeProps(child.props, labelProps))
     },
     requiredLabel: (child) => {
+      if (isRequired == null || isRequired === false) {
+        return null
+      }
       return cloneElement(child, {tone: 'critical'})
     },
     field: (child) => {
