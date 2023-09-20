@@ -6,6 +6,7 @@ import {forwardRef, useState, useCallback} from 'react'
 import {mergeProps} from '@react-aria/utils'
 import {Field} from '@urban-ui/field'
 import {Text} from '@urban-ui/text'
+import {Flex} from '@urban-ui/flex'
 import {Input} from '@urban-ui/input'
 
 type Validation = (value: string) => boolean
@@ -27,12 +28,25 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
         gap='sm'
         alignment='start'
         validationState={inputProps.validationState}>
-        <Text asChild slot='label'>
-          <label>{label}</label>
-        </Text>
+        <Flex gap='sm' alignment='end' id='foobarbaz'>
+          <Text asChild slot='label'>
+            <label>{label}</label>
+          </Text>
+          <Text size='sm' tone='critical' slot='requiredLabel'>
+            required
+          </Text>
+        </Flex>
         <Input {...inputProps} ref={ref} slot='field' />
-        {description && <Text slot='description'>{description}</Text>}
-        {errorMessage && <Text slot='errorMessage'>{errorMessage}</Text>}
+        {description && (
+          <Text size='sm' slot='description'>
+            {description}
+          </Text>
+        )}
+        {errorMessage && (
+          <Text size='sm' slot='errorMessage'>
+            {errorMessage}
+          </Text>
+        )}
       </Field.Root>
     )
   },

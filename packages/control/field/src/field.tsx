@@ -1,13 +1,13 @@
 'use client'
 
 import type {Validation, InputBase} from '@react-types/shared'
-import type {FieldAria} from '@react-aria/label'
 import type {FlexProps} from '@urban-ui/flex'
 
+import {cloneElement} from 'react'
 import {useField} from '@react-aria/label'
 import {mergeProps} from '@react-aria/utils'
 import {Flex} from '@urban-ui/flex'
-import {useSlotProps, useSlots} from '@urban-ui/slot'
+import {useSlots} from '@urban-ui/slot'
 
 export interface RootProps
   extends React.PropsWithChildren,
@@ -34,44 +34,45 @@ export function Root({children, id, ...props}: RootProps) {
 
   const {isDisabled, validationState, isReadOnly, isRequired, ...rest} = props
 
-  // Filter out either description _or_ errorMessage based on validation state
   const computedChildren = useSlots(children, {
-    label: (child) => child,
-    field: (child) => child,
+    label: (child) => {
+      return cloneElement(child, mergeProps(child.props, labelProps))
+    },
+    requiredLabel: (child) => {
+      return cloneElement(child, {tone: 'critical'})
+    },
+    field: (child) => {
+      return cloneElement(
+        child,
+        mergeProps(child.props, fieldProps, {
+          isDisabled,
+          validationState,
+          isReadOnly,
+          isRequired,
+          tone: validationState === 'invalid' ? 'critical' : null,
+        }),
+      )
+    },
     description: (child) => {
-      return validationState === 'invalid' ? null : child
+      if (validationState === 'invalid') {
+        return null
+      }
+
+      return cloneElement(child, mergeProps(child.props, descriptionProps))
     },
     errorMessage: (child) => {
-      return validationState === 'invalid' ? child : null
+      if (validationState === 'valid') {
+        return null
+      }
+
+      return cloneElement(
+        child,
+        mergeProps(child.props, errorMessageProps, {
+          tone: 'critical',
+        }),
+      )
     },
   })
 
-  const proppedChildren = useSlotProps(computedChildren, {
-    label: labelProps,
-    field: mergeFieldProps(fieldProps, {
-      isDisabled,
-      validationState,
-      isReadOnly,
-      isRequired,
-      tone: validationState === 'invalid' ? 'critical' : null,
-    }),
-    description: descriptionProps,
-    errorMessage: mergeProps(errorMessageProps, {
-      tone: 'critical',
-      contrast: 'lo',
-    }),
-  })
-
-  return <Flex {...rest}>{proppedChildren}</Flex>
-}
-
-type FieldProps = Pick<
-  RootProps,
-  'isDisabled' | 'validationState' | 'isReadOnly' | 'isRequired'
-> & {tone?: string | null}
-function mergeFieldProps(
-  fieldProps: FieldAria['fieldProps'],
-  props: FieldProps,
-) {
-  return mergeProps(fieldProps, props)
+  return <Flex {...rest}>{computedChildren}</Flex>
 }

@@ -69,7 +69,10 @@ export interface TextProps
     React.PropsWithChildren,
     React.HTMLAttributes<HTMLElement> {
   asChild?: boolean
-  slot?: Extract<SlotType, 'description' | 'label' | 'errorMessage'>
+  slot?: Extract<
+    SlotType,
+    'description' | 'label' | 'errorMessage' | 'requiredLabel'
+  >
 }
 
 export function Text({

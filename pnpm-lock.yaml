@@ -53,6 +53,9 @@ importers:
       '@urban-ui/input':
         specifier: workspace:*
         version: link:../../packages/control/input
+      '@urban-ui/slot':
+        specifier: workspace:*
+        version: link:../../packages/core/slot
       '@urban-ui/spacer':
         specifier: workspace:*
         version: link:../../packages/layout/spacer

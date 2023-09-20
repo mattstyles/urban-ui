@@ -34,6 +34,7 @@
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/field": "workspace:*",
     "@urban-ui/input": "workspace:*",
+    "@urban-ui/slot": "workspace:*",
     "@urban-ui/spacer": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/text-field": "workspace:*",
