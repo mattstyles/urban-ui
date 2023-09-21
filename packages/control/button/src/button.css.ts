@@ -55,7 +55,7 @@ export const base = style([
       [padding]: calc(
         calc(height)
           .subtract(textAnatomy.capHeight)
-          .subtract(calc(anatomy.border.width).multiply(2))
+          // .subtract(calc(anatomy.border.width).multiply(2))
           .divide(2),
       ).toString(),
       [height]: fallbackVar(anatomy.size.height, theme.sizes.control.md),
@@ -160,6 +160,19 @@ export const components = {
       paddingBottom: padding,
       paddingLeft: theme.space.xl,
       paddingRight: theme.space.xl,
+    },
+  ]),
+  foregroundIcon: style([
+    atoms({
+      display: 'flex',
+      position: 'relative',
+      alignment: 'center',
+      justify: 'center',
+      padding: 'none',
+    }),
+    {
+      height: height,
+      width: height,
     },
   ]),
 }

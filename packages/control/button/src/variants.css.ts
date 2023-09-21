@@ -106,6 +106,11 @@ const small = style([
   {
     vars: assignVars(textAnatomy.size, theme.type.size.md),
   },
+  {
+    vars: {
+      [textAnatomy.capHeight]: theme.type.capHeight.md,
+    },
+  },
 ])
 
 const standard = style([
@@ -117,6 +122,11 @@ const standard = style([
   {
     vars: assignVars(textAnatomy.size, theme.type.size.md),
   },
+  {
+    vars: {
+      [textAnatomy.capHeight]: theme.type.capHeight.md,
+    },
+  },
 ])
 
 const large = style([
@@ -127,6 +137,11 @@ const large = style([
   },
   {
     vars: assignVars(textAnatomy.size, theme.type.size.lg),
+  },
+  {
+    vars: {
+      [textAnatomy.capHeight]: theme.type.capHeight.lg,
+    },
   },
 ])
 
@@ -146,3 +161,7 @@ export const scale = style({
 })
 
 export const effects = {scale}
+
+export const icon = style({
+  // Height and width
+})

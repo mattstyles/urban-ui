@@ -13,6 +13,7 @@ import {tones} from '@urban-ui/theme'
 import {atoms} from '@urban-ui/theme/atoms'
 import {Text} from '@urban-ui/text'
 import {cva} from 'cva'
+import cx from 'clsx'
 import {Slot} from '@radix-ui/react-slot'
 import {base, components} from './button.css.ts'
 import {
@@ -58,6 +59,7 @@ export interface ButtonProps
     React.PropsWithChildren {
   className?: string
   asChild?: boolean
+  icon?: boolean
   children: React.ReactNode
 }
 
@@ -65,14 +67,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
-      // variant = 'solid',
-      // size = 'md',
       effect = 'scale',
       variant,
       size,
       tone,
       className,
       asChild,
+      icon = false,
       ...props
     },
     passRef,
@@ -111,7 +112,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         <span className={components.hover} />
         <span className={components.press} />
         <span className={components.border} />
-        <span className={components.foreground}>
+        <span
+          className={cx(
+            icon ? components.foregroundIcon : components.foreground,
+          )}>
           <Text>{passProps?.children ?? children}</Text>
         </span>
       </Comp>
