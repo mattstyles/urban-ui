@@ -2,6 +2,7 @@ import {style, assignVars} from '@vanilla-extract/css'
 import {theme} from '@urban-ui/theme'
 import {anatomy} from './anatomy.css.ts'
 import {anatomy as textAnatomy} from '@urban-ui/text/anatomy'
+import {radii as varRadii} from './button.css.ts'
 
 export const solid = style([
   {
@@ -162,6 +163,25 @@ export const scale = style({
 
 export const effects = {scale}
 
-export const icon = style({
-  // Height and width
-})
+export const radii = {
+  sm: style({
+    vars: {
+      [varRadii]: theme.radii.sm,
+    },
+  }),
+  md: style({
+    vars: {
+      [varRadii]: theme.radii.md,
+    },
+  }),
+  lg: style({
+    vars: {
+      [varRadii]: theme.radii.lg,
+    },
+  }),
+  circular: style({
+    vars: {
+      [varRadii]: theme.radii.circular,
+    },
+  }),
+}

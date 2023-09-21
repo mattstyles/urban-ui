@@ -7,6 +7,7 @@ import {anatomy} from './anatomy.css.ts'
 
 const height = createVar()
 const padding = createVar()
+export const radii = createVar()
 
 export const base = style([
   atoms({
@@ -17,7 +18,6 @@ export const base = style([
     fontWeight: 'semibold',
     kerning: 'md',
     focusRing: 'visible',
-    borderRadius: 'md',
   }),
   // {
   //   vars: assignVars(textAnatomy.size, theme.type.size.md),
@@ -47,6 +47,7 @@ export const base = style([
     ),
 
     border: 'none',
+    borderRadius: fallbackVar(radii, theme.radii.md),
     margin: 0,
     padding: 0,
     WebkitTapHighlightColor: 'transparent',
@@ -100,11 +101,12 @@ const overlay = style([
   atoms({
     position: 'absolute',
     inset: 0,
-    borderRadius: 'md',
+    // borderRadius: 'md',
   }),
   {
     pointerEvents: 'none',
     transition: `background-color ${theme.transition.duration.sm} ease-in-out, opacity ${theme.transition.duration.sm} ease-in-out`,
+    borderRadius: fallbackVar(radii, theme.radii.md),
   },
 ])
 

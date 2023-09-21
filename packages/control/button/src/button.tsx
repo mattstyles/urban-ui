@@ -24,6 +24,7 @@ import {
   foreground,
   sizes,
   effects,
+  radii,
 } from './variants.css.ts'
 
 const variants = cva([base], {
@@ -50,6 +51,22 @@ const variants = cva([base], {
     effect: {
       scale: effects.scale,
     },
+    icon: {
+      true: atoms({alignSelf: 'flex-start'}),
+    },
+    radii: {
+      // sm: atoms({borderRadius: 'sm'}),
+      // md: atoms({borderRadius: 'md'}),
+      // lg: atoms({borderRadius: 'lg'}),
+      // circular: atoms({borderRadius: 'circular'}),
+      sm: radii.sm,
+      md: radii.md,
+      lg: radii.lg,
+      circular: radii.circular,
+    },
+  },
+  defaultVariants: {
+    radii: 'md',
   },
 })
 
@@ -59,7 +76,6 @@ export interface ButtonProps
     React.PropsWithChildren {
   className?: string
   asChild?: boolean
-  icon?: boolean
   children: React.ReactNode
 }
 
@@ -71,9 +87,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       tone,
+      radii,
+      icon = false,
       className,
       asChild,
-      icon = false,
       ...props
     },
     passRef,
@@ -102,7 +119,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
-        className={variants({variant, size, tone, effect, className})}
+        className={variants({
+          variant,
+          size,
+          tone,
+          effect,
+          radii,
+          icon,
+          className,
+        })}
         {...mergeProps(buttonProps, hoverProps, focusProps, passProps)}
         ref={ref}
         data-pressed={isPressed}
