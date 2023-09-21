@@ -9,12 +9,10 @@ const height = createVar()
 const padding = createVar()
 const textHeight = createVar()
 
-export const base = style([
+export const container = style([
   atoms({
-    fontWeight: 'normal',
-    kerning: 'md',
-    focusRing: 'visible',
     borderRadius: 'sm',
+    focusRing: 'visible',
   }),
   {
     borderColor: anatomy.border.color,
@@ -25,10 +23,45 @@ export const base = style([
       width: theme.space.xxs,
       color: theme.colors.current.border.muted,
     }),
+
+    selectors: {
+      '&[data-hovered=true]': {
+        vars: assignVars(anatomy.border, {
+          width: theme.space.xxs,
+          color: theme.colors.current.border.subtle,
+        }),
+      },
+      '&[data-focused=true]': {
+        vars: assignVars(anatomy.border, {
+          width: theme.space.xxs,
+          color: theme.colors.current.border.emphasis,
+        }),
+      },
+      '&[data-disabled=true]': {
+        borderColor: theme.colors.core.disabled.bg,
+        cursor: 'not-allowed',
+      },
+    },
   },
+  {
+    backgroundColor: fallbackVar(
+      theme.colors.current.surface.muted,
+      theme.colors.app.bg.muted,
+    ),
+  },
+])
+
+export const base = style([
+  atoms({
+    fontWeight: 'normal',
+    kerning: 'md',
+    display: 'flex',
+    flex: 'full',
+  }),
   {
     appearance: 'none',
     outline: 'none',
+    border: 'none',
 
     fontSize: fallbackVar(
       textAnatomy.size.fontSize,
@@ -41,10 +74,6 @@ export const base = style([
     paddingLeft: theme.space.md,
     paddingRight: theme.space.md,
 
-    backgroundColor: fallbackVar(
-      theme.colors.current.surface.muted,
-      theme.colors.app.bg.muted,
-    ),
     color: theme.colors.fg.hi,
 
     vars: {
@@ -65,22 +94,9 @@ export const base = style([
     },
 
     selectors: {
-      '&[data-hovered=true]': {
-        vars: assignVars(anatomy.border, {
-          width: theme.space.xxs,
-          color: theme.colors.current.border.subtle,
-        }),
-      },
-      '&[data-focused=true]': {
-        vars: assignVars(anatomy.border, {
-          width: theme.space.xxs,
-          color: theme.colors.current.border.emphasis,
-        }),
-      },
       '&[disabled]': {
         background: theme.colors.core.disabled.bg,
         color: theme.colors.core.disabled.fg,
-        borderColor: theme.colors.core.disabled.bg,
         cursor: 'not-allowed',
       },
     },

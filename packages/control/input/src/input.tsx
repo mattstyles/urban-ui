@@ -11,11 +11,12 @@ import {useHover} from '@react-aria/interactions'
 import {useFocusRing} from '@react-aria/focus'
 import {mergeProps, useObjectRef, mergeRefs} from '@react-aria/utils'
 import {cva} from 'cva'
+import cx from 'clsx'
 import {Flex} from '@urban-ui/flex'
-import {base} from './input.css.ts'
+import {base, container} from './input.css.ts'
 import {sizes, colors, critical} from './variants.css.ts'
 
-const variants = cva([base], {
+const containerVariants = cva([container], {
   variants: {
     background: {
       app: {},
@@ -28,11 +29,6 @@ const variants = cva([base], {
       critical: [atoms({tone: 'critical'}), critical],
       positive: '',
       caution: '',
-    },
-    size: {
-      sm: sizes.small,
-      md: sizes.standard,
-      lg: sizes.large,
     },
   },
   compoundVariants: [
@@ -63,9 +59,20 @@ const variants = cva([base], {
   },
 })
 
+const inputVariants = cva([base], {
+  variants: {
+    size: {
+      sm: sizes.small,
+      md: sizes.standard,
+      lg: sizes.large,
+    },
+  },
+})
+
 export interface InputProps
   extends Omit<AriaTextFieldProps, 'children'>,
-    VariantProps<typeof variants> {
+    VariantProps<typeof inputVariants>,
+    VariantProps<typeof containerVariants> {
   className?: string
   slot?: Extract<Slot, 'field'>
 }
@@ -89,9 +96,14 @@ export const Input = forwardRef<ElementType, InputProps>(
     )
 
     return (
-      <Flex>
+      <Flex
+        className={cx(containerVariants({background, muted, tone}), container)}
+        data-hovered={isHovered}
+        data-focused={isFocused}
+        data-focus-visible={isFocusVisible}
+        data-disabled={props.isDisabled}>
         <input
-          className={variants({size, background, muted, tone, className})}
+          className={inputVariants({size, className})}
           {...mergeProps(inputProps, hoverProps, focusProps)}
           ref={ref}
           data-hovered={isHovered}
@@ -126,7 +138,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 
     return (
       <textarea
-        className={variants({size, background, className})}
+        className={cx(
+          inputVariants({size, className}),
+          containerVariants({background}),
+        )}
         {...mergeProps(inputProps, hoverProps, focusProps)}
         ref={ref}
         data-hovered={isHovered}

@@ -48,6 +48,23 @@ export function Content() {
           placeholder='critical'
         />
       </Flex>
+      <Flex orientation='v' gap='md'>
+        <Text size='lg' weight='semibold'>
+          Sizes
+        </Text>
+        <Text asChild>
+          <label htmlFor='size_sm'>Small</label>
+        </Text>
+        <Input size='sm' aria-labelledby='size_sm' id='size_sm' />
+        <Text asChild>
+          <label htmlFor='size_md'>Medium</label>
+        </Text>
+        <Input size='md' aria-labelledby='size_md' id='size_md' />
+        <Text asChild>
+          <label htmlFor='size_lg'>Large</label>
+        </Text>
+        <Input size='lg' aria-labelledby='size_lg' id='size_lg' />
+      </Flex>
       <Flex
         orientation='v'
         gap='md'
