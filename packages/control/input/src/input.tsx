@@ -80,17 +80,29 @@ const sizeVariants = cva([sizeBase], {
   },
 })
 
-export interface InputProps
-  extends Omit<AriaTextFieldProps, 'children'>,
-    VariantProps<typeof inputVariants>,
-    VariantProps<typeof containerVariants> {
-  className?: string
-  slot?: Extract<Slot, 'field'>
+export interface ClearProps {
   clear?: boolean
-  onClear?: (options?: {
+  onClear?: (options: {
     inputRef?: React.MutableRefObject<HTMLInputElement>
     value?: string
   }) => void
+}
+
+export interface PasswordVisibilityProps {
+  passwordToggle?: boolean
+  onPasswordToggle?: (options?: {
+    inputRef?: React.MutableRefObject<HTMLInputElement>
+  }) => void
+}
+
+export interface InputProps
+  extends Omit<AriaTextFieldProps, 'children'>,
+    VariantProps<typeof inputVariants>,
+    VariantProps<typeof containerVariants>,
+    ClearProps,
+    PasswordVisibilityProps {
+  className?: string
+  slot?: Extract<Slot, 'field'>
   Postfix?: React.ReactNode
 }
 
@@ -106,6 +118,8 @@ export const Input = forwardRef<ElementType, InputProps>(
       Postfix: PostfixEl,
       clear = true,
       onClear,
+      passwordToggle,
+      onPasswordToggle,
       ...props
     },
     passRef,
@@ -125,34 +139,47 @@ export const Input = forwardRef<ElementType, InputProps>(
       }),
     )
 
-    const PostEl = useMemo(() => {
-      if (props.isDisabled) {
-        return null
-      }
+    // const PostEl = useMemo(() => {
+    //   if (props.isDisabled) {
+    //     return null
+    //   }
 
-      if (PostfixEl != null) {
-        return PostfixEl
-      }
+    //   if (PostfixEl != null) {
+    //     return PostfixEl
+    //   }
 
-      return clear === false ? null : (
-        <Postfix
-          size={size}
-          onClear={onClear}
-          inputRef={ref}
-          value={props.value}
-          onChange={props.onChange}
-        />
-      )
-    }, [
-      PostfixEl,
-      onClear,
-      clear,
+    //   return clear === false ? null : (
+    //     <Postfix
+    //       size={size}
+    //       onClear={onClear}
+    //       inputRef={ref}
+    //       value={props.value}
+    //       onChange={props.onChange}
+    //     />
+    //   )
+    // }, [
+    //   PostfixEl,
+    //   onClear,
+    //   clear,
+    //   size,
+    //   ref,
+    //   props.value,
+    //   props.onChange,
+    //   props.isDisabled,
+    // ])
+    const PostEl = usePostfix({
       size,
-      ref,
-      props.value,
-      props.onChange,
-      props.isDisabled,
-    ])
+      Postfix: PostfixEl,
+      clear,
+      onClear,
+      passwordToggle,
+      onPasswordToggle,
+      // value,
+      // onChange,
+      // isDisabled,
+      inputRef: ref,
+      ...props,
+    })
 
     return (
       <Flex
@@ -169,15 +196,6 @@ export const Input = forwardRef<ElementType, InputProps>(
           data-focused={isFocused}
           data-focus-visible={isFocusVisible}
         />
-        {/* <Flex
-          alignment='center'
-          justify='center'
-          gap='xs'
-          className={cx(atoms({p: 'xs'}), sizeVariants({size}))}>
-          <Button icon radii='circular' size='fill'>
-            S
-          </Button>
-        </Flex> */}
         {PostEl}
       </Flex>
     )
@@ -222,14 +240,124 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 )
 TextArea.displayName = 'TextArea'
 
-interface PostfixProps
-  extends Pick<VariantProps<typeof inputVariants>, 'size'>,
-    Pick<InputProps, 'onClear'>,
-    Pick<AriaTextFieldProps, 'value' | 'onChange'> {
+// interface PostfixProps
+//   extends Pick<VariantProps<typeof inputVariants>, 'size'>,
+//     Pick<InputProps, 'onClear'>,
+//     Pick<AriaTextFieldProps, 'value' | 'onChange'> {
+//   inputRef: React.MutableRefObject<HTMLInputElement>
+// }
+// function Postfix({size, onClear, value, onChange, inputRef}: PostfixProps) {
+//   const onClearPress = useCallback(() => {
+//     if (onChange != null) {
+//       onChange('')
+//     }
+
+//     if (onClear != null) {
+//       onClear({
+//         inputRef,
+//         value,
+//       })
+//       return
+//     }
+
+//     inputRef.current.value = ''
+//   }, [onClear, value, onChange, inputRef])
+
+//   const clearAvailable = useMemo(() => {
+//     return value != null ? value.length > 0 : true
+//   }, [value])
+
+//   return (
+//     <Flex
+//       alignment='center'
+//       justify='center'
+//       gap='xs'
+//       className={cx(atoms({p: 'xs'}), sizeVariants({size}))}>
+//       <Flex
+//         className={atoms({
+//           height: 'fill',
+//           opacity: clearAvailable ? '1' : '0',
+//           transition: 'opacity',
+//         })}>
+//         <Button
+//           icon
+//           radii='circular'
+//           size='fill'
+//           variant='ghost'
+//           onPress={onClearPress}
+//           className={atoms({
+//             pointerEvents: clearAvailable ? 'auto' : 'none',
+//           })}>
+//           X
+//         </Button>
+//       </Flex>
+//     </Flex>
+//   )
+// }
+
+function usePostfix({
+  size,
+  Postfix,
+  clear,
+  onClear,
+  passwordToggle,
+  onPasswordToggle,
+  value,
+  onChange,
+  isDisabled,
+  inputRef,
+}: InputProps & {
   inputRef: React.MutableRefObject<HTMLInputElement>
+}) {
+  const Controls = useMemo(() => {
+    if (isDisabled === true || Postfix != null) {
+      return null
+    }
+
+    const controls = []
+
+    if (clear != null) {
+      controls.push(
+        <ClearControl {...{clear, onClear, value, onChange, inputRef}} />,
+      )
+    }
+
+    return controls.length > 0 ? <>{controls}</> : null
+  }, [isDisabled, Postfix, clear, onClear, inputRef, value, onChange])
+
+  if (Controls == null) {
+    return Postfix != null ? Postfix : null
+  }
+
+  return <ControlContainer size={size}>{Controls}</ControlContainer>
 }
-function Postfix({size, onClear, value, onChange, inputRef}: PostfixProps) {
+
+interface ControlContainerProps
+  extends Pick<VariantProps<typeof inputVariants>, 'size'>,
+    React.PropsWithChildren {}
+function ControlContainer({children, size}: ControlContainerProps) {
+  return (
+    <Flex
+      alignment='center'
+      justify='center'
+      gap='xs'
+      className={cx(atoms({p: 'xs'}), sizeVariants({size}))}>
+      {children}
+    </Flex>
+  )
+}
+
+function ClearControl({
+  clear,
+  onClear,
+  value,
+  onChange,
+  inputRef,
+}: Pick<InputProps, 'clear' | 'onClear' | 'value' | 'onChange'> & {
+  inputRef: React.MutableRefObject<HTMLInputElement>
+}) {
   const onClearPress = useCallback(() => {
+    console.log('clicking clear button')
     if (onChange != null) {
       onChange('')
     }
@@ -251,32 +379,22 @@ function Postfix({size, onClear, value, onChange, inputRef}: PostfixProps) {
 
   return (
     <Flex
-      alignment='center'
-      justify='center'
-      gap='xs'
-      className={cx(atoms({p: 'xs'}), sizeVariants({size}))}>
-      <Flex
+      className={atoms({
+        height: 'fill',
+        opacity: clearAvailable ? '1' : '0',
+        transition: 'opacity',
+      })}>
+      <Button
+        icon
+        radii='circular'
+        size='fill'
+        variant='ghost'
+        onPress={onClearPress}
         className={atoms({
-          height: 'fill',
-          opacity: clearAvailable ? '1' : '0',
-          transition: 'opacity',
+          pointerEvents: clearAvailable ? 'auto' : 'none',
         })}>
-        <Button
-          icon
-          radii='circular'
-          size='fill'
-          variant='ghost'
-          onPress={onClearPress}
-          className={atoms({
-            // visibility: clearAvailable ? 'visible' : 'hidden',
-            // opacity: clearAvailable ? '1' : '0',
-            pointerEvents: clearAvailable ? 'auto' : 'none',
-            // transition: 'opacity',
-            // opacity: '1',
-          })}>
-          X
-        </Button>
-      </Flex>
+        X
+      </Button>
     </Flex>
   )
 }

@@ -181,7 +181,12 @@ export function Content() {
           id='clearinput'
           aria-labelledby='clearinputlabel'
           placeholder='With clear button'
-          onClear={() => console.log('onClear')}
+          onClear={({inputRef}) => {
+            console.log('onClear')
+            if (inputRef != null && inputRef.current != null) {
+              inputRef.current.value = ''
+            }
+          }}
         />
       </Flex>
     </Flex>
