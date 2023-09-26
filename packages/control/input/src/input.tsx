@@ -4,7 +4,7 @@ import type {VariantProps} from 'cva'
 import type {AriaTextFieldProps} from '@react-aria/textfield'
 import type {Slot} from '@urban-ui/slot'
 
-import {forwardRef, useRef, useMemo, useCallback} from 'react'
+import {forwardRef, useState, useRef, useMemo, useCallback} from 'react'
 import {atoms} from '@urban-ui/theme/atoms'
 import {useTextField} from '@react-aria/textfield'
 import {useHover} from '@react-aria/interactions'
@@ -118,7 +118,7 @@ export const Input = forwardRef<ElementType, InputProps>(
       Postfix: PostfixEl,
       clear = true,
       onClear,
-      passwordToggle,
+      passwordToggle = true,
       onPasswordToggle,
       ...props
     },
@@ -139,34 +139,6 @@ export const Input = forwardRef<ElementType, InputProps>(
       }),
     )
 
-    // const PostEl = useMemo(() => {
-    //   if (props.isDisabled) {
-    //     return null
-    //   }
-
-    //   if (PostfixEl != null) {
-    //     return PostfixEl
-    //   }
-
-    //   return clear === false ? null : (
-    //     <Postfix
-    //       size={size}
-    //       onClear={onClear}
-    //       inputRef={ref}
-    //       value={props.value}
-    //       onChange={props.onChange}
-    //     />
-    //   )
-    // }, [
-    //   PostfixEl,
-    //   onClear,
-    //   clear,
-    //   size,
-    //   ref,
-    //   props.value,
-    //   props.onChange,
-    //   props.isDisabled,
-    // ])
     const PostEl = usePostfix({
       size,
       Postfix: PostfixEl,
@@ -174,9 +146,6 @@ export const Input = forwardRef<ElementType, InputProps>(
       onClear,
       passwordToggle,
       onPasswordToggle,
-      // value,
-      // onChange,
-      // isDisabled,
       inputRef: ref,
       ...props,
     })
@@ -240,61 +209,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 )
 TextArea.displayName = 'TextArea'
 
-// interface PostfixProps
-//   extends Pick<VariantProps<typeof inputVariants>, 'size'>,
-//     Pick<InputProps, 'onClear'>,
-//     Pick<AriaTextFieldProps, 'value' | 'onChange'> {
-//   inputRef: React.MutableRefObject<HTMLInputElement>
-// }
-// function Postfix({size, onClear, value, onChange, inputRef}: PostfixProps) {
-//   const onClearPress = useCallback(() => {
-//     if (onChange != null) {
-//       onChange('')
-//     }
-
-//     if (onClear != null) {
-//       onClear({
-//         inputRef,
-//         value,
-//       })
-//       return
-//     }
-
-//     inputRef.current.value = ''
-//   }, [onClear, value, onChange, inputRef])
-
-//   const clearAvailable = useMemo(() => {
-//     return value != null ? value.length > 0 : true
-//   }, [value])
-
-//   return (
-//     <Flex
-//       alignment='center'
-//       justify='center'
-//       gap='xs'
-//       className={cx(atoms({p: 'xs'}), sizeVariants({size}))}>
-//       <Flex
-//         className={atoms({
-//           height: 'fill',
-//           opacity: clearAvailable ? '1' : '0',
-//           transition: 'opacity',
-//         })}>
-//         <Button
-//           icon
-//           radii='circular'
-//           size='fill'
-//           variant='ghost'
-//           onPress={onClearPress}
-//           className={atoms({
-//             pointerEvents: clearAvailable ? 'auto' : 'none',
-//           })}>
-//           X
-//         </Button>
-//       </Flex>
-//     </Flex>
-//   )
-// }
-
 function usePostfix({
   size,
   Postfix,
@@ -305,6 +219,7 @@ function usePostfix({
   value,
   onChange,
   isDisabled,
+  type,
   inputRef,
 }: InputProps & {
   inputRef: React.MutableRefObject<HTMLInputElement>
@@ -318,12 +233,35 @@ function usePostfix({
 
     if (clear != null) {
       controls.push(
-        <ClearControl {...{clear, onClear, value, onChange, inputRef}} />,
+        <ClearControl
+          key='clear'
+          {...{clear, onClear, value, onChange, inputRef}}
+        />,
+      )
+    }
+
+    if (passwordToggle != null && type === 'password') {
+      controls.push(
+        <PasswordControl
+          key='password'
+          {...{passwordToggle, onPasswordToggle, inputRef}}
+        />,
       )
     }
 
     return controls.length > 0 ? <>{controls}</> : null
-  }, [isDisabled, Postfix, clear, onClear, inputRef, value, onChange])
+  }, [
+    isDisabled,
+    Postfix,
+    clear,
+    onClear,
+    passwordToggle,
+    onPasswordToggle,
+    inputRef,
+    type,
+    value,
+    onChange,
+  ])
 
   if (Controls == null) {
     return Postfix != null ? Postfix : null
@@ -348,7 +286,6 @@ function ControlContainer({children, size}: ControlContainerProps) {
 }
 
 function ClearControl({
-  clear,
   onClear,
   value,
   onChange,
@@ -357,7 +294,6 @@ function ClearControl({
   inputRef: React.MutableRefObject<HTMLInputElement>
 }) {
   const onClearPress = useCallback(() => {
-    console.log('clicking clear button')
     if (onChange != null) {
       onChange('')
     }
@@ -394,6 +330,53 @@ function ClearControl({
           pointerEvents: clearAvailable ? 'auto' : 'none',
         })}>
         X
+      </Button>
+    </Flex>
+  )
+}
+
+function PasswordControl({
+  onPasswordToggle,
+  inputRef,
+}: Pick<InputProps, 'passwordToggle' | 'onPasswordToggle'> & {
+  inputRef: React.MutableRefObject<HTMLInputElement>
+}) {
+  const [isVisible, setIsVisible] = useState(false)
+  const onToggle = useCallback(() => {
+    if (isVisible) {
+      setIsVisible(false)
+      inputRef.current.type = 'password'
+
+      if (onPasswordToggle != null) {
+        onPasswordToggle({
+          inputRef,
+        })
+      }
+
+      return
+    }
+
+    setIsVisible(true)
+    inputRef.current.type = 'text'
+    if (onPasswordToggle != null) {
+      onPasswordToggle({
+        inputRef,
+      })
+    }
+  }, [isVisible, setIsVisible, inputRef, onPasswordToggle])
+
+  return (
+    <Flex
+      className={atoms({
+        height: 'fill',
+      })}>
+      <Button
+        icon
+        radii='circular'
+        size='fill'
+        variant='ghost'
+        onPress={onToggle}>
+        V
       </Button>
     </Flex>
   )

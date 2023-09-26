@@ -189,6 +189,25 @@ export function Content() {
           }}
         />
       </Flex>
+      <Flex orientation='v' gap='md' alignment='start'>
+        <Text asChild>
+          <label id='clearinputlabel' htmlFor='clearinput'>
+            Password with clear button
+          </label>
+        </Text>
+        <Input
+          id='clearinput'
+          aria-labelledby='clearinputlabel'
+          placeholder='With clear button'
+          type='password'
+          onClear={({inputRef}) => {
+            console.log('onClear')
+            if (inputRef != null && inputRef.current != null) {
+              inputRef.current.value = ''
+            }
+          }}
+        />
+      </Flex>
     </Flex>
   )
 }
