@@ -148,7 +148,7 @@ export const sizes = {
     vars: assignVars(anatomy.size, {
       height: '100%',
     }),
-    // height: anatomy.size.height,
+    height: anatomy.size.height,
   }),
 }
 

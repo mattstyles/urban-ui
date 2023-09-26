@@ -14,7 +14,7 @@ import {cva} from 'cva'
 import cx from 'clsx'
 import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
-import {base, container, postfix} from './input.css.ts'
+import {base, container, sizeBase, postfix} from './input.css.ts'
 import {sizes, colors, critical} from './variants.css.ts'
 
 const containerVariants = cva([container], {
@@ -70,6 +70,16 @@ const inputVariants = cva([base], {
   },
 })
 
+const sizeVariants = cva([sizeBase], {
+  variants: {
+    size: {
+      sm: sizes.small,
+      md: sizes.standard,
+      lg: sizes.large,
+    },
+  },
+})
+
 export interface InputProps
   extends Omit<AriaTextFieldProps, 'children'>,
     VariantProps<typeof inputVariants>,
@@ -113,13 +123,14 @@ export const Input = forwardRef<ElementType, InputProps>(
           data-focused={isFocused}
           data-focus-visible={isFocusVisible}
         />
-        <Flex alignment='center' justify='center' className={atoms({p: 'xs'})}>
-          <Flex alignment='center' justify='center' className={postfix}>
-            <div>A</div>
-          </Flex>
-          {/* <Button icon radii='circular' size='fit'>
+        <Flex
+          alignment='center'
+          justify='center'
+          gap='xs'
+          className={cx(atoms({p: 'xs'}), sizeVariants({size}))}>
+          <Button icon radii='circular' size='fill'>
             S
-          </Button> */}
+          </Button>
         </Flex>
       </Flex>
     )

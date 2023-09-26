@@ -182,7 +182,8 @@ export const components = {
 export const icon = style([
   {
     height: height,
-    width: height,
+    // width: height,
+    width: 'fit-content',
     aspectRatio: '1',
   },
 ])

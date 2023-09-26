@@ -104,6 +104,13 @@ export const base = style([
   },
 ])
 
+export const sizeBase = style({
+  height: height,
+  vars: {
+    [height]: fallbackVar(anatomy.size.height, theme.sizes.control.md),
+  },
+})
+
 export const postfix = style({
   aspectRatio: '1',
   height: '100%',
