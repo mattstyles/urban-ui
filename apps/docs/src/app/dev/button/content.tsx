@@ -11,6 +11,7 @@ import {custom, customTextStyle} from './content.css.ts'
 
 // Nodenext module resolution hack @see https://github.com/vercel/next.js/discussions/41189#discussioncomment-4026895
 import _x from 'next/link.js'
+import {atoms} from '@urban-ui/theme/atoms'
 const Link = _x as unknown as typeof _x.default
 
 export function Content() {
@@ -136,6 +137,17 @@ export function Content() {
         <Flex alignment='center' gap='md'>
           <Button asChild>
             <Link href='/dev/type'>Button as Link</Link>
+          </Button>
+        </Flex>
+      </Flex>
+      <Flex orientation='v' gap='md'>
+        <Text size='xl'>Icon</Text>
+        <Button icon radii='circular'>
+          A
+        </Button>
+        <Flex style={{height: 60, width: 60, background: 'gainsboro'}}>
+          <Button icon fill radii='circular'>
+            B
           </Button>
         </Flex>
       </Flex>

@@ -9,6 +9,7 @@ export const space = defineProperties({
     paddingRight: theme.space,
     paddingBottom: theme.space,
     paddingLeft: theme.space,
+    padding: theme.space,
   },
   shorthands: {
     p: ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'],
@@ -28,12 +29,14 @@ export const size = defineProperties({
       fit: 'fit-content',
       max: 'max-content',
       min: 'min-content',
+      fill: '100%',
     },
     height: {
       ...theme.space,
       fit: 'fit-content',
       max: 'max-content',
       min: 'min-content',
+      fill: '100%',
     },
   },
   shorthands: {

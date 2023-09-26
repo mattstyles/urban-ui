@@ -13,7 +13,8 @@ import {mergeProps, useObjectRef, mergeRefs} from '@react-aria/utils'
 import {cva} from 'cva'
 import cx from 'clsx'
 import {Flex} from '@urban-ui/flex'
-import {base, container} from './input.css.ts'
+import {Button} from '@urban-ui/button'
+import {base, container, postfix} from './input.css.ts'
 import {sizes, colors, critical} from './variants.css.ts'
 
 const containerVariants = cva([container], {
@@ -75,6 +76,8 @@ export interface InputProps
     VariantProps<typeof containerVariants> {
   className?: string
   slot?: Extract<Slot, 'field'>
+  clear?: boolean
+  onClear?: () => void
 }
 
 type ElementType = HTMLInputElement
@@ -110,6 +113,14 @@ export const Input = forwardRef<ElementType, InputProps>(
           data-focused={isFocused}
           data-focus-visible={isFocusVisible}
         />
+        <Flex alignment='center' justify='center' className={atoms({p: 'xs'})}>
+          <Flex alignment='center' justify='center' className={postfix}>
+            <div>A</div>
+          </Flex>
+          {/* <Button icon radii='circular' size='fit'>
+            S
+          </Button> */}
+        </Flex>
       </Flex>
     )
   },

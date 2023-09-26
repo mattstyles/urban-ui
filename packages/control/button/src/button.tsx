@@ -15,7 +15,7 @@ import {Text} from '@urban-ui/text'
 import {cva} from 'cva'
 import cx from 'clsx'
 import {Slot} from '@radix-ui/react-slot'
-import {base, components} from './button.css.ts'
+import {base, components, icon} from './button.css.ts'
 import {
   solid,
   ghost,
@@ -47,18 +47,18 @@ const variants = cva([base], {
       sm: sizes.small,
       md: sizes.standard,
       lg: sizes.large,
+      fill: sizes.fill,
     },
     effect: {
       scale: effects.scale,
     },
     icon: {
-      true: atoms({alignSelf: 'flex-start'}),
+      true: icon,
+    },
+    fill: {
+      true: sizes.fill,
     },
     radii: {
-      // sm: atoms({borderRadius: 'sm'}),
-      // md: atoms({borderRadius: 'md'}),
-      // lg: atoms({borderRadius: 'lg'}),
-      // circular: atoms({borderRadius: 'circular'}),
       sm: radii.sm,
       md: radii.md,
       lg: radii.lg,
@@ -89,6 +89,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       tone,
       radii,
       icon = false,
+      fill = false,
       className,
       asChild,
       ...props
@@ -126,6 +127,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           effect,
           radii,
           icon,
+          fill,
           className,
         })}
         {...mergeProps(buttonProps, hoverProps, focusProps, passProps)}

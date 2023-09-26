@@ -75,6 +75,7 @@ export const base = style([
     paddingRight: theme.space.md,
 
     color: theme.colors.fg.hi,
+    background: theme.colors.core.transparent,
 
     vars: {
       [padding]: calc(
@@ -102,3 +103,10 @@ export const base = style([
     },
   },
 ])
+
+export const postfix = style({
+  aspectRatio: '1',
+  height: '100%',
+  background: 'rebeccapurple',
+  color: 'white',
+})

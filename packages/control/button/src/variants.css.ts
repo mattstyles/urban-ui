@@ -98,55 +98,59 @@ export const outline = style([
   },
 ])
 
-const small = style([
-  {
-    vars: assignVars(anatomy.size, {
-      height: theme.sizes.control.sm,
-    }),
-  },
-  {
-    vars: assignVars(textAnatomy.size, theme.type.size.md),
-  },
-  {
-    vars: {
-      [textAnatomy.capHeight]: theme.type.capHeight.md,
+export const sizes = {
+  small: style([
+    {
+      vars: assignVars(anatomy.size, {
+        height: theme.sizes.control.sm,
+      }),
     },
-  },
-])
-
-const standard = style([
-  {
-    vars: assignVars(anatomy.size, {
-      height: theme.sizes.control.md,
-    }),
-  },
-  {
-    vars: assignVars(textAnatomy.size, theme.type.size.md),
-  },
-  {
-    vars: {
-      [textAnatomy.capHeight]: theme.type.capHeight.md,
+    {
+      vars: assignVars(textAnatomy.size, theme.type.size.md),
     },
-  },
-])
-
-const large = style([
-  {
-    vars: assignVars(anatomy.size, {
-      height: theme.sizes.control.lg,
-    }),
-  },
-  {
-    vars: assignVars(textAnatomy.size, theme.type.size.lg),
-  },
-  {
-    vars: {
-      [textAnatomy.capHeight]: theme.type.capHeight.lg,
+    {
+      vars: {
+        [textAnatomy.capHeight]: theme.type.capHeight.md,
+      },
     },
-  },
-])
-
-export const sizes = {small, standard, large}
+  ]),
+  standard: style([
+    {
+      vars: assignVars(anatomy.size, {
+        height: theme.sizes.control.md,
+      }),
+    },
+    {
+      vars: assignVars(textAnatomy.size, theme.type.size.md),
+    },
+    {
+      vars: {
+        [textAnatomy.capHeight]: theme.type.capHeight.md,
+      },
+    },
+  ]),
+  large: style([
+    {
+      vars: assignVars(anatomy.size, {
+        height: theme.sizes.control.lg,
+      }),
+    },
+    {
+      vars: assignVars(textAnatomy.size, theme.type.size.lg),
+    },
+    {
+      vars: {
+        [textAnatomy.capHeight]: theme.type.capHeight.lg,
+      },
+    },
+  ]),
+  fill: style({
+    vars: assignVars(anatomy.size, {
+      height: '100%',
+    }),
+    // height: anatomy.size.height,
+  }),
+}
 
 export const scale = style({
   transition: `transform ${theme.transition.duration.sm} ${theme.transition.easing.bounce}`,

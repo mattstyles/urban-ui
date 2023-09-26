@@ -178,3 +178,11 @@ export const components = {
     },
   ]),
 }
+
+export const icon = style([
+  {
+    height: height,
+    width: height,
+    aspectRatio: '1',
+  },
+])
