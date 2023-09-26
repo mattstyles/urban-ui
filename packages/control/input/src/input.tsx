@@ -4,7 +4,14 @@ import type {VariantProps} from 'cva'
 import type {AriaTextFieldProps} from '@react-aria/textfield'
 import type {Slot} from '@urban-ui/slot'
 
-import {forwardRef, useState, useRef, useMemo, useCallback} from 'react'
+import {
+  forwardRef,
+  useState,
+  useRef,
+  useMemo,
+  useEffect,
+  useCallback,
+} from 'react'
 import {atoms} from '@urban-ui/theme/atoms'
 import {useTextField} from '@react-aria/textfield'
 import {useHover} from '@react-aria/interactions'
