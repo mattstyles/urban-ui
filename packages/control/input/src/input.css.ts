@@ -39,6 +39,7 @@ export const container = style([
       },
       '&[data-disabled=true]': {
         borderColor: theme.colors.core.disabled.bg,
+        background: theme.colors.core.disabled.bg,
         cursor: 'not-allowed',
       },
     },

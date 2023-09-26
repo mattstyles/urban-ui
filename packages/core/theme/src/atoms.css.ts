@@ -6,7 +6,8 @@ import {type} from './atoms/text.css.ts'
 import {focus} from './atoms/focus.css.ts'
 import {radii} from './atoms/radii.css.ts'
 import {pointer} from './atoms/pointer.css.ts'
-import {background, foreground, tone} from './atoms/colors.css.ts'
+import {background, foreground, tone, opacity} from './atoms/colors.css.ts'
+import {transitions} from './atoms/transition.css.ts'
 
 export const atoms = createSprinkles(
   // Display
@@ -22,6 +23,7 @@ export const atoms = createSprinkles(
   background,
   foreground,
   tone,
+  opacity,
 
   // Typography
   type,
@@ -29,5 +31,8 @@ export const atoms = createSprinkles(
   // Accessibility
   focus,
   pointer,
+
+  // Transition
+  transitions,
 )
 export type AtomTypes = Parameters<typeof atoms>[0]

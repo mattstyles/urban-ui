@@ -13,6 +13,7 @@ export const display = defineProperties({
       'unset',
     ],
     position: ['absolute', 'fixed', 'relative', 'sticky', 'static'],
+    visibility: ['visible', 'hidden', 'collapse'],
   },
 })
 

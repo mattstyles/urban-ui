@@ -4,7 +4,7 @@ import type {VariantProps} from 'cva'
 import type {AriaTextFieldProps} from '@react-aria/textfield'
 import type {Slot} from '@urban-ui/slot'
 
-import {forwardRef, useRef, useMemo} from 'react'
+import {forwardRef, useRef, useMemo, useCallback} from 'react'
 import {atoms} from '@urban-ui/theme/atoms'
 import {useTextField} from '@react-aria/textfield'
 import {useHover} from '@react-aria/interactions'
@@ -87,12 +87,29 @@ export interface InputProps
   className?: string
   slot?: Extract<Slot, 'field'>
   clear?: boolean
-  onClear?: () => void
+  onClear?: (options?: {
+    inputRef?: React.MutableRefObject<HTMLInputElement>
+    value?: string
+  }) => void
+  Postfix?: React.ReactNode
 }
 
 type ElementType = HTMLInputElement
 export const Input = forwardRef<ElementType, InputProps>(
-  ({className, size, background, muted, tone, ...props}, passRef) => {
+  (
+    {
+      className,
+      size,
+      background,
+      muted,
+      tone,
+      Postfix: PostfixEl,
+      clear = true,
+      onClear,
+      ...props
+    },
+    passRef,
+  ) => {
     const innerRef = useRef<ElementType>(null)
     const ref = useObjectRef(
       useMemo(() => {
@@ -107,6 +124,35 @@ export const Input = forwardRef<ElementType, InputProps>(
         isTextInput: true,
       }),
     )
+
+    const PostEl = useMemo(() => {
+      if (props.isDisabled) {
+        return null
+      }
+
+      if (PostfixEl != null) {
+        return PostfixEl
+      }
+
+      return clear === false ? null : (
+        <Postfix
+          size={size}
+          onClear={onClear}
+          inputRef={ref}
+          value={props.value}
+          onChange={props.onChange}
+        />
+      )
+    }, [
+      PostfixEl,
+      onClear,
+      clear,
+      size,
+      ref,
+      props.value,
+      props.onChange,
+      props.isDisabled,
+    ])
 
     return (
       <Flex
@@ -123,7 +169,7 @@ export const Input = forwardRef<ElementType, InputProps>(
           data-focused={isFocused}
           data-focus-visible={isFocusVisible}
         />
-        <Flex
+        {/* <Flex
           alignment='center'
           justify='center'
           gap='xs'
@@ -131,7 +177,8 @@ export const Input = forwardRef<ElementType, InputProps>(
           <Button icon radii='circular' size='fill'>
             S
           </Button>
-        </Flex>
+        </Flex> */}
+        {PostEl}
       </Flex>
     )
   },
@@ -174,3 +221,62 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
   },
 )
 TextArea.displayName = 'TextArea'
+
+interface PostfixProps
+  extends Pick<VariantProps<typeof inputVariants>, 'size'>,
+    Pick<InputProps, 'onClear'>,
+    Pick<AriaTextFieldProps, 'value' | 'onChange'> {
+  inputRef: React.MutableRefObject<HTMLInputElement>
+}
+function Postfix({size, onClear, value, onChange, inputRef}: PostfixProps) {
+  const onClearPress = useCallback(() => {
+    if (onChange != null) {
+      onChange('')
+    }
+
+    if (onClear != null) {
+      onClear({
+        inputRef,
+        value,
+      })
+      return
+    }
+
+    inputRef.current.value = ''
+  }, [onClear, value, onChange, inputRef])
+
+  const clearAvailable = useMemo(() => {
+    return value != null ? value.length > 0 : true
+  }, [value])
+
+  return (
+    <Flex
+      alignment='center'
+      justify='center'
+      gap='xs'
+      className={cx(atoms({p: 'xs'}), sizeVariants({size}))}>
+      <Flex
+        className={atoms({
+          height: 'fill',
+          opacity: clearAvailable ? '1' : '0',
+          transition: 'opacity',
+        })}>
+        <Button
+          icon
+          radii='circular'
+          size='fill'
+          variant='ghost'
+          onPress={onClearPress}
+          className={atoms({
+            // visibility: clearAvailable ? 'visible' : 'hidden',
+            // opacity: clearAvailable ? '1' : '0',
+            pointerEvents: clearAvailable ? 'auto' : 'none',
+            // transition: 'opacity',
+            // opacity: '1',
+          })}>
+          X
+        </Button>
+      </Flex>
+    </Flex>
+  )
+}

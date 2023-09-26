@@ -171,6 +171,19 @@ export function Content() {
           </Flex>
         </Flex>
       </Flex>
+      <Flex orientation='v' gap='md' alignment='start'>
+        <Text asChild>
+          <label id='clearinputlabel' htmlFor='clearinput'>
+            With clear button
+          </label>
+        </Text>
+        <Input
+          id='clearinput'
+          aria-labelledby='clearinputlabel'
+          placeholder='With clear button'
+          onClear={() => console.log('onClear')}
+        />
+      </Flex>
     </Flex>
   )
 }
@@ -189,7 +202,10 @@ function ControlledInput() {
         aria-describedby='name-desc'
         placeholder='Mary Anning'
         value={value}
-        onChange={setValue}
+        onChange={(value) => {
+          console.log('on change', value)
+          setValue(value)
+        }}
       />
       <Text size='sm'>Descriptive element</Text>
       <Text size='md'>{value}</Text>
