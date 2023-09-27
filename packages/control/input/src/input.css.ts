@@ -72,7 +72,9 @@ export const base = style([
 
     paddingTop: padding,
     paddingBottom: padding,
+    // @TODO if prefix element then remove paddingLeft
     paddingLeft: theme.space.md,
+    // @TODO if postfix element then no paddingRight
     paddingRight: theme.space.md,
 
     color: theme.colors.fg.hi,

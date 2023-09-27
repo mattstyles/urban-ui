@@ -300,7 +300,10 @@ function ClearControl({
 }: Pick<InputProps, 'clear' | 'onClear' | 'value' | 'onChange'> & {
   inputRef: React.MutableRefObject<HTMLInputElement>
 }) {
+  const [isVisible, setIsVisible] = useState(false)
   const onClearPress = useCallback(() => {
+    setIsVisible(false)
+
     if (onChange != null) {
       onChange('')
     }
@@ -316,15 +319,35 @@ function ClearControl({
     inputRef.current.value = ''
   }, [onClear, value, onChange, inputRef])
 
-  const clearAvailable = useMemo(() => {
-    return value != null ? value.length > 0 : true
+  useMemo(() => {
+    // return value != null ? value.length > 0 : true
+    // setIsVisible(value != null ? value.length > 0 : true)
+    if (value != null) {
+      setIsVisible(value.length > 0)
+    }
   }, [value])
+
+  const onInputChange = useCallback(() => {
+    setIsVisible(inputRef.current.value.length > 0)
+  }, [inputRef])
+
+  useEffect(() => {
+    if (value != null) {
+      return
+    }
+
+    const el = inputRef.current
+    el.addEventListener('input', onInputChange)
+    return () => {
+      el.removeEventListener('input', onInputChange)
+    }
+  })
 
   return (
     <Flex
       className={atoms({
         height: 'fill',
-        opacity: clearAvailable ? '1' : '0',
+        opacity: isVisible ? '1' : '0',
         transition: 'opacity',
       })}>
       <Button
@@ -333,8 +356,9 @@ function ClearControl({
         size='fill'
         variant='ghost'
         onPress={onClearPress}
+        tabIndex={isVisible ? undefined : -1}
         className={atoms({
-          pointerEvents: clearAvailable ? 'auto' : 'none',
+          pointerEvents: isVisible ? 'auto' : 'none',
         })}>
         X
       </Button>

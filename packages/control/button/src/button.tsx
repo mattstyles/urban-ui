@@ -76,6 +76,7 @@ export interface ButtonProps
     React.PropsWithChildren {
   className?: string
   asChild?: boolean
+  tabIndex?: number
   children: React.ReactNode
 }
 
@@ -132,6 +133,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         })}
         {...mergeProps(buttonProps, hoverProps, focusProps, passProps)}
         ref={ref}
+        tabIndex={props.tabIndex}
         data-pressed={isPressed}
         data-hovered={isHovered}
         data-focused={isFocused}
