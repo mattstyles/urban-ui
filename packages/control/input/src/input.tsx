@@ -111,6 +111,8 @@ export interface InputProps
   className?: string
   slot?: Extract<Slot, 'field'>
   Postfix?: React.ReactNode
+  Prefix?: React.ReactNode
+  PrefixContent?: React.ReactNode
 }
 
 type ElementType = HTMLInputElement
@@ -122,6 +124,8 @@ export const Input = forwardRef<ElementType, InputProps>(
       background,
       muted,
       tone,
+      Prefix: PrefixEl,
+      PrefixContent,
       Postfix: PostfixEl,
       clear = true,
       onClear,
@@ -146,9 +150,16 @@ export const Input = forwardRef<ElementType, InputProps>(
       }),
     )
 
-    const PostEl = usePostfix({
+    const PreEl = usePrefix({
+      Prefix: PrefixEl,
+      PrefixContent,
       size,
+      inputRef: ref,
+      ...props,
+    })
+    const PostEl = usePostfix({
       Postfix: PostfixEl,
+      size,
       clear,
       onClear,
       passwordToggle,
@@ -164,6 +175,7 @@ export const Input = forwardRef<ElementType, InputProps>(
         data-focused={isFocused}
         data-focus-visible={isFocusVisible}
         data-disabled={props.isDisabled}>
+        {PreEl}
         <input
           className={inputVariants({size, className})}
           {...mergeProps(inputProps, hoverProps, focusProps)}
@@ -180,7 +192,7 @@ export const Input = forwardRef<ElementType, InputProps>(
 Input.displayName = 'Input'
 
 export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
-  ({className, size, background, ...props}, passRef) => {
+  ({className, size, background, muted, tone, ...props}, passRef) => {
     const innerRef = useRef<HTMLTextAreaElement>(null)
     const ref = useObjectRef(
       useMemo(() => {
@@ -200,25 +212,54 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
     )
 
     return (
-      <textarea
-        className={cx(
-          inputVariants({size, className}),
-          containerVariants({background}),
-        )}
-        {...mergeProps(inputProps, hoverProps, focusProps)}
-        ref={ref}
+      <Flex
+        className={cx(containerVariants({background, muted, tone}), container)}
         data-hovered={isHovered}
         data-focused={isFocused}
         data-focus-visible={isFocusVisible}
-      />
+        data-disabled={props.isDisabled}>
+        <textarea
+          className={cx(
+            inputVariants({size, className}),
+            containerVariants({background}),
+          )}
+          {...mergeProps(inputProps, hoverProps, focusProps)}
+          ref={ref}
+          data-hovered={isHovered}
+          data-focused={isFocused}
+          data-focus-visible={isFocusVisible}
+        />
+      </Flex>
     )
   },
 )
 TextArea.displayName = 'TextArea'
 
-function usePostfix({
+function usePrefix({
+  Prefix,
+  PrefixContent,
   size,
+}: InputProps & {
+  inputRef: React.MutableRefObject<HTMLInputElement>
+}) {
+  const Pre = useMemo(() => {
+    if (Prefix != null) {
+      return Prefix
+    }
+
+    if (PrefixContent == null) {
+      return null
+    }
+
+    return <ControlContainer size={size}>{PrefixContent}</ControlContainer>
+  }, [Prefix, PrefixContent, size])
+
+  return Pre
+}
+
+function usePostfix({
   Postfix,
+  size,
   clear,
   onClear,
   passwordToggle,
@@ -232,7 +273,11 @@ function usePostfix({
   inputRef: React.MutableRefObject<HTMLInputElement>
 }) {
   const Controls = useMemo(() => {
-    if (isDisabled === true || Postfix != null) {
+    if (Postfix != null) {
+      return Postfix
+    }
+
+    if (isDisabled === true) {
       return null
     }
 
@@ -256,8 +301,11 @@ function usePostfix({
       )
     }
 
-    return controls.length > 0 ? <>{controls}</> : null
+    return controls.length > 0 ? (
+      <ControlContainer size={size}>{controls}</ControlContainer>
+    ) : null
   }, [
+    size,
     isDisabled,
     Postfix,
     clear,
@@ -270,11 +318,7 @@ function usePostfix({
     onChange,
   ])
 
-  if (Controls == null) {
-    return Postfix != null ? Postfix : null
-  }
-
-  return <ControlContainer size={size}>{Controls}</ControlContainer>
+  return Controls
 }
 
 interface ControlContainerProps
@@ -350,6 +394,7 @@ function ClearControl({
       })}>
       <Button
         icon
+        aria-label='Clear field'
         radii='circular'
         size='fill'
         variant='ghost'

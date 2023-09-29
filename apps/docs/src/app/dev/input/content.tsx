@@ -2,7 +2,7 @@
 
 import {useState} from 'react'
 import {Flex} from '@urban-ui/flex'
-import {Input} from '@urban-ui/input'
+import {Input, TextArea} from '@urban-ui/input'
 import {Text} from '@urban-ui/text'
 import {Button} from '@urban-ui/button'
 import {atoms} from '@urban-ui/theme/atoms'
@@ -14,11 +14,19 @@ export function Content() {
     <Flex orientation='v' gap='xl'>
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Default</Text>
-        <Flex orientation='v' gap='xs'>
-          <label id='inputlabel' htmlFor='input'>
-            input
-          </label>
-          <Input id='input' aria-labelledby='inputlabel' />
+        <Flex orientation='h' gap='md'>
+          <Flex orientation='v' gap='xs'>
+            <label id='inputlabel' htmlFor='input'>
+              Input
+            </label>
+            <Input id='input' aria-labelledby='inputlabel' />
+          </Flex>
+          <Flex orientation='v' gap='xs'>
+            <label id='arealabel' htmlFor='textarea'>
+              TextArea
+            </label>
+            <TextArea id='textarea' aria-labelledby='arealabel' />
+          </Flex>
         </Flex>
         <Flex orientation='v' gap='xs'>
           <label id='dislabel' htmlFor='dis'>
@@ -206,6 +214,22 @@ export function Content() {
               inputRef.current.value = ''
             }
           }}
+        />
+      </Flex>
+      <Flex orientation='v' gap='md' alignment='start'>
+        <Text size='lg' weight='semibold'>
+          Prefixes
+        </Text>
+        <Text asChild>
+          <label id='searchlabel' htmlFor='searchinput'>
+            Search icon prefix
+          </label>
+        </Text>
+        <Input
+          id='searchinput'
+          aria-labelledby='searchlabel'
+          placeholder='Enter text...'
+          PrefixContent={<Text className={atoms({pl: 'sm'})}>S</Text>}
         />
       </Flex>
     </Flex>
