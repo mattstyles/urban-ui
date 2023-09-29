@@ -21,7 +21,7 @@ import {cva} from 'cva'
 import cx from 'clsx'
 import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
-import {base, container, sizeBase, postfix} from './input.css.ts'
+import {base, container, sizeBase} from './input.css.ts'
 import {sizes, colors, critical} from './variants.css.ts'
 
 const containerVariants = cva([container], {
@@ -83,6 +83,17 @@ const sizeVariants = cva([sizeBase], {
       sm: sizes.small,
       md: sizes.standard,
       lg: sizes.large,
+    },
+  },
+})
+
+const paddingVariants = cva([], {
+  variants: {
+    before: {
+      true: atoms({pl: 'md'}),
+    },
+    after: {
+      true: atoms({pr: 'md'}),
     },
   },
 })
@@ -177,7 +188,13 @@ export const Input = forwardRef<ElementType, InputProps>(
         data-disabled={props.isDisabled}>
         {PreEl}
         <input
-          className={inputVariants({size, className})}
+          className={cx(
+            inputVariants({size, className}),
+            paddingVariants({
+              before: PreEl == null,
+              after: PostEl == null,
+            }),
+          )}
           {...mergeProps(inputProps, hoverProps, focusProps)}
           ref={ref}
           data-hovered={isHovered}
@@ -222,6 +239,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
           className={cx(
             inputVariants({size, className}),
             containerVariants({background}),
+            paddingVariants({before: true, after: true}),
           )}
           {...mergeProps(inputProps, hoverProps, focusProps)}
           ref={ref}
@@ -283,7 +301,7 @@ function usePostfix({
 
     const controls = []
 
-    if (clear != null) {
+    if (clear === true) {
       controls.push(
         <ClearControl
           key='clear'
@@ -292,7 +310,7 @@ function usePostfix({
       )
     }
 
-    if (passwordToggle != null && type === 'password') {
+    if (passwordToggle === true && type === 'password') {
       controls.push(
         <PasswordControl
           key='password'

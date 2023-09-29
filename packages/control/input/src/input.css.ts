@@ -73,9 +73,9 @@ export const base = style([
     paddingTop: padding,
     paddingBottom: padding,
     // @TODO if prefix element then remove paddingLeft
-    paddingLeft: theme.space.md,
-    // @TODO if postfix element then no paddingRight
-    paddingRight: theme.space.md,
+    // paddingLeft: theme.space.md,
+    // // @TODO if postfix element then no paddingRight
+    // paddingRight: theme.space.md,
 
     color: theme.colors.fg.hi,
     background: theme.colors.core.transparent,
@@ -112,11 +112,4 @@ export const sizeBase = style({
   vars: {
     [height]: fallbackVar(anatomy.size.height, theme.sizes.control.md),
   },
-})
-
-export const postfix = style({
-  aspectRatio: '1',
-  height: '100%',
-  background: 'rebeccapurple',
-  color: 'white',
 })

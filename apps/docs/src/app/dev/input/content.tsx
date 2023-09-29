@@ -229,7 +229,7 @@ export function Content() {
           id='searchinput'
           aria-labelledby='searchlabel'
           placeholder='Enter text...'
-          PrefixContent={<Text className={atoms({pl: 'sm'})}>S</Text>}
+          PrefixContent={<Text className={atoms({px: 'sm'})}>S</Text>}
         />
       </Flex>
     </Flex>
