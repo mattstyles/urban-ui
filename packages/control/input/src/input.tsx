@@ -320,8 +320,6 @@ function ClearControl({
   }, [onClear, value, onChange, inputRef])
 
   useMemo(() => {
-    // return value != null ? value.length > 0 : true
-    // setIsVisible(value != null ? value.length > 0 : true)
     if (value != null) {
       setIsVisible(value.length > 0)
     }
