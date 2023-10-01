@@ -123,6 +123,9 @@ export const components = {
         [`${base}[data-hovered=true] &`]: {
           opacity: 1,
         },
+        [`${base}[data-focused=true] &`]: {
+          opacity: 1,
+        },
       },
     },
   ]),
