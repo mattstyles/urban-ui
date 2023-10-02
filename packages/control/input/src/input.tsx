@@ -21,7 +21,7 @@ import {cva} from 'cva'
 import cx from 'clsx'
 import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
-import {CloseIcon, SearchIcon, HideEyeIcon, ShowEyeIcon} from '@urban-ui/icons'
+import {CloseIcon, HideEyeIcon, ShowEyeIcon} from '@urban-ui/icons'
 import {base, container, sizeBase} from './input.css.ts'
 import {sizes, colors, critical} from './variants.css.ts'
 
