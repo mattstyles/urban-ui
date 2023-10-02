@@ -527,6 +527,9 @@ importers:
       '@urban-ui/flex':
         specifier: workspace:*
         version: link:../../layout/flex
+      '@urban-ui/icons':
+        specifier: workspace:*
+        version: link:../../icons
       '@urban-ui/slot':
         specifier: workspace:*
         version: link:../../core/slot

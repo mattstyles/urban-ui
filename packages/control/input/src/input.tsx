@@ -21,6 +21,7 @@ import {cva} from 'cva'
 import cx from 'clsx'
 import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
+import {CloseIcon} from '@urban-ui/icons'
 import {base, container, sizeBase} from './input.css.ts'
 import {sizes, colors, critical} from './variants.css.ts'
 
@@ -421,7 +422,7 @@ function ClearControl({
         className={atoms({
           pointerEvents: isVisible ? 'auto' : 'none',
         })}>
-        X
+        <CloseIcon size='lg' />
       </Button>
     </Flex>
   )

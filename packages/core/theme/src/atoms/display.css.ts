@@ -38,6 +38,7 @@ export const flex = defineProperties({
     justifyContent: ['flex-start', 'center', 'flex-end', 'space-between'],
     alignSelf: ['flex-start', 'center', 'flex-end', 'baseline', 'stretch'],
     justifySelf: ['flex-start', 'center', 'flex-end', 'stretch'],
+    flexWrap: ['wrap', 'wrap-reverse', 'nowrap', 'unset'],
     inset: {
       [0]: '0',
       ...theme.space,

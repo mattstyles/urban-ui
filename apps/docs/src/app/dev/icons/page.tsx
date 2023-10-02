@@ -2,7 +2,7 @@ import {Flex} from '@urban-ui/flex'
 import {Text} from '@urban-ui/text'
 import {Button} from '@urban-ui/button'
 import {atoms} from '@urban-ui/theme/atoms'
-import {CloseIcon} from '@urban-ui/icons'
+import {CloseIcon, HideEyeIcon, ShowEyeIcon, SearchIcon} from '@urban-ui/icons'
 
 export default function TextFieldPage() {
   return (
@@ -33,6 +33,38 @@ export default function TextFieldPage() {
           <CloseIcon className={atoms({size: 'xl'})} />
         </Button>
       </Flex>
+      <Text size='lg' weight='semibold'>
+        Named
+      </Text>
+      <Flex orientation='h' gap='xl' wrap='wrap'>
+        {icons.map(({name, Icon}) => {
+          return (
+            <Flex key={name} orientation='h' alignment='center' gap='md'>
+              <Icon size='xxl' />
+              <Text font='mono'>{name}</Text>
+            </Flex>
+          )
+        })}
+      </Flex>
     </Flex>
   )
 }
+
+const icons = [
+  {
+    Icon: CloseIcon,
+    name: 'CloseIcon',
+  },
+  {
+    Icon: HideEyeIcon,
+    name: 'HideEyeIcon',
+  },
+  {
+    Icon: ShowEyeIcon,
+    name: 'ShowEyeIcon',
+  },
+  {
+    Icon: SearchIcon,
+    name: 'SearchIcon',
+  },
+]

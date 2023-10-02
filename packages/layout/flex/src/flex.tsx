@@ -94,6 +94,17 @@ const variants = cva(
           flex: 'none',
         }),
       },
+      wrap: {
+        wrap: atoms({
+          flexWrap: 'wrap',
+        }),
+        reverse: atoms({
+          flexWrap: 'wrap-reverse',
+        }),
+        nowrap: atoms({
+          flexWrap: 'nowrap',
+        }),
+      },
     },
   },
 )
@@ -115,6 +126,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
       inline,
       fit,
       flex,
+      wrap,
       asChild,
       className,
       children,
@@ -134,6 +146,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
           inline,
           fit,
           flex,
+          wrap,
           className,
         })}
         {...props}>
