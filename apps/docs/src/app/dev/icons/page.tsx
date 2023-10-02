@@ -1,0 +1,38 @@
+import {Flex} from '@urban-ui/flex'
+import {Text} from '@urban-ui/text'
+import {Button} from '@urban-ui/button'
+import {atoms} from '@urban-ui/theme/atoms'
+import {CloseIcon} from '@urban-ui/icons'
+
+export default function TextFieldPage() {
+  return (
+    <Flex orientation='v' gap='md' className={atoms({p: 'xl'})}>
+      <Text size='lg' weight='semibold'>
+        Sizes
+      </Text>
+      <Flex orientation='h' gap='md' alignment='center'>
+        <CloseIcon size='sm' />
+        <CloseIcon size='md' />
+        <CloseIcon size='lg' />
+        <CloseIcon size='xl' />
+        <CloseIcon size='xxl' />
+      </Flex>
+      <Text size='lg' weight='semibold'>
+        Colours
+      </Text>
+      <Flex orientation='h' gap='md'>
+        <CloseIcon fg='hi' />
+        <CloseIcon fg='lo' />
+        <CloseIcon fg='hi' tone='primary' />
+      </Flex>
+      <Text size='lg' weight='semibold'>
+        Composed
+      </Text>
+      <Flex orientation='h' gap='md'>
+        <Button icon radii='circular' variant='ghost'>
+          <CloseIcon className={atoms({size: 'xl'})} />
+        </Button>
+      </Flex>
+    </Flex>
+  )
+}

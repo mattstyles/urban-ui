@@ -13,11 +13,25 @@ export const background = defineProperties({
   properties: {
     app: mapValues(theme.colors.app.bg, mapBackground),
     surface: mapValues(theme.colors.current.surface, mapBackground),
+    muted: mapValues(theme.colors.current.element.muted, mapBackground),
+    strong: mapValues(theme.colors.current.element.strong, mapBackground),
   },
 })
 
+/**
+ * Color.hi, color.lo, fg.hi, fg.lo are used to apply css properties.
+ * All other values apply variables.
+ */
 export const foreground = defineProperties({
   properties: {
+    color: {
+      hi: {
+        color: theme.colors.fg.hi,
+      },
+      lo: {
+        color: theme.colors.fg.lo,
+      },
+    },
     fg: {
       hi: {
         color: theme.colors.fg.hi,
@@ -26,6 +40,9 @@ export const foreground = defineProperties({
         color: theme.colors.fg.lo,
       },
       // Tones
+      current: {
+        vars: assignVars(theme.colors.fg, theme.colors.current.fg.base),
+      },
       primary: {
         vars: assignVars(theme.colors.fg, theme.colors.primary.fg.base),
       },
@@ -34,6 +51,9 @@ export const foreground = defineProperties({
       },
       critical: {
         vars: assignVars(theme.colors.fg, theme.colors.critical.fg.base),
+      },
+      invert: {
+        vars: assignVars(theme.colors.fg, theme.colors.current.fg.invert),
       },
     },
     invert: {
