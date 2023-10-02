@@ -6,6 +6,7 @@ import type {ButtonProps} from '@urban-ui/button'
 // import Link from 'next/link.js'
 import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
+import {ButtonGroup} from '@urban-ui/button-group'
 import {Text} from '@urban-ui/text'
 import {custom, customTextStyle} from './content.css.ts'
 
@@ -20,7 +21,7 @@ export function Content() {
       <Flex orientation='v' gap='md' alignment='start'>
         <Text size='xl'>Default</Text>
         <Flex gap='md'>
-          <Button>Default</Button>
+          <Button tabIndex={0}>Default</Button>
           <Button isDisabled>Disabled</Button>
         </Flex>
       </Flex>
@@ -150,6 +151,21 @@ export function Content() {
             B
           </Button>
         </Flex>
+      </Flex>
+      <Flex orientation='v' gap='md'>
+        <Text size='xl' weight='semibold'>
+          Button group
+        </Text>
+        <ButtonGroup>
+          <Button>Foo</Button>
+          <Button>Bar</Button>
+          <Button>Baz</Button>
+        </ButtonGroup>
+        <ButtonGroup orientation='v'>
+          <Button variant='ghost'>Foo</Button>
+          <Button variant='ghost'>Bar</Button>
+          <Button variant='ghost'>Baz</Button>
+        </ButtonGroup>
       </Flex>
     </Flex>
   )
