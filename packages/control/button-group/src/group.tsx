@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  useWrappedIndex,
+  useSelectIndex,
   useGroupChildren,
   useSelectionH,
   useSelectionV,
@@ -14,6 +14,7 @@ export interface ButtonGroupProps
   extends React.PropsWithChildren,
     Pick<FlexProps, 'gap' | 'orientation'> {
   autoFocus?: boolean
+  isWrap?: boolean
 }
 
 export function ButtonGroup(props: ButtonGroupProps) {
@@ -24,8 +25,13 @@ export function ButtonGroup(props: ButtonGroupProps) {
   return <HGroup {...props} />
 }
 
-function HGroup({children, gap = 'xs', autoFocus = false}: ButtonGroupProps) {
-  const {currentIndex, next, prev} = useWrappedIndex({children})
+function HGroup({
+  children,
+  gap = 'xs',
+  autoFocus = false,
+  isWrap = false,
+}: ButtonGroupProps) {
+  const {currentIndex, next, prev} = useSelectIndex({children, isWrap})
   const onKeyDown = useSelectionH({next, prev})
   const {groupChildren, refs} = useGroupChildren({
     children,
@@ -41,8 +47,13 @@ function HGroup({children, gap = 'xs', autoFocus = false}: ButtonGroupProps) {
   )
 }
 
-function VGroup({children, gap = 'xs', autoFocus = false}: ButtonGroupProps) {
-  const {currentIndex, next, prev} = useWrappedIndex({children})
+function VGroup({
+  children,
+  gap = 'xs',
+  autoFocus = false,
+  isWrap = false,
+}: ButtonGroupProps) {
+  const {currentIndex, next, prev} = useSelectIndex({children, isWrap})
   const onKeyDown = useSelectionV({next, prev})
   const {groupChildren, refs} = useGroupChildren({
     children,

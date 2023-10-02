@@ -92,10 +92,17 @@ export function useGroupChildren({
   }, [children, onKeyDown, currentIndex])
 }
 
-export function useWrappedIndex({children}: {children: React.ReactNode}) {
+export function useSelectIndex({
+  children,
+  isWrap = false,
+}: {
+  children: React.ReactNode
+  isWrap?: boolean
+}) {
+  const length = useMemo(() => Children.toArray(children).length, [children])
   const [currentIndex, setCurrentIndex] = useState(0)
   return useMemo(() => {
-    if (children == null) {
+    if (length <= 1) {
       return {
         currentIndex: currentIndex,
         next: () => {},
@@ -104,26 +111,69 @@ export function useWrappedIndex({children}: {children: React.ReactNode}) {
       }
     }
 
-    const length = Children.toArray(children).length
-
     return {
       currentIndex: currentIndex,
       next: () => {
-        setCurrentIndex((currentIndex + 1) % length)
-      },
-      prev: () => {
-        if (currentIndex === 0) {
-          setCurrentIndex(length - 1)
+        if (isWrap) {
+          setCurrentIndex((currentIndex + 1) % length)
           return
         }
-        setCurrentIndex((currentIndex - 1) % length)
+
+        setCurrentIndex(Math.min(currentIndex + 1, length - 1))
       },
-      set: (index: number) => {
-        setCurrentIndex(index % length)
+      prev: () => {
+        if (isWrap) {
+          if (currentIndex === 0) {
+            setCurrentIndex(length - 1)
+            return
+          }
+
+          setCurrentIndex((currentIndex - 1) % length)
+          return
+        }
+
+        setCurrentIndex(Math.max(currentIndex - 1, 0))
+      },
+      // @TODO no clamp checks or wrap checks here, we currently just trust the consumer
+      set: (idx: number) => {
+        setCurrentIndex(idx)
       },
     }
-  }, [children, currentIndex])
+  }, [length, currentIndex, isWrap])
 }
+
+// export function useWrappedIndex({children}: {children: React.ReactNode}) {
+//   const [currentIndex, setCurrentIndex] = useState(0)
+//   return useMemo(() => {
+//     if (children == null) {
+//       return {
+//         currentIndex: currentIndex,
+//         next: () => {},
+//         prev: () => {},
+//         set: () => {},
+//       }
+//     }
+
+//     const length = Children.toArray(children).length
+
+//     return {
+//       currentIndex: currentIndex,
+//       next: () => {
+//         setCurrentIndex((currentIndex + 1) % length)
+//       },
+//       prev: () => {
+//         if (currentIndex === 0) {
+//           setCurrentIndex(length - 1)
+//           return
+//         }
+//         setCurrentIndex((currentIndex - 1) % length)
+//       },
+//       set: (index: number) => {
+//         setCurrentIndex(index % length)
+//       },
+//     }
+//   }, [children, currentIndex])
+// }
 
 type FocusEffectProps = {
   currentIndex: number

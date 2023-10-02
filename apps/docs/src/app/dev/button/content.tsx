@@ -156,7 +156,7 @@ export function Content() {
         <Text size='xl' weight='semibold'>
           Button group
         </Text>
-        <ButtonGroup autoFocus>
+        <ButtonGroup isWrap>
           <Button>Foo</Button>
           <Button>Bar</Button>
           <Button>Baz</Button>
