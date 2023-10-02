@@ -3,6 +3,7 @@ import React, {
   useState,
   useCallback,
   useEffect,
+  useRef,
   Children,
   cloneElement,
   isValidElement,
@@ -124,19 +125,34 @@ export function useWrappedIndex({children}: {children: React.ReactNode}) {
   }, [children, currentIndex])
 }
 
+type FocusEffectProps = {
+  currentIndex: number
+  refs: ElementRefs
+  autoFocus?: boolean
+}
 export function useFocusEffect({
   currentIndex,
   refs,
-}: {
-  currentIndex: number
-  refs: ElementRefs
-}) {
+  autoFocus = false,
+}: FocusEffectProps) {
+  const prev = useRef<number | null>(null)
   useEffect(() => {
-    const ref = refs[currentIndex]
-    if (ref == null || ref.current == null) {
+    if (currentIndex === prev.current) {
       return
     }
 
+    const ref = refs[currentIndex]
+    if (ref == null || ref.current == null) {
+      prev.current = null
+      return
+    }
+
+    if (prev.current == null && autoFocus === false) {
+      prev.current = currentIndex
+      return
+    }
+
+    prev.current = currentIndex
     ref.current.focus()
-  }, [currentIndex, refs])
+  }, [currentIndex, refs, autoFocus])
 }

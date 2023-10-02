@@ -8,20 +8,23 @@ import {
   useFocusEffect,
 } from './hooks.ts'
 import {Flex} from '@urban-ui/flex'
+import type {FlexProps} from '@urban-ui/flex'
 
-export interface ButtonGroupProps extends React.PropsWithChildren {
-  orientation?: 'h' | 'v'
+export interface ButtonGroupProps
+  extends React.PropsWithChildren,
+    Pick<FlexProps, 'gap' | 'orientation'> {
+  autoFocus?: boolean
 }
 
-export function ButtonGroup({children, orientation = 'h'}: ButtonGroupProps) {
-  if (orientation === 'v') {
-    return <VGroup>{children}</VGroup>
+export function ButtonGroup(props: ButtonGroupProps) {
+  if (props.orientation === 'v') {
+    return <VGroup {...props} />
   }
 
-  return <HGroup>{children}</HGroup>
+  return <HGroup {...props} />
 }
 
-function HGroup({children}: React.PropsWithChildren) {
+function HGroup({children, gap = 'xs', autoFocus = false}: ButtonGroupProps) {
   const {currentIndex, next, prev} = useWrappedIndex({children})
   const onKeyDown = useSelectionH({next, prev})
   const {groupChildren, refs} = useGroupChildren({
@@ -29,16 +32,16 @@ function HGroup({children}: React.PropsWithChildren) {
     onKeyDown,
     currentIndex,
   })
-  useFocusEffect({currentIndex, refs})
+  useFocusEffect({currentIndex, refs, autoFocus})
 
   return (
-    <Flex orientation='h' gap='xs' role='toolbar'>
+    <Flex orientation='h' gap={gap} role='toolbar'>
       {groupChildren}
     </Flex>
   )
 }
 
-function VGroup({children}: React.PropsWithChildren) {
+function VGroup({children, gap = 'xs', autoFocus = false}: ButtonGroupProps) {
   const {currentIndex, next, prev} = useWrappedIndex({children})
   const onKeyDown = useSelectionV({next, prev})
   const {groupChildren, refs} = useGroupChildren({
@@ -46,10 +49,10 @@ function VGroup({children}: React.PropsWithChildren) {
     onKeyDown,
     currentIndex,
   })
-  useFocusEffect({currentIndex, refs})
+  useFocusEffect({currentIndex, refs, autoFocus})
 
   return (
-    <Flex orientation='v' gap='xs' role='toolbar'>
+    <Flex orientation='v' gap={gap} role='toolbar'>
       {groupChildren}
     </Flex>
   )
