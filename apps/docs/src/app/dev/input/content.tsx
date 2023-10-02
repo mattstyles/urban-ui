@@ -8,6 +8,7 @@ import {Button} from '@urban-ui/button'
 import {atoms} from '@urban-ui/theme/atoms'
 import * as styles from './content.css.ts'
 import cx from 'clsx'
+import {SearchIcon} from '@urban-ui/icons'
 
 export function Content() {
   return (
@@ -229,7 +230,11 @@ export function Content() {
           id='searchinput'
           aria-labelledby='searchlabel'
           placeholder='Enter text...'
-          PrefixContent={<Text className={atoms({px: 'sm'})}>S</Text>}
+          PrefixContent={
+            <Flex className={atoms({pl: 'sm', pr: 'xs'})}>
+              <SearchIcon size='lg' />
+            </Flex>
+          }
         />
       </Flex>
     </Flex>
