@@ -7,7 +7,7 @@ import {cva} from 'cva'
 import cx from 'clsx'
 import {atoms} from '@urban-ui/theme/atoms'
 import {Flex} from '@urban-ui/flex'
-import {base} from './input.css.ts'
+import {base} from './component.css.ts'
 import {sizes} from './variants.css.ts'
 
 const variants = cva([base], {
@@ -23,16 +23,15 @@ const variants = cva([base], {
   }
 })
 
-export interface <%= exportName %>Props extends Variants<typeof variants>, React.PropsWithChildren {}
-type ElementType = HTMLElement
+export interface <%= exportName %>Props extends VariantProps<typeof variants>, React.PropsWithChildren {
+  className?: string
+}
+type ElementType = HTMLDivElement
 
 export const <%= exportName %> = forwardRef<ElementType, <%= exportName %>Props>(({size, className, ...props}, ref) => {
   return (
-    <Flex className={variants({size, className})}>
+    <Flex ref={ref} className={variants({size, className})}>
       {props.children}
     </Flex>
   )
 })
-export function <%= exportName %>({children}: <%= exportName %>Props) {
-  return <div data-testid='some-test-id'>{children}</div>
-}
