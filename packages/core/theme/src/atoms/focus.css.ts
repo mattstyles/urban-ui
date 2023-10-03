@@ -10,7 +10,7 @@ export const focus = defineProperties({
         '&[data-focus-visible=true]': {
           outline: `2px solid ${theme.colors.core.focus}`,
           outlineOffset: '2px',
-          boxShadow: `0px 0px 0px 2px ${theme.colors.app.muted}`,
+          boxShadow: `0px 0px 0px 2px ${theme.colors.app.bg.muted}`,
         },
         // Needed for some reason or TS complains about the complex selector above
         ':focus-visible': {},
@@ -20,7 +20,7 @@ export const focus = defineProperties({
         ':focus-visible': {
           outline: `2px solid ${theme.colors.core.focus}`,
           outlineOffset: '2px',
-          boxShadow: `0px 0px 0px 2px ${theme.colors.app.muted}`,
+          boxShadow: `0px 0px 0px 2px ${theme.colors.app.bg.muted}`,
         },
       },
     },

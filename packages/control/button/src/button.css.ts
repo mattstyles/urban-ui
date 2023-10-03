@@ -18,6 +18,7 @@ export const base = style([
     fontWeight: 'semibold',
     kerning: 'md',
     focusRing: 'visible',
+    userSelect: 'none',
   }),
   // {
   //   vars: assignVars(textAnatomy.size, theme.type.size.md),
@@ -37,9 +38,6 @@ export const base = style([
     // @TODO add fallback vars
     fontSize: textAnatomy.size.fontSize,
     lineHeight: textAnatomy.size.lineHeight,
-
-    userSelect: 'none',
-    WebkitUserSelect: 'none',
 
     backgroundColor: fallbackVar(
       anatomy.bg.base,
