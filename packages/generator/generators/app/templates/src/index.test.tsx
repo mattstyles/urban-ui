@@ -1,7 +1,7 @@
 import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 
-import {<%= exportName %>} from './index'
+import {<%= exportName %>} from './index.tsx'
 
 describe('[<%= exportName %>]', () => {
   test('Forwards the testid', async () => {

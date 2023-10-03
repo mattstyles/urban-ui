@@ -1,10 +1,3 @@
-// https://github.com/microsoft/TypeScript/issues/48212, https://github.com/stitchesjs/stitches/issues/1055#issuecomment-1243663948
-import type {} from '@stitches/react'
-import {styled} from '@urban-ui/theme'
 
-type Props = {
-  children: React.ReactNode
-}
-export function <%= exportName %>({children}: Props) {
-  return <div data-testid='some-test-id'>{children}</div>
-}
+export type {<%= exportName %>Props} from './component.tsx'
+export {<%= exportName %>} from './component.tsx'

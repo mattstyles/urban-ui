@@ -36,6 +36,10 @@ module.exports = class extends Generator {
       'vite.config.ts',
       'src/index.tsx',
       'src/index.test.tsx',
+      'src/component.tsx',
+      'src/component.css.ts',
+      'src/anatomy.css.ts',
+      'src/variants.css.ts',
     ]
 
     for (let filename of files) {
@@ -45,10 +49,10 @@ module.exports = class extends Generator {
           path.join(
             this.answers.hierarchy,
             this.answers.pkgName,
-            filename.split('__').pop()
-          )
+            filename.split('__').pop(),
+          ),
         ),
-        {...this.answers}
+        {...this.answers},
       )
     }
   }
