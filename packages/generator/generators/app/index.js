@@ -47,6 +47,7 @@ module.exports = class extends Generator {
         this.templatePath(filename),
         this.destinationPath(
           path.join(
+            'packages',
             this.answers.hierarchy,
             this.answers.pkgName,
             filename.split('__').pop(),
