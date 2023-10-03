@@ -22,7 +22,7 @@ export const size = createThemeContract({
 })
 
 /**
- * Button component anatomy
+ * Input component anatomy
  */
 export const anatomy = createThemeContract({
   bg: color,
