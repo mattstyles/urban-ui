@@ -2,7 +2,13 @@ import {Flex} from '@urban-ui/flex'
 import {Text} from '@urban-ui/text'
 import {Button} from '@urban-ui/button'
 import {atoms} from '@urban-ui/theme/atoms'
-import {CloseIcon, HideEyeIcon, ShowEyeIcon, SearchIcon} from '@urban-ui/icons'
+import {
+  CloseIcon,
+  CheckIcon,
+  HideEyeIcon,
+  ShowEyeIcon,
+  SearchIcon,
+} from '@urban-ui/icons'
 
 export default function TextFieldPage() {
   return (
@@ -66,5 +72,9 @@ const icons = [
   {
     Icon: SearchIcon,
     name: 'SearchIcon',
+  },
+  {
+    Icon: CheckIcon,
+    name: 'CheckIcon',
   },
 ]
