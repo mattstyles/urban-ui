@@ -9,6 +9,7 @@ import {atoms} from '@urban-ui/theme/atoms'
 import cx from 'clsx'
 import {SearchIcon} from '@urban-ui/icons'
 import {Checkbox} from '@urban-ui/checkbox'
+import {Group, Checkbox as CheckboxItem} from '@urban-ui/checkbox-group'
 
 export function Content() {
   return (
@@ -24,6 +25,7 @@ export function Content() {
         <Checkbox isDisabled isSelected>
           Disabled selected
         </Checkbox>
+        <ControlledCheckbox />
       </Flex>
       <Text size='lg' weight='semibold'>
         Sizes
@@ -47,6 +49,41 @@ export function Content() {
         <Checkbox tone='primary'>Primary</Checkbox>
         <Checkbox tone='neutral'>Neutral</Checkbox>
       </Flex>
+      <Text size='lg' weight='semibold'>
+        Checkbox Group
+      </Text>
+      <Group
+        label='group'
+        description='Some group description'
+        onChange={(values) => {
+          console.log('group onchange', values)
+        }}>
+        <CheckboxItem value='foo'>Foo</CheckboxItem>
+        <CheckboxItem value='bar'>Bar</CheckboxItem>
+      </Group>
+      <Group
+        label='Invalid group'
+        orientation='h'
+        isInvalid
+        errorMessage='is invalid'
+        onChange={(values) => {
+          console.log('group onchange', values)
+        }}>
+        <CheckboxItem value='foo'>Foo</CheckboxItem>
+        <CheckboxItem value='bar'>Bar</CheckboxItem>
+      </Group>
+    </Flex>
+  )
+}
+
+function ControlledCheckbox() {
+  const [isSelected, setSelected] = useState(false)
+  return (
+    <Flex orientation='v' gap='sm'>
+      <Checkbox isSelected={isSelected} onChange={setSelected}>
+        Controlled checkbox
+      </Checkbox>
+      <Text weight='bold'>{isSelected ? 'true' : 'false'}</Text>
     </Flex>
   )
 }

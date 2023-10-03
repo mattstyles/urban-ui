@@ -45,8 +45,8 @@ const variants = cva([base], {
       // tone: atoms({invert: 'tone'})
     },
     tone: {
-      true: {},
-      inherit: {},
+      true: atoms({fg: 'current'}),
+      inherit: atoms({fg: 'current'}),
       primary: atoms({fg: 'primary'}),
       neutral: atoms({fg: 'neutral'}),
       critical: atoms({fg: 'critical'}),

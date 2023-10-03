@@ -33,6 +33,7 @@
     "@urban-ui/button": "workspace:*",
     "@urban-ui/button-group": "workspace:*",
     "@urban-ui/checkbox": "workspace:*",
+    "@urban-ui/checkbox-group": "workspace:*",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/field": "workspace:*",
     "@urban-ui/icons": "workspace:*",
