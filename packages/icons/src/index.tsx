@@ -8,3 +8,8 @@ export {SearchIcon} from './search.tsx'
 // Arrows
 export {ChevronDownIcon} from './chevronDown.tsx'
 export {ChevronUpIcon} from './chevronUp.tsx'
+
+// Message types
+export {CriticalIcon} from './critical.tsx'
+export {PositiveIcon} from './positive.tsx'
+export {WarningIcon} from './warning.tsx'

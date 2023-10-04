@@ -10,6 +10,9 @@ import {
   SearchIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  CriticalIcon,
+  WarningIcon,
+  PositiveIcon,
 } from '@urban-ui/icons'
 
 export default function TextFieldPage() {
@@ -86,5 +89,17 @@ const icons = [
   {
     Icon: ChevronUpIcon,
     name: 'ChevronUpIcon',
+  },
+  {
+    Icon: CriticalIcon,
+    name: 'CriticalIcon',
+  },
+  {
+    Icon: WarningIcon,
+    name: 'WarningIcon',
+  },
+  {
+    Icon: PositiveIcon,
+    name: 'PositiveIcon',
   },
 ]
