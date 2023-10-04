@@ -109,29 +109,30 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const {hoverProps, isHovered} = useHover(props)
     const {focusProps, isFocusVisible, isFocused} = useFocusRing(props)
 
-    let Comp: Slot | 'button' = 'button'
-    let passProps: {children?: React.ReactNode} = {}
+    const Components: {Container: Slot | 'button'; passProps: PassPropsType} =
+      useMemo(() => {
+        if (asChild !== true) {
+          return {
+            Container: 'button',
+            passProps: {children},
+          }
+        }
 
-    if (asChild === true) {
-      const Slot = slot(children)
-      if (Slot != null) {
-        Comp = Slot.Comp
-        passProps = Slot.passProps
-      }
-    }
+        return slot(children)
+      }, [asChild, children])
 
     const Content = useMemo(() => {
-      const content = passProps?.children ?? children
+      const content = Components.passProps.children
 
       if (typeof content === 'string') {
         return <Text>{content}</Text>
       }
 
       return content
-    }, [children, passProps])
+    }, [Components])
 
     return (
-      <Comp
+      <Components.Container
         className={variants({
           variant,
           size,
@@ -142,7 +143,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           fill,
           className,
         })}
-        {...mergeProps(buttonProps, hoverProps, focusProps, passProps)}
+        {...mergeProps(
+          buttonProps,
+          hoverProps,
+          focusProps,
+          Components.passProps,
+        )}
         ref={ref}
         tabIndex={props.tabIndex}
         data-pressed={isPressed}
@@ -156,10 +162,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={cx(
             icon ? components.foregroundIcon : components.foreground,
           )}>
-          {/* <Text>{passProps?.children ?? children}</Text> */}
           {Content}
         </span>
-      </Comp>
+      </Components.Container>
     )
   },
 )
@@ -173,9 +178,9 @@ type PassPropsType = {
 }
 
 function slot(children: React.ReactNode): {
-  Comp: Slot
+  Container: Slot
   passProps: PassPropsType
-} | null {
+} {
   const childArray = React.Children.toArray(children)
   const head = childArray[0]
 
@@ -185,7 +190,7 @@ function slot(children: React.ReactNode): {
 
   return {
     // @ts-expect-error default exists for the type of component we should pass
-    Comp: head.type.default,
+    Container: head.type.default,
     passProps: head.props,
   }
 }
