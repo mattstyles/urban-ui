@@ -48,7 +48,6 @@ const variants = cva([base], {
       lg: atoms({radii: 'lg'}),
       circular: atoms({radii: 'circular'}),
     },
-    // @TODO width
     width: {
       xs: atoms({content: 'xs'}),
       sm: atoms({content: 'sm'}),
@@ -134,7 +133,18 @@ type ElementType = HTMLDivElement
 
 export const Root = forwardRef<ElementType, RootProps>(
   (
-    {bg, prominence, tone, fg, contrast, border, width, className, ...props},
+    {
+      bg,
+      prominence,
+      tone,
+      fg,
+      contrast,
+      border,
+      radii,
+      width,
+      className,
+      ...props
+    },
     ref,
   ) => {
     return (
@@ -148,6 +158,7 @@ export const Root = forwardRef<ElementType, RootProps>(
           fg,
           contrast,
           border,
+          radii,
           width,
           className,
         })}>

@@ -35,6 +35,7 @@ export default function ColorPage() {
         tone='critical'
         fg='tone'
         border='emphasis'
+        radii='md'
         width='xs'>
         <Flex alignment='center' gap='sm'>
           <CriticalIcon size='xl' />
