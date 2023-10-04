@@ -32,6 +32,14 @@ export const foreground = defineProperties({
         color: theme.colors.fg.lo,
       },
     },
+    contrast: {
+      hi: {
+        color: theme.colors.fg.hi,
+      },
+      lo: {
+        color: theme.colors.fg.lo,
+      },
+    },
     fg: {
       hi: {
         color: theme.colors.fg.hi,
@@ -42,6 +50,12 @@ export const foreground = defineProperties({
       // Tones
       current: {
         vars: assignVars(theme.colors.fg, theme.colors.current.fg.base),
+      },
+      tone: {
+        vars: assignVars(theme.colors.fg, theme.colors.current.fg.base),
+      },
+      app: {
+        vars: assignVars(theme.colors.fg, theme.colors.app.fg.base),
       },
       primary: {
         vars: assignVars(theme.colors.fg, theme.colors.primary.fg.base),

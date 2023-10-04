@@ -38,6 +38,7 @@
     "@urban-ui/field": "workspace:*",
     "@urban-ui/icons": "workspace:*",
     "@urban-ui/input": "workspace:*",
+    "@urban-ui/panel": "workspace:*",
     "@urban-ui/slot": "workspace:*",
     "@urban-ui/spacer": "workspace:*",
     "@urban-ui/text": "workspace:*",
