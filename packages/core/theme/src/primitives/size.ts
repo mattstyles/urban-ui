@@ -15,3 +15,14 @@ export const borderWidth = {
   md: '2px',
   lg: '4px',
 }
+
+/**
+ * Content width
+ */
+export const content = {
+  xs: '320px',
+  sm: '440px',
+  md: '680px',
+  lg: '960px',
+  xl: '1280px',
+}

@@ -24,6 +24,7 @@ export const space = createThemeContract({
 export const sizes = createThemeContract({
   control: restrictedSizeScale,
   focusRing: null,
+  content: sizeScale,
 })
 
 /**

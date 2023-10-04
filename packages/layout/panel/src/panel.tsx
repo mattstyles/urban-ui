@@ -49,6 +49,13 @@ const variants = cva([base], {
       circular: atoms({radii: 'circular'}),
     },
     // @TODO width
+    width: {
+      xs: atoms({content: 'xs'}),
+      sm: atoms({content: 'sm'}),
+      md: atoms({content: 'md'}),
+      lg: atoms({content: 'lg'}),
+      xl: atoms({content: 'xl'}),
+    },
   },
   compoundVariants: [
     {
@@ -126,7 +133,10 @@ export interface RootProps
 type ElementType = HTMLDivElement
 
 export const Root = forwardRef<ElementType, RootProps>(
-  ({bg, prominence, tone, fg, contrast, border, className, ...props}, ref) => {
+  (
+    {bg, prominence, tone, fg, contrast, border, width, className, ...props},
+    ref,
+  ) => {
     return (
       <Flex
         asChild
@@ -138,6 +148,7 @@ export const Root = forwardRef<ElementType, RootProps>(
           fg,
           contrast,
           border,
+          width,
           className,
         })}>
         <section>{props.children}</section>

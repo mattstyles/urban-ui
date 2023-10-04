@@ -34,7 +34,8 @@ export default function ColorPage() {
         prominence='emphasis'
         tone='critical'
         fg='tone'
-        border='emphasis'>
+        border='emphasis'
+        width='xs'>
         <Flex alignment='center' gap='sm'>
           <CriticalIcon size='xl' />
           <Text weight='semibold'>Danger! High Voltage!</Text>
