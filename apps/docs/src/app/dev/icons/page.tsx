@@ -8,6 +8,8 @@ import {
   HideEyeIcon,
   ShowEyeIcon,
   SearchIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
 } from '@urban-ui/icons'
 
 export default function TextFieldPage() {
@@ -76,5 +78,13 @@ const icons = [
   {
     Icon: CheckIcon,
     name: 'CheckIcon',
+  },
+  {
+    Icon: ChevronDownIcon,
+    name: 'ChevronDownIcon',
+  },
+  {
+    Icon: ChevronUpIcon,
+    name: 'ChevronUpIcon',
   },
 ]
