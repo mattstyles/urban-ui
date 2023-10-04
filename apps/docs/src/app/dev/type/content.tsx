@@ -78,12 +78,14 @@ export function Content() {
             </Text>
           </Flex>
         </Flex>
+        {/* <Flex orientation='v' gap='md' className={atoms({tone: 'critical'})}> */}
         <Text contrast='hi' tone>
           High contrast - using current tone
         </Text>
         <Text contrast='lo' tone>
           Low contrast - using current tone
         </Text>
+        {/* </Flex> */}
         <Text contrast='hi' tone='primary'>
           High contrast - using specified primary tone
         </Text>

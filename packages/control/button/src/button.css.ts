@@ -43,6 +43,7 @@ export const base = style([
       anatomy.bg.base,
       theme.colors.current.element.strong.base,
     ),
+    color: fallbackVar(theme.colors.fg.hi, theme.colors.app.fg.base.hi),
 
     border: 'none',
     borderRadius: fallbackVar(radii, theme.radii.md),
@@ -94,6 +95,21 @@ export const base = style([
     },
   },
 ])
+
+export const shaping = {
+  normal: style({
+    paddingTop: padding,
+    paddingBottom: padding,
+    paddingLeft: theme.space.xl,
+    paddingRight: theme.space.xl,
+  }),
+  icon: style({
+    height: height,
+    // width: height,
+    width: 'fit-content',
+    aspectRatio: '1',
+  }),
+}
 
 const overlay = style([
   atoms({
@@ -158,12 +174,6 @@ export const components = {
       display: 'flex',
       position: 'relative',
     }),
-    {
-      paddingTop: padding,
-      paddingBottom: padding,
-      paddingLeft: theme.space.xl,
-      paddingRight: theme.space.xl,
-    },
   ]),
   foregroundIcon: style([
     atoms({
@@ -173,18 +183,5 @@ export const components = {
       justify: 'center',
       padding: 'none',
     }),
-    {
-      height: height,
-      width: height,
-    },
   ]),
 }
-
-export const icon = style([
-  {
-    height: height,
-    // width: height,
-    width: 'fit-content',
-    aspectRatio: '1',
-  },
-])

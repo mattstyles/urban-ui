@@ -14,7 +14,7 @@ import {Text} from '@urban-ui/text'
 import {cva} from 'cva'
 import cx from 'clsx'
 import {Slot} from '@radix-ui/react-slot'
-import {base, components, icon} from './button.css.ts'
+import {base, components, shaping} from './button.css.ts'
 import {
   solid,
   ghost,
@@ -52,7 +52,8 @@ const variants = cva([base], {
       scale: effects.scale,
     },
     icon: {
-      true: icon,
+      true: shaping.icon,
+      false: shaping.normal,
     },
     fill: {
       true: sizes.fill,
@@ -66,6 +67,7 @@ const variants = cva([base], {
   },
   defaultVariants: {
     radii: 'md',
+    icon: false,
   },
 })
 
@@ -118,6 +120,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       }
     }
 
+    const Content = useMemo(() => {
+      const content = passProps?.children ?? children
+
+      if (typeof content === 'string') {
+        return <Text>{content}</Text>
+      }
+
+      return content
+    }, [children, passProps])
+
     return (
       <Comp
         className={variants({
@@ -144,7 +156,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={cx(
             icon ? components.foregroundIcon : components.foreground,
           )}>
-          <Text>{passProps?.children ?? children}</Text>
+          {/* <Text>{passProps?.children ?? children}</Text> */}
+          {Content}
         </span>
       </Comp>
     )

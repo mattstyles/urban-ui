@@ -8,6 +8,7 @@ import {Flex} from '@urban-ui/flex'
 import {Button} from '@urban-ui/button'
 import {ButtonGroup} from '@urban-ui/button-group'
 import {Text} from '@urban-ui/text'
+import {SearchIcon, CheckIcon} from '@urban-ui/icons'
 import {custom, customTextStyle} from './content.css.ts'
 
 // Nodenext module resolution hack @see https://github.com/vercel/next.js/discussions/41189#discussioncomment-4026895
@@ -143,12 +144,18 @@ export function Content() {
       </Flex>
       <Flex orientation='v' gap='md'>
         <Text size='xl'>Icon</Text>
-        <Button icon radii='circular'>
-          A
+        <Button icon radii='circular' size='lg'>
+          <SearchIcon size='lg' />
+        </Button>
+        <Button size='lg'>
+          <Flex gap='sm' alignment='center'>
+            <SearchIcon size='lg' />
+            <Text>With icon</Text>
+          </Flex>
         </Button>
         <Flex style={{height: 60, width: 60, background: 'gainsboro'}}>
           <Button icon fill radii='circular'>
-            B
+            <CheckIcon />
           </Button>
         </Flex>
       </Flex>
