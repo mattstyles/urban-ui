@@ -1,7 +1,8 @@
 import {cva} from 'cva'
 import {atoms} from '@urban-ui/theme/atoms'
+import {base} from './styles.css.ts'
 
-export const variants = cva('', {
+export const variants = cva(base, {
   variants: {
     size: {
       sm: atoms({size: 'sm'}),
