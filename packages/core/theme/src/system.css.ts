@@ -161,3 +161,5 @@ export const radii = createThemeContract({
   circular: null,
   ...restrictedSizeScale,
 })
+
+export const borderWidth = createThemeContract(restrictedSizeScale)

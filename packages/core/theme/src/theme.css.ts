@@ -11,12 +11,14 @@ import {
   fullForeground,
   transition,
   radii,
+  borderWidth,
 } from './system.css.ts'
 
 export const theme = createThemeContract({
   space: space,
   sizes: sizes,
   radii: radii,
+  borderWidth: borderWidth,
 
   // Base colors
   colors: {

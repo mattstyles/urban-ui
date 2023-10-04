@@ -5,7 +5,7 @@ import {mapValues} from '@urban-ui/utils'
 import {theme} from './theme.css.ts'
 import {accent, deepen, core, coreApp, tones} from './primitives/colors.ts'
 import {space} from './primitives/space.ts'
-import {control} from './primitives/size.ts'
+import {control, borderWidth} from './primitives/size.ts'
 import {radii} from './primitives/radii.ts'
 import {type, fonts, weights, kerning} from './primitives/typography.ts'
 import {px} from '@urban-ui/utils'
@@ -25,6 +25,7 @@ export const base = {
   },
 
   radii: radii,
+  borderWidth: borderWidth,
 
   colors: {
     /** --------------------------- Core --------------------------- */
