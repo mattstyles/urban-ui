@@ -97,17 +97,23 @@ export const base = style([
 ])
 
 export const shaping = {
+  // Normal is to use padding and assumes a string content for capsize cap heights. This is to allow for long text that creates multiple lines (which really should be avoided anyways).
   normal: style({
     paddingTop: padding,
     paddingBottom: padding,
     paddingLeft: theme.space.xl,
     paddingRight: theme.space.xl,
   }),
+  // Icon-only has a set aspect ratio and height
   icon: style({
     height: height,
     // width: height,
     width: 'fit-content',
     aspectRatio: '1',
+  }),
+  // Often you just want to set a specific height
+  clamp: style({
+    height: height,
   }),
 }
 

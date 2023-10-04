@@ -55,6 +55,9 @@ const variants = cva([base], {
       true: shaping.icon,
       false: shaping.normal,
     },
+    clamp: {
+      true: shaping.clamp,
+    },
     fill: {
       true: sizes.fill,
     },
@@ -92,6 +95,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       radii,
       icon = false,
       fill = false,
+      clamp,
       className,
       asChild,
       ...props
@@ -131,6 +135,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       return content
     }, [Components])
 
+    const setHeight = useMemo(() => {
+      return clamp != null
+        ? clamp
+        : typeof Components.passProps.children !== 'string'
+    }, [Components.passProps.children, clamp])
+
     return (
       <Components.Container
         className={variants({
@@ -141,6 +151,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           radii,
           icon,
           fill,
+          clamp: setHeight,
           className,
         })}
         {...mergeProps(
