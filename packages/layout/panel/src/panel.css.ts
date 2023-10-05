@@ -6,13 +6,25 @@ import {anatomy} from './anatomy.css.js'
 
 export const base = style([
   {
-    padding: 20,
-    // color: anatomy.fg,
-    // backgroundColor: anatomy.bg,
-
     vars: {
-      [anatomy.fg]: theme.colors.fg.hi,
-      [anatomy.bg]: theme.colors.current.surface.base,
+      [anatomy.padding]: theme.space.md,
     },
   },
 ])
+
+export const header = style([
+  atoms({
+    fontSize: 'lg',
+    fontWeight: 'semibold',
+  }),
+  {
+    paddingLeft: anatomy.padding,
+  },
+])
+
+export const appliedPadding = style({
+  paddingLeft: anatomy.padding,
+  paddingRight: anatomy.padding,
+  paddingTop: anatomy.padding,
+  paddingBottom: anatomy.padding,
+})

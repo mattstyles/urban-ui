@@ -2,51 +2,20 @@ import {style, assignVars} from '@vanilla-extract/css'
 import {theme} from '@urban-ui/theme'
 import {anatomy} from './anatomy.css.ts'
 
-// export const sizes = {
-//   sm: style([
-//     {
-//       vars: assignVars(anatomy.size, {
-//         height: theme.sizes.control.sm,
-//       }),
-//     },
-//   ]),
-//   md: style([
-//     {
-//       vars: assignVars(anatomy.size, {
-//         height: theme.sizes.control.md,
-//       }),
-//     },
-//   ]),
-//   lg: style([
-//     {
-//       vars: assignVars(anatomy.size, {
-//         height: theme.sizes.control.lg,
-//       }),
-//     },
-//   ]),
-// }
-
-export const colors = {
-  app: {
-    muted: style({
-      backgroundColor: theme.colors.app.bg.muted,
-    }),
-    base: style({
-      backgroundColor: theme.colors.app.bg.base,
-    }),
-    subtle: style({
-      backgroundColor: theme.colors.app.bg.muted,
-    }),
-    emphasis: style({
-      backgroundColor: theme.colors.app.bg.base,
-    }),
-  },
-  surface: {
-    muted: style({
-      backgroundColor: theme.colors.current.surface.muted,
-    }),
-    base: style({
-      backgroundColor: theme.colors.current.surface.base,
-    }),
-  },
+export const padding = {
+  sm: style({
+    vars: {
+      [anatomy.padding]: theme.space.sm,
+    },
+  }),
+  md: style({
+    vars: {
+      [anatomy.padding]: theme.space.md,
+    },
+  }),
+  lg: style({
+    vars: {
+      [anatomy.padding]: theme.space.lg,
+    },
+  }),
 }

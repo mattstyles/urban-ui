@@ -1,4 +1,5 @@
 import type {VariantProps} from 'cva'
+import type {FlexProps} from '@urban-ui/flex'
 
 import {forwardRef} from 'react'
 import {cva} from 'cva'
@@ -6,10 +7,15 @@ import cx from 'clsx'
 import {atoms} from '@urban-ui/theme/atoms'
 import {Flex} from '@urban-ui/flex'
 import {base} from './panel.css.ts'
-// import {sizes} from './variants.css.ts'
+import {padding} from './variants.css.ts'
 
 const variants = cva([base], {
   variants: {
+    padding: {
+      sm: padding.sm,
+      md: padding.md,
+      lg: padding.lg,
+    },
     bg: {
       app: null,
       surface: null,
@@ -126,6 +132,7 @@ const variants = cva([base], {
 
 export interface RootProps
   extends VariantProps<typeof variants>,
+    FlexProps,
     React.PropsWithChildren {
   className?: string
 }
@@ -142,7 +149,11 @@ export const Root = forwardRef<ElementType, RootProps>(
       border,
       radii,
       width,
+      padding,
+      // Component props
       className,
+      children,
+      // Other (flex props)
       ...props
     },
     ref,
@@ -151,6 +162,7 @@ export const Root = forwardRef<ElementType, RootProps>(
       <Flex
         asChild
         ref={ref}
+        {...props}
         className={variants({
           bg,
           prominence,
@@ -160,9 +172,10 @@ export const Root = forwardRef<ElementType, RootProps>(
           border,
           radii,
           width,
+          padding,
           className,
         })}>
-        <section>{props.children}</section>
+        <section>{children}</section>
       </Flex>
     )
   },
