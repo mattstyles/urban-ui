@@ -12,11 +12,18 @@ import {
   transition,
   radii,
   borderWidth,
+  shadows,
 } from './system.css.ts'
 
 export const theme = createThemeContract({
+  /** --------------------------- Space/Size --------------------------- */
   space: space,
   sizes: sizes,
+
+  /** --------------------------- Shadows --------------------------- */
+  shadows: shadows,
+
+  /** --------------------------- Borders --------------------------- */
   radii: radii,
   borderWidth: borderWidth,
 
@@ -66,9 +73,9 @@ export const theme = createThemeContract({
     fg: foreground,
   },
 
-  // Typography
+  /** --------------------------- Typography --------------------------- */
   type: typography,
 
-  // Transition components
+  /** --------------------------- Transitions --------------------------- */
   transition: transition,
 })

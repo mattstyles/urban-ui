@@ -8,6 +8,7 @@ import {borders} from './atoms/borders.css.ts'
 import {pointer} from './atoms/pointer.css.ts'
 import {background, foreground, tone, opacity} from './atoms/colors.css.ts'
 import {transitions} from './atoms/transition.css.ts'
+import {shadows} from './atoms/shadows.css.ts'
 
 export const atoms = createSprinkles(
   // Display
@@ -34,5 +35,8 @@ export const atoms = createSprinkles(
 
   // Transition
   transitions,
+
+  // Shadows
+  shadows,
 )
 export type AtomTypes = Parameters<typeof atoms>[0]

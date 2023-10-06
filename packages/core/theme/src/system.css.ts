@@ -134,6 +134,8 @@ export const tone = createThemeContract({
   },
   // Mid-range lightness borders
   border: background,
+  // Shadow colour
+  shadow: null,
 })
 
 /**
@@ -148,8 +150,13 @@ export const coreColor = createThemeContract({
     fg: null,
   },
   focus: null,
+  black: null,
+  white: null,
 })
 
+/**
+ * Transitions
+ */
 export const transition = createThemeContract({
   duration: restrictedSizeScale,
   easing: {
@@ -158,9 +165,20 @@ export const transition = createThemeContract({
   },
 })
 
+/**
+ * Borders - radii
+ */
 export const radii = createThemeContract({
   circular: null,
   ...restrictedSizeScale,
 })
 
+/**
+ * Border widths
+ */
 export const borderWidth = createThemeContract(restrictedSizeScale)
+
+/**
+ * Shadows
+ */
+export const shadows = createThemeContract(restrictedSizeScale)

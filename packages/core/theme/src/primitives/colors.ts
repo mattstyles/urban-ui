@@ -44,6 +44,8 @@ export const core = {
     bg: 'hsl(0, 0%, 76%)',
   },
   focus: 'hsl(0, 0%, 0%)',
+  white: 'hsl(0, 100%, 100%)',
+  black: 'hsl(0, 0%, 0%)',
 }
 
 export const coreApp = {
@@ -100,6 +102,7 @@ export const tones = {
       subtle: 'hsl(323, 62.0%, 80.1%)',
       emphasis: 'hsl(323, 60.3%, 72.4%)',
     },
+    shadow: '321deg 30% 63%',
   },
 
   neutral: {
@@ -136,6 +139,7 @@ export const tones = {
       subtle: 'hsl(0, 0%, 79%)',
       emphasis: 'hsl(0, 0%, 72%)',
     },
+    shadow: '0deg 0% 63%',
   },
 
   critical: {
@@ -177,5 +181,6 @@ export const tones = {
       subtle: 'hsl(348, 64.3%, 80.9%)',
       emphasis: 'hsl(348, 61.3%, 72.9%)',
     },
+    shadow: '342deg 28% 62%',
   },
 }

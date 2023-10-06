@@ -8,6 +8,7 @@ import {space} from './primitives/space.ts'
 import {control, borderWidth, content} from './primitives/size.ts'
 import {radii} from './primitives/radii.ts'
 import {type, fonts, weights, kerning} from './primitives/typography.ts'
+import {shadows} from './primitives/shadows.ts'
 import {px} from '@urban-ui/utils'
 
 globalStyle('body', {
@@ -27,6 +28,8 @@ export const base = {
 
   radii: radii,
   borderWidth: borderWidth,
+
+  shadows: shadows,
 
   colors: {
     /** --------------------------- Core --------------------------- */
