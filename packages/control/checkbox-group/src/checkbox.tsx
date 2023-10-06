@@ -3,7 +3,7 @@ import type {CheckboxProps as RootCheckboxProps} from '@urban-ui/checkbox'
 
 import {forwardRef, useRef, useMemo, useCallback} from 'react'
 import {useObjectRef, mergeRefs} from '@react-aria/utils'
-import {Checkbox as RootCheckbox} from '@urban-ui/checkbox'
+import {Checkbox as CheckboxPrimitive} from '@urban-ui/checkbox'
 import {useCheckboxGroupItem} from '@react-aria/checkbox'
 import {useCheckboxGroupContextState} from './context.tsx'
 
@@ -30,7 +30,7 @@ export const Checkbox = forwardRef<ElementType, CheckboxProps>(
     )
 
     return (
-      <RootCheckbox
+      <CheckboxPrimitive
         ref={passRef}
         {...props}
         isSelected={isSelected}

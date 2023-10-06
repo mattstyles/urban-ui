@@ -141,7 +141,11 @@ export const Checkbox = forwardRef<ElementType, CheckboxProps>(
             data-hovered={isHovered}
             data-focused={isFocused}
             data-focus-visible={isFocusVisible}>
-            <CheckIcon strokeWidth={3} size={size === 'sm' ? 'md' : 'lg'} />
+            <CheckIcon
+              aria-hidden
+              strokeWidth={3}
+              size={size === 'sm' ? 'md' : 'lg'}
+            />
           </Flex>
           {children}
         </label>
