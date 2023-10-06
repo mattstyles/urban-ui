@@ -143,7 +143,7 @@ export const components = {
         [`${base}[data-hovered=true] &`]: {
           opacity: 1,
         },
-        [`${base}[data-focused=true] &`]: {
+        [`${base}[data-focus-visible=true] &`]: {
           opacity: 1,
         },
       },
