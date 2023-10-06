@@ -55,13 +55,23 @@ export function useSelectionV(actions: SelectionActions) {
 export type GroupChildrenProps = {
   children: React.ReactNode
   onKeyDown: (event: KeyboardEvent) => void
+  isTabbable?: boolean
   currentIndex: number
+  setIndex: (index: number) => void
 }
 export function useGroupChildren({
   children,
   onKeyDown,
+  isTabbable = false,
   currentIndex,
+  setIndex,
 }: GroupChildrenProps) {
+  const createFocusHandler = useCallback(
+    (index: number) => {
+      return () => setIndex(index)
+    },
+    [setIndex],
+  )
   return useMemo(() => {
     if (typeof children === 'function') {
       return children
@@ -75,12 +85,14 @@ export function useGroupChildren({
         return child
       }
 
+      const tabIndex = isTabbable ? 0 : idx === currentIndex ? 0 : -1
       const ref = createRef<HTMLElement>()
       refs.push(ref)
       return cloneElement(child, {
         ref: ref,
         onKeyDown: onKeyDown,
-        tabIndex: idx === currentIndex ? 0 : -1,
+        onFocus: createFocusHandler(idx),
+        tabIndex: tabIndex,
         ...child.props,
       })
     })
@@ -89,7 +101,7 @@ export function useGroupChildren({
       groupChildren,
       refs,
     }
-  }, [children, onKeyDown, currentIndex])
+  }, [children, onKeyDown, isTabbable, currentIndex, createFocusHandler])
 }
 
 export function useSelectIndex({

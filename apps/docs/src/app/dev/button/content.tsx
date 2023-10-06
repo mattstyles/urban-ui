@@ -173,6 +173,14 @@ export function Content() {
           <Button variant='ghost'>Bar</Button>
           <Button variant='ghost'>Baz</Button>
         </ButtonGroup>
+        <Text>Tabbable group:</Text>
+        <ButtonGroup isWrap isTabbable>
+          <Button>One</Button>
+          <Button>Two</Button>
+          <Button>Three</Button>
+          <Button>Four</Button>
+          <Button>Five</Button>
+        </ButtonGroup>
       </Flex>
     </Flex>
   )

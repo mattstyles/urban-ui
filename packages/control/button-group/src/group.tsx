@@ -15,6 +15,7 @@ export interface ButtonGroupProps
     Pick<FlexProps, 'gap' | 'orientation'> {
   autoFocus?: boolean
   isWrap?: boolean
+  isTabbable?: boolean
 }
 
 export function ButtonGroup(props: ButtonGroupProps) {
@@ -30,13 +31,16 @@ function HGroup({
   gap = 'xs',
   autoFocus = false,
   isWrap = false,
+  isTabbable = false,
 }: ButtonGroupProps) {
-  const {currentIndex, next, prev} = useSelectIndex({children, isWrap})
+  const {currentIndex, next, prev, set} = useSelectIndex({children, isWrap})
   const onKeyDown = useSelectionH({next, prev})
   const {groupChildren, refs} = useGroupChildren({
     children,
     onKeyDown,
+    isTabbable,
     currentIndex,
+    setIndex: set,
   })
   useFocusEffect({currentIndex, refs, autoFocus})
 
@@ -52,13 +56,16 @@ function VGroup({
   gap = 'xs',
   autoFocus = false,
   isWrap = false,
+  isTabbable = false,
 }: ButtonGroupProps) {
-  const {currentIndex, next, prev} = useSelectIndex({children, isWrap})
+  const {currentIndex, next, prev, set} = useSelectIndex({children, isWrap})
   const onKeyDown = useSelectionV({next, prev})
   const {groupChildren, refs} = useGroupChildren({
     children,
     onKeyDown,
+    isTabbable,
     currentIndex,
+    setIndex: set,
   })
   useFocusEffect({currentIndex, refs, autoFocus})
 
