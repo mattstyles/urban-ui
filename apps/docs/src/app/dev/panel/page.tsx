@@ -68,6 +68,59 @@ export default function ColorPage() {
           </Panel.Content>
         </Panel.Root>
       </Panel.Root>
+      <Flex orientation='v' gap='md'>
+        <Text size='lg' weight='semibold'>
+          Content widths
+        </Text>
+        <Panel.Root width='xs' bg='surface' prominence='emphasis'>
+          <Panel.Content>
+            <Text>XS</Text>
+          </Panel.Content>
+        </Panel.Root>
+        <Panel.Root width='sm' bg='surface' prominence='emphasis'>
+          <Panel.Content>
+            <Text>SM</Text>
+          </Panel.Content>
+        </Panel.Root>
+        <Panel.Root width='md' bg='surface' prominence='emphasis'>
+          <Panel.Content>
+            <Text>MD</Text>
+          </Panel.Content>
+        </Panel.Root>
+        <Panel.Root width='lg' bg='surface' prominence='emphasis'>
+          <Panel.Content>
+            <Text>LG</Text>
+          </Panel.Content>
+        </Panel.Root>
+        <Panel.Root width='xl' bg='surface' prominence='emphasis'>
+          <Panel.Content>
+            <Text>XL</Text>
+          </Panel.Content>
+        </Panel.Root>
+      </Flex>
+      <Flex orientation='v' gap='md'>
+        <Text size='lg' weight='semibold'>
+          Shadows
+        </Text>
+
+        <Flex gap='lg'>
+          <Panel.Root width='xs' bg='app' prominence='muted' shadow='sm'>
+            <Panel.Content>
+              <Text>Small shadow</Text>
+            </Panel.Content>
+          </Panel.Root>
+          <Panel.Root width='xs' bg='app' prominence='muted' shadow='md'>
+            <Panel.Content>
+              <Text>Medium shadow</Text>
+            </Panel.Content>
+          </Panel.Root>
+          <Panel.Root width='xs' bg='app' prominence='muted' shadow='lg'>
+            <Panel.Content>
+              <Text>Large shadow</Text>
+            </Panel.Content>
+          </Panel.Root>
+        </Flex>
+      </Flex>
     </Flex>
   )
 }

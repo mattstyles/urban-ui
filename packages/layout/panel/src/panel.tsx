@@ -61,6 +61,11 @@ const variants = cva([base], {
       lg: atoms({content: 'lg'}),
       xl: atoms({content: 'xl'}),
     },
+    shadow: {
+      sm: atoms({shadow: 'sm'}),
+      md: atoms({shadow: 'md'}),
+      lg: atoms({shadow: 'lg'}),
+    },
   },
   compoundVariants: [
     {
@@ -150,6 +155,7 @@ export const Root = forwardRef<ElementType, RootProps>(
       radii,
       width,
       padding,
+      shadow,
       // Component props
       className,
       children,
@@ -173,6 +179,7 @@ export const Root = forwardRef<ElementType, RootProps>(
           radii,
           width,
           padding,
+          shadow,
           className,
         })}>
         <section>{children}</section>
