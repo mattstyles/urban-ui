@@ -181,4 +181,9 @@ export const borderWidth = createThemeContract(restrictedSizeScale)
 /**
  * Shadows
  */
-export const shadows = createThemeContract(restrictedSizeScale)
+export const shadows = createThemeContract({
+  ...restrictedSizeScale,
+  'inset-sm': null,
+  'inset-md': null,
+  'inset-lg': null,
+})

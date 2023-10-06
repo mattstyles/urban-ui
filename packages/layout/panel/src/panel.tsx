@@ -65,6 +65,9 @@ const variants = cva([base], {
       sm: atoms({shadow: 'sm'}),
       md: atoms({shadow: 'md'}),
       lg: atoms({shadow: 'lg'}),
+      'inset-sm': atoms({shadow: 'inset-sm'}),
+      'inset-md': atoms({shadow: 'inset-md'}),
+      'inset-lg': atoms({shadow: 'inset-lg'}),
     },
   },
   compoundVariants: [
