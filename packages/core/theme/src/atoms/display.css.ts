@@ -17,6 +17,21 @@ export const display = defineProperties({
   },
 })
 
+export const position = defineProperties({
+  properties: {
+    top: theme.space,
+    right: theme.space,
+    bottom: theme.space,
+    left: theme.space,
+  },
+  shorthands: {
+    topRight: ['top', 'right'],
+    topLeft: ['top', 'left'],
+    bottomRight: ['bottom', 'right'],
+    bottomLeft: ['bottom', 'left'],
+  },
+})
+
 export const flex = defineProperties({
   properties: {
     flex: {

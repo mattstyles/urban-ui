@@ -5,6 +5,9 @@ import {theme} from '@urban-ui/theme'
 import {anatomy} from './anatomy.css.js'
 
 export const base = style([
+  atoms({
+    width: 'fill',
+  }),
   {
     vars: {
       [anatomy.padding]: theme.space.md,

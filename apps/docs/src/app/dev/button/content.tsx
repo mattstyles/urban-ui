@@ -10,10 +10,10 @@ import {ButtonGroup} from '@urban-ui/button-group'
 import {Text} from '@urban-ui/text'
 import {SearchIcon, CheckIcon} from '@urban-ui/icons'
 import {custom, customTextStyle} from './content.css.ts'
+import {atoms} from '@urban-ui/theme/atoms'
 
 // Nodenext module resolution hack @see https://github.com/vercel/next.js/discussions/41189#discussioncomment-4026895
 import _x from 'next/link.js'
-import {atoms} from '@urban-ui/theme/atoms'
 const Link = _x as unknown as typeof _x.default
 
 export function Content() {

@@ -170,6 +170,7 @@ export const Root = forwardRef<ElementType, RootProps>(
     return (
       <Flex
         asChild
+        flex='full'
         ref={ref}
         {...props}
         className={variants({
