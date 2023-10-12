@@ -1,3 +1,5 @@
+import {anatomy as textAnatomy} from '@urban-ui/text/anatomy'
+
 import {style, fallbackVar, createVar, assignVars} from '@vanilla-extract/css'
 import {calc} from '@vanilla-extract/css-utils'
 import {atoms} from '@urban-ui/theme/atoms'
@@ -10,24 +12,32 @@ export const base = style([
   }),
   {
     vars: {
-      [anatomy.padding]: theme.space.md,
+      [anatomy.px]: theme.space.md,
+      [anatomy.py]: theme.space.md,
     },
   },
 ])
 
 export const header = style([
   atoms({
-    fontSize: 'lg',
-    fontWeight: 'semibold',
+    // fontSize: 'lg',
+    // fontWeight: 'semibold',
   }),
   {
-    paddingLeft: anatomy.padding,
+    vars: {
+      ...assignVars(textAnatomy.size, theme.type.size.lg),
+      [textAnatomy.weight]: theme.type.weight.semibold,
+    },
   },
 ])
 
-export const appliedPadding = style({
-  paddingLeft: anatomy.padding,
-  paddingRight: anatomy.padding,
-  paddingTop: anatomy.padding,
-  paddingBottom: anatomy.padding,
-})
+export const padding = {
+  px: style({
+    paddingLeft: anatomy.px,
+    paddingRight: anatomy.px,
+  }),
+  py: style({
+    paddingTop: anatomy.py,
+    paddingBottom: anatomy.py,
+  }),
+}

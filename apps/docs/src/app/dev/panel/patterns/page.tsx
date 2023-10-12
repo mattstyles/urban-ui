@@ -14,7 +14,7 @@ export default function PanelPatternsPage() {
       <Spacer gap='sm' />
       <Flex orientation='v' gap='md'>
         <SubHeading>Split panel</SubHeading>
-        <Panel.Root gap='xl'>
+        <Panel.Root gap='xl' split>
           <Panel.Root flex='full' prominence='muted' bg='app' shadow='sm'>
             <Panel.Content>
               <Text>Left</Text>

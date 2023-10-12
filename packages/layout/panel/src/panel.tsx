@@ -6,15 +6,16 @@ import {cva} from 'cva'
 import cx from 'clsx'
 import {atoms} from '@urban-ui/theme/atoms'
 import {Flex} from '@urban-ui/flex'
-import {base} from './panel.css.ts'
-import {padding} from './variants.css.ts'
+import {base, padding} from './panel.css.ts'
+import {padding as anatomyPadding} from './variants.css.ts'
 
-const variants = cva([base], {
+const variants = cva([base, padding.py], {
   variants: {
     padding: {
-      sm: padding.sm,
-      md: padding.md,
-      lg: padding.lg,
+      none: cx(anatomyPadding.px.none, anatomyPadding.py.none),
+      sm: cx(anatomyPadding.px.sm, anatomyPadding.py.sm),
+      md: cx(anatomyPadding.px.md, anatomyPadding.py.md),
+      lg: cx(anatomyPadding.px.lg, anatomyPadding.py.lg),
     },
     bg: {
       app: null,
@@ -143,6 +144,7 @@ export interface RootProps
     FlexProps,
     React.PropsWithChildren {
   className?: string
+  split?: boolean
 }
 type ElementType = HTMLDivElement
 
@@ -160,6 +162,7 @@ export const Root = forwardRef<ElementType, RootProps>(
       padding,
       shadow,
       // Component props
+      split = false,
       className,
       children,
       // Other (flex props)
@@ -170,7 +173,9 @@ export const Root = forwardRef<ElementType, RootProps>(
     return (
       <Flex
         asChild
+        orientation={split ? 'h' : 'v'}
         flex='full'
+        gap={padding}
         ref={ref}
         {...props}
         className={variants({

@@ -14,6 +14,18 @@ export default function PanelPage() {
       <Text asChild>
         <Link href='./panel/patterns'>Panel layout patterns</Link>
       </Text>
+      <Panel.Root bg='app' prominence='muted' padding='lg' radii='md'>
+        <Panel.Header justify='spread' alignment='center'>
+          <Text size='lg' weight='semibold'>
+            Panel header
+          </Text>
+          <SearchIcon />
+        </Panel.Header>
+        <Panel.Content>
+          <Text>Content</Text>
+          <Text>More text</Text>
+        </Panel.Content>
+      </Panel.Root>
       <Panel.Root bg='element' prominence='base' tone='primary'>
         <Panel.Content>
           <Flex alignment='center' gap='sm'>
@@ -63,11 +75,12 @@ export default function PanelPage() {
           </Flex>
         </Panel.Content>
       </Panel.Root>
+      {/* Split panel */}
       <Text size='lg' weight='semibold'>
         Split
       </Text>
       <Text>Uses standard flex properties to fully flex</Text>
-      <Panel.Root gap='xl'>
+      <Panel.Root gap='lg' padding='none' split>
         <Panel.Root flex='full' bg='app' prominence='muted'>
           <Panel.Content>
             <Text>Left</Text>
@@ -79,6 +92,7 @@ export default function PanelPage() {
           </Panel.Content>
         </Panel.Root>
       </Panel.Root>
+      {/* Content widths */}
       <Flex orientation='v' gap='md'>
         <Text size='lg' weight='semibold'>
           Content widths
