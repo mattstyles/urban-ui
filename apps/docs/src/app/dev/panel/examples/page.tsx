@@ -19,6 +19,7 @@ export default function PanelExamplesPage() {
       <PanelWithTextHeader />
       <WithTextHeaderAndControls />
       <WithEmptyFooter />
+      <PanelWithinPanel />
     </Flex>
   )
 }
@@ -113,7 +114,7 @@ function WithEmptyFooter() {
               to control their specific paddingTop and paddingBottom
             </Text>
           </Flex>
-          <Button size='sm' tone='primary'>
+          <Button size='sm' tone='primary' variant='outline'>
             Confirm
           </Button>
         </Flex>
@@ -131,12 +132,78 @@ function WithEmptyFooter() {
               padding
             </Text>
           </Flex>
-          <Button size='sm' tone='primary'>
+          <Button size='sm' tone='primary' variant='outline'>
             Confirm
           </Button>
         </Flex>
       </Panel.Content>
       <Panel.Footer py='sm' />
+    </Panel.Root>
+  )
+}
+
+function InnerPanel({
+  title,
+  description,
+  amount,
+}: {
+  title: string
+  description: string
+  amount: string
+}) {
+  return (
+    <Panel.Root padding='md' border='muted' radii='sm'>
+      <Panel.Content
+        gap='md'
+        orientation='h'
+        justify='spread'
+        alignment='center'>
+        <Flex gap='sm' orientation='v'>
+          <Text size='lg' weight='semibold'>
+            {title}
+          </Text>
+          <Text size='md' contrast='lo'>
+            {description}
+          </Text>
+        </Flex>
+        <Text size='xl' weight='bold'>
+          {amount}
+        </Text>
+      </Panel.Content>
+    </Panel.Root>
+  )
+}
+function PanelWithinPanel() {
+  return (
+    <Panel.Root padding='lg' prominence='muted' bg='app' shadow='sm' radii='md'>
+      <Panel.Header>
+        <Flex orientation='v' gap='lg' className={atoms({pl: 'md'})}>
+          <Text>Recursive panel spacing</Text>
+          <Text size='md' weight='normal' em>
+            Note that the borders on the inner panels here mean the heading text
+            does not properly align with the panel text. Fix could be to create
+            borders as box-shadow, or within an inner component absolutely
+            positioned to the container.
+          </Text>
+        </Flex>
+      </Panel.Header>
+      <Panel.Content>
+        <InnerPanel
+          title='Tech'
+          description='Spend on high tech sector'
+          amount='£3000'
+        />
+        <InnerPanel
+          title='Education'
+          description='Libraries, schools, universities, and more'
+          amount='£5000'
+        />
+        <InnerPanel
+          title='Military'
+          description='Spending for the military arm'
+          amount='£2300'
+        />
+      </Panel.Content>
     </Panel.Root>
   )
 }
