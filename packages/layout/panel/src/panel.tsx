@@ -136,6 +136,7 @@ const variants = cva([base, padding.py], {
   defaultVariants: {
     prominence: 'base',
     contrast: 'hi',
+    padding: 'md',
   },
 })
 
@@ -159,7 +160,7 @@ export const Root = forwardRef<ElementType, RootProps>(
       border,
       radii,
       width,
-      padding,
+      padding = 'md',
       shadow,
       // Component props
       split = false,
