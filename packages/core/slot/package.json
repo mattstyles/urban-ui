@@ -22,8 +22,7 @@
     "lint": "eslint \"**/*.ts*\"",
     "clean": "del dist",
     "dev": "vite build --watch",
-    "build": "vite build",
-    "test": "vitest"
+    "build": "vite build"
   },
   "dependencies": {
     "@react-aria/utils": "^3.18.0"

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "."
   },
+  "types": ["@testing-library/jest-dom/extend-expect"],
   "include": [".", "./package.json", ".eslintrc.cjs"],
   "exclude": ["dist", "build", "node_modules"]
 }
