@@ -12,8 +12,14 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'react'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     // Empty functions are fine
     // 'no-empty-function': 'off',
@@ -27,4 +33,5 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-declare': 'off',
   },
+  ignorePatterns: ['dist'],
 }
