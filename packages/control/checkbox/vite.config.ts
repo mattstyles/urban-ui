@@ -40,11 +40,13 @@ export default defineConfig({
     },
   },
   plugins: [
-    // @ts-expect-error module does export types for nodenext as expected
     react(),
     dts({
       insertTypesEntry: true,
     }),
     vanillaExtractPlugin(),
   ],
+  test: {
+    environment: 'jsdom',
+  },
 })

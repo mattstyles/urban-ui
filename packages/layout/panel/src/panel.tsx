@@ -197,3 +197,4 @@ export const Root = forwardRef<ElementType, RootProps>(
     )
   },
 )
+Root.displayName = 'Urban.Panel'

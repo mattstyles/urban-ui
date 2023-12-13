@@ -122,7 +122,7 @@ export const Checkbox = forwardRef<ElementType, CheckboxProps>(
         fit
         alignment='center'
         gap='md'
-        {...mergeProps(hoverProps, inputProps)}
+        {...hoverProps}
         className={containerVariants({size})}>
         <label>
           <VisuallyHidden>
@@ -153,3 +153,4 @@ export const Checkbox = forwardRef<ElementType, CheckboxProps>(
     )
   },
 )
+Checkbox.displayName = 'Urban.Checkbox'
