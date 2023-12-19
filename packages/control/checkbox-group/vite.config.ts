@@ -46,4 +46,7 @@ export default defineConfig({
     }),
     vanillaExtractPlugin(),
   ],
+  test: {
+    environment: 'jsdom',
+  },
 })
