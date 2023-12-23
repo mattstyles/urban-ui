@@ -1,6 +1,7 @@
 import {fileURLToPath} from 'node:url'
 
 import path from 'node:path'
+/// <reference types="vitest" />
 import {defineConfig} from 'vite'
 import dts from 'vite-plugin-dts'
 import react from '@vitejs/plugin-react'

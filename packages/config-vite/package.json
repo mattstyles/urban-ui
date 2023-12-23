@@ -3,10 +3,8 @@
   "version": "0.0.2",
   "private": true,
   "type": "module",
-  "main": "what goes here",
-  "files": [
-    "createLibraryConfig.ts"
-  ],
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",

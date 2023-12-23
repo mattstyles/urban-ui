@@ -26,9 +26,9 @@ export interface TestComponentProps
 }
 
 export const TestComponent = forwardRef<HTMLDivElement, TestComponentProps>(
-  ({children, content, size, className}, ref) => {
+  ({children, content, size, className, ...passProps}, ref) => {
     return (
-      <Flex ref={ref} className={variants({size, className})}>
+      <Flex ref={ref} className={variants({size, className})} {...passProps}>
         <span className={contentStyle}>{content}</span>
         <span className={inner}>{children}</span>
       </Flex>
