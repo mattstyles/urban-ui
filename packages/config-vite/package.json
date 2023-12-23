@@ -17,7 +17,7 @@
     "config-eslint": "workspace:*",
     "config-ts": "workspace:*",
     "eslint": "^8.56.0",
-    "jsdom": "^21.1.0",
+    "jsdom": "^23.0.1",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
     "rollup-plugin-preserve-directives": "^0.2.0",
