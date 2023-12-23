@@ -1,0 +1,9 @@
+{
+  "extends": "config-ts/react-library.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "types": ["@testing-library/jest-dom/vitest"],
+  "include": [".", "./package.json", ".eslintrc.cjs"],
+  "exclude": ["dist", "build", "node_modules"]
+}
