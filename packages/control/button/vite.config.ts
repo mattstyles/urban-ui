@@ -3,7 +3,9 @@ import dts from 'vite-plugin-dts'
 import react from '@vitejs/plugin-react'
 import {vanillaExtractPlugin} from '@vanilla-extract/vite-plugin'
 import preserveDirectives from 'rollup-plugin-preserve-directives'
-import pkg from './package.json'
+import pkg from './package.json' assert {type: 'json'}
+import {fileURLToPath} from 'node:url'
+import path from 'node:path'
 
 // const __filename = fileURLToPath(import.meta.url)
 // const __dirname = path.dirname(__filename)
@@ -25,8 +27,8 @@ export default defineConfig({
       entry: './src/index.tsx',
       formats: ['es', 'cjs'],
       // formats: ['es'],
-      // fileName: pkg.name,
-      fileName: 'index',
+      fileName: pkg.name,
+      // fileName: 'index',
     },
     rollupOptions: {
       external: externals([

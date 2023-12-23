@@ -52,6 +52,8 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
     "@types/node": "^18.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
@@ -61,6 +63,7 @@
     "config-ts": "workspace:*",
     "del-cli": "^5.0.0",
     "eslint": "^8.46.0",
+    "jsdom": "^21.1.0",
     "react": "^18.2.0",
     "rollup-plugin-preserve-directives": "^0.2.0",
     "tiny-glob": "^0.2.9",

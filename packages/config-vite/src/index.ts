@@ -1,11 +1,6 @@
-// import path from 'path'
-import {fileURLToPath} from 'url'
-// import {defineConfig} from 'vite'
-// import dts from 'vite-plugin-dts'
-// import react from '@vitejs/plugin-react'
+import {fileURLToPath} from 'node:url'
 
 import path from 'node:path'
-/// <reference types="vitest" />
 import {defineConfig} from 'vite'
 import dts from 'vite-plugin-dts'
 import react from '@vitejs/plugin-react'
@@ -47,45 +42,16 @@ export function createLibraryConfig({entry, pkg}) {
       },
     },
     plugins: [
-      // @ts-expect-error module does export types for nodenext as expected
       react(),
       dts({
-        insertTypesEntry: true,
+        // insertTypesEntry: true,
+        rollupTypes: true,
       }),
       vanillaExtractPlugin(),
     ],
     test: {
       environment: 'jsdom',
-      setupFiles: path.resolve(__dirname, './src/setupTests.ts'),
+      // setupFiles: path.resolve(__dirname, './src/setupTests.ts'),
     },
   })
-  // return defineConfig({
-  //   build: {
-  //     outDir: 'dist',
-  //     sourcemap: true,
-  //     lib: {
-  //       entry: entry,
-  //       name: pkg.name,
-  //       formats: ['cjs', 'es'],
-  //       fileName: pkg.name,
-  //     },
-  //     rollupOptions: {
-  //       // We will probably need to supply this
-  //       external: externals([
-  //         ...Object.keys(pkg.dependencies ?? {}),
-  //         ...Object.keys(pkg.peerDependencies ?? {}),
-  //       ]),
-  //     },
-  //   },
-  //   plugins: [
-  //     react(),
-  //     dts({
-  //       insertTypesEntry: true,
-  //     }),
-  //   ],
-  //   test: {
-  //     environment: 'jsdom',
-  //     setupFiles: path.resolve(__dirname, './src/setupTests.ts'),
-  //   },
-  // })
 }
