@@ -155,4 +155,4 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
     )
   },
 )
-Flex.displayName = 'urban-flex'
+Flex.displayName = 'urban/flex'

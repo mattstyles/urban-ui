@@ -23,7 +23,8 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: './src/index.tsx',
-      formats: ['cjs', 'es'],
+      formats: ['es', 'cjs'],
+      // formats: ['es'],
       // fileName: pkg.name,
       fileName: 'index',
     },
@@ -32,7 +33,7 @@ export default defineConfig({
         ...Object.keys(pkg.dependencies ?? {}),
         ...Object.keys(pkg.peerDependencies ?? {}),
       ]),
-      // @ts-expect-error module does export types for nodenext as expected
+      // @ts-expect-error module does not export types for nodenext as expected
       plugins: [preserveDirectives()],
       output: {
         preserveModules: true,
@@ -40,10 +41,11 @@ export default defineConfig({
     },
   },
   plugins: [
-    // @ts-expect-error module does export types for nodenext as expected
     react(),
     dts({
-      insertTypesEntry: true,
+      // insertTypesEntry: true,
+      // rolling up types is slow but it won't build without it
+      rollupTypes: true,
     }),
     vanillaExtractPlugin(),
   ],
