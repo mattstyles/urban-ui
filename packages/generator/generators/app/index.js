@@ -31,6 +31,8 @@ module.exports = class extends Generator {
     this.log('Scaffolding new component', this.answers.exportName)
     const files = [
       '__package.json',
+      '.npmrc',
+      '.eslintrc.cjs',
       'readme.md',
       'tsconfig.json',
       'vite.config.ts',
