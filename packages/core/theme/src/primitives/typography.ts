@@ -1,7 +1,19 @@
-// Ignore the ts error if you have it, the build does not fail
-import arialMetrics from '@capsizecss/metrics/arial'
+// ts error
+// import arialMetrics from '@capsizecss/metrics/arial'
 
-// import type {ArialMetrics} from '@capsizecss/metrics/arial.d.ts'
+// Inlined from @capsizecss/metrics/arial to avoid ts import error
+const arialMetrics = {
+  familyName: 'Arial',
+  category: 'sans-serif',
+  capHeight: 1467,
+  ascent: 1854,
+  descent: -434,
+  lineGap: 67,
+  unitsPerEm: 2048,
+  xHeight: 1062,
+  xWidthAvg: 904,
+}
+
 interface FontMetrics {
   familyName: string
   category: string

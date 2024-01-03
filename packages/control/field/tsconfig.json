@@ -1,8 +1,9 @@
 {
   "extends": "config-ts/react-library.json",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "rootDir": "src"
   },
-  "include": [".", "./package.json", ".eslintrc.cjs"],
+  "include": ["src"],
   "exclude": ["dist", "build", "node_modules"]
 }
