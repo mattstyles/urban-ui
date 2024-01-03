@@ -19,6 +19,6 @@
     "strict": true,
     "baseUrl": "."
   },
-  "include": [".", "../config-vite/index.ts"],
+  "include": ["."],
   "exclude": ["node_modules"]
 }

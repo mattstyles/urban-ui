@@ -45,9 +45,14 @@ export function createLibraryConfig({entry, pkg}) {
     plugins: [
       react(),
       dts({
+        // Creates type entry files based on package (also type map files)
         insertTypesEntry: true,
+
+        // Slower, and wraps declarations into a single file, which nukes map files
         // rollupTypes: true,
-        tsconfigPath: process.cwd() + '/tsconfig.json',
+
+        // Need to exclude tests from output, but keep them in the tsconfig for type support in test files
+        exclude: ['**/*.test.ts*'],
       }),
       vanillaExtractPlugin(),
     ],
