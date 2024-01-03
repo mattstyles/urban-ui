@@ -2,12 +2,12 @@ import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 
-import {Checkbox} from './index.tsx'
+import {Text} from './index.tsx'
 
-describe('[Checkbox]', () => {
+describe('[Text]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Checkbox data-testid='some-id' aria-label='foo' />)
+    render(<Text data-testid='some-id' />)
 
     // ACT
 
