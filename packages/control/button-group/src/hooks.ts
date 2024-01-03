@@ -1,3 +1,4 @@
+import type {FlexProps} from '@urban-ui/flex'
 import React, {
   useMemo,
   useState,
@@ -10,45 +11,41 @@ import React, {
   createRef,
 } from 'react'
 
+type Orientation = Pick<FlexProps, 'orientation'>['orientation']
 type ElementRefs = Array<React.RefObject<HTMLElement> | null>
-
 type SelectionActions = {
   next: () => void
   prev: () => void
 }
-// Default is prevented to avoid window scrolling on arrow keys
-export function useSelectionH(actions: SelectionActions) {
-  return useCallback(
-    (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'ArrowRight':
-          event.preventDefault()
-          actions.next()
-          break
-        case 'ArrowLeft':
-          event.preventDefault()
-          actions.prev()
-          break
-      }
-    },
-    [actions],
-  )
+
+type MappedActions = Map<string, keyof SelectionActions>
+function getActionMapper(orientation: Orientation): MappedActions {
+  const map: MappedActions = new Map()
+  if (orientation === 'v') {
+    map.set('ArrowUp', 'prev')
+    map.set('ArrowDown', 'next')
+    return map
+  }
+  // Horizontal by default
+  map.set('ArrowLeft', 'prev')
+  map.set('ArrowRight', 'next')
+  return map
 }
-export function useSelectionV(actions: SelectionActions) {
+
+export function useKeys(orientation: Orientation, actions: SelectionActions) {
+  const map = getActionMapper(orientation)
   return useCallback(
     (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'ArrowDown':
-          event.preventDefault()
-          actions.next()
-          break
-        case 'ArrowUp':
-          event.preventDefault()
-          actions.prev()
-          break
+      const mappedAction = map.get(event.key)
+      if (mappedAction == null || actions[mappedAction] == null) {
+        return
       }
+
+      // preventDefault is called to stop window scrolling on arrow key press
+      event.preventDefault()
+      actions[mappedAction]()
     },
-    [actions],
+    [actions, map],
   )
 }
 
