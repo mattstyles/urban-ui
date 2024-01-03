@@ -8,6 +8,10 @@ import {Flex} from '@urban-ui/flex'
 import {Text} from '@urban-ui/text'
 import {shopifyColors, Swatch} from './swatch.ts'
 
+function tail<T extends Array<any>>(arr: T) {
+  return arr[arr.length - 1]
+}
+
 // Flattens the object whilst preserving path information into keys i.e. primary.border.base with the associated value
 function makeFlatTone(tone: Object, name: string) {
   const output: Record<string, string> = {}
@@ -17,6 +21,10 @@ function makeFlatTone(tone: Object, name: string) {
       const currentPath = path.length < 1 ? key : path + `.${key}`
       if (typeof value === 'object') {
         recurse(value, currentPath)
+        continue
+      }
+      // Exclude shadow values (not real hsl values)
+      if (tail(currentPath.split('.')).toLowerCase() === 'shadow') {
         continue
       }
       output[currentPath] = value

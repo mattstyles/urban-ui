@@ -28,21 +28,21 @@ export const button = style([
 ])
 
 export const buttonSolid = style({
-  backgroundColor: theme.colors.current.element.base,
+  backgroundColor: theme.colors.current.element.strong.base,
   color: theme.colors.current.fg.invert.hi,
 
   ':hover': {
-    backgroundColor: theme.colors.current.element.hover,
+    backgroundColor: theme.colors.current.element.strong.hover,
   },
 
   ':active': {
-    backgroundColor: theme.colors.current.element.press,
+    backgroundColor: theme.colors.current.element.strong.press,
   },
 })
 
 export const buttonGhost = style({
   backgroundColor: theme.colors.current.element.muted.base,
-  color: theme.colors.current.fg.hi,
+  color: theme.colors.current.fg.invert.hi,
 
   ':hover': {
     backgroundColor: theme.colors.current.element.muted.hover,
@@ -55,36 +55,36 @@ export const buttonGhost = style({
 
 export const buttonText = style({
   backgroundColor: theme.colors.core.transparent,
-  color: theme.colors.current.fg.lo,
+  color: theme.colors.current.fg.base.lo,
 
   ':hover': {
-    color: theme.colors.current.fg.hi,
+    color: theme.colors.current.fg.base.hi,
   },
 })
 
 export const buttonOutlineElement = style({
   backgroundColor: theme.colors.core.transparent,
-  color: theme.colors.current.fg.hi,
+  color: theme.colors.current.fg.base.hi,
   borderStyle: 'solid',
   borderWidth: 1,
-  borderColor: theme.colors.current.element.base,
+  borderColor: theme.colors.current.element.muted.base,
 
   ':hover': {
-    borderColor: theme.colors.current.element.hover,
+    borderColor: theme.colors.current.element.muted.hover,
   },
 
   ':active': {
-    borderColor: theme.colors.current.element.press,
+    borderColor: theme.colors.current.element.muted.press,
   },
 })
 // Uses element colour for border (with transparent/muted background)
 // This is the only one that works on all different backgrounds
 export const buttonOutlineElementGhost = style({
   backgroundColor: theme.colors.core.transparent,
-  color: theme.colors.current.fg.hi,
+  color: theme.colors.current.fg.base.hi,
   borderStyle: 'solid',
   borderWidth: 1,
-  borderColor: theme.colors.current.element.base,
+  borderColor: theme.colors.current.element.muted.base,
 
   ':hover': {
     backgroundColor: theme.colors.current.element.muted.hover,
@@ -97,7 +97,7 @@ export const buttonOutlineElementGhost = style({
 // Uses only border-emphasis
 export const buttonOutlineEmphasis = style({
   backgroundColor: theme.colors.core.transparent,
-  color: theme.colors.current.fg.hi,
+  color: theme.colors.current.fg.base.hi,
   borderStyle: 'solid',
   borderWidth: 1,
   borderColor: theme.colors.current.border.emphasis,
@@ -114,7 +114,7 @@ export const buttonOutlineEmphasis = style({
 export const card = style({
   backgroundColor: theme.colors.current.surface.base,
   padding: theme.space.xl,
-  color: theme.colors.current.fg.hi,
+  color: theme.colors.current.fg.base.hi,
   borderRadius: 3,
 })
 
@@ -160,7 +160,7 @@ export const badge = style({
   borderStyle: 'solid',
   borderColor: theme.colors.current.border.base,
   backgroundColor: theme.colors.current.element.muted.base,
-  color: theme.colors.current.fg.hi,
+  color: theme.colors.current.fg.invert.hi,
   padding: '1px 6px',
   fontSize: theme.type.size.sm.fontSize,
   alignSelf: 'flex-start',
