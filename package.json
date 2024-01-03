@@ -15,7 +15,7 @@
     "url": "git+https://github.com/mattstyles/urban-ui.git"
   },
   "scripts": {
-    "test": "CI=true turbo run test -- run",
+    "test": "CI=true turbo run test",
     "build": "turbo run build",
     "dev": "turbo run clean && turbo run dev --parallel",
     "lint": "turbo run lint",

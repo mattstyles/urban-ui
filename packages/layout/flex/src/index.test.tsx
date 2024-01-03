@@ -2,12 +2,12 @@ import {describe, test, expect} from 'vitest'
 import {render, screen} from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 
-import {Panel} from './index.tsx'
+import {Flex} from './index.tsx'
 
-describe('[Panel]', () => {
+describe('[Flex]', () => {
   test('Forwards the testid', async () => {
     // ARRANGE
-    render(<Panel.Root data-testid='some-id' />)
+    render(<Flex data-testid='some-id' />)
 
     // ACT
 

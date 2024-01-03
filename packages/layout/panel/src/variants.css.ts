@@ -1,4 +1,4 @@
-import {style, assignVars} from '@vanilla-extract/css'
+import {style} from '@vanilla-extract/css'
 import {theme} from '@urban-ui/theme'
 import {anatomy} from './anatomy.css.ts'
 

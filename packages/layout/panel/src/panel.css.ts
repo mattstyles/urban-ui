@@ -1,10 +1,9 @@
 import {anatomy as textAnatomy} from '@urban-ui/text/anatomy'
 
-import {style, fallbackVar, createVar, assignVars} from '@vanilla-extract/css'
-import {calc} from '@vanilla-extract/css-utils'
+import {style, assignVars} from '@vanilla-extract/css'
 import {atoms} from '@urban-ui/theme/atoms'
 import {theme} from '@urban-ui/theme'
-import {anatomy} from './anatomy.css.js'
+import {anatomy} from './anatomy.css.ts'
 
 export const base = style([
   atoms({

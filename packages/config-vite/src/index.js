@@ -1,6 +1,7 @@
 import {fileURLToPath} from 'node:url'
 
 import path from 'node:path'
+import process from 'node:process'
 /// <reference types="vitest" />
 import {defineConfig} from 'vite'
 import dts from 'vite-plugin-dts'
@@ -35,7 +36,6 @@ export function createLibraryConfig({entry, pkg}) {
           ...Object.keys(pkg.dependencies ?? {}),
           ...Object.keys(pkg.peerDependencies ?? {}),
         ]),
-        // @ts-expect-error module does export types for nodenext as expected
         plugins: [preserveDirectives()],
         output: {
           preserveModules: true,
@@ -45,8 +45,9 @@ export function createLibraryConfig({entry, pkg}) {
     plugins: [
       react(),
       dts({
-        // insertTypesEntry: true,
-        rollupTypes: true,
+        insertTypesEntry: true,
+        // rollupTypes: true,
+        tsconfigPath: process.cwd() + '/tsconfig.json',
       }),
       vanillaExtractPlugin(),
     ],
