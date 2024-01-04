@@ -1,5 +1,5 @@
 import {defineProperties} from '@vanilla-extract/sprinkles'
-import {assignVars} from '@vanilla-extract/css'
+// import {assignVars} from '@vanilla-extract/css'
 import {theme} from '../theme.css.ts'
 
 export const transitions = defineProperties({
