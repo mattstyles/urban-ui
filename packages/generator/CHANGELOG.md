@@ -1,5 +1,11 @@
 # generator-urban-ui
 
+## 1.1.0
+
+### Minor Changes
+
+- 6cc618e: react-aria and vanilla extract
+
 ## 1.0.2
 
 ### Patch Changes
