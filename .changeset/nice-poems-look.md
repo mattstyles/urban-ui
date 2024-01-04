@@ -1,25 +1,25 @@
 ---
-'@urban-ui/checkbox-group': 0.2.0
-'@urban-ui/button-group': 0.2.0
-'@urban-ui/text-field': 0.2.0
-'@urban-ui/checkbox': 0.2.0
-'@urban-ui/text': 0.2.0
-'@urban-ui/button': 0.2.0
-'config-eslint': 0.2.0
-'@urban-ui/field': 0.2.0
-'@urban-ui/input': 0.2.0
-'@urban-ui/spacer': 0.2.0
-'@urban-ui/panel': 0.2.0
-'@urban-ui/test': 0.2.0
-'config-vite': 0.2.0
-'@urban-ui/flex': 0.2.0
-'@urban-ui/theme': 0.2.0
-'@urban-ui/utils': 0.2.0
-'config-ts': 0.2.0
-'@urban-ui/slot': 0.2.0
-'generator-urban-ui': 0.2.0
-'@urban-ui/icons': 0.2.0
-'docs': 0.2.0
+'@urban-ui/checkbox-group': minor
+'@urban-ui/button-group': minor
+'@urban-ui/text-field': minor
+'@urban-ui/checkbox': minor
+'@urban-ui/text': minor
+'@urban-ui/button': minor
+'config-eslint': minor
+'@urban-ui/field': minor
+'@urban-ui/input': minor
+'@urban-ui/spacer': minor
+'@urban-ui/panel': minor
+'@urban-ui/test': minor
+'config-vite': minor
+'@urban-ui/flex': minor
+'@urban-ui/theme': minor
+'@urban-ui/utils': minor
+'config-ts': minor
+'@urban-ui/slot': minor
+'generator-urban-ui': minor
+'@urban-ui/icons': minor
+'docs': minor
 ---
 
 react-aria and vanilla extract

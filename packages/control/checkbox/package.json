@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/checkbox",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Checkbox component for boolean selection",
   "type": "module",
   "sideEffects": false,
