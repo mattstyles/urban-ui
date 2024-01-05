@@ -10,7 +10,8 @@ const config = {
     mdxRs: true,
   },
   reactStrictMode: true,
-  // transpilePackages: ['@urban-ui/button'],
+  // Transpilation is for app/components i.e. reaching in to packages looking for mdx files
+  transpilePackages: ['@urban-ui/button'],
   webpack(config) {
     config.resolve.extensionAlias = {
       '.js': ['.js', '.ts'],
