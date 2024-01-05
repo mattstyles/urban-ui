@@ -12,6 +12,22 @@ import preserveDirectives from 'rollup-plugin-preserve-directives'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+console.log(
+  `\n\n\nSome console output from vite config\n\n\n${JSON.stringify(
+    process.env,
+    null,
+    '  ',
+  )} \n\n\n`,
+)
+
+function isTestEnv() {
+  return (
+    process.env.NODE_ENV === 'test' ||
+    process.env.VITEST === 'true' ||
+    process.env.TEST === 'true'
+  )
+}
+
 function forceArray(src) {
   if (Array.isArray(src)) {
     return src
@@ -62,7 +78,8 @@ export function createLibraryConfig({entry, pkg}) {
         exclude: ['**/*.test.ts*'],
       }),
       // Removing VE plugin as a default. Build is now effectively redundant and default export will require a VE plugin to work.
-      // vanillaExtractPlugin(),
+      // Tests need the plugin in order to run (similar to consumers needing it)
+      isTestEnv() && vanillaExtractPlugin(),
     ],
     test: {
       environment: 'jsdom',
