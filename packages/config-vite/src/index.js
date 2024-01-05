@@ -27,9 +27,9 @@ export function createLibraryConfig({entry, pkg}) {
       outDir: 'dist',
       sourcemap: true,
       lib: {
-        entry: entry,
+        entry: [entry],
         formats: ['cjs', 'es'],
-        fileName: 'index',
+        // fileName: 'index',
       },
       rollupOptions: {
         external: externals([
@@ -54,7 +54,8 @@ export function createLibraryConfig({entry, pkg}) {
         // Need to exclude tests from output, but keep them in the tsconfig for type support in test files
         exclude: ['**/*.test.ts*'],
       }),
-      vanillaExtractPlugin(),
+      // Removing VE plugin as a default. Build is now effectively redundant and default export will require a VE plugin to work.
+      // vanillaExtractPlugin(),
     ],
     test: {
       environment: 'jsdom',

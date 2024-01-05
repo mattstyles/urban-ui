@@ -10,8 +10,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./src/index.tsx",
-      "require": "./src/index.tsx"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./build": {
       "types": "./dist/index.d.ts",

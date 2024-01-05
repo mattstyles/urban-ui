@@ -10,7 +10,7 @@ const config = {
     mdxRs: true,
   },
   reactStrictMode: true,
-  transpilePackages: ['@urban-ui/button'],
+  // transpilePackages: ['@urban-ui/button'],
   webpack(config) {
     config.resolve.extensionAlias = {
       '.js': ['.js', '.ts'],
