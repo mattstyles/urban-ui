@@ -1,5 +1,11 @@
 # config-eslint
 
+## 0.3.0
+
+### Minor Changes
+
+- a95ed46: export transpiled packages to npm
+
 ## 0.2.0
 
 ### Minor Changes

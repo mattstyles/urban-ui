@@ -1,5 +1,11 @@
 # generator-urban-ui
 
+## 1.2.0
+
+### Minor Changes
+
+- a95ed46: export transpiled packages to npm
+
 ## 1.1.0
 
 ### Minor Changes
