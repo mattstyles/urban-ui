@@ -22,20 +22,20 @@
     },
     "./atoms": {
       "types": "./dist/atoms.css.d.ts",
-      "import": "./dist/atoms.css.ts",
-      "require": "./dist/atoms.css.ts"
+      "import": "./dist/atoms.css.js",
+      "require": "./dist/atoms.css.cjs"
     },
     "./base": {
-      "import": "./dist/base.css.ts",
-      "require": "./dist/base.css.ts"
+      "import": "./dist/base.css.js",
+      "require": "./dist/base.css.cjs"
     },
     "./reset": {
-      "import": "./dist/reset.css.ts",
-      "require": "./dist/reset.css.ts"
+      "import": "./dist/reset.css.js",
+      "require": "./dist/reset.css.cjs"
     },
     "./system": {
-      "import": "./dist/system.css.ts",
-      "require": "./dist/system.css.ts"
+      "import": "./dist/system.css.js",
+      "require": "./dist/system.css.cjs"
     }
   },
   "license": "MIT",
