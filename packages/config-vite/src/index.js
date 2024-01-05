@@ -12,14 +12,6 @@ import preserveDirectives from 'rollup-plugin-preserve-directives'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-console.log(
-  `\n\n\nSome console output from vite config\n\n\n${JSON.stringify(
-    process.env,
-    null,
-    '  ',
-  )} \n\n\n`,
-)
-
 function isTestEnv() {
   return (
     process.env.NODE_ENV === 'test' ||
