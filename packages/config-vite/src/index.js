@@ -12,6 +12,13 @@ import preserveDirectives from 'rollup-plugin-preserve-directives'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+function forceArray(src) {
+  if (Array.isArray(src)) {
+    return src
+  }
+  return [src]
+}
+
 function externals(list) {
   if (list.length === 0) {
     return () => false
@@ -27,7 +34,7 @@ export function createLibraryConfig({entry, pkg}) {
       outDir: 'dist',
       sourcemap: true,
       lib: {
-        entry: [entry],
+        entry: forceArray(entry),
         formats: ['cjs', 'es'],
         // fileName: 'index',
       },
