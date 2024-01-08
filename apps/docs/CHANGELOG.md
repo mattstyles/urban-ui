@@ -1,5 +1,29 @@
 # docs
 
+## 0.4.0
+
+### Minor Changes
+
+- fbd05c2: add entry files
+
+### Patch Changes
+
+- Updated dependencies [fbd05c2]
+  - @urban-ui/checkbox-group@0.4.0
+  - @urban-ui/button-group@0.4.0
+  - @urban-ui/text-field@0.4.0
+  - @urban-ui/checkbox@0.4.0
+  - @urban-ui/text@0.4.0
+  - @urban-ui/button@0.4.0
+  - @urban-ui/field@0.4.0
+  - @urban-ui/input@0.4.0
+  - @urban-ui/spacer@0.4.0
+  - @urban-ui/panel@0.4.0
+  - @urban-ui/flex@0.4.0
+  - @urban-ui/theme@0.4.0
+  - @urban-ui/slot@0.4.0
+  - @urban-ui/icons@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes

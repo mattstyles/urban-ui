@@ -1,5 +1,11 @@
 # config-vite
 
+## 0.4.0
+
+### Minor Changes
+
+- fbd05c2: add entry files
+
 ## 0.3.0
 
 ### Minor Changes

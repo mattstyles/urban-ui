@@ -1,5 +1,19 @@
 # @urban-ui/button-group
 
+## 0.4.0
+
+### Minor Changes
+
+- fbd05c2: add entry files
+
+### Patch Changes
+
+- Updated dependencies [fbd05c2]
+  - @urban-ui/button@0.4.0
+  - @urban-ui/flex@0.4.0
+  - @urban-ui/theme@0.4.0
+  - @urban-ui/utils@0.4.0
+
 ## 0.3.0
 
 ### Minor Changes
