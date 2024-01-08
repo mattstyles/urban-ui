@@ -23,8 +23,8 @@
       "require": "./dist/style.css"
     },
     "./anatomy": {
-      "import": "./dist/anatomy.css.js",
-      "require": "./dist/anatomy.css.cjs"
+      "import": "./dist/anatomy.entry.js",
+      "require": "./dist/anatomy.entry.cjs"
     }
   },
   "files": [
