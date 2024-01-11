@@ -21,21 +21,21 @@
       "require": "./dist/style.css"
     },
     "./atoms": {
-      "types": "./dist/atoms.entry.d.ts",
-      "import": "./dist/atoms.entry.js",
-      "require": "./dist/atoms.entry.cjs"
+      "types": "./dist/atoms.d.ts",
+      "import": "./dist/atoms.js",
+      "require": "./dist/atoms.cjs"
     },
     "./base": {
-      "import": "./dist/base.entry.js",
-      "require": "./dist/base.entry.cjs"
+      "import": "./dist/base.js",
+      "require": "./dist/base.cjs"
     },
     "./reset": {
-      "import": "./dist/reset.entry.js",
-      "require": "./dist/reset.entry.cjs"
+      "import": "./dist/reset.js",
+      "require": "./dist/reset.cjs"
     },
     "./system": {
-      "import": "./dist/system.entry.js",
-      "require": "./dist/system.entry.cjs"
+      "import": "./dist/system.js",
+      "require": "./dist/system.cjs"
     }
   },
   "license": "MIT",
