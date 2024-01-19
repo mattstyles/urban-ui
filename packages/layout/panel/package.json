@@ -23,8 +23,9 @@
       "require": "./dist/style.css"
     },
     "./anatomy": {
-      "import": "./dist/anatomy.entry.js",
-      "require": "./dist/anatomy.entry.cjs"
+      "types": "./dist/anatomy.css.d.ts",
+      "import": "./dist/anatomy.css.js",
+      "require": "./dist/anatomy.css.cjs"
     }
   },
   "files": [
