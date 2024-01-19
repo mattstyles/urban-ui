@@ -19,6 +19,7 @@
       "require": "./dist/index.cjs"
     },
     "./styles": {
+      "types": "./dist/anatomy.css.d.ts",
       "import": "./dist/style.css",
       "require": "./dist/style.css"
     }

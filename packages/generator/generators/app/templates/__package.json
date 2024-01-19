@@ -23,6 +23,7 @@
       "require": "./dist/style.css"
     },
     "./anatomy": {
+      "types": "./dist/anatomy.css.d.ts",
       "import": "./dist/anatomy.css.js",
       "require": "./dist/anatomy.css.cjs"
     }
