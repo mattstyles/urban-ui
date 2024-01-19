@@ -4,10 +4,10 @@ import pkg from './package.json' assert {type: 'json'}
 export default createLibraryConfig({
   entry: [
     './src/index.tsx',
-    './src/atoms.entry.ts',
-    './src/base.entry.ts',
-    './src/reset.entry.ts',
-    './src/system.entry.ts',
+    './src/atoms.css.ts',
+    './src/base.css.ts',
+    './src/reset.css.ts',
+    './src/system.css.ts',
   ],
   pkg: pkg,
 })
