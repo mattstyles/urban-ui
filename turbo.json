@@ -10,13 +10,17 @@
       "outputs": []
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "persistent": true
     },
     "clean": {
       "outputs": []
     },
     "test": {
       "outputs": []
+    },
+    "scaffold": {
+      "dependsOn": ["^build"]
     }
   }
 }

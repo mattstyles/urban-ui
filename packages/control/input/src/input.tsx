@@ -11,6 +11,7 @@ import {
   useMemo,
   useEffect,
   useCallback,
+  useReducer,
 } from 'react'
 import {atoms} from '@urban-ui/theme/atoms'
 import {useTextField} from '@react-aria/textfield'
@@ -143,6 +144,7 @@ export const Input = forwardRef<ElementType, InputProps>(
       onClear,
       passwordToggle = true,
       onPasswordToggle,
+      type,
       ...props
     },
     passRef,
@@ -154,7 +156,12 @@ export const Input = forwardRef<ElementType, InputProps>(
       }, [passRef, innerRef]),
     )
 
-    const {inputProps} = useTextField(props, ref)
+    // @TODO use a reducer here to manage internal state
+    // Password visibility should be set here because we have to manage the dom element type and it will be reset on hover events as the component re-renders and will get the type passed in her instead of the side effect of using the dom state so we need to internally control the visibility state. the passwordControl button state should be controlled by it, and the type of the input i.e. text or password (if a type other than password is passed then the password state is unchangeable, currently, anyways)
+    const [inputType, setInputType] = useState(type)
+    const internalState = useReducer()
+
+    const {inputProps} = useTextField({...props, type: inputType}, ref)
     const {hoverProps, isHovered} = useHover(props)
     const {focusProps, isFocusVisible, isFocused} = useFocusRing(
       mergeProps(props, {
@@ -176,6 +183,7 @@ export const Input = forwardRef<ElementType, InputProps>(
       onClear,
       passwordToggle,
       onPasswordToggle,
+      setInputType,
       inputRef: ref,
       ...props,
     })
@@ -431,7 +439,7 @@ function ClearControl({
 function PasswordControl({
   onPasswordToggle,
   inputRef,
-}: Pick<InputProps, 'passwordToggle' | 'onPasswordToggle'> & {
+}: Pick<InputProps, 'passwordToggle' | 'onPasswordToggle' | 'type'> & {
   inputRef: React.MutableRefObject<HTMLInputElement>
 }) {
   const [isVisible, setIsVisible] = useState(false)
