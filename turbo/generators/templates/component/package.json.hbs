@@ -1,0 +1,98 @@
+{
+  "name": "@urban-ui/{{name}}",
+  "version": "0.0.1",
+  "description": "{{description}}",
+  "type": "module",
+  "sideEffects": false,
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./build": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    },
+    "./anatomy": {
+      "types": "./dist/anatomy.css.d.ts",
+      "import": "./dist/anatomy.css.js",
+      "require": "./dist/anatomy.css.cjs"
+    }
+  },
+  "files": ["dist", "package.json", "readme.md"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Matt Styles",
+    "url": "https://github.com/mattstyles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattstyles/urban-ui.git",
+    "directory": "packages/{{hierarchy}}/{{name}}"
+  },
+  "bugs": {
+    "url": "https://github.com/mattstyles/urban-ui/issues"
+  },
+  "keywords": [
+    "ui",
+    "react",
+    "components",
+    "urban-ui",
+    "react-aria",
+    "vanilla-extract"
+  ],
+  "scripts": {
+    "lint": "eslint *.ts*",
+    "clean": "del dist",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "test": "vitest run src"
+  },
+  "dependencies": {
+    "@react-aria/focus": "^3.13.0",
+    "@react-aria/interactions": "^3.16.0",
+    "@react-aria/utils": "^3.18.0",
+    "@urban-ui/button": "workspace:*",
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/text": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
+    "@urban-ui/utils": "workspace:*",
+    "@vanilla-extract/css": "^1.11.1",
+    "@vanilla-extract/css-utils": "^0.1.3",
+    "clsx": "^2.0.0",
+    "cva": "npm:class-variance-authority@^0.7.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.6",
+    "@testing-library/react": "^14.1.2",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "config-eslint": "workspace:*",
+    "config-ts": "workspace:*",
+    "config-vite": "workspace:*",
+    "del-cli": "^5.0.0",
+    "eslint": "^8.46.0",
+    "jsdom": "^23.0.1",
+    "react": "^18.2.0",
+    "typescript": "^5.1.3",
+    "vite": "^5.0.10",
+    "vitest": "^1.1.1"
+  }
+}

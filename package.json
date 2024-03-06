@@ -21,11 +21,12 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "scaffold": "node packages/tmpl/dist/bin/tmpl.js",
+    "gen": "turbo gen",
     "publish-packages": "CI=true turbo run build lint test && changeset version && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
-    "@turbo/gen": "latest",
+    "@turbo/gen": "^1.12.4",
     "config-eslint": "workspace:*",
     "prettier": "latest",
     "turbo": "latest",
