@@ -13,6 +13,8 @@ if (root == null) {
   process.exit(1)
 }
 
+console.log('cwd:', root)
+
 const configPath = path.resolve(__dirname, '../index.js')
 Plop.prepare(
   {
@@ -20,7 +22,15 @@ Plop.prepare(
     configPath: configPath,
   },
   (env) => {
-    // @ts-expect-error plop/liftoff typing is incorrect
-    Plop.execute(env, run)
+    Plop.execute(env, (env) => {
+      return run(
+        {
+          ...env,
+          cwd: root,
+        },
+        undefined,
+        true,
+      )
+    })
   },
 )
