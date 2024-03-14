@@ -37,13 +37,14 @@ function externals(list) {
 }
 
 export function createLibraryConfig({entry, pkg}) {
-  return defineConfig({
+  const config = defineConfig({
     build: {
       outDir: 'dist',
       sourcemap: true,
       lib: {
         entry: forceArray(entry),
-        formats: ['cjs', 'es'],
+        // formats: ['cjs', 'es'],
+        formats: ['es'],
         // fileName: 'index',
       },
       rollupOptions: {
@@ -54,7 +55,11 @@ export function createLibraryConfig({entry, pkg}) {
         plugins: [preserveDirectives()],
         output: {
           preserveModules: true,
+          // exports: 'named',
         },
+
+        // preserveEntrySignatures: 'strict',
+        // preserveDirectives: true,
       },
     },
     plugins: [
@@ -78,4 +83,35 @@ export function createLibraryConfig({entry, pkg}) {
       // setupFiles: path.resolve(__dirname, './src/setupTests.ts'),
     },
   })
+
+  return config
+}
+
+function styleXCompiler() {
+  return {
+    name: 'stylex-compiler',
+    resolveId(source) {
+      console.log('-- Source')
+      console.log(source)
+      return source
+    },
+    async transform(inputCode, id, {ssr: isSSR} = {}) {
+      if (id.includes('stylex')) {
+        console.log('-- id')
+        console.log(id)
+        console.log('-- inputCode')
+        console.log(inputCode)
+        return {
+          code: 'export const sizes = 12; export const anatomy = 23;',
+          map: undefined,
+          meta: {styleX: true},
+        }
+      }
+      // console.log('-- id')
+      // console.log(id)
+      // console.log('-- inputCode')
+      // console.log(inputCode)
+      // return false
+    },
+  }
 }

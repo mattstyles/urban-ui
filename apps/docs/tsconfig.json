@@ -2,7 +2,7 @@
   "extends": "config-ts/nextjs.json",
   "compilerOptions": {
     "plugins": [{"name": "next"}],
-    "moduleResolution": "nodenext",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "paths": {

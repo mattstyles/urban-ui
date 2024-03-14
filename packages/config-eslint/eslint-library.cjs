@@ -14,7 +14,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',
   ],
-  plugins: ['@typescript-eslint', 'react'],
+  plugins: ['@typescript-eslint', 'react', '@stylexjs/eslint-plugin'],
   settings: {
     react: {
       version: 'detect',
@@ -32,6 +32,8 @@ module.exports = {
     // Hoisting is fine
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-declare': 'off',
+    // stylex rules
+    '@stylexjs/valid-styles': 'error',
   },
   ignorePatterns: ['dist'],
 }

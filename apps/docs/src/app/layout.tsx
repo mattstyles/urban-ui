@@ -1,13 +1,16 @@
 // import './globals.css'
 import type {Metadata} from 'next'
 // import {Inter} from 'next/font/google'
-import {inter} from '~/app/font.ts'
+// import {inter} from '~/app/font.ts'
 import cx from 'clsx'
-import {atoms} from '@urban-ui/theme/atoms'
+// import {atoms} from '@urban-ui/theme/atoms'
+import * as stylex from '@stylexjs/stylex'
 
 // @TODO base create a global theme currently, which is css variables only, should it also create global style? primarily this would be to set the default font family as beyond the reset we don't really want to apply anything that will be inherited.
-import '@urban-ui/theme/base'
-import '@urban-ui/theme/reset'
+// import '@urban-ui/theme/base'
+// import '@urban-ui/theme/reset'
+
+import './globals.css'
 
 // @TODO can we apply a font-family to the standard global theme for urban-ui?
 // This touches on how to overwrite the default theme, and then, how to swap themes?
@@ -19,8 +22,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang='en'>
-      <body className={cx(inter.className, inter.variable)}>{children}</body>
+    <html lang='en' {...stylex.props(styles.root)}>
+      {/* <body className={cx(inter.className, inter.variable)}>{children}</body> */}
+      <body>{children}</body>
     </html>
   )
 }
+
+const styles = stylex.create({
+  root: {
+    minHeight: '100vh',
+  },
+})
