@@ -1,0 +1,41 @@
+{
+  "name": "@urban-ui/rk",
+  "description": "Kit builder for urban ui packages",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "bin": {
+    "rk": "./rk.ts"
+  },
+  "exports": {
+    "types": "./rk.d.ts"
+  },
+  "author": "Matt Styles",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattstyles/urban-ui.git",
+    "directory": "packages/utility/testx"
+  },
+  "bugs": {
+    "url": "https://github.com/mattstyles/urban-ui/issues"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/debug": "^4.1.12",
+    "@types/react": "^18.2.66",
+    "@types/yargs": "^17.0.32",
+    "react": "^18.2.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@swc/core": "^1.4.8",
+    "chalk": "^5.3.0",
+    "cosmiconfig": "^9.0.0",
+    "debug": "^4.3.4",
+    "globby": "^14.0.1",
+    "yargs": "^17.7.2"
+  }
+}

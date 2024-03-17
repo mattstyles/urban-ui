@@ -1,4 +1,5 @@
-export default {
+/** @type {import('jest').Config} */
+const config = {
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
@@ -7,4 +8,7 @@ export default {
     // '^.+\\.(t|j)sx?$': '@swc/jest',
   },
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
+  testEnvironment: 'jsdom',
 }
+
+export default config

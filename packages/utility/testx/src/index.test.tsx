@@ -1,10 +1,6 @@
-/**
- * @jest-environment jsdom
- */
-
 import {describe, test, expect} from '@jest/globals'
 import {render, screen} from '@testing-library/react'
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/jest-globals'
 
 // import inject from '@stylexjs/dev-runtime'
 // inject({
