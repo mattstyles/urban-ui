@@ -21,11 +21,13 @@
     "url": "https://github.com/mattstyles/urban-ui/issues"
   },
   "devDependencies": {
+    "@stylexjs/stylex": "^0.5.1",
     "@types/bun": "latest",
     "@types/debug": "^4.1.12",
     "@types/react": "^18.2.66",
     "@types/yargs": "^17.0.32",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "typescript": "^5.4.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

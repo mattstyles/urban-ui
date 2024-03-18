@@ -19,13 +19,7 @@ export async function transformFiles(
     outDir: string
   },
 ) {
-  // @TODO add outDir to rk.config.ts
   // @TODO turn this in to a pipeline configuration
-  // * read file
-  // * transform file with swc
-  // * write file and map with correct extensions to correct outDir directory
-  // * run tsc type generation
-  // Do this for each target, which is cjs, and esm
 
   // Read input files
   const parsedFiles = await Promise.all(files.map(readFile))

@@ -66,8 +66,8 @@
     "test:jest": "jest",
     "build:swc": "swc src -d dist --config-file .swcrc-esm --strip-leading-paths",
     "build:swc:cjs": "swc src -d dist --config-file .swcrc-cjs --strip-leading-paths --out-file-extension cjs",
-    "types": "tsc",
-    "gen": "tsx src/dts.ts src/index.ts",
+    "type:check": "tsc",
+    "type:gen": "tsx src/dts.ts src/index.ts",
     "rk": "rk"
   },
   "dependencies": {

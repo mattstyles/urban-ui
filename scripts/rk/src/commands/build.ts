@@ -5,6 +5,7 @@ import {globby as glob} from 'globby'
 import {generateOptions} from '../arguments'
 import {createDebugger} from '../log'
 import {transformFiles} from '../transform'
+import {generateDefinitions} from '../definition'
 
 const debug = createDebugger('rk::build')
 
@@ -31,7 +32,13 @@ export const buildCommand: CommandModule = {
       }
     },
     async (opts) => {
+      // [x] read file
+      // [x] transform file with swc
+      // [x] write file and map with correct extensions to correct outDir directory
+      // [x] run tsc type generation
+      // For esm, cjs, and dts
       await transformFiles(opts.include, {outDir: opts.outDir})
+      await generateDefinitions(opts.include, {outDir: opts.outDir})
     },
   ),
 }

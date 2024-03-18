@@ -1,11 +1,11 @@
 'use client'
 
-import type {VariantProps} from 'cva'
+// import type {VariantProps} from 'cva'
 
 import {forwardRef} from 'react'
-import {cva} from 'cva'
+// import {cva} from 'cva'
 import * as stylex from '@stylexjs/stylex'
-import cx from 'clsx'
+// import cx from 'clsx'
 import {anatomy, sizes} from './anatomy.stylex.ts'
 
 const styles = stylex.create({
