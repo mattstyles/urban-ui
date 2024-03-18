@@ -43,8 +43,8 @@ export function createLibraryConfig({entry, pkg}) {
       sourcemap: true,
       lib: {
         entry: forceArray(entry),
-        // formats: ['cjs', 'es'],
-        formats: ['es'],
+        formats: ['cjs', 'es'],
+        // formats: ['es'],
         // fileName: 'index',
       },
       rollupOptions: {

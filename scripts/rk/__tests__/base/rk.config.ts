@@ -1,7 +1,7 @@
 import type {Config} from '../../src/config'
 
 const config: Config = {
-  include: ['src/*'],
+  include: ['src'],
   outDir: '__dist__',
 }
 

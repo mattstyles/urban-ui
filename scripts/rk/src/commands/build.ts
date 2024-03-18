@@ -31,7 +31,7 @@ export const buildCommand: CommandModule = {
       }
     },
     async (opts) => {
-      await transformFiles(opts.include)
+      await transformFiles(opts.include, {outDir: opts.outDir})
     },
   ),
 }
