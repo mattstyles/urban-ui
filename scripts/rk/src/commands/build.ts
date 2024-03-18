@@ -27,6 +27,7 @@ export const buildCommand: CommandModule = {
 
       return {
         include: files,
+        outDir: argv.outDir,
       }
     },
     async (opts) => {

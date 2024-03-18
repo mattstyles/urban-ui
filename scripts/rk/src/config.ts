@@ -5,10 +5,15 @@ export type Config<T = {}> = T & {
    * Array of globs to include for transformation
    */
   include: Array<string>
+  /**
+   * Output directory
+   */
+  outDir: string
 }
 
 const defaultConfig: Config = {
   include: [],
+  outDir: '.',
 }
 
 export async function getConfig(): Promise<Config> {
@@ -19,5 +24,7 @@ export async function getConfig(): Promise<Config> {
     return defaultConfig
   }
 
-  return {...defaultConfig, include: foundConfig.config.include}
+  const {include, outDir} = foundConfig.config
+
+  return {...defaultConfig, include, outDir}
 }
