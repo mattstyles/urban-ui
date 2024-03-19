@@ -7,6 +7,8 @@ import {createDebugger} from '../log'
 import {transformFiles} from '../transform'
 import {generateDefinitions} from '../definition'
 
+import {testPipeline} from '../transform/pipeline.example.ts'
+
 const debug = createDebugger('rk::build')
 
 // type CommandOptions = Config<{entries: Array<string>}>
@@ -37,8 +39,11 @@ export const buildCommand: CommandModule = {
       // [x] write file and map with correct extensions to correct outDir directory
       // [x] run tsc type generation
       // For esm, cjs, and dts
-      await transformFiles(opts.include, {outDir: opts.outDir})
-      await generateDefinitions(opts.include, {outDir: opts.outDir})
+      // await transformFiles(opts.include, {outDir: opts.outDir})
+      // await generateDefinitions(opts.include, {outDir: opts.outDir})
+
+      await testPipeline(12)
+      await testPipeline(-50)
     },
   ),
 }
