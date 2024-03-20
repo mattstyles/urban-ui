@@ -33,6 +33,11 @@ export class Pipeline<
   async run(input: TInput): Promise<TOutput> {
     this.ctx.tron.on()
     let work = null
+
+    /**
+     * @TODO
+     * this does NOT work as intended, this iterates over the list, but the await effectively yields, meaning Promise.all([p1.run, p2.run]) will interleave, which is potentially correct, but also not correct :rofl:
+     */
     for await (const task of this.tasks) {
       const measurement = measure(task.id)
       this.ctx.tron.track(measurement.start)
@@ -53,33 +58,16 @@ export class Pipeline<
       {},
     )
 
-    // Generate file stats
-    // const fileEvents = [
-    //   'parse',
-    //   'compile',
-    //   'compile::esm',
-    //   'compile::cjs',
-    //   'write',
-    // ] as const
-    // const fileEvents = {
-    //   'parse': null
-    // }
     const fileStats: Record<
       string,
       Record<(keyof typeof fileEvents)[number], number>
     > = {}
     for (let [id, trace] of this.ctx.ftrace.files) {
-      //  const eventStats = fileEvents.map((event) => {
-      //   const measurement = trace.measure(measure(event))
-      //   return {
-      //     event: event as typeof fileEvents[number],
-      //     duration: measurement.duration
-      //   }
-      // })
       fileStats[id] = Object.keys(fileEvents).reduce<
         Record<(keyof typeof fileEvents)[number], number>
       >(
         (stats, event) => {
+          // @TODO trace.measure can throw, we should omit stats if it does throw, currently it'll just crash
           const measurement = trace.measure(measure(event))
           stats[event] = measurement.duration
           return stats
@@ -89,6 +77,7 @@ export class Pipeline<
     }
 
     return {
+      id: this.ctx.pipelineId,
       pipeline: pipelineStats,
       file: fileStats,
     }

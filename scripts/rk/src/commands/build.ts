@@ -4,8 +4,7 @@ import type {Config} from '../config'
 import {globby as glob} from 'globby'
 import {generateOptions} from '../arguments'
 import {createDebugger} from '../log'
-// import {transformFiles, transformFilesPipeline} from '../transform'
-import {transformFilesPipeline} from '../transform'
+import {transformFiles} from '../transform'
 import {generateDefinitions} from '../definition'
 
 import {testPipeline} from '../transform/pipeline.example.ts'
@@ -34,25 +33,35 @@ export const buildCommand: CommandModule = {
         outDir: argv.outDir,
       }
     },
+    /**
+     * esm and cjs
+     * [x] read file
+     * [x] transform file with swc
+     * [x] write file and map with correct extensions to correct output directory
+     * dts
+     * [x] run tsc type generation
+     */
     async (opts) => {
-      // [x] read file
-      // [x] transform file with swc
-      // [x] write file and map with correct extensions to correct outDir directory
-      // [x] run tsc type generation
-      // For esm, cjs, and dts
-      // await transformFiles(opts.include, {outDir: opts.outDir})
-      await generateDefinitions(opts.include, {outDir: opts.outDir})
-
-      // Testing pipelines
-      // await testPipeline(12)
-      // await testPipeline(-50)
-
-      // Testing new transform pipeline
-      const stats = await transformFilesPipeline(opts.include, {
+      const stats = await transformFiles(opts.include, {
         outDir: opts.outDir,
       })
-
+      const dtsStats = await generateDefinitions(opts.include, {
+        outDir: opts.outDir,
+      })
+      console.log(dtsStats)
       console.log(stats)
+
+      // This is tempting but ends up yielding execution and screwing up the metrics, probably would be _less_ of a problem if TS wasn't synchronous, but, still would muck with a pipeline
+      // const out = await Promise.all([
+      //   transformFiles(opts.include, {
+      //     outDir: opts.outDir,
+      //   }),
+      //   generateDefinitions(opts.include, {
+      //     outDir: opts.outDir,
+      //   }),
+      // ])
     },
   ),
 }
+
+// @TODO bun test on pipeline etc (see if this will also work in packages for ui testing, although stylex might be the issue)
