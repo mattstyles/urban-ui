@@ -1,83 +1,40 @@
-import type {Task, TaskDefinition, PipelineContext} from './shared.ts'
+import type {Task, TaskInputParameters, TaskReturnType} from './task.ts'
 
-import {createTask, createTaskDefinition} from './task.ts'
-import {Pipeline} from './pipeline.ts'
-import {Schema} from './shared.ts'
+import {createTask} from './task.ts'
+import {Pipeline, type PipelineContext} from './pipeline.ts'
 
-const def = createTaskDefinition({
-  id: 'id',
-  inputs: {
-    foo: Schema.number,
-  },
-  outputs: {
-    bar: Schema.number,
-  },
-})
-const testTask = createTask(def, async (ctx, {foo}) => {
-  console.log('test1', ctx)
-  ctx.additionalProp = 'foobarbaz'
-  return {
-    bar: 100 + foo,
-  }
-})
+type ExampleContext = {
+  suppliedProp: string
+} & Record<string, any>
 
-const test2Task = createTask(
-  createTaskDefinition({
-    id: 'test2',
-    inputs: def.outputs,
-    outputs: {out: Schema.string},
-  }),
-  async (ctx, {bar}) => {
-    console.log('test2 ctx', ctx)
+const testTask = createTask(
+  'task1',
+  async (ctx: PipelineContext<ExampleContext>, {foo}: {foo: number}) => {
+    console.log('test1', ctx, ctx.suppliedProp)
+    ctx.additionalProp = 'foobarbaz'
     return {
-      out: bar > 100 ? 'over' : 'under',
+      bar: 100 + foo,
     }
   },
 )
+
+type Task2Def = Task<{bar: number}, Promise<{out: string}>>
+const test2Task = createTask<
+  TaskInputParameters<Task2Def>,
+  TaskReturnType<Task2Def>
+>('id_task2', async (ctx, {bar}) => {
+  console.log('test2 ctx', ctx, ctx.suppliedProp, ctx.additionalProp)
+  return {
+    out: bar > 100 ? 'over' : 'under',
+  }
+})
 
 /**
  * Basic test for typings for task inputs and outputs
  * @param num
  */
 export async function testPipeline(num: number) {
-  const ctx = {}
-  // const out1 = await testTask.run(ctx, {foo: num})
-  // const out2 = await test2Task.run(ctx, out1)
-
-  // console.log(out2)
-
-  /**
-   * So this looping over works but typings get proper screwy
-   */
-  // const pipeline = [testTask, test2Task]
-  // let input = {foo: num}
-  // for (let task of pipeline) {
-  //   input = task.run(input)
-  // }
-  // console.log(input)
-
-  // console.log(pipeline[1].run(pipeline[0].run({foo: num})))
-
-  // Can't be awaited
-  // console.log(flow(testTask.run, test2Task.run)({foo: num}))
-
-  // const fns = pipeline.map((t) => t.run)
-  // console.log(flow(fns[0], fns[1])({foo: num}))
-
-  // can't be awaited and errors anyway
-  // @ts-ignore
-  // const foo = pipe({foo: num}, ...pipeline.map((t) => t.run))
-  // console.log(num, foo)
-
-  // const bar = pipeline.reduce(
-  //   (prev, task) => {
-  //     return task.run(prev)
-  //   },
-  //   {foo: num},
-  // )
-  // console.log('reduce', bar)
-
-  const pl = new Pipeline({suppliedProp: 'foo'})
+  const pl = new Pipeline('test_pipeline', {suppliedProp: 'foo'})
   pl.addStep(testTask)
   pl.addStep(test2Task)
   console.log('pl', num, await pl.run({foo: num}))

@@ -13,7 +13,6 @@ export type MeasureItem = {
 }
 
 export class Trace {
-  // data: Array<TraceItem>
   data: Map<TraceID, TraceItem>
   spatialIndex: Array<TraceID>
   tracerId: string
@@ -94,4 +93,15 @@ export class Trace {
 
     return measure
   }
+}
+
+export async function traceFn<T>(
+  event: string,
+  tron: Trace,
+  cb: () => T,
+): Promise<T> {
+  tron.track(`${event}::start`)
+  const output = await cb()
+  tron.track(`${event}::end`)
+  return output
 }

@@ -1,20 +1,36 @@
-import type {TaskDefinition, Task} from './shared'
+import type {PipelineContext} from './context.ts'
 
-// Necessary to apply typings to inputs and outputs
-export function createTaskDefinition<T extends TaskDefinition>(def: T) {
-  return def
+export type ParameterDefinition<K extends string | number | symbol, V> =
+  | Record<K, V>
+  | Array<Record<K, V>>
+
+export type TaskDefinition = {
+  id: string
+  inputs: ParameterDefinition<string, unknown>
+  outputs?: Promise<ParameterDefinition<string, unknown>>
 }
 
-/**
- * Create a task from a definition and a task running function
- */
+export type TaskInputParameters<T extends Task<any, any, any>> = Parameters<
+  T['run']
+>[1]
+export type TaskReturnType<T extends Task<any, any, any>> = ReturnType<T['run']>
+
+export type Task<
+  TInput extends TaskDefinition['inputs'],
+  TOutput extends TaskDefinition['outputs'],
+  C extends Record<string, unknown> = Record<string, unknown>,
+> = {
+  id: TaskDefinition['id']
+  run: (ctx: PipelineContext<C>, inputs: TInput) => TOutput
+}
+
 export function createTask<
-  T extends TaskDefinition,
-  C extends Record<string, unknown> = Record<string, any>,
->(definition: T, fn: Task<T, C>['run']): Task<T, C> {
+  TInput extends TaskDefinition['inputs'],
+  TOutput extends TaskDefinition['outputs'],
+  C extends Record<string, unknown> = Record<string, unknown>,
+>(id: string, fn: Task<TInput, TOutput, C>['run']): Task<TInput, TOutput, C> {
   return {
-    id: definition.id,
-    definition: definition,
+    id: id,
     run: fn,
   }
 }

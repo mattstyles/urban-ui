@@ -4,7 +4,8 @@ import type {Config} from '../config'
 import {globby as glob} from 'globby'
 import {generateOptions} from '../arguments'
 import {createDebugger} from '../log'
-import {transformFiles} from '../transform'
+// import {transformFiles, transformFilesPipeline} from '../transform'
+import {transformFilesPipeline} from '../transform'
 import {generateDefinitions} from '../definition'
 
 import {testPipeline} from '../transform/pipeline.example.ts'
@@ -40,10 +41,18 @@ export const buildCommand: CommandModule = {
       // [x] run tsc type generation
       // For esm, cjs, and dts
       // await transformFiles(opts.include, {outDir: opts.outDir})
-      // await generateDefinitions(opts.include, {outDir: opts.outDir})
+      await generateDefinitions(opts.include, {outDir: opts.outDir})
 
-      await testPipeline(12)
-      await testPipeline(-50)
+      // Testing pipelines
+      // await testPipeline(12)
+      // await testPipeline(-50)
+
+      // Testing new transform pipeline
+      const stats = await transformFilesPipeline(opts.include, {
+        outDir: opts.outDir,
+      })
+
+      console.log(stats)
     },
   ),
 }
