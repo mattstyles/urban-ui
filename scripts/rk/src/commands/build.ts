@@ -42,14 +42,18 @@ export const buildCommand: CommandModule = {
      * [x] run tsc type generation
      */
     async (opts) => {
-      const stats = await transformFiles(opts.include, {
-        outDir: opts.outDir,
-      })
+      // const stats = await transformFiles(opts.include, {
+      //   outDir: opts.outDir,
+      // })
       const dtsStats = await generateDefinitions(opts.include, {
         outDir: opts.outDir,
       })
       console.log(dtsStats)
-      console.log(stats)
+
+      /**
+       * Individual file task times are not super accurate
+       */
+      // console.log(stats)
 
       // This is tempting but ends up yielding execution and screwing up the metrics, probably would be _less_ of a problem if TS wasn't synchronous, but, still would muck with a pipeline
       // const out = await Promise.all([

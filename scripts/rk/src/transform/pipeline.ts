@@ -25,7 +25,7 @@ export class Pipeline<
     TInput extends TaskDefinition['inputs'],
     TOutput extends TaskDefinition['outputs'],
   >(task: Task<TInput, TOutput, C>) {
-    this.tasks.push(task as unknown as Task<any, any, C>)
+    this.tasks.push(task as Task<any, any, C>)
   }
 
   // @TODO addSteps (can we chain inputs and outputs? i.e. <A, B> = B = (A) => B)
