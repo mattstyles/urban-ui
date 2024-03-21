@@ -19,6 +19,7 @@ import {measure, fileEvents} from './transform/analytics.ts'
 
 type TransformContext = {
   outDir: string
+  rootDir: string
 }
 
 /**
@@ -28,6 +29,7 @@ export async function transformFiles(
   files: Array<string>,
   options: {
     outDir: string
+    rootDir: string
   },
 ) {
   const pipeline = new Pipeline<
@@ -36,6 +38,7 @@ export async function transformFiles(
     TaskReturnType<typeof write>
   >('transform', {
     outDir: options.outDir,
+    rootDir: options.rootDir,
   })
   pipeline.addStep(parse)
   pipeline.addStep(compile)
@@ -143,7 +146,7 @@ const write = createTask(
     await Promise.all(
       files.map(async ({filepath, files}) => {
         const esmFilepath = generateOutputPath(files.esm.filepath, 'js', {
-          strip: 'src',
+          strip: ctx.rootDir,
           outDir: ctx.outDir,
         })
 

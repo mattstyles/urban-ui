@@ -1,7 +1,7 @@
 import type {CommandModule, ArgumentsCamelCase} from 'yargs'
 import type {Config} from './config'
 
-export function generateOptions<U = Config, T = Promise<Config>>(
+export function generateOptions<U = Config, T = Promise<U>>(
   generate: (argv: ArgumentsCamelCase<U>) => T,
   handler: (opts: Awaited<T>) => void,
 ): CommandModule['handler'] {

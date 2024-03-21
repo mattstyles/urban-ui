@@ -11,8 +11,8 @@ import {testPipeline} from '../transform/pipeline.example.ts'
 
 const debug = createDebugger('rk::build')
 
-// type CommandOptions = Config<{entries: Array<string>}>
-type CommandOptions = Config
+type CommandOptions = Required<Config>
+
 export const buildCommand: CommandModule = {
   command: 'build',
   describe: 'Uses SWC to build every file from the includes',
@@ -31,6 +31,7 @@ export const buildCommand: CommandModule = {
       return {
         include: files,
         outDir: argv.outDir,
+        rootDir: argv.rootDir,
       }
     },
     /**
@@ -42,9 +43,10 @@ export const buildCommand: CommandModule = {
      * [x] run tsc type generation
      */
     async (opts) => {
-      // const stats = await transformFiles(opts.include, {
-      //   outDir: opts.outDir,
-      // })
+      const stats = await transformFiles(opts.include, {
+        outDir: opts.outDir,
+        rootDir: opts.rootDir,
+      })
       const dtsStats = await generateDefinitions(opts.include, {
         outDir: opts.outDir,
       })
@@ -53,9 +55,9 @@ export const buildCommand: CommandModule = {
       /**
        * Individual file task times are not super accurate
        */
-      // console.log(stats)
+      console.log(stats)
 
-      // This is tempting but ends up yielding execution and screwing up the metrics, probably would be _less_ of a problem if TS wasn't synchronous, but, still would muck with a pipeline
+      // This is tempting but ends up yielding execution and screwing up the metrics, probably would be _less_ of a problem if TS wasn't synchronous, but, still would muck with a pipeline output
       // const out = await Promise.all([
       //   transformFiles(opts.include, {
       //     outDir: opts.outDir,
