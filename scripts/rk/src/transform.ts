@@ -73,74 +73,47 @@ const compile = createTask(
   async (ctx, files: Awaited<TaskReturnType<typeof parse>>) => {
     const mCompile = measure(fileEvents.compile)
     /**
-     * These double promises proper mucks up individual statistics
+     * Attempting to run in parallel (for what is probably a synchronous task) nukes individual timings
      */
     return await Promise.all(
       files.map(async ({file, filepath}) => {
         ctx.ftrace.get(filepath).track(mCompile.start)
 
-        // awaiting here, even without the promise.all wrapper creates some issues with the tracking
-        ctx.ftrace.get(filepath).track('compile::esm::start')
-        const esm = await transformFile({
-          code: file,
-          filename: filepath,
-          overrides: {
-            module: {
-              type: 'es6',
+        const codeBlocks = await Promise.all([
+          traceFn(
+            fileEvents['compile::esm'],
+            ctx.ftrace.get(filepath),
+            async () => {
+              return await transformFile({
+                code: file,
+                filename: filepath,
+                overrides: {
+                  module: {
+                    type: 'es6',
+                  },
+                },
+                plugins: [transformImports('js')],
+              })
             },
-          },
-          plugins: [transformImports('js')],
-        })
-        ctx.ftrace.get(filepath).track('compile::esm::end')
-        ctx.ftrace.get(filepath).track('compile::cjs::start')
-        const cjs = await transformFile({
-          code: file,
-          filename: filepath,
-          overrides: {
-            module: {
-              type: 'commonjs',
+          ),
+          traceFn(
+            fileEvents['compile::cjs'],
+            ctx.ftrace.get(filepath),
+            async () => {
+              return await transformFile({
+                code: file,
+                filename: filepath,
+                overrides: {
+                  module: {
+                    type: 'commonjs',
+                  },
+                },
+                plugins: [transformImports('cjs')],
+              })
             },
-          },
-          plugins: [transformImports('cjs')],
-        })
-        ctx.ftrace.get(filepath).track('compile::cjs::end')
+          ),
+        ])
 
-        const codeBlocks = [esm, cjs]
-
-        // const codeBlocks = await Promise.all([
-        //   traceFn(
-        //     fileEvents['compile::esm'],
-        //     ctx.ftrace.get(filepath),
-        //     async () => {
-        //       return await transformFile({
-        //         code: file,
-        //         filename: filepath,
-        //         overrides: {
-        //           module: {
-        //             type: 'es6',
-        //           },
-        //         },
-        //         plugins: [transformImports('js')],
-        //       })
-        //     },
-        //   ),
-        //   traceFn(
-        //     fileEvents['compile::cjs'],
-        //     ctx.ftrace.get(filepath),
-        //     async () => {
-        //       return await transformFile({
-        //         code: file,
-        //         filename: filepath,
-        //         overrides: {
-        //           module: {
-        //             type: 'commonjs',
-        //           },
-        //         },
-        //         plugins: [transformImports('cjs')],
-        //       })
-        //     },
-        //   ),
-        // ])
         ctx.ftrace.get(filepath).track(mCompile.end)
 
         return {

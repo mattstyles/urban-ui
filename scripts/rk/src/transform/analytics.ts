@@ -15,5 +15,6 @@ export const fileEvents = {
   compile: 'compile',
   'compile::esm': 'compile::esm',
   'compile::cjs': 'compile::cjs',
+  // 'compile::umd': 'compile::umd',
   write: 'write',
 }

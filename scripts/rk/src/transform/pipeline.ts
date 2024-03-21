@@ -34,10 +34,6 @@ export class Pipeline<
     this.ctx.tron.on()
     let work = null
 
-    /**
-     * @TODO
-     * this does NOT work as intended, this iterates over the list, but the await effectively yields, meaning Promise.all([p1.run, p2.run]) will interleave, which is potentially correct, but also not correct :rofl:
-     */
     for await (const task of this.tasks) {
       const measurement = measure(task.id)
       this.ctx.tron.track(measurement.start)
@@ -58,9 +54,10 @@ export class Pipeline<
       {},
     )
 
+    // Generate statistics per file
     const fileStats: Record<
       string,
-      Record<(keyof typeof fileEvents)[number], number>
+      Record<keyof typeof fileEvents, number>
     > = {}
     for (let [id, trace] of this.ctx.ftrace.files) {
       fileStats[id] = Object.keys(fileEvents).reduce<
@@ -72,7 +69,7 @@ export class Pipeline<
           stats[event] = measurement.duration
           return stats
         },
-        {} as Record<(keyof typeof fileEvents)[number], number>,
+        {} as Record<keyof typeof fileEvents, number>,
       )
     }
 
