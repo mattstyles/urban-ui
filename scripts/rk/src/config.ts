@@ -43,6 +43,7 @@ export async function getConfig(): Promise<Required<Config>> {
     ...conf,
     // Only use default root directory if default include path is used
     // Trying to ascertain if include[0] is a valid directory name is tricky
-    rootDir: conf?.include == null ? defaultConfig.rootDir : '',
+    rootDir:
+      conf?.include == null ? defaultConfig.rootDir : conf?.rootDir || '',
   }
 }
