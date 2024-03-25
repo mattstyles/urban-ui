@@ -12,6 +12,9 @@
   "exports": {
     "types": "./rk.d.ts"
   },
+  "scripts": {
+    "test": "bun test"
+  },
   "author": "Matt Styles",
   "repository": {
     "type": "git",

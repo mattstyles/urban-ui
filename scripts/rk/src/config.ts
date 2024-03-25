@@ -28,8 +28,15 @@ const defaultConfig: Required<Config> = {
   rootDir: 'src',
 }
 
-export async function getConfig(): Promise<Required<Config>> {
-  const explorer = cosmiconfig('rk')
+type ConfigOptions = {
+  moduleName?: string
+  overrides?: Config
+}
+export async function getConfig(
+  options: ConfigOptions = {},
+): Promise<Required<Config>> {
+  const opts = merge({moduleName: 'rk', overrides: {}}, options)
+  const explorer = cosmiconfig(opts.moduleName)
   const foundConfig = await explorer.search()
 
   if (foundConfig == null || foundConfig.isEmpty) {
@@ -45,5 +52,18 @@ export async function getConfig(): Promise<Required<Config>> {
     // Trying to ascertain if include[0] is a valid directory name is tricky
     rootDir:
       conf?.include == null ? defaultConfig.rootDir : conf?.rootDir || '',
+    ...opts.overrides,
   }
+}
+
+function merge<T extends Record<any, any>>(
+  def: Required<T>,
+  ...args: Array<Partial<T>>
+): Required<T> {
+  return args.reduce((record, arg) => {
+    return {
+      ...record,
+      ...arg,
+    }
+  }, def) as Required<T>
 }
