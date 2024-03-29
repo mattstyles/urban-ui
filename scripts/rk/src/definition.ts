@@ -4,7 +4,9 @@ import ts from 'typescript'
 
 import {createTask} from './transform/task.ts'
 import {Pipeline} from './transform/pipeline.ts'
-import {debug} from './log'
+import {createDebugger} from './log'
+
+const debug = createDebugger('rk::definition')
 
 type FilesDts = Record<string, string>
 
@@ -37,7 +39,7 @@ export async function generateDefinitions(
   )
   pipeline.addStep(write)
 
-  debug.rk('Running dts pipeline')
+  debug('Running dts pipeline')
   const output = await pipeline.run({
     searchPath: './',
     filename: 'tsconfig.json',
@@ -60,6 +62,7 @@ const readConfig = createTask(
 
     const configFile = ts.readConfigFile(configPath, ts.sys.readFile)
     const conf = ts.parseJsonConfigFileContent(configFile.config, ts.sys, './')
+    debug('Using tsconfig', configPath)
     return {conf}
   },
 )
@@ -101,5 +104,6 @@ const write = createTask(
 )
 
 async function writeFile(filepath: string, content: string) {
-  await Bun.write(filepath, content)
+  const bytes = await Bun.write(filepath, content)
+  debug('Writing file:', filepath, bytes)
 }
