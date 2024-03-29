@@ -59,13 +59,13 @@ export class Pipeline<
       string,
       Record<keyof typeof fileEvents, number>
     > = {}
-    for (let [id, trace] of this.ctx.ftrace.files) {
+    for (let [id, file] of this.ctx.ftrace.files) {
       fileStats[id] = Object.keys(fileEvents).reduce<
         Record<(keyof typeof fileEvents)[number], number>
       >(
         (stats, event) => {
           // @TODO trace.measure can throw, we should omit stats if it does throw, currently it'll just crash
-          const measurement = trace.measure(measure(event))
+          const measurement = file.trace.measure(measure(event))
           stats[event] = measurement.duration
           return stats
         },

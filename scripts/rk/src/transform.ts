@@ -6,9 +6,11 @@ import type {Options, Output as SwcOutput} from '@swc/core'
 import swc from '@swc/core'
 import path from 'node:path'
 import fs from 'node:fs/promises'
+import zlib from 'node:zlib'
+import {promisify} from 'node:util'
 import {PerformanceObserver, performance} from 'node:perf_hooks'
 
-import {debug} from './log'
+import {createDebugger} from './log'
 import {traceFn} from './trace.ts'
 import {jscOps} from './configs/jsc.ts'
 import {minify} from './configs/minify.ts'
@@ -16,6 +18,9 @@ import {transformImports} from './configs/plugins.ts'
 import {createTask} from './transform/task.ts'
 import {Pipeline} from './transform/pipeline.ts'
 import {measure, fileEvents} from './transform/analytics.ts'
+
+const gzip = promisify(zlib.gzip)
+const debug = createDebugger('rk::transform')
 
 type TransformContext = {
   outDir: string
@@ -49,7 +54,7 @@ export async function transformFiles(
     pipeline.ctx.ftrace.register(filepath)
   })
 
-  debug.rk('Running transform pipeline')
+  debug('Running transform pipeline')
   const output = await pipeline.run({files})
 
   // Generate pipeline analytics
@@ -62,9 +67,9 @@ const parse = createTask(
     const measurement = measure(fileEvents.parse)
     return await Promise.all(
       files.map((filepath) => {
-        ctx.ftrace.get(filepath).track(measurement.start)
+        ctx.ftrace.getTrace(filepath).track(measurement.start)
         const file = readFile(filepath)
-        ctx.ftrace.get(filepath).track(measurement.end)
+        ctx.ftrace.getTrace(filepath).track(measurement.end)
         return file
       }),
     )
@@ -80,12 +85,13 @@ const compile = createTask(
      */
     return await Promise.all(
       files.map(async ({file, filepath}) => {
-        ctx.ftrace.get(filepath).track(mCompile.start)
+        debug('Compiling', filepath)
+        ctx.ftrace.getTrace(filepath).track(mCompile.start)
 
         const codeBlocks = await Promise.all([
           traceFn(
             fileEvents['compile::esm'],
-            ctx.ftrace.get(filepath),
+            ctx.ftrace.getTrace(filepath),
             async () => {
               return await transformFile({
                 code: file,
@@ -101,7 +107,7 @@ const compile = createTask(
           ),
           traceFn(
             fileEvents['compile::cjs'],
-            ctx.ftrace.get(filepath),
+            ctx.ftrace.getTrace(filepath),
             async () => {
               return await transformFile({
                 code: file,
@@ -117,7 +123,7 @@ const compile = createTask(
           ),
         ])
 
-        ctx.ftrace.get(filepath).track(mCompile.end)
+        ctx.ftrace.getTrace(filepath).track(mCompile.end)
 
         return {
           filepath: filepath,
@@ -151,26 +157,60 @@ const write = createTask(
         })
 
         const cjsFilepath = generateOutputPath(files.cjs.filepath, 'cjs', {
-          strip: 'src',
+          strip: ctx.rootDir,
           outDir: ctx.outDir,
         })
 
-        console.log('Writing file', esmFilepath)
-
-        ctx.ftrace.get(filepath).track(measurement.start)
+        ctx.ftrace.getTrace(filepath).track(measurement.start)
         await Promise.all([
-          writeFile(esmFilepath, files.esm.code),
-          files.esm.map && writeFile(`${esmFilepath}.map`, files.esm.map),
-          writeFile(cjsFilepath, files.cjs.code),
-          files.cjs.map && writeFile(`${cjsFilepath}.map`, files.cjs.map),
+          pipe(
+            async () => await writeFile(esmFilepath, files.esm.code),
+            async (opts) => {
+              ctx.ftrace.getSizes(filepath).esm = opts.size
+              return opts
+            },
+          ),
+          files.esm.map &&
+            pipe(
+              async () =>
+                await writeFile(`${esmFilepath}.map`, files.esm.map as string),
+              async (file) => {
+                ctx.ftrace.getSizes(filepath)['esm::map'] = file.size
+                return file
+              },
+            ),
+          pipe(
+            async () => await writeFile(cjsFilepath, files.cjs.code),
+            async (opts) => {
+              ctx.ftrace.getSizes(filepath).cjs = opts.size
+              return opts
+            },
+          ),
+          files.cjs.map &&
+            pipe(
+              async () =>
+                await writeFile(`${cjsFilepath}.map`, files.cjs.map as string),
+              async (file) => {
+                ctx.ftrace.getSizes(filepath)['cjs::map'] = file.size
+                return file
+              },
+            ),
         ])
-        ctx.ftrace.get(filepath).track(measurement.end)
+        ctx.ftrace.getTrace(filepath).track(measurement.end)
       }),
     )
 
     return files
   },
 )
+
+async function pipe<A, B>(
+  fn: () => Promise<A>,
+  fn2: (a: Awaited<A>) => B,
+): Promise<B> {
+  const value = await fn()
+  return await fn2(value)
+}
 
 async function readFile(filepath: string) {
   const file = Bun.file(filepath)
@@ -182,7 +222,16 @@ async function readFile(filepath: string) {
 }
 
 async function writeFile(filepath: string, content: string) {
-  await Bun.write(filepath, content)
+  const bytes = await Bun.write(filepath, content)
+  debug('Writing file:', filepath, bytes)
+
+  // gzip is not free, increases time by ~50%.
+  // @TODO add option to output gzipped weight.
+  // const l = await gzip(Buffer.from(content))
+  return {
+    filepath: filepath,
+    size: bytes,
+  }
 }
 
 function generateOutputPath(
@@ -193,7 +242,7 @@ function generateOutputPath(
     outDir: string
   },
 ): string {
-  const strippedFilepath = path.relative(opts.strip, filepath)
+  const strippedFilepath = stripFilepath(filepath, opts.strip)
   const baseFilename = path.basename(
     strippedFilepath,
     path.extname(strippedFilepath),
@@ -203,6 +252,10 @@ function generateOutputPath(
     ext: ext,
     dir: path.join(opts.outDir, path.dirname(strippedFilepath)),
   })
+}
+
+function stripFilepath(filepath: string, strip: string) {
+  return path.relative(strip, filepath)
 }
 
 type TransformFileOpts = {
