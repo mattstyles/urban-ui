@@ -57,10 +57,14 @@ export class Pipeline<
     // Generate statistics per file
     const fileStats: Record<
       string,
-      Record<keyof typeof fileEvents, number>
+      {
+        trace: Record<keyof typeof fileEvents, number>
+        sizes: Record<string, number>
+      }
     > = {}
     for (let [id, file] of this.ctx.ftrace.files) {
-      fileStats[id] = Object.keys(fileEvents).reduce<
+      fileStats[id] = {trace: {} as any, sizes: {}}
+      fileStats[id].trace = Object.keys(fileEvents).reduce<
         Record<(keyof typeof fileEvents)[number], number>
       >(
         (stats, event) => {
@@ -71,6 +75,7 @@ export class Pipeline<
         },
         {} as Record<keyof typeof fileEvents, number>,
       )
+      fileStats[id].sizes = file.sizes
     }
 
     return {

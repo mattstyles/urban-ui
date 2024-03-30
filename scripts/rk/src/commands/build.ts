@@ -1,9 +1,10 @@
 import type {CommandModule} from 'yargs'
 import type {Config} from '../config'
 
+import chalk from 'chalk'
 import {globby as glob} from 'globby'
 import {generateOptions} from '../arguments'
-import {createDebugger} from '../log'
+import {createDebugger, padRight} from '../log'
 import {transformFiles} from '../transform'
 import {generateDefinitions} from '../definition'
 
@@ -57,6 +58,33 @@ export const buildCommand: CommandModule = {
        */
       console.log(stats)
 
+      const maxFilenameLength = Object.keys(stats.file).reduce(
+        (total, next) => {
+          if (next.length >= total) {
+            return next.length
+          }
+
+          return total
+        },
+        0,
+      )
+      for (const [filename, file] of Object.entries(stats.file)) {
+        console.log(
+          padRight(filename, maxFilenameLength + 1),
+          chalk.dim(formatCompileTargets(file)),
+        )
+      }
+
+      console.log('')
+      console.log(
+        chalk.green('✔︎ DTS pipeline successful'),
+        `(${getFullPipelineRuntime(dtsStats.pipeline)})`,
+      )
+      console.log(
+        chalk.green('✔︎ Compile pipeline successful'),
+        `(${getFullPipelineRuntime(stats.pipeline)})`,
+      )
+
       // This is tempting but ends up yielding execution and screwing up the metrics, probably would be _less_ of a problem if TS wasn't synchronous, but, still would muck with a pipeline output
       // const out = await Promise.all([
       //   transformFiles(opts.include, {
@@ -68,6 +96,19 @@ export const buildCommand: CommandModule = {
       // ])
     },
   ),
+}
+
+type FileStats = Awaited<ReturnType<typeof transformFiles>>['file'][string]
+function formatCompileTargets(stats: FileStats): string {
+  return Object.entries(stats.sizes).reduce((output, [key, value]) => {
+    return `${output} | ${key}: ${value}`
+  }, '')
+}
+
+function getFullPipelineRuntime(stats: Record<string, number>): number {
+  return Object.entries(stats).reduce((output, [_key, value]) => {
+    return output + value
+  }, 0)
 }
 
 // @TODO bun test on pipeline etc (see if this will also work in packages for ui testing, although stylex might be the issue)
