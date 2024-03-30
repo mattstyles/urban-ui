@@ -1,5 +1,5 @@
 {
-  "name": "@urban-ui/rk",
+  "name": "@urban-ui/arc",
   "description": "Kit builder for urban ui packages",
   "module": "./rk.ts",
   "types": "./rk.d.ts",
@@ -7,7 +7,7 @@
   "private": true,
   "license": "MIT",
   "bin": {
-    "rk": "./rk.ts"
+    "arc": "./rk.ts"
   },
   "exports": {
     "types": "./rk.d.ts"
@@ -19,7 +19,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattstyles/urban-ui.git",
-    "directory": "packages/scripts/rk"
+    "directory": "packages/scripts/arc"
   },
   "bugs": {
     "url": "https://github.com/mattstyles/urban-ui/issues"

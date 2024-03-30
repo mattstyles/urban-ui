@@ -1,4 +1,4 @@
-import type {Config} from '@urban-ui/rk'
+import type {Config} from '@urban-ui/arc'
 import tsconfig from './tsconfig.json'
 
 // const config: Config = {

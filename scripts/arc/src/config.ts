@@ -35,7 +35,7 @@ type ConfigOptions = {
 export async function getConfig(
   options: ConfigOptions = {},
 ): Promise<Required<Config>> {
-  const opts = merge({moduleName: 'rk', overrides: {}}, options)
+  const opts = merge({moduleName: 'arc', overrides: {}}, options)
   const explorer = cosmiconfig(opts.moduleName)
   const foundConfig = await explorer.search()
 
