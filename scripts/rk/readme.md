@@ -13,3 +13,8 @@ To run:
 ```bash
 bun run rk.ts
 ```
+
+To run with verbose console output use the debug environment variable:
+```bash
+DEBUG=* bun run rk.ts
+```

@@ -28,6 +28,7 @@
     "@stylexjs/stylex": "^0.5.1",
     "@types/bun": "latest",
     "@types/debug": "^4.1.12",
+    "@types/pretty-time": "^1.1.5",
     "@types/react": "^18.2.66",
     "@types/uuid": "^9.0.8",
     "@types/yargs": "^17.0.32",
@@ -44,6 +45,8 @@
     "cosmiconfig": "^9.0.0",
     "debug": "^4.3.4",
     "globby": "^14.0.1",
+    "pretty-bytes": "^6.1.1",
+    "pretty-time": "^1.1.0",
     "uuid": "^9.0.1",
     "yargs": "^17.7.2"
   }
