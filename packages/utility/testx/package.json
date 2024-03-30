@@ -64,6 +64,7 @@
     "build": "vite build",
     "test": "vitest run src",
     "test:jest": "jest",
+    "build:arc": "arc build",
     "build:swc": "swc src -d dist --config-file .swcrc-esm --strip-leading-paths",
     "build:swc:cjs": "swc src -d dist --config-file .swcrc-cjs --strip-leading-paths --out-file-extension cjs",
     "type:check": "tsc",

@@ -118,15 +118,20 @@ function getFullPipelineRuntime(stats: Record<string, number>): number {
 }
 
 /**
- * PrettyTime is expected to work against hrtime timestamps, but we are working in milliseconds. Convert to nanoseconds and strip any remaining fractional precision.
+ * Always display ms for consistency
+ * @param n is expected to be in milliseconds already
  */
 function prettyFullRuntime(n: number) {
-  return prettyTime((n * 1e6) | 0)
+  return `${n.toFixed(0)} ms`
 }
 
+/**
+ * Always display kilobytes for consistency
+ * @param n is expected to be in bytes
+ */
 function formatSummaryCompileTargetSize(n: number) {
   // return prettyBytes(n, {minimumFractionDigits: 2, maximumFractionDigits: 2})
-  return (n / 1000).toFixed(2) + ' kB'
+  return `${(n / 1000).toFixed(2)} kB`
 }
 
 // @TODO bun test on pipeline etc (see if this will also work in packages for ui testing, although stylex might be the issue)
