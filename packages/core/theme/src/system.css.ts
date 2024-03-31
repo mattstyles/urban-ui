@@ -1,13 +1,13 @@
 import type { MapType } from "./shared.ts";
 
-import { createThemeContract } from "@vanilla-extract/css";
+import type { precomputeValues } from "@capsizecss/core";
 import { mapValues } from "@urban-ui/utils";
-import { precomputeValues } from "@capsizecss/core";
+import { createThemeContract } from "@vanilla-extract/css";
 import {
-	sizeScale,
 	extendedSizeScale,
-	restrictedSizeScale,
 	numericScale,
+	restrictedSizeScale,
+	sizeScale,
 } from "./shared.ts";
 
 /**

@@ -1,30 +1,30 @@
 "use client";
 
-import type { VariantProps } from "cva";
 import type { AriaTextFieldProps } from "@react-aria/textfield";
 import type { Slot } from "@urban-ui/slot";
+import type { VariantProps } from "cva";
 
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useTextField } from "@react-aria/textfield";
+import { mergeProps, mergeRefs, useObjectRef } from "@react-aria/utils";
+import { Button } from "@urban-ui/button";
+import { Flex } from "@urban-ui/flex";
+import { CloseIcon, HideEyeIcon, ShowEyeIcon } from "@urban-ui/icons";
+import { atoms } from "@urban-ui/theme/atoms";
+import cx from "clsx";
+import { cva } from "cva";
 import {
 	forwardRef,
-	useState,
-	useRef,
-	useMemo,
-	useEffect,
 	useCallback,
+	useEffect,
+	useMemo,
 	useReducer,
+	useRef,
+	useState,
 } from "react";
-import { atoms } from "@urban-ui/theme/atoms";
-import { useTextField } from "@react-aria/textfield";
-import { useHover } from "@react-aria/interactions";
-import { useFocusRing } from "@react-aria/focus";
-import { mergeProps, useObjectRef, mergeRefs } from "@react-aria/utils";
-import { cva } from "cva";
-import cx from "clsx";
-import { Flex } from "@urban-ui/flex";
-import { Button } from "@urban-ui/button";
-import { CloseIcon, HideEyeIcon, ShowEyeIcon } from "@urban-ui/icons";
 import { base, container, sizeBase } from "./input.css.ts";
-import { sizes, colors, critical } from "./variants.css.ts";
+import { colors, critical, sizes } from "./variants.css.ts";
 
 const containerVariants = cva([container], {
 	variants: {
@@ -153,13 +153,13 @@ export const Input = forwardRef<ElementType, InputProps>(
 		const ref = useObjectRef(
 			useMemo(() => {
 				return mergeRefs(passRef, innerRef);
-			}, [passRef, innerRef]),
-		);
+			}, [passRef]),
+		) as React.MutableRefObject<HTMLInputElement>;
 
 		// @TODO use a reducer here to manage internal state
 		// Password visibility should be set here because we have to manage the dom element type and it will be reset on hover events as the component re-renders and will get the type passed in her instead of the side effect of using the dom state so we need to internally control the visibility state. the passwordControl button state should be controlled by it, and the type of the input i.e. text or password (if a type other than password is passed then the password state is unchangeable, currently, anyways)
 		const [inputType, setInputType] = useState(type);
-		const internalState = useReducer();
+		// const internalState = useReducer();
 
 		const { inputProps } = useTextField({ ...props, type: inputType }, ref);
 		const { hoverProps, isHovered } = useHover(props);
@@ -183,7 +183,7 @@ export const Input = forwardRef<ElementType, InputProps>(
 			onClear,
 			passwordToggle,
 			onPasswordToggle,
-			setInputType,
+			// setInputType,
 			inputRef: ref,
 			...props,
 		});
@@ -227,7 +227,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
 		const ref = useObjectRef(
 			useMemo(() => {
 				return mergeRefs(passRef, innerRef);
-			}, [passRef, innerRef]),
+			}, [passRef]),
 		);
 
 		const { inputProps } = useTextField(
@@ -475,7 +475,7 @@ function PasswordControl({
 				inputRef,
 			});
 		}
-	}, [isVisible, setIsVisible, inputRef, onPasswordToggle]);
+	}, [isVisible, inputRef, onPasswordToggle]);
 
 	return (
 		<Flex

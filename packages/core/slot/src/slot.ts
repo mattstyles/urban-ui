@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useMemo, Children, cloneElement, isValidElement } from "react";
+import type React from "react";
+import { Children, cloneElement, isValidElement, useMemo } from "react";
 
 export type Slot =
 	| "field"
@@ -78,7 +79,7 @@ export function useGetSlots<
 				return;
 			}
 
-			if (child.props && child.props.slot) {
+			if (child.props?.slot) {
 				const slot = child.props.slot as Slot;
 				const fn = slots[slot];
 

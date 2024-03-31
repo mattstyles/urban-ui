@@ -1,23 +1,23 @@
 "use client";
 
-import type { VariantProps } from "cva";
 import type { AriaCheckboxProps } from "@react-aria/checkbox";
+import type { VariantProps } from "cva";
 
-import { forwardRef, useRef, useMemo } from "react";
-import { mergeProps, useObjectRef, mergeRefs } from "@react-aria/utils";
+import { useCheckbox } from "@react-aria/checkbox";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
-import { useToggleState } from "@react-stately/toggle";
-import { useCheckbox } from "@react-aria/checkbox";
+import { mergeProps, mergeRefs, useObjectRef } from "@react-aria/utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { cva } from "cva";
-import cx from "clsx";
-import { atoms } from "@urban-ui/theme/atoms";
+import { useToggleState } from "@react-stately/toggle";
 import { Flex } from "@urban-ui/flex";
-import { Text } from "@urban-ui/text";
 import { CheckIcon } from "@urban-ui/icons";
+import { Text } from "@urban-ui/text";
+import { atoms } from "@urban-ui/theme/atoms";
+import cx from "clsx";
+import { cva } from "cva";
+import { forwardRef, useMemo, useRef } from "react";
 import { base, container } from "./checkbox.css.ts";
-import { sizes, radii, variant, background } from "./variants.css.ts";
+import { background, radii, sizes, variant } from "./variants.css.ts";
 
 const containerVariants = cva([container], {
 	variants: {
@@ -101,7 +101,7 @@ export const Checkbox = forwardRef<ElementType, CheckboxProps>(
 		const ref = useObjectRef(
 			useMemo(() => {
 				return mergeRefs(passRef, innerRef);
-			}, [passRef, innerRef]),
+			}, [passRef]),
 		);
 
 		const state = useToggleState(props);

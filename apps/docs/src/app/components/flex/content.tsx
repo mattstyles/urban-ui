@@ -35,7 +35,7 @@ export function Content() {
 					className={atoms({
 						flex: "none",
 					})}
-				></div>
+				/>
 				<Flex
 					style={{
 						width: 256,
@@ -43,7 +43,7 @@ export function Content() {
 						backgroundColor: "hotpink",
 					}}
 					flex="auto"
-				></Flex>
+				/>
 				<Flex
 					style={{
 						width: 128,
@@ -51,7 +51,7 @@ export function Content() {
 						backgroundColor: "hotpink",
 					}}
 					flex="auto"
-				></Flex>
+				/>
 			</Flex>
 		</Flex>
 	);

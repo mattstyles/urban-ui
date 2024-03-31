@@ -1,16 +1,17 @@
 "use client";
 
-import React, { forwardRef, useMemo } from "react";
+import { Flex } from "@urban-ui/flex";
+import type { FlexProps } from "@urban-ui/flex";
+import type React from "react";
+import { forwardRef, useMemo } from "react";
 import {
-	useSelectIndex,
-	useGroupChildren,
 	// useSelectionH,
 	// useSelectionV,
 	useFocusEffect,
+	useGroupChildren,
 	useKeys,
+	useSelectIndex,
 } from "./hooks.ts";
-import { Flex } from "@urban-ui/flex";
-import type { FlexProps } from "@urban-ui/flex";
 
 export interface ButtonGroupProps
 	extends React.PropsWithChildren,

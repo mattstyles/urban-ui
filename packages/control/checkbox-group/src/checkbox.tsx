@@ -1,10 +1,10 @@
 import type { AriaCheckboxGroupItemProps } from "@react-aria/checkbox";
 import type { CheckboxProps as RootCheckboxProps } from "@urban-ui/checkbox";
 
-import { forwardRef, useRef, useMemo, useCallback } from "react";
-import { useObjectRef, mergeRefs } from "@react-aria/utils";
-import { Checkbox as CheckboxPrimitive } from "@urban-ui/checkbox";
 import { useCheckboxGroupItem } from "@react-aria/checkbox";
+import { mergeRefs, useObjectRef } from "@react-aria/utils";
+import { Checkbox as CheckboxPrimitive } from "@urban-ui/checkbox";
+import { forwardRef, useCallback, useMemo, useRef } from "react";
 import { useCheckboxGroupContextState } from "./context.tsx";
 
 export interface CheckboxProps
@@ -18,7 +18,7 @@ export const Checkbox = forwardRef<ElementType, CheckboxProps>(
 		const ref = useObjectRef(
 			useMemo(() => {
 				return mergeRefs(passRef, innerRef);
-			}, [passRef, innerRef]),
+			}, [passRef]),
 		);
 		const state = useCheckboxGroupContextState();
 		const { isSelected, isDisabled } = useCheckboxGroupItem(props, state, ref);

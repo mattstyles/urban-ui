@@ -1,6 +1,6 @@
-import cx from "clsx";
 import { Flex } from "@urban-ui/flex";
 import { atoms } from "@urban-ui/theme/atoms";
+import cx from "clsx";
 
 import * as styles from "./styles.css.ts";
 
@@ -12,21 +12,27 @@ export default function ColorPage() {
 			className={cx(atoms({ p: "md" }), styles.primary)}
 		>
 			<Flex style={{ width: 240 }} orientation="v" gap="md">
+				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 				<button className={cx(styles.button, styles.buttonSolid)}>
 					Solid strong colour button
 				</button>
+				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 				<button className={cx(styles.button, styles.buttonGhost)}>
 					ghost muted colour button
 				</button>
+				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 				<button className={cx(styles.button, styles.buttonText)}>
 					Text only button
 				</button>
+				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 				<button className={cx(styles.button, styles.buttonOutlineElement)}>
 					Outline element
 				</button>
+				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 				<button className={cx(styles.button, styles.buttonOutlineElementGhost)}>
 					Outline element ghost (static border)
 				</button>
+				{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 				<button className={cx(styles.button, styles.buttonOutlineEmphasis)}>
 					Outline element ghost (static border emphasis)
 				</button>
@@ -43,6 +49,7 @@ export default function ColorPage() {
 					gap="md"
 				>
 					<div>Surface muted</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
@@ -50,15 +57,19 @@ export default function ColorPage() {
 
 				<Flex className={styles.card} orientation="v" gap="md">
 					<div>Surface background colour</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonGhost)}>
 						Solid strong colour button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonText)}>
 						Text only button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button
 						className={cx(styles.button, styles.buttonOutlineElementGhost)}
 					>
@@ -72,6 +83,7 @@ export default function ColorPage() {
 					gap="md"
 				>
 					<div>Surface subtle</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
@@ -83,6 +95,7 @@ export default function ColorPage() {
 					gap="md"
 				>
 					<div>Surface emphasis</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
@@ -90,6 +103,7 @@ export default function ColorPage() {
 						<div className={styles.badge}>Badge</div>
 						<div className={styles.badge}>Badge</div>
 					</Flex>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonGhost)}>
 						Solid strong colour button
 					</button>
@@ -104,15 +118,19 @@ export default function ColorPage() {
 						Element colours should not be used for backgrounds like this, which
 						are background elements.
 					</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonGhost)}>
 						ghost muted colour button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonText)}>
 						Text only button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button
 						className={cx(styles.button, styles.buttonOutlineElementGhost)}
 					>
@@ -126,6 +144,7 @@ export default function ColorPage() {
 					gap="md"
 				>
 					<div>Border-muted card</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
@@ -137,15 +156,19 @@ export default function ColorPage() {
 					gap="md"
 				>
 					<div>Bordered card</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonGhost)}>
 						Solid strong colour button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonText)}>
 						Text only button
 					</button>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button
 						className={cx(styles.button, styles.buttonOutlineElementGhost)}
 					>
@@ -159,6 +182,7 @@ export default function ColorPage() {
 					gap="md"
 				>
 					<div>Border-subtle card</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>
@@ -170,6 +194,7 @@ export default function ColorPage() {
 					gap="md"
 				>
 					<div>Border-emphasis card</div>
+					{/* biome-ignore lint/a11y/useButtonType: <explanation> */}
 					<button className={cx(styles.button, styles.buttonSolid)}>
 						Solid strong colour button
 					</button>

@@ -1,24 +1,27 @@
-import { useMemo } from "react";
-import { mapValues, mapKeys, pick } from "lodash";
 import chroma from "chroma-js";
+import { mapKeys, mapValues, pick } from "lodash";
+import { useMemo } from "react";
 
-import { atoms } from "@urban-ui/theme/atoms";
-import { theme, baseTheme } from "@urban-ui/theme";
 import { Flex } from "@urban-ui/flex";
 import { Text } from "@urban-ui/text";
-import { shopifyColors, Swatch } from "./swatch.ts";
+import { type baseTheme, theme } from "@urban-ui/theme";
+import { atoms } from "@urban-ui/theme/atoms";
+import { Swatch, shopifyColors } from "./swatch.ts";
 
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 function tail<T extends Array<any>>(arr: T) {
 	return arr[arr.length - 1];
 }
 
 // Flattens the object whilst preserving path information into keys i.e. primary.border.base with the associated value
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
 function makeFlatTone(tone: Object, name: string) {
 	const output: Record<string, string> = {};
 
+	// biome-ignore lint/complexity/noBannedTypes: <explanation>
 	function recurse(block: Object, path: string) {
 		for (const [key, value] of Object.entries(block)) {
-			const currentPath = path.length < 1 ? key : path + `.${key}`;
+			const currentPath = path.length < 1 ? key : `${path}.${key}`;
 			if (typeof value === "object") {
 				recurse(value, currentPath);
 				continue;
@@ -117,6 +120,7 @@ function useToneSwatch(tone: ITone, title: string) {
 	}, [tone, title]);
 }
 
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
 function toObjArray<T extends Object>(
 	obj: T,
 ): Array<{ id: keyof T; hsl: T[keyof T] }> {

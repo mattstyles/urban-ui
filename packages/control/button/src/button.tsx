@@ -1,29 +1,28 @@
 "use client";
 
-import type { VariantProps } from "cva";
+import type { Slot } from "@radix-ui/react-slot";
 import type { AriaButtonProps } from "@react-aria/button";
-
-import * as React from "react";
-import { useRef, forwardRef, useMemo } from "react";
-import { useHover } from "@react-aria/interactions";
-import { useFocusRing } from "@react-aria/focus";
-import { mergeProps, useObjectRef, mergeRefs } from "@react-aria/utils";
 import { useButton } from "@react-aria/button";
-import { atoms } from "@urban-ui/theme/atoms";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { mergeProps, mergeRefs, useObjectRef } from "@react-aria/utils";
 import { Text } from "@urban-ui/text";
-import { cva } from "cva";
+import { atoms } from "@urban-ui/theme/atoms";
 import cx from "clsx";
-import { Slot } from "@radix-ui/react-slot";
+import type { VariantProps } from "cva";
+import { cva } from "cva";
+import * as React from "react";
+import { forwardRef, useMemo, useRef } from "react";
 import { base, components, shaping } from "./button.css.ts";
 import {
-	solid,
-	ghost,
-	transparent,
-	outline,
-	foreground,
-	sizes,
 	effects,
+	foreground,
+	ghost,
+	outline,
 	radii,
+	sizes,
+	solid,
+	transparent,
 } from "./variants.css.ts";
 
 const variants = cva([base], {
@@ -106,24 +105,26 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 		const ref = useObjectRef(
 			useMemo(() => {
 				return mergeRefs(passRef, innerRef);
-			}, [passRef, innerRef]),
+			}, [passRef]),
 		);
 
 		const { buttonProps, isPressed } = useButton(props, ref);
 		const { hoverProps, isHovered } = useHover(props);
 		const { focusProps, isFocusVisible, isFocused } = useFocusRing(props);
 
-		const Components: { Container: Slot | "button"; passProps: PassPropsType } =
-			useMemo(() => {
-				if (asChild !== true) {
-					return {
-						Container: "button",
-						passProps: { children },
-					};
-				}
+		const Components: {
+			Container: typeof Slot | "button";
+			passProps: PassPropsType;
+		} = useMemo(() => {
+			if (asChild !== true) {
+				return {
+					Container: "button",
+					passProps: { children },
+				};
+			}
 
-				return slot(children);
-			}, [asChild, children]);
+			return slot(children);
+		}, [asChild, children]);
 
 		const Content = useMemo(() => {
 			const content = Components.passProps.children;
@@ -183,15 +184,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Urban-Button";
 
-type Slot = React.ForwardRefExoticComponent<
-	React.PropsWithChildren & React.RefAttributes<HTMLElement>
->;
+// type Slot = React.ForwardRefExoticComponent<
+// 	React.PropsWithChildren & React.RefAttributes<HTMLElement>
+// >;
 type PassPropsType = {
 	children?: React.ReactNode;
 };
 
 function slot(children: React.ReactNode): {
-	Container: Slot;
+	Container: typeof Slot;
 	passProps: PassPropsType;
 } {
 	const childArray = React.Children.toArray(children);

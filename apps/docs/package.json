@@ -6,7 +6,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "biome lint src"
 	},
 	"devDependencies": {
 		"@capsizecss/core": "^3.1.1",
@@ -21,7 +21,6 @@
 		"@types/react": "18.2.17",
 		"@types/react-dom": "^18.2.7",
 		"@vanilla-extract/next-plugin": "^2.3.7",
-		"config-eslint": "workspace:*",
 		"config-ts": "workspace:*",
 		"eslint": "^8.46.0",
 		"typescript": "^5.1.6"

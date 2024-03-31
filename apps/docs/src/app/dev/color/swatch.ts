@@ -1,8 +1,8 @@
 import type { Color } from "chroma-js";
 
-import { match } from "ts-pattern";
 import chroma from "chroma-js";
-import { mapValues, pickBy, groupBy } from "lodash";
+import { groupBy, mapValues, pickBy } from "lodash";
+import { match } from "ts-pattern";
 
 export type NamedColor = { key: string; value: Color };
 export type SwatchArray = Array<NamedColor>;
@@ -48,12 +48,13 @@ export class Swatch {
 	static groupBy(
 		arr: SwatchArray,
 		ordering: "hue" | "lightness" | "saturation",
-		buckets: number = 100,
+		buckets = 100,
 	) {
 		const output: Array<Array<NamedColor>> = Array.from({
 			length: buckets + 1,
 		}).map((_) => []);
 
+		// biome-ignore lint/complexity/noForEach: <explanation>
 		arr.forEach(({ key, value }) => {
 			const l = value.hsl()[2]; // 0...1
 			const idx = Math.floor(l * buckets);
@@ -208,6 +209,7 @@ export const shopifyColors = {
 	"--p-color-text-magic": "rgba(90, 36, 205, 1)",
 };
 
+// biome-ignore lint/complexity/noBannedTypes: <explanation>
 function toObjArray<T extends Object>(
 	obj: T,
 ): Array<{ key: keyof T; value: T[keyof T] }> {
