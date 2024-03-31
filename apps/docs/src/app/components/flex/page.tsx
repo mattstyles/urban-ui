@@ -1,10 +1,10 @@
-import {Content} from './content.tsx'
-import {Flex} from '@urban-ui/flex'
+import { Content } from "./content.tsx";
+import { Flex } from "@urban-ui/flex";
 
 export default function FlexPage() {
-  return (
-    <Flex orientation='v'>
-      <Content />
-    </Flex>
-  )
+	return (
+		<Flex orientation="v">
+			<Content />
+		</Flex>
+	);
 }

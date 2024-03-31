@@ -1,9 +1,9 @@
-import {Content} from './content.tsx'
+import { Content } from "./content.tsx";
 
 export default function Home() {
-  return (
-    <main>
-      <Content />
-    </main>
-  )
+	return (
+		<main>
+			<Content />
+		</main>
+	);
 }

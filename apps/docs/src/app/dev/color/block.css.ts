@@ -1,28 +1,28 @@
-import {style, assignVars, createTheme} from '@vanilla-extract/css'
-import {theme} from '@urban-ui/theme'
+import { style, assignVars, createTheme } from "@vanilla-extract/css";
+import { theme } from "@urban-ui/theme";
 
 export const block = style({
-  backgroundColor: theme.colors.current.surface.base,
-  color: theme.colors.current.fg.base.hi,
-})
+	backgroundColor: theme.colors.current.surface.base,
+	color: theme.colors.current.fg.base.hi,
+});
 
 export const highlightBlock = style({
-  // vars: assignVars(theme.colors.base.muted, {
-  //   bg: {
-  //     base: 'hsl(120, 86%, 74%)',
-  //     hover: 'hsl(120, 86%, 82%)',
-  //     active: 'hsl(120, 86%, 89%)',
-  //   },
-  //   fg: {
-  //     hi: 'hsl(0, 0%, 20%)',
-  //     lo: 'hsl(0, 0%, 34%)',
-  //   },
-  // }),
-})
+	// vars: assignVars(theme.colors.base.muted, {
+	//   bg: {
+	//     base: 'hsl(120, 86%, 74%)',
+	//     hover: 'hsl(120, 86%, 82%)',
+	//     active: 'hsl(120, 86%, 89%)',
+	//   },
+	//   fg: {
+	//     hi: 'hsl(0, 0%, 20%)',
+	//     lo: 'hsl(0, 0%, 34%)',
+	//   },
+	// }),
+});
 
 export const primary = style({
-  vars: assignVars(theme.colors.current, theme.colors.primary),
-})
+	vars: assignVars(theme.colors.current, theme.colors.primary),
+});
 
 // export const cyberColorMode = createTheme(theme.colors, {
 //   alphaLighten: theme.colors.alphaLighten,
