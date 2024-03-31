@@ -1,61 +1,61 @@
-import type {VariantProps} from 'cva'
-import type {Slot as SlotType} from '@urban-ui/slot'
+import type { VariantProps } from "cva";
+import type { Slot as SlotType } from "@urban-ui/slot";
 
-import {useMemo} from 'react'
-import cx from 'clsx'
-import {cva} from 'cva'
-import {Slot} from '@radix-ui/react-slot'
+import { useMemo } from "react";
+import cx from "clsx";
+import { cva } from "cva";
+import { Slot } from "@radix-ui/react-slot";
 import {
-  sizes,
-  weights,
-  kerning,
-  strong,
-  em,
-  font,
-  colors,
-} from './variants.css.ts'
-import {base, fallbackSize} from './text.css.ts'
-import {atoms} from '@urban-ui/theme/atoms'
+	sizes,
+	weights,
+	kerning,
+	strong,
+	em,
+	font,
+	colors,
+} from "./variants.css.ts";
+import { base, fallbackSize } from "./text.css.ts";
+import { atoms } from "@urban-ui/theme/atoms";
 
 const variants = cva([base], {
-  variants: {
-    size: {
-      inherit: fallbackSize,
-      ...sizes,
-    },
-    font: font,
-    weight: weights,
-    kerning: kerning,
-    strong: {
-      true: strong,
-    },
-    em: {
-      true: em,
-    },
-    fontStyle: {
-      italic: em,
-    },
-    contrast: {
-      hi: colors.fg.hi,
-      lo: colors.fg.lo,
-    },
-    invert: {
-      true: {},
-      // app: atoms({invert: 'app'}),
-      // tone: atoms({invert: 'tone'})
-    },
-    tone: {
-      true: atoms({fg: 'current'}),
-      inherit: atoms({fg: 'current'}),
-      primary: atoms({fg: 'primary'}),
-      neutral: atoms({fg: 'neutral'}),
-      critical: atoms({fg: 'critical'}),
-    },
-  },
-  defaultVariants: {
-    size: 'inherit',
-  },
-})
+	variants: {
+		size: {
+			inherit: fallbackSize,
+			...sizes,
+		},
+		font: font,
+		weight: weights,
+		kerning: kerning,
+		strong: {
+			true: strong,
+		},
+		em: {
+			true: em,
+		},
+		fontStyle: {
+			italic: em,
+		},
+		contrast: {
+			hi: colors.fg.hi,
+			lo: colors.fg.lo,
+		},
+		invert: {
+			true: {},
+			// app: atoms({invert: 'app'}),
+			// tone: atoms({invert: 'tone'})
+		},
+		tone: {
+			true: atoms({ fg: "current" }),
+			inherit: atoms({ fg: "current" }),
+			primary: atoms({ fg: "primary" }),
+			neutral: atoms({ fg: "neutral" }),
+			critical: atoms({ fg: "critical" }),
+		},
+	},
+	defaultVariants: {
+		size: "inherit",
+	},
+});
 
 // export interface TextProps
 //   extends Omit<VariantProps<typeof variants>, 'req'>,
@@ -63,92 +63,96 @@ const variants = cva([base], {
 //     React.PropsWithChildren,
 //     React.HTMLAttributes<'span'> {}
 
-type TextVariants = VariantProps<typeof variants>
+type TextVariants = VariantProps<typeof variants>;
 export interface TextProps
-  extends TextVariants,
-    React.PropsWithChildren,
-    React.HTMLAttributes<HTMLElement> {
-  asChild?: boolean
-  slot?: Extract<
-    SlotType,
-    'description' | 'label' | 'errorMessage' | 'requiredLabel'
-  >
+	extends TextVariants,
+		React.PropsWithChildren,
+		React.HTMLAttributes<HTMLElement> {
+	asChild?: boolean;
+	slot?: Extract<
+		SlotType,
+		"description" | "label" | "errorMessage" | "requiredLabel"
+	>;
 }
 
 export function Text({
-  asChild,
-  children,
-  size,
-  font,
-  weight,
-  kerning,
-  strong,
-  em,
-  fontStyle,
-  contrast = 'hi',
-  tone,
-  invert = false,
-  className,
-  ...props
+	asChild,
+	children,
+	size,
+	font,
+	weight,
+	kerning,
+	strong,
+	em,
+	fontStyle,
+	contrast = "hi",
+	tone,
+	invert = false,
+	className,
+	...props
 }: TextProps) {
-  const Comp = useMemo(
-    () => getChild({asChild, strong, em}),
-    [asChild, strong, em],
-  )
+	const Comp = useMemo(
+		() => getChild({ asChild, strong, em }),
+		[asChild, strong, em],
+	);
 
-  const invertedClass = useMemo(
-    () => getInvertedClass({tone, invert}),
-    [tone, invert],
-  )
+	const invertedClass = useMemo(
+		() => getInvertedClass({ tone, invert }),
+		[tone, invert],
+	);
 
-  return (
-    <Comp
-      className={cx(
-        variants({
-          size,
-          font,
-          weight,
-          kerning,
-          strong,
-          em,
-          fontStyle,
-          contrast,
-          tone,
-          invert,
-          className,
-        }),
-        invertedClass,
-      )}
-      {...props}>
-      {children}
-    </Comp>
-  )
+	return (
+		<Comp
+			className={cx(
+				variants({
+					size,
+					font,
+					weight,
+					kerning,
+					strong,
+					em,
+					fontStyle,
+					contrast,
+					tone,
+					invert,
+					className,
+				}),
+				invertedClass,
+			)}
+			{...props}
+		>
+			{children}
+		</Comp>
+	);
 }
 
 function getChild({
-  asChild,
-  strong,
-  em,
-}: Pick<TextProps, 'asChild' | 'strong' | 'em'>) {
-  if (asChild != null) {
-    return Slot
-  }
+	asChild,
+	strong,
+	em,
+}: Pick<TextProps, "asChild" | "strong" | "em">) {
+	if (asChild != null) {
+		return Slot;
+	}
 
-  if (em != null && strong == null) {
-    return 'em'
-  }
+	if (em != null && strong == null) {
+		return "em";
+	}
 
-  if (strong != null && em == null) {
-    return 'strong'
-  }
+	if (strong != null && em == null) {
+		return "strong";
+	}
 
-  return 'span'
+	return "span";
 }
 
-function getInvertedClass({tone, invert}: Pick<TextProps, 'tone' | 'invert'>) {
-  if (invert === false) {
-    return null
-  }
+function getInvertedClass({
+	tone,
+	invert,
+}: Pick<TextProps, "tone" | "invert">) {
+	if (invert === false) {
+		return null;
+	}
 
-  return tone != null ? atoms({invert: 'tone'}) : atoms({invert: 'app'})
+	return tone != null ? atoms({ invert: "tone" }) : atoms({ invert: "app" });
 }

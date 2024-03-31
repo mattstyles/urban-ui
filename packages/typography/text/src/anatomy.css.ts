@@ -1,29 +1,29 @@
-import {createThemeContract, createVar} from '@vanilla-extract/css'
+import { createThemeContract, createVar } from "@vanilla-extract/css";
 
 // Capsize
 export const size = createThemeContract({
-  fontSize: null,
-  lineHeight: null,
-  capHeightTrim: null,
-  baselineTrim: null,
-})
+	fontSize: null,
+	lineHeight: null,
+	capHeightTrim: null,
+	baselineTrim: null,
+});
 
-export const weight = createVar()
-export const style = createVar()
-export const font = createVar()
-export const kerning = createVar()
-export const capHeight = createVar()
+export const weight = createVar();
+export const style = createVar();
+export const font = createVar();
+export const kerning = createVar();
+export const capHeight = createVar();
 export const color = createThemeContract({
-  hi: null,
-  lo: null,
-})
+	hi: null,
+	lo: null,
+});
 
 export const anatomy = createThemeContract({
-  size,
-  font,
-  weight,
-  style,
-  kerning,
-  capHeight,
-  color,
-})
+	size,
+	font,
+	weight,
+	style,
+	kerning,
+	capHeight,
+	color,
+});

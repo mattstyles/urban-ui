@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import React, {useMemo, Children, cloneElement, isValidElement} from 'react'
+import React, { useMemo, Children, cloneElement, isValidElement } from "react";
 
 export type Slot =
-  | 'field'
-  | 'label'
-  | 'description'
-  | 'errorMessage'
-  | 'requiredLabel'
+	| "field"
+	| "label"
+	| "description"
+	| "errorMessage"
+	| "requiredLabel";
 
 type SlottedElements<T, U = React.ReactElement | null> = Partial<{
-  [Property in keyof T]: U
-}>
+	[Property in keyof T]: U;
+}>;
 
 /**
  * Runs the mapper over slotted children anywhere in the tree.
@@ -19,23 +19,23 @@ type SlottedElements<T, U = React.ReactElement | null> = Partial<{
  * Returns all children.
  */
 export function useSlots<
-  T extends Partial<
-    Record<Slot, (child: React.ReactElement) => React.ReactElement | null>
-  >,
+	T extends Partial<
+		Record<Slot, (child: React.ReactElement) => React.ReactElement | null>
+	>,
 >(children: React.ReactNode, slots: T) {
-  const mapped = useMemo(() => {
-    return mapAllChildren(children, (child) => {
-      const slot = child.props.slot as Slot
-      const fn = slots[slot]
+	const mapped = useMemo(() => {
+		return mapAllChildren(children, (child) => {
+			const slot = child.props.slot as Slot;
+			const fn = slots[slot];
 
-      if (fn == null) {
-        return child
-      }
+			if (fn == null) {
+				return child;
+			}
 
-      return fn(child)
-    })
-  }, [children, slots])
-  return mapped
+			return fn(child);
+		});
+	}, [children, slots]);
+	return mapped;
 }
 
 /**
@@ -67,31 +67,31 @@ export function useSlots<
  * ```
  */
 export function useGetSlots<
-  T extends Partial<
-    Record<Slot, (child: React.ReactElement) => React.ReactElement | null>
-  >,
+	T extends Partial<
+		Record<Slot, (child: React.ReactElement) => React.ReactElement | null>
+	>,
 >(children: React.ReactNode, slots: T): SlottedElements<T> {
-  return useMemo(() => {
-    const output: Partial<SlottedElements<T>> = {}
-    Children.forEach(children, (child) => {
-      if (!isValidElement(child)) {
-        return
-      }
+	return useMemo(() => {
+		const output: Partial<SlottedElements<T>> = {};
+		Children.forEach(children, (child) => {
+			if (!isValidElement(child)) {
+				return;
+			}
 
-      if (child.props && child.props.slot) {
-        const slot = child.props.slot as Slot
-        const fn = slots[slot]
+			if (child.props && child.props.slot) {
+				const slot = child.props.slot as Slot;
+				const fn = slots[slot];
 
-        if (fn == null) {
-          return
-        }
+				if (fn == null) {
+					return;
+				}
 
-        output[slot] = fn(child)
-      }
-    })
+				output[slot] = fn(child);
+			}
+		});
 
-    return output as SlottedElements<T>
-  }, [children, slots])
+		return output as SlottedElements<T>;
+	}, [children, slots]);
 }
 
 /**
@@ -126,33 +126,33 @@ export function useGetSlots<
 // }
 
 export function mapAllChildren(
-  children: React.ReactNode,
-  fn: (child: React.ReactElement) => React.ReactElement | null,
+	children: React.ReactNode,
+	fn: (child: React.ReactElement) => React.ReactElement | null,
 ): React.ReactNode {
-  if (typeof children === 'function') {
-    return children
-  }
+	if (typeof children === "function") {
+		return children;
+	}
 
-  return Children.map(children, (child) => {
-    if (!isValidElement(child)) {
-      return child
-    }
+	return Children.map(children, (child) => {
+		if (!isValidElement(child)) {
+			return child;
+		}
 
-    // We use asChild to denote a slotted child and use radix-ui/slot to do this, something about the clone here nukes the slot, so we will run the passed function against a child like this, but not muck with its children.
-    if (child.props.children && child.props.asChild == null) {
-      const mapped = fn(child)
+		// We use asChild to denote a slotted child and use radix-ui/slot to do this, something about the clone here nukes the slot, so we will run the passed function against a child like this, but not muck with its children.
+		if (child.props.children && child.props.asChild == null) {
+			const mapped = fn(child);
 
-      if (mapped === null) {
-        return mapped
-      }
+			if (mapped === null) {
+				return mapped;
+			}
 
-      return cloneElement(
-        mapped,
-        mapped.props,
-        mapAllChildren(child.props.children, fn),
-      )
-    }
+			return cloneElement(
+				mapped,
+				mapped.props,
+				mapAllChildren(child.props.children, fn),
+			);
+		}
 
-    return fn(child)
-  })
+		return fn(child);
+	});
 }

@@ -1,109 +1,112 @@
-import type {TaskInputParameters, TaskReturnType} from './transform/task.ts'
+import type { TaskInputParameters, TaskReturnType } from "./transform/task.ts";
 
-import ts from 'typescript'
+import ts from "typescript";
 
-import {createTask} from './transform/task.ts'
-import {Pipeline} from './transform/pipeline.ts'
-import {createDebugger} from './log'
+import { createTask } from "./transform/task.ts";
+import { Pipeline } from "./transform/pipeline.ts";
+import { createDebugger } from "./log";
 
-const debug = createDebugger('rk::definition')
+const debug = createDebugger("rk::definition");
 
-type FilesDts = Record<string, string>
+type FilesDts = Record<string, string>;
 
 /**
  * Grabs the tsconfig file and writes ts definition files to disk
  */
 export async function generateDefinitions(
-  /**
-   * @TODO a single entrypoint is faster, add config item to be able to specify a different set of entrypoints for dts than for compilation phase
-   */
-  files: Array<string>,
-  options: {
-    outDir: string
-  },
+	/**
+	 * @TODO a single entrypoint is faster, add config item to be able to specify a different set of entrypoints for dts than for compilation phase
+	 */
+	files: Array<string>,
+	options: {
+		outDir: string;
+	},
 ) {
-  const pipeline = new Pipeline<
-    any,
-    TaskInputParameters<typeof readConfig>,
-    TaskReturnType<typeof write>
-  >('dts')
-  pipeline.addStep(readConfig)
-  pipeline.addStep(
-    compile(files, {
-      noEmit: false,
-      declaration: true,
-      emitDeclarationOnly: true,
-      declarationMap: true,
-      outDir: options.outDir,
-    }),
-  )
-  pipeline.addStep(write)
+	const pipeline = new Pipeline<
+		any,
+		TaskInputParameters<typeof readConfig>,
+		TaskReturnType<typeof write>
+	>("dts");
+	pipeline.addStep(readConfig);
+	pipeline.addStep(
+		compile(files, {
+			noEmit: false,
+			declaration: true,
+			emitDeclarationOnly: true,
+			declarationMap: true,
+			outDir: options.outDir,
+		}),
+	);
+	pipeline.addStep(write);
 
-  debug('Running dts pipeline')
-  const output = await pipeline.run({
-    searchPath: './',
-    filename: 'tsconfig.json',
-  })
+	debug("Running dts pipeline");
+	const output = await pipeline.run({
+		searchPath: "./",
+		filename: "tsconfig.json",
+	});
 
-  return pipeline.generateStatistics()
+	return pipeline.generateStatistics();
 }
 
 const readConfig = createTask(
-  'readConfig',
-  async (ctx, opts: {searchPath: string; filename: string}) => {
-    const configPath = ts.findConfigFile(
-      /*searchPath*/ './',
-      ts.sys.fileExists,
-      'tsconfig.json',
-    )
-    if (configPath == null) {
-      throw new Error('can not read config path')
-    }
+	"readConfig",
+	async (ctx, opts: { searchPath: string; filename: string }) => {
+		const configPath = ts.findConfigFile(
+			/*searchPath*/ "./",
+			ts.sys.fileExists,
+			"tsconfig.json",
+		);
+		if (configPath == null) {
+			throw new Error("can not read config path");
+		}
 
-    const configFile = ts.readConfigFile(configPath, ts.sys.readFile)
-    const conf = ts.parseJsonConfigFileContent(configFile.config, ts.sys, './')
-    debug('Using tsconfig', configPath)
-    return {conf}
-  },
-)
+		const configFile = ts.readConfigFile(configPath, ts.sys.readFile);
+		const conf = ts.parseJsonConfigFileContent(configFile.config, ts.sys, "./");
+		debug("Using tsconfig", configPath);
+		return { conf };
+	},
+);
 
 const compile = (files: Array<string>, overrides: ts.CompilerOptions) =>
-  createTask(
-    'compile',
-    async (ctx, opts: Awaited<TaskReturnType<typeof readConfig>>) => {
-      const options = {
-        ...opts.conf.options,
-        ...overrides,
-      }
+	createTask(
+		"compile",
+		async (ctx, opts: Awaited<TaskReturnType<typeof readConfig>>) => {
+			const options = {
+				...opts.conf.options,
+				...overrides,
+			};
 
-      const createdFiles: FilesDts = {}
-      const host = ts.createCompilerHost(options)
-      host.writeFile = (filename: string, contents: string) => {
-        return (createdFiles[filename] = contents)
-      }
+			const createdFiles: FilesDts = {};
+			const host = ts.createCompilerHost(options);
+			host.writeFile = (filename: string, contents: string) => {
+				return (createdFiles[filename] = contents);
+			};
 
-      // Prepare and emit the d.ts files
-      const program = ts.createProgram(files, options, host)
-      program.emit()
+			// Prepare and emit the d.ts files
+			const program = ts.createProgram(files, options, host);
+			program.emit();
 
-      return {files: createdFiles}
-    },
-  )
+			return { files: createdFiles };
+		},
+	);
 
 const write = createTask(
-  'write',
-  async (ctx, {files}: Awaited<TaskReturnType<ReturnType<typeof compile>>>) => {
-    await Promise.all(
-      Object.entries(files).map(([filepath, content]) => {
-        return writeFile(filepath, content)
-      }),
-    )
+	"write",
+	async (
+		ctx,
+		{ files }: Awaited<TaskReturnType<ReturnType<typeof compile>>>,
+	) => {
+		await Promise.all(
+			Object.entries(files).map(([filepath, content]) => {
+				return writeFile(filepath, content);
+			}),
+		);
 
-    return files
-  },
-)
+		return files;
+	},
+);
 
 async function writeFile(filepath: string, content: string) {
-  const bytes = await Bun.write(filepath, content)
-  debug('Writing file:', filepath, bytes)
+	const bytes = await Bun.write(filepath, content);
+	debug("Writing file:", filepath, bytes);
 }

@@ -1,13 +1,13 @@
 {
-  "extends": "config-ts/nextjs.json",
-  "compilerOptions": {
-    "plugins": [{"name": "next"}],
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
+	"extends": "config-ts/nextjs.json",
+	"compilerOptions": {
+		"plugins": [{ "name": "next" }],
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./src/*"]
+		}
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }

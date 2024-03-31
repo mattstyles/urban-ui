@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import React, {forwardRef, useMemo} from 'react'
+import React, { forwardRef, useMemo } from "react";
 import {
-  useSelectIndex,
-  useGroupChildren,
-  // useSelectionH,
-  // useSelectionV,
-  useFocusEffect,
-  useKeys,
-} from './hooks.ts'
-import {Flex} from '@urban-ui/flex'
-import type {FlexProps} from '@urban-ui/flex'
+	useSelectIndex,
+	useGroupChildren,
+	// useSelectionH,
+	// useSelectionV,
+	useFocusEffect,
+	useKeys,
+} from "./hooks.ts";
+import { Flex } from "@urban-ui/flex";
+import type { FlexProps } from "@urban-ui/flex";
 
 export interface ButtonGroupProps
-  extends React.PropsWithChildren,
-    Pick<FlexProps, 'gap' | 'orientation'> {
-  autoFocus?: boolean
-  isWrap?: boolean
-  isTabbable?: boolean
+	extends React.PropsWithChildren,
+		Pick<FlexProps, "gap" | "orientation"> {
+	autoFocus?: boolean;
+	isWrap?: boolean;
+	isTabbable?: boolean;
 }
 
 // export function ButtonGroup(props: ButtonGroupProps) {
@@ -28,49 +28,53 @@ export interface ButtonGroupProps
 //   return <HGroup {...props} />
 // }
 export const ButtonGroup = forwardRef<
-  React.ElementRef<typeof Flex>,
-  ButtonGroupProps
+	React.ElementRef<typeof Flex>,
+	ButtonGroupProps
 >(
-  (
-    {
-      children,
-      orientation = 'h',
-      gap = 'xs',
-      autoFocus = false,
-      isWrap = false,
-      isTabbable = false,
-      ...props
-    },
-    ref,
-  ) => {
-    const {currentIndex, next, prev, set} = useSelectIndex({children, isWrap})
-    const onKeyDown = useKeys(orientation, {next, prev})
-    const ariaOrientation = useMemo(() => {
-      return orientation === 'v' ? 'vertical' : 'horizontal'
-    }, [orientation])
-    const {groupChildren, refs} = useGroupChildren({
-      children,
-      onKeyDown,
-      isTabbable,
-      currentIndex,
-      setIndex: set,
-    })
-    useFocusEffect({currentIndex, refs, autoFocus})
+	(
+		{
+			children,
+			orientation = "h",
+			gap = "xs",
+			autoFocus = false,
+			isWrap = false,
+			isTabbable = false,
+			...props
+		},
+		ref,
+	) => {
+		const { currentIndex, next, prev, set } = useSelectIndex({
+			children,
+			isWrap,
+		});
+		const onKeyDown = useKeys(orientation, { next, prev });
+		const ariaOrientation = useMemo(() => {
+			return orientation === "v" ? "vertical" : "horizontal";
+		}, [orientation]);
+		const { groupChildren, refs } = useGroupChildren({
+			children,
+			onKeyDown,
+			isTabbable,
+			currentIndex,
+			setIndex: set,
+		});
+		useFocusEffect({ currentIndex, refs, autoFocus });
 
-    return (
-      <Flex
-        ref={ref}
-        orientation={orientation}
-        gap={gap}
-        role='toolbar'
-        aria-orientation={ariaOrientation}
-        {...props}>
-        {groupChildren}
-      </Flex>
-    )
-  },
-)
-ButtonGroup.displayName = 'Urban-ButtonGroup'
+		return (
+			<Flex
+				ref={ref}
+				orientation={orientation}
+				gap={gap}
+				role="toolbar"
+				aria-orientation={ariaOrientation}
+				{...props}
+			>
+				{groupChildren}
+			</Flex>
+		);
+	},
+);
+ButtonGroup.displayName = "Urban-ButtonGroup";
 
 // function HGroup({
 //   children,

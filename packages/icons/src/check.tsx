@@ -1,7 +1,9 @@
-import {CheckIcon as Icon} from '@heroicons/react/24/outline'
-import {IconProps} from './props.ts'
-import {variants} from './variants.ts'
+import { CheckIcon as Icon } from "@heroicons/react/24/outline";
+import { IconProps } from "./props.ts";
+import { variants } from "./variants.ts";
 
-export function CheckIcon({size, fg, tone, className, ...props}: IconProps) {
-  return <Icon {...props} className={variants({size, fg, tone, className})} />
+export function CheckIcon({ size, fg, tone, className, ...props }: IconProps) {
+	return (
+		<Icon {...props} className={variants({ size, fg, tone, className })} />
+	);
 }

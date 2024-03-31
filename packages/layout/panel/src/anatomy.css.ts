@@ -1,9 +1,9 @@
-import {createThemeContract} from '@vanilla-extract/css'
+import { createThemeContract } from "@vanilla-extract/css";
 
 /**
  * Panel component anatomy
  */
 export const anatomy = createThemeContract({
-  px: null,
-  py: null,
-})
+	px: null,
+	py: null,
+});

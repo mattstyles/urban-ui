@@ -1,82 +1,82 @@
-import type {MapType} from './shared.ts'
+import type { MapType } from "./shared.ts";
 
-import {createThemeContract} from '@vanilla-extract/css'
-import {mapValues} from '@urban-ui/utils'
-import {precomputeValues} from '@capsizecss/core'
+import { createThemeContract } from "@vanilla-extract/css";
+import { mapValues } from "@urban-ui/utils";
+import { precomputeValues } from "@capsizecss/core";
 import {
-  sizeScale,
-  extendedSizeScale,
-  restrictedSizeScale,
-  numericScale,
-} from './shared.ts'
+	sizeScale,
+	extendedSizeScale,
+	restrictedSizeScale,
+	numericScale,
+} from "./shared.ts";
 
 /**
  * Semantic space scale for UI elements
  */
 export const space = createThemeContract({
-  none: null,
-  ...extendedSizeScale,
-})
+	none: null,
+	...extendedSizeScale,
+});
 
 /**
  * Semantic sizes for UI elements
  */
 export const sizes = createThemeContract({
-  control: restrictedSizeScale,
-  focusRing: null,
-  content: sizeScale,
-})
+	control: restrictedSizeScale,
+	focusRing: null,
+	content: sizeScale,
+});
 
 /**
  * Font size is controlled by capsize
  */
-export type Capsize = ReturnType<typeof precomputeValues>
+export type Capsize = ReturnType<typeof precomputeValues>;
 const typeCapsize: MapType<Capsize, null> = {
-  fontSize: null,
-  lineHeight: null,
-  capHeightTrim: null,
-  baselineTrim: null,
-}
+	fontSize: null,
+	lineHeight: null,
+	capHeightTrim: null,
+	baselineTrim: null,
+};
 
 /**
  * Typography has a couple of different variables it supports
  */
 export const typography = createThemeContract({
-  size: mapValues(sizeScale, () => {
-    return typeCapsize
-  }),
-  capHeight: mapValues(sizeScale, () => {
-    return null
-  }),
-  font: {
-    system: null,
-    heading: null,
-    copy: null,
-    mono: null,
-  },
-  weight: {
-    light: null,
-    normal: null,
-    semibold: null,
-    bold: null,
-  },
-  kerning: {
-    xs: null,
-    sm: null,
-    md: null,
-    lg: null,
-    xl: null,
-  },
-})
+	size: mapValues(sizeScale, () => {
+		return typeCapsize;
+	}),
+	capHeight: mapValues(sizeScale, () => {
+		return null;
+	}),
+	font: {
+		system: null,
+		heading: null,
+		copy: null,
+		mono: null,
+	},
+	weight: {
+		light: null,
+		normal: null,
+		semibold: null,
+		bold: null,
+	},
+	kerning: {
+		xs: null,
+		sm: null,
+		md: null,
+		lg: null,
+		xl: null,
+	},
+});
 
 /**
  * Transparency is not a semantic scale
  */
 export const alpha = createThemeContract({
-  50: null,
-  75: null,
-  ...numericScale,
-})
+	50: null,
+	75: null,
+	...numericScale,
+});
 
 /**
  * App colours are different from standard tonal colours.
@@ -84,35 +84,35 @@ export const alpha = createThemeContract({
  * The 4 modes form a scale either of decreasing or increasing lightness and/or saturation i.e. light mode lightest colour will be muted, and darkest colour will be emphasis.
  */
 export const background = createThemeContract({
-  muted: null,
-  base: null,
-  subtle: null,
-  emphasis: null,
-})
+	muted: null,
+	base: null,
+	subtle: null,
+	emphasis: null,
+});
 
 /**
  * Interactive state colours
  */
 export const interaction = {
-  base: null,
-  hover: null,
-  press: null,
-  selected: null,
-}
+	base: null,
+	hover: null,
+	press: null,
+	selected: null,
+};
 
 /**
  * Refers to elements which are always foreground, primarily text and iconography.
  * High and low contrast modes should be supplied, note that low contrast should still pass accessibility standards.
  */
 export const foreground = createThemeContract({
-  hi: null,
-  lo: null,
-})
+	hi: null,
+	lo: null,
+});
 
 export const fullForeground = createThemeContract({
-  base: foreground,
-  invert: foreground,
-})
+	base: foreground,
+	invert: foreground,
+});
 
 /**
  * Colour tone.
@@ -123,67 +123,67 @@ export const fullForeground = createThemeContract({
  * Borders represent component borders and support a couple of prominences.
  */
 export const tone = createThemeContract({
-  // Refers to top-level foreground components like text and icons
-  fg: fullForeground,
-  // Background element backgrounds (panels, surfaces, etc)
-  surface: background,
-  // Foreground element backgrounds (buttons, badges, etc)
-  element: {
-    muted: interaction,
-    strong: interaction,
-  },
-  // Mid-range lightness borders
-  border: background,
-  // Shadow colour
-  shadow: null,
-})
+	// Refers to top-level foreground components like text and icons
+	fg: fullForeground,
+	// Background element backgrounds (panels, surfaces, etc)
+	surface: background,
+	// Foreground element backgrounds (buttons, badges, etc)
+	element: {
+		muted: interaction,
+		strong: interaction,
+	},
+	// Mid-range lightness borders
+	border: background,
+	// Shadow colour
+	shadow: null,
+});
 
 /**
  * Core colour values are shared across the entire system colour spectrum
  */
 export const coreColor = createThemeContract({
-  transparent: null,
-  current: null,
-  currentcolor: null,
-  disabled: {
-    bg: null,
-    fg: null,
-  },
-  focus: null,
-  black: null,
-  white: null,
-})
+	transparent: null,
+	current: null,
+	currentcolor: null,
+	disabled: {
+		bg: null,
+		fg: null,
+	},
+	focus: null,
+	black: null,
+	white: null,
+});
 
 /**
  * Transitions
  */
 export const transition = createThemeContract({
-  duration: restrictedSizeScale,
-  easing: {
-    easeInOut: null,
-    bounce: null,
-  },
-})
+	duration: restrictedSizeScale,
+	easing: {
+		easeInOut: null,
+		bounce: null,
+	},
+});
 
 /**
  * Borders - radii
  */
 export const radii = createThemeContract({
-  circular: null,
-  ...restrictedSizeScale,
-})
+	circular: null,
+	...restrictedSizeScale,
+});
 
 /**
  * Border widths
  */
-export const borderWidth = createThemeContract(restrictedSizeScale)
+export const borderWidth = createThemeContract(restrictedSizeScale);
 
 /**
  * Shadows
  */
 export const shadows = createThemeContract({
-  ...restrictedSizeScale,
-  'inset-sm': null,
-  'inset-md': null,
-  'inset-lg': null,
-})
+	...restrictedSizeScale,
+	"inset-sm": null,
+	"inset-md": null,
+	"inset-lg": null,
+});

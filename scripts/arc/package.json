@@ -1,52 +1,52 @@
 {
-  "name": "@urban-ui/arc",
-  "description": "Kit builder for urban ui packages",
-  "module": "./rk.ts",
-  "types": "./rk.d.ts",
-  "type": "module",
-  "private": true,
-  "license": "MIT",
-  "bin": {
-    "arc": "./rk.ts"
-  },
-  "exports": {
-    "types": "./rk.d.ts"
-  },
-  "scripts": {
-    "test": "bun test"
-  },
-  "author": "Matt Styles",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattstyles/urban-ui.git",
-    "directory": "packages/scripts/arc"
-  },
-  "bugs": {
-    "url": "https://github.com/mattstyles/urban-ui/issues"
-  },
-  "devDependencies": {
-    "@stylexjs/stylex": "^0.5.1",
-    "@types/bun": "latest",
-    "@types/debug": "^4.1.12",
-    "@types/pretty-time": "^1.1.5",
-    "@types/react": "^18.2.66",
-    "@types/uuid": "^9.0.8",
-    "@types/yargs": "^17.0.32",
-    "react": "^18.2.0",
-    "typescript": "^5.4.2"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "@swc/core": "^1.4.8",
-    "@swc/plugin-transform-imports": "^1.5.120",
-    "chalk": "^5.3.0",
-    "cosmiconfig": "^9.0.0",
-    "debug": "^4.3.4",
-    "globby": "^14.0.1",
-    "pretty-bytes": "^6.1.1",
-    "uuid": "^9.0.1",
-    "yargs": "^17.7.2"
-  }
+	"name": "@urban-ui/arc",
+	"description": "Kit builder for urban ui packages",
+	"module": "./rk.ts",
+	"types": "./rk.d.ts",
+	"type": "module",
+	"private": true,
+	"license": "MIT",
+	"bin": {
+		"arc": "./rk.ts"
+	},
+	"exports": {
+		"types": "./rk.d.ts"
+	},
+	"scripts": {
+		"test": "bun test"
+	},
+	"author": "Matt Styles",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mattstyles/urban-ui.git",
+		"directory": "packages/scripts/arc"
+	},
+	"bugs": {
+		"url": "https://github.com/mattstyles/urban-ui/issues"
+	},
+	"devDependencies": {
+		"@stylexjs/stylex": "^0.5.1",
+		"@types/bun": "latest",
+		"@types/debug": "^4.1.12",
+		"@types/pretty-time": "^1.1.5",
+		"@types/react": "^18.2.66",
+		"@types/uuid": "^9.0.8",
+		"@types/yargs": "^17.0.32",
+		"react": "^18.2.0",
+		"typescript": "^5.4.2"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"@swc/core": "^1.4.8",
+		"@swc/plugin-transform-imports": "^1.5.120",
+		"chalk": "^5.3.0",
+		"cosmiconfig": "^9.0.0",
+		"debug": "^4.3.4",
+		"globby": "^14.0.1",
+		"pretty-bytes": "^6.1.1",
+		"uuid": "^9.0.1",
+		"yargs": "^17.7.2"
+	}
 }

@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import type {CheckboxGroupState} from '@react-stately/checkbox'
+import type { CheckboxGroupState } from "@react-stately/checkbox";
 
-import {createContext, useContext} from 'react'
-const CheckboxGroupContext = createContext<CheckboxGroupState | null>(null)
+import { createContext, useContext } from "react";
+const CheckboxGroupContext = createContext<CheckboxGroupState | null>(null);
 
 type CheckboxGroupContextProps = React.PropsWithChildren<{
-  value: CheckboxGroupState
-}>
+	value: CheckboxGroupState;
+}>;
 export function CheckboxGroupStateProvider({
-  value,
-  children,
+	value,
+	children,
 }: CheckboxGroupContextProps) {
-  return (
-    <CheckboxGroupContext.Provider value={value}>
-      {children}
-    </CheckboxGroupContext.Provider>
-  )
+	return (
+		<CheckboxGroupContext.Provider value={value}>
+			{children}
+		</CheckboxGroupContext.Provider>
+	);
 }
 
 export function useCheckboxGroupContextState() {
-  const state = useContext(CheckboxGroupContext)
-  if (state == null) {
-    throw new Error('Checkbox must be a part of a checkbox group')
-  }
-  return state
+	const state = useContext(CheckboxGroupContext);
+	if (state == null) {
+		throw new Error("Checkbox must be a part of a checkbox group");
+	}
+	return state;
 }
