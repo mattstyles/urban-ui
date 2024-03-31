@@ -58,7 +58,7 @@
     "vanilla-extract"
   ],
   "scripts": {
-    "lint": "eslint *.ts*",
+    "lint": "eslint src/*.ts*",
     "clean": "del dist",
     "dev": "vite build --watch",
     "build": "vite build",

@@ -14,7 +14,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',
   ],
-  plugins: ['@typescript-eslint', 'react', '@stylexjs/eslint-plugin'],
+  plugins: ['@typescript-eslint', 'react', '@stylexjs'],
   settings: {
     react: {
       version: 'detect',
@@ -32,8 +32,18 @@ module.exports = {
     // Hoisting is fine
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-declare': 'off',
-    // stylex rules
-    '@stylexjs/valid-styles': 'error',
+    // stylex rules - had to disable as did not work with variables
+    // '@stylexjs/valid-styles': [
+    //   'error',
+    //   {
+    //     // propLimits: {
+    //     //   padding: {
+    //     //     limit: [0, 4, 8, 16, 32, 64],
+    //     //     reason: 'Use a padding that conforms to the design system',
+    //     //   },
+    //     // },
+    //   },
+    // ],
   },
   ignorePatterns: ['dist'],
 }

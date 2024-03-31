@@ -30,11 +30,10 @@ function compile(fileNames: string[], options: ts.CompilerOptions): void {
     ...options,
   }
   console.log('building with', opts)
-  const createdFiles = {}
+  const createdFiles: Record<string, string> = {}
   const host = ts.createCompilerHost(opts)
 
   host.writeFile = (fileName: string, contents: string) => {
-    // @ts-expect-error
     return (createdFiles[fileName] = contents)
   }
 
@@ -56,7 +55,6 @@ function compile(fileNames: string[], options: ts.CompilerOptions): void {
     console.log(file)
     const dts = file.replace('.js', '.d.ts')
     console.log(dts)
-    // @ts-expect-error ds
     console.log(createdFiles[dts])
   })
 }
