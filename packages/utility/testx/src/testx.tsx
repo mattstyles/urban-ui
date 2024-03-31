@@ -1,22 +1,42 @@
-'use client'
+"use client";
 
-import type {VariantProps} from 'cva'
+import type { VariantProps } from "cva";
 
-import {forwardRef} from 'react'
-import {cva} from 'cva'
-import * as stylex from '@stylexjs/stylex'
-import cx from 'clsx'
+import * as stylex from "@stylexjs/stylex";
+import cx from "clsx";
+import { cva } from "cva";
+import { forwardRef } from "react";
 // import {base} from './testx.css.ts'
 // import {sizes} from './variants.css.ts'
-import {anatomy, sizes} from './anatomy.stylex.ts'
+import { anatomy, sizes } from "./anatomy.stylex.ts";
 
 const styles = stylex.create({
-  base: {
-    padding: `${sizes.x} ${sizes.y}`,
-    background: anatomy.background,
-    color: anatomy.foreground,
-  },
-})
+	base: {
+		padding: `${sizes.x} ${sizes.y}`,
+		background: anatomy.background,
+		color: anatomy.foreground,
+	},
+});
+
+const foo = "bar";
+const BAR = "BAR";
+console.log(BAR);
+
+const biome = {
+	$schema: "https://biomejs.dev/schemas/1.6.3/schema.json",
+	organizeImports: {
+		enabled: true,
+	},
+	linter: {
+		enabled: true,
+		rules: {
+			recommended: true,
+		},
+	},
+	formatter: {
+		enabled: true,
+	},
+};
 
 // Not sure how to pull themes and classes out of cva?
 // const variants = cva(styles.base, {
@@ -61,34 +81,34 @@ const styles = stylex.create({
  * Compound variants is not supported.
  */
 const sizeVariants = stylex.create({
-  sm: {
-    padding: '3px 18px',
-    fontSize: 18,
-  },
-  md: {
-    padding: '6px 24px',
-    fontSize: 32,
-  },
-  lg: {
-    padding: '9px 32px',
-    fontSize: 48,
-  },
-})
+	sm: {
+		padding: "3px 18px",
+		fontSize: 18,
+	},
+	md: {
+		padding: "6px 24px",
+		fontSize: 32,
+	},
+	lg: {
+		padding: "9px 32px",
+		fontSize: 48,
+	},
+});
 
 const tones = stylex.create({
-  primary: {
-    backgroundColor: 'hotpink',
-    color: 'white',
-  },
-  critical: {
-    backgroundColor: 'red',
-    color: 'white',
-  },
-  neutral: {
-    backgroundColor: 'cornsilk',
-    color: 'hsl(0, 0%, 15%)',
-  },
-})
+	primary: {
+		backgroundColor: "hotpink",
+		color: "white",
+	},
+	critical: {
+		backgroundColor: "red",
+		color: "white",
+	},
+	neutral: {
+		backgroundColor: "cornsilk",
+		color: "hsl(0, 0%, 15%)",
+	},
+});
 
 // const variants = cva([base], {
 //   variants: {
@@ -104,11 +124,11 @@ const tones = stylex.create({
 // })
 
 export interface TestxProps extends React.PropsWithChildren {
-  className?: string
-  size?: keyof typeof sizeVariants
-  tone?: keyof typeof tones
+	className?: string;
+	size?: keyof typeof sizeVariants;
+	tone?: keyof typeof tones;
 }
-type ElementType = HTMLDivElement
+type ElementType = HTMLDivElement;
 
 // export const Testx = forwardRef<ElementType, TestxProps>(
 //   ({size = 'md', tone = 'primary', className, ...props}, ref) => {
@@ -120,15 +140,16 @@ type ElementType = HTMLDivElement
 //   },
 // )
 export const Testx = forwardRef<ElementType, TestxProps>(
-  ({size = 'md', tone = 'primary', className, ...props}, ref) => {
-    return (
-      <div
-        ref={ref}
-        {...props}
-        {...stylex.props(styles.base, sizeVariants[size], tones[tone])}>
-        Hello world
-      </div>
-    )
-  },
-)
-Testx.displayName = 'Urban.Testx'
+	({ size = "md", tone = "primary", className, ...props }, ref) => {
+		return (
+			<div
+				ref={ref}
+				{...props}
+				{...stylex.props(styles.base, sizeVariants[size], tones[tone])}
+			>
+				Hello world
+			</div>
+		);
+	},
+);
+Testx.displayName = "Urban.Testx";
