@@ -1,46 +1,44 @@
 {
-  "name": "urban-ui",
-  "description": "UI components powered by react-aria and vanilla-extract",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "author": "Matt Styles",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "scripts/*",
-    "packages/core/*",
-    "packages/control/*",
-    "packages/inputs/*",
-    "packages/layout/*",
-    "packages/typography/*",
-    "packages/utility/*"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattstyles/urban-ui.git"
-  },
-  "scripts": {
-    "test": "CI=true turbo run test",
-    "build": "turbo run build",
-    "dev": "turbo run clean && turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "scaffold": "node packages/tmpl/dist/bin/tmpl.js",
-    "gen": "turbo gen",
-    "publish-packages": "CI=true turbo run build lint test && changeset version && changeset publish"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.6.3",
-    "@changesets/cli": "^2.26.0",
-    "@turbo/gen": "^1.12.4",
-    "config-eslint": "workspace:*",
-    "prettier": "latest",
-    "turbo": "latest",
-    "typescript": "^5.1.6"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "packageManager": "pnpm@8.6.3"
+	"name": "urban-ui",
+	"description": "UI components powered by react-aria and vanilla-extract",
+	"version": "0.0.0",
+	"private": true,
+	"license": "MIT",
+	"author": "Matt Styles",
+	"workspaces": [
+		"apps/*",
+		"packages/*",
+		"scripts/*",
+		"packages/core/*",
+		"packages/control/*",
+		"packages/inputs/*",
+		"packages/layout/*",
+		"packages/typography/*",
+		"packages/utility/*"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mattstyles/urban-ui.git"
+	},
+	"scripts": {
+		"test": "CI=true turbo run test",
+		"build": "turbo run build",
+		"dev": "turbo run clean && turbo run dev --parallel",
+		"lint": "turbo run lint",
+		"format": "biome format --write \"**/*.{ts,tsx,js,jsx}\"",
+		"scaffold": "node packages/tmpl/dist/bin/tmpl.js",
+		"gen": "turbo gen",
+		"publish-packages": "CI=true turbo run build lint test && changeset version && changeset publish"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.6.3",
+		"@changesets/cli": "^2.26.0",
+		"@turbo/gen": "^1.13.0",
+		"turbo": "^1.13.0",
+		"typescript": "^5.4.3"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"packageManager": "bun@1.0.31"
 }

@@ -18,26 +18,6 @@ const styles = stylex.create({
 	},
 });
 
-const foo = "bar";
-const BAR = "BAR";
-console.log(BAR);
-
-const biome = {
-	$schema: "https://biomejs.dev/schemas/1.6.3/schema.json",
-	organizeImports: {
-		enabled: true,
-	},
-	linter: {
-		enabled: true,
-		rules: {
-			recommended: true,
-		},
-	},
-	formatter: {
-		enabled: true,
-	},
-};
-
 // Not sure how to pull themes and classes out of cva?
 // const variants = cva(styles.base, {
 //   variants: {
