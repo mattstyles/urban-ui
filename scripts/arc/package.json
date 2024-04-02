@@ -5,10 +5,9 @@
 	"module": "./rk.ts",
 	"types": "./rk.d.ts",
 	"type": "module",
-	"private": true,
 	"license": "MIT",
 	"bin": {
-		"arc": "./rk.ts"
+		"arc": "rk.ts"
 	},
 	"exports": {
 		".": {
