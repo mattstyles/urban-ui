@@ -1,23 +1,24 @@
-import type { Plugin } from "./configs/plugins";
-import type { TaskInputParameters, TaskReturnType } from "./transform/task.ts";
-import type { PipelineContext } from "./transform/context.ts";
 import type { Options, Output as SwcOutput } from "@swc/core";
+import type { Plugin } from "./configs/plugins";
+import type { PipelineContext } from "./transform/context.ts";
+import type { TaskInputParameters, TaskReturnType } from "./transform/task.ts";
 
-import swc from "@swc/core";
-import path from "node:path";
 import fs from "node:fs/promises";
-import zlib from "node:zlib";
-import { promisify } from "node:util";
+import path from "node:path";
 import { PerformanceObserver, performance } from "node:perf_hooks";
+import { promisify } from "node:util";
+import zlib from "node:zlib";
+import swc from "@swc/core";
+import chalk from "chalk";
 
-import { createDebugger } from "./log";
-import { traceFn } from "./trace.ts";
 import { jscOps } from "./configs/jsc.ts";
 import { minify } from "./configs/minify.ts";
 import { transformImports } from "./configs/plugins.ts";
-import { createTask } from "./transform/task.ts";
+import { createDebugger, log } from "./log";
+import { traceFn } from "./trace.ts";
+import { fileEvents, measure } from "./transform/analytics.ts";
 import { Pipeline } from "./transform/pipeline.ts";
-import { measure, fileEvents } from "./transform/analytics.ts";
+import { createTask } from "./transform/task.ts";
 
 const gzip = promisify(zlib.gzip);
 const debug = createDebugger("rk::transform");
@@ -50,13 +51,15 @@ export async function transformFiles(
 	pipeline.addStep(write);
 
 	// Add file tracker
-	files.forEach((filepath) => {
+	for (const filepath of files) {
 		pipeline.ctx.ftrace.register(filepath);
-	});
+	}
 
+	log.transform("Starting transform pipeline");
 	debug("Running transform pipeline");
 	const output = await pipeline.run({ files });
 
+	log.transform(chalk.green("✔︎"), "Completed transform pipeline");
 	// Generate pipeline analytics
 	return pipeline.generateStatistics();
 }
@@ -85,6 +88,7 @@ const compile = createTask(
 		 */
 		return await Promise.all(
 			files.map(async ({ file, filepath }) => {
+				log.transform(`Compiling ${chalk.magenta(filepath)}`);
 				debug("Compiling", filepath);
 				ctx.ftrace.getTrace(filepath).track(mCompile.start);
 

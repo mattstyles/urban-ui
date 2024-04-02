@@ -1,5 +1,6 @@
 {
 	"name": "@urban-ui/arc",
+	"version": "0.0.0",
 	"description": "Kit builder for urban ui packages",
 	"module": "./rk.ts",
 	"types": "./rk.d.ts",
@@ -10,7 +11,13 @@
 		"arc": "./rk.ts"
 	},
 	"exports": {
-		"types": "./rk.d.ts"
+		".": {
+			"types": "./rk.d.ts"
+		},
+		"./ts": {
+			"import": "./ts.ts",
+			"types": "./ts.d.ts"
+		}
 	},
 	"scripts": {
 		"test": "bun test"
@@ -46,6 +53,8 @@
 		"debug": "^4.3.4",
 		"globby": "^14.0.1",
 		"pretty-bytes": "^6.1.1",
+		"tsconfck": "^3.0.3",
+		"type-fest": "^4.14.0",
 		"uuid": "^9.0.1",
 		"yargs": "^17.7.2"
 	}

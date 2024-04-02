@@ -1,14 +1,15 @@
 import type { CommandModule } from "yargs";
 import type { Config } from "../config";
 
-import prettyBytes from "pretty-bytes";
-import prettyTime from "pretty-time";
 import chalk from "chalk";
 import { globby as glob } from "globby";
+import prettyBytes from "pretty-bytes";
+import prettyTime from "pretty-time";
+import pkg from "../../package.json";
 import { generateOptions } from "../arguments";
-import { createDebugger, padRight } from "../log";
-import { transformFiles } from "../transform";
 import { generateDefinitions } from "../definition";
+import { createDebugger, log, padRight } from "../log";
+import { transformFiles } from "../transform";
 
 import { testPipeline } from "../transform/pipeline.example.ts";
 
@@ -29,7 +30,10 @@ export const buildCommand: CommandModule = {
 	handler: generateOptions<CommandOptions>(
 		async (argv) => {
 			const files = await glob(argv.include);
-			debug("Files to transform:", files);
+			debug("Files to transform: %o", files);
+
+			log.arc(`v${pkg.version}`);
+			log.arc("Entry files:", chalk.magenta(files.join(", ")));
 
 			return {
 				include: files,
@@ -70,9 +74,10 @@ export const buildCommand: CommandModule = {
 				},
 				0,
 			);
+			console.log("");
 			for (const [filename, file] of Object.entries(stats.file)) {
 				console.log(
-					padRight(filename, maxFilenameLength + 1),
+					chalk.magenta(padRight(filename, maxFilenameLength + 1)),
 					chalk.dim(formatCompileTargets(file)),
 				);
 			}
@@ -106,6 +111,7 @@ export const buildCommand: CommandModule = {
 
 type FileStats = Awaited<ReturnType<typeof transformFiles>>["file"][string];
 function formatCompileTargets(stats: FileStats): string {
+	// stats.sizes.dts = 200; // @TODO add dts file size, ignore map
 	return Object.entries(stats.sizes).reduce((output, [key, value]) => {
 		return `${output} | ${key}: ${formatSummaryCompileTargetSize(value)}`;
 	}, "");
