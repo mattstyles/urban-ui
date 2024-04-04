@@ -16,7 +16,7 @@ export class Trace {
 	data: Map<TraceID, TraceItem>;
 	spatialIndex: Array<TraceID>;
 	tracerId: string;
-	isActive: boolean = false;
+	isActive = false;
 
 	constructor({ id }: { id?: string } = {}) {
 		this.data = new Map();
@@ -66,13 +66,11 @@ export class Trace {
 			return;
 		}
 
-		if (typeof opts === "string") {
-			opts = { id: opts };
-		}
+		const options = typeof opts === "string" ? { id: opts } : opts;
 
 		this.#track({
-			id: opts.id || uuid(),
-			detail: opts.detail || null,
+			id: options.id || uuid(),
+			detail: options.detail || null,
 			timestamp: performance.now(),
 		});
 	}

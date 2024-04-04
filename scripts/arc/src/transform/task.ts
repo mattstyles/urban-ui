@@ -10,9 +10,11 @@ export type TaskDefinition = {
 	outputs?: Promise<ParameterDefinition<string, unknown>>;
 };
 
+// biome-ignore lint/suspicious/noExplicitAny: ??
 export type TaskInputParameters<T extends Task<any, any, any>> = Parameters<
 	T["run"]
 >[1];
+// biome-ignore lint/suspicious/noExplicitAny: ??
 export type TaskReturnType<T extends Task<any, any, any>> = ReturnType<
 	T["run"]
 >;

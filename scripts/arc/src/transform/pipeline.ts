@@ -2,8 +2,8 @@ import type { PipelineContext } from "./context.ts";
 import type { Task, TaskDefinition } from "./task.ts";
 export type { TaskDefinition, Task, PipelineContext };
 
+import { fileEvents, measure } from "./analytics.ts";
 import { createContext } from "./context.ts";
-import { measure, fileEvents } from "./analytics.ts";
 
 /**
  * Defines a definition of a collection of sequential tasks
@@ -13,7 +13,7 @@ export class Pipeline<
 	TInput extends TaskDefinition["inputs"],
 	TOutput extends TaskDefinition["outputs"],
 > {
-	tasks: Array<Task<TaskDefinition["inputs"], TaskDefinition["outputs"], any>>;
+	tasks: Array<Task<TaskDefinition["inputs"], TaskDefinition["outputs"], C>>;
 	ctx: PipelineContext<C>;
 
 	constructor(id: string, ctx: C = {} as C) {
@@ -25,6 +25,7 @@ export class Pipeline<
 		TInput extends TaskDefinition["inputs"],
 		TOutput extends TaskDefinition["outputs"],
 	>(task: Task<TInput, TOutput, C>) {
+		// biome-ignore lint/suspicious/noExplicitAny: no idea how to appease ts here and get auto complete
 		this.tasks.push(task as Task<any, any, C>);
 	}
 
@@ -62,8 +63,11 @@ export class Pipeline<
 				sizes: Record<string, number>;
 			}
 		> = {};
-		for (let [id, file] of this.ctx.ftrace.files) {
-			fileStats[id] = { trace: {} as any, sizes: {} };
+		for (const [id, file] of this.ctx.ftrace.files) {
+			fileStats[id] = {
+				trace: {} as Record<(keyof typeof fileEvents)[number], number>,
+				sizes: {},
+			};
 			fileStats[id].trace = Object.keys(fileEvents).reduce<
 				Record<(keyof typeof fileEvents)[number], number>
 			>(

@@ -1,10 +1,11 @@
 import type { Task, TaskInputParameters, TaskReturnType } from "./task.ts";
 
-import { createTask } from "./task.ts";
 import { Pipeline, type PipelineContext } from "./pipeline.ts";
+import { createTask } from "./task.ts";
 
 type ExampleContext = {
 	suppliedProp: string;
+	// biome-ignore lint/suspicious/noExplicitAny: yolo
 } & Record<string, any>;
 
 const testTask = createTask(

@@ -19,7 +19,8 @@
 		}
 	},
 	"scripts": {
-		"test": "bun test"
+		"test": "bun test",
+		"lint": "biome lint src"
 	},
 	"author": "Matt Styles",
 	"repository": {

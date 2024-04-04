@@ -39,6 +39,7 @@ export const buildCommand: CommandModule = {
 				include: files,
 				outDir: argv.outDir,
 				rootDir: argv.rootDir,
+				events: argv.events,
 			};
 		},
 		/**
@@ -95,6 +96,9 @@ export const buildCommand: CommandModule = {
 					`(${prettyFullRuntime(getFullPipelineRuntime(stats.pipeline))})`,
 				),
 			);
+
+			// Event
+			await opts.events.complete(); // @TODO pass in run analytics
 
 			// This is tempting but ends up yielding execution and screwing up the metrics, probably would be _less_ of a problem if TS wasn't synchronous, but, still would muck with a pipeline output
 			// const out = await Promise.all([

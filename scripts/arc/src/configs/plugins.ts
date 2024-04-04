@@ -9,7 +9,7 @@ export function transformImports(ext: string): Plugin {
 		{
 			"^(.*?)(\\.(ts|tsx))$": {
 				skipDefaultConversion: true,
-				transform: "{{matches.[1]}}." + ext,
+				transform: `{{matches.[1]}}.${ext}`,
 			},
 		},
 	];
