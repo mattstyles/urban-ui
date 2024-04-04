@@ -1,6 +1,35 @@
 {
 	"extends": "config-ts/react-library.json",
 	"compilerOptions": {
+		// config-ts/base.json
+		// "composite": true,
+		// "declaration": true,
+		// "declarationMap": true,
+		// "esModuleInterop": true,
+		// "forceConsistentCasingInFileNames": true,
+		// "inlineSources": false,
+		// "isolatedModules": true,
+		// // "target": "es6",
+		// // "module": "esnext",
+		// // "moduleResolution": "nodenext",
+		// "noUnusedLocals": false,
+		// "noUnusedParameters": false,
+		// "preserveWatchOutput": true,
+		// "skipLibCheck": true,
+		// "strict": true,
+		// // "baseUrl": ".",
+
+		// config-ts/react-library.json
+		// "jsx": "react-jsx",
+		// "lib": ["ES2015", "dom", "dom.iterable", "esnext"],
+		// "target": "es6",
+		// "module": "nodenext",
+		// "moduleResolution": "nodenext",
+		// "noEmit": true,
+		// "allowImportingTsExtensions": true,
+		// "resolveJsonModule": true,
+
+		// package overrides
 		"baseUrl": ".",
 		"rootDir": "src"
 	},

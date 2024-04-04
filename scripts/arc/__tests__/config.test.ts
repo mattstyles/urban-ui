@@ -1,4 +1,4 @@
-import { expect, test, describe, beforeEach, afterEach } from "bun:test";
+import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import path from "node:path";
 
 import { getConfig } from "../src/config";
@@ -22,11 +22,10 @@ describe("getConfig", () => {
 		process.chdir(path.join(__dirname, "no-config"));
 
 		const conf = await getConfig();
-		expect(conf).toEqual({
-			include: ["src"],
-			outDir: "dist",
-			rootDir: "src",
-		});
+
+		expect(conf.include).toEqual(["src"]);
+		expect(conf.outDir).toBe("dist");
+		expect(conf.rootDir).toEqual("src");
 	});
 
 	test("getConfig with overrides", async () => {

@@ -1,159 +1,70 @@
-import type { VariantProps } from "cva";
-
+import { colors } from "@stylexjs/open-props/lib/colors.stylex";
+import type { StyleXStyles } from "@stylexjs/stylex";
+import * as stylex from "@stylexjs/stylex";
+import { spacing } from "@urban-ui/theme/spacing.stylex";
 import { forwardRef } from "react";
-import { cva } from "cva";
-import { Slot } from "@radix-ui/react-slot";
-import { atoms } from "@urban-ui/theme/atoms";
+import { gaps } from "./vars.stylex.tsx";
 
-type FlexVariants = VariantProps<typeof variants>;
-const variants = cva(
-	[
-		atoms({
-			display: "flex",
-		}),
-	],
-	{
-		variants: {
-			orientation: {
-				h: atoms({
-					flexDirection: "row",
-				}),
-				v: atoms({
-					flexDirection: "column",
-				}),
-			},
-			alignment: {
-				start: atoms({
-					alignment: "flex-start",
-				}),
-				center: atoms({
-					alignment: "center",
-				}),
-				end: atoms({
-					alignment: "flex-end",
-				}),
-				baseline: atoms({
-					alignment: "baseline",
-				}),
-			},
-			justify: {
-				start: atoms({
-					justify: "flex-start",
-				}),
-				center: atoms({
-					justify: "center",
-				}),
-				end: atoms({
-					justify: "flex-end",
-				}),
-				spread: atoms({
-					justify: "space-between",
-				}),
-			},
-			gap: {
-				none: atoms({
-					gap: "none",
-				}),
-				xs: atoms({
-					gap: "xs",
-				}),
-				sm: atoms({
-					gap: "sm",
-				}),
-				md: atoms({
-					gap: "md",
-				}),
-				lg: atoms({
-					gap: "lg",
-				}),
-				xl: atoms({
-					gap: "xl",
-				}),
-			},
-			inline: {
-				true: atoms({
-					display: "inline-flex",
-				}),
-			},
-			fit: {
-				true: atoms({
-					width: "fit",
-				}),
-			},
-			flex: {
-				full: atoms({
-					flex: "full",
-				}),
-				auto: atoms({
-					flex: "auto",
-				}),
-				initial: atoms({
-					flex: "initial",
-				}),
-				none: atoms({
-					flex: "none",
-				}),
-			},
-			wrap: {
-				wrap: atoms({
-					flexWrap: "wrap",
-				}),
-				reverse: atoms({
-					flexWrap: "wrap-reverse",
-				}),
-				nowrap: atoms({
-					flexWrap: "nowrap",
-				}),
-			},
-		},
+console.log(spacing);
+console.log(gaps);
+
+const styles = stylex.create({
+	base: {
+		display: "flex",
+		backgroundColor: colors.blue7,
 	},
-);
+	gapSm: {
+		// gap: gaps.sm,
+		gap: spacing.sm,
+		// gap: 8,
+	},
+	gapMd: {
+		// gap: spacing.md,
+		gap: 16,
+	},
+});
 
 export interface FlexProps
-	extends FlexVariants,
-		React.HTMLAttributes<HTMLDivElement>,
+	extends Omit<React.HTMLAttributes<HTMLDivElement>, "style">,
 		React.PropsWithChildren {
+	gap?: "sm" | "md";
+	// @TODO is this a good idea to override the html attribute?
+	style?: StyleXStyles;
 	asChild?: boolean;
 }
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>(
 	(
 		{
-			orientation,
-			alignment,
-			justify,
-			gap,
-			inline,
-			fit,
-			flex,
-			wrap,
+			// orientation,
+			// alignment,
+			// justify,
+			gap = "sm",
+			// inline,
+			// fit,
+			// flex,
+			// wrap,
 			asChild,
 			className,
+			// stylex: style,
+			style,
 			children,
 			...props
 		},
 		ref,
 	) => {
-		const Comp = asChild ? Slot : "div";
+		// const Comp = asChild ? Slot : "div";
 		return (
-			<Comp
-				ref={ref}
-				className={variants({
-					orientation,
-					alignment,
-					justify,
-					gap,
-					inline,
-					fit,
-					flex,
-					wrap,
-					className,
-				})}
-				{...props}
+			<div
+				{...stylex.props(
+					styles.base,
+					gap === "sm" && styles.gapSm,
+					gap === "md" && styles.gapMd,
+					style,
+				)}
 			>
 				{children}
-			</Comp>
+			</div>
 		);
 	},
 );
-Flex.displayName = "urban/flex";

@@ -1,4 +1,6 @@
+import { Flex } from "@urban-ui/flex";
 import { Testx } from "@urban-ui/testx";
+import { Block } from "./block";
 import { Content } from "./content";
 
 export default function Page() {
@@ -9,6 +11,16 @@ export default function Page() {
 			<Testx size="sm" tone="neutral">
 				Hello world
 			</Testx>
+			<Flex>
+				<Block />
+				<Block />
+				<Block />
+			</Flex>
+			<Flex gap="md">
+				<Block />
+				<Block />
+				<Block />
+			</Flex>
 			<Content />
 		</div>
 	);

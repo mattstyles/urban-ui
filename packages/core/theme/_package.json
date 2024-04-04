@@ -6,7 +6,20 @@
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
-		"./spacing.stylex": "./dist/tokens/spacing.stylex.js"
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		},
+		"./reset": {
+			"import": "./dist/reset.css",
+			"require": "./dist/reset.css"
+		},
+		"./spacing.stylex": {
+			"types": "./dist/tokens/spacing.stylex.d.ts",
+			"import": "./dist/tokens/spacing.stylex.js",
+			"require": "./dist/tokens/spacing.stylex.cjs"
+		}
 	},
 	"license": "MIT",
 	"scripts": {
