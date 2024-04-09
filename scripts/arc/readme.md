@@ -4,9 +4,10 @@
 
 ## Getting started
 
-Arc is a bun script.
+Arc is a bun script that uses watchman to react to file changes.
 
 * Install [bun](https://bun.sh/docs/installation)
+* Install [watchman](https://facebook.github.io/watchman/docs/install)
 * Add arc to your package
 
 ```sh

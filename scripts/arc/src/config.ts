@@ -25,6 +25,10 @@ export type Config<T = Record<string | number | symbol, unknown>> = T & {
 	 * @default {}
 	 */
 	events?: {
+		/**
+		 * Run when the build is complete.
+		 * Will not be run in watch mode.
+		 */
 		complete: () => Promise<void>;
 	};
 };
