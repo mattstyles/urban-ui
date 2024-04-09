@@ -31,7 +31,14 @@ export function Content() {
 	return (
 		<div>
 			<h2>Client component</h2>
-			<Flex>
+			<p>Sm</p>
+			<Flex gap="sm">
+				<Block />
+				<Block />
+				<Block />
+			</Flex>
+			<p>Md</p>
+			<Flex gap="md">
 				<Block />
 				<Block />
 				<Block />

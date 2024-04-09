@@ -58,12 +58,10 @@ export const buildCommand: CommandModule = {
 			const dtsStats = await generateDefinitions(opts.include, {
 				outDir: opts.outDir,
 			});
-			// console.log(dtsStats)
 
 			/**
 			 * Individual file task times are not super accurate
 			 */
-			// console.log(stats)
 
 			const maxFilenameLength = Object.keys(stats.file).reduce(
 				(total, next) => {

@@ -21,7 +21,7 @@
     "build": "arc build"
   },
   "dependencies": {
-    "@stylexjs/open-props": "^0.5.1",
+    "@radix-ui/react-slot": "^1.0.2",
     "@stylexjs/stylex": "^0.5.1",
     "@urban-ui/theme": "^0.4.0"
   },
@@ -29,6 +29,8 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
+    "@stylexjs/babel-plugin": "^0.5.1",
+    "@stylexjs/nextjs-plugin": "^0.5.1",
     "@types/node": "^20.12.2",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",

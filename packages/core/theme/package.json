@@ -6,6 +6,7 @@
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"exports": {
+		".": "./dist/index.js",
 		"./spacing.stylex": "./dist/tokens/spacing.stylex.js"
 	},
 	"license": "MIT",
