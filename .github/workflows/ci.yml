@@ -1,0 +1,25 @@
+name: CI
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches: ['main', 'v0.2.0-aria-vanilla']
+  pull_request:
+    branches: ['main', 'v0.2.0-aria-vanilla']
+  workflow_dispatch:
+    
+
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Bun setup
+        uses: oven-sh/setup-bun@v1
+      - name: Install dependencies
+        run: bun install
+      - name: Build packages
+        run: bun run build:ci 
