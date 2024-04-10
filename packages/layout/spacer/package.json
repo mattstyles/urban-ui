@@ -10,31 +10,20 @@
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js",
 			"require": "./dist/index.cjs"
-		},
-		"./build": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs"
-		},
-		"./styles": {
-			"import": "./dist/style.css",
-			"require": "./dist/style.css"
 		}
 	},
 	"license": "MIT",
 	"scripts": {
 		"lint": "biome lint src",
 		"clean": "del dist",
-		"dev": "vite build --watch",
-		"build": "vite build",
+		"dev": "arc watch",
+		"build": "arc build",
 		"test": "vitest run src"
 	},
 	"dependencies": {
 		"@radix-ui/react-slot": "^1.0.2",
-		"@urban-ui/theme": "workspace:*",
-		"@vanilla-extract/css": "^1.11.1",
-		"clsx": "^2.0.0",
-		"cva": "npm:class-variance-authority@^0.7.0"
+		"@stylexjs/stylex": "^0.5.1",
+		"@urban-ui/theme": "workspace:*"
 	},
 	"peerDependencies": {
 		"react": "^18.2.0"
@@ -47,11 +36,8 @@
 		"@types/react-dom": "^18.2.0",
 		"@types/testing-library__jest-dom": "^5.14.5",
 		"config-ts": "workspace:*",
-		"config-vite": "workspace:*",
 		"del-cli": "^5.0.0",
 		"react": "^18.2.0",
-		"typescript": "^5.1.3",
-		"vite": "^5.0.10",
-		"vitest": "^1.1.1"
+		"typescript": "^5.1.3"
 	}
 }
