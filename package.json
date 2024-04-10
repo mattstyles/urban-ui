@@ -22,7 +22,8 @@
 	},
 	"scripts": {
 		"test": "CI=true turbo run test",
-		"build": "turbo run build",
+		"build:ci": "turbo run build --filter=\"packages\"",
+		"build:all": "turbo run build",
 		"dev": "turbo run clean && turbo run dev --parallel",
 		"lint": "turbo run lint",
 		"format": "biome format --write {packages,scripts,apps}",
@@ -40,5 +41,5 @@
 	"engines": {
 		"node": ">=20.0.0"
 	},
-	"packageManager": "bun@1.0.31"
+	"packageManager": "bun@1.1.3"
 }
