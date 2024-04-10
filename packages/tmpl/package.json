@@ -16,7 +16,6 @@
 		"scaffold": "node ./dist/bin/tmpl.js"
 	},
 	"devDependencies": {
-		"config-eslint": "workspace:*",
 		"config-ts": "workspace:*",
 		"vite": "^5.0.12"
 	},
