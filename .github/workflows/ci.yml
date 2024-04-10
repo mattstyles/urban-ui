@@ -58,4 +58,4 @@ jobs:
       - name: Lint
         run: bun run lint
       - name: Type check
-        run: bun tun type:check
+        run: bun run type:check
