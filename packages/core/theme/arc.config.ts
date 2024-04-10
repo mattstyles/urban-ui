@@ -13,8 +13,9 @@ const config: Config = {
 	rootDir: tsconfig.compilerOptions?.rootDir ?? "src",
 	events: {
 		complete: async () => {
-			console.log("Arc complete");
 			await fs.copyFile("./src/reset.css", "./dist/reset.css");
+			console.log("Copy reset.css");
+			console.log("Arc:build complete");
 		},
 	},
 };

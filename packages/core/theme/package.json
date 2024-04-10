@@ -14,7 +14,7 @@
 		"lint": "biome lint src",
 		"type:check": "tsc",
 		"clean": "del dist",
-		"dev": "vite build --watch",
+		"dev": "arc watch",
 		"build": "arc build"
 	},
 	"dependencies": {
