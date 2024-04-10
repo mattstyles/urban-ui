@@ -55,6 +55,8 @@ jobs:
           key: ${{ runner.os }}-${{ runner.arch }}-bun-${{ hashFiles('**/bun.lockb') }}
           restore-keys: |
             ${{ runner.os }}-${{ runner.arch }}-bun-
+      - name: Build packages
+        run: bun run build:ci
       - name: Lint
         run: bun run lint
       - name: Type check
