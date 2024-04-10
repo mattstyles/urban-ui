@@ -34,10 +34,6 @@ export default function FlexPage() {
 					<Block />
 				</Flex>
 			</Flex>
-			<hr style={{ margin: 20 }} />
-			<Flex gap="xl" className="hello-class">
-				Hello
-			</Flex>
 		</>
 	);
 }
