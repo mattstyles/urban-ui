@@ -15,7 +15,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",
-    "type:check": "tsc",
+    "format": "biome format src --write",
+    "typecheck": "tsc",
     "clean": "del dist",
     "dev": "arc watch",
     "build": "arc build",
