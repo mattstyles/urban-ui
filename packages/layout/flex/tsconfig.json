@@ -1,6 +1,7 @@
 {
 	"extends": "config-ts/library.json",
 	"compilerOptions": {
+		"rootDir": "src"
 	},
 	"include": ["src"],
 	"exclude": ["dist", "build", "node_modules"]
