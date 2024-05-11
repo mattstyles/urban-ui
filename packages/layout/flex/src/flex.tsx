@@ -162,4 +162,4 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
 		);
 	},
 );
-Flex.displayName = "@urban-ui/flex!";
+Flex.displayName = "@urban-ui/flex";

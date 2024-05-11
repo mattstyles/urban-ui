@@ -1,3 +1,8 @@
+
+/**
+ * Bun suggested compiler options
+ * https://bun.sh/docs/typescript
+ */
 {
 	"compilerOptions": {
 		// Enable latest features
