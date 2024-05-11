@@ -18,7 +18,8 @@ npm add -D @urban-ui/arc
 
 ```json
 "scripts": {
-  "build": "arc build"
+  "build": "arc build",
+  "dev": "arc watch"
 }
 ```
 
@@ -28,13 +29,19 @@ npm add -D @urban-ui/arc
 npm run build
 ```
 
-By default arc will compile all files under an `src` directory and output them to `dist`. It will also generate typescript definition files based on the `tsconfig.json` found in the package.
+## Arc configuration
+
+By default arc will compile all files under an `src` directory and output them to `dist`.
+
+Arc will also generate typescript definition files based on the `tsconfig.json` found in the package.
 
 Arc can be configured by placing an `arc.config.ts` file (or json, or js) at the package root, for example:
 
 ```
 import type {Config} from '@urban-ui/arc'
-import tsconfig from './tsconfig.json'
+import { getTsConfig } from "@urban-ui/arc/ts";
+
+const tsconfig = await getTsConfig();
 
 const config: Config = {
   include: [tsconfig.compilerOptions.rootDir],
@@ -43,6 +50,22 @@ const config: Config = {
 }
 
 export default config
+```
+
+> _Note_: tsconfig.json is **not** json, one does not simply `import tsconfig from './tsconfig.json`.
+>
+> Arc exposes `getTsConfig` to handle typescript configuration loading.
+
+### Include glob
+
+Under the hood Arc uses `https://www.npmjs.com/package/globby` to turn `config.includes` into a list of files. This will default to all files under an `src` directory.
+
+If you colocate tests under this directory then you will probably want to negate those files from the output:
+
+```ts
+const config = {
+  include: ['src', '!src/*.test.ts*']
+}
 ```
 
 ## Local development
