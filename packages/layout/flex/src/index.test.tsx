@@ -17,20 +17,25 @@ GlobalRegistrator.register()
 
 import { Flex } from './index'
 
-// beforeEach(() => {
-// 	inject({
-// 		classNamePrefix: "x",
-// 		dev: false,
-// 		test: true,
-// 		useRemForFontSize: false,
-// 		styleResolution: "application-order",
-// 	});
-// });
+beforeEach(() => {
+  inject({
+    classNamePrefix: 'x',
+    dev: false,
+    test: true,
+    useRemForFontSize: false,
+    styleResolution: 'application-order',
+  })
+})
 
 describe('flex', () => {
   test('Forwards the test-id', () => {
-    // const output = render(<Flex data-testid="some-id" />);
-    // console.log(Flex);
+    // @TODO handle stylex without a babel transform i.e. when running in the bun context rather than with Jest/Vite directly.
+    // const output = render(<Flex data-testid="some-id" />)
+    // console.log(Flex)
+
+    const output = render(<button type="button">hello world</button>)
+    const el = output.findByText('hello world')
+    expect(el).toBeDefined()
 
     document.body.innerHTML = '<button>My button</button>'
     const button = document.querySelector('button')
