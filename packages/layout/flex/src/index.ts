@@ -1,2 +1,2 @@
-export type { FlexProps } from "./flex.tsx";
-export { Flex } from "./flex.tsx";
+export type { FlexProps } from './flex'
+export { Flex } from './flex'

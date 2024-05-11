@@ -1,10 +1,10 @@
-import { afterEach, beforeEach, describe, expect, test } from "bun:test";
-import { render, screen } from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, test } from 'bun:test'
+import { render, screen } from '@testing-library/react'
 
-import { GlobalRegistrator } from "@happy-dom/global-registrator";
-import inject from "@stylexjs/dev-runtime";
+import { GlobalRegistrator } from '@happy-dom/global-registrator'
+import inject from '@stylexjs/dev-runtime'
 
-GlobalRegistrator.register();
+GlobalRegistrator.register()
 
 // console.log(inject);
 // inject({
@@ -15,7 +15,7 @@ GlobalRegistrator.register();
 // 	styleResolution: "application-order",
 // });
 
-import { Flex } from "./index.ts";
+import { Flex } from './index'
 
 // beforeEach(() => {
 // 	inject({
@@ -27,16 +27,16 @@ import { Flex } from "./index.ts";
 // 	});
 // });
 
-describe("flex", () => {
-	test("Forwards the test-id", () => {
-		// const output = render(<Flex data-testid="some-id" />);
-		// console.log(Flex);
+describe('flex', () => {
+  test('Forwards the test-id', () => {
+    // const output = render(<Flex data-testid="some-id" />);
+    // console.log(Flex);
 
-		document.body.innerHTML = "<button>My button</button>";
-		const button = document.querySelector("button");
-		expect(button?.innerText).toEqual("My button");
+    document.body.innerHTML = '<button>My button</button>'
+    const button = document.querySelector('button')
+    expect(button?.innerText).toEqual('My button')
 
-		const foo = 5;
-		expect(foo).toBe(5);
-	});
-});
+    const foo = 5
+    expect(foo).toBe(5)
+  })
+})
