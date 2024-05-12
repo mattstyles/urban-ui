@@ -42,9 +42,9 @@ Tsconfig.json files are not regular json, however, configs here _are_ regular js
 }
 ```
 
-## Library
+## Client
 
-Most packages here use the library configuration.
+Most packages here use the client configuration.
 
 ```
 /**

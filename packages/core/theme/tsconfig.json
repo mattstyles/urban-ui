@@ -1,7 +1,7 @@
 {
-	"extends": "config-ts/react-library.json",
+	"extends": "@urban-ui/tsconfig/react-library.json",
 	"compilerOptions": {
-		// config-ts/base.json
+		// @urban-ui/tsconfig/base.json
 		// "composite": true,
 		// "declaration": true,
 		// "declarationMap": true,
@@ -19,7 +19,7 @@
 		// "strict": true,
 		// // "baseUrl": ".",
 
-		// config-ts/react-library.json
+		// @urban-ui/tsconfig/react-library.json
 		// "jsx": "react-jsx",
 		// "lib": ["ES2015", "dom", "dom.iterable", "esnext"],
 		// "target": "es6",

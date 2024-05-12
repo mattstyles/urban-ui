@@ -1,5 +1,5 @@
 {
-	"extends": "config-ts/nextjs.json",
+	"extends": "@urban-ui/tsconfig/nextjs.json",
 	"compilerOptions": {
 		"plugins": [{ "name": "next" }],
 		"moduleResolution": "bundler",

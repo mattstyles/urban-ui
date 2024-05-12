@@ -1,5 +1,5 @@
 {
-	"extends": "config-ts/library.json",
+	"extends": "@urban-ui/tsconfig/library.json",
 	"compilerOptions": {
 		"rootDir": "src"
 	},

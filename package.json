@@ -9,6 +9,7 @@
     "apps/*",
     "packages/*",
     "scripts/*",
+    "tooling/*",
     "packages/core/*",
     "packages/control/*",
     "packages/layout/*",
