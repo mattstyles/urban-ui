@@ -1,5 +1,5 @@
 {
-	"extends": "config-ts/library.json",
+	"extends": "config-ts/client.json",
 	"compilerOptions": {
 		"rootDir": "src"
 	},
