@@ -1,1 +1,1 @@
-export type { getTsConfig } from "./ts.ts";
+export type { getTsConfig } from './ts.ts'

@@ -1,3 +1,3 @@
 {
-	"extends": "ts-config/bun.json"
+	"extends": "@urban-ui/tsconfig/bun.json"
 }
