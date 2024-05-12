@@ -1,7 +1,7 @@
-import type { Config } from "../src/config";
+import type { Config } from '../src/config'
 
 const config: Config = {
-	outDir: "__dist__",
-};
+  outDir: '__dist__',
+}
 
-export default config;
+export default config
