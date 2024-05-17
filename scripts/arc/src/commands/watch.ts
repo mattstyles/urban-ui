@@ -7,10 +7,8 @@ import { globby as glob } from 'globby'
 import pkg from '../../package.json'
 import { generateOptions } from '../arguments'
 import { generateDefinitions } from '../definition'
-import { createDebugger, log } from '../log'
+import { log } from '../log'
 import { transformFiles } from '../transform'
-
-const debug = createDebugger('rk::watch')
 
 type CommandOptions = Required<Config>
 
@@ -28,7 +26,7 @@ export const watchCommand: CommandModule = {
   handler: generateOptions<CommandOptions>(
     async (argv) => {
       const files = await glob(argv.include)
-      debug('Files to transform: %o', files)
+      log.arc.debug('Files to transform: %o', files)
 
       log.arc.log(`v${pkg.version}`)
       log.arc.log('Entry files:', chalk.magenta(files.join(', ')))
@@ -41,7 +39,7 @@ export const watchCommand: CommandModule = {
       }
     },
     async (opts) => {
-      debug('Watch options: %o', opts)
+      log.arc.debug('Watch options: %o', opts)
 
       const client = new Client()
       client.capabilityCheck(
@@ -53,10 +51,10 @@ export const watchCommand: CommandModule = {
             client.end()
           }
 
-          debug('Watchman capability check: %o', res)
+          log.arc.debug('Watchman capability check: %o', res)
 
           const watchPath = process.cwd()
-          debug('Common watch path:', watchPath)
+          log.arc.debug('Common watch path:', watchPath)
 
           client.command(['watch-project', watchPath], (error, resp) => {
             if (error) {
@@ -67,17 +65,18 @@ export const watchCommand: CommandModule = {
               log.arc.warn('Warning: ', resp.warning)
             }
 
-            debug('"watch-project" started')
+            log.arc.debug('"watch-project" started')
 
             // @TODO should potentially attempt to match against the initial arc config options include globs, or even the rootDir and the filter out those files that do not match the glob. Using opts.include here is the extended glob and will miss new files being added.
+            const query = [
+              'allof',
+              ['match', 'src/**/*', 'wholename'],
+              ['suffix', ['ts', 'tsx']],
+              ['not', ['suffix', ['test.ts', 'test.tsx']]],
+            ]
             const sub = {
               // expression: ['anyof', ['name', opts.include, 'wholename']],
-              expression: [
-                'allof',
-                ['match', 'src/**/*', 'wholename'],
-                ['suffix', ['ts', 'tsx']],
-                ['not', ['suffix', ['test.ts', 'test.tsx']]],
-              ],
+              expression: query,
               fields: [
                 'name',
                 'size',
@@ -91,10 +90,10 @@ export const watchCommand: CommandModule = {
             }
             const subscriptionName = `arc:watch:${pkg.name}`
 
-            debug('Running watchman:subscribe %o', {
+            log.arc.debug('Running watchman:subscribe %o', {
               ...sub,
               name: subscriptionName,
-              include: opts.include,
+              query: query,
             })
             client.command(
               ['subscribe', resp.watch, subscriptionName, sub],
@@ -111,11 +110,11 @@ export const watchCommand: CommandModule = {
 
             client.on('subscription', async (res): Promise<void> => {
               if (res.subscription !== subscriptionName) {
-                debug('Additional subscription: %o', res)
+                log.arc.debug('Additional subscription: %o', res)
                 return
               }
 
-              debug('Subscription event received %o', res)
+              log.arc.debug('Subscription event received %o', res)
 
               for (const file of res.files) {
                 if (file.exists === false) {

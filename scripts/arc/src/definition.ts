@@ -5,11 +5,12 @@ import chalk from 'chalk'
 import { parse } from 'tsconfck'
 import ts from 'typescript'
 
-import { createDebugger, log } from './log'
+import { createLogger } from '@urban-ui/arc-log'
+import { log } from './log'
 import { Pipeline } from './transform/pipeline.ts'
 import { createTask } from './transform/task.ts'
 
-const debug = createDebugger('rk::definition')
+const { debug } = createLogger('rk::definition', chalk.green)
 
 type FilesDts = Record<string, string>
 

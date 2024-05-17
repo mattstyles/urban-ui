@@ -8,12 +8,10 @@ import prettyTime from 'pretty-time'
 import pkg from '../../package.json'
 import { generateOptions } from '../arguments'
 import { generateDefinitions } from '../definition'
-import { createDebugger, log, padRight } from '../log'
+import { log, padRight } from '../log'
 import { transformFiles } from '../transform'
 
 import { testPipeline } from '../transform/pipeline.example.ts'
-
-const debug = createDebugger('rk::build')
 
 type CommandOptions = Required<Config>
 
@@ -30,7 +28,7 @@ export const buildCommand: CommandModule = {
   handler: generateOptions<CommandOptions>(
     async (argv) => {
       const files = await glob(argv.include)
-      debug('Files to transform: %o', files)
+      log.arc.debug('Files to transform: %o', files)
 
       log.arc.log(`v${pkg.version}`)
       log.arc.log('Entry files:', chalk.magenta(files.join(', ')))
@@ -97,6 +95,7 @@ export const buildCommand: CommandModule = {
       )
 
       // Event
+      log.arc.debug('[event] onComplete')
       await opts.events.complete() // @TODO pass in run analytics
 
       // This is tempting but ends up yielding execution and screwing up the metrics, probably would be _less_ of a problem if TS wasn't synchronous, but, still would muck with a pipeline output

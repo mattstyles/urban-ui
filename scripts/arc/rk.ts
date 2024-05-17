@@ -6,10 +6,10 @@ import { hideBin } from 'yargs/helpers'
 import { buildCommand } from './src/commands/build'
 import { watchCommand } from './src/commands/watch'
 import { getConfig } from './src/config'
-import { debug } from './src/log'
+import { log } from './src/log'
 
 const config = await getConfig()
-debug.rk('Using config: %o', config)
+log.arc.debug('Arc config: %o', config)
 
 yargs(hideBin(process.argv))
   .config(config)

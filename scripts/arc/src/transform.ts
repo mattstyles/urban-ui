@@ -11,17 +11,18 @@ import zlib from 'node:zlib'
 import swc from '@swc/core'
 import chalk from 'chalk'
 
+import { createLogger } from '@urban-ui/arc-log'
 import { jscOps } from './configs/jsc.ts'
 import { minify } from './configs/minify.ts'
 import { transformImports } from './configs/plugins.ts'
-import { createDebugger, log } from './log'
+import { log } from './log'
 import { traceFn } from './trace.ts'
 import { fileEvents, measure } from './transform/analytics.ts'
 import { Pipeline } from './transform/pipeline.ts'
 import { createTask } from './transform/task.ts'
 
 const gzip = promisify(zlib.gzip)
-const debug = createDebugger('rk::transform')
+const { debug } = createLogger('rk::transform', chalk.blue)
 
 enum TransformModes {
   watch = 'watch',
