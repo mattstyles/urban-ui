@@ -48,14 +48,14 @@ export async function generateDefinitions(
   // 	pipeline.ctx.ftrace.register(filepath);
   // }
 
-  log.definition('Starting dts pipeline')
+  log.definition.verbose('Starting dts pipeline')
   debug('Running dts pipeline')
   const output = await pipeline.run({
     searchPath: './',
     filename: 'tsconfig.json',
   })
 
-  log.definition(chalk.green('✔︎'), 'Completed dts pipeline')
+  log.definition.log(chalk.green('✔︎'), 'Completed dts pipeline')
   return pipeline.generateStatistics()
 }
 
@@ -74,7 +74,7 @@ const readConfig = createTask(
       throw new Error('can not read config path')
     }
 
-    log.definition(`Using tsconfig: ${chalk.magenta(configPath)}`)
+    log.definition.verbose(`Using tsconfig: ${chalk.magenta(configPath)}`)
 
     const conf = await parseFullConfigck(configPath)
 
@@ -100,7 +100,9 @@ const compile = (files: Array<string>, overrides: ts.CompilerOptions) =>
       }
 
       for (const filepath of files) {
-        log.definition(`Generating definition for ${chalk.magenta(filepath)}`)
+        log.definition.verbose(
+          `Generating definition for ${chalk.magenta(filepath)}`,
+        )
       }
 
       debug('Using tsconfig compiler options: %o', options)

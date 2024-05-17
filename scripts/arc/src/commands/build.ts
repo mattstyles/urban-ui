@@ -32,8 +32,8 @@ export const buildCommand: CommandModule = {
       const files = await glob(argv.include)
       debug('Files to transform: %o', files)
 
-      log.arc(`v${pkg.version}`)
-      log.arc('Entry files:', chalk.magenta(files.join(', ')))
+      log.arc.log(`v${pkg.version}`)
+      log.arc.log('Entry files:', chalk.magenta(files.join(', ')))
 
       return {
         include: files,
@@ -54,6 +54,7 @@ export const buildCommand: CommandModule = {
       const stats = await transformFiles(opts.include, {
         outDir: opts.outDir,
         rootDir: opts.rootDir,
+        mode: 'build',
       })
       const dtsStats = await generateDefinitions(opts.include, {
         outDir: opts.outDir,

@@ -1,5 +1,6 @@
 import type { ChalkInstance } from 'chalk'
 
+import { createLogger } from '@urban-ui/arc-log'
 import chalk from 'chalk'
 import createDebugger from 'debug'
 
@@ -27,16 +28,16 @@ type LogParams = Parameters<typeof console.log>
  * @param namespace identifier for this log output
  * @param colour colour for this log output
  */
-export function createLogger(namespace: string, colour: ChalkInstance) {
-  function log(...args: LogParams) {
-    console.log(
-      `${chalk.dim.bold('[')}${colour.bold(namespace)}${chalk.dim.bold(']')}`,
-      ...args,
-    )
-  }
+// export function createLogger(namespace: string, colour: ChalkInstance) {
+//   function log(...args: LogParams) {
+//     console.log(
+//       `${chalk.dim.bold('[')}${colour.bold(namespace)}${chalk.dim.bold(']')}`,
+//       ...args,
+//     )
+//   }
 
-  return log
-}
+//   return log
+// }
 
 export function padRight(str: string, min: number) {
   const diff = min - str.length

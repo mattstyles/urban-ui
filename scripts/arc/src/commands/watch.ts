@@ -30,8 +30,8 @@ export const watchCommand: CommandModule = {
       const files = await glob(argv.include)
       debug('Files to transform: %o', files)
 
-      log.arc(`v${pkg.version}`)
-      log.arc('Entry files:', chalk.magenta(files.join(', ')))
+      log.arc.log(`v${pkg.version}`)
+      log.arc.log('Entry files:', chalk.magenta(files.join(', ')))
 
       return {
         include: files,
@@ -60,18 +60,24 @@ export const watchCommand: CommandModule = {
 
           client.command(['watch-project', watchPath], (error, resp) => {
             if (error) {
-              log.arc('Watch failed: ', error)
+              log.arc.error('Watch failed: ', error)
               return
             }
             if ('warning' in resp) {
-              log.arc('Warning: ', resp.warning)
+              log.arc.warn('Warning: ', resp.warning)
             }
 
             debug('"watch-project" started')
 
             // @TODO should potentially attempt to match against the initial arc config options include globs, or even the rootDir and the filter out those files that do not match the glob. Using opts.include here is the extended glob and will miss new files being added.
             const sub = {
-              expression: ['anyof', ['name', opts.include, 'wholename']],
+              // expression: ['anyof', ['name', opts.include, 'wholename']],
+              expression: [
+                'allof',
+                ['match', 'src/**/*', 'wholename'],
+                ['suffix', ['ts', 'tsx']],
+                ['not', ['suffix', ['test.ts', 'test.tsx']]],
+              ],
               fields: [
                 'name',
                 'size',
@@ -99,7 +105,7 @@ export const watchCommand: CommandModule = {
                   return
                 }
 
-                log.arc('Subscription:', chalk.magenta(res.subscribe))
+                log.arc.log('Subscription:', chalk.magenta(res.subscribe))
               },
             )
 
@@ -114,19 +120,25 @@ export const watchCommand: CommandModule = {
               for (const file of res.files) {
                 if (file.exists === false) {
                   // @TODO clean up destination directory by deleting this file, if found (need to work out what the transform name would be)
-                  log.arc('File removed from watch', chalk.magenta(file.name))
+                  log.arc.log(
+                    'File removed from watch',
+                    chalk.magenta(file.name),
+                  )
                   return
                 }
 
                 if (file.new) {
-                  log.arc('Watching file:', chalk.magenta(file.name))
+                  log.arc.log('Watching file:', chalk.magenta(file.name))
                 } else {
-                  log.arc('File changed:', chalk.magenta(file.name))
+                  log.arc.log('File changed:', chalk.magenta(file.name))
                 }
+
+                // @TODO we can watch the root directory for changes and pass any files through the include glob (unexpanded) to filter
 
                 const stats = await transformFiles([file.name], {
                   outDir: opts.outDir,
                   rootDir: opts.rootDir,
+                  mode: 'watch',
                 })
                 const dtsStats = await generateDefinitions([file.name], {
                   outDir: opts.outDir,

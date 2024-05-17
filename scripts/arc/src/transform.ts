@@ -23,9 +23,14 @@ import { createTask } from './transform/task.ts'
 const gzip = promisify(zlib.gzip)
 const debug = createDebugger('rk::transform')
 
+enum TransformModes {
+  watch = 'watch',
+  build = 'build',
+}
 type TransformContext = {
   outDir: string
   rootDir: string
+  mode: TransformModes
 }
 
 /**
@@ -33,9 +38,8 @@ type TransformContext = {
  */
 export async function transformFiles(
   files: Array<string>,
-  options: {
-    outDir: string
-    rootDir: string
+  options: Omit<TransformContext, 'mode'> & {
+    mode: `${TransformModes}`
   },
 ) {
   const pipeline = new Pipeline<
@@ -45,6 +49,7 @@ export async function transformFiles(
   >('transform', {
     outDir: options.outDir,
     rootDir: options.rootDir,
+    mode: TransformModes[options.mode],
   })
   pipeline.addStep(parse)
   pipeline.addStep(compile)
@@ -55,11 +60,17 @@ export async function transformFiles(
     pipeline.ctx.ftrace.register(filepath)
   }
 
-  log.transform('Starting transform pipeline')
+  // @TODO assess what should be verbose and what should be log
+  log.transform.verbose('Starting transform pipeline')
   debug('Running transform pipeline')
   const output = await pipeline.run({ files })
 
-  log.transform(chalk.green('✔︎'), 'Completed transform pipeline')
+  log.transform.log(chalk.green('✔︎'), 'Completed transform pipeline')
+
+  if (pipeline.ctx.mode === 'watch') {
+    log.transform.log('Who watches the watchmen?')
+  }
+
   // Generate pipeline analytics
   return pipeline.generateStatistics()
 }
@@ -88,7 +99,7 @@ const compile = createTask(
      */
     return await Promise.all(
       files.map(async ({ file, filepath }) => {
-        log.transform(`Compiling ${chalk.magenta(filepath)}`)
+        log.transform.verbose(`Compiling ${chalk.magenta(filepath)}`)
         debug('Compiling', filepath)
         ctx.ftrace.getTrace(filepath).track(mCompile.start)
 
