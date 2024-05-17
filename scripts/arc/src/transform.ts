@@ -15,6 +15,7 @@ import { createLogger } from '@urban-ui/arc-log'
 import { jscOps } from './configs/jsc.ts'
 import { minify } from './configs/minify.ts'
 import { transformImports } from './configs/plugins.ts'
+import { readFile, writeFile } from './file.ts'
 import { log } from './log'
 import { traceFn } from './trace.ts'
 import { fileEvents, measure } from './transform/analytics.ts'
@@ -181,9 +182,10 @@ const write = createTask(
         await Promise.all([
           pipe(
             async () => await writeFile(esmFilepath, files.esm.code),
-            async (opts) => {
-              ctx.ftrace.getSizes(filepath).esm = opts.size
-              return opts
+            async (file) => {
+              debug('Write file:', file)
+              ctx.ftrace.getSizes(filepath).esm = file.size
+              return file
             },
           ),
           files.esm.map &&
@@ -191,15 +193,17 @@ const write = createTask(
               async () =>
                 await writeFile(`${esmFilepath}.map`, files.esm.map as string),
               async (file) => {
+                debug('Write file:', file)
                 ctx.ftrace.getSizes(filepath)['esm::map'] = file.size
                 return file
               },
             ),
           pipe(
             async () => await writeFile(cjsFilepath, files.cjs.code),
-            async (opts) => {
-              ctx.ftrace.getSizes(filepath).cjs = opts.size
-              return opts
+            async (file) => {
+              debug('Write file:', file)
+              ctx.ftrace.getSizes(filepath).cjs = file.size
+              return file
             },
           ),
           files.cjs.map &&
@@ -207,6 +211,7 @@ const write = createTask(
               async () =>
                 await writeFile(`${cjsFilepath}.map`, files.cjs.map as string),
               async (file) => {
+                debug('Write file:', file)
                 ctx.ftrace.getSizes(filepath)['cjs::map'] = file.size
                 return file
               },
@@ -226,28 +231,6 @@ async function pipe<A, B>(
 ): Promise<B> {
   const value = await fn()
   return await fn2(value)
-}
-
-async function readFile(filepath: string) {
-  const file = Bun.file(filepath)
-  const content = await file.text()
-  return {
-    file: content,
-    filepath: filepath,
-  }
-}
-
-async function writeFile(filepath: string, content: string) {
-  const bytes = await Bun.write(filepath, content)
-  debug('Writing file:', filepath, bytes)
-
-  // gzip is not free, increases time by ~50%.
-  // @TODO add option to output gzipped weight.
-  // const l = await gzip(Buffer.from(content))
-  return {
-    filepath: filepath,
-    size: bytes,
-  }
 }
 
 function generateOutputPath(

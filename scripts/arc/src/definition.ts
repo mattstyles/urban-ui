@@ -6,6 +6,7 @@ import { parse } from 'tsconfck'
 import ts from 'typescript'
 
 import { createLogger } from '@urban-ui/arc-log'
+import { readFile, writeFile } from './file.ts'
 import { log } from './log'
 import { Pipeline } from './transform/pipeline.ts'
 import { createTask } from './transform/task.ts'
@@ -139,6 +140,7 @@ const write = createTask(
     await Promise.all(
       Object.entries(files).map(async ([filepath, content]) => {
         const report = await writeFile(filepath, content)
+        debug('Writing file:', report)
         // ctx.ftrace.getSizes(report.filepath).dts = report.size;
         // return writeFile(filepath, content);
       }),
@@ -147,15 +149,6 @@ const write = createTask(
     return files
   },
 )
-
-async function writeFile(filepath: string, content: string) {
-  const bytes = await Bun.write(filepath, content)
-  debug('Writing file:', filepath, bytes)
-  return {
-    filepath: filepath,
-    size: bytes,
-  }
-}
 
 /**
  * Using ts method to get the full ts config, including extends from a monorepo/workspace.
