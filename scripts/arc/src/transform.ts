@@ -19,17 +19,14 @@ import { readFile, writeFile } from './file.ts'
 import { log } from './log'
 import { traceFn } from './trace.ts'
 import { fileEvents, measure } from './transform/analytics.ts'
+import { type TransformMode, TransformModes } from './transform/modes.ts'
 import { Pipeline } from './transform/pipeline.ts'
 import { createTask } from './transform/task.ts'
 
 const gzip = promisify(zlib.gzip)
 const { debug } = createLogger('rk::transform', chalk.blue)
 
-enum TransformModes {
-  watch = 'watch',
-  build = 'build',
-}
-type TransformContext = {
+type TranspileTransformContext = {
   outDir: string
   rootDir: string
   mode: TransformModes
@@ -40,12 +37,12 @@ type TransformContext = {
  */
 export async function transformFiles(
   files: Array<string>,
-  options: Omit<TransformContext, 'mode'> & {
-    mode: `${TransformModes}`
+  options: Omit<TranspileTransformContext, 'mode'> & {
+    mode: TransformMode
   },
 ) {
   const pipeline = new Pipeline<
-    TransformContext,
+    TranspileTransformContext,
     TaskInputParameters<typeof parse>,
     TaskReturnType<typeof write>
   >('transform', {
@@ -157,7 +154,7 @@ const compile = createTask(
 const write = createTask(
   'write',
   async (
-    ctx: PipelineContext<TransformContext>,
+    ctx: PipelineContext<TranspileTransformContext>,
     files: Awaited<TaskReturnType<typeof compile>>,
   ) => {
     if (!(await fs.exists(ctx.outDir))) {

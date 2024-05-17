@@ -56,6 +56,7 @@ export const buildCommand: CommandModule = {
       })
       const dtsStats = await generateDefinitions(opts.include, {
         outDir: opts.outDir,
+        mode: 'build',
       })
 
       /**

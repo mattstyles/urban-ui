@@ -8,12 +8,16 @@ import ts from 'typescript'
 import { createLogger } from '@urban-ui/arc-log'
 import { readFile, writeFile } from './file.ts'
 import { log } from './log'
+import { type TransformMode, TransformModes } from './transform/modes.ts'
 import { Pipeline } from './transform/pipeline.ts'
 import { createTask } from './transform/task.ts'
 
 const { debug } = createLogger('rk::definition', chalk.green)
 
 type FilesDts = Record<string, string>
+type DefinitionTransformContext = {
+  mode: TransformModes
+}
 
 /**
  * Grabs the tsconfig file and writes ts definition files to disk
@@ -25,14 +29,16 @@ export async function generateDefinitions(
   files: Array<string>,
   options: {
     outDir: string
+    mode: TransformMode
   },
 ) {
   const pipeline = new Pipeline<
-    // biome-ignore lint/suspicious/noExplicitAny: type gets mapped anyways by the pipeline
-    any,
+    DefinitionTransformContext,
     TaskInputParameters<typeof readConfig>,
     TaskReturnType<typeof write>
-  >('dts')
+  >('dts', {
+    mode: TransformModes[options.mode],
+  })
   pipeline.addStep(readConfig)
   pipeline.addStep(
     compile(files, {

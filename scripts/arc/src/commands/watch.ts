@@ -141,6 +141,7 @@ export const watchCommand: CommandModule = {
                 })
                 const dtsStats = await generateDefinitions([file.name], {
                   outDir: opts.outDir,
+                  mode: 'watch',
                 })
 
                 // Disregard pipeline stats for now
