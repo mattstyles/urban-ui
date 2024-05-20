@@ -70,8 +70,8 @@ export const watchCommand: CommandModule = {
             // @TODO should potentially attempt to match against the initial arc config options include globs, or even the rootDir and the filter out those files that do not match the glob. Using opts.include here is the extended glob and will miss new files being added.
             const query = [
               'allof',
-              ['match', 'src/**/*', 'wholename'],
-              ['suffix', ['ts', 'tsx']],
+              ['match', `${opts.rootDir}/**/*`, 'wholename'],
+              ['suffix', ['ts', 'tsx', 'js', 'jsx']],
               ['not', ['suffix', ['test.ts', 'test.tsx']]],
             ]
             const sub = {
