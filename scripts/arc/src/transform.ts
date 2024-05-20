@@ -67,7 +67,7 @@ export async function transformFiles(
   log.transform.log(chalk.green('✔︎'), 'Completed transform pipeline')
 
   if (pipeline.ctx.mode === 'watch') {
-    log.transform.log('Who watches the watchmen?')
+    // log.transform.log('Who watches the watchmen?')
   }
 
   // Generate pipeline analytics

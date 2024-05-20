@@ -73,22 +73,22 @@ export const buildCommand: CommandModule = {
         },
         0,
       )
-      console.log('')
+      log.arc.log('')
       for (const [filename, file] of Object.entries(stats.file)) {
-        console.log(
+        log.arc.log(
           chalk.magenta(padRight(filename, maxFilenameLength + 1)),
           chalk.dim(formatCompileTargets(file)),
         )
       }
 
-      console.log('')
-      console.log(
+      log.arc.verbose('')
+      log.arc.verbose(
         chalk.green('✔︎ DTS pipeline successful'),
         chalk.dim(
           `(${prettyFullRuntime(getFullPipelineRuntime(dtsStats.pipeline))})`,
         ),
       )
-      console.log(
+      log.arc.verbose(
         chalk.green('✔︎ Compile pipeline successful'),
         chalk.dim(
           `(${prettyFullRuntime(getFullPipelineRuntime(stats.pipeline))})`,

@@ -120,16 +120,16 @@ export const watchCommand: CommandModule = {
                 if (file.exists === false) {
                   // @TODO clean up destination directory by deleting this file, if found (need to work out what the transform name would be)
                   log.arc.log(
-                    'File removed from watch',
+                    '🗑️  File removed from watch',
                     chalk.magenta(file.name),
                   )
                   return
                 }
 
                 if (file.new) {
-                  log.arc.log('Watching file:', chalk.magenta(file.name))
+                  log.arc.log('👩‍🎤 Watching file:', chalk.magenta(file.name))
                 } else {
-                  log.arc.log('File changed:', chalk.magenta(file.name))
+                  log.arc.log('👩‍🎤 File changed:', chalk.magenta(file.name))
                 }
 
                 // @TODO we can watch the root directory for changes and pass any files through the include glob (unexpanded) to filter
