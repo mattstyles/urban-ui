@@ -33,6 +33,7 @@ export const watchCommand: CommandModule = {
 
       return {
         include: files,
+        watchQuery: argv.watchQuery,
         outDir: argv.outDir,
         rootDir: argv.rootDir,
         events: argv.events,
@@ -76,7 +77,8 @@ export const watchCommand: CommandModule = {
             ]
             const sub = {
               // expression: ['anyof', ['name', opts.include, 'wholename']],
-              expression: query,
+              // expression: query,
+              expression: opts.watchQuery,
               fields: [
                 'name',
                 'size',

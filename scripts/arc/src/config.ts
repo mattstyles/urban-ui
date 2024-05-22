@@ -1,11 +1,26 @@
 import { cosmiconfig } from 'cosmiconfig'
+import type { Recursive } from 'type-fest/source/multidimensional-readonly-array'
+
+interface Wop<T> extends Array<T | Wop<T>> {}
+type WatchmanQuery = Wop<string>
 
 export type Config<T = Record<string | number | symbol, unknown>> = T & {
   /**
    * Array of globs to include for transformation
-   * @default ['src']
+   * @default ['src', '!**\/*.test.ts*']
    */
   include?: Array<string>
+  /**
+   * Query to pass to watchman.
+   * Ideally we would pass the glob to watchman but the watchman query is a lot more powerful than a glob.
+   * @default [
+   *   'allof',
+   *   ['match', `${opts.rootDir}\/**\/*`, 'wholename'],
+   *   ['suffix', ['ts', 'tsx', 'js', 'jsx']],
+   *   ['not', ['suffix', ['test.ts', 'test.tsx']]],
+   * ]
+   */
+  watchQuery?: WatchmanQuery
   /**
    * Output directory
    * @default dist
@@ -38,7 +53,13 @@ function noop() {
 }
 
 const defaultConfig: Required<Config> = {
-  include: ['src'],
+  include: ['src', '!**/*.test.ts*'],
+  watchQuery: [
+    'allof',
+    ['match', 'src/**/*', 'wholename'],
+    ['suffix', ['ts', 'tsx', 'js', 'jsx']],
+    ['not', ['suffix', ['test.ts', 'test.tsx']]],
+  ],
   outDir: 'dist',
   rootDir: 'src',
   events: {

@@ -35,6 +35,7 @@ export const buildCommand: CommandModule = {
 
       return {
         include: files,
+        watchQuery: argv.watchQuery,
         outDir: argv.outDir,
         rootDir: argv.rootDir,
         events: argv.events,
@@ -92,6 +93,21 @@ export const buildCommand: CommandModule = {
         chalk.green('✔︎ Compile pipeline successful'),
         chalk.dim(
           `(${prettyFullRuntime(getFullPipelineRuntime(stats.pipeline))})`,
+        ),
+      )
+
+      log.arc.log(
+        chalk.green('✔︎ Pipeline successful  '),
+        chalk.dim(
+          '|',
+          [
+            `dts ${prettyFullRuntime(
+              getFullPipelineRuntime(dtsStats.pipeline),
+            )}`,
+            `compile ${prettyFullRuntime(
+              getFullPipelineRuntime(stats.pipeline),
+            )}`,
+          ].join(' | '),
         ),
       )
 

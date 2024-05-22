@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/arc",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Kit builder for urban ui packages",
   "module": "./rk.ts",
   "types": "./rk.d.ts",
