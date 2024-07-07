@@ -119,22 +119,22 @@ const compile = createTask(
               })
             },
           ),
-          traceFn(
-            fileEvents['compile::cjs'],
-            ctx.ftrace.getTrace(filepath),
-            async () => {
-              return await transformFile({
-                code: file,
-                filename: filepath,
-                overrides: {
-                  module: {
-                    type: 'commonjs',
-                  },
-                },
-                plugins: [transformImports('cjs')],
-              })
-            },
-          ),
+          // traceFn(
+          //   fileEvents['compile::cjs'],
+          //   ctx.ftrace.getTrace(filepath),
+          //   async () => {
+          //     return await transformFile({
+          //       code: file,
+          //       filename: filepath,
+          //       overrides: {
+          //         module: {
+          //           type: 'commonjs',
+          //         },
+          //       },
+          //       plugins: [transformImports('cjs')],
+          //     })
+          //   },
+          // ),
         ])
 
         ctx.ftrace.getTrace(filepath).track(mCompile.end)
@@ -143,7 +143,7 @@ const compile = createTask(
           filepath: filepath,
           files: {
             esm: codeBlocks[0],
-            cjs: codeBlocks[1],
+            // cjs: codeBlocks[1],
           },
         }
       }),
@@ -170,10 +170,10 @@ const write = createTask(
           outDir: ctx.outDir,
         })
 
-        const cjsFilepath = generateOutputPath(files.cjs.filepath, 'cjs', {
-          strip: ctx.rootDir,
-          outDir: ctx.outDir,
-        })
+        // const cjsFilepath = generateOutputPath(files.cjs.filepath, 'cjs', {
+        //   strip: ctx.rootDir,
+        //   outDir: ctx.outDir,
+        // })
 
         ctx.ftrace.getTrace(filepath).track(measurement.start)
         await Promise.all([
@@ -195,24 +195,24 @@ const write = createTask(
                 return file
               },
             ),
-          pipe(
-            async () => await writeFile(cjsFilepath, files.cjs.code),
-            async (file) => {
-              debug('Write file:', file)
-              ctx.ftrace.getSizes(filepath).cjs = file.size
-              return file
-            },
-          ),
-          files.cjs.map &&
-            pipe(
-              async () =>
-                await writeFile(`${cjsFilepath}.map`, files.cjs.map as string),
-              async (file) => {
-                debug('Write file:', file)
-                ctx.ftrace.getSizes(filepath)['cjs::map'] = file.size
-                return file
-              },
-            ),
+          // pipe(
+          //   async () => await writeFile(cjsFilepath, files.cjs.code),
+          //   async (file) => {
+          //     debug('Write file:', file)
+          //     ctx.ftrace.getSizes(filepath).cjs = file.size
+          //     return file
+          //   },
+          // ),
+          // files.cjs.map &&
+          //   pipe(
+          //     async () =>
+          //       await writeFile(`${cjsFilepath}.map`, files.cjs.map as string),
+          //     async (file) => {
+          //       debug('Write file:', file)
+          //       ctx.ftrace.getSizes(filepath)['cjs::map'] = file.size
+          //       return file
+          //     },
+          //   ),
         ])
         ctx.ftrace.getTrace(filepath).track(measurement.end)
       }),

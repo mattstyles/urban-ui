@@ -14,25 +14,14 @@ const config: Config = {
   rootDir: tsconfig.compilerOptions?.rootDir ?? 'src',
   events: {
     complete: async () => {
+      // -- Example of spawning stylex cli to generate css for this package
       console.log('🎉')
-      await spawn('del', ['disttest2'])
-      console.log(process.cwd(), __dirname)
-      await spawn('stylex', [
-        '--config',
-        path.join(__dirname, 'stylex.config.jsonc'),
-      ])
-      // await new Promise((res) => {
-      //   const pipe = cp.spawn('stylex', ['-i', 'disttest', '-o', 'disttest2'], {
-      //     stdio: [0, 1, 2],
-      //   })
-      //   pipe.on('data', (chunk) => {
-      //     console.log(chunk)
-      //   })
-      //   pipe.on('close', () => {
-      //     console.log('👩‍🎤')
-      //     res(null)
-      //   })
-      // })
+      // await spawn('del', ['disttest2'])
+      // console.log(process.cwd(), __dirname)
+      // await spawn('stylex', [
+      //   '--config',
+      //   path.join(__dirname, 'stylex.config.jsonc'),
+      // ])
       console.log('❤️')
     },
   },

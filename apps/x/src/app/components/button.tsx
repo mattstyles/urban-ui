@@ -22,7 +22,9 @@ const styles = stylex.create({
   },
 })
 
-export interface ButtonProps extends AriaButtonProps {}
+export interface ButtonProps extends AriaButtonProps {
+  contentEditable: 'inherit'
+}
 
 export function Button(props: ButtonProps) {
   const ref = useRef(null)
