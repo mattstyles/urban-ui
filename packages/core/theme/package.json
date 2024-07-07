@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/theme",
-  "version": "0.5.0-alpha.0",
+  "version": "0.5.0-alpha.1",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -9,6 +9,7 @@
     ".": "./dist/index.js",
     "./spacing.stylex": "./dist/tokens/spacing.stylex.js"
   },
+  "files": ["src", "dist"],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",
