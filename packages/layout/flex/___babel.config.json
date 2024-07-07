@@ -2,7 +2,7 @@
   "presets": ["next/babel"],
   "plugins": [[
     "@stylexjs/babel-plugin", {
-      "dev": false,
+      "dev": true,
       "stylexSheetName": "<>",
       "useCSSLayers": true,
       "unstable_moduleResolution": {

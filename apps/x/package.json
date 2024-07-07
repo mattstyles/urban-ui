@@ -7,11 +7,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint src"
+    "lint": "biome lint src",
+    "test:generate": "stylex --config stylex.config.jsonc"
   },
   "devDependencies": {
-    "@stylexjs/babel-plugin": "^0.5.1",
-    "@stylexjs/nextjs-plugin": "^0.5.1",
+    "@stylexjs/babel-plugin": "^0.7.5",
+    "@stylexjs/cli": "^0.7.5",
+    "@stylexjs/nextjs-plugin": "^0.7.5",
     "@types/node": "^20.4.5",
     "@types/react": "18.2.17",
     "@types/react-dom": "^18.2.7",
@@ -20,7 +22,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@stylexjs/stylex": "^0.5.1",
+    "@stylexjs/stylex": "^0.7.5",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/testx": "workspace:*",
     "@urban-ui/theme": "workspace:*",
