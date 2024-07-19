@@ -20,12 +20,12 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-slot": "^1.1.0",
     "@stylexjs/stylex": "^0.7.5",
     "@urban-ui/theme": "^0.5.0-alpha.1"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^18.2.0 || ^17"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.24.7",
