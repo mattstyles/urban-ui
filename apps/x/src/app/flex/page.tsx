@@ -20,11 +20,12 @@ export default function FlexPage() {
       <h1>Flex</h1>
       <Flex orientation="v" gap="sm">
         <div>gap: sm</div>
-        <Flex gap="sm">
+        <Flex gap="sm" bg>
           <Block />
           <Block />
           <Block />
           <Block />
+          hello world
         </Flex>
         <div>gap: md</div>
         <Flex gap="md">

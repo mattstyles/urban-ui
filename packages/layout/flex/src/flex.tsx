@@ -2,7 +2,41 @@ import { Slot, Slottable } from '@radix-ui/react-slot'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { spacing } from '@urban-ui/theme/spacing.stylex'
+import { element, fg } from '@urban-ui/theme/tone.stylex'
 import { forwardRef } from 'react'
+
+// const themeFull = {
+//   element: stylex.createTheme(element, {
+//     base: 'hsl(0, 70%, 52%)',
+//     hover: 'hsl(0, 70%, 49%)',
+//     press: 'hsl(0, 70%, 45%)',
+//     selected: 'hsl(0, 70%, 42%)',
+//   }),
+//   fg: stylex.createTheme(element, {
+//     base: 'hsl(0, 70%, 52%)',
+//     hover: 'hsl(0, 70%, 49%)',
+//     press: 'hsl(0, 70%, 45%)',
+//     selected: 'hsl(0, 70%, 42%)',
+//   }),
+//   apply() {
+//     return [this.element, this.fg]
+//   },
+// }
+
+export const theme = stylex.createTheme(element, {
+  base: 'hsl(0, 70%, 52%)',
+  hover: 'hsl(0, 70%, 49%)',
+  press: 'hsl(0, 70%, 45%)',
+  selected: 'hsl(0, 70%, 42%)',
+})
+
+export const tfg = stylex.createTheme(fg, {
+  hi: 'white',
+  lo: 'rebeccapurple',
+})
+
+// This can be used to create tonal themes to apply multiple sets of variables in one go.
+const themeFull = [theme, tfg]
 
 const styles = stylex.create({
   base: {
@@ -13,6 +47,11 @@ const styles = stylex.create({
   },
   fit: {
     width: 'fit-content',
+  },
+
+  color: {
+    background: element.base,
+    color: fg.lo,
   },
 })
 
@@ -115,6 +154,8 @@ export interface FlexProps
   flex?: keyof typeof flexStyles
   wrap?: keyof typeof wrapStyles
 
+  bg?: boolean
+
   // @TODO is this a good idea to override the html attribute?
   style?: StyleXStyles
   asChild?: boolean
@@ -135,6 +176,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
       className,
       style,
       children,
+      bg,
       ...props
     },
     ref,
@@ -144,6 +186,9 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
       <Comp
         ref={ref}
         {...stylex.props(
+          // theme,
+          // tfg,
+          themeFull,
           styles.base,
           orientation != null && orientationStyles[orientation],
           alignment != null && alignmentStyles[alignment],
@@ -153,6 +198,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
           fit && styles.fit,
           flex != null && flexStyles[flex],
           wrap != null && wrapStyles[wrap],
+          bg && styles.color,
           style,
         )}
         {...props}

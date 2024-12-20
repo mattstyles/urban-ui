@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/arc",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Kit builder for urban ui packages",
   "module": "./rk.ts",
   "types": "./rk.d.ts",
@@ -47,7 +47,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@urban-ui/arc-log": "workspace:*",
+    "@urban-ui/arc-log": "0.2.0",
     "@swc/core": "1.6.13",
     "@swc/plugin-transform-imports": "1.5.123",
     "chalk": "^5.3.0",

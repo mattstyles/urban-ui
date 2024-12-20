@@ -7,7 +7,8 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./spacing.stylex": "./dist/tokens/spacing.stylex.js"
+    "./spacing.stylex": "./dist/tokens/spacing.stylex.js",
+    "./tone.stylex": "./dist/tokens/tone.stylex.js"
   },
   "files": ["src", "dist"],
   "license": "MIT",
