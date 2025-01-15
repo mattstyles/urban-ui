@@ -14,7 +14,8 @@
     "packages/control/*",
     "packages/layout/*",
     "packages/typography/*",
-    "packages/utility/*"
+    "packages/utility/*",
+    "packages/fr/*"
   ],
   "repository": {
     "type": "git",

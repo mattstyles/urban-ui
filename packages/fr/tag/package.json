@@ -1,28 +1,27 @@
 {
-  "name": "@urban-ui/theme",
-  "version": "0.5.0-alpha.1",
+  "name": "@urban-ui/fr-tag",
+  "version": "0.5.0-alpha.0",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./spacing.stylex": "./dist/tokens/spacing.stylex.js",
-    "./tone.stylex": "./dist/tokens/tone.stylex.js"
+    ".": "./dist/index.js"
   },
   "files": ["src", "dist"],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",
-    "type:check": "tsc",
+    "format": "biome format src --write",
+    "typecheck": "tsc",
     "clean": "del dist",
     "dev": "arc watch",
-    "build": "arc build"
+    "build": "arc build",
+    "test": "bun test"
   },
   "dependencies": {
-    "@capsizecss/core": "^3.1.1",
-    "@capsizecss/metrics": "^1.2.0",
-    "@stylexjs/stylex": "0.9.3"
+    "@stylexjs/stylex": "0.9.3",
+    "@urban-ui/fr-theme": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.2.0 || ^17"
@@ -33,7 +32,7 @@
     "@types/react-dom": "^18.3.0",
     "@urban-ui/tsconfig": "workspace:*",
     "del-cli": "^5.1.0",
-    "react": "^18.2.0",
+    "react": "^18.3.0",
     "typescript": "^5.4.3"
   }
 }

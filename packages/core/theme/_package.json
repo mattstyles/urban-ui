@@ -32,7 +32,7 @@
   "dependencies": {
     "@capsizecss/core": "^3.1.1",
     "@capsizecss/metrics": "^1.2.0",
-    "@stylexjs/stylex": "^0.5.1"
+    "@stylexjs/stylex": "0.9.3"
   },
   "peerDependencies": {
     "react": "^18.2.0"
