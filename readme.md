@@ -23,7 +23,6 @@ Built on top of [React-Aria](https://react-spectrum.adobe.com/react-aria/index.h
 - [React-aria](https://react-spectrum.adobe.com/react-aria/index.html)
 - [React-stately](https://react-spectrum.adobe.com/react-stately/)
 - [styled-system](https://styled-system.com)
-- [Vanilla extract](https://vanilla-extract.style/)
 
 [![License](https://img.shields.io/github/license/mattstyles/urban-ui.svg)](https://github.com/mattstyles/urban-ui/blob/master/license.md)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code-of-conduct.md)

@@ -1,12 +1,9 @@
-"use client";
-
-import { Button } from "@urban-ui/button";
+'use client'
 
 export function Content() {
-	return (
-		<div>
-			<h1>Components</h1>
-			<Button onPress={() => alert("clicking")}>Click me</Button>
-		</div>
-	);
+  return (
+    <div>
+      <h1>Client content</h1>
+    </div>
+  )
 }
