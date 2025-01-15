@@ -1,5 +1,27 @@
 # generator-urban-ui
 
+## 1.3.0
+
+### Minor Changes
+
+- fbd05c2: add entry files
+
+### Patch Changes
+
+- e5f5f84: generator external api changes to transpiled files
+
+## 1.2.0
+
+### Minor Changes
+
+- a95ed46: export transpiled packages to npm
+
+## 1.1.0
+
+### Minor Changes
+
+- 6cc618e: react-aria and vanilla extract
+
 ## 1.0.2
 
 ### Patch Changes

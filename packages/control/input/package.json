@@ -1,70 +1,72 @@
 {
   "name": "@urban-ui/input",
-  "version": "0.1.0",
-  "description": "Input component",
+  "version": "0.4.0",
   "type": "module",
-  "sideEffects": false,
-  "main": "./dist/@urban-ui/input.js",
-  "module": "./dist/@urban-ui/input.js",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/@urban-ui/input.js",
-      "export": "./dist/@urban-ui/input.cjs",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./build": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
+    },
+    "./anatomy": {
+      "types": "./dist/anatomy.css.d.ts",
+      "import": "./dist/anatomy.css.js",
+      "require": "./dist/anatomy.css.cjs"
     }
   },
-  "files": [
-    "dist"
-  ],
   "license": "MIT",
-  "author": {
-    "name": "Matt Styles",
-    "url": "https://github.com/mattstyles"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattstyles/urban-ui.git",
-    "directory": "packages/components/input"
-  },
-  "bugs": {
-    "url": "https://github.com/mattstyles/urban-ui/issues"
-  },
-  "keywords": [
-    "ui",
-    "react",
-    "components",
-    "urban-ui",
-    "stitches",
-    "radix-ui"
-  ],
   "scripts": {
-    "lint": "eslint *.ts*",
+    "lint": "biome lint src",
     "clean": "del dist",
     "dev": "vite build --watch",
-    "build": "vite build",
-    "test": "vitest run src"
+    "build": "vite build"
   },
   "dependencies": {
-    "@urban-ui/theme": "workspace:*"
+    "@capsizecss/vanilla-extract": "^1.0.0",
+    "@react-aria/focus": "^3.13.0",
+    "@react-aria/interactions": "^3.16.0",
+    "@react-aria/textfield": "^3.11.0",
+    "@react-aria/utils": "^3.18.0",
+    "@urban-ui/button": "workspace:*",
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/icons": "workspace:*",
+    "@urban-ui/slot": "workspace:*",
+    "@urban-ui/text": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
+    "@urban-ui/utils": "workspace:*",
+    "@vanilla-extract/css": "^1.11.1",
+    "@vanilla-extract/css-utils": "^0.1.3",
+    "clsx": "^2.0.0",
+    "cva": "npm:class-variance-authority@^0.7.0"
   },
   "peerDependencies": {
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@stitches/react": "^1.2.8",
-    "@testing-library/react": "^14.0.0",
-    "@types/node": "^17.0.12",
-    "@types/react": "^18.0.28",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@types/testing-library__jest-dom": "^5.14.5",
-    "config-eslint": "workspace:*",
-    "config-ts": "workspace:*",
+    "@urban-ui/tsconfig": "workspace:*",
     "config-vite": "workspace:*",
-    "del-cli": "^5.0.0",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.1"
-  },
-  "publishConfig": {
-    "access": "public"
+    "del-cli": "^5.1.0",
+    "react": "^18.2.0",
+    "typescript": "^5.1.3",
+    "vite": "^5.0.10",
+    "vitest": "^1.1.1"
   }
 }

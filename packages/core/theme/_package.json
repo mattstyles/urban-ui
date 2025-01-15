@@ -1,0 +1,49 @@
+{
+  "name": "@urban-ui/theme",
+  "version": "0.4.0",
+  "type": "module",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./reset": {
+      "import": "./dist/reset.css",
+      "require": "./dist/reset.css"
+    },
+    "./spacing.stylex": {
+      "types": "./dist/tokens/spacing.stylex.d.ts",
+      "import": "./dist/tokens/spacing.stylex.js",
+      "require": "./dist/tokens/spacing.stylex.cjs"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "lint": "biome lint src",
+    "type:check": "tsc",
+    "clean": "del dist",
+    "dev": "vite build --watch",
+    "build": "arc build"
+  },
+  "dependencies": {
+    "@capsizecss/core": "^3.1.1",
+    "@capsizecss/metrics": "^1.2.0",
+    "@stylexjs/stylex": "0.9.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.2",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@urban-ui/tsconfig": "workspace:*",
+    "del-cli": "^5.0.0",
+    "react": "^18.2.0",
+    "typescript": "^5.4.3"
+  }
+}

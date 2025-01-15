@@ -1,17 +1,18 @@
-import {describe, test, expect} from 'vitest'
-import {render, screen} from '@testing-library/react'
+import { describe, test, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
 
-import {Panel} from './index'
+import { Panel } from "./index.tsx";
 
-describe('[Panel]', () => {
-  test('Forwards the testid', async () => {
-    // ARRANGE
-    render(<Panel data-testid='some-id' />)
+describe("[Panel]", () => {
+	test("Forwards the testid", async () => {
+		// ARRANGE
+		render(<Panel.Root data-testid="some-id" />);
 
-    // ACT
+		// ACT
 
-    // ASSERT
-    const el = await screen.findByTestId('some-id')
-    expect(el).toBeInTheDocument()
-  })
-})
+		// ASSERT
+		const el = await screen.findByTestId("some-id");
+		expect(el).toBeInTheDocument();
+	});
+});

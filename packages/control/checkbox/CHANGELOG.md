@@ -1,30 +1,50 @@
 # @urban-ui/checkbox
 
-## 0.1.0
+## 0.4.0
 
 ### Minor Changes
 
-- 661b6c1: 0.1.0
+- fbd05c2: add entry files
 
 ### Patch Changes
 
-- Updated dependencies [661b6c1]
-  - @urban-ui/theme@0.1.0
+- Updated dependencies [fbd05c2]
+  - @urban-ui/text@0.4.0
+  - @urban-ui/button@0.4.0
+  - @urban-ui/flex@0.4.0
+  - @urban-ui/theme@0.4.0
+  - @urban-ui/utils@0.4.0
+  - @urban-ui/icons@0.4.0
 
-## 0.0.2
+## 0.3.0
+
+### Minor Changes
+
+- a95ed46: export transpiled packages to npm
 
 ### Patch Changes
 
-- d5ea276: add :rocket: icon component
-- 331677e: update checkbox alignment with labels
-- 3f647cf: add :rocket: switch component
-- 17dfc18: add :rocket: checkbox component
-- 7dc6065: add :rocket: radio component
-- Updated dependencies [9cb48a5]
-- Updated dependencies [07e8f3e]
-- Updated dependencies [d5ea276]
-- Updated dependencies [331677e]
-- Updated dependencies [44042db]
-- Updated dependencies [2b95bae]
-- Updated dependencies [17dfc18]
-  - @urban-ui/theme@0.0.5
+- Updated dependencies [a95ed46]
+  - @urban-ui/text@0.3.0
+  - @urban-ui/button@0.3.0
+  - @urban-ui/flex@0.3.0
+  - @urban-ui/theme@0.3.0
+  - @urban-ui/utils@0.3.0
+  - @urban-ui/icons@0.3.0
+
+## 0.2.0
+
+### Minor Changes
+
+- 6cc618e: react-aria and vanilla extract
+
+### Patch Changes
+
+- Updated dependencies [6cc618e]
+- Updated dependencies [9948cf6]
+  - @urban-ui/text@0.2.0
+  - @urban-ui/button@0.2.0
+  - @urban-ui/flex@0.2.0
+  - @urban-ui/theme@0.2.0
+  - @urban-ui/utils@0.2.0
+  - @urban-ui/icons@0.2.0

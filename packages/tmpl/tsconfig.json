@@ -1,0 +1,9 @@
+{
+	"extends": "@urban-ui/tsconfig/node.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"rootDir": "src"
+	},
+	"include": ["src"],
+	"exclude": ["dist", "build", "node_modules"]
+}

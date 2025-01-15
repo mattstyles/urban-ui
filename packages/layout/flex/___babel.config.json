@@ -1,0 +1,14 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [[
+    "@stylexjs/babel-plugin", {
+      "dev": true,
+      "stylexSheetName": "<>",
+      "useCSSLayers": true,
+      "unstable_moduleResolution": {
+        "type": "commonJS",
+        "rootDir": "../../"
+      }
+    }
+  ]]
+}

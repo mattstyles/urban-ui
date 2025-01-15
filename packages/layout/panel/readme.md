@@ -6,7 +6,7 @@
 [![minzip size](https://img.shields.io/bundlephobia/minzip/@urban-ui/panel?style=flat-square)](https://bundlephobia.com/result?p=@urban-ui/panel)
 [![License](https://img.shields.io/github/license/mattstyles/urban-ui.svg?style=flat-square)](https://github.com/mattstyles/urban-ui/blob/master/license.md)
 
-> Floating panel for content
+> Panels are layout components which hold content
 
 ## Getting started
 

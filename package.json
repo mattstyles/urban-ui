@@ -1,6 +1,6 @@
 {
   "name": "urban-ui",
-  "description": "UI components powered by stitches and radix-ui",
+  "description": "UI components powered by react-aria and vanilla-extract",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -8,7 +8,14 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "packages/**/*"
+    "scripts/*",
+    "tooling/*",
+    "packages/core/*",
+    "packages/control/*",
+    "packages/layout/*",
+    "packages/typography/*",
+    "packages/utility/*",
+    "packages/fr/*"
   ],
   "repository": {
     "type": "git",
@@ -16,20 +23,25 @@
   },
   "scripts": {
     "test": "CI=true turbo run test",
-    "build": "turbo run build",
+    "build:ci": "turbo run build --filter=\"./packages/**\"",
+    "build:all": "turbo run build",
     "dev": "turbo run clean && turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "type:check": "turbo run type:check",
+    "format": "biome format --write {packages,scripts,apps}",
+    "scaffold": "node packages/tmpl/dist/bin/tmpl.js",
+    "gen": "turbo gen",
     "publish-packages": "CI=true turbo run build lint test && changeset version && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.0",
-    "config-eslint": "workspace:*",
-    "prettier": "latest",
-    "turbo": "latest"
+    "@biomejs/biome": "^1.7.2",
+    "@changesets/cli": "^2.27.1",
+    "@turbo/gen": "^1.13.0",
+    "turbo": "^1.13.0",
+    "typescript": "^5.4.3"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=20.0.0"
   },
-  "packageManager": "pnpm@8.5.0"
+  "packageManager": "bun@1.1.3"
 }

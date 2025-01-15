@@ -1,5 +1,9 @@
 {
-  "extends": "config-ts/react-library.json",
-  "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"]
+	"extends": "@urban-ui/tsconfig/react-library.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"rootDir": "src"
+	},
+	"include": ["src"],
+	"exclude": ["dist", "build", "node_modules"]
 }

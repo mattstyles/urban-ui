@@ -1,0 +1,64 @@
+{
+  "name": "@urban-ui/arc",
+  "version": "0.3.2",
+  "description": "Kit builder for urban ui packages",
+  "module": "./rk.ts",
+  "types": "./rk.d.ts",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "arc": "rk.ts"
+  },
+  "exports": {
+    ".": {
+      "types": "./rk.d.ts"
+    },
+    "./ts": {
+      "import": "./ts.ts",
+      "types": "./ts.d.ts"
+    }
+  },
+  "scripts": {
+    "test": "bun test",
+    "lint": "biome lint src"
+  },
+  "author": "Matt Styles",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattstyles/urban-ui.git",
+    "directory": "packages/scripts/arc"
+  },
+  "bugs": {
+    "url": "https://github.com/mattstyles/urban-ui/issues"
+  },
+  "devDependencies": {
+    "@stylexjs/stylex": "0.9.3",
+    "@types/bun": "latest",
+    "@types/debug": "^4.1.12",
+    "@types/fb-watchman": "^2.0.4",
+    "@types/pretty-time": "^1.1.5",
+    "@types/react": "^18.2.66",
+    "@types/uuid": "^9.0.8",
+    "@types/yargs": "^17.0.32",
+    "react": "^18.2.0",
+    "typescript": "^5.4.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@urban-ui/arc-log": "0.2.0",
+    "@swc/core": "1.6.13",
+    "@swc/plugin-transform-imports": "1.5.123",
+    "chalk": "^5.3.0",
+    "cosmiconfig": "^9.0.0",
+    "debug": "^4.3.4",
+    "fb-watchman": "^2.0.2",
+    "globby": "^14.0.1",
+    "pretty-bytes": "^6.1.1",
+    "tsconfck": "^3.0.3",
+    "type-fest": "^4.14.0",
+    "uuid": "^9.0.1",
+    "yargs": "^17.7.2"
+  }
+}

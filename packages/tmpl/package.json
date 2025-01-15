@@ -1,0 +1,25 @@
+{
+  "name": "@urban-ui/tmpl",
+  "private": true,
+  "type": "module",
+  "version": "0.4.0",
+  "description": "Creates urban-ui packages.",
+  "author": "Matt Styles",
+  "license": "MIT",
+  "bin": {
+    "tmpl": "./dist/bin/tmpl.js"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "tmpl": "plop --plopfile ./dist/index.js",
+    "scaffold": "node ./dist/bin/tmpl.js"
+  },
+  "devDependencies": {
+    "@urban-ui/tsconfig": "workspace:*",
+    "vite": "^5.0.12"
+  },
+  "dependencies": {
+    "plop": "^4.0.1"
+  }
+}

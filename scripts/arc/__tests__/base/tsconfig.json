@@ -1,0 +1,37 @@
+{
+	"compilerOptions": {
+		// @urban-ui/tsconfig/base.json
+		"composite": true,
+		"declaration": true,
+		"declarationMap": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"inlineSources": false,
+		"isolatedModules": true,
+		// "target": "es6",
+		// "module": "esnext",
+		// "moduleResolution": "nodenext",
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"preserveWatchOutput": true,
+		"skipLibCheck": true,
+		"strict": true,
+		// "baseUrl": ".",
+
+		// @urban-ui/tsconfig/react-library.json
+		"jsx": "react-jsx",
+		"lib": ["ES2015", "dom", "dom.iterable", "esnext"],
+		"target": "es6",
+		"module": "esnext",
+		"moduleResolution": "nodenext",
+		"noEmit": true,
+		"allowImportingTsExtensions": true,
+		"resolveJsonModule": true,
+
+		// package overrides
+		"baseUrl": ".",
+		"rootDir": "src"
+	},
+	"include": ["src"],
+	"exclude": ["dist", "build", "node_modules"]
+}

@@ -1,16 +1,18 @@
-import {describe, test, expect} from 'vitest'
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
+import { describe, expect, test } from 'vitest'
+import '@testing-library/jest-dom/vitest'
 
-import {Spacer} from './index'
+import { Spacer } from './index'
 
-// Not too useful really :rofl: @TODO
-test('Checks that spacer renders a div', async () => {
-  // ARRANGE
-  const {container} = render(<Spacer />)
+describe('[Spacer]', () => {
+  test('Forwards the testid', async () => {
+    // ARRANGE
+    render(<Spacer data-testid="some-id" />)
 
-  // ACT
+    // ACT
 
-  // ASSERT
-  const el = container.querySelector('div')
-  expect(el).toBeInTheDocument()
+    // ASSERT
+    const el = await screen.findByTestId('some-id')
+    expect(el).toBeInTheDocument()
+  })
 })

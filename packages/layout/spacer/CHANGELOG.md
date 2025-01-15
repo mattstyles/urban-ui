@@ -1,54 +1,47 @@
 # @urban-ui/spacer
 
-## 0.1.0
+## 0.4.0
 
 ### Minor Changes
 
-- 661b6c1: 0.1.0
+- fbd05c2: add entry files
 
 ### Patch Changes
 
-- Updated dependencies [661b6c1]
-  - @urban-ui/theme@0.1.0
+- Updated dependencies [fbd05c2]
+  - @urban-ui/theme@0.4.0
 
-## 0.0.5
+## 0.3.0
 
-### Patch Changes
+### Minor Changes
 
-- Updated dependencies [9cb48a5]
-- Updated dependencies [07e8f3e]
-- Updated dependencies [d5ea276]
-- Updated dependencies [331677e]
-- Updated dependencies [44042db]
-- Updated dependencies [2b95bae]
-- Updated dependencies [17dfc18]
-  - @urban-ui/theme@0.0.5
-
-## 0.0.4
+- a95ed46: export transpiled packages to npm
 
 ### Patch Changes
 
-- Updated dependencies [010947e]
-- Updated dependencies [eca33a8]
-- Updated dependencies [9856b24]
-  - @urban-ui/theme@0.0.4
+- Updated dependencies [a95ed46]
+  - @urban-ui/theme@0.3.0
 
-## 0.0.3
+## 0.2.0
 
-### Patch Changes
+### Minor Changes
 
-- Updated dependencies [94dc662]
-  - @urban-ui/theme@0.0.3
-
-## 0.0.2
+- 6cc618e: react-aria and vanilla extract
 
 ### Patch Changes
 
-- 624fe8e: Adding generator for ui component packages
-- 61ea25f: Add flex component
-- a2f293d: Add theme specification
-- Updated dependencies [17cd030]
-- Updated dependencies [e8b530a]
-- Updated dependencies [61ea25f]
-- Updated dependencies [a2f293d]
-  - @urban-ui/theme@0.0.2
+- bcfc98c: change :boom: rename Spacer::size to Spacer::gap
+
+  _Upgrade instructions_
+
+  As we are early in the development cycle this breaking change will only
+  trigger a patch update for Spacer, which will become a minor update when
+  the backlog is finished for 0.2.0.
+
+  To upgrade change any references to the Spacer `size` prop to `gap`.
+  This is to make the props consistent across components. Spacer is used
+  as a gap component so it is more consistent to use gap rather than size.
+
+- Updated dependencies [6cc618e]
+- Updated dependencies [9948cf6]
+  - @urban-ui/theme@0.2.0

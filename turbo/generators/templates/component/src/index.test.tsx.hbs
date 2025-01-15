@@ -1,0 +1,18 @@
+import {describe, test, expect} from 'vitest'
+import {render, screen} from '@testing-library/react'
+import '@testing-library/jest-dom/vitest'
+
+import {{curly (pascalCase name)}} from './index.ts'
+
+describe('[{{name}}]', () => {
+  test('Forwards the testid', async () => {
+    // ARRANGE
+    render(<{{pascalCase name}} data-testid='some-id' />)
+
+    // ACT
+
+    // ASSERT
+    const el = await screen.findByTestId('some-id')
+    expect(el).toBeInTheDocument()
+  })
+})

@@ -1,17 +1,18 @@
-import {describe, test, expect} from 'vitest'
-import {render, screen} from '@testing-library/react'
+import { describe, test, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
 
-import * as Checkbox from './index'
+import { Checkbox } from "./index.tsx";
 
-describe('[Checkbox]', () => {
-  test('Forwards the testid', async () => {
-    // ARRANGE
-    render(<Checkbox.Root data-testid='some-id' />)
+describe("[Checkbox]", () => {
+	test("Forwards the testid", async () => {
+		// ARRANGE
+		render(<Checkbox data-testid="some-id" aria-label="foo" />);
 
-    // ACT
+		// ACT
 
-    // ASSERT
-    const el = await screen.findByTestId('some-id')
-    expect(el).toBeInTheDocument()
-  })
-})
+		// ASSERT
+		const el = await screen.findByTestId("some-id");
+		expect(el).toBeInTheDocument();
+	});
+});

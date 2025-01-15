@@ -1,18 +1,13 @@
 {
   "name": "generator-urban-ui",
-  "version": "1.0.2",
+  "version": "1.3.0",
   "description": "Creates urban-ui packages. Will not work without modification outside of the urban-ui monorepo.",
-  "files": [
-    "generators"
-  ],
-  "keywords": [
-    "yeoman-generator"
-  ],
+  "files": ["generators"],
+  "keywords": ["yeoman-generator"],
   "author": "Matt Styles",
   "license": "MIT",
   "devDependencies": {
-    "config-eslint": "workspace:*",
-    "config-ts": "workspace:*"
+    "@urban-ui/tsconfig": "workspace:*"
   },
   "dependencies": {
     "yeoman-generator": "^5.8.0"

@@ -18,6 +18,8 @@ dist
 # misc
 .DS_Store
 *.pem
+.swc
+*.tsbuildinfo
 
 # debug
 npm-debug.log*
