@@ -20,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <body className={cx(inter.className, inter.variable)}>{children}</body> */}
-      <body>{children}</body>
+      <body>
+        <h1>Layout rendered title</h1>
+        {children}
+      </body>
     </html>
   )
 }
