@@ -21,7 +21,9 @@ export function ContentOpenProps() {
   return (
     <div {...stylex.props(styles.container)}>
       <h1>Client content</h1>
-      <p {...stylex.props(styles.p)}>Styled using stylexjs/open-props</p>
+      <p {...stylex.props(styles.p)}>
+        Styled using stylexjs/open-props. Should be red.
+      </p>
     </div>
   )
 }

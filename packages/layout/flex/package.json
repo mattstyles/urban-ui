@@ -1,5 +1,5 @@
 {
-  "name": "@urban-ui/text",
+  "name": "@urban-ui/flex",
   "version": "0.6.0",
   "type": "module",
   "module": "./dist/index.js",

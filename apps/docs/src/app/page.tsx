@@ -1,7 +1,7 @@
 import stylex from '@stylexjs/stylex'
 import { omit } from 'lodash'
 import { Content } from './content.tsx'
-// import { ContentExternal } from './contentExternal.tsx'
+import { ContentExternal } from './contentExternal.tsx'
 import { ContentOpenProps } from './contentOpenProps.tsx'
 
 const styles = stylex.create({
@@ -15,10 +15,10 @@ export default function Home() {
     <main>
       <h1>Server rendered page title</h1>
       <p {...stylex.props(styles.container)}>
-        Styled with stylex from server render
+        Styled with stylex from server render. Should be pink.
       </p>
       <Content />
-      {/* <ContentExternal /> */}
+      <ContentExternal />
       <ContentOpenProps />
     </main>
   )

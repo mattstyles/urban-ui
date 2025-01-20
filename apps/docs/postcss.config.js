@@ -36,7 +36,7 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
 }
 
 const openPropsIncludePaths = getPackageIncludePaths('@stylexjs/open-props', [
-  path.join(projectRoot, 'node_modules'),
+  // path.join(projectRoot, 'node_modules'),
   path.join(monorepoRoot, 'node_modules'),
 ])
 
@@ -48,8 +48,13 @@ const urbanTextIncludePaths = getPackageIncludePaths('@urban-ui/text', [
   path.join(projectRoot, 'node_modules'),
   path.join(monorepoRoot, 'node_modules'),
 ])
+const urbanFlexIncludePaths = getPackageIncludePaths('@urban-ui/flex', [
+  path.join(projectRoot, 'node_modules'),
+  path.join(monorepoRoot, 'node_modules'),
+])
 
 const urbanRelativePathIncludes = [
+  '../../node_modules/@urban-ui/flex/**/*.{js,mjs}',
   '../../node_modules/@urban-ui/text/**/*.{js,mjs}',
   '../../node_modules/@urban-ui/theme/**/*.{js,mjs}',
   '../../node_modules/@stylexjs/open-props/**/*.{js,mjs}',
@@ -66,9 +71,11 @@ console.log({
 // console.log(openPropsIncludePaths)
 
 const externalImportPaths = [
-  // ...urbanThemeIncludePaths,
-  // ...urbanTextIncludePaths,
+  // ...urbanFlexIncludePaths,
+  ...urbanThemeIncludePaths,
+  ...urbanTextIncludePaths,
   ...openPropsIncludePaths,
+  // ...urbanRelativePathIncludes,
 ]
 
 console.log('Importing')
