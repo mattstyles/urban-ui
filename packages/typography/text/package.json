@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/text",
-  "version": "0.6.0",
+  "version": "0.6.0-rc.2",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -24,8 +24,8 @@
   },
   "peerDependencies": {
     "react": "^18.2.0",
-    "@stylexjs/stylex": "0.10.0",
-    "@stylexjs/open-props": "0.10.0"
+    "@stylexjs/stylex": "^0.10.0",
+    "@stylexjs/open-props": "^0.10.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.6",
