@@ -30,13 +30,12 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
 
   return [
     path.join(packagePath, '**/*.{js,mjs}'),
-    // '!' + path.join(packagePath, 'node_modules/**/*.{js,mjs}'),
     `!${path.join(packagePath, 'node_modules/**/*.{js,mjs}')}`,
   ]
 }
 
 const openPropsIncludePaths = getPackageIncludePaths('@stylexjs/open-props', [
-  // path.join(projectRoot, 'node_modules'),
+  path.join(projectRoot, 'node_modules'),
   path.join(monorepoRoot, 'node_modules'),
 ])
 
@@ -60,16 +59,6 @@ const urbanRelativePathIncludes = [
   '../../node_modules/@stylexjs/open-props/**/*.{js,mjs}',
 ]
 
-console.log({
-  __dirname,
-  __filename,
-  projectRoot,
-  monorepoRoot,
-  isDev: process.env.NODE_ENV === 'development',
-})
-// console.log({ urbanThemeIncludePaths, urbanTextIncludePaths })
-// console.log(openPropsIncludePaths)
-
 const externalImportPaths = [
   // ...urbanFlexIncludePaths,
   ...urbanThemeIncludePaths,
@@ -86,16 +75,7 @@ export default {
   // module.exports = {
   plugins: {
     '@stylexswc/postcss-plugin': {
-      include: [
-        'src/app/**/*.{js,jsx,ts,tsx}',
-        'app/**/*.{js,jsx,ts,tsx}',
-        'components/**/*.{js,jsx,ts,tsx}',
-        // ...urbanThemeIncludePaths,
-        // ...urbanTextIncludePaths,
-        // ...openPropsIncludePaths,
-        // ...urbanRelativePathIncludes,
-        ...externalImportPaths,
-      ],
+      include: ['src/app/**/*.{js,jsx,ts,tsx}', ...externalImportPaths],
       useCSSLayers: true,
       rsOptions: {
         aliases: {

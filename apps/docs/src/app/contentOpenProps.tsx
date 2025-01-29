@@ -1,7 +1,5 @@
 'use client'
 
-// Note that this import only works if open-props is installed into /apps/docs/node_modules -> the plugin will not find it at monorepo root node_modules.
-// Note sure why it finds other deps like @urban-ui/text just fine though.
 import { colors } from '@stylexjs/open-props/lib/colors.stylex'
 import stylex from '@stylexjs/stylex'
 

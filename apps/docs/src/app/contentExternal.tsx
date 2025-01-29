@@ -22,7 +22,8 @@ export function ContentExternal() {
     <div {...stylex.props(styles.container)}>
       <h1>Client content</h1>
       <p {...stylex.props(styles.p)}>
-        Styled with external dependency and externally declared vars.
+        Styled with external dependency and externally declared vars. Should be
+        theme.primary colour.
       </p>
       <Text>Hello world</Text>
     </div>

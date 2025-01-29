@@ -28,6 +28,7 @@ const config = {
     '@stylexjs/open-props',
     '@urban-ui/theme',
     '@urban-ui/text',
+    '@urban-ui/flex',
   ],
   // webpack(config) {
   //   config.resolve.extensionAlias = {
