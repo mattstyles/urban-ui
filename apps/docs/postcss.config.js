@@ -60,7 +60,7 @@ const urbanRelativePathIncludes = [
 ]
 
 const externalImportPaths = [
-  // ...urbanFlexIncludePaths,
+  ...urbanFlexIncludePaths,
   ...urbanThemeIncludePaths,
   ...urbanTextIncludePaths,
   ...openPropsIncludePaths,

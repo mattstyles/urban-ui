@@ -2,6 +2,7 @@
 
 import stylex from '@stylexjs/stylex'
 
+import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { theme } from '@urban-ui/theme/theme.stylex'
 
@@ -25,7 +26,8 @@ export function ContentExternal() {
         Styled with external dependency and externally declared vars. Should be
         theme.primary colour.
       </p>
-      <Text>Hello world</Text>
+      <Text>Hello text</Text>
+      <Flex>Hello flex</Flex>
     </div>
   )
 }
