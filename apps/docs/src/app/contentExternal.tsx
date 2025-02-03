@@ -4,7 +4,7 @@ import stylex from '@stylexjs/stylex'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { theme } from '@urban-ui/theme/theme.stylex'
+import { primary } from '@urban-ui/theme/colors.stylex'
 
 const styles = stylex.create({
   container: {
@@ -14,7 +14,7 @@ const styles = stylex.create({
     padding: 20,
   },
   p: {
-    color: theme.primary,
+    color: primary[500],
   },
 })
 

@@ -1,6 +1,5 @@
-// import { colors } from '@stylexjs/open-props/lib/colors.stylex'
 import stylex from '@stylexjs/stylex'
-// import { theme } from '@urban-ui/theme/theme.stylex'
+import { primary } from '@urban-ui/theme/colors.stylex'
 import { forwardRef } from 'react'
 
 const styles = stylex.create({
@@ -12,9 +11,7 @@ const styles = stylex.create({
     padding: 4,
   },
   text: {
-    // color: theme.primary,
-    // color: colors.red7,
-    color: 'rebeccapurple',
+    color: primary[500],
   },
 })
 

@@ -1,11 +1,10 @@
-// import { colors } from '@stylexjs/open-props/lib/colors.stylex'
 import stylex from '@stylexjs/stylex'
-import { theme } from '@urban-ui/theme/theme.stylex'
+import { primary } from '@urban-ui/theme/colors.stylex'
 import { forwardRef } from 'react'
 
 const styles = stylex.create({
   border: {
-    borderColor: theme.primary,
+    borderColor: primary[500],
     borderWidth: 1,
     borderStyle: 'solid',
   },
