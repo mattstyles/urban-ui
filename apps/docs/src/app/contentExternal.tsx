@@ -4,7 +4,7 @@ import stylex from '@stylexjs/stylex'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { primary } from '@urban-ui/theme/colors.stylex'
+import { grays, primary } from '@urban-ui/theme/colors.stylex'
 
 const styles = stylex.create({
   container: {
@@ -12,6 +12,9 @@ const styles = stylex.create({
     borderColor: 'black',
     borderWidth: 1,
     padding: 20,
+    backgroundColor: grays[100],
+    color: grays[900],
+    margin: 20,
   },
   p: {
     color: primary[500],
