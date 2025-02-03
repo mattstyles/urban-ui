@@ -34,13 +34,9 @@ const styles = stylex.create({
   },
   box: {
     backgroundColor: primary[100],
-    padding: space[50],
     borderRadius: radii.sm,
     width: 24,
     height: 24,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
     color: primary[900],
     fontWeight: fontWeights.medium,
     fontSize: fontSizes.xs,
@@ -60,10 +56,18 @@ const styles = stylex.create({
     color: grays[600],
     marginBlockEnd: space[200],
   },
+  alignmentExample: {
+    padding: space[200],
+    backgroundColor: grays[100],
+  },
 })
 
 function Box({ children }: React.PropsWithChildren) {
-  return <div {...stylex.props(styles.box)}>{children}</div>
+  return (
+    <Flex style={[styles.box]} align="center" justify="center" inline>
+      {children}
+    </Flex>
+  )
 }
 
 export default function FlexPage() {
@@ -132,6 +136,102 @@ export default function FlexPage() {
             Using Aliases (v/vertical)
           </h3>
           <Flex direction="v" gap="50">
+            <Box>1</Box>
+            <Box>2</Box>
+            <Box>3</Box>
+          </Flex>
+        </div>
+      </section>
+
+      <section {...stylex.props(styles.section)}>
+        <h2 {...stylex.props(styles.sectionTitle)}>Alignment Options</h2>
+
+        <div {...stylex.props(styles.example)}>
+          <h3 {...stylex.props(styles.exampleTitle)}>Align Items</h3>
+          <Flex direction="column" gap="200">
+            <Flex gap="50" align="flex-start" style={[styles.alignmentExample]}>
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex gap="50" align="center" style={[styles.alignmentExample]}>
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex gap="50" align="flex-end" style={[styles.alignmentExample]}>
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex gap="50" align="stretch" style={[styles.alignmentExample]}>
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+          </Flex>
+        </div>
+
+        <div {...stylex.props(styles.example)}>
+          <h3 {...stylex.props(styles.exampleTitle)}>Justify Content</h3>
+          <Flex direction="column" gap="200">
+            <Flex
+              gap="50"
+              justify="flex-start"
+              style={[styles.alignmentExample]}
+            >
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex gap="50" justify="center" style={[styles.alignmentExample]}>
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex gap="50" justify="flex-end" style={[styles.alignmentExample]}>
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex
+              gap="50"
+              justify="space-between"
+              style={[styles.alignmentExample]}
+            >
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex
+              gap="50"
+              justify="space-around"
+              style={[styles.alignmentExample]}
+            >
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+            <Flex
+              gap="50"
+              justify="space-evenly"
+              style={[styles.alignmentExample]}
+            >
+              <Box>1</Box>
+              <Box>2</Box>
+              <Box>3</Box>
+            </Flex>
+          </Flex>
+        </div>
+
+        <div {...stylex.props(styles.example)}>
+          <h3 {...stylex.props(styles.exampleTitle)}>Combining Alignments</h3>
+          <Flex
+            gap="50"
+            align="center"
+            justify="space-between"
+            style={[styles.alignmentExample]}
+          >
             <Box>1</Box>
             <Box>2</Box>
             <Box>3</Box>

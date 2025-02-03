@@ -1,6 +1,7 @@
 import stylex from '@stylexjs/stylex'
-import { forwardRef } from 'react'
+import type { StyleXStyles } from '@stylexjs/stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import { forwardRef } from 'react'
 
 const styles = stylex.create({
   block: {
@@ -211,11 +212,13 @@ const rowGapStyle = {
   '900': styles.rowGap900,
 }
 
-export interface FlexProps extends React.PropsWithChildren {
+interface FlexProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>,
+    React.PropsWithChildren {
   /**
-   * Controls flex-direction
+   * Direction of the flex container
    * Supports aliases: h/horizontal (row), v/vertical (column)
-   * @default row
+   * @default 'row'
    */
   direction?:
     | 'row'
@@ -228,20 +231,20 @@ export interface FlexProps extends React.PropsWithChildren {
     | 'vertical'
 
   /**
-   * Controls flex-wrap
-   * @default nowrap
+   * Wrapping behavior
+   * @default 'nowrap'
    */
   wrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
 
   /**
-   * Controls align-items
-   * @default stretch
+   * Alignment of items along the cross axis
+   * @default 'stretch'
    */
   align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
 
   /**
-   * Controls align-content
-   * @default stretch
+   * Alignment of content when wrapped
+   * @default 'stretch'
    */
   alignContent?:
     | 'flex-start'
@@ -252,8 +255,8 @@ export interface FlexProps extends React.PropsWithChildren {
     | 'stretch'
 
   /**
-   * Controls justify-content
-   * @default flex-start
+   * Alignment of items along the main axis
+   * @default 'flex-start'
    */
   justify?:
     | 'flex-start'
@@ -264,8 +267,8 @@ export interface FlexProps extends React.PropsWithChildren {
     | 'space-evenly'
 
   /**
-   * Controls gap between items using space tokens
-   * @default 0
+   * Gap between items
+   * @default '0'
    */
   gap?:
     | '0'
@@ -288,8 +291,7 @@ export interface FlexProps extends React.PropsWithChildren {
     | '900'
 
   /**
-   * Controls horizontal gap between items using space tokens
-   * @default 0
+   * Gap between columns
    */
   columnGap?:
     | '0'
@@ -312,8 +314,7 @@ export interface FlexProps extends React.PropsWithChildren {
     | '900'
 
   /**
-   * Controls vertical gap between items using space tokens
-   * @default 0
+   * Gap between rows
    */
   rowGap?:
     | '0'
@@ -336,10 +337,15 @@ export interface FlexProps extends React.PropsWithChildren {
     | '900'
 
   /**
-   * When true, sets display to inline-flex instead of flex
+   * Whether to use inline-flex instead of flex
    * @default false
    */
   inline?: boolean
+
+  /**
+   * StyleX style overrides
+   */
+  style?: Array<StyleXStyles>
 }
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
@@ -353,12 +359,17 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
     columnGap,
     rowGap,
     inline = false,
+    style = [],
+    className,
     children,
+    ...rest
   } = props
 
   return (
     <div
       ref={ref}
+      className={className}
+      {...rest}
       {...stylex.props(
         inline ? styles.inline : styles.block,
         direction != null && directionStyle[direction],
@@ -368,7 +379,8 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
         justify != null && justifyStyle[justify],
         gap != null && gapStyle[gap],
         columnGap != null && columnGapStyle[columnGap],
-        rowGap != null && rowGapStyle[rowGap]
+        rowGap != null && rowGapStyle[rowGap],
+        ...style,
       )}
     >
       {children}
