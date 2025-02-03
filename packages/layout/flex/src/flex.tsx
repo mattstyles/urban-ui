@@ -105,13 +105,127 @@ const styles = stylex.create({
   rowGap900: { rowGap: space[900] },
 })
 
+const directionStyle = {
+  row: styles.row,
+  column: styles.column,
+  'row-reverse': styles.rowReverse,
+  'column-reverse': styles.columnReverse,
+  h: styles.row,
+  horizontal: styles.row,
+  v: styles.column,
+  vertical: styles.column,
+}
+
+const wrapStyle = {
+  nowrap: styles.nowrap,
+  wrap: styles.wrap,
+  'wrap-reverse': styles.wrapReverse,
+}
+
+const alignStyle = {
+  'flex-start': styles.alignStart,
+  'flex-end': styles.alignEnd,
+  center: styles.alignCenter,
+  baseline: styles.alignBaseline,
+  stretch: styles.alignStretch,
+}
+
+const alignContentStyle = {
+  'flex-start': styles.contentStart,
+  'flex-end': styles.contentEnd,
+  center: styles.contentCenter,
+  'space-between': styles.contentBetween,
+  'space-around': styles.contentAround,
+  stretch: styles.contentStretch,
+}
+
+const justifyStyle = {
+  'flex-start': styles.justifyStart,
+  'flex-end': styles.justifyEnd,
+  center: styles.justifyCenter,
+  'space-between': styles.justifyBetween,
+  'space-around': styles.justifyAround,
+  'space-evenly': styles.justifyEvenly,
+}
+
+const gapStyle = {
+  '0': styles.gap0,
+  '25': styles.gap25,
+  '50': styles.gap50,
+  '75': styles.gap75,
+  '100': styles.gap100,
+  '150': styles.gap150,
+  '200': styles.gap200,
+  '250': styles.gap250,
+  '300': styles.gap300,
+  '350': styles.gap350,
+  '400': styles.gap400,
+  '450': styles.gap450,
+  '500': styles.gap500,
+  '550': styles.gap550,
+  '600': styles.gap600,
+  '700': styles.gap700,
+  '800': styles.gap800,
+  '900': styles.gap900,
+}
+
+const columnGapStyle = {
+  '0': styles.columnGap0,
+  '25': styles.columnGap25,
+  '50': styles.columnGap50,
+  '75': styles.columnGap75,
+  '100': styles.columnGap100,
+  '150': styles.columnGap150,
+  '200': styles.columnGap200,
+  '250': styles.columnGap250,
+  '300': styles.columnGap300,
+  '350': styles.columnGap350,
+  '400': styles.columnGap400,
+  '450': styles.columnGap450,
+  '500': styles.columnGap500,
+  '550': styles.columnGap550,
+  '600': styles.columnGap600,
+  '700': styles.columnGap700,
+  '800': styles.columnGap800,
+  '900': styles.columnGap900,
+}
+
+const rowGapStyle = {
+  '0': styles.rowGap0,
+  '25': styles.rowGap25,
+  '50': styles.rowGap50,
+  '75': styles.rowGap75,
+  '100': styles.rowGap100,
+  '150': styles.rowGap150,
+  '200': styles.rowGap200,
+  '250': styles.rowGap250,
+  '300': styles.rowGap300,
+  '350': styles.rowGap350,
+  '400': styles.rowGap400,
+  '450': styles.rowGap450,
+  '500': styles.rowGap500,
+  '550': styles.rowGap550,
+  '600': styles.rowGap600,
+  '700': styles.rowGap700,
+  '800': styles.rowGap800,
+  '900': styles.rowGap900,
+}
+
 export interface FlexProps extends React.PropsWithChildren {
   /**
    * Controls flex-direction
    * Supports aliases: h/horizontal (row), v/vertical (column)
    * @default row
    */
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse' | 'h' | 'horizontal' | 'v' | 'vertical'
+  direction?:
+    | 'row'
+    | 'column'
+    | 'row-reverse'
+    | 'column-reverse'
+    | 'h'
+    | 'horizontal'
+    | 'v'
+    | 'vertical'
 
   /**
    * Controls flex-wrap
@@ -129,31 +243,97 @@ export interface FlexProps extends React.PropsWithChildren {
    * Controls align-content
    * @default stretch
    */
-  alignContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch'
+  alignContent?:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'stretch'
 
   /**
    * Controls justify-content
    * @default flex-start
    */
-  justify?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+  justify?:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
 
   /**
    * Controls gap between items using space tokens
    * @default 0
    */
-  gap?: '0' | '25' | '50' | '75' | '100' | '150' | '200' | '250' | '300' | '350' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900'
+  gap?:
+    | '0'
+    | '25'
+    | '50'
+    | '75'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '350'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
 
   /**
    * Controls horizontal gap between items using space tokens
    * @default 0
    */
-  columnGap?: '0' | '25' | '50' | '75' | '100' | '150' | '200' | '250' | '300' | '350' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900'
+  columnGap?:
+    | '0'
+    | '25'
+    | '50'
+    | '75'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '350'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
 
   /**
    * Controls vertical gap between items using space tokens
    * @default 0
    */
-  rowGap?: '0' | '25' | '50' | '75' | '100' | '150' | '200' | '250' | '300' | '350' | '400' | '450' | '500' | '550' | '600' | '700' | '800' | '900'
+  rowGap?:
+    | '0'
+    | '25'
+    | '50'
+    | '75'
+    | '100'
+    | '150'
+    | '200'
+    | '250'
+    | '300'
+    | '350'
+    | '400'
+    | '450'
+    | '500'
+    | '550'
+    | '600'
+    | '700'
+    | '800'
+    | '900'
 
   /**
    * When true, sets display to inline-flex instead of flex
@@ -170,131 +350,25 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
     alignContent = 'stretch',
     justify = 'flex-start',
     gap = '0',
-    columnGap = '0',
-    rowGap = '0',
+    columnGap,
+    rowGap,
     inline = false,
     children,
   } = props
-
-  const directionStyle = {
-    row: styles.row,
-    column: styles.column,
-    'row-reverse': styles.rowReverse,
-    'column-reverse': styles.columnReverse,
-    h: styles.row,
-    horizontal: styles.row,
-    v: styles.column,
-    vertical: styles.column,
-  }[direction]
-
-  const wrapStyle = {
-    nowrap: styles.nowrap,
-    wrap: styles.wrap,
-    'wrap-reverse': styles.wrapReverse,
-  }[wrap]
-
-  const alignStyle = {
-    'flex-start': styles.alignStart,
-    'flex-end': styles.alignEnd,
-    center: styles.alignCenter,
-    baseline: styles.alignBaseline,
-    stretch: styles.alignStretch,
-  }[align]
-
-  const alignContentStyle = {
-    'flex-start': styles.contentStart,
-    'flex-end': styles.contentEnd,
-    center: styles.contentCenter,
-    'space-between': styles.contentBetween,
-    'space-around': styles.contentAround,
-    stretch: styles.contentStretch,
-  }[alignContent]
-
-  const justifyStyle = {
-    'flex-start': styles.justifyStart,
-    'flex-end': styles.justifyEnd,
-    center: styles.justifyCenter,
-    'space-between': styles.justifyBetween,
-    'space-around': styles.justifyAround,
-    'space-evenly': styles.justifyEvenly,
-  }[justify]
-
-  const gapStyle = {
-    '0': styles.gap0,
-    '25': styles.gap25,
-    '50': styles.gap50,
-    '75': styles.gap75,
-    '100': styles.gap100,
-    '150': styles.gap150,
-    '200': styles.gap200,
-    '250': styles.gap250,
-    '300': styles.gap300,
-    '350': styles.gap350,
-    '400': styles.gap400,
-    '450': styles.gap450,
-    '500': styles.gap500,
-    '550': styles.gap550,
-    '600': styles.gap600,
-    '700': styles.gap700,
-    '800': styles.gap800,
-    '900': styles.gap900,
-  }[gap]
-
-  const columnGapStyle = {
-    '0': styles.columnGap0,
-    '25': styles.columnGap25,
-    '50': styles.columnGap50,
-    '75': styles.columnGap75,
-    '100': styles.columnGap100,
-    '150': styles.columnGap150,
-    '200': styles.columnGap200,
-    '250': styles.columnGap250,
-    '300': styles.columnGap300,
-    '350': styles.columnGap350,
-    '400': styles.columnGap400,
-    '450': styles.columnGap450,
-    '500': styles.columnGap500,
-    '550': styles.columnGap550,
-    '600': styles.columnGap600,
-    '700': styles.columnGap700,
-    '800': styles.columnGap800,
-    '900': styles.columnGap900,
-  }[columnGap]
-
-  const rowGapStyle = {
-    '0': styles.rowGap0,
-    '25': styles.rowGap25,
-    '50': styles.rowGap50,
-    '75': styles.rowGap75,
-    '100': styles.rowGap100,
-    '150': styles.rowGap150,
-    '200': styles.rowGap200,
-    '250': styles.rowGap250,
-    '300': styles.rowGap300,
-    '350': styles.rowGap350,
-    '400': styles.rowGap400,
-    '450': styles.rowGap450,
-    '500': styles.rowGap500,
-    '550': styles.rowGap550,
-    '600': styles.rowGap600,
-    '700': styles.rowGap700,
-    '800': styles.rowGap800,
-    '900': styles.rowGap900,
-  }[rowGap]
 
   return (
     <div
       ref={ref}
       {...stylex.props(
         inline ? styles.inline : styles.block,
-        directionStyle,
-        wrapStyle,
-        alignStyle,
-        alignContentStyle,
-        justifyStyle,
-        gapStyle,
-        columnGapStyle,
-        rowGapStyle
+        direction != null && directionStyle[direction],
+        wrap != null && wrapStyle[wrap],
+        align != null && alignStyle[align],
+        alignContent != null && alignContentStyle[alignContent],
+        justify != null && justifyStyle[justify],
+        gap != null && gapStyle[gap],
+        columnGap != null && columnGapStyle[columnGap],
+        rowGap != null && rowGapStyle[rowGap]
       )}
     >
       {children}

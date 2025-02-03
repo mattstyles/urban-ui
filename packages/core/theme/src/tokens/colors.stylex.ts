@@ -2,6 +2,10 @@ import { defineVars } from '@stylexjs/stylex'
 
 const DARK = '@media (prefers-color-scheme: dark)'
 
+/**
+ * @tokens colors
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ */
 export const baseColors = defineVars({
   transparent: { default: 'transparent' },
   current: { default: 'currentColor' },
@@ -15,6 +19,10 @@ export const baseColors = defineVars({
   }
 })
 
+/**
+ * @tokens colors
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ */
 export const grays = defineVars({
   50: {
     default: 'hsl(0 0% 98%)',
@@ -58,6 +66,10 @@ export const grays = defineVars({
   }
 })
 
+/**
+ * @tokens colors
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ */
 export const primary = defineVars({
   50: {
     default: 'hsl(270 100% 98%)',

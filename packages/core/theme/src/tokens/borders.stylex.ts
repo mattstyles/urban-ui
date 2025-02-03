@@ -7,21 +7,29 @@ export const borderWidths = defineVars({
   lg: '4px',
 })
 
+/**
+ * @tokens borderStyles
+ * @css border-style
+ */
 export const borderStyles = defineVars({
   none: 'none',
   solid: 'solid',
   dashed: 'dashed',
   dotted: 'dotted',
+  double: 'double',
 })
 
+/**
+ * @tokens radii
+ * @css border-radius
+ */
 export const radii = defineVars({
   none: '0',
-  sm: '0.125rem',
-  base: '0.25rem',
-  md: '0.375rem',
-  lg: '0.5rem',
-  xl: '0.75rem',
-  '2xl': '1rem',
-  '3xl': '1.5rem',
+  sm: '2px',
+  md: '4px',
+  lg: '8px',
+  xl: '12px',
+  '2xl': '16px',
+  '3xl': '24px',
   full: '9999px',
 })

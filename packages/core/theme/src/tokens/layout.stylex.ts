@@ -1,5 +1,9 @@
 import { defineVars } from '@stylexjs/stylex'
 
+/**
+ * @tokens space
+ * @css margin, padding, gap, top, right, bottom, left
+ */
 export const space = defineVars({
   0: '0px',
   25: '2px',
@@ -25,6 +29,10 @@ export const space = defineVars({
   1600: '128px',
 })
 
+/**
+ * @tokens sizes
+ * @css width, height, minWidth, minHeight, maxWidth, maxHeight
+ */
 export const sizes = defineVars({
   full: '100%',
   min: 'min-content',
@@ -32,12 +40,20 @@ export const sizes = defineVars({
   fit: 'fit-content',
 })
 
+/**
+ * @tokens breakpoints
+ * @css media queries
+ */
 export const breakpoints = defineVars({
   sm: '640px',
   md: '960px',
   lg: '1280px',
 })
 
+/**
+ * @tokens zIndices
+ * @css zIndex
+ */
 export const zIndices = defineVars({
   hide: '-1',
   base: '0',
