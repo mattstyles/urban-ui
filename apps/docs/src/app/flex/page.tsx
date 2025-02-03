@@ -50,15 +50,18 @@ const styles = stylex.create({
     borderColor: grays[200],
     marginBlockEnd: space[400],
   },
+  exampleInnerContainer: {
+    padding: space[200],
+    backgroundColor: grays[100],
+  },
+  alignmentContainer: {
+    minHeight: '88px',
+  },
   exampleTitle: {
     fontSize: fontSizes.sm,
     fontWeight: fontWeights.medium,
     color: grays[600],
     marginBlockEnd: space[200],
-  },
-  alignmentExample: {
-    padding: space[200],
-    backgroundColor: grays[100],
   },
 })
 
@@ -149,22 +152,38 @@ export default function FlexPage() {
         <div {...stylex.props(styles.example)}>
           <h3 {...stylex.props(styles.exampleTitle)}>Align Items</h3>
           <Flex direction="column" gap="200">
-            <Flex gap="50" align="flex-start" style={[styles.alignmentExample]}>
+            <Flex
+              gap="50"
+              align="flex-start"
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
+            >
               <Box>1</Box>
               <Box>2</Box>
               <Box>3</Box>
             </Flex>
-            <Flex gap="50" align="center" style={[styles.alignmentExample]}>
+            <Flex
+              gap="50"
+              align="center"
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
+            >
               <Box>1</Box>
               <Box>2</Box>
               <Box>3</Box>
             </Flex>
-            <Flex gap="50" align="flex-end" style={[styles.alignmentExample]}>
+            <Flex
+              gap="50"
+              align="flex-end"
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
+            >
               <Box>1</Box>
               <Box>2</Box>
               <Box>3</Box>
             </Flex>
-            <Flex gap="50" align="stretch" style={[styles.alignmentExample]}>
+            <Flex
+              gap="50"
+              align="stretch"
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
+            >
               <Box>1</Box>
               <Box>2</Box>
               <Box>3</Box>
@@ -178,18 +197,26 @@ export default function FlexPage() {
             <Flex
               gap="50"
               justify="flex-start"
-              style={[styles.alignmentExample]}
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
             >
               <Box>1</Box>
               <Box>2</Box>
               <Box>3</Box>
             </Flex>
-            <Flex gap="50" justify="center" style={[styles.alignmentExample]}>
+            <Flex
+              gap="50"
+              justify="center"
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
+            >
               <Box>1</Box>
               <Box>2</Box>
               <Box>3</Box>
             </Flex>
-            <Flex gap="50" justify="flex-end" style={[styles.alignmentExample]}>
+            <Flex
+              gap="50"
+              justify="flex-end"
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
+            >
               <Box>1</Box>
               <Box>2</Box>
               <Box>3</Box>
@@ -197,7 +224,7 @@ export default function FlexPage() {
             <Flex
               gap="50"
               justify="space-between"
-              style={[styles.alignmentExample]}
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
             >
               <Box>1</Box>
               <Box>2</Box>
@@ -206,7 +233,7 @@ export default function FlexPage() {
             <Flex
               gap="50"
               justify="space-around"
-              style={[styles.alignmentExample]}
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
             >
               <Box>1</Box>
               <Box>2</Box>
@@ -215,7 +242,7 @@ export default function FlexPage() {
             <Flex
               gap="50"
               justify="space-evenly"
-              style={[styles.alignmentExample]}
+              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
             >
               <Box>1</Box>
               <Box>2</Box>
@@ -230,7 +257,7 @@ export default function FlexPage() {
             gap="50"
             align="center"
             justify="space-between"
-            style={[styles.alignmentExample]}
+            style={[styles.exampleInnerContainer, styles.alignmentContainer]}
           >
             <Box>1</Box>
             <Box>2</Box>
