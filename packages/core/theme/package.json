@@ -7,7 +7,11 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
-    "./theme.stylex": "./dist/tokens/theme.stylex.js"
+    "./theme.stylex": "./dist/tokens/theme.stylex.js",
+    "./layout.stylex": "./dist/tokens/layout.stylex.js",
+    "./type.stylex": "./dist/tokens/type.stylex.js",
+    "./colors.stylex": "./dist/tokens/colors.stylex.js",
+    "./borders.stylex": "./dist/tokens/borders.stylex.js"
   },
   "files": ["src", "dist"],
   "license": "MIT",
