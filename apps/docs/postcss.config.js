@@ -51,6 +51,10 @@ const urbanFlexIncludePaths = getPackageIncludePaths('@urban-ui/flex', [
   path.join(projectRoot, 'node_modules'),
   path.join(monorepoRoot, 'node_modules'),
 ])
+const urbanTestIncludePaths = getPackageIncludePaths('@urban-ui/test', [
+  path.join(projectRoot, 'node_modules'),
+  path.join(monorepoRoot, 'node_modules'),
+])
 
 const urbanRelativePathIncludes = [
   '../../node_modules/@urban-ui/flex/**/*.{js,mjs}',
@@ -63,6 +67,7 @@ const externalImportPaths = [
   ...urbanFlexIncludePaths,
   ...urbanThemeIncludePaths,
   ...urbanTextIncludePaths,
+  ...urbanTestIncludePaths,
   ...openPropsIncludePaths,
   // ...urbanRelativePathIncludes,
 ]

@@ -1,6 +1,7 @@
 'use client'
 
 import { colors } from '@stylexjs/open-props/lib/colors.stylex'
+import { sizes } from '@stylexjs/open-props/lib/sizes.stylex'
 import stylex from '@stylexjs/stylex'
 
 const styles = stylex.create({
@@ -12,6 +13,7 @@ const styles = stylex.create({
   },
   p: {
     color: colors.red7,
+    width: sizes.md,
   },
 })
 

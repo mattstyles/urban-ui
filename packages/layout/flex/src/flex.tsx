@@ -1,11 +1,19 @@
+import { colors } from '@stylexjs/open-props/lib/colors.stylex'
+import { sizes } from '@stylexjs/open-props/lib/sizes.stylex'
 import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
+import { primary } from '@urban-ui/theme/colors.stylex'
+import { breakpoints, space } from '@urban-ui/theme/layout.stylex'
 import { forwardRef } from 'react'
 
 const styles = stylex.create({
   block: {
     display: 'flex',
+    // @TODO this can be removed, it is testing multiple named imports
+    // width: sizes.full,
+    // height: space[300],
+    // background: colors.blue7,
+    // padding: sizes.xs,
   },
   inline: {
     display: 'inline-flex',
@@ -348,6 +356,17 @@ interface FlexProps
   style?: Array<StyleXStyles>
 }
 
+// const dir = stylex.create({
+//   row: { flexDirection: 'row' },
+//   column: { flexDirection: 'column' },
+//   ['row-reverse']: { flexDirection: 'row-reverse' },
+//   ['column-reverse']: { flexDirection: 'column-reverse' },
+//   h: { flexDirection: 'row' },
+//   v: { flexDirection: 'column' },
+//   horizontal: { flexDirection: 'row' },
+//   vertical: { flexDirection: 'column' },
+// })
+
 export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const {
     direction = 'row',
@@ -368,10 +387,13 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   return (
     <div
       ref={ref}
+      // I don't think this will work as stylex outputs classname
       className={className}
       {...rest}
       {...stylex.props(
         inline ? styles.inline : styles.block,
+        // dir[direction],
+        // directionStyle[direction],
         direction != null && directionStyle[direction],
         wrap != null && wrapStyle[wrap],
         align != null && alignStyle[align],

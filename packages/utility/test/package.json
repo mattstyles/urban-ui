@@ -1,17 +1,12 @@
 {
-  "name": "@urban-ui/theme",
+  "name": "@urban-ui/test",
   "version": "0.6.0-rc.6",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./theme.stylex": "./dist/tokens/theme.stylex.js",
-    "./layout.stylex": "./dist/tokens/layout.stylex.js",
-    "./type.stylex": "./dist/tokens/type.stylex.js",
-    "./colors.stylex": "./dist/tokens/colors.stylex.js",
-    "./borders.stylex": "./dist/tokens/borders.stylex.js"
+    ".": "./dist/index.js"
   },
   "files": ["src", "dist"],
   "license": "MIT",
@@ -24,9 +19,13 @@
     "build": "arc build",
     "test": "bun test"
   },
+  "dependencies": {
+    "@urban-ui/theme": "workspace:*"
+  },
   "peerDependencies": {
     "react": "^17.0.2 || ^18.3.0 || ^19.0.0",
-    "@stylexjs/stylex": "^0.10.0"
+    "@stylexjs/stylex": "^0.10.0",
+    "@stylexjs/open-props": "^0.10.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.6",

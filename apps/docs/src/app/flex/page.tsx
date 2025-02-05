@@ -1,6 +1,7 @@
 import stylex from '@stylexjs/stylex'
 
 import { Flex } from '@urban-ui/flex'
+import { Text } from '@urban-ui/text'
 import { borderStyles, radii } from '@urban-ui/theme/borders.stylex'
 import { grays, primary } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'

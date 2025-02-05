@@ -5,11 +5,16 @@ import { defineVars } from '@stylexjs/stylex'
  * @css fontSize
  */
 export const fontSizes = defineVars({
-  xs: '0.75rem',
-  sm: '0.875rem',
-  md: '1rem',
-  lg: '1.125rem',
-  xl: '1.25rem',
+  // xs: '0.75rem',
+  // sm: '0.875rem',
+  // md: '1rem',
+  // lg: '1.125rem',
+  // xl: '1.25rem',
+  xs: '10px',
+  sm: '14px',
+  md: '17px',
+  lg: '23px',
+  xl: '32px',
 })
 
 /**
