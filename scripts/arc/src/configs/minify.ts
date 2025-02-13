@@ -46,12 +46,16 @@ export const minify: JsMinifyOptions = {
     unsafe_undefined: false,
     unused: true,
   },
-  mangle: {
-    toplevel: false,
-    keep_classnames: false,
-    keep_fnames: false,
-    keep_private_props: false,
-    ie8: false,
-    safari10: false,
-  },
+  /**
+   * Mangling is currently disabled as it adversely affects some compilers, such as swcstylex.
+   */
+  // mangle: {
+  //   toplevel: false,
+  //   keep_classnames: false,
+  //   keep_fnames: false,
+  //   keep_private_props: false,
+  //   ie8: false,
+  //   safari10: false,
+  // },
+  // mangle: false,
 }

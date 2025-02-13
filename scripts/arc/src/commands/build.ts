@@ -38,6 +38,7 @@ export const buildCommand: CommandModule = {
         watchQuery: argv.watchQuery,
         outDir: argv.outDir,
         rootDir: argv.rootDir,
+        swc: argv.swc,
         events: argv.events,
       }
     },
@@ -53,6 +54,7 @@ export const buildCommand: CommandModule = {
       const stats = await transformFiles(opts.include, {
         outDir: opts.outDir,
         rootDir: opts.rootDir,
+        swc: opts.swc,
         mode: 'build',
       })
       const dtsStats = await generateDefinitions(opts.include, {

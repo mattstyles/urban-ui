@@ -36,6 +36,17 @@ export type Config<T = Record<string | number | symbol, unknown>> = T & {
    */
   rootDir?: string
   /**
+   * Options for swc.
+   * @default {
+   *   minify: false,
+   *   sourceMaps: true,
+   * }
+   */
+  swc?: {
+    minify: boolean
+    sourceMaps: boolean
+  }
+  /**
    * Events
    * @default {}
    */
@@ -62,6 +73,10 @@ const defaultConfig: Required<Config> = {
   ],
   outDir: 'dist',
   rootDir: 'src',
+  swc: {
+    minify: true,
+    sourceMaps: true,
+  },
   events: {
     complete: noop,
   },

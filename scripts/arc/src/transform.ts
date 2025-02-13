@@ -29,6 +29,10 @@ const { debug } = createLogger('rk::transform', chalk.blue)
 type TranspileTransformContext = {
   outDir: string
   rootDir: string
+  swc: {
+    minify: boolean
+    sourceMaps: boolean
+  }
   mode: TransformModes
 }
 
@@ -48,6 +52,7 @@ export async function transformFiles(
   >('transform', {
     outDir: options.outDir,
     rootDir: options.rootDir,
+    swc: options.swc,
     mode: TransformModes[options.mode],
   })
   pipeline.addStep(parse)
@@ -91,7 +96,10 @@ const parse = createTask(
 
 const compile = createTask(
   'compile',
-  async (ctx, files: Awaited<TaskReturnType<typeof parse>>) => {
+  async (
+    ctx: PipelineContext<TranspileTransformContext>,
+    files: Awaited<TaskReturnType<typeof parse>>,
+  ) => {
     const mCompile = measure(fileEvents.compile)
     /**
      * Attempting to run in parallel (for what is probably a synchronous task) nukes individual timings
@@ -114,6 +122,8 @@ const compile = createTask(
                   module: {
                     type: 'es6',
                   },
+                  minify: ctx.swc.minify,
+                  sourceMaps: ctx.swc.sourceMaps,
                 },
                 plugins: [transformImports('js')],
               })
