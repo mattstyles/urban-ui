@@ -24,11 +24,13 @@ const styles = stylex.create({
   textContainer: {
     background: grays[100],
     padding: space[100],
+    width: '100%',
   },
   sizeLabel: {
     fontSize: fontSizes.sm,
     color: grays[500],
     marginInlineEnd: space[200],
+    width: '3rem',
   },
 })
 
@@ -43,41 +45,54 @@ export default function TextPage() {
         design system&apos;s typographic scale.
       </p>
       <p {...stylex.props(styles.description)}>
-        Urban UI text uses a fluid scale that will adapt to the global screen
-        width.
+        Urban UI text uses a fluid scale that adapts to the viewport width. Each size
+        includes appropriate line height and letter spacing optimizations, with &apos;md&apos;
+        serving as the baseline size.
       </p>
 
       <Flex direction="v" gap="200">
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
+            <span {...stylex.props(styles.sizeLabel)}>xxs</span>
+            <Text size="xxs">Extra extra small text with optimized letter spacing for readability</Text>
+          </Flex>
+        </div>
+        <div {...stylex.props(styles.textContainer)}>
+          <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xs</span>
-            <Text size="xs">Extra small text with consistent line height</Text>
+            <Text size="xs">Extra small text with enhanced spacing for small sizes</Text>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>sm</span>
-            <Text size="sm">Small text with consistent line height</Text>
+            <Text size="sm">Small text with comfortable reading metrics</Text>
           </Flex>
         </div>
-        {/* <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>md</span>
-            <Text size="md">Medium text with consistent line height</Text>
+            <Text size="md">Medium text (default) with optimal reading line height</Text>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>lg</span>
-            <Text size="lg">Large text with consistent line height</Text>
+            <Text size="lg">Large text with adjusted spacing for headlines</Text>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xl</span>
-            <Text size="xl">Extra large text with consistent line height</Text>
+            <Text size="xl">Extra large text with tighter letter spacing</Text>
           </Flex>
-        </div> */}
+        </div>
+        <div {...stylex.props(styles.textContainer)}>
+          <Flex gap="100" align="center">
+            <span {...stylex.props(styles.sizeLabel)}>xxl</span>
+            <Text size="xxl">Extra extra large text optimized for display</Text>
+          </Flex>
+        </div>
       </Flex>
     </div>
   )
