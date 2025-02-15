@@ -27,6 +27,7 @@ const config = {
     '@urban-ui/theme',
     '@urban-ui/text',
     '@urban-ui/flex',
+    '@urban-ui/test',
   ],
   // webpack(config) {
   //   config.resolve.extensionAlias = {
