@@ -34,6 +34,13 @@ const styles = stylex.create({
   },
 })
 
+const custom = stylex.create({
+  textBlockIndicator: {
+    // background: grays[200],
+    background: 'hotpink',
+  },
+})
+
 export default function TextPage() {
   return (
     <div {...stylex.props(styles.container)}>
@@ -45,22 +52,31 @@ export default function TextPage() {
         design system&apos;s typographic scale.
       </p>
       <p {...stylex.props(styles.description)}>
-        Urban UI text uses a fluid scale that adapts to the viewport width. Each size
-        includes appropriate line height and letter spacing optimizations, with &apos;md&apos;
-        serving as the baseline size.
+        Urban UI text uses a fluid scale that adapts to the viewport width. Each
+        size includes appropriate line height and letter spacing optimizations,
+        with &apos;md&apos; serving as the baseline size.
       </p>
 
       <Flex direction="v" gap="200">
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xxs</span>
-            <Text size="xxs">Extra extra small text with optimized letter spacing for readability</Text>
+            <Text
+              size="xxs"
+              // style={stylex.props(custom.textBlockIndicator).style}
+              style={custom.textBlockIndicator}
+            >
+              Extra extra small text with optimized letter spacing for
+              readability
+            </Text>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xs</span>
-            <Text size="xs">Extra small text with enhanced spacing for small sizes</Text>
+            <Text size="xs">
+              Extra small text with enhanced spacing for small sizes
+            </Text>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
@@ -72,13 +88,17 @@ export default function TextPage() {
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>md</span>
-            <Text size="md">Medium text (default) with optimal reading line height</Text>
+            <Text size="md">
+              Medium text (default) with optimal reading line height
+            </Text>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>lg</span>
-            <Text size="lg">Large text with adjusted spacing for headlines</Text>
+            <Text size="lg">
+              Large text with adjusted spacing for headlines
+            </Text>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
