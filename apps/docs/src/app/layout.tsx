@@ -4,6 +4,7 @@ import cx from 'clsx'
 // import './globals.css'
 import type { Metadata } from 'next'
 
+import '@urban-ui/reset/reset.css'
 import './globals.css'
 
 // @TODO can we apply a font-family to the standard global theme for urban-ui?
