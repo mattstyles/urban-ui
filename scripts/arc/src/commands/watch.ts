@@ -36,6 +36,7 @@ export const watchCommand: CommandModule = {
         watchQuery: argv.watchQuery,
         outDir: argv.outDir,
         rootDir: argv.rootDir,
+        swc: argv.swc,
         events: argv.events,
       }
     },
@@ -139,6 +140,7 @@ export const watchCommand: CommandModule = {
                 const stats = await transformFiles([file.name], {
                   outDir: opts.outDir,
                   rootDir: opts.rootDir,
+                  swc: opts.swc,
                   mode: 'watch',
                 })
                 const dtsStats = await generateDefinitions([file.name], {
