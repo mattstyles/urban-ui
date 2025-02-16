@@ -66,9 +66,7 @@ interface TextProps
   /**
    * Custom stylex styles to apply to the text.
    */
-  style?: Readonly<{
-    [$$Key$$: string]: string | number
-  }>
+  style?: StyleXStyles
 }
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
