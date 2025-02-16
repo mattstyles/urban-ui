@@ -134,14 +134,46 @@ export const lineHeights = defineVars({
 })
 
 /**
+ * Roboto font metrics
+ *
+ * @see https://www.npmjs.com/package/@capsizecss/metrics
+ */
+const robotoMetrics = {
+  familyName: 'Roboto',
+  fullName: 'Roboto',
+  postscriptName: 'Roboto-Regular',
+  category: 'sans-serif',
+  capHeight: 1456,
+  ascent: 1900,
+  descent: -500,
+  lineGap: 0,
+  unitsPerEm: 2048,
+  xHeight: 1082,
+  xWidthAvg: 911,
+  subsets: {
+    latin: {
+      xWidthAvg: 911,
+    },
+    thai: {
+      xWidthAvg: 908,
+    },
+  },
+}
+
+/**
  * Base sizes for Roboto font
  */
 const roboto = {
-  ascent: '0.927734375em',
-  lineGap: '0em',
-  capHeight: '0.7109375em',
-  descent: '-0.244140625em',
-  xHeight: '0.5283203125em',
+  // ascent: '0.927734375em',
+  // lineGap: '0em',
+  // capHeight: '0.7109375em',
+  // descent: '-0.244140625em',
+  // xHeight: '0.5283203125em',
+  ascent: `${robotoMetrics.ascent / robotoMetrics.unitsPerEm}em`,
+  lineGap: `${robotoMetrics.lineGap / robotoMetrics.unitsPerEm}em`,
+  capHeight: `${robotoMetrics.capHeight / robotoMetrics.unitsPerEm}em`,
+  descent: `${robotoMetrics.descent / robotoMetrics.unitsPerEm}em`,
+  xHeight: `${robotoMetrics.xHeight / robotoMetrics.unitsPerEm}em`,
 }
 
 /**
