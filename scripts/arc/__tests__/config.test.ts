@@ -23,7 +23,7 @@ describe('getConfig', () => {
 
     const conf = await getConfig()
 
-    expect(conf.include).toEqual(['src'])
+    expect(conf.include).toEqual(['src', '!**/*.test.ts*'])
     expect(conf.outDir).toBe('dist')
     expect(conf.rootDir).toEqual('src')
   })
@@ -43,7 +43,7 @@ describe('getConfig', () => {
     expect(conf.rootDir).toBe('')
 
     const conf2 = await getConfig({ moduleName: 'rksrc' })
-    expect(conf2.include).toEqual(['src'])
+    expect(conf2.include).toEqual(['src', '!**/*.test.ts*'])
     expect(conf2.rootDir).toBe('src')
 
     const conf3 = await getConfig({ overrides: { rootDir: 'foo' } })
