@@ -54,7 +54,7 @@ const styles = stylex.create({
   },
 })
 
-interface TextProps
+export interface TextProps
   extends Omit<React.HTMLAttributes<HTMLElement>, 'style'>,
     React.PropsWithChildren {
   /**
@@ -78,7 +78,8 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
       {...stylex.props(
         styles.text,
         styles[size],
-        ...(Array.isArray(style) ? style : style ? [style] : []),
+        // ...(Array.isArray(style) ? style : style ? [style] : []),
+        style,
       )}
       {...rest}
     >

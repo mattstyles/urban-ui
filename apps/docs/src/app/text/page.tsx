@@ -1,8 +1,8 @@
 import stylex from '@stylexjs/stylex'
 
-import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { grays } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { TextExamples } from './textExamples'
 
 const styles = stylex.create({

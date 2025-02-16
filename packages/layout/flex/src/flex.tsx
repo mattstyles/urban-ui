@@ -353,19 +353,8 @@ interface FlexProps
   /**
    * StyleX style overrides
    */
-  style?: Array<StyleXStyles>
+  style?: StyleXStyles
 }
-
-// const dir = stylex.create({
-//   row: { flexDirection: 'row' },
-//   column: { flexDirection: 'column' },
-//   ['row-reverse']: { flexDirection: 'row-reverse' },
-//   ['column-reverse']: { flexDirection: 'column-reverse' },
-//   h: { flexDirection: 'row' },
-//   v: { flexDirection: 'column' },
-//   horizontal: { flexDirection: 'row' },
-//   vertical: { flexDirection: 'column' },
-// })
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const {
@@ -392,8 +381,6 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
       {...rest}
       {...stylex.props(
         inline ? styles.inline : styles.block,
-        // dir[direction],
-        // directionStyle[direction],
         direction != null && directionStyle[direction],
         wrap != null && wrapStyle[wrap],
         align != null && alignStyle[align],
@@ -402,7 +389,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
         gap != null && gapStyle[gap],
         columnGap != null && columnGapStyle[columnGap],
         rowGap != null && rowGapStyle[rowGap],
-        ...style,
+        style,
       )}
     >
       {children}

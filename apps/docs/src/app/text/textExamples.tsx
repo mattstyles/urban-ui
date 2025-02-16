@@ -39,7 +39,7 @@ const styles = stylex.create({
   },
   hidden: {
     borderColor: 'transparent',
-  }
+  },
 })
 
 export function TextExamples() {
@@ -54,10 +54,7 @@ export function TextExamples() {
           checked={showIndicators}
           onChange={(e) => setShowIndicators(e.target.checked)}
         />
-        <label
-          htmlFor="showIndicators"
-          {...stylex.props(styles.checkboxLabel)}
-        >
+        <label htmlFor="showIndicators" {...stylex.props(styles.checkboxLabel)}>
           Show text block indicators
         </label>
       </div>
@@ -66,10 +63,12 @@ export function TextExamples() {
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xxs</span>
-            <span {...stylex.props(
-              styles.textBlockIndicator,
-              !showIndicators && styles.hidden
-            )}>
+            <span
+              {...stylex.props(
+                styles.textBlockIndicator,
+                !showIndicators && styles.hidden,
+              )}
+            >
               <Text size="xxs">
                 Extra extra small text with optimized letter spacing for
                 readability
@@ -80,10 +79,12 @@ export function TextExamples() {
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xs</span>
-            <span {...stylex.props(
-              styles.textBlockIndicator,
-              !showIndicators && styles.hidden
-            )}>
+            <span
+              {...stylex.props(
+                styles.textBlockIndicator,
+                !showIndicators && styles.hidden,
+              )}
+            >
               <Text size="xs">
                 Extra small text with enhanced spacing for small sizes
               </Text>
@@ -93,10 +94,12 @@ export function TextExamples() {
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>sm</span>
-            <span {...stylex.props(
-              styles.textBlockIndicator,
-              !showIndicators && styles.hidden
-            )}>
+            <span
+              {...stylex.props(
+                styles.textBlockIndicator,
+                !showIndicators && styles.hidden,
+              )}
+            >
               <Text size="sm">Small text with comfortable reading metrics</Text>
             </span>
           </Flex>
@@ -104,10 +107,12 @@ export function TextExamples() {
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>md</span>
-            <span {...stylex.props(
-              styles.textBlockIndicator,
-              !showIndicators && styles.hidden
-            )}>
+            <span
+              {...stylex.props(
+                styles.textBlockIndicator,
+                !showIndicators && styles.hidden,
+              )}
+            >
               <Text size="md">
                 Medium text (default) with optimal reading line height
               </Text>
@@ -117,10 +122,12 @@ export function TextExamples() {
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>lg</span>
-            <span {...stylex.props(
-              styles.textBlockIndicator,
-              !showIndicators && styles.hidden
-            )}>
+            <span
+              {...stylex.props(
+                styles.textBlockIndicator,
+                !showIndicators && styles.hidden,
+              )}
+            >
               <Text size="lg">
                 Large text with adjusted spacing for headlines
               </Text>
@@ -130,22 +137,30 @@ export function TextExamples() {
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xl</span>
-            <span {...stylex.props(
-              styles.textBlockIndicator,
-              !showIndicators && styles.hidden
-            )}>
-              <Text size="xl">Extra large text with tighter letter spacing</Text>
+            <span
+              {...stylex.props(
+                styles.textBlockIndicator,
+                !showIndicators && styles.hidden,
+              )}
+            >
+              <Text size="xl">
+                Extra large text with tighter letter spacing
+              </Text>
             </span>
           </Flex>
         </div>
         <div {...stylex.props(styles.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xxl</span>
-            <span {...stylex.props(
-              styles.textBlockIndicator,
-              !showIndicators && styles.hidden
-            )}>
-              <Text size="xxl">Extra extra large text optimized for display</Text>
+            <span
+              {...stylex.props(
+                styles.textBlockIndicator,
+                !showIndicators && styles.hidden,
+              )}
+            >
+              <Text size="xxl">
+                Extra extra large text optimized for display
+              </Text>
             </span>
           </Flex>
         </div>
