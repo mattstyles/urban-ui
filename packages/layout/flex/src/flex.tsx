@@ -1,19 +1,11 @@
-import { colors } from '@stylexjs/open-props/lib/colors.stylex'
-import { sizes } from '@stylexjs/open-props/lib/sizes.stylex'
 import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { primary } from '@urban-ui/theme/colors.stylex'
-import { breakpoints, space } from '@urban-ui/theme/layout.stylex'
+import { space } from '@urban-ui/theme/layout.stylex'
 import { forwardRef } from 'react'
 
 const styles = stylex.create({
   block: {
     display: 'flex',
-    // @TODO this can be removed, it is testing multiple named imports
-    // width: sizes.full,
-    // height: space[300],
-    // background: colors.blue7,
-    // padding: sizes.xs,
   },
   inline: {
     display: 'inline-flex',

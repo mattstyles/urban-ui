@@ -1,8 +1,5 @@
-import { colors } from '@stylexjs/open-props/lib/colors.stylex'
-import { sizes } from '@stylexjs/open-props/lib/sizes.stylex'
 import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { grays, primary } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
