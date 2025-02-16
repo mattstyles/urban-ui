@@ -4,6 +4,7 @@ import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import { grays, primary } from '@urban-ui/theme/colors.stylex'
 import {
+  capsize,
   fontSizes,
   letterSpacings,
   lineHeights,
@@ -12,44 +13,55 @@ import { forwardRef } from 'react'
 
 const styles = stylex.create({
   // Base text styles
-  text: {
-    // color: primary[500],
+  base: {
+    // Polyfill for leading-trim
+    lineHeight: 'initial',
+    '::before': {
+      content: '',
+      display: 'table',
+      marginBottom: capsize.trimStartCap,
+    },
+    '::after': {
+      content: '',
+      display: 'table',
+      marginTop: capsize.trimEndAlphabetic,
+    },
   },
 
   // Font sizes with corresponding line heights and letter spacing
   xxs: {
     fontSize: fontSizes.xxs,
-    lineHeight: lineHeights.xxs,
+    // lineHeight: lineHeights.xxs,
     letterSpacing: letterSpacings.xxs,
   },
   xs: {
     fontSize: fontSizes.xs,
-    lineHeight: lineHeights.xs,
+    // lineHeight: lineHeights.xs,
     letterSpacing: letterSpacings.xs,
   },
   sm: {
     fontSize: fontSizes.sm,
-    lineHeight: lineHeights.sm,
+    // lineHeight: lineHeights.sm,
     letterSpacing: letterSpacings.sm,
   },
   md: {
     fontSize: fontSizes.md,
-    lineHeight: lineHeights.md,
+    // lineHeight: lineHeights.md,
     letterSpacing: letterSpacings.md,
   },
   lg: {
     fontSize: fontSizes.lg,
-    lineHeight: lineHeights.lg,
+    // lineHeight: lineHeights.lg,
     letterSpacing: letterSpacings.lg,
   },
   xl: {
     fontSize: fontSizes.xl,
-    lineHeight: lineHeights.xl,
+    // lineHeight: lineHeights.xl,
     letterSpacing: letterSpacings.xl,
   },
   xxl: {
     fontSize: fontSizes.xxl,
-    lineHeight: lineHeights.xxl,
+    // lineHeight: lineHeights.xxl,
     letterSpacing: letterSpacings.xxl,
   },
 })
@@ -75,12 +87,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   return (
     <span
       ref={ref}
-      {...stylex.props(
-        styles.text,
-        styles[size],
-        // ...(Array.isArray(style) ? style : style ? [style] : []),
-        style,
-      )}
+      {...stylex.props(styles.base, styles[size], style)}
       {...rest}
     >
       {children}

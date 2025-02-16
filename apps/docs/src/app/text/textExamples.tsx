@@ -36,6 +36,8 @@ const styles = stylex.create({
     borderColor: primary[400],
     borderStyle: 'solid',
     borderWidth: 1,
+    borderLeft: 'none',
+    borderRight: 'none',
   },
   hidden: {
     borderColor: 'transparent',

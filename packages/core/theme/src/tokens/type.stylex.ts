@@ -33,9 +33,9 @@ const MAX_BASE_SIZE = 20
 // Font sizes in `rem` units
 const MIN_FONT = {
   // (16 / 1.2^3) / 0.16) / 100 = 0.579rem
-  xxs: Math.round(MIN_BASE_SIZE / (MIN_SCALE ** 3) / 0.16) / 100,
+  xxs: Math.round(MIN_BASE_SIZE / MIN_SCALE ** 3 / 0.16) / 100,
   // (16 / 1.2^2) / 0.16) / 100 = 0.694rem
-  xs: Math.round(MIN_BASE_SIZE / (MIN_SCALE ** 2) / 0.16) / 100,
+  xs: Math.round(MIN_BASE_SIZE / MIN_SCALE ** 2 / 0.16) / 100,
   // (16 / 1.2) / 0.16) / 100 = 0.833rem
   sm: Math.round(MIN_BASE_SIZE / MIN_SCALE / 0.16) / 100,
   // 16 / 0.16) / 100 = 1rem (baseline)
@@ -43,17 +43,17 @@ const MIN_FONT = {
   // (16 * 1.2) / 0.16) / 100 = 1.2rem
   lg: Math.round((MIN_BASE_SIZE * MIN_SCALE) / 0.16) / 100,
   // (16 * 1.2^2) / 0.16) / 100 = 1.44rem
-  xl: Math.round((MIN_BASE_SIZE * (MIN_SCALE ** 2)) / 0.16) / 100,
+  xl: Math.round((MIN_BASE_SIZE * MIN_SCALE ** 2) / 0.16) / 100,
   // (16 * 1.2^3) / 0.16) / 100 = 1.728rem
-  xxl: Math.round((MIN_BASE_SIZE * (MIN_SCALE ** 3)) / 0.16) / 100,
+  xxl: Math.round((MIN_BASE_SIZE * MIN_SCALE ** 3) / 0.16) / 100,
 }
 
 // Font sizes in `rem` units
 const MAX_FONT = {
   // (20 / 1.333^3) / 0.16) / 100 = 0.667rem
-  xxs: Math.round(MAX_BASE_SIZE / (MAX_SCALE ** 3) / 0.16) / 100,
+  xxs: Math.round(MAX_BASE_SIZE / MAX_SCALE ** 3 / 0.16) / 100,
   // (20 / 1.333^2) / 0.16) / 100 = 0.889rem
-  xs: Math.round(MAX_BASE_SIZE / (MAX_SCALE ** 2) / 0.16) / 100,
+  xs: Math.round(MAX_BASE_SIZE / MAX_SCALE ** 2 / 0.16) / 100,
   // (20 / 1.333) / 0.16) / 100 = 1.185rem
   sm: Math.round(MAX_BASE_SIZE / MAX_SCALE / 0.16) / 100,
   // 20 / 0.16) / 100 = 1.25rem (baseline)
@@ -61,9 +61,9 @@ const MAX_FONT = {
   // (20 * 1.333) / 0.16) / 100 = 1.666rem
   lg: Math.round((MAX_BASE_SIZE * MAX_SCALE) / 0.16) / 100,
   // (20 * 1.333^2) / 0.16) / 100 = 2.221rem
-  xl: Math.round((MAX_BASE_SIZE * (MAX_SCALE ** 2)) / 0.16) / 100,
+  xl: Math.round((MAX_BASE_SIZE * MAX_SCALE ** 2) / 0.16) / 100,
   // (20 * 1.333^3) / 0.16) / 100 = 2.961rem
-  xxl: Math.round((MAX_BASE_SIZE * (MAX_SCALE ** 3)) / 0.16) / 100,
+  xxl: Math.round((MAX_BASE_SIZE * MAX_SCALE ** 3) / 0.16) / 100,
 }
 
 const SLOPE = {
@@ -110,7 +110,7 @@ export const fontSizes = defineVars({
 /**
  * @tokens lineHeights
  * @css lineHeight
- * 
+ *
  * Line height values are unitless multipliers:
  * - Smaller text (xxs-sm) uses larger line heights for better readability
  * - Base text (md) uses standard reading line height
@@ -131,6 +131,44 @@ export const lineHeights = defineVars({
   xl: '1.2',
   // Very tight spacing for large headlines
   xxl: '1.1',
+})
+
+/**
+ * Base sizes for Roboto font
+ */
+const roboto = {
+  ascent: '0.927734375em',
+  lineGap: '0em',
+  capHeight: '0.7109375em',
+  descent: '-0.244140625em',
+  xHeight: '0.5283203125em',
+}
+
+/**
+ * Trim values specifically for Roboto
+ */
+const robotoTrim = {
+  textBoxTrimStartText: `calc(${roboto.capHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
+  textBoxTrimEndText: `calc(${roboto.lineGap} / 2)`,
+  textBoxTrimStartCap: `calc(${roboto.capHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
+  textBoxTrimStartEx: `calc(${roboto.xHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
+  textBoxTrimEndAlphabetic: `calc(${roboto.descent} - ${roboto.lineGap} / 2)`,
+}
+
+/**
+ * @tokens capsize
+ * @css none
+ *
+ * Variables to enable polyfill for leading-trim.
+ * * https://seek-oss.github.io/capsize/
+ * * https://github.com/jantimon/text-box-trim-examples
+ */
+export const capsize = defineVars({
+  trimStartText: robotoTrim.textBoxTrimStartText,
+  trimEndText: robotoTrim.textBoxTrimEndText,
+  trimStartCap: robotoTrim.textBoxTrimStartCap,
+  trimStartX: robotoTrim.textBoxTrimStartEx,
+  trimEndAlphabetic: robotoTrim.textBoxTrimEndAlphabetic,
 })
 
 /**
@@ -157,17 +195,17 @@ export const fonts = defineVars({
 /**
  * @tokens letterSpacings
  * @css letterSpacing
- * 
+ *
  * Two sets of letter spacing values:
  * 1. Size-based scale (xxs-xxl):
  *    - Smaller text: slightly increased spacing for legibility
  *    - Base text: normal spacing for comfortable reading
  *    - Display text: tighter spacing for headlines
- * 
+ *
  * 2. Semantic scale (tighter-widest):
  *    - For specific typographic adjustments
  *    - Wider range of values for more dramatic effects
- * 
+ *
  * Values in em units to scale with font size
  */
 export const letterSpacings = defineVars({

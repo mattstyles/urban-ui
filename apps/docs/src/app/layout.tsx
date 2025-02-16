@@ -1,8 +1,6 @@
-// import {Inter} from 'next/font/google'
-// import {inter} from '~/app/font.ts'
 import cx from 'clsx'
-// import './globals.css'
 import type { Metadata } from 'next'
+import { inter, roboto } from '~/app/font.ts'
 
 import '@urban-ui/reset/reset.css'
 import './globals.css'
@@ -20,8 +18,7 @@ export default function RootLayout({
 }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      {/* <body className={cx(inter.className, inter.variable)}>{children}</body> */}
-      <body>
+      <body className={cx(roboto.className, roboto.variable)}>
         <h1>Layout rendered title</h1>
         {children}
       </body>
