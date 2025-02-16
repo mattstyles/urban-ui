@@ -27,7 +27,7 @@
     "build:all": "turbo run build",
     "dev": "turbo run clean && turbo run dev --parallel --filter=\"./packages/**\"",
     "lint": "turbo run lint",
-    "type:check": "turbo run type:check",
+    "typecheck": "turbo run typecheck",
     "format": "biome format --write {packages,scripts,apps}",
     "scaffold": "node packages/tmpl/dist/bin/tmpl.js",
     "gen": "turbo gen",

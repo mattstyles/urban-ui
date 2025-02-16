@@ -212,7 +212,7 @@ const rowGapStyle = {
   '900': styles.rowGap900,
 }
 
-interface FlexProps
+export interface FlexProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>,
     React.PropsWithChildren {
   /**
