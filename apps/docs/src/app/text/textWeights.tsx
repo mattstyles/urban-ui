@@ -44,9 +44,7 @@ export function TextWeights() {
       <div {...stylex.props(styles.container)}>
         <Flex gap="100" align="center">
           <span {...stylex.props(styles.weightLabel)}>medium</span>
-          <Text weight="medium">
-            Medium weight text for subtle emphasis
-          </Text>
+          <Text weight="medium">Medium weight text for subtle emphasis</Text>
         </Flex>
       </div>
       <div {...stylex.props(styles.container)}>
@@ -60,9 +58,7 @@ export function TextWeights() {
       <div {...stylex.props(styles.container)}>
         <Flex gap="100" align="center">
           <span {...stylex.props(styles.weightLabel)}>bold</span>
-          <Text weight="bold">
-            Bold weight text for maximum emphasis
-          </Text>
+          <Text weight="bold">Bold weight text for maximum emphasis</Text>
         </Flex>
       </div>
     </Flex>
