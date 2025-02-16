@@ -1,9 +1,10 @@
 import stylex from '@stylexjs/stylex'
 
+import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { grays } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { TextExamples } from './textExamples'
+import { TextWeights } from './textWeights'
 
 const styles = stylex.create({
   title: {
@@ -19,6 +20,13 @@ const styles = stylex.create({
   },
   container: {
     padding: space[200],
+  },
+  sectionTitle: {
+    fontSize: fontSizes.lg,
+    fontWeight: fontWeights.medium,
+    color: grays[800],
+    marginBlockEnd: space[200],
+    marginBlockStart: space[400],
   },
 })
 
@@ -38,7 +46,11 @@ export default function TextPage() {
         with &apos;md&apos; serving as the baseline size.
       </p>
 
+      <h2 {...stylex.props(styles.sectionTitle)}>Text Sizes</h2>
       <TextExamples />
+
+      <h2 {...stylex.props(styles.sectionTitle)}>Font Weights</h2>
+      <TextWeights />
     </div>
   )
 }

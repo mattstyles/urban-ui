@@ -6,6 +6,7 @@ import { grays, primary } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
+  fontWeights,
   letterSpacings,
   lineHeights,
 } from '@urban-ui/theme/type.stylex'
@@ -64,6 +65,23 @@ const styles = stylex.create({
     // lineHeight: lineHeights.xxl,
     letterSpacing: letterSpacings.xxl,
   },
+
+  // Font weights
+  light: {
+    fontWeight: fontWeights.light,
+  },
+  normal: {
+    fontWeight: fontWeights.normal,
+  },
+  medium: {
+    fontWeight: fontWeights.medium,
+  },
+  semibold: {
+    fontWeight: fontWeights.semibold,
+  },
+  bold: {
+    fontWeight: fontWeights.bold,
+  },
 })
 
 export interface TextProps
@@ -76,18 +94,23 @@ export interface TextProps
    */
   size?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl'
   /**
+   * Font weight
+   * @default normal
+   */
+  weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold'
+  /**
    * Custom stylex styles to apply to the text.
    */
   style?: StyleXStyles
 }
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
-  const { size = 'md', style, children, ...rest } = props
+  const { size = 'md', weight = 'normal', style, children, ...rest } = props
 
   return (
     <span
       ref={ref}
-      {...stylex.props(styles.base, styles[size], style)}
+      {...stylex.props(styles.base, styles[size], styles[weight], style)}
       {...rest}
     >
       {children}
