@@ -2,6 +2,8 @@
 
 import stylex from '@stylexjs/stylex'
 
+import { TestTheme } from './testTheme'
+
 const styles = stylex.create({
   container: {
     borderStyle: 'solid',
@@ -21,6 +23,7 @@ export function Content() {
       <p {...stylex.props(styles.p)}>
         Styled with stylex directly. Should be aqua.
       </p>
+      <TestTheme>Background red, foreground purple</TestTheme>
     </div>
   )
 }

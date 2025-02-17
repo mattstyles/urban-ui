@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { grays, primary } from '@urban-ui/theme/colors.stylex'
+import { grays, neutral, primary, tokens } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
 
@@ -19,11 +19,6 @@ const styles = stylex.create({
   checkboxLabel: {
     fontSize: fontSizes.sm,
     color: grays[700],
-  },
-  textContainer: {
-    background: grays[100],
-    padding: space[100],
-    width: '100%',
   },
   sizeLabel: {
     fontSize: fontSizes.sm,
@@ -41,6 +36,14 @@ const styles = stylex.create({
   },
   hidden: {
     borderColor: 'transparent',
+  },
+})
+
+const themed = stylex.create({
+  textContainer: {
+    background: tokens.background,
+    padding: space[100],
+    width: '100%',
   },
 })
 
@@ -62,7 +65,7 @@ export function TextExamples() {
       </div>
 
       <Flex direction="v" gap="200">
-        <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(neutral, themed.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xxs</span>
             <span
@@ -78,7 +81,7 @@ export function TextExamples() {
             </span>
           </Flex>
         </div>
-        <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(neutral, themed.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xs</span>
             <span
@@ -93,7 +96,7 @@ export function TextExamples() {
             </span>
           </Flex>
         </div>
-        <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(neutral, themed.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>sm</span>
             <span
@@ -106,7 +109,7 @@ export function TextExamples() {
             </span>
           </Flex>
         </div>
-        <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(neutral, themed.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>md</span>
             <span
@@ -121,7 +124,7 @@ export function TextExamples() {
             </span>
           </Flex>
         </div>
-        <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(neutral, themed.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>lg</span>
             <span
@@ -136,7 +139,7 @@ export function TextExamples() {
             </span>
           </Flex>
         </div>
-        <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(neutral, themed.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xl</span>
             <span
@@ -151,7 +154,7 @@ export function TextExamples() {
             </span>
           </Flex>
         </div>
-        <div {...stylex.props(styles.textContainer)}>
+        <div {...stylex.props(neutral, themed.textContainer)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.sizeLabel)}>xxl</span>
             <span

@@ -1,5 +1,6 @@
 import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
+import { tokens } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
@@ -12,6 +13,7 @@ import { forwardRef } from 'react'
 const styles = stylex.create({
   // Base text styles
   base: {
+    color: tokens.foreground,
     // Polyfill for leading-trim
     lineHeight: 'initial',
     '::before': {
@@ -25,8 +27,12 @@ const styles = stylex.create({
       marginTop: capsize.trimEndAlphabetic,
     },
   },
+})
 
-  // Font sizes with corresponding line heights and letter spacing
+/**
+ * Font sizes with corresponding line heights and letter spacing
+ */
+const sizes = stylex.create({
   xxs: {
     fontSize: fontSizes.xxs,
     // lineHeight: lineHeights.xxs,
@@ -62,8 +68,12 @@ const styles = stylex.create({
     // lineHeight: lineHeights.xxl,
     letterSpacing: letterSpacings.xxl,
   },
+})
 
-  // Font weights
+/**
+ * Font weights
+ */
+const weights = stylex.create({
   light: {
     fontWeight: fontWeights.light,
   },
@@ -107,7 +117,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   return (
     <span
       ref={ref}
-      {...stylex.props(styles.base, styles[size], styles[weight], style)}
+      {...stylex.props(styles.base, sizes[size], weights[weight], style)}
       {...rest}
     >
       {children}
