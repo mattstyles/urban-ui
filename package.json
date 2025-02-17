@@ -11,11 +11,10 @@
     "scripts/*",
     "tooling/*",
     "packages/core/*",
-    "packages/control/*",
     "packages/layout/*",
     "packages/typography/*",
     "packages/utility/*",
-    "packages/fr/*"
+    "packages/feedback/*"
   ],
   "repository": {
     "type": "git",
