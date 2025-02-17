@@ -85,7 +85,7 @@ export function ColorBlock({ title, theme }: Props) {
         )}
       >
         <div {...stylex.props(styles.swatch, styles.background)}>
-          <Text color="contrast">Background</Text>
+          {/* <Text color="contrast">Background</Text> */}
         </div>
         <div {...stylex.props(styles.swatch, styles.border)}>
           <Text>Border</Text>

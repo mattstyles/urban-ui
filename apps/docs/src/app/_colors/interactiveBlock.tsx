@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { interactive } from '@urban-ui/theme'
+// import { interactive } from '@urban-ui/theme'
 import {
   accent,
   danger,
@@ -70,11 +70,11 @@ export function InteractiveBlock({ title, theme }: Props) {
         </Text>
       </div>
       <Flex direction="v" gap="200">
-        <div
+        {/* <div
           {...stylex.props(styles.block, interactive.hover, interactive.active)}
         >
           <Text color="contrast">Background</Text>
-        </div>
+        </div> */}
       </Flex>
     </div>
   )

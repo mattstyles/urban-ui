@@ -18,19 +18,19 @@ const styles = stylex.create({
   },
   checkboxLabel: {
     fontSize: fontSizes.sm,
-    color: background.neutralFaded,
+    color: foreground.neutralFaded,
   },
   sizeLabel: {
     fontSize: fontSizes.sm,
-    color: background.pageFaded,
+    color: foreground.neutralFaded,
     marginInlineEnd: space[200],
     width: '3rem',
   },
   textBlockIndicator: {
     display: 'flex',
-    borderColor: border.accent,
+    borderColor: border.danger,
     borderStyle: 'solid',
-    borderWidth: 1,
+    borderWidth: 2,
     borderLeft: 'none',
     borderRight: 'none',
   },
@@ -41,7 +41,7 @@ const styles = stylex.create({
 
 const themed = stylex.create({
   textContainer: {
-    background: background.pageFaded,
+    background: background.neutralFaded,
     padding: space[100],
     width: '100%',
   },

@@ -4,19 +4,19 @@ import stylex from '@stylexjs/stylex'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { grays } from '@urban-ui/theme/colors.stylex'
+import { background, border, foreground } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
 
 const styles = stylex.create({
   container: {
-    background: grays[100],
+    background: background.neutralFaded,
     padding: space[100],
     width: '100%',
   },
   weightLabel: {
     fontSize: fontSizes.sm,
-    color: grays[500],
+    color: foreground.neutralFaded,
     marginInlineEnd: space[200],
     width: '5rem',
   },

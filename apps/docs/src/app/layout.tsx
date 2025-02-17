@@ -1,4 +1,5 @@
 import stylex from '@stylexjs/stylex'
+import { Text } from '@urban-ui/text'
 import { surface } from '@urban-ui/theme/colors.stylex'
 import cx from 'clsx'
 import type { Metadata } from 'next'
@@ -27,7 +28,9 @@ export default function RootLayout({
   return (
     <html lang="en" {...stylex.props(styles.html)}>
       <body className={cx(roboto.className, roboto.variable)}>
-        <h1>Layout rendered title</h1>
+        <Text weight="semibold" size="xxl">
+          Layout rendered title
+        </Text>
         {children}
       </body>
     </html>
