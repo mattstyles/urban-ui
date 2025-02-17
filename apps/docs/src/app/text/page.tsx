@@ -1,6 +1,6 @@
 import stylex from '@stylexjs/stylex'
 
-import { accent, tokens } from '@urban-ui/theme/colors.stylex'
+import { tokens } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { TextExamples } from './textExamples'
@@ -10,8 +10,8 @@ const styles = stylex.create({
   title: {
     fontSize: fontSizes.xl,
     fontWeight: fontWeights.semibold,
-    color: accent.lighter,
-    background: accent.base,
+    // color: accent.lighter,
+    // background: accent.base,
     marginBlockEnd: space[200],
   },
   description: {

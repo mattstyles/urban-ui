@@ -6,12 +6,6 @@ const DARK = '@media (prefers-color-scheme: dark)'
  * @tokens colors
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
  */
-export const tokens = defineVars({
-  background: 'hsl(0, 0%, 100%)',
-  border: 'hsl(0, 0%, 98%)',
-  foreground: 'hsl(195, 32%, 7%)',
-})
-
 export const base = defineVars({
   transparent: { default: 'transparent' },
   current: { default: 'currentColor' },
@@ -119,28 +113,131 @@ export const primary = defineVars({
   },
 })
 
-export const accentBase = defineVars({
-  base: '#ffaaff',
-  threshold: 0.7,
-  luminance: `clamp(0, (l / ${0.7} - 1) * -infinity, 1)`,
-})
+/**
+ * Test altering base colours to create dynamic scales
+ */
+// export const accentBase = defineVars({
+//   base: '#ffaaff',
+//   threshold: 0.7,
+//   luminance: `clamp(0, (l / ${0.7} - 1) * -infinity, 1)`,
+// })
 
-export const accent = defineVars({
-  base: accentBase.base,
-  lighter: ` oklch(from ${accentBase.base} ${accentBase.luminance} 0 h)`,
+// export const accent = defineVars({
+//   base: accentBase.base,
+//   lighter: ` oklch(from ${accentBase.base} ${accentBase.luminance} 0 h)`,
+// })
+
+/**
+ * @tokens colors
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ */
+export const tokens = defineVars({
+  background: 'hsl(0, 0%, 100%)',
+  border: 'hsl(0, 0%, 98%)',
+  foreground: 'hsl(195, 32%, 7%)',
 })
 
 export const neutral = createTheme(tokens, {
   background: {
     default: 'hsl(0, 0%, 83%)',
-    [DARK]: 'hsl(198, 8%, 25%)',
+    [DARK]: 'hsl(200, 8%, 32%)',
   },
   border: {
     default: 'hsl(0, 0%, 83%)',
-    [DARK]: 'hsl(198, 8%, 25%)',
+    [DARK]: 'hsl(200, 8%, 32%)',
   },
   foreground: {
     default: 'hsl(195, 32%, 7%)',
     [DARK]: 'hsl(0, 0%, 96%)',
+  },
+})
+
+export const neutralFaded = createTheme(tokens, {
+  background: {
+    default: 'hsl(0, 0%, 96%)',
+    [DARK]: 'hsl(200, 8%, 20%)',
+  },
+  border: {
+    default: 'hsl(0, 0%, 92%)',
+    [DARK]: 'hsl(200, 8%, 25%)',
+  },
+  foreground: {
+    default: 'hsl(195, 32%, 15%)',
+    [DARK]: 'hsl(0, 0%, 85%)',
+  },
+})
+
+export const info = createTheme(tokens, {
+  background: {
+    default: 'hsl(200, 85%, 95%)',
+    [DARK]: 'hsl(200, 75%, 15%)',
+  },
+  border: {
+    default: 'hsl(200, 85%, 45%)',
+    [DARK]: 'hsl(200, 85%, 55%)',
+  },
+  foreground: {
+    default: 'hsl(200, 85%, 35%)',
+    [DARK]: 'hsl(200, 85%, 90%)',
+  },
+})
+
+export const accent = createTheme(tokens, {
+  background: {
+    default: 'hsl(249, 87%, 63%)',
+    [DARK]: 'hsl(249, 87%, 63%)',
+  },
+  border: {
+    default: 'hsl(249, 87%, 63%)',
+    [DARK]: 'hsl(249, 87%, 63%)',
+  },
+  foreground: {
+    default: 'hsl(249, 87%, 63%)',
+    [DARK]: 'hsl(249, 87%, 63%)',
+  },
+})
+
+export const positive = createTheme(tokens, {
+  background: {
+    default: 'hsl(110, 76%, 88%)',
+    [DARK]: 'hsl(110, 45%, 14%)',
+  },
+  border: {
+    default: 'hsl(110, 100%, 27%)',
+    [DARK]: 'hsl(110, 100%, 27%)',
+  },
+  foreground: {
+    default: 'hsl(110, 100%, 27%)',
+    [DARK]: 'hsl(110, 76%, 88%)',
+  },
+})
+
+export const danger = createTheme(tokens, {
+  background: {
+    default: 'hsl(2, 96%, 94%)',
+    [DARK]: 'hsl(350, 61%, 22%)',
+  },
+  border: {
+    default: 'hsl(350, 83%, 45%)',
+    [DARK]: 'hsl(350, 100%, 63%)',
+  },
+  foreground: {
+    default: 'hsl(350, 83%, 45%)',
+    [DARK]: 'hsl(2, 96%, 94%)',
+  },
+})
+
+export const warning = createTheme(tokens, {
+  background: {
+    default: 'hsl(48, 100%, 91%)',
+    [DARK]: 'hsl(24, 88%, 16%)',
+  },
+  border: {
+    default: 'hsl(44, 100%, 52%)',
+    [DARK]: 'hsl(24, 88%, 38%)',
+  },
+  foreground: {
+    default: 'hsl(24, 88%, 38%)',
+    [DARK]: 'hsl(48, 100%, 91%)',
   },
 })

@@ -1,6 +1,6 @@
 import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { tokens } from '@urban-ui/theme/colors.stylex'
+import { base, tokens } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
@@ -13,7 +13,6 @@ import { forwardRef } from 'react'
 const styles = stylex.create({
   // Base text styles
   base: {
-    color: tokens.foreground,
     // Polyfill for leading-trim
     lineHeight: 'initial',
     '::before': {
@@ -26,6 +25,21 @@ const styles = stylex.create({
       display: 'table',
       marginTop: capsize.trimEndAlphabetic,
     },
+  },
+})
+
+/**
+ * Font colour options
+ */
+const fontColors = stylex.create({
+  current: {
+    color: base.current,
+  },
+  foreground: {
+    color: tokens.foreground,
+  },
+  contrast: {
+    color: `oklch(from ${tokens.background} clamp(0, (l / 0.7 - 1) * -infinity, 1) 0 h)`,
   },
 })
 
@@ -106,18 +120,36 @@ export interface TextProps
    */
   weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold'
   /**
+   * Font colours
+   * @default foreground
+   */
+  color?: 'current' | 'foreground' | 'contrast'
+  /**
    * Custom stylex styles to apply to the text.
    */
   style?: StyleXStyles
 }
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
-  const { size = 'md', weight = 'normal', style, children, ...rest } = props
+  const {
+    size = 'md',
+    weight = 'normal',
+    color = 'foreground',
+    style,
+    children,
+    ...rest
+  } = props
 
   return (
     <span
       ref={ref}
-      {...stylex.props(styles.base, sizes[size], weights[weight], style)}
+      {...stylex.props(
+        styles.base,
+        sizes[size],
+        weights[weight],
+        fontColors[color],
+        style,
+      )}
       {...rest}
     >
       {children}
