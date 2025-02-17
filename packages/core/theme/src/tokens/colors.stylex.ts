@@ -19,6 +19,10 @@ export const base = defineVars({
   },
 })
 
+/**
+ * @tokens colors
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ */
 export const surface = defineVars({
   page: {
     default: '#ffffff',
@@ -34,6 +38,10 @@ export const surface = defineVars({
   },
 })
 
+/**
+ * @tokens colors
+ * @css color, fill, stroke
+ */
 export const foreground = defineVars({
   neutral: { default: '#0d1619', [DARK]: '#f5f5f5' },
   neutralFaded: { default: '#757676', [DARK]: '#bfbfbf' },
@@ -57,6 +65,10 @@ export const foreground = defineVars({
   },
 })
 
+/**
+ * @tokens colors
+ * @css backgroundColor, fill
+ */
 export const background = defineVars({
   neutral: { default: '#d3d3d3', [DARK]: '#3a4144' },
   neutralHover: { default: '#bfbfbf', [DARK]: '#454b4e' },
@@ -158,6 +170,10 @@ export const background = defineVars({
   },
 })
 
+/**
+ * @tokens colors
+ * @css borderColor, stroke
+ */
 export const border = defineVars({
   neutral: { default: '#d3d3d3', [DARK]: '#3a4144' },
   neutralHover: { default: '#bfbfbf', [DARK]: '#606263' },
