@@ -7,261 +7,192 @@ const DARK = '@media (prefers-color-scheme: dark)'
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
  */
 export const base = defineVars({
-  transparent: { default: 'transparent' },
-  current: { default: 'currentColor' },
+  transparent: { default: 'transparent', [DARK]: 'transparent' },
+  current: { default: 'currentColor', [DARK]: 'currentColor' },
   black: {
-    default: 'hsl(0 0% 0%)',
-    [DARK]: 'hsl(0 0% 100%)',
+    default: '#000000',
+    [DARK]: '#ffffff',
   },
   white: {
-    default: 'hsl(0 0% 100%)',
-    [DARK]: 'hsl(0 0% 0%)',
+    default: '#ffffff',
+    [DARK]: '#000000',
   },
 })
 
 export const surface = defineVars({
   page: {
-    default: 'hsl(0, 0%, 100%)',
-    [DARK]: 'hsl(195, 32%, 7%)',
+    default: '#ffffff',
+    [DARK]: '#2c3032',
   },
   pageFaded: {
-    default: 'hsl(0, 0%, 98%)',
-    [DARK]: '	hsl(195, 14%, 11%)',
-  },
-})
-
-/**
- * @tokens grays
- * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
- */
-export const grays = defineVars({
-  50: {
-    default: 'hsl(0 0% 98%)',
-    [DARK]: 'hsl(0 0% 13%)',
-  },
-  100: {
-    default: 'hsl(0 0% 96%)',
-    [DARK]: 'hsl(0 0% 26%)',
-  },
-  200: {
-    default: 'hsl(0 0% 90%)',
-    [DARK]: 'hsl(0 0% 38%)',
-  },
-  300: {
-    default: 'hsl(0 0% 83%)',
-    [DARK]: 'hsl(0 0% 46%)',
-  },
-  400: {
-    default: 'hsl(0 0% 74%)',
-    [DARK]: 'hsl(0 0% 62%)',
-  },
-  500: {
-    default: 'hsl(0 0% 62%)',
-    [DARK]: 'hsl(0 0% 74%)',
-  },
-  600: {
-    default: 'hsl(0 0% 46%)',
-    [DARK]: 'hsl(0 0% 83%)',
-  },
-  700: {
-    default: 'hsl(0 0% 38%)',
-    [DARK]: 'hsl(0 0% 90%)',
-  },
-  800: {
-    default: 'hsl(0 0% 26%)',
-    [DARK]: 'hsl(0 0% 96%)',
-  },
-  900: {
-    default: 'hsl(0 0% 13%)',
-    [DARK]: 'hsl(0 0% 98%)',
-  },
-})
-
-/**
- * @tokens primary
- * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
- */
-export const primary = defineVars({
-  50: {
-    default: 'hsl(270 100% 98%)',
-    [DARK]: 'hsl(270 100% 25%)',
-  },
-  100: {
-    default: 'hsl(270 100% 92%)',
-    [DARK]: 'hsl(270 100% 30%)',
-  },
-  200: {
-    default: 'hsl(270 100% 86%)',
-    [DARK]: 'hsl(270 100% 35%)',
-  },
-  300: {
-    default: 'hsl(270 100% 75%)',
-    [DARK]: 'hsl(270 100% 40%)',
-  },
-  400: {
-    default: 'hsl(270 100% 65%)',
-    [DARK]: 'hsl(270 100% 50%)',
-  },
-  500: {
-    default: 'hsl(270 100% 50%)',
-    [DARK]: 'hsl(270 100% 65%)',
-  },
-  600: {
-    default: 'hsl(270 100% 40%)',
-    [DARK]: 'hsl(270 100% 75%)',
-  },
-  700: {
-    default: 'hsl(270 100% 35%)',
-    [DARK]: 'hsl(270 100% 86%)',
-  },
-  800: {
-    default: 'hsl(270 100% 30%)',
-    [DARK]: 'hsl(270 100% 92%)',
-  },
-  900: {
-    default: 'hsl(270 100% 25%)',
-    [DARK]: 'hsl(270 100% 98%)',
-  },
-})
-
-/**
- * Test altering base colours to create dynamic scales
- */
-// export const accentBase = defineVars({
-//   base: '#ffaaff',
-//   threshold: 0.7,
-//   luminance: `clamp(0, (l / ${0.7} - 1) * -infinity, 1)`,
-// })
-
-// export const accent = defineVars({
-//   base: accentBase.base,
-//   lighter: ` oklch(from ${accentBase.base} ${accentBase.luminance} 0 h)`,
-// })
-
-/**
- * @tokens colors
- * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
- */
-export const tokens = defineVars({
-  background: {
-    default: 'hsl(0, 0%, 83%)',
-    [DARK]: 'hsl(200, 8%, 32%)',
-  },
-  border: {
-    default: 'hsl(0, 0%, 83%)',
-    [DARK]: 'hsl(200, 8%, 32%)',
+    default: '#f9f9f9',
+    [DARK]: '#3c3f41',
   },
   foreground: {
-    default: 'hsl(195, 32%, 7%)',
-    [DARK]: 'hsl(0, 0%, 96%)',
+    default: '#0d1619',
+    [DARK]: '#ffffff',
   },
 })
 
-// --------------------------
-//   Semantic colour themes
-// --------------------------
-
-export const neutral = createTheme(tokens, {
-  background: {
-    default: 'hsl(0, 0%, 83%)',
-    [DARK]: 'hsl(200, 8%, 32%)',
-  },
-  border: {
-    default: 'hsl(0, 0%, 83%)',
-    [DARK]: 'hsl(200, 8%, 32%)',
-  },
-  foreground: {
-    default: 'hsl(195, 32%, 7%)',
-    [DARK]: 'hsl(0, 0%, 96%)',
-  },
-})
-
-export const neutralFaded = createTheme(tokens, {
-  background: {
-    default: 'hsl(0, 0%, 96%)',
-    [DARK]: 'hsl(200, 8%, 20%)',
-  },
-  border: {
-    default: 'hsl(0, 0%, 92%)',
-    [DARK]: 'hsl(200, 8%, 25%)',
-  },
-  foreground: {
-    default: 'hsl(195, 32%, 15%)',
-    [DARK]: 'hsl(0, 0%, 85%)',
+export const foreground = defineVars({
+  neutral: { default: '#0d1619', [DARK]: '#f5f5f5' },
+  neutralFaded: { default: '#757676', [DARK]: '#bfbfbf' },
+  accent: { default: '#6950f3', [DARK]: '#8880ff' },
+  accentHover: { default: '#5c4ace', [DARK]: '#b0b1fd' },
+  accentActive: { default: '#403591', [DARK]: '#D1D4FF' },
+  positive: { default: '#1F8900', [DARK]: '#45b020' },
+  warning: { default: '#b7570b', [DARK]: '#f19101' },
+  danger: { default: '#d4163a', [DARK]: '#ff4360' },
+  dangerHover: { default: '#bb1232', [DARK]: '#fe9a9a' },
+  dangerActive: { default: '#831324', [DARK]: '#ffd4d3' },
+  disabled: { default: '#acacac', [DARK]: '#757676' },
+  ghost: { default: '#bfbfbf', [DARK]: '#606263' },
+  onLoud: { default: '#ffffff', [DARK]: '#ffffff' },
+  onAccent: { default: '#ffffff', [DARK]: '#ffffff' },
+  onPrimary: { default: '#ffffff', [DARK]: '#0d1619' },
+  info: { default: '#2D76EC', [DARK]: '#5791F0' },
+  transparent: {
+    default: 'rgba(255, 255, 255, 0.1)',
+    [DARK]: 'rgba(13, 22, 25, 0.1)',
   },
 })
 
-export const info = createTheme(tokens, {
-  background: {
-    default: 'hsl(200, 85%, 95%)',
-    [DARK]: 'hsl(200, 75%, 15%)',
+export const background = defineVars({
+  neutral: { default: '#d3d3d3', [DARK]: '#3a4144' },
+  neutralHover: { default: '#bfbfbf', [DARK]: '#454b4e' },
+  neutralActive: { default: '#acacac', [DARK]: '#505658' },
+  neutralFaded: { default: '#f2f2f2', [DARK]: '#33393c' },
+  neutralFadedHover: { default: '#e5e5e5', [DARK]: '#3a4144' },
+  neutralFadedActive: { default: '#d3d3d3', [DARK]: '#454b4e' },
+  positive: { default: '#1F8900', [DARK]: '#1F8900' },
+  positiveFaded: { default: '#edfbe9', [DARK]: '#182914' },
+  positiveFadedHover: { default: '#d2f6c9', [DARK]: '#18390e' },
+  positiveFadedActive: { default: '#b1eea1', [DARK]: '#215412' },
+  danger: { default: '#d4163a', [DARK]: '#d4163a' },
+  dangerHover: { default: '#bb1232', [DARK]: '#bb1232' },
+  dangerActive: { default: '#831324', [DARK]: '#831324' },
+  dangerFaded: { default: '#FEECEB', [DARK]: '#421015' },
+  dangerFadedHover: { default: '#FEE3E2', [DARK]: '#5a1019' },
+  dangerFadedActive: { default: '#ffd4d3', [DARK]: '#831324' },
+  disabled: { default: '#f2f2f2', [DARK]: '#3a4144' },
+  page: { default: '#ffffff', [DARK]: '#0d1619' },
+  pageFaded: { default: '#f9f9f9', [DARK]: '#191f21' },
+  base: { default: '#ffffff', [DARK]: '#22282a' },
+  baseHover: { default: '#f5f5f5', [DARK]: '#33393c' },
+  baseActive: { default: '#f2f2f2', [DARK]: '#3a4144' },
+  elevated: { default: '#ffffff', [DARK]: '#2c3032' },
+  elevatedHover: { default: '#f5f5f5', [DARK]: '#33393c' },
+  elevatedActive: { default: '#f2f2f2', [DARK]: '#3a4144' },
+  primary: { default: '#0d1619', [DARK]: '#ffffff' },
+  primaryHover: { default: '#2c3032', [DARK]: '#f2f2f2' },
+  primaryActive: { default: '#454b4e', [DARK]: '#d3d3d3' },
+  warning: { default: '#ffc00a', [DARK]: '#b7570b' },
+  warningHover: { default: '#f19101', [DARK]: '#9e4900' },
+  warningActive: { default: '#b7570b', [DARK]: '#713200' },
+  warningFaded: { default: '#fff7db', [DARK]: '#371c0c' },
+  warningFadedHover: { default: '#ffefb2', [DARK]: '#4d2305' },
+  warningFadedActive: { default: '#ffeab0', [DARK]: '#713200' },
+  accent: { default: '#6950f3', [DARK]: '#6950f3' },
+  accentHover: { default: '#5c4ace', [DARK]: '#5c4ace' },
+  accentActive: { default: '#403591', [DARK]: '#403591' },
+  accentFaded: { default: '#f0f0ff', [DARK]: '#201e45' },
+  accentFadedHover: { default: '#DBDDFF', [DARK]: '#2b2660' },
+  accentFadedActive: { default: '#D1D4FF', [DARK]: '#403591' },
+  info: { default: '#2D76EC', [DARK]: '#2D76EC' },
+  infoFaded: { default: '#EAF1FD', [DARK]: '#133263' },
+  overlay: {
+    default: 'rgba(13, 22, 25, 0.25)',
+    [DARK]: 'rgba(13, 22, 25, 0.64)',
   },
-  border: {
-    default: 'hsl(200, 85%, 45%)',
-    [DARK]: 'hsl(200, 85%, 55%)',
+  overlayOnImage: {
+    default: 'rgba(13, 22, 25, 0.4)',
+    [DARK]: 'rgba(13, 22, 25, 0.4)',
   },
-  foreground: {
-    default: 'hsl(200, 85%, 35%)',
-    [DARK]: 'hsl(200, 85%, 90%)',
+  transparent: {
+    default: 'rgba(13, 22, 25, 0.1)',
+    [DARK]: 'rgba(13, 22, 25, 0.1)',
+  },
+  transparentHover: {
+    default: 'rgba(13, 22, 25, 0.15)',
+    [DARK]: 'rgba(245, 245, 245, 0.15)',
+  },
+  transparentActive: {
+    default: 'rgba(13, 22, 25, 0.2)',
+    [DARK]: 'rgba(245, 245, 245, 0.2)',
+  },
+  onLoud: {
+    default: 'rgba(255, 255, 255, 0.1)',
+    [DARK]: 'rgba(255, 255, 255, 0.1)',
+  },
+  onLoudHover: {
+    default: 'rgba(255, 255, 255, 0.15)',
+    [DARK]: 'rgba(255, 255, 255, 0.15)',
+  },
+  onLoudActive: {
+    default: 'rgba(255, 255, 255, 0.2)',
+    [DARK]: 'rgba(255, 255, 255, 0.2)',
+  },
+  'shade-100': {
+    default: 'rgba(13, 22, 25, 0.02)',
+    [DARK]: 'rgba(255, 255, 255, 0.02)',
+  },
+  'shade-200': {
+    default: 'rgba(13, 22, 25, 0.05)',
+    [DARK]: 'rgba(255, 255, 255, 0.05)',
+  },
+  'shade-300': {
+    default: 'rgba(13, 22, 25, 0.1)',
+    [DARK]: 'rgba(255, 255, 255, 0.1)',
+  },
+  'shade-400': {
+    default: 'rgba(13, 22, 25, 0.17)',
+    [DARK]: 'rgba(255, 255, 255, 0.17)',
+  },
+  'shade-500': {
+    default: 'rgba(13, 22, 25, 0.25)',
+    [DARK]: 'rgba(255, 255, 255, 0.25)',
+  },
+  'shade-600': {
+    default: 'rgba(13, 22, 25, 0.33)',
+    [DARK]: 'rgba(255, 255, 255, 0.33)',
   },
 })
 
-export const accent = createTheme(tokens, {
-  background: {
-    default: 'hsl(249, 87%, 63%)',
-    [DARK]: 'hsl(249, 87%, 63%)',
-  },
-  border: {
-    default: 'hsl(249, 87%, 63%)',
-    [DARK]: 'hsl(249, 87%, 63%)',
-  },
-  foreground: {
-    default: 'hsl(249, 87%, 63%)',
-    [DARK]: 'hsl(249, 87%, 63%)',
-  },
-})
-
-export const positive = createTheme(tokens, {
-  background: {
-    default: 'hsl(110, 76%, 88%)',
-    [DARK]: 'hsl(110, 45%, 14%)',
-  },
-  border: {
-    default: 'hsl(110, 100%, 27%)',
-    [DARK]: 'hsl(110, 100%, 27%)',
-  },
-  foreground: {
-    default: 'hsl(110, 100%, 27%)',
-    [DARK]: 'hsl(110, 76%, 88%)',
-  },
-})
-
-export const danger = createTheme(tokens, {
-  background: {
-    default: 'hsl(2, 96%, 94%)',
-    [DARK]: 'hsl(350, 61%, 22%)',
-  },
-  border: {
-    default: 'hsl(350, 83%, 45%)',
-    [DARK]: 'hsl(350, 100%, 63%)',
-  },
-  foreground: {
-    default: 'hsl(350, 83%, 45%)',
-    [DARK]: 'hsl(2, 96%, 94%)',
-  },
-})
-
-export const warning = createTheme(tokens, {
-  background: {
-    default: 'hsl(48, 100%, 91%)',
-    [DARK]: 'hsl(24, 88%, 16%)',
-  },
-  border: {
-    default: 'hsl(44, 100%, 52%)',
-    [DARK]: 'hsl(24, 88%, 38%)',
-  },
-  foreground: {
-    default: 'hsl(24, 88%, 38%)',
-    [DARK]: 'hsl(48, 100%, 91%)',
+export const border = defineVars({
+  neutral: { default: '#d3d3d3', [DARK]: '#3a4144' },
+  neutralHover: { default: '#bfbfbf', [DARK]: '#606263' },
+  neutralActive: { default: '#acacac', [DARK]: '#757676' },
+  neutralFaded: { default: '#e5e5e5', [DARK]: '#33393c' },
+  neutralFadedHover: { default: '#d3d3d3', [DARK]: '#606263' },
+  neutralFadedActive: { default: '#bfbfbf', [DARK]: '#757676' },
+  positive: { default: '#1F8900', [DARK]: '#1F8900' },
+  positiveFaded: { default: '#d2f6c9', [DARK]: '#18390e' },
+  positiveFadedHover: { default: '#b1eea1', [DARK]: '#215412' },
+  positiveFadedActive: { default: '#7ed368', [DARK]: '#2c7016' },
+  danger: { default: '#d4163a', [DARK]: '#ff4360' },
+  dangerHover: { default: '#bb1232', [DARK]: '#fe9a9a' },
+  dangerActive: { default: '#831324', [DARK]: '#ffd4d3' },
+  dangerFaded: { default: '#FEE3E2', [DARK]: '#5a1019' },
+  dangerFadedHover: { default: '#ffd4d3', [DARK]: '#831324' },
+  dangerFadedActive: { default: '#fe9a9a', [DARK]: '#bb1232' },
+  disabled: { default: '#d3d3d3', [DARK]: '#3a4144' },
+  warning: { default: '#ffc00a', [DARK]: '#b7570b' },
+  warningHover: { default: '#f19101', [DARK]: '#9e4900' },
+  warningActive: { default: '#b7570b', [DARK]: '#713200' },
+  warningFaded: { default: '#ffefb2', [DARK]: '#4d2305' },
+  warningFadedHover: { default: '#ffeab0', [DARK]: '#713200' },
+  warningFadedActive: { default: '#ffc00a', [DARK]: '#9e4900' },
+  accent: { default: '#6950f3', [DARK]: '#6950f3' },
+  accentHover: { default: '#5c4ace', [DARK]: '#8880ff' },
+  accentActive: { default: '#403591', [DARK]: '#b0b1fd' },
+  accentFaded: { default: '#DBDDFF', [DARK]: '#2b2660' },
+  accentFadedHover: { default: '#D1D4FF', [DARK]: '#403591' },
+  accentFadedActive: { default: '#b0b1fd', [DARK]: '#5c4ace' },
+  primary: { default: '#0d1619', [DARK]: '#ffffff' },
+  info: { default: '#2D76EC', [DARK]: '#2D76EC' },
+  infoFaded: { default: '#cce0ff', [DARK]: '#194182' },
+  transparent: {
+    default: 'rgba(255, 255, 255, 0.1)',
+    [DARK]: 'rgba(13, 22, 25, 0.1)',
   },
 })

@@ -1,6 +1,6 @@
 import stylex from '@stylexjs/stylex'
 
-import { tokens } from '@urban-ui/theme/colors.stylex'
+import { background, foreground } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { TextExamples } from './textExamples'
@@ -16,7 +16,7 @@ const styles = stylex.create({
   },
   description: {
     fontSize: fontSizes.md,
-    color: tokens.foreground,
+    color: foreground.neutral,
     marginBlockEnd: space[400],
   },
   container: {
@@ -25,7 +25,7 @@ const styles = stylex.create({
   sectionTitle: {
     fontSize: fontSizes.lg,
     fontWeight: fontWeights.medium,
-    color: tokens.foreground,
+    color: foreground.neutral,
     marginBlockEnd: space[200],
     marginBlockStart: space[400],
   },

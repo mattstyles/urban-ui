@@ -3,7 +3,7 @@ import stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { borderStyles, radii } from '@urban-ui/theme/borders.stylex'
-import { grays, primary } from '@urban-ui/theme/colors.stylex'
+import { background, border, foreground } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import {
   fontSizes,
@@ -15,13 +15,13 @@ const styles = stylex.create({
   title: {
     fontSize: fontSizes.xl,
     fontWeight: fontWeights.semibold,
-    color: grays[900],
+    color: foreground.neutral,
     marginBlockEnd: space[200],
   },
   description: {
     fontSize: fontSizes.md,
     lineHeight: lineHeights.md,
-    color: grays[700],
+    color: foreground.neutralFaded,
     marginBlockEnd: space[400],
   },
   section: {
@@ -30,30 +30,30 @@ const styles = stylex.create({
   sectionTitle: {
     fontSize: fontSizes.lg,
     fontWeight: fontWeights.medium,
-    color: grays[800],
+    color: foreground.neutral,
     marginBlockEnd: space[200],
   },
   box: {
-    backgroundColor: primary[100],
+    backgroundColor: background.accent,
     borderRadius: radii.sm,
     width: 24,
     height: 24,
-    color: primary[900],
+    color: 'white',
     fontWeight: fontWeights.medium,
     fontSize: fontSizes.xs,
   },
   example: {
-    backgroundColor: grays[50],
+    backgroundColor: background.pageFaded,
     padding: space[300],
     borderRadius: radii.lg,
     borderWidth: 1,
     borderStyle: borderStyles.solid,
-    borderColor: grays[200],
+    borderColor: border.neutralFaded,
     marginBlockEnd: space[400],
   },
   exampleInnerContainer: {
     padding: space[200],
-    backgroundColor: grays[100],
+    backgroundColor: background.accentFaded,
   },
   alignmentContainer: {
     minHeight: '88px',
@@ -61,7 +61,7 @@ const styles = stylex.create({
   exampleTitle: {
     fontSize: fontSizes.sm,
     fontWeight: fontWeights.medium,
-    color: grays[600],
+    color: foreground.neutral,
     marginBlockEnd: space[200],
   },
 })

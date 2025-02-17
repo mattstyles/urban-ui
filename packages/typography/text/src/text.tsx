@@ -1,6 +1,6 @@
 import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { base, tokens } from '@urban-ui/theme/colors.stylex'
+import { base, surface, tokens } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
@@ -40,6 +40,9 @@ const fontColors = stylex.create({
   },
   contrast: {
     color: `oklch(from ${tokens.background} clamp(0, (l / 0.7 - 1) * -infinity, 1) 0 h)`,
+  },
+  neutral: {
+    color: surface.foreground,
   },
 })
 
@@ -123,7 +126,7 @@ export interface TextProps
    * Font colours
    * @default foreground
    */
-  color?: 'current' | 'foreground' | 'contrast'
+  color?: 'current' | 'foreground' | 'contrast' | 'neutral'
   /**
    * Custom stylex styles to apply to the text.
    */
