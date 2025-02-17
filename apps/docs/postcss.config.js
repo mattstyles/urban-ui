@@ -55,21 +55,18 @@ const urbanTestIncludePaths = getPackageIncludePaths('@urban-ui/test', [
   path.join(projectRoot, 'node_modules'),
   path.join(monorepoRoot, 'node_modules'),
 ])
-
-const urbanRelativePathIncludes = [
-  '../../node_modules/@urban-ui/flex/**/*.{js,mjs}',
-  '../../node_modules/@urban-ui/text/**/*.{js,mjs}',
-  '../../node_modules/@urban-ui/theme/**/*.{js,mjs}',
-  '../../node_modules/@stylexjs/open-props/**/*.{js,mjs}',
-]
+const urbanTagIncludePaths = getPackageIncludePaths('@urban-ui/tag', [
+  path.join(projectRoot, 'node_modules'),
+  path.join(monorepoRoot, 'node_modules'),
+])
 
 const externalImportPaths = [
   ...urbanFlexIncludePaths,
   ...urbanThemeIncludePaths,
   ...urbanTextIncludePaths,
   ...urbanTestIncludePaths,
+  ...urbanTagIncludePaths,
   ...openPropsIncludePaths,
-  // ...urbanRelativePathIncludes,
 ]
 
 console.log('Importing')

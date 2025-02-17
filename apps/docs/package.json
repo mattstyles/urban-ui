@@ -33,6 +33,7 @@
     "@stylexjs/stylex": "^0.10.0",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/reset": "workspace:*",
+    "@urban-ui/tag": "workspace:*",
     "@urban-ui/test": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
