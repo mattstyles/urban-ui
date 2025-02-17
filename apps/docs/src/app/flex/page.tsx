@@ -27,6 +27,10 @@ const styles = stylex.create({
   section: {
     marginBlockEnd: space[600],
   },
+  main: {
+    paddingLeft: space.xl,
+    paddingRight: space.xl,
+  },
   sectionTitle: {
     fontSize: fontSizes.lg,
     fontWeight: fontWeights.medium,
@@ -53,7 +57,16 @@ const styles = stylex.create({
   },
   exampleInnerContainer: {
     padding: space[200],
-    backgroundColor: background.accentFaded,
+    backgroundColor: background.neutralFaded,
+  },
+  exampleContainer: {
+    backgroundColor: background.pageFaded,
+    padding: space[300],
+    borderRadius: radii.lg,
+    borderWidth: 1,
+    borderStyle: borderStyles.solid,
+    borderColor: border.neutralFaded,
+    marginBlockEnd: space[400],
   },
   alignmentContainer: {
     minHeight: '88px',
@@ -63,6 +76,16 @@ const styles = stylex.create({
     fontWeight: fontWeights.medium,
     color: foreground.neutral,
     marginBlockEnd: space[200],
+  },
+  sizeLabel: {
+    fontSize: fontSizes.sm,
+    color: foreground.neutralFaded,
+    marginInlineEnd: space[200],
+    width: '3rem',
+  },
+  sizeBlock: {
+    backgroundColor: background.accent,
+    borderRadius: radii.sm,
   },
 })
 
@@ -76,7 +99,7 @@ function Box({ children }: React.PropsWithChildren) {
 
 export default function FlexPage() {
   return (
-    <div>
+    <main {...stylex.props(styles.main)}>
       <h1 {...stylex.props(styles.title)}>Flex Component</h1>
       <p {...stylex.props(styles.description)}>
         The Flex component provides a simple and intuitive way to create
@@ -266,6 +289,78 @@ export default function FlexPage() {
           </Flex>
         </div>
       </section>
-    </div>
+
+      <section {...stylex.props(styles.section)}>
+        <h2 {...stylex.props(styles.sectionTitle)}>Semantic Size Scale</h2>
+        <p {...stylex.props(styles.description)}>
+          The semantic size scale provides consistent spacing across the design
+          system. Each size is fluid, scaling between viewport widths of 320px
+          and 1240px.
+        </p>
+        <p {...stylex.props(styles.description)}>
+          Try resizing your browser window to see how these values adapt. For
+          example, the xxs token scales from 2px to 2px (fixed), while xxl
+          scales from 44px to 60px. This fluid scaling ensures that spacing
+          remains proportional across different screen sizes, maintaining visual
+          harmony without requiring breakpoint-specific adjustments.
+        </p>
+        <div {...stylex.props(styles.exampleContainer)}>
+          <Flex direction="v" gap="200">
+            <div {...stylex.props(styles.exampleTitle)}>Size Scale</div>
+            <Flex direction="v" gap="200">
+              <Flex gap="100" align="center">
+                <span {...stylex.props(styles.sizeLabel)}>xxs</span>
+                <div
+                  {...stylex.props(styles.sizeBlock)}
+                  style={{ width: space.xxs, height: space.xxs }}
+                />
+              </Flex>
+              <Flex gap="100" align="center">
+                <span {...stylex.props(styles.sizeLabel)}>xs</span>
+                <div
+                  {...stylex.props(styles.sizeBlock)}
+                  style={{ width: space.xs, height: space.xs }}
+                />
+              </Flex>
+              <Flex gap="100" align="center">
+                <span {...stylex.props(styles.sizeLabel)}>sm</span>
+                <div
+                  {...stylex.props(styles.sizeBlock)}
+                  style={{ width: space.sm, height: space.sm }}
+                />
+              </Flex>
+              <Flex gap="100" align="center">
+                <span {...stylex.props(styles.sizeLabel)}>md</span>
+                <div
+                  {...stylex.props(styles.sizeBlock)}
+                  style={{ width: space.md, height: space.md }}
+                />
+              </Flex>
+              <Flex gap="100" align="center">
+                <span {...stylex.props(styles.sizeLabel)}>lg</span>
+                <div
+                  {...stylex.props(styles.sizeBlock)}
+                  style={{ width: space.lg, height: space.lg }}
+                />
+              </Flex>
+              <Flex gap="100" align="center">
+                <span {...stylex.props(styles.sizeLabel)}>xl</span>
+                <div
+                  {...stylex.props(styles.sizeBlock)}
+                  style={{ width: space.xl, height: space.xl }}
+                />
+              </Flex>
+              <Flex gap="100" align="center">
+                <span {...stylex.props(styles.sizeLabel)}>xxl</span>
+                <div
+                  {...stylex.props(styles.sizeBlock)}
+                  style={{ width: space.xxl, height: space.xxl }}
+                />
+              </Flex>
+            </Flex>
+          </Flex>
+        </div>
+      </section>
+    </main>
   )
 }
