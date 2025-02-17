@@ -20,10 +20,6 @@ const styles = stylex.create({
   },
   title: {
     padding: space[200],
-    backgroundColor: tokens.background,
-    color: tokens.foreground,
-    borderBottom: '1px solid',
-    borderColor: tokens.border,
   },
   colorBlock: {
     display: 'flex',
@@ -50,6 +46,7 @@ const styles = stylex.create({
     aspectRatio: '1 / 1',
     height: space[200],
     backgroundColor: tokens.foreground,
+    borderRadius: 4,
   },
 })
 

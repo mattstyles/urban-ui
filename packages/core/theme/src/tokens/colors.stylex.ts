@@ -19,6 +19,17 @@ export const base = defineVars({
   },
 })
 
+export const surface = defineVars({
+  page: {
+    default: 'hsl(0, 0%, 100%)',
+    [DARK]: 'hsl(195, 32%, 7%)',
+  },
+  pageFaded: {
+    default: 'hsl(0, 0%, 98%)',
+    [DARK]: '	hsl(195, 14%, 11%)',
+  },
+})
+
 /**
  * @tokens grays
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
@@ -132,10 +143,23 @@ export const primary = defineVars({
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
  */
 export const tokens = defineVars({
-  background: 'hsl(0, 0%, 100%)',
-  border: 'hsl(0, 0%, 98%)',
-  foreground: 'hsl(195, 32%, 7%)',
+  background: {
+    default: 'hsl(0, 0%, 83%)',
+    [DARK]: 'hsl(200, 8%, 32%)',
+  },
+  border: {
+    default: 'hsl(0, 0%, 83%)',
+    [DARK]: 'hsl(200, 8%, 32%)',
+  },
+  foreground: {
+    default: 'hsl(195, 32%, 7%)',
+    [DARK]: 'hsl(0, 0%, 96%)',
+  },
 })
+
+// --------------------------
+//   Semantic colour themes
+// --------------------------
 
 export const neutral = createTheme(tokens, {
   background: {
