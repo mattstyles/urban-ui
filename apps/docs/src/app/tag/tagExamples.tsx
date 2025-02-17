@@ -40,10 +40,10 @@ export function TagExamples() {
       <div {...stylex.props(styles.example)}>
         <div {...stylex.props(styles.title)}>Categories</div>
         <Flex gap="100" wrap="wrap">
-          <Tag variant="accent" size="sm">Design</Tag>
-          <Tag variant="accent" size="sm">Development</Tag>
-          <Tag variant="accent" size="sm">Marketing</Tag>
-          <Tag variant="accent" size="sm">Research</Tag>
+          <Tag variant="accent">Design</Tag>
+          <Tag variant="accent">Development</Tag>
+          <Tag variant="accent">Marketing</Tag>
+          <Tag variant="accent">Research</Tag>
         </Flex>
       </div>
 
@@ -51,9 +51,11 @@ export function TagExamples() {
       <div {...stylex.props(styles.example)}>
         <div {...stylex.props(styles.title)}>Priority Levels</div>
         <Flex gap="100" wrap="wrap">
-          <Tag variant="danger" size="sm">High</Tag>
-          <Tag variant="warning" size="sm">Medium</Tag>
-          <Tag variant="info" size="sm">Low</Tag>
+          <Tag variant="danger" size="lg">
+            High
+          </Tag>
+          <Tag variant="warning">Medium</Tag>
+          <Tag variant="info">Low</Tag>
         </Flex>
       </div>
 
@@ -62,14 +64,19 @@ export function TagExamples() {
         <div {...stylex.props(styles.title)}>Mixed Usage</div>
         <Flex direction="v" gap="100">
           <Flex gap="100" align="center">
-            <Tag variant="positive">Online</Tag>
-            <Tag variant="accent" size="sm">Premium</Tag>
-            <Tag variant="info" size="sm">New</Tag>
+            <Tag variant="positive" size="lg">Online</Tag>
+            <Tag variant="accent">Premium</Tag>
+            <Tag variant="info">New</Tag>
           </Flex>
           <Flex gap="100" align="center">
-            <Tag variant="warning">In Progress</Tag>
-            <Tag variant="danger" size="sm">Urgent</Tag>
-            <Tag variant="neutral" size="sm">Draft</Tag>
+            <Tag variant="warning" size="lg">In Progress</Tag>
+            <Tag variant="danger">Urgent</Tag>
+            <Tag variant="neutral">Draft</Tag>
+          </Flex>
+          <Flex gap="100" align="center">
+            <Tag variant="disabled">Archived</Tag>
+            <Tag variant="disabled">Expired</Tag>
+            <Tag variant="disabled">Inactive</Tag>
           </Flex>
         </Flex>
       </div>

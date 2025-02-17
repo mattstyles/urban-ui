@@ -21,7 +21,8 @@
   },
   "dependencies": {
     "@urban-ui/theme": "workspace:*",
-    "@urban-ui/flex": "workspace:*"
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/text": "workspace:*"
   },
   "peerDependencies": {
     "react": "^17.0.2 || ^18.3.0 || ^19.0.0",

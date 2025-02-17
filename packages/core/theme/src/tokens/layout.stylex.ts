@@ -74,11 +74,17 @@ export const space = defineVars({
 
   // 2px -> 2px
   xxs: `clamp(${Math.min(spaceMin.xxs)}px, calc(${spaceIntercept.xxs}px + ${Math.round(10000 * spaceSlope.xxs) / 100}vw), ${Math.max(spaceMax.xxs)}px)`,
+  // 4px -> 5px
   xs: `clamp(${Math.min(spaceMin.xs)}px, calc(${spaceIntercept.xs}px + ${Math.round(10000 * spaceSlope.xs) / 100}vw), ${Math.max(spaceMax.xs)}px)`,
+  // 8px -> 10px
   sm: `clamp(${Math.min(spaceMin.sm)}px, calc(${spaceIntercept.sm}px + ${Math.round(10000 * spaceSlope.sm) / 100}vw), ${Math.max(spaceMax.sm)}px)`,
+  // 16px -> 2px
   md: `clamp(${Math.min(spaceMin.md)}px, calc(${spaceIntercept.md}px + ${Math.round(10000 * spaceSlope.md) / 100}vw), ${Math.max(spaceMax.md)}px)`,
+  // 24px -> 30px
   lg: `clamp(${Math.min(spaceMin.lg)}px, calc(${spaceIntercept.lg}px + ${Math.round(10000 * spaceSlope.lg) / 100}vw), ${Math.max(spaceMax.lg)}px)`,
+  // 32px -> 40px
   xl: `clamp(${Math.min(spaceMin.xl)}px, calc(${spaceIntercept.xl}px + ${Math.round(10000 * spaceSlope.xl) / 100}vw), ${Math.max(spaceMax.xl)}px)`,
+  // 44px -> 60px
   xxl: `clamp(${Math.min(spaceMin.xxl)}px, calc(${spaceIntercept.xxl}px + ${Math.round(10000 * spaceSlope.xxl) / 100}vw), ${Math.max(spaceMax.xxl)}px)`,
 })
 
