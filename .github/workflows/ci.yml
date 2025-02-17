@@ -5,9 +5,9 @@ concurrency:
 
 on:
   push:
-    branches: ['main', 'v0.2.0-aria-vanilla']
+    branches: ['main']
   pull_request:
-    branches: ['main', 'v0.2.0-aria-vanilla']
+    branches: ['main']
   workflow_dispatch:
     
 
@@ -60,4 +60,4 @@ jobs:
       - name: Lint
         run: bun run lint
       - name: Type check
-        run: bun run type:check
+        run: bun run typecheck
