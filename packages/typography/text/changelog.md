@@ -1,5 +1,16 @@
 # @urban-ui/text
 
+## 0.7.0
+
+### Minor Changes
+
+- 13c36d4: update tokens and variables
+
+### Patch Changes
+
+- Updated dependencies [13c36d4]
+  - @urban-ui/theme@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes

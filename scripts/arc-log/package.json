@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/arc-log",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Logging specifically for arc",
   "module": "./src/index.ts",
   "types": "./src/index.ts",
