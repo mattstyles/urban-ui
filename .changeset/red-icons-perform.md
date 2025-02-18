@@ -1,5 +1,5 @@
 ---
-"@urban-ui/tag": patch
+"@urban-ui/tag": minor
 ---
 
 add :rocket: tag
