@@ -1,5 +1,11 @@
 # @urban-ui/theme
 
+## 0.7.3
+
+### Patch Changes
+
+- d09bc89: sort deps
+
 ## 0.7.0
 
 ### Minor Changes
