@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/text",
-  "version": "0.7.0",
+  "version": "0.7.2",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -8,10 +8,7 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
+  "files": ["src", "dist"],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",
