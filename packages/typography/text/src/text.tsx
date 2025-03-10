@@ -1,6 +1,6 @@
 import stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { base, surface } from '@urban-ui/theme/colors.stylex'
+import { base, tone } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
@@ -45,7 +45,7 @@ const fontColors = stylex.create({
   //   color: `oklch(from ${tokens.background} clamp(0, (l / 0.7 - 1) * -infinity, 1) 0 h)`,
   // },
   neutral: {
-    color: surface.foreground,
+    color: tone.fgHi,
   },
 })
 
@@ -145,6 +145,16 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     children,
     ...rest
   } = props
+
+  console.log(
+    stylex.props(
+      styles.base,
+      sizes[size],
+      weights[weight],
+      fontColors[color],
+      style,
+    ),
+  )
 
   return (
     <span

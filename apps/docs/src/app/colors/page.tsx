@@ -1,37 +1,34 @@
+'use client'
+
 import * as stylex from '@stylexjs/stylex'
-import { Flex } from '@urban-ui/flex'
+import { tone } from '@urban-ui/theme/colors.stylex'
+import { ToneBlock } from './tone'
 import { Text } from '@urban-ui/text'
-import { space } from '@urban-ui/theme/layout.stylex'
-import { ColorBlock } from './colorBlock'
+import { Flex } from '@urban-ui/flex'
 
 const styles = stylex.create({
   container: {
-    padding: space[200],
+    padding: '32px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+    backgroundColor: tone.surfaceBase,
+    minHeight: '100vh',
   },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-    gap: space[200],
-  },
+  description: {
+    marginTop: '8px',
+  }
 })
 
 export default function ColorsPage() {
   return (
-    <Flex direction="v" gap="400">
-      <Flex direction="v" gap="200" style={[styles.container]}>
-        <Text size="xl" weight="semibold">
-          Color Themes
-        </Text>
-        <div {...stylex.props(styles.grid)}>
-          <ColorBlock title="Neutral" theme="neutral" />
-          <ColorBlock title="Neutral Faded" theme="neutralFaded" />
-          <ColorBlock title="Accent" theme="accent" />
-          <ColorBlock title="Info" theme="info" />
-          <ColorBlock title="Positive" theme="positive" />
-          <ColorBlock title="Warning" theme="warning" />
-          <ColorBlock title="Danger" theme="danger" />
+    <div {...stylex.props(styles.container)}>
+      <Flex direction="column" gap="300">
+        <div>
+          <Text size="xl" weight="semibold">Color Tokens</Text>
+          <Text {...stylex.props(styles.description)} size="md" color="neutral">A comprehensive set of semantic color tokens used throughout the Urban UI design system.</Text>
         </div>
+        <ToneBlock />
       </Flex>
-    </Flex>
+    </div>
   )
 }

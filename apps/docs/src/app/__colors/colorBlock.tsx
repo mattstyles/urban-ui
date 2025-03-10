@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
+import { background, border, foreground } from '@urban-ui/theme/__colors.stylex'
 import { borderStyles, borderWidths } from '@urban-ui/theme/borders.stylex'
-import { background, border, foreground } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
 const styles = stylex.create({
