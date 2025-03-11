@@ -1,6 +1,6 @@
 import stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
-import { surface } from '@urban-ui/theme/colors.stylex'
+import { tone } from '@urban-ui/theme/colors.stylex'
 import cx from 'clsx'
 import type { Metadata } from 'next'
 import { inter, roboto } from '~/app/font.ts'
@@ -13,7 +13,7 @@ import './globals.css'
 
 const styles = stylex.create({
   html: {
-    backgroundColor: surface.page,
+    backgroundColor: tone.surfaceMuted,
   },
 })
 

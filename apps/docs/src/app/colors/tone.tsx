@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
-import { tone } from '@urban-ui/theme/colors.stylex'
 import { Flex } from '@urban-ui/flex'
+import { Text } from '@urban-ui/text'
+import { tone } from '@urban-ui/theme/colors.stylex'
 
 const styles = stylex.create({
   block: {
@@ -74,12 +75,17 @@ type ColorBlockProps = {
 }
 
 function ColorBlock({ colorStyle }: ColorBlockProps) {
-  return <div {...stylex.props(styles.block, styles[colorStyle])} />
+  return (
+    <Flex direction="column" gap="100">
+      <Text>{colorStyle}</Text>
+      <div {...stylex.props(styles.block, styles[colorStyle])} />
+    </Flex>
+  )
 }
 
 export function ToneBlock() {
   return (
-    <Flex direction="column" gap="100">
+    <Flex direction="column" gap="300">
       <ColorBlock colorStyle="fgHi" />
       <ColorBlock colorStyle="fgLo" />
       <ColorBlock colorStyle="fgInvertHi" />
