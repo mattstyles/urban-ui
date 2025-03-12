@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { background, border, foreground } from '@urban-ui/theme/colors.stylex'
+import { primary, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
 
@@ -18,17 +18,17 @@ const styles = stylex.create({
   },
   checkboxLabel: {
     fontSize: fontSizes.sm,
-    color: foreground.neutralFaded,
+    color: tone.fgLo,
   },
   sizeLabel: {
     fontSize: fontSizes.sm,
-    color: foreground.neutralFaded,
+    color: tone.fgLo,
     marginInlineEnd: space[200],
     width: '3rem',
   },
   textBlockIndicator: {
     display: 'flex',
-    borderColor: border.danger,
+    borderColor: tone.borderBase,
     borderStyle: 'solid',
     borderWidth: 2,
     borderLeft: 'none',
@@ -41,7 +41,7 @@ const styles = stylex.create({
 
 const themed = stylex.create({
   textContainer: {
-    background: background.neutralFaded,
+    background: tone.surfaceBase,
     padding: space[100],
     width: '100%',
   },

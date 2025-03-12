@@ -116,12 +116,12 @@ export const tone = defineVars({
  */
 export const primary = createTheme(tone, {
   fgHi: {
-    default: 'hsl(270 17% 21%)',
-    [DARK]: 'hsl(270 8% 98%)',
+    default: 'hsl(267 87% 63%)',
+    [DARK]: 'hsl(272 88% 78%)',
   },
   fgLo: {
-    default: 'hsl(270 8% 40%)',
-    [DARK]: 'hsl(270 8% 80%)',
+    default: 'hsl(270 78% 40%)',
+    [DARK]: 'hsl(270 67% 62%)',
   },
   fgInvertHi: {
     default: 'hsl(270 8% 98%)',
@@ -164,35 +164,35 @@ export const primary = createTheme(tone, {
     [DARK]: 'hsl(270 8% 24%)',
   },
   elementEmphasisBase: {
-    default: 'hsl(270 45% 38%)',
-    [DARK]: 'hsl(270 45% 72%)',
+    default: 'hsl(270 88% 48%)',
+    [DARK]: 'hsl(270 91% 52%)',
   },
   elementEmphasisHover: {
-    default: 'hsl(270 45% 36%)',
-    [DARK]: 'hsl(270 45% 74%)',
+    default: 'hsl(270 78% 43%)',
+    [DARK]: 'hsl(270 85% 57%)',
   },
   elementEmphasisPress: {
-    default: 'hsl(270 45% 34%)',
-    [DARK]: 'hsl(270 45% 76%)',
+    default: 'hsl(270 82% 40%)',
+    [DARK]: 'hsl(270 85% 58%)',
   },
   elementEmphasisSelected: {
-    default: 'hsl(270 45% 32%)',
-    [DARK]: 'hsl(270 45% 78%)',
+    default: 'hsl(270 75% 38%)',
+    [DARK]: 'hsl(270 78% 60%)',
   },
   borderMuted: {
-    default: 'hsl(270 8% 90%)',
-    [DARK]: 'hsl(270 8% 20%)',
+    default: 'hsl(257 92% 93%)',
+    [DARK]: 'hsl(249 43% 34%)',
   },
   borderBase: {
-    default: 'hsl(270 8% 88%)',
-    [DARK]: 'hsl(270 8% 22%)',
+    default: 'hsl(259 84% 90%)',
+    [DARK]: 'hsl(250 46% 39%)',
   },
   borderSubtle: {
-    default: 'hsl(270 8% 86%)',
-    [DARK]: 'hsl(270 8% 18%)',
+    default: 'hsl(260 83% 86%)',
+    [DARK]: 'hsl(250 46% 43%)',
   },
   borderEmphasis: {
-    default: 'hsl(270 11% 83%)',
-    [DARK]: 'hsl(270 8% 25%)',
+    default: 'hsl(260 78% 83%)',
+    [DARK]: 'hsl(250 46% 48%)',
   },
 })
