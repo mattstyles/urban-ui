@@ -11,6 +11,13 @@ const styles = stylex.create({
     display: 'inline-flex',
   },
 
+  // Flex
+  flexNone: { flex: 'none' },
+  flexInitial: { flex: '0 1 auto' },
+  flexAuto: { flex: 'auto' },
+  flex1: { flex: 1 },
+  flex2: { flex: 2 },
+
   // Direction
   row: { flexDirection: 'row' },
   column: { flexDirection: 'column' },
@@ -23,6 +30,7 @@ const styles = stylex.create({
   wrapReverse: { flexWrap: 'wrap-reverse' },
 
   // Align Items
+  alignInitial: { alignItems: 'initial' },
   alignStart: { alignItems: 'flex-start' },
   alignEnd: { alignItems: 'flex-end' },
   alignCenter: { alignItems: 'center' },
@@ -30,6 +38,7 @@ const styles = stylex.create({
   alignStretch: { alignItems: 'stretch' },
 
   // Align Content
+  contentInitial: { alignContent: 'initial' },
   contentStart: { alignContent: 'flex-start' },
   contentEnd: { alignContent: 'flex-end' },
   contentCenter: { alignContent: 'center' },
@@ -38,6 +47,7 @@ const styles = stylex.create({
   contentStretch: { alignContent: 'stretch' },
 
   // Justify Content
+  justifyInitial: { justifyContent: 'initial' },
   justifyStart: { justifyContent: 'flex-start' },
   justifyEnd: { justifyContent: 'flex-end' },
   justifyCenter: { justifyContent: 'center' },
@@ -106,6 +116,14 @@ const styles = stylex.create({
   rowGap900: { rowGap: space[900] },
 })
 
+const flexStyle = {
+  none: styles.flexNone,
+  initial: styles.flexInitial,
+  auto: styles.flexAuto,
+  '1': styles.flex1,
+  '2': styles.flex2,
+}
+
 const directionStyle = {
   row: styles.row,
   column: styles.column,
@@ -124,6 +142,7 @@ const wrapStyle = {
 }
 
 const alignStyle = {
+  initial: styles.alignInitial,
   'flex-start': styles.alignStart,
   'flex-end': styles.alignEnd,
   center: styles.alignCenter,
@@ -132,6 +151,7 @@ const alignStyle = {
 }
 
 const alignContentStyle = {
+  initial: styles.contentInitial,
   'flex-start': styles.contentStart,
   'flex-end': styles.contentEnd,
   center: styles.contentCenter,
@@ -141,6 +161,7 @@ const alignContentStyle = {
 }
 
 const justifyStyle = {
+  initial: styles.justifyInitial,
   'flex-start': styles.justifyStart,
   'flex-end': styles.justifyEnd,
   center: styles.justifyCenter,
@@ -218,6 +239,11 @@ export interface FlexProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>,
     React.PropsWithChildren {
   /**
+   * Flex behaviour of the container
+   */
+  flex?: 'none' | 'initial' | 'auto' | '1' | '2'
+
+  /**
    * Direction of the flex container
    * Supports aliases: h/horizontal (row), v/vertical (column)
    * @default 'row'
@@ -240,15 +266,22 @@ export interface FlexProps
 
   /**
    * Alignment of items along the cross axis
-   * @default 'stretch'
+   * @default 'initial'
    */
-  align?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
+  align?:
+    | 'initial'
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch'
 
   /**
    * Alignment of content when wrapped
-   * @default 'stretch'
+   * @default 'initial'
    */
   alignContent?:
+    | 'initial'
     | 'flex-start'
     | 'flex-end'
     | 'center'
@@ -258,9 +291,10 @@ export interface FlexProps
 
   /**
    * Alignment of items along the main axis
-   * @default 'flex-start'
+   * @default 'initial'
    */
   justify?:
+    | 'initial'
     | 'flex-start'
     | 'flex-end'
     | 'center'
@@ -352,12 +386,20 @@ export interface FlexProps
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const {
-    direction = 'row',
-    wrap = 'nowrap',
-    align = 'stretch',
-    alignContent = 'stretch',
-    justify = 'flex-start',
-    gap = '0',
+    // We omit defaults here as this will generate additional classes in the output html just to set the default browser behaviour. If we want to set specific behaviours then we can reinstate these defaults.
+    // direction = 'row',
+    // wrap = 'nowrap',
+    // align = 'initial',
+    // alignContent = 'initial',
+    // justify = 'flex-start',
+    // gap = '0',
+    flex,
+    direction,
+    wrap,
+    align,
+    alignContent,
+    justify,
+    gap,
     columnGap,
     rowGap,
     inline = false,
@@ -375,6 +417,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
       {...rest}
       {...stylex.props(
         inline ? styles.inline : styles.block,
+        flex != null && flexStyle[flex],
         direction != null && directionStyle[direction],
         wrap != null && wrapStyle[wrap],
         align != null && alignStyle[align],

@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { borderStyles, radii } from '@urban-ui/theme/borders.stylex'
-import { background, border, foreground } from '@urban-ui/theme/colors.stylex'
+import { primary, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import {
   fontSizes,
@@ -15,13 +15,13 @@ const styles = stylex.create({
   title: {
     fontSize: fontSizes.xl,
     fontWeight: fontWeights.semibold,
-    color: foreground.neutral,
+    color: tone.fgHi,
     marginBlockEnd: space[200],
   },
   description: {
     fontSize: fontSizes.md,
     lineHeight: lineHeights.md,
-    color: foreground.neutralFaded,
+    color: tone.fgLo,
     marginBlockEnd: space[400],
   },
   section: {
@@ -34,38 +34,38 @@ const styles = stylex.create({
   sectionTitle: {
     fontSize: fontSizes.lg,
     fontWeight: fontWeights.medium,
-    color: foreground.neutral,
+    color: tone.fgHi,
     marginBlockEnd: space[200],
   },
   box: {
-    backgroundColor: background.accent,
+    backgroundColor: primary.elementEmphasisBase,
     borderRadius: radii.sm,
-    width: 24,
-    height: 24,
-    color: 'white',
+    minWidth: 24,
+    minHeight: 24,
+    color: tone.fgInvertHi,
     fontWeight: fontWeights.medium,
     fontSize: fontSizes.xs,
   },
   example: {
-    backgroundColor: background.pageFaded,
+    backgroundColor: tone.surfaceBase,
     padding: space[300],
     borderRadius: radii.lg,
     borderWidth: 1,
     borderStyle: borderStyles.solid,
-    borderColor: border.neutralFaded,
+    borderColor: tone.borderMuted,
     marginBlockEnd: space[400],
   },
   exampleInnerContainer: {
     padding: space[200],
-    backgroundColor: background.neutralFaded,
+    backgroundColor: tone.surfaceSubtle,
   },
   exampleContainer: {
-    backgroundColor: background.pageFaded,
+    backgroundColor: tone.surfaceBase,
     padding: space[300],
     borderRadius: radii.lg,
     borderWidth: 1,
     borderStyle: borderStyles.solid,
-    borderColor: border.neutralFaded,
+    borderColor: tone.borderBase,
     marginBlockEnd: space[400],
   },
   alignmentContainer: {
@@ -74,18 +74,26 @@ const styles = stylex.create({
   exampleTitle: {
     fontSize: fontSizes.sm,
     fontWeight: fontWeights.medium,
-    color: foreground.neutral,
+    color: tone.fgHi,
     marginBlockEnd: space[200],
   },
   sizeLabel: {
     fontSize: fontSizes.sm,
-    color: foreground.neutralFaded,
+    color: tone.fgLo,
     marginInlineEnd: space[200],
     width: '3rem',
   },
   sizeBlock: {
-    backgroundColor: background.accent,
+    backgroundColor: primary.elementEmphasisBase,
     borderRadius: radii.sm,
+  },
+  flexBlock: {
+    backgroundColor: primary.elementEmphasisBase,
+    borderRadius: radii.sm,
+    color: tone.fgInvertHi,
+    paddingLeft: space[100],
+    paddingRight: space[100],
+    justifyContent: 'center',
   },
 })
 
@@ -176,41 +184,73 @@ export default function FlexPage() {
         <div {...stylex.props(styles.example)}>
           <h3 {...stylex.props(styles.exampleTitle)}>Align Items</h3>
           <Flex direction="column" gap="200">
-            <Flex
-              gap="50"
-              align="flex-start"
-              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
-            >
-              <Box>1</Box>
-              <Box>2</Box>
-              <Box>3</Box>
+            <Flex direction="column" gap="100">
+              <Text size="sm" weight="medium">
+                Flex-start
+              </Text>
+              <Flex
+                gap="50"
+                align="flex-start"
+                style={[
+                  styles.exampleInnerContainer,
+                  styles.alignmentContainer,
+                ]}
+              >
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+              </Flex>
             </Flex>
-            <Flex
-              gap="50"
-              align="center"
-              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
-            >
-              <Box>1</Box>
-              <Box>2</Box>
-              <Box>3</Box>
+            <Flex direction="column" gap="100">
+              <Text size="sm" weight="medium">
+                Center
+              </Text>
+              <Flex
+                gap="50"
+                align="center"
+                style={[
+                  styles.exampleInnerContainer,
+                  styles.alignmentContainer,
+                ]}
+              >
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+              </Flex>
             </Flex>
-            <Flex
-              gap="50"
-              align="flex-end"
-              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
-            >
-              <Box>1</Box>
-              <Box>2</Box>
-              <Box>3</Box>
+            <Flex direction="column" gap="100">
+              <Text size="sm" weight="medium">
+                Flex-end
+              </Text>
+              <Flex
+                gap="50"
+                align="flex-end"
+                style={[
+                  styles.exampleInnerContainer,
+                  styles.alignmentContainer,
+                ]}
+              >
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+              </Flex>
             </Flex>
-            <Flex
-              gap="50"
-              align="stretch"
-              style={[styles.exampleInnerContainer, styles.alignmentContainer]}
-            >
-              <Box>1</Box>
-              <Box>2</Box>
-              <Box>3</Box>
+            <Flex direction="column" gap="100">
+              <Text size="sm" weight="medium">
+                Stretch
+              </Text>
+              <Flex
+                gap="50"
+                align="stretch"
+                style={[
+                  styles.exampleInnerContainer,
+                  styles.alignmentContainer,
+                ]}
+              >
+                <Box>1</Box>
+                <Box>2</Box>
+                <Box>3</Box>
+              </Flex>
             </Flex>
           </Flex>
         </div>
@@ -356,6 +396,67 @@ export default function FlexPage() {
                   {...stylex.props(styles.sizeBlock)}
                   style={{ width: space.xxl, height: space.xxl }}
                 />
+              </Flex>
+            </Flex>
+          </Flex>
+        </div>
+      </section>
+
+      <section {...stylex.props(styles.section)}>
+        <h2 {...stylex.props(styles.sectionTitle)}>Flex properties</h2>
+        <p {...stylex.props(styles.description)}>
+          Defines how elements are allowed to grow or shrink
+        </p>
+        <div {...stylex.props(styles.example)}>
+          <Flex gap="200" direction="column">
+            <Flex gap="100" direction="column">
+              <Text size="sm" weight="medium">
+                Flex: none
+              </Text>
+              <Flex gap="100">
+                <Flex flex="none" style={styles.flexBlock}>
+                  None
+                </Flex>
+                <Flex flex="1" style={[styles.flexBlock, { width: 200 }]}>
+                  01
+                </Flex>
+                <Flex flex="1" style={[styles.flexBlock, { width: 100 }]}>
+                  02
+                </Flex>
+              </Flex>
+            </Flex>
+
+            <Flex gap="100" direction="column">
+              <Text size="sm" weight="medium">
+                Flex: initial
+              </Text>
+              <Flex gap="100">
+                <Flex flex="none" style={styles.flexBlock}>
+                  None
+                </Flex>
+                <Flex flex="initial" style={[styles.flexBlock, { width: 200 }]}>
+                  01
+                </Flex>
+                <Flex flex="initial" style={[styles.flexBlock, { width: 100 }]}>
+                  02
+                </Flex>
+              </Flex>
+            </Flex>
+
+            <Flex gap="100" direction="column">
+              <Text size="sm" weight="medium">
+                Flex: auto
+              </Text>
+              <Flex gap="100">
+                <Flex flex="none" style={styles.flexBlock}>
+                  None
+                </Flex>
+                <Flex flex="auto" style={[styles.flexBlock, { width: 200 }]}>
+                  01
+                </Flex>
+                <Flex flex="auto" style={[styles.flexBlock, { width: 100 }]}>
+                  02
+                </Flex>
               </Flex>
             </Flex>
           </Flex>
