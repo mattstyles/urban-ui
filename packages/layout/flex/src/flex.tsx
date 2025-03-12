@@ -212,6 +212,8 @@ const rowGapStyle = {
   '900': styles.rowGap900,
 }
 
+// @ts-ignore typing for var group prefers a known object for its keys, we want a generic object and let the compiler work it out
+type GenericTheme = Theme<VarGroup<unknown>>
 export interface FlexProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'>,
     React.PropsWithChildren {
@@ -345,7 +347,7 @@ export interface FlexProps
   /**
    * StyleX style overrides
    */
-  style?: StyleXStyles
+  style?: StyleXStyles | GenericTheme
 }
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {

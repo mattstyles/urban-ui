@@ -146,15 +146,15 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     ...rest
   } = props
 
-  console.log(
-    stylex.props(
-      styles.base,
-      sizes[size],
-      weights[weight],
-      fontColors[color],
-      style,
-    ),
-  )
+  // console.log(
+  //   stylex.props(
+  //     styles.base,
+  //     sizes[size],
+  //     weights[weight],
+  //     fontColors[color],
+  //     style,
+  //   ),
+  // )
 
   return (
     <span
