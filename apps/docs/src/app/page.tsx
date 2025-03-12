@@ -1,8 +1,9 @@
-import stylex from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { omit } from 'lodash'
 import { Content } from './content.tsx'
 import { ContentExternal } from './contentExternal.tsx'
 import { ContentOpenProps } from './contentOpenProps.tsx'
+import { UIThemeContent } from './uiTheme.tsx'
 
 const styles = stylex.create({
   container: {
@@ -20,6 +21,7 @@ export default function Home() {
       <Content />
       <ContentExternal />
       <ContentOpenProps />
+      <UIThemeContent />
     </main>
   )
 }

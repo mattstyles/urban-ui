@@ -1,11 +1,11 @@
 'use client'
 
-import stylex from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 
 import { Flex } from '@urban-ui/flex'
 import { Test } from '@urban-ui/test'
 import { Text } from '@urban-ui/text'
-import { background, foreground } from '@urban-ui/theme/colors.stylex'
+import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
 
@@ -17,12 +17,12 @@ const styles = stylex.create({
     borderColor: 'black',
     borderWidth: 1,
     padding: 20,
-    backgroundColor: background.neutralFaded,
-    color: foreground.neutral,
+    backgroundColor: tone.surfaceBase,
+    color: tone.fgHi,
     margin: space[200],
   },
   p: {
-    color: foreground.accent,
+    color: tone.fgHi,
     fontSize: fontSizes.md,
     padding: space[300],
   },

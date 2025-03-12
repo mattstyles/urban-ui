@@ -78,7 +78,7 @@ type ColorBlockProps = {
 function ColorBlock({ colorStyle }: ColorBlockProps) {
   return (
     <Flex direction="column" gap="100">
-      <Text size="sm">{colorStyle}</Text>
+      <Text size="sm">{colorStyle.toString()}</Text>
       <div {...stylex.props(styles.block, styles[colorStyle])} />
     </Flex>
   )

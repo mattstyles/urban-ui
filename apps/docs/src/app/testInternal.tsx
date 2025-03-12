@@ -2,7 +2,7 @@ import { colors } from '@stylexjs/open-props/lib/colors.stylex'
 import { colorsHSL } from '@stylexjs/open-props/lib/colorsHSL.stylex'
 import { fonts } from '@stylexjs/open-props/lib/fonts.stylex'
 import { sizes } from '@stylexjs/open-props/lib/sizes.stylex'
-import stylex from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { forwardRef } from 'react'
 
 const styles = stylex.create({

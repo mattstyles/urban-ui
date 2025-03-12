@@ -32,7 +32,7 @@
     "url": "https://github.com/mattstyles/urban-ui/issues"
   },
   "devDependencies": {
-    "@stylexjs/stylex": "^0.10.0",
+    "@stylexjs/stylex": "0.11.1",
     "@types/bun": "latest",
     "@types/debug": "^4.1.12",
     "@types/fb-watchman": "^2.0.4",

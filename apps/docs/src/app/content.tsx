@@ -1,6 +1,8 @@
 'use client'
 
-import stylex from '@stylexjs/stylex'
+import { Text } from '@urban-ui/text'
+import * as stylex from '@stylexjs/stylex'
+import { tone } from '@urban-ui/theme/colors.stylex'
 
 import { TestTheme } from './testTheme'
 

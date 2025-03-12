@@ -1,4 +1,4 @@
-import stylex from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import cx from 'clsx'

@@ -2,7 +2,7 @@
 
 import { colors } from '@stylexjs/open-props/lib/colors.stylex'
 import { sizes } from '@stylexjs/open-props/lib/sizes.stylex'
-import stylex from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 
 const styles = stylex.create({
   container: {

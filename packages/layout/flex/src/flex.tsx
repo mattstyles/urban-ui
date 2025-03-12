@@ -1,4 +1,4 @@
-import stylex from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { forwardRef } from 'react'

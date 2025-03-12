@@ -1,6 +1,6 @@
 'use client'
 
-import stylex from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
