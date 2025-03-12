@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { tone } from '@urban-ui/theme/colors.stylex'
+import { primary, tone } from '@urban-ui/theme/colors.stylex'
 
 const styles = stylex.create({
   block: {

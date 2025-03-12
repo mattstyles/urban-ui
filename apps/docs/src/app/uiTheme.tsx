@@ -2,7 +2,8 @@
 
 import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
-import { primary, tone } from '@urban-ui/theme/colors.stylex'
+import { primary } from '@urban-ui/theme'
+import { tone } from '@urban-ui/theme/colors.stylex'
 
 const styles = stylex.create({
   container: {

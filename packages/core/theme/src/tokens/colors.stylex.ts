@@ -114,7 +114,7 @@ export const tone = defineVars({
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
  * Primary branded colours for a tone
  */
-export const primary = createTheme(tone, {
+export const primary = defineVars({
   fgHi: {
     default: 'hsl(267 87% 63%)',
     [DARK]: 'hsl(272 88% 78%)',

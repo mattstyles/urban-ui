@@ -12,8 +12,7 @@
     "./type.stylex": "./dist/tokens/type.stylex.js",
     "./colors.stylex": "./dist/tokens/colors.stylex.js",
     "./_colors.stylex": "./dist/tokens/_colors.stylex.js",
-    "./borders.stylex": "./dist/tokens/borders.stylex.js",
-    "./query": "./dist/query.js"
+    "./borders.stylex": "./dist/tokens/borders.stylex.js"
   },
   "files": ["src", "dist"],
   "license": "MIT",

@@ -28,7 +28,7 @@ const styles = stylex.create({
   },
   textBlockIndicator: {
     display: 'flex',
-    borderColor: tone.borderBase,
+    borderColor: primary.borderEmphasis,
     borderStyle: 'solid',
     borderWidth: 2,
     borderLeft: 'none',
