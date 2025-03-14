@@ -6,7 +6,6 @@ import { Text } from '@urban-ui/text'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
-import { TagExamples } from './tagExamples'
 
 const styles = stylex.create({
   title: {
@@ -118,16 +117,6 @@ export default function TagPage() {
             )),
           )}
         </Flex>
-      </section>
-
-      <section {...stylex.props(styles.section)}>
-        <h2 {...stylex.props(styles.sectionTitle)}>Usage Examples</h2>
-        <p {...stylex.props(styles.description)}>
-          Tags can be used in various contexts to provide visual cues and
-          metadata, leveraging both CSS Custom Properties for theming and StyleX
-          for static styles.
-        </p>
-        <TagExamples />
       </section>
     </div>
   )
