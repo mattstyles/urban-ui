@@ -1,0 +1,36 @@
+{
+  "name": "playground",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@stylexjs/stylex": "0.11.1",
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/reset": "workspace:*",
+    "@urban-ui/tag": "workspace:*",
+    "@urban-ui/test": "workspace:*",
+    "@urban-ui/text": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
+    "clsx": "^2.1.1",
+    "next": "15.2.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@stylexswc/postcss-plugin": "0.6.6",
+    "@stylexswc/rs-compiler": "0.6.6",
+    "@stylexswc/nextjs-plugin": "0.6.6",
+    "@stylexswc/webpack-plugin": "0.6.6",
+    "@types/node": "^22",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@urban-ui/tsconfig": "workspace:*",
+    "typescript": "^5.4.3"
+  }
+}

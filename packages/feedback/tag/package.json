@@ -28,16 +28,16 @@
     "@urban-ui/text": "^0.7.3"
   },
   "peerDependencies": {
-    "react": "^17.0.2 || ^18.3.0 || ^19.0.0",
+    "react": "^19.0.0",
     "@stylexjs/stylex": "0.11.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.6",
-    "@types/react": "^18.3.0",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@urban-ui/tsconfig": "workspace:*",
     "del-cli": "^6.0.0",
-    "react": "^18.3.0",
+    "react": "^19.0.0",
     "typescript": "^5.7.3"
   }
 }
