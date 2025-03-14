@@ -2,17 +2,13 @@ import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
+import { primary } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
   radii,
 } from '@urban-ui/theme/borders.stylex'
-import {
-  background,
-  base,
-  border,
-  foreground,
-} from '@urban-ui/theme/colors.stylex'
+import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { forwardRef } from 'react'
 
@@ -38,98 +34,31 @@ const sizeStyles = stylex.create({
 })
 
 const variants = stylex.create({
-  neutral: {
-    backgroundColor: background.base,
-    borderColor: border.neutralFaded,
-    color: foreground.neutral,
+  solid: {
+    backgroundColor: tone.elementEmphasisBase,
+    color: tone.fgOnBlock,
+    borderColor: tone.elementEmphasisBase,
   },
-  neutralQuiet: {
-    backgroundColor: background.neutralFaded,
-    borderColor: border.neutral,
-    color: foreground.neutral,
-  },
-  neutralLoud: {
-    backgroundColor: background.neutral,
-    borderColor: background.neutral,
-    color: foreground.neutral,
-  },
-  accent: {
-    backgroundColor: background.accentFaded,
-    borderColor: border.accentFaded,
-    color: foreground.accent,
-  },
-  accentLoud: {
-    backgroundColor: background.accent,
-    borderColor: background.accent,
-    color: foreground.onAccent,
-  },
-  positive: {
-    backgroundColor: background.positiveFaded,
-    borderColor: border.positiveFaded,
-    color: foreground.positive,
-  },
-  positiveLoud: {
-    backgroundColor: background.positive,
-    borderColor: background.positive,
-    color: foreground.onLoud,
-  },
-  warning: {
-    backgroundColor: background.warningFaded,
-    borderColor: border.warningFaded,
-    color: foreground.warning,
-  },
-  warningLoud: {
-    backgroundColor: background.warning,
-    borderColor: border.warning,
-    color: foreground.neutral,
-  },
-  danger: {
-    backgroundColor: background.dangerFaded,
-    borderColor: border.dangerFaded,
-    color: foreground.danger,
-  },
-  dangerLoud: {
-    backgroundColor: background.danger,
-    borderColor: background.danger,
-    color: foreground.onLoud,
-  },
-  info: {
-    backgroundColor: background.infoFaded,
-    borderColor: border.infoFaded,
-    color: foreground.info,
-  },
-  infoLoud: {
-    backgroundColor: background.info,
-    borderColor: background.info,
-    color: foreground.onLoud,
-  },
-  disabled: {
-    backgroundColor: background.disabled,
-    borderColor: border.disabled,
-    color: foreground.neutralFaded,
+  muted: {
+    backgroundColor: tone.elementMutedBase,
+    color: tone.fgHi,
+    borderColor: tone.borderBase,
   },
 })
 
 export interface TagProps extends React.PropsWithChildren {
   /**
-   * Visual variant, maps directly to color tokens
-   * @default 'neutral'
+   * Tonal colour scheme
+   * @default 'tone'
    */
-  variant?:
-    | 'neutral'
-    | 'neutralQuiet'
-    | 'neutralLoud'
-    | 'accent'
-    | 'accentLoud'
-    | 'positive'
-    | 'positiveLoud'
-    | 'warning'
-    | 'warningLoud'
-    | 'danger'
-    | 'dangerLoud'
-    | 'info'
-    | 'infoLoud'
-    | 'disabled'
+  tone?:
+    | 'tone' // Unnecessary when we have more colours themes to work against
+    | 'primary'
+
+  /**
+   * Visual variants
+   */
+  variant?: 'solid' | 'muted'
 
   /**
    * Size affects padding and text size
@@ -144,7 +73,13 @@ export interface TagProps extends React.PropsWithChildren {
 }
 
 export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
-  const { variant = 'neutral', size = 'md', style, children } = props
+  const {
+    variant = 'solid',
+    tone = 'tone',
+    size = 'md',
+    style,
+    children,
+  } = props
 
   const textSize = size === 'md' ? 'sm' : 'md'
 
@@ -152,7 +87,13 @@ export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
     <Flex
       ref={ref}
       align="center"
-      style={[styles.base, variants[variant], sizeStyles[size], style]}
+      style={[
+        styles.base,
+        variants[variant],
+        sizeStyles[size],
+        tone === 'primary' && primary,
+        style,
+      ]}
     >
       <Text size={textSize} weight="medium" color="current">
         {children}

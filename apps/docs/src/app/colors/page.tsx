@@ -1,5 +1,3 @@
-'use client'
-
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
@@ -24,7 +22,7 @@ export default function ColorsPage() {
       <Text size="xl" weight="semibold">
         Color Tokens
       </Text>
-      <Text style={styles.description} size="md" color="neutral">
+      <Text style={styles.description} size="md" color="tone">
         A comprehensive set of semantic color tokens used throughout the Urban
         UI design system.
       </Text>

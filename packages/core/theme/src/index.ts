@@ -42,45 +42,41 @@ export const primary = stylex.createTheme(tone, {
     default: 'hsl(270 78% 40%)',
     [DARK]: 'hsl(270 67% 62%)',
   },
-  fgInvertHi: {
-    default: 'hsl(270 8% 98%)',
-    [DARK]: 'hsl(270 8% 10%)',
-  },
-  fgInvertLo: {
-    default: 'hsl(270 8% 80%)',
-    [DARK]: 'hsl(270 8% 40%)',
+  fgOnBlock: {
+    default: 'hsl(270 78% 98%)',
+    [DARK]: 'hsl(270 78% 98%)',
   },
   surfaceMuted: {
-    default: 'hsl(270 17% 99%)',
-    [DARK]: 'hsl(270 12% 12%)',
+    default: 'hsl(242 100% 99%)',
+    [DARK]: 'hsl(270 100% 12%)',
   },
   surfaceBase: {
-    default: 'hsl(270 12% 98%)',
-    [DARK]: 'hsl(270 12% 9%)',
+    default: 'hsl(244 100% 97%)',
+    [DARK]: 'hsl(270 96% 9%)',
   },
   surfaceSubtle: {
-    default: 'hsl(270 12% 96%)',
-    [DARK]: 'hsl(270 12% 14%)',
+    default: 'hsl(245 96% 95%)',
+    [DARK]: 'hsl(270 92% 14%)',
   },
   surfaceEmphasis: {
-    default: 'hsl(270 12% 94%)',
-    [DARK]: 'hsl(270 12% 16%)',
+    default: 'hsl(245 96% 91%)',
+    [DARK]: 'hsl(270 92% 16%)',
   },
   elementMutedBase: {
-    default: 'hsl(270 8% 88%)',
-    [DARK]: 'hsl(270 8% 18%)',
+    default: 'hsl(270 98% 92%)',
+    [DARK]: 'hsl(270 98% 18%)',
   },
   elementMutedHover: {
-    default: 'hsl(270 8% 86%)',
-    [DARK]: 'hsl(270 8% 20%)',
+    default: 'hsl(265 98% 90%)',
+    [DARK]: 'hsl(270 98% 20%)',
   },
   elementMutedPress: {
-    default: 'hsl(270 8% 85%)',
-    [DARK]: 'hsl(270 8% 22%)',
+    default: 'hsl(265 98% 85%)',
+    [DARK]: 'hsl(270 95% 22%)',
   },
   elementMutedSelected: {
-    default: 'hsl(270 8% 83%)',
-    [DARK]: 'hsl(270 8% 24%)',
+    default: 'hsl(252 100% 80%)',
+    [DARK]: 'hsl(270 95% 24%)',
   },
   elementEmphasisBase: {
     default: 'hsl(270 88% 48%)',

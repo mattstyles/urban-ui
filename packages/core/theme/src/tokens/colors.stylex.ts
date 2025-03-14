@@ -35,13 +35,9 @@ export const tone = defineVars({
     default: 'hsl(200 8% 40%)',
     [DARK]: 'hsl(200 8% 80%)',
   },
-  fgInvertHi: {
+  fgOnBlock: {
     default: 'hsl(200 8% 98%)',
     [DARK]: 'hsl(200 8% 10%)',
-  },
-  fgInvertLo: {
-    default: 'hsl(200 8% 80%)',
-    [DARK]: 'hsl(200 8% 40%)',
   },
   surfaceMuted: {
     default: 'hsl(200 17% 99%)',
@@ -123,13 +119,9 @@ export const primary = defineVars({
     default: 'hsl(270 78% 40%)',
     [DARK]: 'hsl(270 67% 62%)',
   },
-  fgInvertHi: {
-    default: 'hsl(270 8% 98%)',
-    [DARK]: 'hsl(270 8% 10%)',
-  },
-  fgInvertLo: {
-    default: 'hsl(270 8% 80%)',
-    [DARK]: 'hsl(270 8% 40%)',
+  fgOnBlock: {
+    default: 'hsl(270 78% 98%)',
+    [DARK]: 'hsl(270 78% 98%)',
   },
   surfaceMuted: {
     default: 'hsl(270 17% 99%)',
@@ -148,20 +140,20 @@ export const primary = defineVars({
     [DARK]: 'hsl(270 12% 16%)',
   },
   elementMutedBase: {
-    default: 'hsl(270 8% 88%)',
-    [DARK]: 'hsl(270 8% 18%)',
+    default: 'hsl(270 98% 92%)',
+    [DARK]: 'hsl(270 98% 18%)',
   },
   elementMutedHover: {
-    default: 'hsl(270 8% 86%)',
-    [DARK]: 'hsl(270 8% 20%)',
+    default: 'hsl(265 98% 90%)',
+    [DARK]: 'hsl(270 98% 20%)',
   },
   elementMutedPress: {
-    default: 'hsl(270 8% 85%)',
-    [DARK]: 'hsl(270 8% 22%)',
+    default: 'hsl(265 98% 85%)',
+    [DARK]: 'hsl(270 95% 22%)',
   },
   elementMutedSelected: {
-    default: 'hsl(270 8% 83%)',
-    [DARK]: 'hsl(270 8% 24%)',
+    default: 'hsl(252 100% 80%)',
+    [DARK]: 'hsl(270 95% 24%)',
   },
   elementEmphasisBase: {
     default: 'hsl(270 88% 48%)',

@@ -42,8 +42,8 @@ const styles = stylex.create({
     borderRadius: radii.sm,
     minWidth: 24,
     minHeight: 24,
-    color: tone.fgInvertHi,
-    fontWeight: fontWeights.medium,
+    color: primary.fgOnBlock,
+    fontWeight: fontWeights.semibold,
     fontSize: fontSizes.xs,
   },
   example: {
@@ -90,9 +90,13 @@ const styles = stylex.create({
   flexBlock: {
     backgroundColor: primary.elementEmphasisBase,
     borderRadius: radii.sm,
-    color: tone.fgInvertHi,
-    paddingLeft: space[100],
-    paddingRight: space[100],
+    color: primary.fgOnBlock,
+    fontWeight: fontWeights.semibold,
+    fontSize: fontSizes.sm,
+    paddingLeft: space[200],
+    paddingRight: space[200],
+    paddingTop: space[100],
+    paddingBottom: space[100],
     justifyContent: 'center',
   },
 })
@@ -417,10 +421,10 @@ export default function FlexPage() {
                 <Flex flex="none" style={styles.flexBlock}>
                   None
                 </Flex>
-                <Flex flex="1" style={[styles.flexBlock, { width: 200 }]}>
+                <Flex flex="1" style={[styles.flexBlock]}>
                   01
                 </Flex>
-                <Flex flex="1" style={[styles.flexBlock, { width: 100 }]}>
+                <Flex flex="2" style={[styles.flexBlock]}>
                   02
                 </Flex>
               </Flex>
@@ -434,10 +438,10 @@ export default function FlexPage() {
                 <Flex flex="none" style={styles.flexBlock}>
                   None
                 </Flex>
-                <Flex flex="initial" style={[styles.flexBlock, { width: 200 }]}>
+                <Flex flex="initial" style={[styles.flexBlock]}>
                   01
                 </Flex>
-                <Flex flex="initial" style={[styles.flexBlock, { width: 100 }]}>
+                <Flex flex="initial" style={[styles.flexBlock]}>
                   02
                 </Flex>
               </Flex>
@@ -451,10 +455,10 @@ export default function FlexPage() {
                 <Flex flex="none" style={styles.flexBlock}>
                   None
                 </Flex>
-                <Flex flex="auto" style={[styles.flexBlock, { width: 200 }]}>
+                <Flex flex="auto" style={[styles.flexBlock]}>
                   01
                 </Flex>
-                <Flex flex="auto" style={[styles.flexBlock, { width: 100 }]}>
+                <Flex flex="auto" style={[styles.flexBlock]}>
                   02
                 </Flex>
               </Flex>

@@ -15,12 +15,15 @@ const styles = stylex.create({
   fgLo: {
     backgroundColor: tone.fgLo,
   },
-  fgInvertHi: {
-    backgroundColor: tone.fgInvertHi,
+  fgOnBlock: {
+    backgroundColor: tone.fgOnBlock,
   },
-  fgInvertLo: {
-    backgroundColor: tone.fgInvertLo,
-  },
+  // fgInvertHi: {
+  //   backgroundColor: tone.fgInvertHi,
+  // },
+  // fgInvertLo: {
+  //   backgroundColor: tone.fgInvertLo,
+  // },
   surfaceMuted: {
     backgroundColor: tone.surfaceMuted,
   },
@@ -93,8 +96,9 @@ export function ToneBlock({ theme }: ToneBlockProps) {
     <Flex direction="column" gap="300" style={theme}>
       <ColorBlock colorStyle="fgHi" />
       <ColorBlock colorStyle="fgLo" />
-      <ColorBlock colorStyle="fgInvertHi" />
-      <ColorBlock colorStyle="fgInvertLo" />
+      <ColorBlock colorStyle="fgOnBlock" />
+      {/* <ColorBlock colorStyle="fgInvertHi" />
+      <ColorBlock colorStyle="fgInvertLo" /> */}
       <ColorBlock colorStyle="surfaceMuted" />
       <ColorBlock colorStyle="surfaceBase" />
       <ColorBlock colorStyle="surfaceSubtle" />

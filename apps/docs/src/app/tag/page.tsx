@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Tag } from '@urban-ui/tag'
 import { Text } from '@urban-ui/text'
-import { background, foreground } from '@urban-ui/theme/colors.stylex'
+import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { TagExamples } from './tagExamples'
@@ -12,12 +12,12 @@ const styles = stylex.create({
   title: {
     fontSize: fontSizes.xl,
     fontWeight: fontWeights.semibold,
-    color: foreground.neutral,
+    color: tone.fgHi,
     marginBlockStart: space[200],
   },
   description: {
     fontSize: fontSizes.md,
-    color: foreground.neutral,
+    color: tone.fgHi,
   },
   container: {
     padding: space[200],
@@ -25,20 +25,39 @@ const styles = stylex.create({
   sectionTitle: {
     fontSize: fontSizes.lg,
     fontWeight: fontWeights.medium,
-    color: foreground.neutral,
+    color: tone.fgHi,
     marginBlockEnd: space[200],
     marginBlockStart: space[400],
   },
   section: {
-    backgroundColor: background.pageFaded,
+    backgroundColor: tone.surfaceBase,
     padding: space[300],
     borderRadius: '12px',
     borderWidth: 1,
     borderStyle: 'solid',
-    borderColor: background.neutralFaded,
+    borderColor: tone.borderMuted,
     marginBlockEnd: space[400],
   },
+  groupTitle: {
+    fontSize: fontSizes.sm,
+    color: tone.fgLo,
+    marginBlockEnd: space[100],
+  },
+  group: {
+    marginBlockEnd: space[200],
+  },
 })
+
+const variants = {
+  solid: {
+    primary: { variant: 'solid', tone: 'primary' },
+    default: { variant: 'solid', tone: 'tone' },
+  },
+  muted: {
+    primary: { variant: 'muted', tone: 'primary' },
+    default: { variant: 'muted', tone: 'tone' },
+  },
+} as const
 
 export default function TagPage() {
   return (
@@ -48,69 +67,56 @@ export default function TagPage() {
       </Text>
       <p {...stylex.props(styles.description)}>
         Tags are used to highlight status, categorize items, or display
-        metadata. They come in different variants and sizes to suit various use
-        cases.
+        metadata. They use a hybrid approach combining CSS Custom Properties for
+        theming with StyleX for static styles.
       </p>
 
       <section {...stylex.props(styles.section)}>
-        <h2 {...stylex.props(styles.sectionTitle)}>Variants</h2>
+        <h2 {...stylex.props(styles.sectionTitle)}>Variants & Tones</h2>
         <p {...stylex.props(styles.description)}>
-          Tags come in several variants to convey different types of
-          information. Each variant maps to a specific semantic meaning and
-          color scheme.
+          Tags support solid and muted variants with primary and default tones,
+          using theme tokens for consistent styling.
         </p>
-        <Flex direction="v" gap="200">
-          <Flex gap="100" wrap="wrap">
-            <Tag>Neutral</Tag>
-            <Tag variant="neutralQuiet">Neutral Quiet</Tag>
-            <Tag variant="neutralLoud">Neutral Loud</Tag>
-            <Tag variant="accent">Accent</Tag>
-            <Tag variant="accentLoud">Accent Loud</Tag>
-            <Tag variant="positive">Positive</Tag>
-            <Tag variant="positiveLoud">Positive Loud</Tag>
-            <Tag variant="warning">Warning</Tag>
-            <Tag variant="warningLoud">Warning Loud</Tag>
-            <Tag variant="danger">Danger</Tag>
-            <Tag variant="dangerLoud">Danger Loud</Tag>
-            <Tag variant="info">Info</Tag>
-            <Tag variant="infoLoud">Info Loud</Tag>
-            <Tag variant="disabled">Disabled</Tag>
-          </Flex>
+        <Flex direction="v" gap="300">
+          <div {...stylex.props(styles.group)}>
+            <Text {...stylex.props(styles.groupTitle)}>Solid Variant</Text>
+            <Flex gap="100" wrap="wrap">
+              <Tag {...variants.solid.default}>Default Solid</Tag>
+              <Tag {...variants.solid.primary}>Primary Solid</Tag>
+            </Flex>
+          </div>
+
+          <div {...stylex.props(styles.group)}>
+            <Text {...stylex.props(styles.groupTitle)}>Muted Variant</Text>
+            <Flex gap="100" wrap="wrap">
+              <Tag {...variants.muted.default}>Default Muted</Tag>
+              <Tag {...variants.muted.primary}>Primary Muted</Tag>
+            </Flex>
+          </div>
         </Flex>
       </section>
 
       <section {...stylex.props(styles.section)}>
-        <h2 {...stylex.props(styles.sectionTitle)}>Sizes</h2>
+        <h2 {...stylex.props(styles.sectionTitle)}>Size Variations</h2>
         <p {...stylex.props(styles.description)}>
-          Tags are available in two sizes to accommodate different contexts and
-          hierarchies.
+          Each variant supports multiple sizes to accommodate different contexts
+          and hierarchies.
         </p>
         <Flex direction="v" gap="200">
-          {(
-            [
-              'neutral',
-              'neutralQuiet',
-              'neutralLoud',
-              'accent',
-              'accentLoud',
-              'positive',
-              'positiveLoud',
-              'warning',
-              'warningLoud',
-              'danger',
-              'dangerLoud',
-              'info',
-              'infoLoud',
-              'disabled',
-            ] as const
-          ).map((variant) => (
-            <Flex key={variant} gap="100" align="center">
-              <Tag variant={variant}>Medium</Tag>
-              <Tag variant={variant} size="lg">
-                Large
-              </Tag>
-            </Flex>
-          ))}
+          {Object.values(variants).flatMap((variantGroup) =>
+            Object.values(variantGroup).map((variant) => (
+              <Flex
+                key={`${variant.variant}-${variant.tone}`}
+                gap="100"
+                align="center"
+              >
+                <Tag {...variant}>Medium</Tag>
+                <Tag {...variant} size="lg">
+                  Large
+                </Tag>
+              </Flex>
+            )),
+          )}
         </Flex>
       </section>
 
@@ -118,7 +124,8 @@ export default function TagPage() {
         <h2 {...stylex.props(styles.sectionTitle)}>Usage Examples</h2>
         <p {...stylex.props(styles.description)}>
           Tags can be used in various contexts to provide visual cues and
-          metadata.
+          metadata, leveraging both CSS Custom Properties for theming and StyleX
+          for static styles.
         </p>
         <TagExamples />
       </section>

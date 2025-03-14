@@ -14,6 +14,7 @@ import './globals.css'
 const styles = stylex.create({
   html: {
     backgroundColor: tone.surfaceMuted,
+    color: tone.fgHi,
   },
 })
 

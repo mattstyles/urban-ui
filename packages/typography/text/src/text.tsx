@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { base, tone } from '@urban-ui/theme/colors.stylex'
+import { base, primary, tone } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
@@ -13,18 +13,19 @@ import { forwardRef } from 'react'
 const styles = stylex.create({
   // Base text styles
   base: {
-    // Polyfill for leading-trim
     lineHeight: 'initial',
-    '::before': {
-      content: '',
-      display: 'table',
-      marginBottom: capsize.trimStartCap,
-    },
-    '::after': {
-      content: '',
-      display: 'table',
-      marginTop: capsize.trimEndAlphabetic,
-    },
+    // Polyfill for leading-trim
+    // '::before': {
+    //   content: '',
+    //   display: 'table',
+    //   marginBottom: capsize.trimStartCap,
+    // },
+    // '::after': {
+    //   content: '',
+    //   display: 'table',
+    //   marginTop: capsize.trimEndAlphabetic,
+    // },
+    textBox: 'trim-both cap alphabetic',
   },
 })
 
@@ -44,8 +45,11 @@ const fontColors = stylex.create({
   // contrast: {
   //   color: `oklch(from ${tokens.background} clamp(0, (l / 0.7 - 1) * -infinity, 1) 0 h)`,
   // },
-  neutral: {
+  tone: {
     color: tone.fgHi,
+  },
+  primary: {
+    color: primary.fgHi,
   },
 })
 
@@ -129,7 +133,7 @@ export interface TextProps
    * Font colours
    * @default foreground
    */
-  color?: 'current' | 'neutral'
+  color?: 'tone' | 'primary' | 'current'
   /**
    * Custom stylex styles to apply to the text.
    */
@@ -140,7 +144,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const {
     size = 'md',
     weight = 'normal',
-    color = 'neutral',
+    color = 'current',
     style,
     children,
     ...rest
