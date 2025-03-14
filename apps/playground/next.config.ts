@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
   transpilePackages: [
-    '@stylexjs/open-props',
     '@urban-ui/theme',
     '@urban-ui/text',
     '@urban-ui/flex',
@@ -28,8 +27,9 @@ const withStyleX = createStyleXPlugin({
     },
     dev: process.env.NODE_ENV === 'development',
     genConditionalClasses: true,
-    treeshakeCompensation: true,
+    treeshakeCompensation: false,
   },
+  useCSSLayers: true,
   extractCSS: false,
 })
 

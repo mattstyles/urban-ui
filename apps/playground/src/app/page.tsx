@@ -12,8 +12,14 @@ const styles = stylex.create({
 export default function Home() {
   return (
     <Flex direction="v" gap="200" style={styles.page}>
-      <Text>Hello world</Text>
-      <Text>Hello world</Text>
+      <Text size="xxl">
+        Consulem in campo et competitores tuos interficere voluisti, compressi
+        fugam meditere, tu ut ullum exilium cogites? Utinam tibi
+      </Text>
+      <Text size="xxl" weight="bold">
+        Consulem in campo et competitores tuos interficere voluisti, compressi
+        fugam meditere, tu ut ullum exilium cogites? Utinam tibi
+      </Text>
     </Flex>
   )
 }

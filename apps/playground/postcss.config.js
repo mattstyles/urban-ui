@@ -34,11 +34,9 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
   ]
 }
 
-const openPropsIncludePaths = getPackageIncludePaths('@stylexjs/open-props', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-
+/**
+ * Plugin will automatically include all of these variables, if you add @stylex/open-props then it will include those variables in the output and whilst classnames will not be generated the variables will be, even though they are unused.
+ */
 const urbanThemeIncludePaths = getPackageIncludePaths('@urban-ui/theme', [
   path.join(projectRoot, 'node_modules'),
   path.join(monorepoRoot, 'node_modules'),
@@ -66,7 +64,6 @@ const externalImportPaths = [
   ...urbanTextIncludePaths,
   ...urbanTestIncludePaths,
   ...urbanTagIncludePaths,
-  ...openPropsIncludePaths,
 ]
 
 // CJS or ESM makes no difference to the paths
@@ -75,7 +72,6 @@ export default {
   plugins: {
     '@stylexswc/postcss-plugin': {
       include: ['src/app/**/*.{js,jsx,ts,tsx}', ...externalImportPaths],
-      useCSSLayers: true,
       rsOptions: {
         aliases: {
           '@/*': [path.join(projectRoot, '*')],
@@ -86,8 +82,10 @@ export default {
         },
         dev: process.env.NODE_ENV === 'development',
         genConditionalClasses: true,
-        treeshakeCompensation: true,
+        treeshakeCompensation: false,
       },
+      useCSSLayers: true,
+      isDev: process.env.NODE_ENV === 'development',
     },
     autoprefixer: {},
   },
