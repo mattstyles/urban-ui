@@ -6,6 +6,7 @@ import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { TextExamples } from './textExamples'
+import { TextLeading } from './textLeading'
 import { TextWeights } from './textWeights'
 
 const styles = stylex.create({
@@ -61,6 +62,16 @@ export default function TextPage() {
       <Flex direction="v" gap="200">
         <h2 {...stylex.props(styles.sectionTitle)}>Font Weights</h2>
         <TextWeights />
+      </Flex>
+
+      <Flex direction="v" gap="200">
+        <h2 {...stylex.props(styles.sectionTitle)}>Leading</h2>
+        <Text size="md">
+          Line heights are optimized for each text size. Smaller text uses more
+          generous line heights for improved readability, while larger text uses
+          tighter line heights for headlines.
+        </Text>
+        <TextLeading />
       </Flex>
     </Flex>
   )

@@ -62,6 +62,7 @@ const withStyleX = createStyleXPlugin({
     genConditionalClasses: true,
     treeshakeCompensation: true,
   },
+  useCSSLayers: true,
   extractCSS: false,
 })
 

@@ -118,19 +118,19 @@ export const fontSizes = defineVars({
  */
 export const lineHeights = defineVars({
   // Comfortable reading for very small text
-  xxs: '1.7',
+  xxs: '1.8',
   // Good readability for small text
-  xs: '1.6',
+  xs: '1.7',
   // Slightly more spacing for small text
-  sm: '1.5',
+  sm: '1.6',
   // Standard reading line height
-  md: '1.4',
+  md: '1.6',
   // Slightly tighter for larger text
-  lg: '1.3',
+  lg: '1.5',
   // Tighter spacing for headlines
-  xl: '1.2',
+  xl: '1.35',
   // Very tight spacing for large headlines
-  xxl: '1.1',
+  xxl: '1.2',
 })
 
 /**

@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot'
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
@@ -382,6 +383,11 @@ export interface FlexProps
    * StyleX style overrides
    */
   style?: StyleXStyles | GenericTheme | Array<StyleXStyles | GenericTheme>
+
+  /**
+   * Whether to use the Slot component instead of a div
+   */
+  asChild?: boolean
 }
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
@@ -406,11 +412,14 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
     style = [],
     className,
     children,
+    asChild = false,
     ...rest
   } = props
 
+  const Element = asChild ? Slot : 'div'
+
   return (
-    <div
+    <Element
       ref={ref}
       // I don't think this will work as stylex outputs classname
       className={className}
@@ -430,6 +439,6 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
       )}
     >
       {children}
-    </div>
+    </Element>
   )
 })

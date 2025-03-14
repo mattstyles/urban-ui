@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot'
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import { base, primary, tone } from '@urban-ui/theme/colors.stylex'
@@ -59,37 +60,37 @@ const fontColors = stylex.create({
 const sizes = stylex.create({
   xxs: {
     fontSize: fontSizes.xxs,
-    // lineHeight: lineHeights.xxs,
+    lineHeight: lineHeights.xxs,
     letterSpacing: letterSpacings.xxs,
   },
   xs: {
     fontSize: fontSizes.xs,
-    // lineHeight: lineHeights.xs,
+    lineHeight: lineHeights.xs,
     letterSpacing: letterSpacings.xs,
   },
   sm: {
     fontSize: fontSizes.sm,
-    // lineHeight: lineHeights.sm,
+    lineHeight: lineHeights.sm,
     letterSpacing: letterSpacings.sm,
   },
   md: {
     fontSize: fontSizes.md,
-    // lineHeight: lineHeights.md,
+    lineHeight: lineHeights.md,
     letterSpacing: letterSpacings.md,
   },
   lg: {
     fontSize: fontSizes.lg,
-    // lineHeight: lineHeights.lg,
+    lineHeight: lineHeights.lg,
     letterSpacing: letterSpacings.lg,
   },
   xl: {
     fontSize: fontSizes.xl,
-    // lineHeight: lineHeights.xl,
+    lineHeight: lineHeights.xl,
     letterSpacing: letterSpacings.xl,
   },
   xxl: {
     fontSize: fontSizes.xxl,
-    // lineHeight: lineHeights.xxl,
+    lineHeight: lineHeights.xxl,
     letterSpacing: letterSpacings.xxl,
   },
 })
@@ -138,6 +139,10 @@ export interface TextProps
    * Custom stylex styles to apply to the text.
    */
   style?: StyleXStyles
+  /**
+   * Merge props on to immediate child element
+   */
+  asChild?: boolean
 }
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
@@ -146,22 +151,15 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     weight = 'normal',
     color = 'current',
     style,
+    asChild = false,
     children,
     ...rest
   } = props
 
-  // console.log(
-  //   stylex.props(
-  //     styles.base,
-  //     sizes[size],
-  //     weights[weight],
-  //     fontColors[color],
-  //     style,
-  //   ),
-  // )
+  const Element = asChild ? Slot : 'span'
 
   return (
-    <span
+    <Element
       ref={ref}
       {...stylex.props(
         styles.base,
@@ -173,7 +171,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
       {...rest}
     >
       {children}
-    </span>
+    </Element>
   )
 })
 

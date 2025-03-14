@@ -97,6 +97,8 @@ export const sizes = defineVars({
   min: 'min-content',
   max: 'max-content',
   fit: 'fit-content',
+  contentWide: '48rem',
+  contentNarrow: '32rem',
 })
 
 /**
