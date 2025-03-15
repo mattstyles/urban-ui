@@ -6,10 +6,13 @@ import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { FontFamilies } from './fontFamilies'
+import { TextColour } from './textColour'
 import { TextExamples } from './textExamples'
 import { TextLeading } from './textLeading'
 import { TextTracking } from './textTracking'
 import { TextWeights } from './textWeights'
+
+import { primary } from '@urban-ui/theme'
 
 const styles = stylex.create({
   container: {
@@ -97,6 +100,21 @@ export default function TextPage() {
           </p>
         </Text>
         <TextTracking />
+      </Flex>
+
+      <Flex direction="v" gap="400">
+        <Text size="lg" weight="medium" asChild>
+          <h2>Colors</h2>
+        </Text>
+        <Text size="md" asChild>
+          <p>
+            The Text component provides semantic color options to maintain
+            consistent hierarchy and contrast. Use hi and lo colors for
+            different emphasis levels, primary for brand colors, and onBlock
+            for text on colored backgrounds.
+          </p>
+        </Text>
+        <TextColour />
       </Flex>
     </Flex>
   )

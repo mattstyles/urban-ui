@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as stylex from '@stylexjs/stylex'
-import type { StyleXStyles } from '@stylexjs/stylex'
+import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
 import { base, primary, tone } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
@@ -162,6 +162,8 @@ const trackingClasses = stylex.create({
     letterSpacing: tracking.widest,
   },
 })
+// @ts-ignore typing for var group prefers a known object for its keys, we want a generic object and let the compiler work it out
+type GenericTheme = Theme<VarGroup<unknown>> | Array<Theme<VarGroup<unknown>>>
 
 export interface TextProps
   extends Omit<React.HTMLAttributes<HTMLElement>, 'style'>,
@@ -195,7 +197,7 @@ export interface TextProps
   /**
    * Custom stylex styles to apply to the text.
    */
-  style?: StyleXStyles
+  style?: StyleXStyles | GenericTheme | Array<StyleXStyles | GenericTheme>
   /**
    * Merge props on to immediate child element
    */
