@@ -23,7 +23,7 @@ const gotham = stylex.createTheme(fonts, {
 })
 
 const gothamTracking = stylex.createTheme(tracking, {
-  xxs: 'em',
+  xxs: '0em',
   xs: '0em',
   sm: '-0.03em',
   md: '-0.045em',
@@ -31,12 +31,12 @@ const gothamTracking = stylex.createTheme(tracking, {
   xl: '-0.06em',
   xxl: '-0.08em',
 
-  tighter: '0em',
-  tight: '0em',
-  normal: '0em',
+  tighter: '-0.08em',
+  tight: '-0.05em',
+  normal: '-0.04em',
   wide: '0em',
-  wider: '0em',
-  widest: '0em',
+  wider: '0.025em',
+  widest: '0.08em',
 })
 
 // @TODO letter-spacing for gotham

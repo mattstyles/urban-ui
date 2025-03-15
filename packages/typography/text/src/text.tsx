@@ -15,8 +15,8 @@ import { forwardRef } from 'react'
 const styles = stylex.create({
   // Base text styles
   base: {
-    lineHeight: 'initial',
     // Polyfill for leading-trim
+    // lineHeight: 'initial',
     // '::before': {
     //   content: '',
     //   display: 'table',
@@ -59,6 +59,15 @@ const fontColors = stylex.create({
   // contrast: {
   //   color: `oklch(from ${tokens.background} clamp(0, (l / 0.7 - 1) * -infinity, 1) 0 h)`,
   // },
+  hi: {
+    color: tone.fgHi,
+  },
+  lo: {
+    color: tone.fgLo,
+  },
+  onBlock: {
+    color: tone.fgOnBlock,
+  },
   tone: {
     color: tone.fgHi,
   },
@@ -129,6 +138,31 @@ const weights = stylex.create({
   },
 })
 
+/**
+ * Tracking
+ * @css letter-spacing
+ */
+const trackingClasses = stylex.create({
+  tighter: {
+    letterSpacing: tracking.tighter,
+  },
+  tight: {
+    letterSpacing: tracking.tight,
+  },
+  normal: {
+    letterSpacing: tracking.normal,
+  },
+  wide: {
+    letterSpacing: tracking.wide,
+  },
+  wider: {
+    letterSpacing: tracking.wider,
+  },
+  widest: {
+    letterSpacing: tracking.widest,
+  },
+})
+
 export interface TextProps
   extends Omit<React.HTMLAttributes<HTMLElement>, 'style'>,
     React.PropsWithChildren {
@@ -152,7 +186,12 @@ export interface TextProps
    * Font colours
    * @default foreground
    */
-  color?: 'tone' | 'primary' | 'current'
+  color?: 'tone' | 'primary' | 'current' | 'hi' | 'lo' | 'onBlock'
+  /**
+   * Tracking
+   * @css letter-spacing
+   */
+  tracking?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
   /**
    * Custom stylex styles to apply to the text.
    */
@@ -165,11 +204,11 @@ export interface TextProps
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const {
-    // @TODO put these defaults into the base rather than spamming more classes in the HTML
     size = 'md',
     weight = 'normal',
     font = 'body',
     color = 'current',
+    tracking,
     style,
     asChild = false,
     children,
@@ -187,6 +226,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
         weights[weight],
         fontFamilies[font],
         fontColors[color],
+        tracking != null && trackingClasses[tracking],
         style,
       )}
       {...rest}

@@ -8,6 +8,7 @@ import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { FontFamilies } from './fontFamilies'
 import { TextExamples } from './textExamples'
 import { TextLeading } from './textLeading'
+import { TextTracking } from './textTracking'
 import { TextWeights } from './textWeights'
 
 const styles = stylex.create({
@@ -81,6 +82,21 @@ export default function TextPage() {
           </p>
         </Text>
         <TextLeading />
+      </Flex>
+
+      <Flex direction="v" gap="400">
+        <Text size="lg" weight="medium" asChild>
+          <h2>Tracking</h2>
+        </Text>
+        <Text size="md" asChild>
+          <p>
+            Letter spacing (tracking) can be adjusted to improve readability and
+            create visual hierarchy. Tighter tracking works well for headlines,
+            while wider tracking can enhance legibility for small text or create
+            emphasis.
+          </p>
+        </Text>
+        <TextTracking />
       </Flex>
     </Flex>
   )
