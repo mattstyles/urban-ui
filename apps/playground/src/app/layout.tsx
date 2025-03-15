@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
+        {/* <link
           rel="stylesheet"
           type="text/css"
           href="https://cloud.typography.com/6111354/643726/css/fonts.css"
@@ -39,7 +39,7 @@ export default function RootLayout({
           rel="stylesheet"
           type="text/css"
           href="https://use.typekit.net/euz1nns.css"
-        />
+        /> */}
       </head>
       <body
         // className={cx(geistSans.className, geistSans.variable, styles.body)}

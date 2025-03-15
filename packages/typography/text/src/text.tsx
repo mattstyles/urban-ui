@@ -7,8 +7,8 @@ import {
   fontSizes,
   fontWeights,
   fonts,
-  letterSpacings,
   lineHeights,
+  tracking,
 } from '@urban-ui/theme/type.stylex'
 import { forwardRef } from 'react'
 
@@ -74,37 +74,37 @@ const sizes = stylex.create({
   xxs: {
     fontSize: fontSizes.xxs,
     lineHeight: lineHeights.xxs,
-    letterSpacing: letterSpacings.xxs,
+    letterSpacing: tracking.xxs,
   },
   xs: {
     fontSize: fontSizes.xs,
     lineHeight: lineHeights.xs,
-    letterSpacing: letterSpacings.xs,
+    letterSpacing: tracking.xs,
   },
   sm: {
     fontSize: fontSizes.sm,
     lineHeight: lineHeights.sm,
-    letterSpacing: letterSpacings.sm,
+    letterSpacing: tracking.sm,
   },
   md: {
     fontSize: fontSizes.md,
     lineHeight: lineHeights.md,
-    letterSpacing: letterSpacings.md,
+    letterSpacing: tracking.md,
   },
   lg: {
     fontSize: fontSizes.lg,
     lineHeight: lineHeights.lg,
-    letterSpacing: letterSpacings.lg,
+    letterSpacing: tracking.lg,
   },
   xl: {
     fontSize: fontSizes.xl,
     lineHeight: lineHeights.xl,
-    letterSpacing: letterSpacings.xl,
+    letterSpacing: tracking.xl,
   },
   xxl: {
     fontSize: fontSizes.xxl,
     lineHeight: lineHeights.xxl,
-    letterSpacing: letterSpacings.xxl,
+    letterSpacing: tracking.xxl,
   },
 })
 
@@ -165,6 +165,7 @@ export interface TextProps
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const {
+    // @TODO put these defaults into the base rather than spamming more classes in the HTML
     size = 'md',
     weight = 'normal',
     font = 'body',

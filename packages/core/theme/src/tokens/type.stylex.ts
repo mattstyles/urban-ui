@@ -176,7 +176,7 @@ export const fonts = defineVars({
  * Values in em units to scale with font size.
  * Different fonts may require different spacings, use a theme to supply values that work well with your style and font choices.
  */
-export const letterSpacings = defineVars({
+export const tracking = defineVars({
   // Size-based scale
   // More space for tiny text
   xxs: '0.04em',
