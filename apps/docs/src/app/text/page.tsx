@@ -5,71 +5,80 @@ import { Text } from '@urban-ui/text'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
+import { FontFamilies } from './fontFamilies'
 import { TextExamples } from './textExamples'
 import { TextLeading } from './textLeading'
 import { TextWeights } from './textWeights'
 
 const styles = stylex.create({
-  title: {
-    fontSize: fontSizes.xl,
-    fontWeight: fontWeights.semibold,
-    color: tone.fgHi,
-    marginBlockStart: space[200],
-  },
-  description: {
-    fontSize: fontSizes.md,
-    color: tone.fgHi,
-    // marginBlockEnd: space[400],
-  },
   container: {
     padding: space[200],
-  },
-  sectionTitle: {
-    fontSize: fontSizes.lg,
-    fontWeight: fontWeights.medium,
-    color: tone.fgHi,
-    marginBlockEnd: space[200],
-    marginBlockStart: space[400],
   },
 })
 
 export default function TextPage() {
   return (
-    <Flex direction="v" gap="400" style={styles.container}>
-      <Flex direction="v" gap="200">
-        {/** These should use dedicated h1 and p elements, with specified line gaps for capsize to work correctly */}
-        <Text weight="semibold" size="xl">
-          Text component
+    <Flex direction="v" gap="800" style={styles.container}>
+      <Flex direction="v" gap="300">
+        <Text weight="semibold" size="xl" asChild>
+          <h1>Text component</h1>
         </Text>
-        <Text size="md">
-          The Text component is a foundational building block for typography in
-          the Urban UI design system. It provides consistent text styling with
-          support for different sizes, weights, and colors while maintaining the
-          design system&apos;s typographic scale.
+        <Text size="md" asChild>
+          <p>
+            The Text component is a foundational building block for typography
+            in the Urban UI design system. It provides consistent text styling
+            with support for different sizes, weights, and colors while
+            maintaining the design system&apos;s typographic scale.
+          </p>
         </Text>
-        <Text size="md">
-          Urban UI text uses a fluid scale that adapts to the viewport width.
-          Each size includes appropriate line height and letter spacing
-          optimizations, with &apos;md&apos; serving as the baseline size.
+        <Text size="md" asChild>
+          <p>
+            Urban UI text uses a fluid scale that adapts to the viewport width.
+            Each size includes appropriate line height and letter spacing
+            optimizations, with &apos;md&apos; serving as the baseline size.
+          </p>
         </Text>
       </Flex>
 
-      <Flex direction="v" gap="200">
-        <h2 {...stylex.props(styles.sectionTitle)}>Text Sizes</h2>
+      <Flex direction="v" gap="400">
+        <Text size="lg" weight="medium" asChild>
+          <h2>Text Sizes</h2>
+        </Text>
         <TextExamples />
       </Flex>
 
-      <Flex direction="v" gap="200">
-        <h2 {...stylex.props(styles.sectionTitle)}>Font Weights</h2>
+      <Flex direction="v" gap="400">
+        <Text size="lg" weight="medium" asChild>
+          <h2>Font Weights</h2>
+        </Text>
         <TextWeights />
       </Flex>
 
-      <Flex direction="v" gap="200">
-        <h2 {...stylex.props(styles.sectionTitle)}>Leading</h2>
-        <Text size="md">
-          Line heights are optimized for each text size. Smaller text uses more
-          generous line heights for improved readability, while larger text uses
-          tighter line heights for headlines.
+      <Flex direction="v" gap="400">
+        <Text size="lg" weight="medium" asChild>
+          <h2>Font Families</h2>
+        </Text>
+        <Text size="md" asChild>
+          <p>
+            The Text component supports three font families: display for
+            headlines, body for regular text, and mono for code. Each font is
+            optimized for its intended use case while maintaining consistent
+            styling.
+          </p>
+        </Text>
+        <FontFamilies />
+      </Flex>
+
+      <Flex direction="v" gap="400">
+        <Text size="lg" weight="medium" asChild>
+          <h2>Leading</h2>
+        </Text>
+        <Text size="md" asChild>
+          <p>
+            Line heights are optimized for each text size. Smaller text uses
+            more generous line heights for improved readability, while larger
+            text uses tighter line heights for headlines.
+          </p>
         </Text>
         <TextLeading />
       </Flex>

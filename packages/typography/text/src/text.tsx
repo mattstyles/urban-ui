@@ -6,6 +6,7 @@ import {
   capsize,
   fontSizes,
   fontWeights,
+  fonts,
   letterSpacings,
   lineHeights,
 } from '@urban-ui/theme/type.stylex'
@@ -27,6 +28,18 @@ const styles = stylex.create({
     //   marginTop: capsize.trimEndAlphabetic,
     // },
     textBox: 'trim-both cap alphabetic',
+  },
+})
+
+const fontFamilies = stylex.create({
+  display: {
+    fontFamily: fonts.display,
+  },
+  body: {
+    fontFamily: fonts.body,
+  },
+  mono: {
+    fontFamily: fonts.mono,
   },
 })
 
@@ -131,6 +144,11 @@ export interface TextProps
    */
   weight?: 'light' | 'normal' | 'medium' | 'semibold' | 'bold'
   /**
+   * Font family
+   * @default body
+   */
+  font?: 'display' | 'body' | 'mono'
+  /**
    * Font colours
    * @default foreground
    */
@@ -149,6 +167,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const {
     size = 'md',
     weight = 'normal',
+    font = 'body',
     color = 'current',
     style,
     asChild = false,
@@ -165,6 +184,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
         styles.base,
         sizes[size],
         weights[weight],
+        fontFamilies[font],
         fontColors[color],
         style,
       )}

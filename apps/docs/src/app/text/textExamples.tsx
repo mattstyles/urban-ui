@@ -14,7 +14,6 @@ const styles = stylex.create({
     display: 'flex',
     gap: space[100],
     alignItems: 'center',
-    marginBlockEnd: space[200],
   },
   checkboxLabel: {
     fontSize: fontSizes.sm,

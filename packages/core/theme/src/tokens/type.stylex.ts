@@ -134,76 +134,6 @@ export const lineHeights = defineVars({
 })
 
 /**
- * Roboto font metrics
- *
- * @see https://www.npmjs.com/package/@capsizecss/metrics
- */
-const robotoMetrics = {
-  familyName: 'Roboto',
-  fullName: 'Roboto',
-  postscriptName: 'Roboto-Regular',
-  category: 'sans-serif',
-  capHeight: 1456,
-  ascent: 1900,
-  descent: -500,
-  lineGap: 0,
-  unitsPerEm: 2048,
-  xHeight: 1082,
-  xWidthAvg: 911,
-  subsets: {
-    latin: {
-      xWidthAvg: 911,
-    },
-    thai: {
-      xWidthAvg: 908,
-    },
-  },
-}
-
-/**
- * Base sizes for Roboto font
- */
-const roboto = {
-  // ascent: '0.927734375em',
-  // lineGap: '0em',
-  // capHeight: '0.7109375em',
-  // descent: '-0.244140625em',
-  // xHeight: '0.5283203125em',
-  ascent: `${robotoMetrics.ascent / robotoMetrics.unitsPerEm}em`,
-  lineGap: `${robotoMetrics.lineGap / robotoMetrics.unitsPerEm}em`,
-  capHeight: `${robotoMetrics.capHeight / robotoMetrics.unitsPerEm}em`,
-  descent: `${robotoMetrics.descent / robotoMetrics.unitsPerEm}em`,
-  xHeight: `${robotoMetrics.xHeight / robotoMetrics.unitsPerEm}em`,
-}
-
-/**
- * Trim values specifically for Roboto
- */
-const robotoTrim = {
-  textBoxTrimStartText: `calc(${roboto.capHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
-  textBoxTrimEndText: `calc(${roboto.lineGap} / 2)`,
-  textBoxTrimStartCap: `calc(${roboto.capHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
-  textBoxTrimStartEx: `calc(${roboto.xHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
-  textBoxTrimEndAlphabetic: `calc(${roboto.descent} - ${roboto.lineGap} / 2)`,
-}
-
-/**
- * @tokens capsize
- * @css none
- *
- * Variables to enable polyfill for leading-trim.
- * * https://seek-oss.github.io/capsize/
- * * https://github.com/jantimon/text-box-trim-examples
- */
-export const capsize = defineVars({
-  trimStartText: robotoTrim.textBoxTrimStartText,
-  trimEndText: robotoTrim.textBoxTrimEndText,
-  trimStartCap: robotoTrim.textBoxTrimStartCap,
-  trimStartX: robotoTrim.textBoxTrimStartEx,
-  trimEndAlphabetic: robotoTrim.textBoxTrimEndAlphabetic,
-})
-
-/**
  * @tokens fontWeights
  * @css fontWeight
  */
@@ -218,10 +148,15 @@ export const fontWeights = defineVars({
 /**
  * @tokens fonts
  * @css fontFamily
+ *
+ * To supply custom font families create a theme from this variable group.
+ *
+ * Using the variable here does not actually work due to how inheritance works with CSS variables. It might be neceassary to support a _similar_ system though so we will maintain it for now.
  */
 export const fonts = defineVars({
-  body: 'system-ui, sans-serif',
-  mono: 'ui-monospace, monospace',
+  display: 'var(--font-display, system-ui, sans-serif)',
+  body: 'var(--font-body, system-ui, sans-serif)',
+  mono: 'var(--font-mono, ui-monospace, monospace)',
 })
 
 /**
@@ -238,7 +173,8 @@ export const fonts = defineVars({
  *    - For specific typographic adjustments
  *    - Wider range of values for more dramatic effects
  *
- * Values in em units to scale with font size
+ * Values in em units to scale with font size.
+ * Different fonts may require different spacings, use a theme to supply values that work well with your style and font choices.
  */
 export const letterSpacings = defineVars({
   // Size-based scale
@@ -270,4 +206,91 @@ export const letterSpacings = defineVars({
   wider: '0.05em',
   // Maximum letter spread for emphasis
   widest: '0.1em',
+})
+
+/**
+ * ----------------------------------------------------------------------------
+ */
+
+/**
+ * The following values and logic relate to capsize.
+ * Text-box is now supported in _most_ modern browsers.
+ * @see https://caniuse.com/?search=text-box
+ *
+ * The following is maintained should you need the fallback.
+ * Capsize is specific to fonts, the example here uses metric from Roboto but you should use your own font metrics.
+ */
+
+/**
+ * Roboto font metrics
+ * @deprecated by text-box being supported
+ *
+ * @see https://www.npmjs.com/package/@capsizecss/metrics
+ */
+const robotoMetrics = {
+  familyName: 'Roboto',
+  fullName: 'Roboto',
+  postscriptName: 'Roboto-Regular',
+  category: 'sans-serif',
+  capHeight: 1456,
+  ascent: 1900,
+  descent: -500,
+  lineGap: 0,
+  unitsPerEm: 2048,
+  xHeight: 1082,
+  xWidthAvg: 911,
+  subsets: {
+    latin: {
+      xWidthAvg: 911,
+    },
+    thai: {
+      xWidthAvg: 908,
+    },
+  },
+}
+
+/**
+ * Base sizes for Roboto font
+ * @deprecated by text-box being supported
+ */
+const roboto = {
+  // ascent: '0.927734375em',
+  // lineGap: '0em',
+  // capHeight: '0.7109375em',
+  // descent: '-0.244140625em',
+  // xHeight: '0.5283203125em',
+  ascent: `${robotoMetrics.ascent / robotoMetrics.unitsPerEm}em`,
+  lineGap: `${robotoMetrics.lineGap / robotoMetrics.unitsPerEm}em`,
+  capHeight: `${robotoMetrics.capHeight / robotoMetrics.unitsPerEm}em`,
+  descent: `${robotoMetrics.descent / robotoMetrics.unitsPerEm}em`,
+  xHeight: `${robotoMetrics.xHeight / robotoMetrics.unitsPerEm}em`,
+}
+
+/**
+ * Trim values specifically for Roboto
+ * @deprecated by text-box being supported
+ */
+const robotoTrim = {
+  textBoxTrimStartText: `calc(${roboto.capHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
+  textBoxTrimEndText: `calc(${roboto.lineGap} / 2)`,
+  textBoxTrimStartCap: `calc(${roboto.capHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
+  textBoxTrimStartEx: `calc(${roboto.xHeight} - ${roboto.ascent} + ${roboto.lineGap} / 2)`,
+  textBoxTrimEndAlphabetic: `calc(${roboto.descent} - ${roboto.lineGap} / 2)`,
+}
+
+/**
+ * @tokens capsize
+ * @css none
+ * @deprecated by text-box being supported
+ *
+ * Variables to enable polyfill for leading-trim.
+ * * https://seek-oss.github.io/capsize/
+ * * https://github.com/jantimon/text-box-trim-examples
+ */
+export const capsize = defineVars({
+  trimStartText: robotoTrim.textBoxTrimStartText,
+  trimEndText: robotoTrim.textBoxTrimEndText,
+  trimStartCap: robotoTrim.textBoxTrimStartCap,
+  trimStartX: robotoTrim.textBoxTrimStartEx,
+  trimEndAlphabetic: robotoTrim.textBoxTrimEndAlphabetic,
 })

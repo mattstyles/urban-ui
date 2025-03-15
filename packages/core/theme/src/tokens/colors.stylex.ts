@@ -41,11 +41,11 @@ export const tone = defineVars({
   },
   surfaceMuted: {
     default: 'hsl(200 17% 99%)',
-    [DARK]: 'hsl(200 12% 12%)',
+    [DARK]: 'hsl(200 12% 10%)',
   },
   surfaceBase: {
     default: 'hsl(200 12% 98%)',
-    [DARK]: 'hsl(200 12% 9%)',
+    [DARK]: 'hsl(200 12% 13%)',
   },
   surfaceSubtle: {
     default: 'hsl(200 12% 96%)',
