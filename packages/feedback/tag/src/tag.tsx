@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { primary } from '@urban-ui/theme'
+import { critical, neutral, primary } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
@@ -46,6 +46,12 @@ const variants = stylex.create({
   },
 })
 
+const tones = {
+  neutral: neutral,
+  critical: critical,
+  primary: primary,
+}
+
 export interface TagProps extends React.PropsWithChildren {
   /**
    * Tonal colour scheme
@@ -54,6 +60,8 @@ export interface TagProps extends React.PropsWithChildren {
   tone?:
     | 'tone' // Unnecessary when we have more colours themes to work against
     | 'primary'
+    | 'neutral'
+    | 'critical'
 
   /**
    * Visual variants
@@ -91,7 +99,7 @@ export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
         styles.base,
         variants[variant],
         sizeStyles[size],
-        tone === 'primary' && primary,
+        tone !== 'tone' && tones[tone],
         style,
       ]}
     >

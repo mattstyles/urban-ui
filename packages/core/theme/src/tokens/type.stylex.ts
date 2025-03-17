@@ -151,7 +151,7 @@ export const fontWeights = defineVars({
  *
  * To supply custom font families create a theme from this variable group.
  *
- * Using the variable here does not actually work due to how inheritance works with CSS variables. It might be neceassary to support a _similar_ system though so we will maintain it for now.
+ * The variable can be used but as variables are defined at the root, supplying a variable will only work if supplied on the HTML element.
  */
 export const fonts = defineVars({
   display: 'var(--font-display, system-ui, sans-serif)',

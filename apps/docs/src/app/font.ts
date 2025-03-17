@@ -3,7 +3,7 @@ import { Inter, Roboto } from 'next/font/google'
 export const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter',
+  variable: '--font-body',
 })
 
 export const roboto = Roboto({

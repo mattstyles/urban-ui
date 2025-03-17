@@ -21,5 +21,9 @@ const styles = stylex.create({
 })
 
 export function Container(props: React.PropsWithChildren) {
-  return <Flex style={styles.container}>{props.children}</Flex>
+  return (
+    <Flex style={styles.container} gap="200">
+      {props.children}
+    </Flex>
+  )
 }
