@@ -25,7 +25,7 @@ const styles = stylex.create({
   surface: {
     backgroundColor: tone.surface,
   },
-  element: {
+  component: {
     backgroundColor: tone.component,
   },
   block: {
@@ -63,6 +63,9 @@ function TextContrast({ theme = neutral }: { theme?: Theme<typeof tone> }) {
   return (
     <Flex direction="v" gap="200" style={theme}>
       <Flex direction="h" gap="200" align="center" style={[styles.container]}>
+        <Text size="sm" tracking="tight" color="tone">
+          Page background
+        </Text>
         <TextContrastColors />
       </Flex>
       <Flex
@@ -71,14 +74,20 @@ function TextContrast({ theme = neutral }: { theme?: Theme<typeof tone> }) {
         align="center"
         style={[styles.container, styles.surface]}
       >
+        <Text size="sm" tracking="tight" color="tone">
+          Theme surface
+        </Text>
         <TextContrastColors />
       </Flex>
       <Flex
         direction="h"
         gap="200"
         align="center"
-        style={[styles.container, styles.element]}
+        style={[styles.container, styles.component]}
       >
+        <Text size="sm" tracking="tight" color="tone">
+          Theme component
+        </Text>
         <TextContrastColors />
       </Flex>
     </Flex>
