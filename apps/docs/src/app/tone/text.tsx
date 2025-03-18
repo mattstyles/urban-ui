@@ -23,13 +23,13 @@ const styles = stylex.create({
     paddingBottom: space[100],
   },
   surface: {
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
   },
   element: {
-    backgroundColor: tone.elementMutedBase,
+    backgroundColor: tone.component,
   },
   block: {
-    backgroundColor: tone.elementEmphasisBase,
+    backgroundColor: tone.solid,
     paddingLeft: space[400],
     paddingRight: space[400],
     paddingTop: space[200],

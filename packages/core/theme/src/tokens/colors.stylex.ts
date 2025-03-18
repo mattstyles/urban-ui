@@ -12,12 +12,12 @@ export const base = defineVars({
   transparent: { default: 'transparent' },
   current: { default: 'currentColor' },
   black: {
-    default: 'oklch(100% 0 0)',
-    [DARK]: 'oklch(0% 0 0)',
-  },
-  white: {
     default: 'oklch(0% 0 0)',
     [DARK]: 'oklch(100% 0 0)',
+  },
+  white: {
+    default: 'oklch(1000% 0 0)',
+    [DARK]: 'oklch(0% 0 0)',
   },
 })
 
@@ -64,15 +64,17 @@ export const tone = defineVars({
     default: 'hsl(200 8% 98%)',
     [DARK]: 'hsl(200 8% 10%)',
   },
+
   surfaceMuted: {
     default: 'hsl(200 17% 99%)',
     [DARK]: 'hsl(200 12% 10%)',
   },
-  surfaceBase: {
+  surface: {
     default: 'hsl(200 12% 98%)',
     [DARK]: 'hsl(200 12% 13%)',
   },
-  componentBase: {
+
+  component: {
     default: 'hsl(200 8% 88%)',
     [DARK]: 'hsl(200 8% 18%)',
   },
@@ -80,19 +82,21 @@ export const tone = defineVars({
     default: 'hsl(200 8% 86%)',
     [DARK]: 'hsl(200 8% 20%)',
   },
-  componentPress: {
+  componentActive: {
     default: 'hsl(200 8% 85%)',
     [DARK]: 'hsl(200 8% 22%)',
   },
+
   borderMuted: {
     default: 'hsl(200 8% 90%)',
     [DARK]: 'hsl(200 8% 20%)',
   },
-  borderBase: {
+  border: {
     default: 'hsl(200 8% 88%)',
     [DARK]: 'hsl(200 8% 22%)',
   },
-  solidBase: {
+
+  solid: {
     default: 'hsl(200 12% 38%)',
     [DARK]: 'hsl(200 12% 72%)',
   },
@@ -100,7 +104,7 @@ export const tone = defineVars({
     default: 'hsl(200 12% 36%)',
     [DARK]: 'hsl(200 12% 74%)',
   },
-  solidPress: {
+  solidActive: {
     default: 'hsl(200 12% 34%)',
     [DARK]: 'hsl(200 12% 76%)',
   },

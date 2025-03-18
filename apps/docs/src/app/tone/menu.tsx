@@ -36,29 +36,29 @@ const styles = stylex.create({
     transition: 'color 150ms ease-out, background-color 150ms ease-out',
 
     ':hover': {
-      backgroundColor: tone.elementEmphasisHover,
+      backgroundColor: tone.solidHover,
       color: tone.fgOnBlock,
     },
     ':active': {
-      backgroundColor: tone.elementEmphasisPress,
+      backgroundColor: tone.solidActive,
       color: tone.fgOnBlock,
     },
   },
   menuItemSelected: {
     color: tone.fgOnBlock,
-    backgroundColor: tone.elementEmphasisSelected,
+    backgroundColor: tone.solid,
 
     ':hover': {
-      backgroundColor: tone.elementEmphasisSelected,
+      backgroundColor: tone.solid,
       color: tone.fgOnBlock,
     },
     ':active': {
-      backgroundColor: tone.elementEmphasisSelected,
+      backgroundColor: tone.solid,
       color: tone.fgOnBlock,
     },
   },
   block: {
-    backgroundColor: tone.elementEmphasisBase,
+    backgroundColor: tone.solid,
     paddingLeft: space[400],
     paddingRight: space[400],
     paddingTop: space[200],
@@ -79,24 +79,24 @@ const fadedStyles = stylex.create({
     transition: 'color 150ms ease-out, background-color 150ms ease-out',
 
     ':hover': {
-      backgroundColor: tone.elementMutedHover,
+      backgroundColor: tone.componentHover,
       color: tone.fgHi,
     },
     ':active': {
-      backgroundColor: tone.elementMutedPress,
+      backgroundColor: tone.componentActive,
       color: tone.fgHi,
     },
   },
   menuItemFadedSelected: {
     color: tone.fgHi,
-    backgroundColor: tone.elementMutedSelected,
+    backgroundColor: tone.component,
 
     ':hover': {
-      backgroundColor: tone.elementMutedSelected,
+      backgroundColor: tone.component,
       color: tone.fgHi,
     },
     ':active': {
-      backgroundColor: tone.elementMutedSelected,
+      backgroundColor: tone.component,
       color: tone.fgHi,
     },
   },

@@ -10,7 +10,7 @@ import { space } from '@urban-ui/theme/layout.stylex'
 
 const styles = stylex.create({
   container: {
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
     padding: space[300],
     borderRadius: radii.lg,
     borderWidth: borderWidths.md,
