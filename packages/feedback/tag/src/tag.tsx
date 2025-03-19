@@ -25,6 +25,7 @@ const styles = stylex.create({
 const sizeStyles = stylex.create({
   md: {
     paddingInline: space.sm,
+    // @TODO this might be better from a sizes scale instead for more specificity e.g. the space scale is for spacing, and not for dimensions (actually, maybe dimensions is better wording than sizes?)
     height: space.lg,
   },
   lg: {

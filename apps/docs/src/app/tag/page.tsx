@@ -50,11 +50,11 @@ const styles = stylex.create({
 const variants = {
   solid: {
     primary: { variant: 'solid', tone: 'primary' },
-    default: { variant: 'solid', tone: 'tone' },
+    default: { variant: 'solid', tone: 'neutral' },
   },
   muted: {
     primary: { variant: 'muted', tone: 'primary' },
-    default: { variant: 'muted', tone: 'tone' },
+    default: { variant: 'muted', tone: 'neutral' },
   },
 } as const
 

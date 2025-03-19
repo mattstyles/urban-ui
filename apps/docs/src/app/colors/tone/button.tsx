@@ -15,17 +15,11 @@ import { Container } from './container'
 export function ButtonExample() {
   return (
     <Container>
-      <button {...stylex.props(styles.border, styles.solid, styles.shape)}>
-        Bordered + solid
+      <button {...stylex.props(styles.solid, styles.shape)}>Solid</button>
+      <button {...stylex.props(styles.component, styles.shape)}>
+        Bordered + component
       </button>
-      <button
-        {...stylex.props(
-          styles.border,
-          styles.transparent,
-          styles.shape,
-          styles.borderInteractive,
-        )}
-      >
+      <button {...stylex.props(styles.transparent, styles.shape)}>
         Bordered + transparent
       </button>
     </Container>
@@ -33,15 +27,11 @@ export function ButtonExample() {
 }
 
 const styles = stylex.create({
-  border: {
-    borderStyle: borderStyles.solid,
-    borderWidth: borderWidths.md,
-    borderColor: tone.border,
-    borderRadius: radii.lg,
-  },
   solid: {
     color: tone.fgOnBlock,
     background: tone.solid,
+    borderRadius: radii.lg,
+    border: 'none',
     ':hover': {
       background: tone.solidHover,
     },
@@ -49,18 +39,31 @@ const styles = stylex.create({
       background: tone.solidActive,
     },
   },
-  transparent: {
-    background: base.transparent,
+  component: {
     color: tone.fgHi,
-  },
-  borderInteractive: {
-    borderColor: tone.border,
+    background: tone.component,
+    borderRadius: radii.lg,
+    borderColor: tone.borderMuted,
+    borderStyle: 'solid',
+    borderWidth: borderWidths.md,
     ':hover': {
-      borderColor: tone.borderMuted,
       background: tone.componentHover,
     },
     ':active': {
-      borderColor: tone.border,
+      background: tone.componentActive,
+    },
+  },
+  transparent: {
+    background: base.transparent,
+    color: tone.fgHi,
+    borderColor: tone.border,
+    borderStyle: 'solid',
+    borderWidth: borderWidths.md,
+    borderRadius: radii.lg,
+    ':hover': {
+      background: tone.componentHover,
+    },
+    ':active': {
       background: tone.componentActive,
     },
   },
