@@ -58,7 +58,7 @@ export const neutral = stylex.createTheme(tone, {
   },
 
   component: {
-    default: 'oklch(90.84% 0.0042 228.81)',
+    default: 'oklch(92.84% 0.0042 228.81)',
     [DARK]: 'oklch(30.19% 0.0082 229.13)',
   },
   componentHover: {
@@ -75,7 +75,7 @@ export const neutral = stylex.createTheme(tone, {
     [DARK]: 'oklch(32.23% 0.0089 229.14)',
   },
   border: {
-    default: 'oklch(90.84% 0.0042 228.81)',
+    default: 'oklch(81.4% 0.0169 225.81)',
     [DARK]: 'oklch(34.24% 0.0097 229.15)',
   },
 
@@ -97,59 +97,60 @@ export const neutral = stylex.createTheme(tone, {
 // We could, and should, generate these themes and tokens.
 export const primary = stylex.createTheme(tone, {
   fgHi: {
-    default: 'hsl(267 87% 63%)',
-    [DARK]: 'hsl(272 88% 78%)',
+    default: 'oklch(59.9% 0.2331 299.96)',
+    [DARK]: 'oklch(75.84% 0.1471 307.77)',
   },
   fgLo: {
-    default: 'hsl(270 78% 40%)',
-    [DARK]: 'hsl(270 67% 62%)',
+    default: 'oklch(72.63% 0.1786 298.64)',
+    [DARK]: 'oklch(61.1% 0.1932 304.33)',
   },
   fgOnBlock: {
-    default: 'hsl(270 78% 98%)',
-    [DARK]: 'hsl(270 78% 98%)',
+    default: 'oklch(97.82% 0.0113 308.33)',
+    [DARK]: 'oklch(97.82% 0.0113 308.33)',
   },
+
   surfaceMuted: {
-    default: 'hsl(242 100% 99%)',
-    [DARK]: 'hsl(270 100% 12%)',
+    default: 'oklch(98.64% 0.0067 287.81)',
+    [DARK]: 'oklch(19.87% 0.1063 299.59)',
   },
   surface: {
-    default: 'hsl(244 100% 97%)',
-    [DARK]: 'hsl(270 96% 9%)',
+    default: 'oklch(95.95% 0.0204 289.08)',
+    [DARK]: 'oklch(16.9% 0.0856 301.86)',
   },
 
   component: {
-    default: 'hsl(270 98% 92%)',
-    [DARK]: 'hsl(270 98% 18%)',
+    default: 'oklch(92.66% 0.0578 307.75)',
+    [DARK]: 'oklch(25.69% 0.1375 297.56)',
   },
   componentHover: {
-    default: 'hsl(265 98% 90%)',
-    [DARK]: 'hsl(270 98% 20%)',
+    default: 'oklch(91.99% 0.071287 303.9215)',
+    [DARK]: 'oklch(27.54% 0.148 297.08)',
   },
   componentActive: {
-    default: 'hsl(265 98% 85%)',
-    [DARK]: 'hsl(270 95% 22%)',
+    default: 'oklch(87.07% 0.1082 303.19)',
+    [DARK]: 'oklch(29.31% 0.1554 297.14)',
   },
 
   borderMuted: {
-    default: 'hsl(257 92% 93%)',
-    [DARK]: 'hsl(249 43% 34%)',
+    default: 'oklch(91.41% 0.0453 298.45)',
+    [DARK]: 'oklch(37.08% 0.1216 285.69)',
   },
   border: {
-    default: 'hsl(259 84% 90%)',
-    [DARK]: 'hsl(250 46% 39%)',
+    default: 'oklch(80.24% 0.1099 293.83)',
+    [DARK]: 'oklch(40.33% 0.1443 285.57)',
   },
 
   solid: {
-    default: 'hsl(270 88% 48%)',
-    [DARK]: 'hsl(270 91% 52%)',
+    default: 'oklch(50.35% 0.2678 296.31)',
+    [DARK]: 'oklch(53.08% 0.2784 296.99)',
   },
   solidHover: {
-    default: 'hsl(270 78% 43%)',
-    [DARK]: 'hsl(270 85% 57%)',
+    default: 'oklch(45.94% 0.2312 298.51)',
+    [DARK]: 'oklch(56.03% 0.2555 300.75)',
   },
   solidActive: {
-    default: 'hsl(270 82% 40%)',
-    [DARK]: 'hsl(270 85% 58%)',
+    default: 'oklch(43.79% 0.2247 297.87)',
+    [DARK]: 'oklch(56.78% 0.2519 301.19)',
   },
 })
 
@@ -178,10 +179,13 @@ const critDark = {
 
 export const critical = stylex.createTheme(tone, {
   fgHi: {
+    // oklch(60.17% 0.2253 11.16
     default: critLight.fg,
     [DARK]: critDark.fg,
   },
   fgLo: {
+    // oklch(91.16% 0.0462 11.16)
+    // oklch(0.911575 0.216288 11.16) -> this is computed and it is nowhere close to actual computed value
     default: `oklch(from ${critLight.fg} calc(l * 1.515) calc(c * 0.96) h)`,
     [DARK]: `oklch(from ${critDark.fg} calc(l * 0.72) calc(c * 0.96) h)`,
   },
@@ -191,45 +195,55 @@ export const critical = stylex.createTheme(tone, {
   },
 
   surfaceMuted: {
+    // oklch(98.57% 0.007 8.17)
     default: `oklch(from ${critLight.surface} calc(l * 1.005) calc(c * 0.8) h)`,
     [DARK]: `oklch(from ${critDark.surface} calc(l * 0.97) c h)`,
   },
   surface: {
+    // oklch(98.08% 0.0126 8.17)
     default: critLight.surface,
     [DARK]: critDark.surface,
   },
 
   component: {
+    // oklch(95.71% 0.0197 7.36)
     default: critLight.component,
     [DARK]: critDark.component,
   },
   componentHover: {
+    // oklch(0.937958 0.02167 7.36)
     default: `oklch(from ${critLight.component} calc(l * 0.98) calc(c * 1.1) h)`,
     [DARK]: `oklch(from ${critDark.component} calc(l * 1.02) calc(c * 1.1) h)`,
   },
   componentActive: {
+    // oklch(0.928387 0.03743 7.36)
     default: `oklch(from ${critLight.component} calc(l * 0.97) calc(c * 1.9) h)`,
     [DARK]: `oklch(from ${critDark.component} calc(l * 1.03) calc(c * 1.2) h)`,
   },
 
   borderMuted: {
+    // oklch(89.85% 0.0555 4.56)
     default: `oklch(from ${critLight.border} calc(l * 1.1) calc(c * 0.8) h)`,
     [DARK]: `oklch(from ${critDark.border} calc(l * 0.895) calc(c * 0.8) h)`,
   },
   border: {
+    // oklch(81.68% 0.1 4.56)
     default: critLight.border,
     [DARK]: critDark.border,
   },
 
   solid: {
+    // oklch(64.38% 0.2353 11.16)
     default: critLight.solid,
     [DARK]: critDark.solid,
   },
   solidHover: {
+    // oklch(56.98% 0.2279 7.488)
     default: `oklch(from ${critLight.solid} calc(l * 0.924) calc(c * 1.12) calc(h * 0.975))`,
     [DARK]: `oklch(from ${critDark.solid} calc(l * 1.087) c h)`,
   },
   solidActive: {
+    // oklch(55.36% 0.240654 7.488)
     default: `oklch(from ${critLight.solid} calc(l * 0.8976) calc(c * 0.9875) calc(h * 0.975))`,
     [DARK]: `oklch(from ${critDark.solid} calc(l * 1.147) calc(c * 1.2) h)`,
   },

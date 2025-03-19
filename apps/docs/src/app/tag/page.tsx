@@ -29,7 +29,7 @@ const styles = stylex.create({
     marginBlockStart: space[400],
   },
   section: {
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
     padding: space[300],
     borderRadius: '12px',
     borderWidth: 1,

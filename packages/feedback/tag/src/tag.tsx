@@ -35,14 +35,14 @@ const sizeStyles = stylex.create({
 
 const variants = stylex.create({
   solid: {
-    backgroundColor: tone.elementEmphasisBase,
+    backgroundColor: tone.solid,
     color: tone.fgOnBlock,
-    borderColor: tone.elementEmphasisBase,
+    borderColor: tone.solid,
   },
   muted: {
-    backgroundColor: tone.elementMutedBase,
+    backgroundColor: tone.component,
     color: tone.fgHi,
-    borderColor: tone.borderBase,
+    borderColor: tone.border,
   },
 })
 
@@ -83,7 +83,7 @@ export interface TagProps extends React.PropsWithChildren {
 export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
   const {
     variant = 'solid',
-    tone = 'tone',
+    tone = 'neutral',
     size = 'md',
     style,
     children,
