@@ -26,8 +26,10 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: { children: React.ReactNode }) {
+  const htmlStyles = stylex.props(styles.html)
+
   return (
-    <html lang="en" {...stylex.props(styles.html)}>
+    <html lang="en" className={cx(inter.variable, htmlStyles.className)}>
       <body className={cx(roboto.className, roboto.variable)}>
         <Text weight="semibold" size="xxl">
           Layout rendered title

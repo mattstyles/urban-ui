@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { primary } from '@urban-ui/theme'
+import { critical, neutral, primary } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
@@ -25,6 +25,7 @@ const styles = stylex.create({
 const sizeStyles = stylex.create({
   md: {
     paddingInline: space.sm,
+    // @TODO this might be better from a sizes scale instead for more specificity e.g. the space scale is for spacing, and not for dimensions (actually, maybe dimensions is better wording than sizes?)
     height: space.lg,
   },
   lg: {
@@ -35,16 +36,22 @@ const sizeStyles = stylex.create({
 
 const variants = stylex.create({
   solid: {
-    backgroundColor: tone.elementEmphasisBase,
+    backgroundColor: tone.solid,
     color: tone.fgOnBlock,
-    borderColor: tone.elementEmphasisBase,
+    borderColor: tone.solid,
   },
   muted: {
-    backgroundColor: tone.elementMutedBase,
+    backgroundColor: tone.component,
     color: tone.fgHi,
-    borderColor: tone.borderBase,
+    borderColor: tone.border,
   },
 })
+
+const tones = {
+  neutral: neutral,
+  critical: critical,
+  primary: primary,
+}
 
 export interface TagProps extends React.PropsWithChildren {
   /**
@@ -54,6 +61,8 @@ export interface TagProps extends React.PropsWithChildren {
   tone?:
     | 'tone' // Unnecessary when we have more colours themes to work against
     | 'primary'
+    | 'neutral'
+    | 'critical'
 
   /**
    * Visual variants
@@ -75,7 +84,7 @@ export interface TagProps extends React.PropsWithChildren {
 export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
   const {
     variant = 'solid',
-    tone = 'tone',
+    tone = 'neutral',
     size = 'md',
     style,
     children,
@@ -91,7 +100,7 @@ export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
         styles.base,
         variants[variant],
         sizeStyles[size],
-        tone === 'primary' && primary,
+        tone !== 'tone' && tones[tone],
         style,
       ]}
     >

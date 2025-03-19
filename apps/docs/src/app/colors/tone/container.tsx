@@ -10,7 +10,7 @@ import { space } from '@urban-ui/theme/layout.stylex'
 
 const styles = stylex.create({
   container: {
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
     padding: space[300],
     borderRadius: radii.lg,
     borderWidth: borderWidths.md,
@@ -21,5 +21,9 @@ const styles = stylex.create({
 })
 
 export function Container(props: React.PropsWithChildren) {
-  return <Flex style={styles.container}>{props.children}</Flex>
+  return (
+    <Flex style={styles.container} gap="200">
+      {props.children}
+    </Flex>
+  )
 }

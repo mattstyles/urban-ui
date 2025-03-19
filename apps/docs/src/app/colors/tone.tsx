@@ -27,51 +27,53 @@ const styles = stylex.create({
   surfaceMuted: {
     backgroundColor: tone.surfaceMuted,
   },
-  surfaceBase: {
-    backgroundColor: tone.surfaceBase,
+  surface: {
+    backgroundColor: tone.surface,
   },
-  surfaceSubtle: {
-    backgroundColor: tone.surfaceSubtle,
+  // surfaceSubtle: {
+  //   backgroundColor: tone.surfaceSubtle,
+  // },
+  // surfaceEmphasis: {
+  //   backgroundColor: tone.surfaceEmphasis,
+  // },
+  component: {
+    backgroundColor: tone.component,
   },
-  surfaceEmphasis: {
-    backgroundColor: tone.surfaceEmphasis,
+  componentHover: {
+    backgroundColor: tone.componentHover,
   },
-  elementMutedBase: {
-    backgroundColor: tone.elementMutedBase,
+  componentActive: {
+    backgroundColor: tone.componentActive,
   },
-  elementMutedHover: {
-    backgroundColor: tone.elementMutedHover,
-  },
-  elementMutedPress: {
-    backgroundColor: tone.elementMutedPress,
-  },
-  elementMutedSelected: {
-    backgroundColor: tone.elementMutedSelected,
-  },
-  elementEmphasisBase: {
-    backgroundColor: tone.elementEmphasisBase,
-  },
-  elementEmphasisHover: {
-    backgroundColor: tone.elementEmphasisHover,
-  },
-  elementEmphasisPress: {
-    backgroundColor: tone.elementEmphasisPress,
-  },
-  elementEmphasisSelected: {
-    backgroundColor: tone.elementEmphasisSelected,
-  },
+  // elementMutedSelected: {
+  //   backgroundColor: tone.elementMutedSelected,
+  // },
+
   borderMuted: {
     backgroundColor: tone.borderMuted,
   },
-  borderBase: {
-    backgroundColor: tone.borderBase,
+  border: {
+    backgroundColor: tone.border,
   },
-  borderSubtle: {
-    backgroundColor: tone.borderSubtle,
+  // borderSubtle: {
+  //   backgroundColor: tone.borderSubtle,
+  // },
+  // borderEmphasis: {
+  //   backgroundColor: tone.borderEmphasis,
+  // },
+
+  solid: {
+    backgroundColor: tone.solid,
   },
-  borderEmphasis: {
-    backgroundColor: tone.borderEmphasis,
+  solidHover: {
+    backgroundColor: tone.solidHover,
   },
+  solidActive: {
+    backgroundColor: tone.solidActive,
+  },
+  // elementEmphasisSelected: {
+  //   backgroundColor: tone.elementEmphasisSelected,
+  // }
 })
 
 type ColorBlockProps = {
@@ -93,28 +95,42 @@ type ToneBlockProps = {
 
 export function ToneBlock({ theme }: ToneBlockProps) {
   return (
-    <Flex direction="column" gap="300" style={theme}>
-      <ColorBlock colorStyle="fgHi" />
-      <ColorBlock colorStyle="fgLo" />
-      <ColorBlock colorStyle="fgOnBlock" />
-      {/* <ColorBlock colorStyle="fgInvertHi" />
+    <Flex direction="column" gap="500" style={theme}>
+      <Flex direction="v" gap="100">
+        <ColorBlock colorStyle="fgHi" />
+        <ColorBlock colorStyle="fgLo" />
+        <ColorBlock colorStyle="fgOnBlock" />
+        {/* <ColorBlock colorStyle="fgInvertHi" />
       <ColorBlock colorStyle="fgInvertLo" /> */}
-      <ColorBlock colorStyle="surfaceMuted" />
-      <ColorBlock colorStyle="surfaceBase" />
-      <ColorBlock colorStyle="surfaceSubtle" />
-      <ColorBlock colorStyle="surfaceEmphasis" />
-      <ColorBlock colorStyle="elementMutedBase" />
-      <ColorBlock colorStyle="elementMutedHover" />
-      <ColorBlock colorStyle="elementMutedPress" />
-      <ColorBlock colorStyle="elementMutedSelected" />
-      <ColorBlock colorStyle="elementEmphasisBase" />
-      <ColorBlock colorStyle="elementEmphasisHover" />
-      <ColorBlock colorStyle="elementEmphasisPress" />
-      <ColorBlock colorStyle="elementEmphasisSelected" />
-      <ColorBlock colorStyle="borderMuted" />
-      <ColorBlock colorStyle="borderBase" />
-      <ColorBlock colorStyle="borderSubtle" />
-      <ColorBlock colorStyle="borderEmphasis" />
+      </Flex>
+
+      <Flex direction="v" gap="100">
+        <ColorBlock colorStyle="surfaceMuted" />
+        <ColorBlock colorStyle="surface" />
+        {/* <ColorBlock colorStyle="surfaceSubtle" />
+        <ColorBlock colorStyle="surfaceEmphasis" /> */}
+      </Flex>
+
+      <Flex direction="v" gap="100">
+        <ColorBlock colorStyle="component" />
+        <ColorBlock colorStyle="componentHover" />
+        <ColorBlock colorStyle="componentActive" />
+        {/* <ColorBlock colorStyle="componentSelected" /> */}
+      </Flex>
+
+      <Flex direction="v" gap="100">
+        <ColorBlock colorStyle="borderMuted" />
+        <ColorBlock colorStyle="border" />
+        {/* <ColorBlock colorStyle="borderSubtle" />
+        <ColorBlock colorStyle="borderEmphasis" /> */}
+      </Flex>
+
+      <Flex direction="v" gap="100">
+        <ColorBlock colorStyle="solid" />
+        <ColorBlock colorStyle="solidHover" />
+        <ColorBlock colorStyle="solidActive" />
+        {/* <ColorBlock colorStyle="elementEmphasisSelected" /> */}
+      </Flex>
     </Flex>
   )
 }

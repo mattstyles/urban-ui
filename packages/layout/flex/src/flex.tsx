@@ -390,6 +390,7 @@ export interface FlexProps
   asChild?: boolean
 }
 
+// https://react.dev/blog/2024/12/05/react-19#improvements-in-react-19 ref as a prop, forwardRef is deprecated
 export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const {
     // We omit defaults here as this will generate additional classes in the output html just to set the default browser behaviour. If we want to set specific behaviours then we can reinstate these defaults.

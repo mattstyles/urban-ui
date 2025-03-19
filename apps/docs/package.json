@@ -10,11 +10,12 @@
     "lint": "biome lint src"
   },
   "devDependencies": {
+    "@stylexswc/nextjs-plugin": "0.6.6",
     "@stylexswc/postcss-plugin": "0.6.6",
     "@stylexswc/rs-compiler": "0.6.6",
-    "@stylexswc/nextjs-plugin": "0.6.6",
     "@stylexswc/webpack-plugin": "0.6.6",
     "@types/chroma-js": "^2.4.0",
+    "@types/culori": "^2.1.1",
     "@types/lodash": "^4.14.196",
     "@types/mdx": "^2.0.11",
     "@types/node": "^22.10.6",
@@ -39,6 +40,7 @@
     "@urban-ui/theme": "workspace:*",
     "chroma-js": "^2.4.2",
     "clsx": "^2.0.0",
+    "culori": "^4.0.1",
     "cva": "npm:class-variance-authority@^0.7.0",
     "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.8",

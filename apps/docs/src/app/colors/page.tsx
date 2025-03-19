@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { primary } from '@urban-ui/theme'
+import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { ToneBlock } from './tone'
 
@@ -31,7 +31,19 @@ export default function ColorsPage() {
           <ToneBlock />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
+          <ToneBlock theme={neutral} />
+        </Flex>
+        <Flex direction="column" gap="300" style={styles.container}>
           <ToneBlock theme={primary} />
+        </Flex>
+        <Flex direction="column" gap="300" style={styles.container}>
+          <ToneBlock theme={critical} />
+        </Flex>
+        <Flex direction="column" gap="300" style={styles.container}>
+          <ToneBlock theme={success} />
+        </Flex>
+        <Flex direction="column" gap="300" style={styles.container}>
+          <ToneBlock theme={warning} />
         </Flex>
       </Flex>
     </Flex>

@@ -29,7 +29,7 @@ const styles = stylex.create({
     marginBlockStart: space[400],
   },
   section: {
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
     padding: space[300],
     borderRadius: '12px',
     borderWidth: 1,
@@ -50,11 +50,11 @@ const styles = stylex.create({
 const variants = {
   solid: {
     primary: { variant: 'solid', tone: 'primary' },
-    default: { variant: 'solid', tone: 'tone' },
+    default: { variant: 'solid', tone: 'neutral' },
   },
   muted: {
     primary: { variant: 'muted', tone: 'primary' },
-    default: { variant: 'muted', tone: 'tone' },
+    default: { variant: 'muted', tone: 'neutral' },
   },
 } as const
 
@@ -80,16 +80,26 @@ export default function TagPage() {
           <div {...stylex.props(styles.group)}>
             <Text {...stylex.props(styles.groupTitle)}>Solid Variant</Text>
             <Flex gap="100" wrap="wrap">
-              <Tag {...variants.solid.default}>Default Solid</Tag>
-              <Tag {...variants.solid.primary}>Primary Solid</Tag>
+              <Tag variant="solid">Default solid</Tag>
+              <Tag tone="primary" variant="solid">
+                Primary solid
+              </Tag>
+              <Tag tone="critical" variant="solid">
+                Critical solid
+              </Tag>
             </Flex>
           </div>
 
           <div {...stylex.props(styles.group)}>
             <Text {...stylex.props(styles.groupTitle)}>Muted Variant</Text>
             <Flex gap="100" wrap="wrap">
-              <Tag {...variants.muted.default}>Default Muted</Tag>
-              <Tag {...variants.muted.primary}>Primary Muted</Tag>
+              <Tag variant="muted">Default muted</Tag>
+              <Tag tone="primary" variant="muted">
+                Primary muted
+              </Tag>
+              <Tag tone="critical" variant="muted">
+                Critical muted
+              </Tag>
             </Flex>
           </div>
         </Flex>
