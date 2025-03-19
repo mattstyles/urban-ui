@@ -36,17 +36,17 @@ const styles = stylex.create({
   border: {
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
-    borderColor: tone.borderBase,
+    borderColor: tone.border,
     borderRadius: radii.lg,
   },
   solid: {
     color: tone.fgOnBlock,
-    background: tone.elementEmphasisBase,
+    background: tone.solid,
     ':hover': {
-      background: tone.elementEmphasisHover,
+      background: tone.solidHover,
     },
     ':active': {
-      background: tone.elementEmphasisPress,
+      background: tone.solidActive,
     },
   },
   transparent: {
@@ -54,14 +54,14 @@ const styles = stylex.create({
     color: tone.fgHi,
   },
   borderInteractive: {
-    borderColor: tone.borderBase,
+    borderColor: tone.border,
     ':hover': {
-      borderColor: tone.borderSubtle,
-      background: tone.elementMutedHover,
+      borderColor: tone.borderMuted,
+      background: tone.componentHover,
     },
     ':active': {
-      borderColor: tone.borderEmphasis,
-      background: tone.elementMutedPress,
+      borderColor: tone.border,
+      background: tone.componentActive,
     },
   },
   shape: {

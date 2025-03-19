@@ -12,12 +12,12 @@ export const base = defineVars({
   transparent: { default: 'transparent' },
   current: { default: 'currentColor' },
   black: {
-    default: 'oklch(0% 0 0)',
-    [DARK]: 'oklch(100% 0 0)',
+    default: 'hsl(0 0% 0%)',
+    [DARK]: 'hsl(0 0% 100%)',
   },
   white: {
-    default: 'oklch(1000% 0 0)',
-    [DARK]: 'oklch(0% 0 0)',
+    default: 'hsl(0 0% 100%)',
+    [DARK]: 'hsl(0 0% 0%)',
   },
 })
 
@@ -29,20 +29,20 @@ export const base = defineVars({
  */
 export const surface = defineVars({
   muted: {
-    default: 'oklch(99.25% 0.0007 228.76)',
-    [DARK]: 'oklch(21.66% 0.0074 229.24)',
+    default: 'hsl(200 17% 99%)',
+    [DARK]: 'hsl(200 12% 10%)',
   },
   base: {
-    default: 'oklch(98.49% 0.001027 228.7632)',
-    [DARK]: 'oklch(24.97% 0.0092 229.29)',
+    default: 'hsl(200 12% 98%)',
+    [DARK]: 'hsl(200 12% 13%)',
   },
   subtle: {
-    default: 'oklch(96.98% 0.0021 228.78)',
-    [DARK]: 'oklch(26.05% 0.0098 229.3)',
+    default: 'hsl(200 12% 96%)',
+    [DARK]: 'hsl(200 12% 14%)',
   },
   emphasis: {
-    default: 'oklch(95.46% 0.0031 228.79)',
-    [DARK]: 'oklch(28.17% 0.011 229.33)',
+    default: 'hsl(200 12% 94%)',
+    [DARK]: 'hsl(200 12% 16%)',
   },
 })
 
@@ -64,49 +64,69 @@ export const tone = defineVars({
     default: 'hsl(200 8% 98%)',
     [DARK]: 'hsl(200 8% 10%)',
   },
-
   surfaceMuted: {
     default: 'hsl(200 17% 99%)',
     [DARK]: 'hsl(200 12% 10%)',
   },
-  surface: {
+  surfaceBase: {
     default: 'hsl(200 12% 98%)',
     [DARK]: 'hsl(200 12% 13%)',
   },
-
-  component: {
+  surfaceSubtle: {
+    default: 'hsl(200 12% 96%)',
+    [DARK]: 'hsl(200 12% 14%)',
+  },
+  surfaceEmphasis: {
+    default: 'hsl(200 12% 94%)',
+    [DARK]: 'hsl(200 12% 16%)',
+  },
+  elementMutedBase: {
     default: 'hsl(200 8% 88%)',
     [DARK]: 'hsl(200 8% 18%)',
   },
-  componentHover: {
+  elementMutedHover: {
     default: 'hsl(200 8% 86%)',
     [DARK]: 'hsl(200 8% 20%)',
   },
-  componentActive: {
+  elementMutedPress: {
     default: 'hsl(200 8% 85%)',
     [DARK]: 'hsl(200 8% 22%)',
   },
-
+  elementMutedSelected: {
+    default: 'hsl(200 8% 83%)',
+    [DARK]: 'hsl(200 8% 24%)',
+  },
+  elementEmphasisBase: {
+    default: 'hsl(200 12% 38%)',
+    [DARK]: 'hsl(200 12% 72%)',
+  },
+  elementEmphasisHover: {
+    default: 'hsl(200 12% 36%)',
+    [DARK]: 'hsl(200 12% 74%)',
+  },
+  elementEmphasisPress: {
+    default: 'hsl(200 12% 34%)',
+    [DARK]: 'hsl(200 12% 76%)',
+  },
+  elementEmphasisSelected: {
+    default: 'hsl(200 12% 32%)',
+    [DARK]: 'hsl(200 12% 78%)',
+  },
   borderMuted: {
     default: 'hsl(200 8% 90%)',
     [DARK]: 'hsl(200 8% 20%)',
   },
-  border: {
+  borderBase: {
     default: 'hsl(200 8% 88%)',
     [DARK]: 'hsl(200 8% 22%)',
   },
-
-  solid: {
-    default: 'hsl(200 12% 38%)',
-    [DARK]: 'hsl(200 12% 72%)',
+  borderSubtle: {
+    default: 'hsl(200 8% 86%)',
+    [DARK]: 'hsl(200 8% 18%)',
   },
-  solidHover: {
-    default: 'hsl(200 12% 36%)',
-    [DARK]: 'hsl(200 12% 74%)',
-  },
-  solidActive: {
-    default: 'hsl(200 12% 34%)',
-    [DARK]: 'hsl(200 12% 76%)',
+  borderEmphasis: {
+    default: 'hsl(200 11% 83%)',
+    [DARK]: 'hsl(200 8% 25%)',
   },
 })
 
