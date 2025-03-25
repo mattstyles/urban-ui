@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import { presets } from '@urban-ui/theme'
 import cx from 'clsx'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
@@ -43,7 +44,7 @@ export default function RootLayout({
       </head>
       <body
         // className={cx(geistSans.className, geistSans.variable, styles.body)}
-        {...stylex.props(styles.body)}
+        {...stylex.props(styles.body, presets.body)}
       >
         {children}
       </body>

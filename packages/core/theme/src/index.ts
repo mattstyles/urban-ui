@@ -21,13 +21,43 @@
 
 import * as stylex from '@stylexjs/stylex'
 
+import {
+  fontSizes,
+  fontWeights,
+  fonts,
+  lineHeights,
+  tracking,
+} from '@urban-ui/theme/type.stylex'
 import { base, tone } from './tokens/colors.stylex'
 
 export const DARK = '@media (prefers-color-scheme: dark)'
 
+import { primaryTheme } from './themes'
+
+export const themes = {
+  primary: primaryTheme,
+}
+
 /**
  * -------------------
- * Themes
+ *  Preset
+ * -------------------
+ */
+
+export const presets = stylex.create({
+  body: {
+    fontFamily: fonts.body,
+    fontSize: fontSizes.md,
+    lineHeight: lineHeights.md,
+    letterSpacing: tracking.md,
+    fontWeight: fontWeights.normal,
+    color: tone.fgHi,
+  },
+})
+
+/**
+ * -------------------
+ *  Themes
  * -------------------
  */
 
@@ -153,29 +183,6 @@ export const primary = stylex.createTheme(tone, {
     [DARK]: 'oklch(56.78% 0.2519 301.19)',
   },
 })
-
-// const neutralLight = {
-//   fg: 'oklch(33.45% 0.0194 229.68)',
-//   surface: 'oklch(98.49% 0.001027 228.7632)',
-//   component: 'oklch(90.84% 0.0042 228.81)',
-//   border: 'oklch(90.84% 0.0042 228.81)',
-//   solid: 'oklch(49.58% 0.0226 229.44)',
-// }
-
-// const critLight = {
-//   fg: 'oklch(60.17% 0.2253 11.16)',
-//   surface: 'oklch(98.08% 0.0126 8.17)',
-//   component: 'oklch(95.71% 0.0197 7.36)',
-//   border: 'oklch(81.68% 0.1 4.56)',
-//   solid: 'oklch(61.67% 0.2437 7.68)',
-// }
-// const critDark = {
-//   fg: 'oklch(64.38% 0.2353 11.16)',
-//   surface: 'oklch(20.74% 0.0832 5.63)',
-//   component: 'oklch(33.09% 0.1323 5.63)',
-//   border: 'oklch(58.68% 0.2 4.56)',
-//   solid: 'oklch(64.38% 0.2353 11.16)',
-// }
 
 export const critical = stylex.createTheme(tone, {
   fgHi: {

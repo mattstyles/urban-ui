@@ -79,7 +79,12 @@ const fontColors = stylex.create({
 /**
  * Font sizes with corresponding line heights and letter spacing
  */
-const sizes = stylex.create({
+const sizeValues = stylex.create({
+  inherit: {
+    fontSize: 'inherit',
+    lineHeight: 'inherit',
+    letterSpacing: 'inherit',
+  },
   xxs: {
     fontSize: fontSizes.xxs,
     lineHeight: lineHeights.xxs,
@@ -210,6 +215,10 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     weight = 'normal',
     font = 'body',
     color = 'current',
+    // size,
+    // weight,
+    // font,
+    // color,
     tracking,
     style,
     asChild = false,
@@ -224,10 +233,10 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
       ref={ref}
       {...stylex.props(
         styles.base,
-        sizes[size],
-        weights[weight],
-        fontFamilies[font],
-        fontColors[color],
+        sizeValues[size],
+        weight != null && weights[weight],
+        font != null && fontFamilies[font],
+        color != null && fontColors[color],
         tracking != null && trackingClasses[tracking],
         style,
       )}
