@@ -47,17 +47,6 @@ const styles = stylex.create({
   },
 })
 
-const variants = {
-  solid: {
-    primary: { variant: 'solid', tone: 'primary' },
-    default: { variant: 'solid', tone: 'neutral' },
-  },
-  muted: {
-    primary: { variant: 'muted', tone: 'primary' },
-    default: { variant: 'muted', tone: 'neutral' },
-  },
-} as const
-
 export default function TagPage() {
   return (
     <div {...stylex.props(styles.container)}>
@@ -87,6 +76,12 @@ export default function TagPage() {
               <Tag tone="critical" variant="solid">
                 Critical solid
               </Tag>
+              <Tag tone="positive" variant="solid">
+                Positive solid
+              </Tag>
+              <Tag tone="warning" variant="solid">
+                Warning solid
+              </Tag>
             </Flex>
           </div>
 
@@ -100,6 +95,12 @@ export default function TagPage() {
               <Tag tone="critical" variant="muted">
                 Critical muted
               </Tag>
+              <Tag tone="positive" variant="muted">
+                Positive muted
+              </Tag>
+              <Tag tone="warning" variant="muted">
+                Warning muted
+              </Tag>
             </Flex>
           </div>
         </Flex>
@@ -112,20 +113,12 @@ export default function TagPage() {
           and hierarchies.
         </p>
         <Flex direction="v" gap="200">
-          {Object.values(variants).flatMap((variantGroup) =>
-            Object.values(variantGroup).map((variant) => (
-              <Flex
-                key={`${variant.variant}-${variant.tone}`}
-                gap="100"
-                align="center"
-              >
-                <Tag {...variant}>Medium</Tag>
-                <Tag {...variant} size="lg">
-                  Large
-                </Tag>
-              </Flex>
-            )),
-          )}
+          <Tag size="lg" variant="muted">
+            Large
+          </Tag>
+          <Tag size="md" variant="muted">
+            Medium
+          </Tag>
         </Flex>
       </section>
     </div>

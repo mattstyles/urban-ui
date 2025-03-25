@@ -2,19 +2,19 @@ import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, neutral, primary } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
   radii,
 } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
+import { sizes, space } from '@urban-ui/theme/layout.stylex'
 import { forwardRef } from 'react'
 
 const styles = stylex.create({
   base: {
-    display: 'inline-flex',
+    width: sizes.fit,
     borderRadius: radii.full,
     borderWidth: borderWidths.sm,
     borderStyle: 'solid',
@@ -48,9 +48,11 @@ const variants = stylex.create({
 })
 
 const tones = {
-  neutral: neutral,
-  critical: critical,
-  primary: primary,
+  neutral: themes.neutral,
+  critical: themes.critical,
+  primary: themes.primary,
+  positive: themes.positive,
+  warning: themes.warning,
 }
 
 export interface TagProps extends React.PropsWithChildren {
@@ -58,11 +60,7 @@ export interface TagProps extends React.PropsWithChildren {
    * Tonal colour scheme
    * @default 'tone'
    */
-  tone?:
-    | 'tone' // Unnecessary when we have more colours themes to work against
-    | 'primary'
-    | 'neutral'
-    | 'critical'
+  tone?: 'primary' | 'neutral' | 'critical' | 'positive' | 'warning'
 
   /**
    * Visual variants
@@ -96,11 +94,12 @@ export const Tag = forwardRef<HTMLDivElement, TagProps>((props, ref) => {
     <Flex
       ref={ref}
       align="center"
+      inline
       style={[
         styles.base,
         variants[variant],
         sizeStyles[size],
-        tone !== 'tone' && tones[tone],
+        tones[tone],
         style,
       ]}
     >
