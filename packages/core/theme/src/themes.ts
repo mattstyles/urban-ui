@@ -4,7 +4,7 @@ import {
   critical,
   neutral,
   primary,
-  success,
+  positive,
   tone,
   warning,
 } from './tokens/colors.stylex'
@@ -71,24 +71,24 @@ export const warningTheme = stylex.createTheme(tone, {
   solidActive: warning.solidActive,
 })
 
-export const successTheme = stylex.createTheme(tone, {
-  fgHi: success.fgHi,
-  fgLo: success.fgLo,
-  fgOnBlock: success.fgOnBlock,
+export const positiveTheme = stylex.createTheme(tone, {
+  fgHi: positive.fgHi,
+  fgLo: positive.fgLo,
+  fgOnBlock: positive.fgOnBlock,
 
-  surfaceMuted: success.surfaceMuted,
-  surface: success.surface,
+  surfaceMuted: positive.surfaceMuted,
+  surface: positive.surface,
 
-  component: success.component,
-  componentHover: success.componentHover,
-  componentActive: success.componentActive,
+  component: positive.component,
+  componentHover: positive.componentHover,
+  componentActive: positive.componentActive,
 
-  borderMuted: success.borderMuted,
-  border: success.border,
+  borderMuted: positive.borderMuted,
+  border: positive.border,
 
-  solid: success.solid,
-  solidHover: success.solidHover,
-  solidActive: success.solidActive,
+  solid: positive.solid,
+  solidHover: positive.solidHover,
+  solidActive: positive.solidActive,
 })
 
 export const neutralTheme = stylex.createTheme(tone, {

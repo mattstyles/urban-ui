@@ -36,7 +36,7 @@ import {
   criticalTheme,
   neutralTheme,
   primaryTheme,
-  successTheme,
+  positiveTheme,
   warningTheme,
 } from './themes'
 
@@ -44,7 +44,7 @@ export const themes = {
   primary: primaryTheme,
   critical: criticalTheme,
   warning: warningTheme,
-  success: successTheme,
+  positive: positiveTheme,
   neutral: neutralTheme,
 }
 

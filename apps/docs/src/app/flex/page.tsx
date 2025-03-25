@@ -38,7 +38,7 @@ const styles = stylex.create({
     marginBlockEnd: space[200],
   },
   box: {
-    backgroundColor: primary.elementEmphasisBase,
+    backgroundColor: primary.solid,
     borderRadius: radii.sm,
     minWidth: 24,
     minHeight: 24,
@@ -47,7 +47,7 @@ const styles = stylex.create({
     fontSize: fontSizes.xs,
   },
   example: {
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
     padding: space[300],
     borderRadius: radii.lg,
     borderWidth: 1,
@@ -57,15 +57,15 @@ const styles = stylex.create({
   },
   exampleInnerContainer: {
     padding: space[200],
-    backgroundColor: tone.surfaceSubtle,
+    backgroundColor: tone.surfaceMuted,
   },
   exampleContainer: {
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
     padding: space[300],
     borderRadius: radii.lg,
     borderWidth: 1,
     borderStyle: borderStyles.solid,
-    borderColor: tone.borderBase,
+    borderColor: tone.borderMuted,
     marginBlockEnd: space[400],
   },
   alignmentContainer: {
@@ -84,11 +84,11 @@ const styles = stylex.create({
     width: '3rem',
   },
   sizeBlock: {
-    backgroundColor: primary.elementEmphasisBase,
+    backgroundColor: primary.solid,
     borderRadius: radii.sm,
   },
   flexBlock: {
-    backgroundColor: primary.elementEmphasisBase,
+    backgroundColor: primary.solid,
     borderRadius: radii.sm,
     color: primary.fgOnBlock,
     fontWeight: fontWeights.semibold,

@@ -41,7 +41,7 @@ export default function ColorsPage() {
           <ToneBlock id="Critical" theme={themes.critical} />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
-          <ToneBlock id="Success" theme={themes.success} />
+          <ToneBlock id="Positive" theme={themes.positive} />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
           <ToneBlock id="Warning" theme={themes.warning} />

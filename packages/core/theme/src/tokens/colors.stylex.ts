@@ -305,9 +305,9 @@ export const critical = defineVars({
 /**
  * @tokens color
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
- * Success colour tone.
+ * Positive colour tone.
  */
-export const success = defineVars({
+export const positive = defineVars({
   fgHi: {
     default: 'oklch(51.65% 0.1431 160.1)',
     [DARK]: 'oklch(79.41% 0.2271 160.77)',

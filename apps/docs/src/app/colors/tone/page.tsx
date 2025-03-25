@@ -30,11 +30,11 @@ export default function TonePage() {
         <div {...stylex.props(themes.critical)}>
           <ButtonExample />
         </div>
-        <div {...stylex.props(themes.success)}>
-          <ButtonExample />
-        </div>
         <div {...stylex.props(themes.warning)}>
-          <ButtonExample />
+          <Text>Warning</Text>
+        </div>
+        <div {...stylex.props(themes.positive)}>
+          <Text>Positive</Text>
         </div>
       </Flex>
     </Flex>

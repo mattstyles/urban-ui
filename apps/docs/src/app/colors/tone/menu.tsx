@@ -113,8 +113,8 @@ export function MenuExample() {
       <MenuContrast theme={themes.neutral} />
       <MenuContrast theme={themes.primary} />
       <MenuContrast theme={themes.critical} />
-      <MenuContrast theme={themes.success} />
       <MenuContrast theme={themes.warning} />
+      <MenuContrast theme={themes.positive} />
     </Flex>
   )
 }

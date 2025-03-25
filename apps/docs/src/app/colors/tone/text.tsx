@@ -55,8 +55,8 @@ export function TextExample() {
       <TextContrast theme={themes.neutral} />
       <TextContrast theme={themes.primary} />
       <TextContrast theme={themes.critical} />
-      <TextContrast theme={themes.success} />
       <TextContrast theme={themes.warning} />
+      <TextContrast theme={themes.positive} />
     </Flex>
   )
 }
