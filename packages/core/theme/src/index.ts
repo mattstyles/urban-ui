@@ -35,8 +35,8 @@ export const DARK = '@media (prefers-color-scheme: dark)'
 import {
   criticalTheme,
   neutralTheme,
-  primaryTheme,
   positiveTheme,
+  primaryTheme,
   warningTheme,
 } from './themes'
 

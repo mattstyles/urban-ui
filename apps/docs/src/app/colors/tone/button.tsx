@@ -9,6 +9,7 @@ import {
 } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import { fontWeights } from '@urban-ui/theme/type.stylex'
 
 import { Container } from './container'
 
@@ -32,6 +33,7 @@ const styles = stylex.create({
     background: tone.solid,
     borderRadius: radii.lg,
     borderStyle: borderStyles.none,
+    fontWeight: fontWeights.medium,
     ':hover': {
       background: tone.solidHover,
     },

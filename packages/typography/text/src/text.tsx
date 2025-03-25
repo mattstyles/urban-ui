@@ -1,7 +1,8 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
-import { base, primary, tone } from '@urban-ui/theme/colors.stylex'
+import { themes } from '@urban-ui/theme'
+import { base, tone } from '@urban-ui/theme/colors.stylex'
 import {
   capsize,
   fontSizes,
@@ -67,12 +68,6 @@ const fontColors = stylex.create({
   },
   onBlock: {
     color: tone.fgOnBlock,
-  },
-  tone: {
-    color: tone.fgHi,
-  },
-  primary: {
-    color: primary.fgHi,
   },
 })
 
@@ -144,6 +139,17 @@ const weights = stylex.create({
 })
 
 /**
+ * Tones
+ */
+const tones = {
+  neutral: themes.neutral,
+  primary: themes.primary,
+  critical: themes.critical,
+  positive: themes.positive,
+  warning: themes.warning,
+}
+
+/**
  * Tracking
  * @css letter-spacing
  */
@@ -193,7 +199,12 @@ export interface TextProps
    * Font colours
    * @default foreground
    */
-  color?: 'tone' | 'primary' | 'current' | 'hi' | 'lo' | 'onBlock'
+  color?: 'current' | 'hi' | 'lo' | 'onBlock'
+  /**
+   * Font colour scheme
+   * @default foreground
+   */
+  tone?: 'neutral' | 'primary' | 'critical' | 'positive' | 'warning'
   /**
    * Tracking
    * @css letter-spacing
@@ -215,6 +226,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     weight = 'normal',
     font = 'body',
     color = 'current',
+    // tone,
     // size,
     // weight,
     // font,

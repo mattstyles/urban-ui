@@ -67,7 +67,7 @@ function TextContrast({
   return (
     <Flex direction="v" gap="200" style={theme}>
       <Flex direction="h" gap="200" align="center" style={[styles.container]}>
-        <Text size="sm" tracking="tight" color="tone">
+        <Text size="sm" tracking="tight">
           Page background
         </Text>
         <TextContrastColors />
@@ -78,7 +78,7 @@ function TextContrast({
         align="center"
         style={[styles.container, styles.surface]}
       >
-        <Text size="sm" tracking="tight" color="tone">
+        <Text size="sm" tracking="tight">
           Theme surface
         </Text>
         <TextContrastColors />
@@ -89,7 +89,7 @@ function TextContrast({
         align="center"
         style={[styles.container, styles.component]}
       >
-        <Text size="sm" tracking="tight" color="tone">
+        <Text size="sm" tracking="tight">
           Theme component
         </Text>
         <TextContrastColors />

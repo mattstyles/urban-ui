@@ -23,7 +23,7 @@ export default function ColorsPage() {
       <Text size="xl" weight="semibold">
         Color Tokens
       </Text>
-      <Text style={styles.description} size="md" color="tone">
+      <Text style={styles.description} size="md">
         A comprehensive set of semantic color tokens used throughout the Urban
         UI design system.
       </Text>

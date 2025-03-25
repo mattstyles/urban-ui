@@ -48,7 +48,7 @@ function TonalTag({ children }: React.PropsWithChildren) {
   return (
     <div {...stylex.props(styles.tonalTag)}>
       <Text size="lg" weight="semibold" color="onBlock">
-        {children} <Text color="primary">with primary text</Text>
+        {children} <Text tone="primary">with primary text</Text>
       </Text>
     </div>
   )

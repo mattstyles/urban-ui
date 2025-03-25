@@ -51,7 +51,7 @@ export function TextColour() {
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.colorLabel)}>tone</span>
             <div {...stylex.props(styles.textContent)}>
-              <Text size="lg" color="tone" asChild>
+              <Text size="lg" asChild>
                 <p>
                   The quick brown fox jumps over the lazy dog. Pack my box with
                   five dozen liquor jugs.
@@ -90,7 +90,7 @@ export function TextColour() {
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.colorLabel)}>primary</span>
             <div {...stylex.props(styles.textContent)}>
-              <Text size="lg" color="primary" asChild>
+              <Text size="lg" asChild>
                 <p>
                   The quick brown fox jumps over the lazy dog. Pack my box with
                   five dozen liquor jugs.
@@ -123,7 +123,7 @@ export function TextColour() {
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.colorLabel)}>tone</span>
             <div {...stylex.props(styles.textContent)}>
-              <Text size="lg" color="tone" asChild>
+              <Text size="lg" asChild>
                 <p>
                   The quick brown fox jumps over the lazy dog. Pack my box with
                   five dozen liquor jugs.

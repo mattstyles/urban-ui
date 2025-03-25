@@ -239,10 +239,12 @@ function ExampleCopy() {
         <Text color="hi">High contrast text.</Text>
       </Flex>
       <Flex gap="100" style={themes.critical}>
-        <Text>Critical</Text>
+        <Text color="lo">Low contrast with</Text>
+        <Text color="hi">High contrast text.</Text>
       </Flex>
       <Flex gap="100" style={themes.positive}>
-        <Text>Positive</Text>
+        <Text color="lo">Low contrast with</Text>
+        <Text color="hi">High contrast text.</Text>
       </Flex>
       <Flex gap="100" style={themes.warning}>
         <Text color="lo">Low contrast with</Text>
