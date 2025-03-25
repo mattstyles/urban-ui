@@ -4,7 +4,8 @@ import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+// import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import { base, surface, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { wcagContrast } from 'culori'
@@ -77,11 +78,11 @@ export function TextCombo() {
         full compliance, however, they should still be considered, particularly
         active states as those can be used for selected states.
       </Text>
-      <ContrastGroup theme={neutral} />
-      <ContrastGroup theme={primary} />
-      <ContrastGroup theme={critical} />
-      <ContrastGroup theme={success} />
-      <ContrastGroup theme={warning} />
+      <ContrastGroup theme={themes.neutral} />
+      <ContrastGroup theme={themes.primary} />
+      <ContrastGroup theme={themes.critical} />
+      <ContrastGroup theme={themes.success} />
+      <ContrastGroup theme={themes.warning} />
       <ExampleCopy />
     </Flex>
   )
@@ -229,23 +230,23 @@ function contrastRatio(fg: string, bg: string): number {
 function ExampleCopy() {
   return (
     <Flex direction="v" gap="200">
-      <Flex gap="100" style={neutral}>
+      <Flex gap="100" style={themes.neutral}>
         <Text color="lo">Low contrast with</Text>
         <Text color="hi">High contrast text.</Text>
       </Flex>
-      <Flex gap="100" style={primary}>
+      <Flex gap="100" style={themes.primary}>
         <Text color="lo">Low contrast with</Text>
         <Text color="hi">High contrast text.</Text>
       </Flex>
-      <Flex gap="100" style={critical}>
+      <Flex gap="100" style={themes.critical}>
         <Text color="lo">Low contrast with</Text>
         <Text color="hi">High contrast text.</Text>
       </Flex>
-      <Flex gap="100" style={success}>
+      <Flex gap="100" style={themes.success}>
         <Text color="lo">Low contrast with</Text>
         <Text color="hi">High contrast text.</Text>
       </Flex>
-      <Flex gap="100" style={warning}>
+      <Flex gap="100" style={themes.warning}>
         <Text color="lo">Low contrast with</Text>
         <Text color="hi">High contrast text.</Text>
       </Flex>

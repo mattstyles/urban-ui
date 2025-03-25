@@ -31,7 +31,7 @@ const styles = stylex.create({
     color: tone.fgOnBlock,
     background: tone.solid,
     borderRadius: radii.lg,
-    border: 'none',
+    borderStyle: borderStyles.none,
     ':hover': {
       background: tone.solidHover,
     },
@@ -44,7 +44,7 @@ const styles = stylex.create({
     background: tone.component,
     borderRadius: radii.lg,
     borderColor: tone.borderMuted,
-    borderStyle: 'solid',
+    borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
     ':hover': {
       background: tone.componentHover,
@@ -57,7 +57,7 @@ const styles = stylex.create({
     background: base.transparent,
     color: tone.fgHi,
     borderColor: tone.border,
-    borderStyle: 'solid',
+    borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
     borderRadius: radii.lg,
     ':hover': {

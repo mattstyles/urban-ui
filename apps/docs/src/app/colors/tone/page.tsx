@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
-
+import { themes } from '@urban-ui/theme'
 import { space } from '@urban-ui/theme/layout.stylex'
+
 import { ButtonExample } from './button'
 import { MenuExample } from './menu'
 import { TextExample } from './text'
@@ -24,16 +24,16 @@ export default function TonePage() {
           Colour tone examples
         </Text>
         <ButtonExample />
-        <div {...stylex.props(primary)}>
+        <div {...stylex.props(themes.primary)}>
           <ButtonExample />
         </div>
-        <div {...stylex.props(critical)}>
+        <div {...stylex.props(themes.critical)}>
           <ButtonExample />
         </div>
-        <div {...stylex.props(success)}>
+        <div {...stylex.props(themes.success)}>
           <ButtonExample />
         </div>
-        <div {...stylex.props(warning)}>
+        <div {...stylex.props(themes.warning)}>
           <ButtonExample />
         </div>
       </Flex>

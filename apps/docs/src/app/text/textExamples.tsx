@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { primary, tone } from '@urban-ui/theme/colors.stylex'
+import { critical, primary, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
 
@@ -27,7 +27,7 @@ const styles = stylex.create({
   },
   textBlockIndicator: {
     display: 'flex',
-    borderColor: primary.borderEmphasis,
+    borderColor: critical.solid,
     borderStyle: 'solid',
     borderWidth: 2,
     borderLeft: 'none',
@@ -40,7 +40,7 @@ const styles = stylex.create({
 
 const themed = stylex.create({
   textContainer: {
-    background: tone.surfaceBase,
+    background: tone.surface,
     padding: space[100],
     width: '100%',
   },

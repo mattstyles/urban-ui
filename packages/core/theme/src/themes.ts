@@ -1,5 +1,13 @@
 import * as stylex from '@stylexjs/stylex'
-import { base, primary, tone } from './tokens/colors.stylex'
+import {
+  base,
+  critical,
+  neutral,
+  primary,
+  success,
+  tone,
+  warning,
+} from './tokens/colors.stylex'
 
 const DARK = '@media (prefers-color-scheme: dark)'
 
@@ -21,4 +29,84 @@ export const primaryTheme = stylex.createTheme(tone, {
   solid: primary.solid,
   solidHover: primary.solidHover,
   solidActive: primary.solidActive,
+})
+
+export const criticalTheme = stylex.createTheme(tone, {
+  fgHi: critical.fgHi,
+  fgLo: critical.fgLo,
+  fgOnBlock: critical.fgOnBlock,
+
+  surfaceMuted: critical.surfaceMuted,
+  surface: critical.surface,
+
+  component: critical.component,
+  componentHover: critical.componentHover,
+  componentActive: critical.componentActive,
+
+  borderMuted: critical.borderMuted,
+  border: critical.border,
+
+  solid: critical.solid,
+  solidHover: critical.solidHover,
+  solidActive: critical.solidActive,
+})
+
+export const warningTheme = stylex.createTheme(tone, {
+  fgHi: warning.fgHi,
+  fgLo: warning.fgLo,
+  fgOnBlock: warning.fgOnBlock,
+
+  surfaceMuted: warning.surfaceMuted,
+  surface: warning.surface,
+
+  component: warning.component,
+  componentHover: warning.componentHover,
+  componentActive: warning.componentActive,
+
+  borderMuted: warning.borderMuted,
+  border: warning.border,
+
+  solid: warning.solid,
+  solidHover: warning.solidHover,
+  solidActive: warning.solidActive,
+})
+
+export const successTheme = stylex.createTheme(tone, {
+  fgHi: success.fgHi,
+  fgLo: success.fgLo,
+  fgOnBlock: success.fgOnBlock,
+
+  surfaceMuted: success.surfaceMuted,
+  surface: success.surface,
+
+  component: success.component,
+  componentHover: success.componentHover,
+  componentActive: success.componentActive,
+
+  borderMuted: success.borderMuted,
+  border: success.border,
+
+  solid: success.solid,
+  solidHover: success.solidHover,
+  solidActive: success.solidActive,
+})
+
+export const neutralTheme = stylex.createTheme(tone, {
+  fgHi: neutral.fgHi,
+  fgLo: neutral.fgLo,
+  fgOnBlock: neutral.fgOnBlock,
+
+  surfaceMuted: neutral.surfaceMuted,
+  surface: neutral.surface,
+
+  component: neutral.component,
+  componentHover: neutral.componentHover,
+  componentActive: neutral.componentActive,
+
+  borderMuted: neutral.borderMuted,
+  border: neutral.border,
+
+  solid: neutral.solid,
+  solidHover: neutral.solidHover,
+  solidActive: neutral.solidActive,
 })

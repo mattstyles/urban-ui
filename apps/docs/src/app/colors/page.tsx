@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+// import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { ToneBlock } from './tone'
 
@@ -28,22 +29,22 @@ export default function ColorsPage() {
       </Text>
       <Flex align="flex-start" direction="horizontal">
         <Flex direction="column" gap="300" style={styles.container}>
-          <ToneBlock />
+          <ToneBlock id="Tone" />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
-          <ToneBlock theme={neutral} />
+          <ToneBlock id="Neutral" theme={themes.neutral} />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
-          <ToneBlock theme={primary} />
+          <ToneBlock id="Primary" theme={themes.primary} />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
-          <ToneBlock theme={critical} />
+          <ToneBlock id="Critical" theme={themes.critical} />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
-          <ToneBlock theme={success} />
+          <ToneBlock id="Success" theme={themes.success} />
         </Flex>
         <Flex direction="column" gap="300" style={styles.container}>
-          <ToneBlock theme={warning} />
+          <ToneBlock id="Warning" theme={themes.warning} />
         </Flex>
       </Flex>
     </Flex>

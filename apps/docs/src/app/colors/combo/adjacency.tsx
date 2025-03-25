@@ -4,7 +4,8 @@ import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+// import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
@@ -108,11 +109,11 @@ export function Adjacency() {
         </Text>
       </Flex>
       <Flex direction="v" gap="600">
-        <Block theme={neutral} />
-        <Block theme={primary} />
-        <Block theme={critical} />
-        <Block theme={success} />
-        <Block theme={warning} />
+        <Block theme={themes.neutral} />
+        <Block theme={themes.primary} />
+        <Block theme={themes.critical} />
+        <Block theme={themes.success} />
+        <Block theme={themes.warning} />
       </Flex>
     </Flex>
   )

@@ -90,12 +90,16 @@ function ColorBlock({ colorStyle }: ColorBlockProps) {
 }
 
 type ToneBlockProps = {
+  id: string
   theme?: Theme<typeof tone>
 }
 
-export function ToneBlock({ theme }: ToneBlockProps) {
+export function ToneBlock({ theme, id }: ToneBlockProps) {
   return (
     <Flex direction="column" gap="500" style={theme}>
+      <Text size="md" weight="semibold">
+        {id}
+      </Text>
       <Flex direction="v" gap="100">
         <ColorBlock colorStyle="fgHi" />
         <ColorBlock colorStyle="fgLo" />

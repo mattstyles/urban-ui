@@ -7,7 +7,7 @@ import { radii } from '@urban-ui/theme/borders.stylex'
 import { primary, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
-import { primary as primaryTheme } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 
 const styles = stylex.create({
   page: {
@@ -79,7 +79,7 @@ export default function Page() {
           <Block />
         </div>
         <div {...stylex.props(customTheme)}>
-          <div {...stylex.props(primaryTheme)}>
+          <div {...stylex.props(themes.primary)}>
             <Block />
           </div>
         </div>
@@ -88,6 +88,11 @@ export default function Page() {
         <TonalTag>Default</TonalTag>
         <div {...stylex.props(customTheme)}>
           <TonalTag>Custom</TonalTag>
+        </div>
+        <div {...stylex.props(customTheme)}>
+          <div {...stylex.props(themes.primary)}>
+            <TonalTag>Primary</TonalTag>
+          </div>
         </div>
       </Flex>
     </Flex>

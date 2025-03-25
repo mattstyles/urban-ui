@@ -4,7 +4,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
@@ -110,16 +110,18 @@ export function MenuExample() {
           Block colour examples
         </Text>
       </Flex>
-      <MenuContrast theme={neutral} />
-      <MenuContrast theme={primary} />
-      <MenuContrast theme={critical} />
-      <MenuContrast theme={success} />
-      <MenuContrast theme={warning} />
+      <MenuContrast theme={themes.neutral} />
+      <MenuContrast theme={themes.primary} />
+      <MenuContrast theme={themes.critical} />
+      <MenuContrast theme={themes.success} />
+      <MenuContrast theme={themes.warning} />
     </Flex>
   )
 }
 
-function MenuContrast({ theme = neutral }: { theme?: Theme<typeof tone> }) {
+function MenuContrast({
+  theme = themes.neutral,
+}: { theme?: Theme<typeof tone> }) {
   const [selected, setSelected] = useState(0)
   return (
     <Flex direction="h" gap="400" style={[styles.container, theme]}>

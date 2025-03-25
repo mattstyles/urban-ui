@@ -113,6 +113,70 @@ export const tone = defineVars({
 /**
  * @tokens color
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ * Neutral colour scheme
+ */
+export const neutral = defineVars({
+  fgHi: {
+    default: 'oklch(33.45% 0.0194 229.68)',
+    [DARK]: 'oklch(98.49% 0.0007 228.76)',
+  },
+  fgLo: {
+    default: 'oklch(51.25% 0.0159 229.19)',
+    [DARK]: 'oklch(80.6% 0.0071 228.86)',
+  },
+  fgOnBlock: {
+    default: 'oklch(98.49% 0.0007 228.76)',
+    [DARK]: 'oklch(21.62% 0.0049 229.07)',
+  },
+
+  surfaceMuted: {
+    default: 'oklch(99.25% 0.0007 228.76)',
+    [DARK]: 'oklch(21.66% 0.0074 229.24)',
+  },
+  surface: {
+    default: 'oklch(98.49% 0.001027 228.7632)',
+    [DARK]: 'oklch(24.97% 0.0092 229.29)',
+  },
+
+  component: {
+    default: 'oklch(92.84% 0.0042 228.81)',
+    [DARK]: 'oklch(30.19% 0.0082 229.13)',
+  },
+  componentHover: {
+    default: 'oklch(89.29% 0.0049 228.82)',
+    [DARK]: 'oklch(28.23% 0.0089 229.14)',
+  },
+  componentActive: {
+    default: 'oklch(88.51% 0.0053 228.83)',
+    [DARK]: 'oklch(26.14% 0.0097 229.15)',
+  },
+
+  borderMuted: {
+    default: 'oklch(92.38% 0.0035 228.8)',
+    [DARK]: 'oklch(32.23% 0.0089 229.14)',
+  },
+  border: {
+    default: 'oklch(81.4% 0.0169 225.81)',
+    [DARK]: 'oklch(34.24% 0.0097 229.15)',
+  },
+
+  solid: {
+    default: 'oklch(49.58% 0.0226 229.44)',
+    [DARK]: 'oklch(78.32% 0.0151 229.01)',
+  },
+  solidHover: {
+    default: 'oklch(45.74% 0.0216 229.43)',
+    [DARK]: 'oklch(73.91% 0.014 228.99)',
+  },
+  solidActive: {
+    default: 'oklch(41.89% 0.0206 229.43)',
+    [DARK]: 'oklch(69.69% 0.0128 228.96)',
+  },
+})
+
+/**
+ * @tokens color
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
  * Primary branded colours for a tone
  */
 export const primary = defineVars({

@@ -12,8 +12,6 @@ import { TextLeading } from './textLeading'
 import { TextTracking } from './textTracking'
 import { TextWeights } from './textWeights'
 
-import { primary } from '@urban-ui/theme'
-
 const styles = stylex.create({
   container: {
     padding: space[200],
@@ -110,8 +108,8 @@ export default function TextPage() {
           <p>
             The Text component provides semantic color options to maintain
             consistent hierarchy and contrast. Use hi and lo colors for
-            different emphasis levels, primary for brand colors, and onBlock
-            for text on colored backgrounds.
+            different emphasis levels, primary for brand colors, and onBlock for
+            text on colored backgrounds.
           </p>
         </Text>
         <TextColour />

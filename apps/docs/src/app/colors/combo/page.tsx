@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, primary } from '@urban-ui/theme'
+// import { critical, primary } from '@urban-ui/theme'
 import { space } from '@urban-ui/theme/layout.stylex'
 
 import { Adjacency } from './adjacency'

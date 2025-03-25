@@ -2,14 +2,14 @@ import * as stylex from '@stylexjs/stylex'
 
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { primary } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
 
 const styles = stylex.create({
   container: {
-    background: tone.surfaceBase,
+    background: tone.surface,
     padding: space[100],
     width: '100%',
   },
@@ -24,7 +24,7 @@ const styles = stylex.create({
     maxWidth: '48rem',
   },
   onBlockContainer: {
-    background: tone.elementEmphasisBase,
+    background: tone.solid,
     padding: space[100],
     width: '100%',
   },
@@ -118,7 +118,7 @@ export function TextColour() {
       <Text size="lg" weight="semibold">
         With theme
       </Text>
-      <Flex direction="v" gap="200" style={primary}>
+      <Flex direction="v" gap="200" style={themes.primary}>
         <div {...stylex.props(styles.container)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.colorLabel)}>tone</span>

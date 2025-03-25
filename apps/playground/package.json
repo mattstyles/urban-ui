@@ -23,10 +23,10 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@stylexswc/postcss-plugin": "0.6.6",
-    "@stylexswc/rs-compiler": "0.6.6",
-    "@stylexswc/nextjs-plugin": "0.6.6",
-    "@stylexswc/webpack-plugin": "0.6.6",
+    "@stylexswc/postcss-plugin": "0.7.0",
+    "@stylexswc/rs-compiler": "0.7.0",
+    "@stylexswc/nextjs-plugin": "0.7.0",
+    "@stylexswc/webpack-plugin": "0.7.0",
     "@types/node": "^22",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

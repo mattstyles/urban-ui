@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
@@ -52,16 +52,18 @@ export function TextExample() {
           </p>
         </Text>
       </Flex>
-      <TextContrast theme={neutral} />
-      <TextContrast theme={primary} />
-      <TextContrast theme={critical} />
-      <TextContrast theme={success} />
-      <TextContrast theme={warning} />
+      <TextContrast theme={themes.neutral} />
+      <TextContrast theme={themes.primary} />
+      <TextContrast theme={themes.critical} />
+      <TextContrast theme={themes.success} />
+      <TextContrast theme={themes.warning} />
     </Flex>
   )
 }
 
-function TextContrast({ theme = neutral }: { theme?: Theme<typeof tone> }) {
+function TextContrast({
+  theme = themes.neutral,
+}: { theme?: Theme<typeof tone> }) {
   return (
     <Flex direction="v" gap="200" style={theme}>
       <Flex direction="h" gap="200" align="center" style={[styles.container]}>

@@ -8,7 +8,7 @@ import { fontSizes, fonts } from '@urban-ui/theme/type.stylex'
 
 const styles = stylex.create({
   container: {
-    background: tone.surfaceBase,
+    background: tone.surface,
     padding: space[100],
     width: '100%',
   },
