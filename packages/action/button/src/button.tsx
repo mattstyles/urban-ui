@@ -1,3 +1,5 @@
+'use client'
+
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 
@@ -22,68 +24,68 @@ const styles = stylex.create({
     paddingInline: space['200'],
     paddingBlock: space['100'],
     borderRadius: radii.lg,
-    cursor: 'pointer',
     fontWeight: fontWeights.medium,
-    transition: 'background 0.2s, border-color 0.2s, color 0.2s',
+    transition:
+      'background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s',
     ':disabled': {
       cursor: 'not-allowed',
       opacity: 0.5,
     },
+    ':active': {
+      transform: 'scale(0.98)',
+    },
   },
 })
 
-const variants = {
-  solid: stylex.create({
-    base: {
-      backgroundColor: tone.solid,
-      color: tone.fgOnBlock,
-      borderStyle: borderStyles.none,
-      ':hover': {
-        backgroundColor: tone.solidHover,
-      },
-      ':active': {
-        backgroundColor: tone.solidActive,
-      },
+const variants = stylex.create({
+  solid: {
+    backgroundColor: tone.solid,
+    color: tone.fgOnBlock,
+    borderStyle: borderStyles.none,
+    ':hover': {
+      backgroundColor: tone.solidHover,
     },
-  }),
-  muted: stylex.create({
-    base: {
-      backgroundColor: tone.component,
+    ':active': {
+      backgroundColor: tone.solidActive,
+    },
+  },
+  muted: {
+    backgroundColor: tone.component,
+    color: tone.fgHi,
+    borderStyle: borderStyles.none,
+    ':hover': {
+      backgroundColor: tone.componentHover,
+    },
+    ':active': {
+      backgroundColor: tone.componentActive,
+    },
+  },
+  outline: {
+    backgroundColor: 'transparent',
+    borderColor: tone.border,
+    borderStyle: borderStyles.solid,
+    borderWidth: borderWidths.sm,
+    color: tone.fgHi,
+    ':hover': {
+      // borderColor: tone.borderMuted,
+      backgroundColor: tone.componentHover,
       color: tone.fgHi,
-      borderStyle: borderStyles.none,
-      ':hover': {
-        backgroundColor: tone.componentHover,
-      },
-      ':active': {
-        backgroundColor: tone.componentActive,
-      },
     },
-  }),
-  outline: stylex.create({
-    base: {
-      backgroundColor: 'transparent',
-      borderColor: tone.border,
-      borderStyle: borderStyles.solid,
-      borderWidth: borderWidths.sm,
-      color: tone.fgHi,
-      ':hover': {
-        borderColor: tone.solid,
-        color: tone.solid,
-      },
-      ':active': {
-        borderColor: tone.solidActive,
-        color: tone.solidActive,
-      },
+    ':active': {
+      // borderColor: tone.borderMuted,
+      backgroundColor: tone.componentActive,
+      color: tone.fgLo,
     },
-  }),
-}
+  },
+})
 
 const tones = {
   neutral: themes.neutral,
+  primary: themes.primary,
   accent: themes.accent,
-  critical: themes.critical,
   positive: themes.positive,
   warning: themes.warning,
+  critical: themes.critical,
   info: themes.info,
 }
 
@@ -112,7 +114,7 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'style'> {
  */
 export function Button({
   variant = 'solid',
-  tone: toneName = 'neutral',
+  tone: toneName = 'primary',
   style,
   children,
   ...props
@@ -122,7 +124,7 @@ export function Button({
       {...props}
       {...stylex.props([
         styles.base,
-        variants[variant].base,
+        variants[variant],
         tones[toneName],
         style,
       ])}

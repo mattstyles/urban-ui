@@ -506,7 +506,7 @@ export const accent = defineVars({
   },
   fgLo: {
     default: 'oklch(69.24% 0.1807 298.64)',
-    [DARK]: 'oklch(67.34% 0.2269 308.48)',
+    [DARK]: 'oklch(67.34% 0.1269 308.48)',
   },
   fgOnBlock: {
     default: 'oklch(97.82% 0.0113 308.33)',
@@ -541,7 +541,7 @@ export const accent = defineVars({
   },
   border: {
     default: 'oklch(80.24% 0.1099 293.83)',
-    [DARK]: 'oklch(40.33% 0.1443 285.57)',
+    [DARK]: 'oklch(49.19% 0.2388 285.57)',
   },
 
   solid: {
