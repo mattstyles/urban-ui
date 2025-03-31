@@ -3,7 +3,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { borderStyles, radii } from '@urban-ui/theme/borders.stylex'
-import { primary, tone } from '@urban-ui/theme/colors.stylex'
+import { accent, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import {
   fontSizes,
@@ -38,11 +38,11 @@ const styles = stylex.create({
     marginBlockEnd: space[200],
   },
   box: {
-    backgroundColor: primary.solid,
+    backgroundColor: accent.solid,
     borderRadius: radii.sm,
     minWidth: 24,
     minHeight: 24,
-    color: primary.fgOnBlock,
+    color: accent.fgOnBlock,
     fontWeight: fontWeights.semibold,
     fontSize: fontSizes.xs,
   },
@@ -84,13 +84,13 @@ const styles = stylex.create({
     width: '3rem',
   },
   sizeBlock: {
-    backgroundColor: primary.solid,
+    backgroundColor: accent.solid,
     borderRadius: radii.sm,
   },
   flexBlock: {
-    backgroundColor: primary.solid,
+    backgroundColor: accent.solid,
     borderRadius: radii.sm,
-    color: primary.fgOnBlock,
+    color: accent.fgOnBlock,
     fontWeight: fontWeights.semibold,
     fontSize: fontSizes.sm,
     paddingLeft: space[200],
@@ -325,7 +325,10 @@ export default function FlexPage() {
             gap="50"
             align="center"
             justify="space-between"
-            style={[styles.exampleInnerContainer, styles.alignmentContainer]}
+            style={[
+              styles.exampleInnerContainer,
+              styles.alignmentContainer,
+            ]}
           >
             <Box>1</Box>
             <Box>2</Box>
