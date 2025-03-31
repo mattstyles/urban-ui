@@ -114,6 +114,8 @@ export function Adjacency() {
         <Block theme={themes.critical} />
         <Block theme={themes.warning} />
         <Block theme={themes.positive} />
+        <Block theme={themes.info} />
+        <Block theme={themes.accent} />
       </Flex>
     </Flex>
   )

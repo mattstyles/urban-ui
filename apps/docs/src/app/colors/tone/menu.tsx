@@ -115,6 +115,8 @@ export function MenuExample() {
       <MenuContrast theme={themes.critical} />
       <MenuContrast theme={themes.warning} />
       <MenuContrast theme={themes.positive} />
+      <MenuContrast theme={themes.info} />
+      <MenuContrast theme={themes.accent} />
     </Flex>
   )
 }

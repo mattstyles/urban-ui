@@ -83,6 +83,8 @@ export function TextCombo() {
       <ContrastGroup theme={themes.critical} />
       <ContrastGroup theme={themes.warning} />
       <ContrastGroup theme={themes.positive} />
+      <ContrastGroup theme={themes.info} />
+      <ContrastGroup theme={themes.accent} />
       <ExampleCopy />
     </Flex>
   )
@@ -247,6 +249,14 @@ function ExampleCopy() {
         <Text color="hi">High contrast text.</Text>
       </Flex>
       <Flex gap="100" style={themes.warning}>
+        <Text color="lo">Low contrast with</Text>
+        <Text color="hi">High contrast text.</Text>
+      </Flex>
+      <Flex gap="100" style={themes.info}>
+        <Text color="lo">Low contrast with</Text>
+        <Text color="hi">High contrast text.</Text>
+      </Flex>
+      <Flex gap="100" style={themes.accent}>
         <Text color="lo">Low contrast with</Text>
         <Text color="hi">High contrast text.</Text>
       </Flex>

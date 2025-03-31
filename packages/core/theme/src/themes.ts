@@ -1,15 +1,15 @@
 import * as stylex from '@stylexjs/stylex'
 import {
+  accent,
   base,
   critical,
+  info,
   neutral,
-  primary,
   positive,
+  primary,
   tone,
   warning,
 } from './tokens/colors.stylex'
-
-const DARK = '@media (prefers-color-scheme: dark)'
 
 export const primaryTheme = stylex.createTheme(tone, {
   fgHi: primary.fgHi,
@@ -109,4 +109,44 @@ export const neutralTheme = stylex.createTheme(tone, {
   solid: neutral.solid,
   solidHover: neutral.solidHover,
   solidActive: neutral.solidActive,
+})
+
+export const infoTheme = stylex.createTheme(tone, {
+  fgHi: info.fgHi,
+  fgLo: info.fgLo,
+  fgOnBlock: info.fgOnBlock,
+
+  surfaceMuted: info.surfaceMuted,
+  surface: info.surface,
+
+  component: info.component,
+  componentHover: info.componentHover,
+  componentActive: info.componentActive,
+
+  borderMuted: info.borderMuted,
+  border: info.border,
+
+  solid: info.solid,
+  solidHover: info.solidHover,
+  solidActive: info.solidActive,
+})
+
+export const accentTheme = stylex.createTheme(tone, {
+  fgHi: accent.fgHi,
+  fgLo: accent.fgLo,
+  fgOnBlock: accent.fgOnBlock,
+
+  surfaceMuted: accent.surfaceMuted,
+  surface: accent.surface,
+
+  component: accent.component,
+  componentHover: accent.componentHover,
+  componentActive: accent.componentActive,
+
+  borderMuted: accent.borderMuted,
+  border: accent.border,
+
+  solid: accent.solid,
+  solidHover: accent.solidHover,
+  solidActive: accent.solidActive,
 })

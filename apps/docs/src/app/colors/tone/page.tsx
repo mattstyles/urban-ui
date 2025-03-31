@@ -36,6 +36,12 @@ export default function TonePage() {
         <div {...stylex.props(themes.positive)}>
           <ButtonExample />
         </div>
+        <div {...stylex.props(themes.info)}>
+          <ButtonExample />
+        </div>
+        <div {...stylex.props(themes.accent)}>
+          <ButtonExample />
+        </div>
       </Flex>
     </Flex>
   )

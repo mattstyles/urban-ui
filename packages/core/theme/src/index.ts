@@ -33,7 +33,9 @@ import { base, tone } from './tokens/colors.stylex'
 export const DARK = '@media (prefers-color-scheme: dark)'
 
 import {
+  accentTheme,
   criticalTheme,
+  infoTheme,
   neutralTheme,
   positiveTheme,
   primaryTheme,
@@ -46,6 +48,8 @@ export const themes = {
   warning: warningTheme,
   positive: positiveTheme,
   neutral: neutralTheme,
+  info: infoTheme,
+  accent: accentTheme,
 }
 
 /**

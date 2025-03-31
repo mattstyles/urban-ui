@@ -53,6 +53,7 @@ const tones = {
   primary: themes.primary,
   positive: themes.positive,
   warning: themes.warning,
+  info: themes.info,
 }
 
 export interface TagProps extends React.PropsWithChildren {
@@ -60,7 +61,7 @@ export interface TagProps extends React.PropsWithChildren {
    * Tonal colour scheme
    * @default 'tone'
    */
-  tone?: 'primary' | 'neutral' | 'critical' | 'positive' | 'warning'
+  tone?: 'primary' | 'neutral' | 'critical' | 'positive' | 'warning' | 'info'
 
   /**
    * Visual variants

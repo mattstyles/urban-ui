@@ -82,6 +82,9 @@ export default function TagPage() {
               <Tag tone="warning" variant="solid">
                 Warning solid
               </Tag>
+              <Tag tone="info" variant="solid">
+                Info solid
+              </Tag>
             </Flex>
           </div>
 
@@ -100,6 +103,9 @@ export default function TagPage() {
               </Tag>
               <Tag tone="warning" variant="muted">
                 Warning muted
+              </Tag>
+              <Tag tone="info" variant="muted">
+                Info muted
               </Tag>
             </Flex>
           </div>

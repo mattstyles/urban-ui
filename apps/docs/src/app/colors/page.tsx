@@ -46,6 +46,12 @@ export default function ColorsPage() {
         <Flex direction="column" gap="300" style={styles.container}>
           <ToneBlock id="Warning" theme={themes.warning} />
         </Flex>
+        <Flex direction="column" gap="300" style={styles.container}>
+          <ToneBlock id="Info" theme={themes.info} />
+        </Flex>
+        <Flex direction="column" gap="300" style={styles.container}>
+          <ToneBlock id="Accent" theme={themes.accent} />
+        </Flex>
       </Flex>
     </Flex>
   )

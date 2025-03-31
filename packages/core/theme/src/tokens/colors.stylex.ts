@@ -177,64 +177,64 @@ export const neutral = defineVars({
 /**
  * @tokens color
  * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
- * Primary branded colours for a tone
+ * Colours for primary actions
  */
 export const primary = defineVars({
   fgHi: {
-    default: 'oklch(54.9% 0.2631 296.96)',
-    [DARK]: 'oklch(72.41% 0.1871 307.77)',
+    default: 'oklch(33.45% 0.0194 229.68)',
+    [DARK]: 'oklch(98.49% 0.0007 228.76)',
   },
   fgLo: {
-    default: 'oklch(69.24% 0.1807 298.64)',
-    [DARK]: 'oklch(67.34% 0.2269 308.48)',
+    default: 'oklch(51.25% 0.0159 229.19)',
+    [DARK]: 'oklch(80.6% 0.0071 228.86)',
   },
   fgOnBlock: {
-    default: 'oklch(97.82% 0.0113 308.33)',
-    [DARK]: 'oklch(97.82% 0.0113 308.33)',
+    default: 'oklch(98.49% 0.0007 228.76)',
+    [DARK]: 'oklch(14.62% 0.0049 229.07)',
   },
 
   surfaceMuted: {
-    default: 'oklch(98.64% 0.007 287.81)',
-    [DARK]: 'oklch(21.4% 0.0456 301.86)',
+    default: 'oklch(99.25% 0.0007 258.76)',
+    [DARK]: 'oklch(21.66% 0.0074 229.24)',
   },
   surface: {
-    default: 'oklch(97.75% 0.0119 289.08)',
-    [DARK]: 'oklch(23.87% 0.0663 299.59)',
+    default: 'oklch(98.49% 0.001027 258.76)',
+    [DARK]: 'oklch(24.97% 0.0092 229.29)',
   },
 
   component: {
-    default: 'oklch(93.73% 0.0315 289.75)',
-    [DARK]: 'oklch(29.79% 0.1373 301.61)',
+    default: 'oklch(92.84% 0.0042 258.79)',
+    [DARK]: 'oklch(30.19% 0.0082 229.13)',
   },
   componentHover: {
-    default: 'oklch(91.99% 0.042 296.9215)',
-    [DARK]: 'oklch(27.54% 0.142 299.08)',
+    default: 'oklch(89.29% 0.0049 258.82)',
+    [DARK]: 'oklch(28.23% 0.0089 229.14)',
   },
   componentActive: {
-    default: 'oklch(87.07% 0.056 296.19)',
-    [DARK]: 'oklch(24.03% 0.1275 299.12)',
+    default: 'oklch(88.51% 0.0053 258.83)',
+    [DARK]: 'oklch(26.14% 0.0097 229.15)',
   },
 
   borderMuted: {
-    default: 'oklch(91.41% 0.0453 298.45)',
-    [DARK]: 'oklch(30.08% 0.1216 295.69)',
+    default: 'oklch(62.38% 0.0035 252.8)',
+    [DARK]: 'oklch(32.23% 0.0089 229.14)',
   },
   border: {
-    default: 'oklch(80.24% 0.1099 293.83)',
-    [DARK]: 'oklch(40.33% 0.1443 285.57)',
+    default: 'oklch(41.45% 0.0194 249.68)',
+    [DARK]: 'oklch(84.24% 0.0097 229.15)',
   },
 
   solid: {
-    default: 'oklch(53.35% 0.2778 296.31)',
-    [DARK]: 'oklch(53.08% 0.2784 296.99)',
+    default: 'oklch(16.08% 0.042 250.98)',
+    [DARK]: 'oklch(98.32% 0.0151 229.01)',
   },
   solidHover: {
-    default: 'oklch(47.94% 0.2312 298.51)',
-    [DARK]: 'oklch(56.03% 0.2555 300.75)',
+    default: 'oklch(29.81% 0.0485 250.98)',
+    [DARK]: 'oklch(93.91% 0.014 228.99)',
   },
   solidActive: {
-    default: 'oklch(43.79% 0.2247 297.87)',
-    [DARK]: 'oklch(56.78% 0.2519 301.19)',
+    default: 'oklch(33.47% 0.043 250.98)',
+    [DARK]: 'oklch(89.69% 0.0128 228.96)',
   },
 })
 
@@ -427,5 +427,133 @@ export const warning = defineVars({
   solidActive: {
     default: 'oklch(79.26% 0.142 86.84)',
     [DARK]: 'oklch(79.36% 0.1672 90.6)',
+  },
+})
+
+/**
+ * @tokens color
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ * Positive colour tone.
+ */
+export const info = defineVars({
+  fgHi: {
+    default: 'oklch(52.47% 0.1649 248.3)',
+    [DARK]: 'oklch(79.41% 0.2271 220.77)',
+  },
+  fgLo: {
+    default: 'oklch(60.9% 0.1062 239.2)',
+    [DARK]: 'oklch(67.41% 0.1588 220.1)',
+  },
+  fgOnBlock: {
+    default: base.white,
+    [DARK]: base.white,
+  },
+
+  surfaceMuted: {
+    default: 'oklch(98.8% 0.0047 246.17)',
+    [DARK]: 'oklch(21.66% 0.0204 240.24)',
+  },
+  surface: {
+    default: 'oklch(98.2% 0.0087 246.17)',
+    [DARK]: 'oklch(22.4% 0.0256 236.86)',
+  },
+
+  component: {
+    default: 'oklch(94.7% 0.0261 250.9)',
+    [DARK]: 'oklch(31.79% 0.0523 224.2)',
+  },
+  componentHover: {
+    default: 'oklch(92.11% 0.0341 250.9)',
+    [DARK]: 'oklch(27.79% 0.0623 230.2)',
+  },
+  componentActive: {
+    default: 'oklch(86.19% 0.0576 250.9)',
+    [DARK]: 'oklch(25.62% 0.064 230.2)',
+  },
+
+  borderMuted: {
+    default: 'oklch(91.41% 0.0554 231.05)',
+    [DARK]: 'oklch(38.08% 0.0816 231.69)',
+  },
+  border: {
+    default: 'oklch(74.24% 0.1655 234.83)',
+    [DARK]: 'oklch(49.33% 0.1443 226.57)',
+  },
+
+  solid: {
+    default: 'oklch(62.82% 0.1785 248.55)',
+    [DARK]: 'oklch(74.27% 0.1833 223.42)',
+  },
+  solidHover: {
+    default: 'oklch(56.26% 0.1651 251.48)',
+    [DARK]: 'oklch(67.53% 0.1693 232.1)',
+  },
+  solidActive: {
+    default: 'oklch(51.84% 0.1523 251.48)',
+    [DARK]: 'oklch(61.04% 0.1529 235.06)',
+  },
+})
+
+/**
+ * @tokens color
+ * @css color, backgroundColor, borderColor, fill, stroke, outlineColor
+ * Accent branded colours for a tone
+ */
+export const accent = defineVars({
+  fgHi: {
+    default: 'oklch(54.9% 0.2631 296.96)',
+    [DARK]: 'oklch(72.41% 0.1871 307.77)',
+  },
+  fgLo: {
+    default: 'oklch(69.24% 0.1807 298.64)',
+    [DARK]: 'oklch(67.34% 0.2269 308.48)',
+  },
+  fgOnBlock: {
+    default: 'oklch(97.82% 0.0113 308.33)',
+    [DARK]: 'oklch(97.82% 0.0113 308.33)',
+  },
+
+  surfaceMuted: {
+    default: 'oklch(98.64% 0.007 287.81)',
+    [DARK]: 'oklch(21.4% 0.0456 301.86)',
+  },
+  surface: {
+    default: 'oklch(97.75% 0.0119 289.08)',
+    [DARK]: 'oklch(23.87% 0.0663 299.59)',
+  },
+
+  component: {
+    default: 'oklch(93.73% 0.0315 289.75)',
+    [DARK]: 'oklch(29.79% 0.1373 301.61)',
+  },
+  componentHover: {
+    default: 'oklch(91.99% 0.042 296.9215)',
+    [DARK]: 'oklch(27.54% 0.142 299.08)',
+  },
+  componentActive: {
+    default: 'oklch(87.07% 0.056 296.19)',
+    [DARK]: 'oklch(24.03% 0.1275 299.12)',
+  },
+
+  borderMuted: {
+    default: 'oklch(91.41% 0.0453 298.45)',
+    [DARK]: 'oklch(30.08% 0.1216 295.69)',
+  },
+  border: {
+    default: 'oklch(80.24% 0.1099 293.83)',
+    [DARK]: 'oklch(40.33% 0.1443 285.57)',
+  },
+
+  solid: {
+    default: 'oklch(53.35% 0.2778 296.31)',
+    [DARK]: 'oklch(56.02% 0.2784 297)',
+  },
+  solidHover: {
+    default: 'oklch(47.94% 0.2312 298.51)',
+    [DARK]: 'oklch(51.33% 0.266 297)',
+  },
+  solidActive: {
+    default: 'oklch(43.79% 0.2247 297.87)',
+    [DARK]: 'oklch(44.71% 0.2484 292.7)',
   },
 })
