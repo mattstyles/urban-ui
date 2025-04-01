@@ -144,7 +144,13 @@ export default function ButtonPage() {
           </Text>
 
           <Flex gap="200" wrap="wrap">
-            <Button variant="solid">Default</Button>
+            <Button
+              onPress={() => {
+                window.alert('Press')
+              }}
+            >
+              Default
+            </Button>
             <Button variant="solid" isDisabled>
               isDisabled
             </Button>

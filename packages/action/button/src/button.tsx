@@ -29,11 +29,7 @@ const styles = stylex.create({
     fontSize: fontSizes.md,
     transition:
       'background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s',
-    ':disabled': {
-      cursor: 'not-allowed',
-      opacity: 0.5,
-    },
-    ':active': {
+    ':is([data-pressed], :active)': {
       transform: 'scale(0.98)',
     },
   },
@@ -41,6 +37,8 @@ const styles = stylex.create({
     ':disabled': {
       backgroundColor: disabled.background,
       color: disabled.fg,
+      cursor: 'not-allowed',
+      opacity: 0.5,
     },
     ':disabled:hover': {
       backgroundColor: disabled.background,
@@ -56,20 +54,23 @@ const variants = stylex.create({
   solid: {
     backgroundColor: tone.solid,
     color: tone.fgOnBlock,
-    ':hover': {
+    ':is([data-hovered], :hover)': {
       backgroundColor: tone.solidHover,
     },
-    ':active': {
+    ':is([data-pressed], :active)': {
       backgroundColor: tone.solidActive,
     },
+    // '&[data-pressed]': {
+    //   backgroundColor: tone.solidActive,
+    // },
   },
   muted: {
     backgroundColor: tone.component,
     color: tone.fgHi,
-    ':hover': {
+    ':is([data-hovered], :hover)': {
       backgroundColor: tone.componentHover,
     },
-    ':active': {
+    ':is([data-pressed], :active)': {
       backgroundColor: tone.componentActive,
     },
   },
@@ -80,10 +81,10 @@ const variants = stylex.create({
     borderWidth: borderWidths.sm,
     color: tone.fgHi,
     // @TODO probably alpha scale is better here, maybe?
-    ':hover': {
+    ':is([data-hovered], :hover)': {
       backgroundColor: tone.componentHover,
     },
-    ':active': {
+    ':is([data-pressed], :active)': {
       backgroundColor: tone.componentActive,
     },
   },
