@@ -11,7 +11,7 @@ import {
   borderWidths,
   radii,
 } from '@urban-ui/theme/borders.stylex'
-import { tone } from '@urban-ui/theme/colors.stylex'
+import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { Button as AriaButton } from 'react-aria-components'
@@ -19,13 +19,12 @@ import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
 
 const styles = stylex.create({
   base: {
-    // display: 'inline-flex',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // gap: space['100'],
     paddingInline: space['400'],
     paddingBlock: space['200'],
     borderRadius: radii.lg,
+    borderColor: base.transparent,
+    borderStyle: borderStyles.solid,
+    borderWidth: borderWidths.sm,
     fontWeight: fontWeights.medium,
     fontSize: fontSizes.md,
     transition:
@@ -39,10 +38,15 @@ const styles = stylex.create({
     },
   },
   disabled: {
-    ':hover': {
-      opacity: 0.5,
+    ':disabled': {
+      backgroundColor: disabled.background,
+      color: disabled.fg,
     },
-    ':active': {
+    ':disabled:hover': {
+      backgroundColor: disabled.background,
+      color: disabled.fg,
+    },
+    ':disabled:active': {
       transform: 'scale(1)',
     },
   },
@@ -52,7 +56,6 @@ const variants = stylex.create({
   solid: {
     backgroundColor: tone.solid,
     color: tone.fgOnBlock,
-    borderStyle: borderStyles.none,
     ':hover': {
       backgroundColor: tone.solidHover,
     },
@@ -63,7 +66,6 @@ const variants = stylex.create({
   muted: {
     backgroundColor: tone.component,
     color: tone.fgHi,
-    borderStyle: borderStyles.none,
     ':hover': {
       backgroundColor: tone.componentHover,
     },
@@ -72,7 +74,7 @@ const variants = stylex.create({
     },
   },
   outline: {
-    backgroundColor: 'transparent',
+    backgroundColor: base.transparent,
     borderColor: tone.border,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.sm,
@@ -80,11 +82,9 @@ const variants = stylex.create({
     // @TODO probably alpha scale is better here, maybe?
     ':hover': {
       backgroundColor: tone.componentHover,
-      color: tone.fgHi,
     },
     ':active': {
       backgroundColor: tone.componentActive,
-      color: tone.fgLo,
     },
   },
 })
@@ -102,7 +102,8 @@ const tones = {
 export interface ButtonProps
   extends Omit<AriaButtonProps, 'style' | 'children'>,
     React.PropsWithChildren,
-    React.RefAttributes<HTMLButtonElement> {
+    React.RefAttributes<HTMLButtonElement>,
+    Partial<Pick<HTMLButtonElement, 'disabled'>> {
   /**
    * Visual variant
    * @default 'solid'
@@ -143,10 +144,12 @@ export function Button({
     <Flex asChild align="center" justify="center" gap="100">
       <AriaButton
         {...props}
+        isDisabled={props.isDisabled || props.disabled}
         {...stylex.props([
           styles.base,
           variants[variant],
           tones[toneName],
+          styles.disabled,
           style,
         ])}
       >

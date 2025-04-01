@@ -21,6 +21,17 @@ export const base = defineVars({
   },
 })
 
+export const disabled = defineVars({
+  background: {
+    default: 'oklch(92.84% 0.0042 228.81)',
+    [DARK]: 'oklch(30.19% 0.0082 229.13)',
+  },
+  fg: {
+    default: 'oklch(51.25% 0.0159 229.19)',
+    [DARK]: 'oklch(80.6% 0.0071 228.86)',
+  },
+})
+
 /**
  * @tokens colors
  * @css backgroundColor

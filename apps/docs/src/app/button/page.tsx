@@ -146,6 +146,15 @@ export default function ButtonPage() {
           <Flex gap="200" wrap="wrap">
             <Button variant="solid">Default</Button>
             <Button variant="solid" isDisabled>
+              isDisabled
+            </Button>
+            <Button
+              disabled
+              tone="critical"
+              onPress={() => {
+                window.alert('I should not trigger')
+              }}
+            >
               Disabled
             </Button>
           </Flex>
