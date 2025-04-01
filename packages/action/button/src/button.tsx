@@ -2,7 +2,9 @@
 
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
+import { Flex } from '@urban-ui/flex'
 
+import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
 import {
   borderStyles,
@@ -11,20 +13,21 @@ import {
 } from '@urban-ui/theme/borders.stylex'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-import { fontWeights } from '@urban-ui/theme/type.stylex'
+import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 import { Button as AriaButton } from 'react-aria-components'
 import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
 
 const styles = stylex.create({
   base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: space['100'],
-    paddingInline: space['200'],
-    paddingBlock: space['100'],
+    // display: 'inline-flex',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // gap: space['100'],
+    paddingInline: space['400'],
+    paddingBlock: space['200'],
     borderRadius: radii.lg,
     fontWeight: fontWeights.medium,
+    fontSize: fontSizes.md,
     transition:
       'background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s',
     ':disabled': {
@@ -33,6 +36,14 @@ const styles = stylex.create({
     },
     ':active': {
       transform: 'scale(0.98)',
+    },
+  },
+  disabled: {
+    ':hover': {
+      opacity: 0.5,
+    },
+    ':active': {
+      transform: 'scale(1)',
     },
   },
 })
@@ -66,13 +77,12 @@ const variants = stylex.create({
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.sm,
     color: tone.fgHi,
+    // @TODO probably alpha scale is better here, maybe?
     ':hover': {
-      // borderColor: tone.borderMuted,
       backgroundColor: tone.componentHover,
       color: tone.fgHi,
     },
     ':active': {
-      // borderColor: tone.borderMuted,
       backgroundColor: tone.componentActive,
       color: tone.fgLo,
     },
@@ -89,7 +99,10 @@ const tones = {
   info: themes.info,
 }
 
-export interface ButtonProps extends Omit<AriaButtonProps, 'style'> {
+export interface ButtonProps
+  extends Omit<AriaButtonProps, 'style' | 'children'>,
+    React.PropsWithChildren,
+    React.RefAttributes<HTMLButtonElement> {
   /**
    * Visual variant
    * @default 'solid'
@@ -119,17 +132,26 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
+  const content =
+    typeof children === 'string' ? (
+      <Text weight="semibold">{children}</Text>
+    ) : (
+      children
+    )
+
   return (
-    <AriaButton
-      {...props}
-      {...stylex.props([
-        styles.base,
-        variants[variant],
-        tones[toneName],
-        style,
-      ])}
-    >
-      {children}
-    </AriaButton>
+    <Flex asChild align="center" justify="center" gap="100">
+      <AriaButton
+        {...props}
+        {...stylex.props([
+          styles.base,
+          variants[variant],
+          tones[toneName],
+          style,
+        ])}
+      >
+        {content}
+      </AriaButton>
+    </Flex>
   )
 }

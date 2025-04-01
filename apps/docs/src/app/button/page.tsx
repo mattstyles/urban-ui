@@ -9,6 +9,8 @@ import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
+import * as React from 'react'
+
 const styles = stylex.create({
   container: {
     padding: space[200],
