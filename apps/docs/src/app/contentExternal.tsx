@@ -17,7 +17,7 @@ const styles = stylex.create({
     borderColor: 'black',
     borderWidth: 1,
     padding: 20,
-    backgroundColor: tone.surfaceBase,
+    backgroundColor: tone.surface,
     color: tone.fgHi,
     margin: space[200],
   },

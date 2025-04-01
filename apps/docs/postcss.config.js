@@ -59,6 +59,10 @@ const urbanTagIncludePaths = getPackageIncludePaths('@urban-ui/tag', [
   path.join(projectRoot, 'node_modules'),
   path.join(monorepoRoot, 'node_modules'),
 ])
+const urbanButtonIncludePaths = getPackageIncludePaths('@urban-ui/button', [
+  path.join(projectRoot, 'node_modules'),
+  path.join(monorepoRoot, 'node_modules'),
+])
 
 const externalImportPaths = [
   ...urbanFlexIncludePaths,
@@ -66,6 +70,7 @@ const externalImportPaths = [
   ...urbanTextIncludePaths,
   ...urbanTestIncludePaths,
   ...urbanTagIncludePaths,
+  ...urbanButtonIncludePaths,
   ...openPropsIncludePaths,
 ]
 

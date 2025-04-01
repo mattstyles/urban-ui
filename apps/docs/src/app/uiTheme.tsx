@@ -2,7 +2,7 @@
 
 import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
-import { primary } from '@urban-ui/theme'
+import { themes } from '@urban-ui/theme'
 import { tone } from '@urban-ui/theme/colors.stylex'
 
 const styles = stylex.create({
@@ -22,8 +22,8 @@ export function UIThemeContent() {
     <div {...stylex.props(styles.container)}>
       <h1>Urban UI themed content</h1>
       <p {...stylex.props(styles.p)}>Styled with Urban UI theme.</p>
-      <p {...stylex.props(styles.p, primary)}>
-        Styled with Urban UI primary theme.
+      <p {...stylex.props(styles.p, themes.accent)}>
+        Styled with Urban UI accent theme.
       </p>
     </div>
   )
