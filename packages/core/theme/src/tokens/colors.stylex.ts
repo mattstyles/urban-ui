@@ -16,8 +16,12 @@ export const base = defineVars({
     [DARK]: 'oklch(100% 0 0)',
   },
   white: {
-    default: 'oklch(1000% 0 0)',
+    default: 'oklch(100% 0 0)',
     [DARK]: 'oklch(0% 0 0)',
+  },
+  focusRing: {
+    default: 'oklch(0% 0 0)',
+    [DARK]: 'oklch(100% 0 0)',
   },
 })
 
@@ -237,7 +241,7 @@ export const primary = defineVars({
 
   solid: {
     default: 'oklch(16.08% 0.042 250.98)',
-    [DARK]: 'oklch(98.32% 0.0151 229.01)',
+    [DARK]: 'oklch(99.32% 0.0043 229.01)',
   },
   solidHover: {
     default: 'oklch(29.81% 0.0485 250.98)',

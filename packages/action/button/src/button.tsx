@@ -32,6 +32,12 @@ const styles = stylex.create({
     ':is([data-pressed], :active)': {
       transform: 'scale(0.98)',
     },
+    // @TODO this will appear behind other elements and should be fixed properly to always be in front
+    ':is(:focus-visible, [data-focus-visible])': {
+      outline: '2px solid',
+      outlineColor: base.focusRing,
+      outlineOffset: '2px',
+    },
   },
   disabled: {
     ':disabled': {
@@ -60,9 +66,6 @@ const variants = stylex.create({
     ':is([data-pressed], :active)': {
       backgroundColor: tone.solidActive,
     },
-    // '&[data-pressed]': {
-    //   backgroundColor: tone.solidActive,
-    // },
   },
   muted: {
     backgroundColor: tone.component,
