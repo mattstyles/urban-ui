@@ -6,6 +6,6 @@ export const DARK = '@media (prefers-color-scheme: dark)'
 export const focus = defineVars({
   outlineColor: base.black,
   outlineSize: '2px',
-  outlineOffset: '2px',
-  outlineStyle: 'solid',
+  outlineOffset: '4px',
+  outlineStyle: 'auto',
 })
