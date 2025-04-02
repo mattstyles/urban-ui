@@ -216,7 +216,6 @@ const imageStyles = stylex.create({
   },
   image: {
     borderRadius: radii.md,
-    overflow: 'hidden',
     transition: 'transform 200ms',
 
     ':hover': {
