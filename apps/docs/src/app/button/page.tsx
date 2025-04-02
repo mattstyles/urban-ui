@@ -175,6 +175,24 @@ export default function ButtonPage() {
           </Flex>
         </section>
       </Flex>
+      <Flex direction="v" gap="400" asChild style={styles.section}>
+        <section>
+          <Text size="lg" weight="medium" asChild>
+            <h2>As link</h2>
+          </Text>
+          <Text asChild>
+            <p>Buttons can be used as links by setting the `as="link"` prop.</p>
+          </Text>
+
+          <Flex gap="200" wrap="wrap">
+            <Button as="link" href="https://www.example.com">
+              Default
+            </Button>
+            <Button href="https://www.example.com">Default</Button>
+            <Button as="link">Default</Button>
+          </Flex>
+        </section>
+      </Flex>
     </Flex>
   )
 }

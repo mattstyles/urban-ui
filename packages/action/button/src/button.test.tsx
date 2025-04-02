@@ -65,3 +65,32 @@ describe('Button', () => {
     expect(screen.getByTestId('test-button')).toBeInTheDocument()
   })
 })
+
+describe('Button polymorph', () => {
+  it('should render as button by default', () => {
+    render(<Button data-testid="test-button">Content</Button>)
+    expect(screen.getByTestId('test-button').tagName).toBe('BUTTON')
+  })
+
+  it('should render as anchor when as="link" is provided', () => {
+    render(
+      <Button data-testid="test-button" as="link" href="https://example.com">
+        Content
+      </Button>,
+    )
+    const element = screen.getByTestId('test-button')
+    expect(element.tagName).toBe('A')
+    expect(element).toHaveAttribute('href', 'https://example.com')
+  })
+
+  it('should render as anchor when href is provided without as prop', () => {
+    render(
+      <Button as="link" data-testid="test-button" href="https://example.com">
+        Content
+      </Button>,
+    )
+    const element = screen.getByTestId('test-button')
+    expect(element.tagName).toBe('A')
+    expect(element).toHaveAttribute('href', 'https://example.com')
+  })
+})

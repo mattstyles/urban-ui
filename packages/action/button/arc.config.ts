@@ -4,7 +4,11 @@ import { getTsConfig } from '@urban-ui/arc/ts'
 const tsconfig = await getTsConfig()
 
 const config: Config = {
-  include: [tsconfig.compilerOptions?.rootDir ?? 'src', '!**/*.test.ts*'],
+  include: [
+    tsconfig.compilerOptions?.rootDir ?? 'src',
+    '!**/*.test.ts*',
+    '!**/*.typetest.ts*',
+  ],
   outDir: 'dist',
   rootDir: tsconfig.compilerOptions?.rootDir ?? 'src',
   events: {
