@@ -222,15 +222,15 @@ export interface TextProps
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const {
-    size = 'md',
-    weight = 'normal',
-    font = 'body',
-    color = 'current',
+    // size = 'inherit',
+    // weight = 'normal',
+    // font = 'body',
+    // color = 'current',
     // tone,
-    // size,
-    // weight,
-    // font,
-    // color,
+    size,
+    weight,
+    font,
+    color,
     tracking,
     style,
     asChild = false,
@@ -245,7 +245,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
       ref={ref}
       {...stylex.props(
         styles.base,
-        sizeValues[size],
+        size != null && sizeValues[size],
         weight != null && weights[weight],
         font != null && fontFamilies[font],
         color != null && fontColors[color],

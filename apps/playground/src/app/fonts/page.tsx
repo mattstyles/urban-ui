@@ -10,10 +10,19 @@ const styles = stylex.create({
   },
 })
 
+// 1. Create a theme
 const eurostile = stylex.createTheme(fonts, {
   display: 'Eurostile',
   body: 'Eurostile',
   mono: 'monospace',
+})
+
+// 2. When you attach the new font theme also ensure that you attach a class with the font family set. This becomes the default for text. The same rule applies when changing any font theme (such as sizes)
+// See @urban-ui/theme presets.body for font defaults.
+const textStyles = stylex.create({
+  body: {
+    fontFamily: fonts.body,
+  },
 })
 
 const gotham = stylex.createTheme(fonts, {
@@ -43,9 +52,17 @@ const gothamTracking = stylex.createTheme(tracking, {
 
 export default function FontsPage() {
   return (
-    <Flex direction="column" gap="400" style={[eurostile, styles.container]}>
+    <Flex
+      direction="column"
+      gap="400"
+      style={[eurostile, styles.container, textStyles.body]}
+    >
       <Text size="xl">Hello eurostile from typekit</Text>
-      <Flex direction="column" gap="200" style={[gotham, gothamTracking]}>
+      <Flex
+        direction="column"
+        gap="200"
+        style={[gotham, gothamTracking, textStyles.body]}
+      >
         <Text asChild>
           <p>Hello Gotham</p>
         </Text>
