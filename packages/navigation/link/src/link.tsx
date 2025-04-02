@@ -1,3 +1,4 @@
+import { Slot } from '@radix-ui/react-slot'
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
 import { styles, variants } from '@urban-ui/styles/link'
@@ -17,7 +18,7 @@ const tones = {
 }
 
 export interface LinkProps
-  extends Omit<AriaLinkProps, 'style' | 'children'>,
+  extends Omit<AriaLinkProps, 'style' | 'className' | 'children' | 'slot'>,
     React.PropsWithChildren,
     React.RefAttributes<HTMLAnchorElement> {
   /**
@@ -36,6 +37,11 @@ export interface LinkProps
    * Additional styles to apply
    */
   style?: StyleXStyles
+
+  /**
+   * Whether to use the Slot component instead of a div
+   */
+  asChild?: boolean
 }
 
 /**
@@ -46,12 +52,13 @@ export function Link({
   children,
   variant = 'text',
   tone = 'info',
+  asChild = false,
   style,
   ...props
 }: LinkProps) {
-  const content = getSlot({ children })
+  const Element = asChild ? Slot : AriaLink
   return (
-    <AriaLink
+    <Element
       {...props}
       {...stylex.props([
         styles.base,
@@ -62,15 +69,6 @@ export function Link({
       ])}
     >
       {children}
-    </AriaLink>
+    </Element>
   )
-}
-
-/**
- * Children are a slot and a string will become a Text element, otherwise Button will honour the children passed to it.
- */
-function getSlot({ children }: { children: React.ReactNode }) {
-  const content =
-    typeof children === 'string' ? <Text>{children}</Text> : children
-  return content
 }

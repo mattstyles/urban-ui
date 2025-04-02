@@ -7,6 +7,7 @@ import { Text } from '@urban-ui/text'
 import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import NextLink from 'next/link'
 
 const styles = stylex.create({
   container: {
@@ -87,6 +88,9 @@ export default function LinkPage() {
             <Text>
               <Link href="#tones">Link inside text</Link>
             </Text>
+            <Text size="xl">
+              <Link href="#tones">Link inside big text</Link>
+            </Text>
           </Flex>
         </section>
       </Flex>
@@ -127,6 +131,49 @@ export default function LinkPage() {
           <Text>
             Here is some text with <Link href="#focus">a link</Link> in it.
           </Text>
+        </section>
+      </Flex>
+
+      <Flex direction="v" gap="400" asChild style={styles.section}>
+        <section>
+          <Text size="lg" weight="medium" asChild>
+            <h2>asChild</h2>
+          </Text>
+          <Text asChild>
+            <p>
+              Polymorphic application is supported to allow use of a custom link
+              element.
+            </p>
+          </Text>
+          <Text asChild>
+            <p>
+              Note that props can get a little <em>funky</em> when this happens.
+            </p>
+          </Text>
+
+          <Flex gap="200" wrap="wrap">
+            <Text>
+              <Link href="/">Regular link</Link>
+            </Text>
+            <Text>
+              <Link asChild>
+                <NextLink href="/">Next link</NextLink>
+              </Link>
+            </Text>
+            <Text>
+              Note that you lose much of the functionality of a regular link
+              this way, but maybe you gain something else.
+            </Text>
+          </Flex>
+
+          <Flex gap="200" wrap="wrap">
+            <Link href="#focus" asChild>
+              <Text>
+                Link <em>as</em> a text child
+              </Text>
+            </Link>
+            <Text>This will not work as no link will be applied.</Text>
+          </Flex>
         </section>
       </Flex>
     </Flex>

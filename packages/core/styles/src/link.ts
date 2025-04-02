@@ -14,9 +14,6 @@ export const styles = stylex.create({
   base: {
     textDecoration: 'none',
     color: 'inherit',
-    fontWeight: fontWeights.medium,
-    transition: 'color 0.2s',
-    // display: 'inline-flex',
     textBox: 'trim-both cap alphabetic',
 
     ':is(:focus-visible, [data-focus-visible])': {
@@ -52,6 +49,8 @@ export const variants = stylex.create({
   },
   solid: {
     color: tone.fgHi,
+    fontWeight: fontWeights.medium,
+    transition: 'color 200ms',
 
     ':is([data-hovered], :hover)': {
       color: tone.fgLo,
@@ -62,14 +61,14 @@ export const variants = stylex.create({
   },
   text: {
     boxShadow: `0 1.5px 0 ${tone.solid}`,
-    // paddingBlockEnd: space['25'],
-    transition: 'box-shadow 200ms',
+    fontWeight: fontWeights.medium,
+    transition: 'box-shadow 200ms, color 200ms',
 
     ':is([data-hovered], :hover)': {
       boxShadow: `0 1.5px 0 ${base.transparent}`,
     },
     ':is([data-pressed], :active)': {
-      color: tone.fgLo,
+      color: 'inherit',
     },
     ':visited': {
       background: 'hotpink',
