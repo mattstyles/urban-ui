@@ -24,7 +24,7 @@
     "@urban-ui/flex": "^0.7.3",
     "@urban-ui/text": "^0.7.3",
     "@urban-ui/theme": "^0.7.3",
-    "effect": "^3.14.5",
+    "@urban-ui/styles": "^0.7.3",
     "react-aria-components": "^1.7.1"
   },
   "peerDependencies": {
@@ -34,7 +34,7 @@
   "devDependencies": {
     "@happy-dom/jest-environment": "^17.1.0",
     "@jest/globals": "^29.7.0",
-    "@stylexswc/jest": "0.6.6",
+    "@stylexswc/jest": "0.7.1",
     "@swc/jest": "^0.2.36",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^16.2.0",

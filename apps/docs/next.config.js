@@ -23,6 +23,7 @@ const config = {
   // },
   // reactStrictMode: true,
   // Transpilation is for app/components i.e. reaching in to packages looking for mdx files
+  // Transpilation is only required in dev for stylex to propagate and only because this is a monorepo
   transpilePackages: [
     '@stylexjs/open-props',
     '@urban-ui/theme',
