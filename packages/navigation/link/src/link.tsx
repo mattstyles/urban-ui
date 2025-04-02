@@ -1,3 +1,6 @@
+'use client'
+// react-aria-components link is a client-side component, but is not marked as such
+
 import { Slot } from '@radix-ui/react-slot'
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
@@ -68,6 +71,7 @@ export function Link({
   tone = 'info',
   asChild = false,
   style,
+  // @TODO add ref
   ...props
 }: LinkProps) {
   const Element = asChild ? Slot : AriaLink

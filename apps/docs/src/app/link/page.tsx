@@ -1,14 +1,19 @@
 'use client'
 
 import * as stylex from '@stylexjs/stylex'
-import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
 import { Link } from '@urban-ui/link'
 import { Text } from '@urban-ui/text'
-import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
+import {
+  borderStyles,
+  borderWidths,
+  radii,
+} from '@urban-ui/theme/borders.stylex'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import NextLink from 'next/link'
+
+import { ButtonExample } from './buttonExample'
 
 const styles = stylex.create({
   container: {
@@ -178,28 +183,56 @@ export default function LinkPage() {
         </section>
       </Flex>
 
+      <ButtonExample />
+
       <Flex direction="v" gap="400" asChild style={styles.section}>
-        <section id="button">
+        <section id="clear">
           <Text size="lg" weight="medium" asChild>
-            <h2>display as button</h2>
+            <h2>Clear</h2>
           </Text>
           <Text asChild>
-            <p>
-              Variants are available to style the link as a button, but it will
-              still semantically be a link.
-            </p>
+            <p>Clear can be used to wrap arbitrary content.</p>
           </Text>
 
           <Flex gap="200" wrap="wrap">
-            <Link href="#button" display="button" variant="outline" tone="info">
-              Link
+            <Link href="#clear" variant="clear">
+              <CustomImage />
             </Link>
-            <Button variant="outline" tone="info">
-              Button
-            </Button>
           </Flex>
         </section>
       </Flex>
+    </Flex>
+  )
+}
+
+const imageStyles = stylex.create({
+  base: {
+    padding: space[50],
+    borderRadius: radii.lg,
+    borderWidth: borderWidths.md,
+    borderColor: tone.border,
+    borderStyle: 'solid',
+    background: tone.component,
+  },
+  image: {
+    borderRadius: radii.md,
+    overflow: 'hidden',
+    transition: 'transform 200ms',
+
+    ':hover': {
+      transform: 'scale(0.98)',
+    },
+  },
+})
+
+function CustomImage() {
+  return (
+    <Flex style={imageStyles.base}>
+      <img
+        {...stylex.props(imageStyles.image)}
+        src="https://loremflickr.com/320/240"
+        alt="Placeholder to show how the link element can wrap arbitrary content"
+      />
     </Flex>
   )
 }
