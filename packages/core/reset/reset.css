@@ -16,6 +16,13 @@
     margin: 0;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      /* biome-ignore lint/correctness/noUnknownProperty: new css property */
+      interpolate-size: allow-keywords;
+    }
+  }
+
   body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
