@@ -39,6 +39,7 @@
     "@urban-ui/test": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
+    "@urban-ui/link": "workspace:*",
     "chroma-js": "^2.4.2",
     "clsx": "^2.0.0",
     "culori": "^4.0.1",

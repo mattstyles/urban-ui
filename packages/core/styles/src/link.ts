@@ -1,0 +1,78 @@
+import * as stylex from '@stylexjs/stylex'
+
+import {
+  borderStyles,
+  borderWidths,
+  radii,
+} from '@urban-ui/theme/borders.stylex'
+import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
+import { focus } from '@urban-ui/theme/focus.stylex'
+import { space } from '@urban-ui/theme/layout.stylex'
+import { fontWeights } from '@urban-ui/theme/type.stylex'
+
+export const styles = stylex.create({
+  base: {
+    textDecoration: 'none',
+    color: 'inherit',
+    fontWeight: fontWeights.medium,
+    transition: 'color 0.2s',
+    // display: 'inline-flex',
+    textBox: 'trim-both cap alphabetic',
+
+    ':is(:focus-visible, [data-focus-visible])': {
+      outlineColor: focus.outlineColor,
+      outlineOffset: `calc(${focus.outlineOffset} * 1)`,
+      outlineStyle: focus.outlineStyle,
+      outlineWidth: focus.outlineSize,
+      // boxShadow: `0 0 0 calc(${focus.outlineSize}* 2) ${base.white}`,
+      zIndex: 1,
+    },
+  },
+  disabled: {
+    color: disabled.fg,
+    cursor: 'not-allowed',
+    opacity: 0.5,
+    boxShadow: 'none',
+
+    ':is([data-hovered], :hover)': {
+      boxShadow: 'none',
+      color: disabled.fg,
+    },
+    ':is([data-pressed], :active)': {
+      boxShadow: 'none',
+      color: disabled.fg,
+    },
+  },
+})
+
+export const variants = stylex.create({
+  clear: {
+    fontWeight: 'inherit',
+    color: 'inherit',
+  },
+  solid: {
+    color: tone.fgHi,
+
+    ':is([data-hovered], :hover)': {
+      color: tone.fgLo,
+    },
+    ':is([data-pressed], :active)': {
+      color: tone.fgLo,
+    },
+  },
+  text: {
+    boxShadow: `0 1.5px 0 ${tone.solid}`,
+    // paddingBlockEnd: space['25'],
+    transition: 'box-shadow 200ms',
+
+    ':is([data-hovered], :hover)': {
+      boxShadow: `0 1.5px 0 ${base.transparent}`,
+    },
+    ':is([data-pressed], :active)': {
+      color: tone.fgLo,
+    },
+    ':visited': {
+      background: 'hotpink',
+    },
+  },
+})

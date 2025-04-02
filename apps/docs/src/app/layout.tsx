@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
+import { presets } from '@urban-ui/theme'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import cx from 'clsx'
 import type { Metadata } from 'next'
@@ -27,10 +28,13 @@ export default function RootLayout({
   children,
 }: { children: React.ReactNode }) {
   const htmlStyles = stylex.props(styles.html)
+  const bodyStyles = stylex.props(presets.body)
 
   return (
     <html lang="en" className={cx(inter.variable, htmlStyles.className)}>
-      <body className={cx(roboto.className, roboto.variable)}>
+      <body
+        className={cx(roboto.className, roboto.variable, bodyStyles.className)}
+      >
         <Text weight="semibold" size="xxl">
           Layout rendered title
         </Text>
