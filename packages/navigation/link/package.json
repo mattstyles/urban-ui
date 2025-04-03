@@ -16,9 +16,7 @@
     "typecheck": "tsc",
     "clean": "del dist",
     "dev": "arc watch",
-    "build": "arc build",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "build": "arc build"
   },
   "dependencies": {
     "@urban-ui/text": "^0.7.3",
