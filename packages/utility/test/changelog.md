@@ -1,5 +1,13 @@
 # @urban-ui/test
 
+## 0.7.2
+
+### Patch Changes
+
+- Updated dependencies [5bf8d05]
+- Updated dependencies [cbf6ffd]
+  - @urban-ui/theme@0.8.0
+
 ## 0.7.1
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @urban-ui/theme
 
+## 0.8.0
+
+### Minor Changes
+
+- 5bf8d05: add :rocket: positive, critical, and warning themes
+- cbf6ffd: add :rocket: interactive button and link components
+
 ## 0.7.3
 
 ### Patch Changes
