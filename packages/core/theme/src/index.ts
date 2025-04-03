@@ -21,14 +21,14 @@
 
 import * as stylex from '@stylexjs/stylex'
 
+import { base, tone } from './tokens/colors.stylex'
 import {
   fontSizes,
   fontWeights,
   fonts,
   lineHeights,
   tracking,
-} from '@urban-ui/theme/type.stylex'
-import { base, tone } from './tokens/colors.stylex'
+} from './tokens/type.stylex'
 
 export const DARK = '@media (prefers-color-scheme: dark)'
 
