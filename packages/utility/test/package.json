@@ -8,10 +8,7 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
+  "files": ["src", "dist"],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",
@@ -27,8 +24,8 @@
   },
   "peerDependencies": {
     "react": "^19.0.0",
-    "@stylexjs/stylex": "^0.10.0",
-    "@stylexjs/open-props": "^0.10.0"
+    "@stylexjs/stylex": "^0.11.1",
+    "@stylexjs/open-props": "^0.11.1"
   },
   "devDependencies": {
     "@types/node": "^22.10.6",

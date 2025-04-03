@@ -9,10 +9,14 @@ const __dirname = path.dirname(__filename)
 const nextConfig: NextConfig = {
   transpilePackages: [
     '@urban-ui/theme',
+    '@urban-ui/styles',
     '@urban-ui/text',
     '@urban-ui/flex',
     '@urban-ui/test',
     '@urban-ui/tag',
+    '@urban-ui/button',
+    '@urban-ui/link',
+    '@stylexjs/open-props',
   ],
 }
 

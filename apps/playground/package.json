@@ -10,6 +10,7 @@
     "lint": "biome lint src"
   },
   "dependencies": {
+    "@stylexjs/open-props": "0.11.1",
     "@stylexjs/stylex": "0.11.1",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/reset": "workspace:*",
