@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/theme",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -13,7 +13,10 @@
     "./borders.stylex": "./dist/tokens/borders.stylex.js",
     "./focus.stylex": "./dist/tokens/focus.stylex.js"
   },
-  "files": ["src", "dist"],
+  "files": [
+    "src",
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",

@@ -1,8 +1,10 @@
 {
   "name": "@urban-ui/reset",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "private": true,
   "license": "MIT",
-  "files": ["reset.css"],
+  "files": [
+    "reset.css"
+  ],
   "sideEffects": true
 }

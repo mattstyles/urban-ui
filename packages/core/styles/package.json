@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/styles",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -10,7 +10,10 @@
     "./button": "./dist/button.js",
     "./link": "./dist/link.js"
   },
-  "files": ["src", "dist"],
+  "files": [
+    "src",
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",
@@ -21,7 +24,7 @@
     "build": "arc build"
   },
   "dependencies": {
-    "@urban-ui/theme": "^0.7.3"
+    "@urban-ui/theme": "^0.8.0"
   },
   "peerDependencies": {
     "react": "^19.0.0",

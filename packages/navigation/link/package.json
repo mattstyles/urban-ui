@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/link",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -8,7 +8,10 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "files": ["src", "dist"],
+  "files": [
+    "src",
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",
@@ -19,9 +22,9 @@
     "build": "arc build"
   },
   "dependencies": {
-    "@urban-ui/text": "^0.7.3",
-    "@urban-ui/theme": "^0.7.3",
-    "@urban-ui/styles": "^0.7.3",
+    "@urban-ui/text": "^0.8.0",
+    "@urban-ui/theme": "^0.8.0",
+    "@urban-ui/styles": "^0.8.0",
     "@radix-ui/react-slot": "^1.1.2",
     "react-aria-components": "^1.7.1"
   },

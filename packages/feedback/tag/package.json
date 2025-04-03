@@ -1,6 +1,6 @@
 {
   "name": "@urban-ui/tag",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "type": "module",
   "module": "./dist/index.js",
   "main": "./dist/index.js",
@@ -23,9 +23,9 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@urban-ui/theme": "^0.7.3",
-    "@urban-ui/flex": "^0.7.3",
-    "@urban-ui/text": "^0.7.3"
+    "@urban-ui/theme": "^0.8.0",
+    "@urban-ui/flex": "^0.8.0",
+    "@urban-ui/text": "^0.8.0"
   },
   "peerDependencies": {
     "react": "^19.0.0",
