@@ -1,9 +1,4 @@
 import * as stylex from '@stylexjs/stylex'
-import { omit } from 'lodash'
-import { Content } from './content.tsx'
-import { ContentExternal } from './contentExternal.tsx'
-// import { ContentOpenProps } from './contentOpenProps.tsx'
-import { UIThemeContent } from './uiTheme.tsx'
 
 const styles = stylex.create({
   container: {
@@ -18,10 +13,6 @@ export default function Home() {
       <p {...stylex.props(styles.container)}>
         Styled with stylex from server render. Should be pink.
       </p>
-      <Content />
-      <ContentExternal />
-      {/* <ContentOpenProps /> */}
-      <UIThemeContent />
     </main>
   )
 }

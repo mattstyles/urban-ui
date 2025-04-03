@@ -73,8 +73,6 @@ const pkgs = [
   '@urban-ui/tag',
   '@urban-ui/button',
   '@urban-ui/link',
-
-  '@stylexjs/open-props',
 ]
 
 const pkgIncludePaths = pkgs.flatMap((pkg) =>
