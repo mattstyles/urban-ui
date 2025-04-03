@@ -34,55 +34,75 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
   ]
 }
 
-const openPropsIncludePaths = getPackageIncludePaths('@stylexjs/open-props', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
+// const openPropsIncludePaths = getPackageIncludePaths('@stylexjs/open-props', [
+//   path.join(projectRoot, 'node_modules'),
+//   path.join(monorepoRoot, 'node_modules'),
+// ])
 
-const urbanThemeIncludePaths = getPackageIncludePaths('@urban-ui/theme', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanTextIncludePaths = getPackageIncludePaths('@urban-ui/text', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanFlexIncludePaths = getPackageIncludePaths('@urban-ui/flex', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanTestIncludePaths = getPackageIncludePaths('@urban-ui/test', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanTagIncludePaths = getPackageIncludePaths('@urban-ui/tag', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanButtonIncludePaths = getPackageIncludePaths('@urban-ui/button', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
+// const urbanThemeIncludePaths = getPackageIncludePaths('@urban-ui/theme', [
+//   path.join(projectRoot, 'node_modules'),
+//   path.join(monorepoRoot, 'node_modules'),
+// ])
+// const urbanTextIncludePaths = getPackageIncludePaths('@urban-ui/text', [
+//   path.join(projectRoot, 'node_modules'),
+//   path.join(monorepoRoot, 'node_modules'),
+// ])
+// const urbanFlexIncludePaths = getPackageIncludePaths('@urban-ui/flex', [
+//   path.join(projectRoot, 'node_modules'),
+//   path.join(monorepoRoot, 'node_modules'),
+// ])
+// const urbanTestIncludePaths = getPackageIncludePaths('@urban-ui/test', [
+//   path.join(projectRoot, 'node_modules'),
+//   path.join(monorepoRoot, 'node_modules'),
+// ])
+// const urbanTagIncludePaths = getPackageIncludePaths('@urban-ui/tag', [
+//   path.join(projectRoot, 'node_modules'),
+//   path.join(monorepoRoot, 'node_modules'),
+// ])
+// const urbanButtonIncludePaths = getPackageIncludePaths('@urban-ui/button', [
+//   path.join(projectRoot, 'node_modules'),
+//   path.join(monorepoRoot, 'node_modules'),
+// ])
 
-const externalImportPaths = [
-  ...urbanFlexIncludePaths,
-  ...urbanThemeIncludePaths,
-  ...urbanTextIncludePaths,
-  ...urbanTestIncludePaths,
-  ...urbanTagIncludePaths,
-  ...urbanButtonIncludePaths,
-  ...openPropsIncludePaths,
+const pkgs = [
+  '@urban-ui/theme',
+  '@urban-ui/styles',
+  '@urban-ui/flex',
+  '@urban-ui/text',
+  '@urban-ui/test',
+  '@urban-ui/tag',
+  '@urban-ui/button',
+  '@urban-ui/link',
+
+  '@stylexjs/open-props',
 ]
 
+const pkgIncludePaths = pkgs.flatMap((pkg) =>
+  getPackageIncludePaths(pkg, [
+    path.join(projectRoot, 'node_modules'),
+    path.join(monorepoRoot, 'node_modules'),
+  ]),
+)
+
+// const externalImportPaths = [
+//   ...urbanFlexIncludePaths,
+//   ...urbanThemeIncludePaths,
+//   ...urbanTextIncludePaths,
+//   ...urbanTestIncludePaths,
+//   ...urbanTagIncludePaths,
+//   ...urbanButtonIncludePaths,
+//   ...openPropsIncludePaths,
+// ]
+
 console.log('Importing')
-console.log(externalImportPaths)
+console.log(pkgIncludePaths)
 
 // CJS or ESM makes no difference to the paths
 export default {
   // module.exports = {
   plugins: {
     '@stylexswc/postcss-plugin': {
-      include: ['src/app/**/*.{js,jsx,ts,tsx}', ...externalImportPaths],
+      include: ['src/app/**/*.{js,jsx,ts,tsx}', ...pkgIncludePaths],
       useCSSLayers: true,
       rsOptions: {
         aliases: {

@@ -37,34 +37,25 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
 /**
  * Plugin will automatically include all of these variables, if you add @stylex/open-props then it will include those variables in the output and whilst classnames will not be generated the variables will be, even though they are unused.
  */
-const urbanThemeIncludePaths = getPackageIncludePaths('@urban-ui/theme', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanTextIncludePaths = getPackageIncludePaths('@urban-ui/text', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanFlexIncludePaths = getPackageIncludePaths('@urban-ui/flex', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanTestIncludePaths = getPackageIncludePaths('@urban-ui/test', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
-const urbanTagIncludePaths = getPackageIncludePaths('@urban-ui/tag', [
-  path.join(projectRoot, 'node_modules'),
-  path.join(monorepoRoot, 'node_modules'),
-])
+const pkgs = [
+  '@urban-ui/theme',
+  '@urban-ui/styles',
+  '@urban-ui/flex',
+  '@urban-ui/text',
+  '@urban-ui/test',
+  '@urban-ui/tag',
+  '@urban-ui/button',
+  '@urban-ui/link',
 
-const externalImportPaths = [
-  ...urbanFlexIncludePaths,
-  ...urbanThemeIncludePaths,
-  ...urbanTextIncludePaths,
-  ...urbanTestIncludePaths,
-  ...urbanTagIncludePaths,
+  '@stylexjs/open-props',
 ]
+
+const externalImportPaths = pkgs.flatMap((pkg) =>
+  getPackageIncludePaths(pkg, [
+    path.join(projectRoot, 'node_modules'),
+    path.join(monorepoRoot, 'node_modules'),
+  ]),
+)
 
 // CJS or ESM makes no difference to the paths
 export default {
