@@ -31,6 +31,8 @@ const config = {
     '@urban-ui/flex',
     '@urban-ui/test',
     '@urban-ui/tag',
+    '@urban-ui/button',
+    '@urban-ui/link',
   ],
   // webpack(config) {
   //   config.resolve.extensionAlias = {

@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
-import { Text } from '@urban-ui/text'
 import { presets } from '@urban-ui/theme'
-import { tone } from '@urban-ui/theme/colors.stylex'
+import { accent, tone } from '@urban-ui/theme/colors.stylex'
+import { space } from '@urban-ui/theme/layout.stylex'
 import cx from 'clsx'
 import type { Metadata } from 'next'
 import { inter, roboto } from '~/app/font.ts'
@@ -17,6 +17,17 @@ const styles = stylex.create({
     backgroundColor: tone.surfaceMuted,
     color: tone.fgHi,
   },
+  body: {
+    padding: space[800],
+  },
+  bar: {
+    background: `linear-gradient(90deg, ${accent.solid}, ${accent.border})`,
+    height: '4px',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
 })
 
 export const metadata: Metadata = {
@@ -28,17 +39,15 @@ export default function RootLayout({
   children,
 }: { children: React.ReactNode }) {
   const htmlStyles = stylex.props(styles.html)
-  const bodyStyles = stylex.props(presets.body)
+  const bodyStyles = stylex.props(presets.body, styles.body)
 
   return (
     <html lang="en" className={cx(inter.variable, htmlStyles.className)}>
       <body
         className={cx(roboto.className, roboto.variable, bodyStyles.className)}
       >
-        <Text weight="semibold" size="xxl">
-          Layout rendered title
-        </Text>
-        {children}
+        <div {...stylex.props(styles.bar)} />
+        <div id="root">{children}</div>
       </body>
     </html>
   )
