@@ -1,4 +1,4 @@
-import { createTheme, defineVars } from '@stylexjs/stylex'
+import { defineVars } from '@stylexjs/stylex'
 // Does not work, stylex does not see this as a static value
 // import { DARK } from '../query'
 
@@ -123,6 +123,11 @@ export const tone = defineVars({
     default: 'oklch(41.89% 0.0206 229.43)',
     [DARK]: 'oklch(69.69% 0.0128 228.96)',
   },
+
+  shadow: {
+    default: 'oklch(0.76 0.0074 258.77)',
+    [DARK]: 'oklch(0.76 0.0074 258.77)',
+  },
 })
 
 /**
@@ -186,6 +191,11 @@ export const neutral = defineVars({
   solidActive: {
     default: 'oklch(41.89% 0.0206 229.43)',
     [DARK]: 'oklch(69.69% 0.0128 228.96)',
+  },
+
+  shadow: {
+    default: 'oklch(0.76 0.0074 258.77)',
+    [DARK]: 'oklch(0.76 0.0074 258.77)',
   },
 })
 
@@ -251,6 +261,11 @@ export const primary = defineVars({
     default: 'oklch(33.47% 0.043 250.98)',
     [DARK]: 'oklch(89.69% 0.0128 228.96)',
   },
+
+  shadow: {
+    default: 'oklch(0.76 0.0074 258.77)',
+    [DARK]: 'oklch(0.76 0.0074 258.77)',
+  },
 })
 
 /**
@@ -314,6 +329,11 @@ export const critical = defineVars({
   solidActive: {
     default: 'oklch(52.36% 0.240654 7.488)',
     [DARK]: 'oklch(53.54% 0.22 9.16)',
+  },
+
+  shadow: {
+    default: 'oklch(0.74 0.0458 8.67)',
+    [DARK]: 'oklch(0.74 0.0458 8.67)',
   },
 })
 
@@ -379,6 +399,11 @@ export const positive = defineVars({
     default: 'oklch(50.85% 0.2071 151.16)',
     [DARK]: 'oklch(61.36% 0.1672 159.6)',
   },
+
+  shadow: {
+    default: 'oklch(0.77 0.0285 159.43)',
+    [DARK]: 'oklch(0.77 0.0285 159.43)',
+  },
 })
 
 /**
@@ -442,6 +467,11 @@ export const warning = defineVars({
   solidActive: {
     default: 'oklch(79.26% 0.142 86.84)',
     [DARK]: 'oklch(79.36% 0.1672 90.6)',
+  },
+
+  shadow: {
+    default: 'oklch(0.79 0.0456 89.5)',
+    [DARK]: 'oklch(0.79 0.0456 89.5)',
   },
 })
 
@@ -507,6 +537,11 @@ export const info = defineVars({
     default: 'oklch(51.84% 0.1523 251.48)',
     [DARK]: 'oklch(61.04% 0.1529 235.06)',
   },
+
+  shadow: {
+    default: 'oklch(0.76 0.0372 246.62)',
+    [DARK]: 'oklch(0.76 0.0372 246.62)',
+  },
 })
 
 /**
@@ -570,5 +605,10 @@ export const accent = defineVars({
   solidActive: {
     default: 'oklch(43.79% 0.2247 297.87)',
     [DARK]: 'oklch(44.71% 0.2484 292.7)',
+  },
+
+  shadow: {
+    default: 'oklch(71.54% 0.0597 287.8)',
+    [DARK]: 'oklch(71.54% 0.0597 287.8)',
   },
 })

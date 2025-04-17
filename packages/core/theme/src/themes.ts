@@ -29,6 +29,8 @@ export const primaryTheme = stylex.createTheme(tone, {
   solid: primary.solid,
   solidHover: primary.solidHover,
   solidActive: primary.solidActive,
+
+  shadow: primary.shadow,
 })
 
 export const criticalTheme = stylex.createTheme(tone, {
@@ -49,6 +51,8 @@ export const criticalTheme = stylex.createTheme(tone, {
   solid: critical.solid,
   solidHover: critical.solidHover,
   solidActive: critical.solidActive,
+
+  shadow: critical.shadow,
 })
 
 export const warningTheme = stylex.createTheme(tone, {
@@ -69,6 +73,8 @@ export const warningTheme = stylex.createTheme(tone, {
   solid: warning.solid,
   solidHover: warning.solidHover,
   solidActive: warning.solidActive,
+
+  shadow: warning.shadow,
 })
 
 export const positiveTheme = stylex.createTheme(tone, {
@@ -89,6 +95,8 @@ export const positiveTheme = stylex.createTheme(tone, {
   solid: positive.solid,
   solidHover: positive.solidHover,
   solidActive: positive.solidActive,
+
+  shadow: positive.shadow,
 })
 
 export const neutralTheme = stylex.createTheme(tone, {
@@ -109,6 +117,8 @@ export const neutralTheme = stylex.createTheme(tone, {
   solid: neutral.solid,
   solidHover: neutral.solidHover,
   solidActive: neutral.solidActive,
+
+  shadow: neutral.shadow,
 })
 
 export const infoTheme = stylex.createTheme(tone, {
@@ -129,6 +139,8 @@ export const infoTheme = stylex.createTheme(tone, {
   solid: info.solid,
   solidHover: info.solidHover,
   solidActive: info.solidActive,
+
+  shadow: info.shadow,
 })
 
 export const accentTheme = stylex.createTheme(tone, {
@@ -149,4 +161,6 @@ export const accentTheme = stylex.createTheme(tone, {
   solid: accent.solid,
   solidHover: accent.solidHover,
   solidActive: accent.solidActive,
+
+  shadow: accent.shadow,
 })
