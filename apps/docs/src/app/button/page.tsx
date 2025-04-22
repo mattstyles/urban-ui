@@ -4,11 +4,13 @@ import * as stylex from '@stylexjs/stylex'
 
 import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
+import { Icon } from '@urban-ui/icon'
 import { Text } from '@urban-ui/text'
 import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
+import { Plus } from 'lucide-react'
 import * as React from 'react'
 
 const styles = stylex.create({
@@ -18,7 +20,7 @@ const styles = stylex.create({
   section: {
     backgroundColor: tone.surface,
     padding: space[300],
-    borderRadius: radii['2xl'],
+    borderRadius: radii.lg,
     borderWidth: borderWidths.sm,
     borderStyle: 'solid',
     borderColor: tone.borderMuted,
@@ -55,77 +57,95 @@ export default function ButtonPage() {
             </p>
           </Text>
 
-          <Flex direction="v" gap="300">
-            <Flex gap="200" wrap="wrap">
-              <Button variant="solid" tone="neutral">
-                Neutral
-              </Button>
-              <Button variant="solid" tone="primary">
-                Primary
-              </Button>
-              <Button variant="solid" tone="accent">
-                Accent
-              </Button>
-              <Button variant="solid" tone="positive">
-                Positive
-              </Button>
-              <Button variant="solid" tone="warning">
-                Warning
-              </Button>
-              <Button variant="solid" tone="critical">
-                Critical
-              </Button>
-              <Button variant="solid" tone="info">
-                Info
-              </Button>
+          <Flex direction="v" gap="500">
+            <Flex direction="v" gap="200">
+              <Text asChild size="md" weight="medium">
+                <h3>Solid</h3>
+              </Text>
+
+              <Flex gap="200" wrap="wrap">
+                <Button variant="solid" tone="neutral">
+                  Neutral
+                </Button>
+                <Button variant="solid" tone="primary">
+                  Primary
+                </Button>
+                <Button variant="solid" tone="accent">
+                  Accent
+                </Button>
+                <Button variant="solid" tone="positive">
+                  Positive
+                </Button>
+                <Button variant="solid" tone="warning">
+                  Warning
+                </Button>
+                <Button variant="solid" tone="critical">
+                  Critical
+                </Button>
+                <Button variant="solid" tone="info">
+                  Info
+                </Button>
+              </Flex>
             </Flex>
 
-            <Flex gap="200" wrap="wrap">
-              <Button variant="muted" tone="neutral">
-                Neutral
-              </Button>
-              <Button variant="muted" tone="primary">
-                Primary
-              </Button>
-              <Button variant="muted" tone="accent">
-                Accent
-              </Button>
-              <Button variant="muted" tone="positive">
-                Positive
-              </Button>
-              <Button variant="muted" tone="warning">
-                Warning
-              </Button>
-              <Button variant="muted" tone="critical">
-                Critical
-              </Button>
-              <Button variant="muted" tone="info">
-                Info
-              </Button>
+            <Flex direction="v" gap="200">
+              <Text asChild size="md" weight="medium">
+                <h3>Muted</h3>
+              </Text>
+
+              <Flex gap="200" wrap="wrap">
+                <Button variant="muted" tone="neutral">
+                  Neutral
+                </Button>
+                <Button variant="muted" tone="primary">
+                  Primary
+                </Button>
+                <Button variant="muted" tone="accent">
+                  Accent
+                </Button>
+                <Button variant="muted" tone="positive">
+                  Positive
+                </Button>
+                <Button variant="muted" tone="warning">
+                  Warning
+                </Button>
+                <Button variant="muted" tone="critical">
+                  Critical
+                </Button>
+                <Button variant="muted" tone="info">
+                  Info
+                </Button>
+              </Flex>
             </Flex>
 
-            <Flex gap="200" wrap="wrap">
-              <Button variant="outline" tone="neutral">
-                Neutral
-              </Button>
-              <Button variant="outline" tone="primary">
-                Primary
-              </Button>
-              <Button variant="outline" tone="accent">
-                Accent
-              </Button>
-              <Button variant="outline" tone="positive">
-                Positive
-              </Button>
-              <Button variant="outline" tone="warning">
-                Warning
-              </Button>
-              <Button variant="outline" tone="critical">
-                Critical
-              </Button>
-              <Button variant="outline" tone="info">
-                Info
-              </Button>
+            <Flex direction="v" gap="200">
+              <Text asChild size="md" weight="medium">
+                <h3>Outline</h3>
+              </Text>
+
+              <Flex gap="200" wrap="wrap">
+                <Button variant="outline" tone="neutral">
+                  Neutral
+                </Button>
+                <Button variant="outline" tone="primary">
+                  Primary
+                </Button>
+                <Button variant="outline" tone="accent">
+                  Accent
+                </Button>
+                <Button variant="outline" tone="positive">
+                  Positive
+                </Button>
+                <Button variant="outline" tone="warning">
+                  Warning
+                </Button>
+                <Button variant="outline" tone="critical">
+                  Critical
+                </Button>
+                <Button variant="outline" tone="info">
+                  Info
+                </Button>
+              </Flex>
             </Flex>
           </Flex>
         </section>
@@ -208,6 +228,23 @@ export default function ButtonPage() {
             <Button variant="clear">
               <CustomImage />
             </Button>
+          </Flex>
+        </section>
+      </Flex>
+
+      <Flex direction="v" gap="400" asChild style={styles.section}>
+        <section>
+          <Text size="lg" weight="medium" asChild>
+            <h2>Icon</h2>
+          </Text>
+
+          <Flex gap="200" wrap="wrap" align="center">
+            <Button variant="solid">Only text</Button>
+            <Button variant="solid">
+              <Plus />
+              <Text textBox="none">Hello world</Text>
+            </Button>
+            <div style={{ background: 'hotpink', height: 100, width: 32 }} />
           </Flex>
         </section>
       </Flex>

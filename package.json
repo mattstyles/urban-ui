@@ -16,7 +16,8 @@
     "packages/utility/*",
     "packages/feedback/*",
     "packages/action/*",
-    "packages/navigation/*"
+    "packages/navigation/*",
+    "packages/display/*"
   ],
   "repository": {
     "type": "git",

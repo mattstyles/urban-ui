@@ -73,6 +73,7 @@ const pkgs = [
   '@urban-ui/tag',
   '@urban-ui/button',
   '@urban-ui/link',
+  '@urban-ui/icon',
 ]
 
 const pkgIncludePaths = pkgs.flatMap((pkg) =>

@@ -18,7 +18,7 @@ export const styles = stylex.create({
     justifyContent: 'center',
     gap: space['100'],
     paddingInline: space['400'],
-    paddingBlock: space['200'],
+    paddingBlock: space['75'],
     borderRadius: radii.lg,
     borderColor: base.transparent,
     borderStyle: borderStyles.solid,

@@ -89,7 +89,9 @@ export function Link({
           style,
         ])}
       >
-        <Text weight="semibold">{children}</Text>
+        <Text weight="semibold" textBox="none">
+          {children}
+        </Text>
       </Element>
     )
   }

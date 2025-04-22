@@ -8,6 +8,8 @@ import { themes } from '@urban-ui/theme'
 import { Button as AriaButton } from 'react-aria-components'
 import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
 
+import { ButtonText } from './text'
+
 const tones = {
   neutral: themes.neutral,
   primary: themes.primary,
@@ -70,6 +72,7 @@ export function Button({
   )
 }
 Button.displayName = '@urban-ui/button'
+Button.Text = ButtonText
 
 /**
  * Children are a slot and a string will become a Text element, otherwise Button will honour the children passed to it.
@@ -77,7 +80,7 @@ Button.displayName = '@urban-ui/button'
 function getSlot({ children }: { children: React.ReactNode }) {
   const content =
     typeof children === 'string' ? (
-      <Text weight="semibold">{children}</Text>
+      <ButtonText>{children}</ButtonText>
     ) : (
       children
     )

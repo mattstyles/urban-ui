@@ -33,6 +33,7 @@ const config = {
     '@urban-ui/tag',
     '@urban-ui/button',
     '@urban-ui/link',
+    '@urban-ui/icon',
   ],
   // webpack(config) {
   //   config.resolve.extensionAlias = {

@@ -1,0 +1,39 @@
+{
+  "name": "@urban-ui/icon",
+  "version": "0.8.0",
+  "type": "module",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": ["src", "dist"],
+  "license": "MIT",
+  "scripts": {
+    "lint": "biome lint src",
+    "format": "biome format src --write",
+    "typecheck": "tsc",
+    "clean": "del dist",
+    "dev": "arc watch",
+    "build": "arc build",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@urban-ui/theme": "^0.8.0",
+    "@radix-ui/react-slot": "^1.1.2"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "@stylexjs/stylex": "0.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.6",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@urban-ui/tsconfig": "workspace:*",
+    "del-cli": "^6.0.0",
+    "react": "^19.0.0",
+    "typescript": "^5.7.3"
+  }
+}
