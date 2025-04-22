@@ -69,6 +69,7 @@ export function Button({
     </AriaButton>
   )
 }
+Button.displayName = '@urban-ui/button'
 
 /**
  * Children are a slot and a string will become a Text element, otherwise Button will honour the children passed to it.

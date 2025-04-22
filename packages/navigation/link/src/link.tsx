@@ -109,3 +109,4 @@ export function Link({
     </Element>
   )
 }
+Link.displayName = '@urban-ui/link'
