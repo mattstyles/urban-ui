@@ -38,10 +38,10 @@ export function ButtonExample() {
         </Text>
 
         <Flex gap="200" wrap="wrap">
-          <Link href="#button" display="button" variant="outline" tone="info">
+          <Link href="#button" display="button" variant="solid" tone="info">
             Link
           </Link>
-          <Button variant="outline" tone="info">
+          <Button variant="solid" tone="info">
             Button
           </Button>
         </Flex>

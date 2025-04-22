@@ -51,10 +51,12 @@ export interface LinkFunctionalProps
 type ButtonVariants = {
   display: 'button'
   variant?: keyof typeof buttonStyles.variants
+  size?: keyof typeof buttonStyles.sizes
 }
 type LinkVariants = {
   display?: 'link'
   variant?: keyof typeof variants
+  size?: keyof typeof buttonStyles.sizes
 }
 
 export type LinkProps = LinkFunctionalProps &
@@ -68,6 +70,7 @@ export function Link({
   children,
   display = 'link',
   variant = 'text',
+  size,
   tone = 'info',
   asChild = false,
   style,
@@ -83,15 +86,15 @@ export function Link({
         {...props}
         {...stylex.props([
           buttonStyles.styles.base,
+          buttonStyles.styles.content,
           buttonStyles.variants[buttonVariant],
+          size ? buttonStyles.sizes[size] : buttonStyles.sizes.md,
           tones[tone],
           props?.isDisabled === true && styles.disabled,
           style,
         ])}
       >
-        <Text weight="semibold" textBox="none">
-          {children}
-        </Text>
+        {children}
       </Element>
     )
   }
