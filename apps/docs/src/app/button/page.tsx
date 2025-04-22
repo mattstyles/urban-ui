@@ -6,7 +6,7 @@ import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
-import { tone } from '@urban-ui/theme/colors.stylex'
+import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
 import * as React from 'react'
@@ -190,6 +190,61 @@ export default function ButtonPage() {
           </Flex>
         </section>
       </Flex>
+
+      <Flex direction="v" gap="400" asChild style={styles.section}>
+        <section>
+          <Text size="lg" weight="medium" asChild>
+            <h2>Clear</h2>
+          </Text>
+          <Text asChild>
+            <p>
+              Buttons can be styled to be clear, removing the background and
+              border, to allow applying button functionality to arbitrary
+              content.
+            </p>
+          </Text>
+
+          <Flex gap="0" wrap="wrap">
+            <Button variant="clear">
+              <CustomImage />
+            </Button>
+          </Flex>
+        </section>
+      </Flex>
+    </Flex>
+  )
+}
+
+const imageStyles = stylex.create({
+  base: {
+    padding: space[50],
+    borderRadius: radii.lg,
+    borderWidth: borderWidths.md,
+    borderColor: base.transparent,
+    borderStyle: 'solid',
+    background: tone.component,
+    transition: 'border-color 200ms',
+
+    ':hover': {
+      borderColor: tone.border,
+    },
+  },
+  image: {
+    borderRadius: radii.md,
+    userSelect: 'none',
+    userDrag: 'none',
+    pointerEvents: 'none',
+  },
+})
+
+function CustomImage() {
+  return (
+    <Flex style={imageStyles.base}>
+      <img
+        {...stylex.props(imageStyles.image)}
+        src="https://loremflickr.com/320/240"
+        alt="Placeholder to show how the link element can wrap arbitrary content"
+      />
     </Flex>
   )
 }

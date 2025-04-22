@@ -27,7 +27,7 @@ export const styles = stylex.create({
     fontSize: fontSizes.md,
     textDecoration: 'none',
     transition:
-      'background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s',
+      'background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s ease-out',
     ':is([data-pressed], :active)': {
       transform: 'scale(0.98)',
     },
@@ -59,6 +59,12 @@ export const styles = stylex.create({
 })
 
 export const variants = stylex.create({
+  clear: {
+    backgroundColor: base.transparent,
+    color: tone.fgHi,
+    padding: space[0],
+    gap: space[0],
+  },
   solid: {
     backgroundColor: tone.solid,
     color: tone.fgOnBlock,
