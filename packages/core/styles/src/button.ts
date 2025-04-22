@@ -16,15 +16,10 @@ export const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: space['100'],
-    paddingInline: space['400'],
-    paddingBlock: space['75'],
     borderRadius: radii.lg,
     borderColor: base.transparent,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
-    fontWeight: fontWeights.medium,
-    fontSize: fontSizes.md,
     textDecoration: 'none',
     transition:
       'background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s ease-out',
@@ -41,6 +36,10 @@ export const styles = stylex.create({
       zIndex: 1,
     },
   },
+  content: {
+    fontWeight: fontWeights.semibold,
+    fontSize: fontSizes.md,
+  },
   disabled: {
     ':disabled': {
       backgroundColor: disabled.background,
@@ -55,6 +54,21 @@ export const styles = stylex.create({
     ':disabled:active': {
       transform: 'scale(1)',
     },
+  },
+})
+
+export const sizes = stylex.create({
+  md: {
+    fontSize: fontSizes.sm,
+    gap: space['100'],
+    paddingInline: space['200'],
+    paddingBlock: space['50'],
+  },
+  lg: {
+    fontSize: fontSizes.md,
+    gap: space['100'],
+    paddingInline: space['300'],
+    paddingBlock: space['75'],
   },
 })
 
@@ -87,10 +101,10 @@ export const variants = stylex.create({
   },
   outline: {
     backgroundColor: base.transparent,
+    color: tone.fgHi,
     borderColor: tone.border,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
-    color: tone.fgHi,
     // @TODO probably alpha scale is better here, maybe?
     ':is([data-hovered], :hover)': {
       backgroundColor: tone.componentHover,

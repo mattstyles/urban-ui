@@ -2,13 +2,11 @@
 
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { styles, variants } from '@urban-ui/styles/button'
+import { sizes, styles, variants } from '@urban-ui/styles/button'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
 import { Button as AriaButton } from 'react-aria-components'
 import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
-
-import { ButtonText } from './text'
 
 const tones = {
   neutral: themes.neutral,
@@ -21,8 +19,7 @@ const tones = {
 }
 
 export interface ButtonProps
-  extends Omit<AriaButtonProps, 'style' | 'children'>,
-    React.PropsWithChildren,
+  extends Omit<AriaButtonProps, 'style'>,
     React.RefAttributes<HTMLButtonElement>,
     Partial<Pick<HTMLButtonElement, 'disabled'>> {
   /**
@@ -38,6 +35,12 @@ export interface ButtonProps
   tone?: keyof typeof tones
 
   /**
+   * Size
+   * @default 'md'
+   */
+  size?: keyof typeof sizes
+
+  /**
    * Additional styles to apply
    */
   style?: StyleXStyles
@@ -51,38 +54,26 @@ export function Button({
   children,
   variant = 'solid',
   tone = 'primary',
+  size = 'md',
   style,
   ...props
 }: ButtonProps) {
-  const content = getSlot({ children })
   return (
     <AriaButton
       {...props}
       isDisabled={props.isDisabled || props.disabled}
       {...stylex.props([
         styles.base,
+        styles.content,
         variants[variant],
+        sizes[size],
         tones[tone],
         styles.disabled,
         style,
       ])}
     >
-      {content}
+      {children}
     </AriaButton>
   )
 }
 Button.displayName = '@urban-ui/button'
-Button.Text = ButtonText
-
-/**
- * Children are a slot and a string will become a Text element, otherwise Button will honour the children passed to it.
- */
-function getSlot({ children }: { children: React.ReactNode }) {
-  const content =
-    typeof children === 'string' ? (
-      <ButtonText>{children}</ButtonText>
-    ) : (
-      children
-    )
-  return content
-}

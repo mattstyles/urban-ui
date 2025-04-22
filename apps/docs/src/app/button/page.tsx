@@ -10,8 +10,9 @@ import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
-import { Plus } from 'lucide-react'
+import { ChevronRight, Plus } from 'lucide-react'
 import * as React from 'react'
+import { RxHeartFilled } from 'react-icons/rx'
 
 const styles = stylex.create({
   container: {
@@ -214,6 +215,19 @@ export default function ButtonPage() {
       <Flex direction="v" gap="400" asChild style={styles.section}>
         <section>
           <Text size="lg" weight="medium" asChild>
+            <h2>Sizes</h2>
+          </Text>
+
+          <Flex gap="200" wrap="wrap" align="center">
+            <Button size="md">md</Button>
+            <Button size="lg">lg</Button>
+          </Flex>
+        </section>
+      </Flex>
+
+      <Flex direction="v" gap="400" asChild style={styles.section}>
+        <section>
+          <Text size="lg" weight="medium" asChild>
             <h2>Clear</h2>
           </Text>
           <Text asChild>
@@ -241,8 +255,16 @@ export default function ButtonPage() {
           <Flex gap="200" wrap="wrap" align="center">
             <Button variant="solid">Only text</Button>
             <Button variant="solid">
-              <Plus />
-              <Text textBox="none">Hello world</Text>
+              <Icon>
+                <RxHeartFilled />
+              </Icon>
+              Favourite
+            </Button>
+            <Button variant="solid">
+              Activate
+              <Icon size="lg">
+                <ChevronRight />
+              </Icon>
             </Button>
             <div style={{ background: 'hotpink', height: 100, width: 32 }} />
           </Flex>
