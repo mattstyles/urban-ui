@@ -15,7 +15,7 @@ const styles = stylex.create({
     borderRadius: radii.md,
   },
   blockNeutral: {
-    backgroundColor: base.white,
+    backgroundColor: neutral.surfaceMuted,
   },
   blockH: {
     width: 240,

@@ -126,7 +126,7 @@ export const tone = defineVars({
 
   shadow: {
     default: 'oklch(0.76 0.0074 258.77)',
-    [DARK]: 'oklch(0.76 0.0074 258.77)',
+    [DARK]: 'oklch(0.26 0.0074 258.77)',
   },
 })
 
@@ -195,7 +195,7 @@ export const neutral = defineVars({
 
   shadow: {
     default: 'oklch(0.76 0.0074 258.77)',
-    [DARK]: 'oklch(0.76 0.0074 258.77)',
+    [DARK]: 'oklch(0.21 0.0074 258.77)',
   },
 })
 
@@ -264,7 +264,7 @@ export const primary = defineVars({
 
   shadow: {
     default: 'oklch(0.76 0.0074 258.77)',
-    [DARK]: 'oklch(0.76 0.0074 258.77)',
+    [DARK]: 'oklch(0.21 0.0074 258.77)',
   },
 })
 
@@ -333,7 +333,7 @@ export const critical = defineVars({
 
   shadow: {
     default: 'oklch(0.74 0.0458 8.67)',
-    [DARK]: 'oklch(0.74 0.0458 8.67)',
+    [DARK]: 'oklch(0.21 0.0458 8.67)',
   },
 })
 
@@ -402,7 +402,7 @@ export const positive = defineVars({
 
   shadow: {
     default: 'oklch(0.77 0.0285 159.43)',
-    [DARK]: 'oklch(0.77 0.0285 159.43)',
+    [DARK]: 'oklch(0.19 0.0285 159.43)',
   },
 })
 
@@ -471,7 +471,7 @@ export const warning = defineVars({
 
   shadow: {
     default: 'oklch(0.79 0.0456 89.5)',
-    [DARK]: 'oklch(0.79 0.0456 89.5)',
+    [DARK]: 'oklch(0.19 0.0456 89.5)',
   },
 })
 
@@ -540,7 +540,7 @@ export const info = defineVars({
 
   shadow: {
     default: 'oklch(0.76 0.0372 246.62)',
-    [DARK]: 'oklch(0.76 0.0372 246.62)',
+    [DARK]: 'oklch(0.2 0.0372 246.62)',
   },
 })
 
@@ -609,6 +609,6 @@ export const accent = defineVars({
 
   shadow: {
     default: 'oklch(71.54% 0.0597 287.8)',
-    [DARK]: 'oklch(71.54% 0.0597 287.8)',
+    [DARK]: 'oklch(21.23% 0.0597 287.8)',
   },
 })
