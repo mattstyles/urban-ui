@@ -173,6 +173,23 @@ const trackingClasses = stylex.create({
     letterSpacing: tracking.widest,
   },
 })
+
+/**
+ * Text-box properties
+ * @css text-box
+ */
+const textBoxStyles = stylex.create({
+  alphabetic: {
+    textBox: 'trim-both cap alphabetic',
+  },
+  auto: {
+    textBox: 'auto',
+  },
+  none: {
+    textBox: 'none',
+  },
+})
+
 // @ts-ignore typing for var group prefers a known object for its keys, we want a generic object and let the compiler work it out
 type GenericTheme = Theme<VarGroup<unknown>> | Array<Theme<VarGroup<unknown>>>
 
@@ -207,9 +224,14 @@ export interface TextProps
   tone?: 'neutral' | 'primary' | 'critical' | 'positive' | 'warning'
   /**
    * Tracking
-   * @css letter-spacing
+   * @default normal
    */
   tracking?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
+  /**
+   * Text-box
+   * @default alphabetic
+   */
+  textBox?: 'alphabetic' | 'auto' | 'none'
   /**
    * Custom stylex styles to apply to the text.
    */
@@ -230,8 +252,9 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
     size,
     weight,
     font,
-    color,
+    color = 'current',
     tracking,
+    textBox = 'alphabetic',
     style,
     asChild = false,
     children,
@@ -250,6 +273,7 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
         font != null && fontFamilies[font],
         color != null && fontColors[color],
         tracking != null && trackingClasses[tracking],
+        textBoxStyles[textBox],
         style,
       )}
       {...rest}

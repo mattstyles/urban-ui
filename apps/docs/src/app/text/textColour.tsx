@@ -118,12 +118,12 @@ export function TextColour() {
       <Text size="lg" weight="semibold">
         With theme
       </Text>
-      <Flex direction="v" gap="200" style={themes.primary}>
+      <Flex direction="v" gap="200" style={themes.accent}>
         <div {...stylex.props(styles.container)}>
           <Flex gap="100" align="center">
             <span {...stylex.props(styles.colorLabel)}>tone</span>
             <div {...stylex.props(styles.textContent)}>
-              <Text size="lg" asChild>
+              <Text size="lg" color="hi" asChild>
                 <p>
                   The quick brown fox jumps over the lazy dog. Pack my box with
                   five dozen liquor jugs.

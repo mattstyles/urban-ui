@@ -5,6 +5,7 @@ import { Text } from '@urban-ui/text'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
+import { CapHeight } from './capHeight'
 import { FontFamilies } from './fontFamilies'
 import { TextColour } from './textColour'
 import { TextExamples } from './textExamples'
@@ -114,6 +115,8 @@ export default function TextPage() {
         </Text>
         <TextColour />
       </Flex>
+
+      <CapHeight />
     </Flex>
   )
 }
