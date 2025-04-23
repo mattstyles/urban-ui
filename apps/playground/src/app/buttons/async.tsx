@@ -26,7 +26,7 @@ const styles = stylex.create({
 export const AsyncButton = () => {
   const [isPending, setIsPending] = useState(false)
 
-  const [contentRef, animate] = useAnimate()
+  const [scope, animate] = useAnimate()
 
   const mapRemainingToSpringVelocity = transform([0, 1], [50, 20])
 
@@ -40,16 +40,21 @@ export const AsyncButton = () => {
     console.log('animating')
 
     animate(
-      contentRef.current,
-      { scale: 1 },
+      scope.current,
+      // [
+      //   { scale: 0.5, opacity: 0.5 },
+      //   { scale: 1, opacity: 1 },
+      // ],
+      { scale: 1, opacity: 1 },
       {
         type: 'spring',
-        velocity: mapRemainingToSpringVelocity(isPending ? 0 : 1),
-        stiffness: 700,
+        // velocity: mapRemainingToSpringVelocity(isPending ? 0 : 1),
+        velocity: isPending ? 30 : 20,
+        stiffness: 600,
         damping: 80,
       },
     )
-  }, [isPending, animate, contentRef.current])
+  }, [isPending, animate, scope.current])
 
   return (
     <Flex direction="v" gap="200" style={styles.container}>
@@ -66,7 +71,7 @@ export const AsyncButton = () => {
       >
         {({ isPending }) => {
           const content = isPending ? 'Loading...' : 'Async'
-          return <motion.span ref={contentRef}>{content}</motion.span>
+          return <motion.span ref={scope}>{content}</motion.span>
         }}
       </Button>
     </Flex>

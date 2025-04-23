@@ -72,9 +72,9 @@ export function Button({
       {...stylex.props([
         styles.base,
         styles.content,
-        variants[variant],
         sizes[size],
         shapes[shape],
+        variants[variant],
         tones[tone],
         styles.disabled,
         style,

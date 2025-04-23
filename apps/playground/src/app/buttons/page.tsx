@@ -1,4 +1,9 @@
+'use client'
+
 import * as stylex from '@stylexjs/stylex'
+import { useState } from 'react'
+
+import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
@@ -7,7 +12,7 @@ import { space } from '@urban-ui/theme/layout.stylex'
 
 import { AsyncButton, Mountable } from './async'
 import CharactersRemaining from './chars'
-import { WorkButtonExample } from './work'
+import { WorkButton, WorkButtonExample } from './work'
 
 const styles = stylex.create({
   page: {
@@ -24,10 +29,11 @@ const styles = stylex.create({
 })
 
 export default function ButtonPage() {
+  const [isOn, setIsOn] = useState(true)
   return (
     <Flex direction="v" gap="600" asChild style={styles.page}>
       <main>
-        <Text asChild size="xl" weight="semibold">
+        {/* <Text asChild size="xl" weight="semibold">
           <h1>Buttons</h1>
         </Text>
 
@@ -77,7 +83,46 @@ export default function ButtonPage() {
           asChild
         >
           <section>
+            <WorkButtonExample variant="clear">
+              <img
+                src="https://placehold.co/64x64"
+                alt="placeholder"
+                style={{ borderRadius: '8px' }}
+              />
+            </WorkButtonExample>
+
             <WorkButtonExample>Hello world</WorkButtonExample>
+          </section>
+        </Flex> */}
+
+        <Flex
+          direction="v"
+          gap="400"
+          align="flex-start"
+          style={styles.container}
+          asChild
+        >
+          <section>
+            <Text asChild>
+              <p>
+                Testing changing button size and making sure WorkButton still
+                responds correctly to the size change.
+              </p>
+            </Text>
+
+            <Flex direction="v" gap="200" align="flex-start">
+              <Button>{isOn ? 'Hello world' : 'Goodbye cruel world'}</Button>
+              <WorkButtonExample>
+                {isOn ? 'Hello world' : 'Goodbye cruel world'}
+              </WorkButtonExample>
+              <Button
+                onPress={() => {
+                  setIsOn(!isOn)
+                }}
+              >
+                {isOn ? 'On' : 'Off'}
+              </Button>
+            </Flex>
           </section>
         </Flex>
       </main>
