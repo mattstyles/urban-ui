@@ -52,11 +52,13 @@ type ButtonVariants = {
   display: 'button'
   variant?: keyof typeof buttonStyles.variants
   size?: keyof typeof buttonStyles.sizes
+  shape?: keyof typeof buttonStyles.shapes
 }
 type LinkVariants = {
   display?: 'link'
   variant?: keyof typeof variants
   size?: keyof typeof buttonStyles.sizes
+  shape?: keyof typeof buttonStyles.shapes
 }
 
 export type LinkProps = LinkFunctionalProps &
@@ -71,6 +73,7 @@ export function Link({
   display = 'link',
   variant = 'text',
   size,
+  shape,
   tone = 'info',
   asChild = false,
   style,
@@ -89,6 +92,7 @@ export function Link({
           buttonStyles.styles.content,
           buttonStyles.variants[buttonVariant],
           size ? buttonStyles.sizes[size] : buttonStyles.sizes.md,
+          shape ? buttonStyles.shapes[shape] : buttonStyles.shapes.rounded,
           tones[tone],
           props?.isDisabled === true && styles.disabled,
           style,

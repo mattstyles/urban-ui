@@ -278,6 +278,20 @@ export default function ButtonPage() {
       <Flex direction="v" gap="400" asChild style={styles.section}>
         <section>
           <Text size="lg" weight="medium" asChild>
+            <h2>Shape</h2>
+          </Text>
+
+          <Flex gap="200" wrap="wrap">
+            <Button shape="rounded">Rounded</Button>
+            <Button shape="pill">Pill</Button>
+            <Button shape="square">Square</Button>
+          </Flex>
+        </section>
+      </Flex>
+
+      <Flex direction="v" gap="400" asChild style={styles.section}>
+        <section>
+          <Text size="lg" weight="medium" asChild>
             <h2>Clear</h2>
           </Text>
           <Text asChild>
@@ -347,6 +361,16 @@ export default function ButtonPage() {
                 <RxCross2 />
               </Icon>
             </Button>
+            <Button
+              size="lg-equal"
+              shape="pill"
+              variant="outline"
+              tone="neutral"
+            >
+              <Icon>
+                <RxCross2 />
+              </Icon>
+            </Button>
           </Flex>
         </section>
       </Flex>
@@ -358,10 +382,14 @@ export default function ButtonPage() {
           </Text>
           <Text asChild>
             <p>
-              Buttons are styled such that content is a plain text node, if
-              using Text component, use the `textBox="none"` prop to ensure the
-              text is sized correctly for a single text node.
+              Buttons are styled such that content is a plain text node,
+              however, they come with a minimum height which has the side effect
+              that passing a Text component (which uses text box cap sizing)
+              will still have consistent height.
             </p>
+          </Text>
+          <Text asChild>
+            <p>Buttons always grow to fit their content.</p>
           </Text>
 
           <Flex gap="200" wrap="wrap" align="center">

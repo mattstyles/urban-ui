@@ -2,7 +2,7 @@
 
 import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
-import { sizes, styles, variants } from '@urban-ui/styles/button'
+import { shapes, sizes, styles, variants } from '@urban-ui/styles/button'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
 import { Button as AriaButton } from 'react-aria-components'
@@ -41,6 +41,12 @@ export interface ButtonProps
   size?: keyof typeof sizes
 
   /**
+   * Shape
+   * @default 'rounded'
+   */
+  shape?: keyof typeof shapes
+
+  /**
    * Additional styles to apply
    */
   style?: StyleXStyles
@@ -55,6 +61,7 @@ export function Button({
   variant = 'solid',
   tone = 'primary',
   size = 'md',
+  shape = 'rounded',
   style,
   ...props
 }: ButtonProps) {
@@ -67,6 +74,7 @@ export function Button({
         styles.content,
         variants[variant],
         sizes[size],
+        shapes[shape],
         tones[tone],
         styles.disabled,
         style,

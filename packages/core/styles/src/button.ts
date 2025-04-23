@@ -20,7 +20,6 @@ export const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: radii.lg,
     borderColor: base.transparent,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
@@ -94,6 +93,18 @@ export const sizes = stylex.create({
     paddingBlock: space['100'],
     minHeight: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
     minWidth: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
+  },
+})
+
+export const shapes = stylex.create({
+  pill: {
+    borderRadius: radii.full,
+  },
+  rounded: {
+    borderRadius: radii.lg,
+  },
+  square: {
+    borderRadius: radii.none,
   },
 })
 
