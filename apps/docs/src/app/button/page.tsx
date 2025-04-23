@@ -253,7 +253,9 @@ export default function ButtonPage() {
           </Text>
 
           <Flex gap="200" wrap="wrap" align="center">
+            <div style={{ background: 'hotpink', height: 100, width: 12 }} />
             <Button variant="solid">Only text</Button>
+
             <Button variant="solid">
               <Icon>
                 <RxHeartFilled />
@@ -262,11 +264,60 @@ export default function ButtonPage() {
             </Button>
             <Button variant="solid">
               Activate
-              <Icon size="lg">
+              <Icon size="md">
                 <ChevronRight />
               </Icon>
             </Button>
-            <div style={{ background: 'hotpink', height: 100, width: 32 }} />
+            <Button variant="solid">
+              <Icon size="md">
+                <ChevronRight />
+              </Icon>
+            </Button>
+            <Button variant="solid" size="lg">
+              Button lg
+            </Button>
+            <Button variant="solid" size="lg">
+              <Text textBox="none">Cap</Text>
+              <Icon>
+                <RxHeartFilled />
+              </Icon>
+            </Button>
+          </Flex>
+        </section>
+      </Flex>
+
+      <Flex direction="v" gap="400" asChild style={styles.section}>
+        <section>
+          <Text size="lg" weight="medium" asChild>
+            <h2>Content</h2>
+          </Text>
+          <Text asChild>
+            <p>
+              Buttons are styled such that content is a plain text node, if
+              using Text component, use the `textBox="none"` prop to ensure the
+              text is sized predictably.
+            </p>
+          </Text>
+
+          <Flex gap="200" wrap="wrap" align="center">
+            <Button variant="solid">
+              <Text textBox="none">Button</Text>
+            </Button>
+            <Button variant="solid">
+              <Text textBox="none">Cap</Text>
+              <Icon>
+                <RxHeartFilled />
+              </Icon>
+            </Button>
+            <Button variant="solid">
+              <Text textBox="none">Add</Text>
+              <Icon size="sm">
+                <Plus />
+              </Icon>
+            </Button>
+            <Button variant="solid">
+              <Text>Different height</Text>
+            </Button>
           </Flex>
         </section>
       </Flex>

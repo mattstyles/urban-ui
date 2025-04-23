@@ -9,7 +9,11 @@ import {
 import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
 import { focus } from '@urban-ui/theme/focus.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
+import {
+  fontSizes,
+  fontWeights,
+  lineHeights,
+} from '@urban-ui/theme/type.stylex'
 
 export const styles = stylex.create({
   base: {
@@ -57,18 +61,27 @@ export const styles = stylex.create({
   },
 })
 
+/**
+ * Buttons are sized by using a defined line height which matches the expected size of the icon at that size. Text supplied to buttons as content can be plain strings, or set textbox to none for Text components.
+ * Buttons are sized by their content and can handle overflow or differing content.
+ */
 export const sizes = stylex.create({
   md: {
     fontSize: fontSizes.sm,
+    // This is to provide a consistent height as we do not enforce cap heights for controls
+    lineHeight: fontSizes.md,
     gap: space['100'],
     paddingInline: space['200'],
     paddingBlock: space['50'],
+    minHeight: `calc(${lineHeights.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
   },
   lg: {
     fontSize: fontSizes.md,
+    lineHeight: fontSizes.lg,
     gap: space['100'],
     paddingInline: space['300'],
-    paddingBlock: space['75'],
+    paddingBlock: space['100'],
+    minHeight: `calc(${lineHeights.md} + ((${space['100']} + ${borderWidths.md})  * 2))`,
   },
 })
 
