@@ -46,7 +46,7 @@ const pkgs = [
   '@urban-ui/tag',
   '@urban-ui/button',
   '@urban-ui/link',
-
+  '@urban-ui/icon',
   '@stylexjs/open-props',
 ]
 
