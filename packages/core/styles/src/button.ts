@@ -62,7 +62,7 @@ export const styles = stylex.create({
 })
 
 /**
- * Buttons are sized by using a defined line height which matches the expected size of the icon at that size. Text supplied to buttons as content can be plain strings, or set textbox to none for Text components.
+ * Buttons are sized by using a defined line height which matches the expected size of the icon at that size (which, in turn, is a font size). Text supplied to buttons as content can be plain strings, or set textbox to none for Text components.
  * Buttons are sized by their content and can handle overflow or differing content.
  */
 export const sizes = stylex.create({
@@ -73,7 +73,7 @@ export const sizes = stylex.create({
     gap: space['100'],
     paddingInline: space['200'],
     paddingBlock: space['50'],
-    minHeight: `calc(${lineHeights.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
+    minHeight: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
   },
   lg: {
     fontSize: fontSizes.md,
@@ -81,7 +81,19 @@ export const sizes = stylex.create({
     gap: space['100'],
     paddingInline: space['300'],
     paddingBlock: space['100'],
-    minHeight: `calc(${lineHeights.md} + ((${space['100']} + ${borderWidths.md})  * 2))`,
+    minHeight: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
+  },
+  'md-equal': {
+    paddingInline: space['50'],
+    paddingBlock: space['50'],
+    minHeight: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
+    minWidth: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
+  },
+  'lg-equal': {
+    paddingInline: space['100'],
+    paddingBlock: space['100'],
+    minHeight: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
+    minWidth: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
   },
 })
 
@@ -116,6 +128,20 @@ export const variants = stylex.create({
     backgroundColor: base.transparent,
     color: tone.fgHi,
     borderColor: tone.border,
+    borderStyle: borderStyles.solid,
+    borderWidth: borderWidths.md,
+    // @TODO probably alpha scale is better here, maybe?
+    ':is([data-hovered], :hover)': {
+      backgroundColor: tone.componentHover,
+    },
+    ':is([data-pressed], :active)': {
+      backgroundColor: tone.componentActive,
+    },
+  },
+  ghost: {
+    backgroundColor: base.transparent,
+    color: tone.fgHi,
+    borderColor: base.transparent,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
     // @TODO probably alpha scale is better here, maybe?

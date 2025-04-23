@@ -10,9 +10,9 @@ import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
-import { ChevronRight, Plus } from 'lucide-react'
+import { ChevronRight, HeartPlus, Plus } from 'lucide-react'
 import * as React from 'react'
-import { RxHeartFilled } from 'react-icons/rx'
+import { RxCross2, RxHeartFilled } from 'react-icons/rx'
 
 const styles = stylex.create({
   container: {
@@ -148,6 +148,36 @@ export default function ButtonPage() {
                 </Button>
               </Flex>
             </Flex>
+
+            <Flex direction="v" gap="200">
+              <Text asChild size="md" weight="medium">
+                <h3>Ghost</h3>
+              </Text>
+
+              <Flex gap="200" wrap="wrap">
+                <Button variant="ghost" tone="neutral">
+                  Neutral
+                </Button>
+                <Button variant="ghost" tone="primary">
+                  Primary
+                </Button>
+                <Button variant="ghost" tone="accent">
+                  Accent
+                </Button>
+                <Button variant="ghost" tone="positive">
+                  Positive
+                </Button>
+                <Button variant="ghost" tone="warning">
+                  Warning
+                </Button>
+                <Button variant="ghost" tone="critical">
+                  Critical
+                </Button>
+                <Button variant="ghost" tone="info">
+                  Info
+                </Button>
+              </Flex>
+            </Flex>
           </Flex>
         </section>
       </Flex>
@@ -222,6 +252,26 @@ export default function ButtonPage() {
             <Button size="md">md</Button>
             <Button size="lg">lg</Button>
           </Flex>
+
+          <Text asChild>
+            <p>
+              Equal size clamps the aspect ratio to 1:1. Buttons will still size
+              to fit the content.
+            </p>
+          </Text>
+
+          <Flex gap="200" wrap="wrap" align="center">
+            <Button size="md-equal">
+              <Icon>
+                <RxCross2 />
+              </Icon>
+            </Button>
+            <Button size="lg-equal">
+              <Icon>
+                <RxCross2 />
+              </Icon>
+            </Button>
+          </Flex>
         </section>
       </Flex>
 
@@ -273,6 +323,11 @@ export default function ButtonPage() {
                 <ChevronRight />
               </Icon>
             </Button>
+            <Button size="md-equal">
+              <Icon>
+                <RxCross2 />
+              </Icon>
+            </Button>
             <Button variant="solid" size="lg">
               Button lg
             </Button>
@@ -280,6 +335,16 @@ export default function ButtonPage() {
               <Text textBox="none">Cap</Text>
               <Icon>
                 <RxHeartFilled />
+              </Icon>
+            </Button>
+            <Button variant="solid" size="lg">
+              <Icon>
+                <HeartPlus />
+              </Icon>
+            </Button>
+            <Button size="lg-equal">
+              <Icon>
+                <RxCross2 />
               </Icon>
             </Button>
           </Flex>
@@ -295,7 +360,7 @@ export default function ButtonPage() {
             <p>
               Buttons are styled such that content is a plain text node, if
               using Text component, use the `textBox="none"` prop to ensure the
-              text is sized predictably.
+              text is sized correctly for a single text node.
             </p>
           </Text>
 
@@ -319,6 +384,15 @@ export default function ButtonPage() {
               <Text>Different height</Text>
             </Button>
           </Flex>
+
+          <Text asChild>
+            <p>
+              Arbitrary content can be used and the buttons will fit the
+              content.
+            </p>
+          </Text>
+
+          <ListSelection />
         </section>
       </Flex>
     </Flex>
@@ -355,6 +429,74 @@ function CustomImage() {
         src="https://loremflickr.com/320/240"
         alt="Placeholder to show how the link element can wrap arbitrary content"
       />
+    </Flex>
+  )
+}
+
+const listSelectionStyles = stylex.create({
+  container: {
+    backgroundColor: tone.surfaceMuted,
+    paddingBlock: space[100],
+    paddingInline: space[100],
+    borderRadius: radii.xl,
+    borderWidth: borderWidths.sm,
+    borderStyle: 'solid',
+    borderColor: tone.borderMuted,
+    width: 320,
+  },
+  buttonSize: {
+    padding: space[100],
+  },
+})
+
+function ListSelection() {
+  return (
+    <Flex direction="v" style={listSelectionStyles.container}>
+      <Button variant="ghost" style={listSelectionStyles.buttonSize}>
+        <Flex align="center" flex="1" gap="200">
+          <Icon size="xl">
+            <RxHeartFilled />
+          </Icon>
+          <Flex direction="v" gap="100" align="flex-start" flex="1">
+            <Text size="md" weight="semibold">
+              Primary text
+            </Text>
+            <Text size="sm" weight="normal" color="lo">
+              Secondary text
+            </Text>
+          </Flex>
+        </Flex>
+      </Button>
+      <Button variant="ghost" style={listSelectionStyles.buttonSize}>
+        <Flex align="center" flex="1" gap="200">
+          <Icon size="xl">
+            <RxHeartFilled />
+          </Icon>
+          <Flex direction="v" gap="100" align="flex-start" flex="1">
+            <Text size="md" weight="semibold">
+              Primary text
+            </Text>
+            <Text size="sm" weight="normal" color="lo">
+              Secondary text
+            </Text>
+          </Flex>
+        </Flex>
+      </Button>
+      <Button variant="ghost" style={listSelectionStyles.buttonSize}>
+        <Flex align="center" flex="1" gap="200">
+          <Icon size="xl">
+            <RxHeartFilled />
+          </Icon>
+          <Flex direction="v" gap="100" align="flex-start" flex="1">
+            <Text size="md" weight="semibold">
+              Primary text
+            </Text>
+            <Text size="sm" weight="normal" color="lo">
+              Secondary text
+            </Text>
+          </Flex>
+        </Flex>
+      </Button>
     </Flex>
   )
 }
