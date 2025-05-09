@@ -1,5 +1,6 @@
 'use client'
 
+import * as stylex from '@stylexjs/stylex'
 import { Button, type ButtonProps } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
 import { Icon } from '@urban-ui/icon'
@@ -7,6 +8,16 @@ import delay from 'delay'
 import { Loader } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useLayoutEffect, useRef, useState } from 'react'
+
+const styles = stylex.create({
+  full: {
+    width: '100%',
+    height: '100%',
+  },
+  relative: {
+    position: 'relative',
+  },
+})
 
 interface WorkButtonProps
   extends Omit<ButtonProps, 'children'>,
@@ -68,9 +79,7 @@ export function WorkButton({
       //   minWidth: buttonWidth ? `${buttonWidth}px` : 0, // Apply measured width
       //   minHeight: buttonHeight ? `${buttonHeight}px` : 0, // Apply measured height
       // }}
-      style={{
-        position: 'relative',
-      }}
+      style={styles.relative}
     >
       {/* AnimatePresence handles the mounting/unmounting animation */}
       <AnimatePresence initial={true} mode="sync">
@@ -115,12 +124,7 @@ export function WorkButton({
               inset: 0,
             }}
           >
-            <Flex
-              flex="1"
-              align="center"
-              justify="center"
-              style={{ width: '100%', height: '100%' }}
-            >
+            <Flex flex="1" align="center" justify="center" style={styles.full}>
               <Spinner />
             </Flex>
           </motion.span>

@@ -12,6 +12,7 @@ import { space } from '@urban-ui/theme/layout.stylex'
 
 import { AsyncButton, Mountable } from './async'
 import CharactersRemaining from './chars'
+import { ResizeableButtonExample } from './resizeable'
 import { WorkButton, WorkButtonExample } from './work'
 
 const styles = stylex.create({
@@ -95,7 +96,7 @@ export default function ButtonPage() {
           </section>
         </Flex> */}
 
-        <Flex
+        {/* <Flex
           direction="v"
           gap="400"
           align="flex-start"
@@ -123,6 +124,31 @@ export default function ButtonPage() {
                 {isOn ? 'On' : 'Off'}
               </Button>
             </Flex>
+          </section>
+        </Flex> */}
+
+        <Flex
+          direction="v"
+          gap="400"
+          align="flex-start"
+          style={styles.container}
+          asChild
+        >
+          <section>
+            <Text asChild>
+              <p>Playground resizable button.</p>
+            </Text>
+
+            <Flex direction="v" gap="200" align="flex-start">
+              <ResizeableButtonExample />
+            </Flex>
+
+            <Text asChild>
+              <p>
+                The transform for width applies a scale to animate the content,
+                which affects the border rounding.
+              </p>
+            </Text>
           </section>
         </Flex>
       </main>
