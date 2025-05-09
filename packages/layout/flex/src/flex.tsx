@@ -15,6 +15,7 @@ const styles = stylex.create({
   // Flex
   flexNone: { flex: 'none' },
   flexInitial: { flex: '0 1 auto' },
+  flexGrow: { flex: '1 0 auto' },
   flexAuto: { flex: 'auto' },
   flex1: { flex: 1 },
   flex2: { flex: 2 },
@@ -120,6 +121,7 @@ const styles = stylex.create({
 const flexStyle = {
   none: styles.flexNone,
   initial: styles.flexInitial,
+  grow: styles.flexGrow,
   auto: styles.flexAuto,
   '1': styles.flex1,
   '2': styles.flex2,
@@ -242,7 +244,7 @@ export interface FlexProps
   /**
    * Flex behaviour of the container
    */
-  flex?: 'none' | 'initial' | 'auto' | '1' | '2'
+  flex?: 'none' | 'initial' | 'grow' | 'auto' | '1' | '2'
 
   /**
    * Direction of the flex container
