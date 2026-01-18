@@ -1,9 +1,9 @@
 {
-	"extends": "@urban-ui/tsconfig/client.json",
-	"compilerOptions": {
-		"rootDir": "src",
-		"types": ["jest", "@testing-library/jest-dom"]
-	},
-	"include": ["src"],
-	"exclude": ["dist", "build", "node_modules"]
+  "extends": "@urban-ui/tsconfig/react-library.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "types": ["jest", "@testing-library/jest-dom"]
+  },
+  "include": ["src"],
+  "exclude": ["dist", "build", "node_modules"]
 }

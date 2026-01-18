@@ -1,5 +1,5 @@
 {
-  "extends": "@urban-ui/tsconfig/client.json",
+  "extends": "@urban-ui/tsconfig/react-library.json",
   "compilerOptions": {
     "rootDir": "src"
   },
