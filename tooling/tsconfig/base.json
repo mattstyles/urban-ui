@@ -1,24 +1,31 @@
-{
-	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "Default",
+/**
+ * Matt Pocock tsconfig
+ * https://www.totaltypescript.com/tsconfig-cheat-sheet
+ */
+ {
 	"compilerOptions": {
-		"composite": true,
-		"declaration": true,
-		"declarationMap": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"inlineSources": false,
-		"isolatedModules": true,
-		"target": "es6",
-		"module": "esnext",
-		"moduleResolution": "nodenext",
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"preserveWatchOutput": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"baseUrl": "."
-	},
-	"include": ["."],
-	"exclude": ["node_modules"]
+		/* Base Options: */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    /* Strictness */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    /* AND if you're building for a library: */
+    "declaration": true,
+    /* AND if you're building for a library in a monorepo: */
+    "composite": true,
+    "declarationMap": true,
+    /* If NOT transpiling with TypeScript: */
+    "module": "preserve",
+    "noEmit": true,
+    /* If your code doesn't run in the DOM: */
+    "lib": ["es2022"]
+	}
 }
