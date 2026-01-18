@@ -15,6 +15,12 @@ const styles = stylex.create({
   container: {
     backgroundColor: vars.bgPrimary,
   },
+
+  flex: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: space.sm,
+  },
 })
 
 export default function Home() {
@@ -27,13 +33,15 @@ export default function Home() {
       <div {...stylex.props(styles.container)}>Hello world</div>
       <hr style={{ marginBlock: 20 }} />
       <h2>Test2 - Tonal Variants</h2>
-      <Test2 tone="neutral">Neutral</Test2>
-      <Test2 tone="primary">Primary</Test2>
-      <Test2 tone="accent">Accent</Test2>
-      <Test2 tone="positive">Positive</Test2>
-      <Test2 tone="warning">Warning</Test2>
-      <Test2 tone="critical">Critical</Test2>
-      <Test2 tone="info">Info</Test2>
+      <div {...stylex.props(styles.flex)}>
+        <Test2 tone="neutral">Neutral</Test2>
+        <Test2 tone="primary">Primary</Test2>
+        <Test2 tone="accent">Accent</Test2>
+        <Test2 tone="positive">Positive</Test2>
+        <Test2 tone="warning">Warning</Test2>
+        <Test2 tone="critical">Critical</Test2>
+        <Test2 tone="info">Info</Test2>
+      </div>
     </div>
   )
 }
