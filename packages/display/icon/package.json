@@ -28,14 +28,14 @@
     "@stylexjs/stylex": "0.17.5"
   },
   "devDependencies": {
-    "@types/node": "^22.10.6",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@rsbuild/plugin-react": "1.4.2",
     "@rslib/core": "0.19.2",
     "@urban-ui/tsconfig": "workspace:*",
     "del-cli": "^6.0.0",
     "react": "19.2.3",
-    "typescript": "^5.7.3"
+    "typescript": "^5.9.3"
   }
 }

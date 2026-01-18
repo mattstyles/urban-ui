@@ -1,5 +1,3 @@
-// const fs = require('node:fs')
-// const path = require('node:path')
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -34,36 +32,6 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
   ]
 }
 
-// const openPropsIncludePaths = getPackageIncludePaths('@stylexjs/open-props', [
-//   path.join(projectRoot, 'node_modules'),
-//   path.join(monorepoRoot, 'node_modules'),
-// ])
-
-// const urbanThemeIncludePaths = getPackageIncludePaths('@urban-ui/theme', [
-//   path.join(projectRoot, 'node_modules'),
-//   path.join(monorepoRoot, 'node_modules'),
-// ])
-// const urbanTextIncludePaths = getPackageIncludePaths('@urban-ui/text', [
-//   path.join(projectRoot, 'node_modules'),
-//   path.join(monorepoRoot, 'node_modules'),
-// ])
-// const urbanFlexIncludePaths = getPackageIncludePaths('@urban-ui/flex', [
-//   path.join(projectRoot, 'node_modules'),
-//   path.join(monorepoRoot, 'node_modules'),
-// ])
-// const urbanTestIncludePaths = getPackageIncludePaths('@urban-ui/test', [
-//   path.join(projectRoot, 'node_modules'),
-//   path.join(monorepoRoot, 'node_modules'),
-// ])
-// const urbanTagIncludePaths = getPackageIncludePaths('@urban-ui/tag', [
-//   path.join(projectRoot, 'node_modules'),
-//   path.join(monorepoRoot, 'node_modules'),
-// ])
-// const urbanButtonIncludePaths = getPackageIncludePaths('@urban-ui/button', [
-//   path.join(projectRoot, 'node_modules'),
-//   path.join(monorepoRoot, 'node_modules'),
-// ])
-
 const pkgs = [
   '@urban-ui/theme',
   '@urban-ui/styles',
@@ -83,22 +51,10 @@ const pkgIncludePaths = pkgs.flatMap((pkg) =>
   ]),
 )
 
-// const externalImportPaths = [
-//   ...urbanFlexIncludePaths,
-//   ...urbanThemeIncludePaths,
-//   ...urbanTextIncludePaths,
-//   ...urbanTestIncludePaths,
-//   ...urbanTagIncludePaths,
-//   ...urbanButtonIncludePaths,
-//   ...openPropsIncludePaths,
-// ]
-
 console.log('Importing')
 console.log(pkgIncludePaths)
 
-// CJS or ESM makes no difference to the paths
 export default {
-  // module.exports = {
   plugins: {
     '@stylexswc/postcss-plugin': {
       include: ['src/app/**/*.{js,jsx,ts,tsx}', ...pkgIncludePaths],

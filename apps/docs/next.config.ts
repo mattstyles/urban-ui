@@ -1,11 +1,10 @@
-/** @type {import('next').NextConfig} */
-
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import createAnalyzerPlugin from '@next/bundle-analyzer'
 // import remarkGfm from 'remark-gfm'
-import createMDX from '@next/mdx'
+// import createMDX from '@next/mdx'
 import createStyleXPlugin from '@stylexswc/nextjs-plugin'
+import type { NextConfig } from 'next'
 
 // const createStyleXPlugin = require('@stylexswc/nextjs-plugin')
 // // const remarkGfm = require('remark-gfm')
@@ -16,43 +15,19 @@ import createStyleXPlugin from '@stylexswc/nextjs-plugin'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const config = {
-  // experimental: {
-  //   // appDir: true,
-  //   mdxRs: true,
-  // },
-  // reactStrictMode: true,
-  // Transpilation is for app/components i.e. reaching in to packages looking for mdx files
-  // Transpilation is only required in dev for stylex to propagate and only because this is a monorepo
-  transpilePackages: [
-    '@stylexjs/open-props',
-    '@urban-ui/theme',
-    '@urban-ui/text',
-    '@urban-ui/flex',
-    '@urban-ui/test',
-    '@urban-ui/tag',
-    '@urban-ui/button',
-    '@urban-ui/link',
-    '@urban-ui/icon',
-  ],
-  // webpack(config) {
-  //   config.resolve.extensionAlias = {
-  //     '.js': ['.js', '.ts'],
-  //     '.jsx': ['.jsx', '.tsx'],
-  //   }
-  //   return config
-  // },
+const config: NextConfig = {
+  //
 }
 
-const withMDX = createMDX({
-  options: {
-    extension: /\.mdx?$/,
-    // remarkPlugins: [remarkGfm],
-    rehypePlugins: [],
-    // If you use `MDXProvider`, uncomment the following line.
-    providerImportSource: '@mdx-js/react',
-  },
-})
+// const withMDX = createMDX({
+//   options: {
+//     // extension: /\.mdx?$/,
+//     // remarkPlugins: [remarkGfm],
+//     rehypePlugins: [],
+//     // If you use `MDXProvider`, uncomment the following line.
+//     providerImportSource: '@mdx-js/react',
+//   },
+// })
 
 const withStyleX = createStyleXPlugin({
   // Add any StyleX options here
@@ -63,12 +38,14 @@ const withStyleX = createStyleXPlugin({
     unstable_moduleResolution: {
       type: 'commonJS',
     },
-    isDev: process.env.NODE_ENV === 'development',
-    genConditionalClasses: true,
+    runtimeInjection: false,
     treeshakeCompensation: true,
+    styleResolution: 'application-order',
+    enableDebugClassNames: process.env.NODE_ENV === 'development',
   },
   useCSSLayers: true,
   extractCSS: false,
+  stylexImports: ['stylex', '@stylexjs/stylex'],
 })
 
 const withBundleAnalyzer = createAnalyzerPlugin({

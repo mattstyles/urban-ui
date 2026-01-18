@@ -1,6 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import createStyleXPlugin from '@stylexswc/nextjs-plugin'
+// import createStyleXPlugin from '@stylexswc/nextjs-plugin'
+import createStylexPlugin from '@stylexswc/nextjs-plugin/turbopack'
 import type { NextConfig } from 'next'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -17,12 +18,10 @@ const nextConfig: NextConfig = {
     '@urban-ui/button',
     '@urban-ui/link',
     '@urban-ui/icon',
-    '@stylexjs/open-props',
   ],
 }
 
-const withStyleX = createStyleXPlugin({
-  // Add any StyleX options here
+const withStylexPlugin = createStylexPlugin({
   rsOptions: {
     aliases: {
       '@/*': [path.join(__dirname, '*')],
@@ -30,12 +29,12 @@ const withStyleX = createStyleXPlugin({
     unstable_moduleResolution: {
       type: 'commonJS',
     },
-    dev: process.env.NODE_ENV === 'development',
-    genConditionalClasses: true,
-    treeshakeCompensation: false,
+    runtimeInjection: false,
+    treeshakeCompensation: true,
+    styleResolution: 'application-order',
+    enableDebugClassNames: process.env.NODE_ENV === 'development',
   },
-  useCSSLayers: true,
-  extractCSS: false,
+  stylexImports: ['stylex', '@stylexjs/stylex'],
 })
 
-export default withStyleX(nextConfig)
+export default withStylexPlugin(nextConfig)
