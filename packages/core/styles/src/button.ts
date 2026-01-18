@@ -1,19 +1,14 @@
 import * as stylex from '@stylexjs/stylex'
-
-import { themes } from '@urban-ui/theme'
+// import { themes } from '@urban-ui/theme'
 import {
   borderStyles,
   borderWidths,
   radii,
 } from '@urban-ui/theme/borders.stylex'
 import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
-import { focus } from '@urban-ui/theme/focus.stylex'
+import { focusVars } from '@urban-ui/theme/focus.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-import {
-  fontSizes,
-  fontWeights,
-  lineHeights,
-} from '@urban-ui/theme/type.stylex'
+import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 
 export const styles = stylex.create({
   base: {
@@ -31,11 +26,11 @@ export const styles = stylex.create({
     },
     // @TODO this will appear behind other elements and should be fixed properly to always be in front
     ':is(:focus-visible, [data-focus-visible])': {
-      outlineColor: focus.outlineColor,
-      outlineOffset: focus.outlineOffset,
-      outlineStyle: focus.outlineStyle,
-      outlineWidth: focus.outlineSize,
-      boxShadow: `0 0 0 ${focus.outlineSize} ${base.white}`,
+      outlineColor: focusVars.outlineColor,
+      outlineOffset: focusVars.outlineOffset,
+      outlineStyle: focusVars.outlineStyle,
+      outlineWidth: focusVars.outlineSize,
+      boxShadow: `0 0 0 ${focusVars.outlineSize} ${base.white}`,
       zIndex: 1,
     },
   },

@@ -23,13 +23,13 @@
     "test": "bun test"
   },
   "dependencies": {
-    "@urban-ui/theme": "^0.8.0",
-    "@urban-ui/flex": "^0.8.0",
-    "@urban-ui/text": "^0.8.0"
+    "@urban-ui/theme": "workspace:*",
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/text": "workspace:*"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "@stylexjs/stylex": "0.11.1"
+    "react": "19.2.3",
+    "@stylexjs/stylex": "0.17.5"
   },
   "devDependencies": {
     "@types/node": "^22.10.6",
@@ -39,7 +39,7 @@
     "@rslib/core": "0.19.2",
     "@urban-ui/tsconfig": "workspace:*",
     "del-cli": "^6.0.0",
-    "react": "^19.0.0",
+    "react": "19.2.3",
     "typescript": "^5.7.3"
   }
 }

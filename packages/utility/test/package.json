@@ -27,8 +27,8 @@
   },
   "peerDependencies": {
     "react": "19.2.3",
-    "@stylexjs/stylex": "^0.11.1",
-    "@stylexjs/open-props": "^0.11.1"
+    "@stylexjs/stylex": "0.17.5",
+    "@stylexjs/open-props": "0.11.1"
   },
   "devDependencies": {
     "@rsbuild/plugin-react": "1.4.2",

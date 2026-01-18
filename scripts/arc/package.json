@@ -32,7 +32,7 @@
     "url": "https://github.com/mattstyles/urban-ui/issues"
   },
   "devDependencies": {
-    "@stylexjs/stylex": "0.11.1",
+    "@stylexjs/stylex": "0.17.5",
     "@types/bun": "latest",
     "@types/debug": "^4.1.12",
     "@types/fb-watchman": "^2.0.4",
@@ -41,14 +41,14 @@
     "@types/uuid": "^9.0.8",
     "@types/yargs": "^17.0.32",
     "@urban-ui/tsconfig": "workspace:*",
-    "react": "^19.0.0",
+    "react": "19.2.3",
     "typescript": "^5.4.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@urban-ui/arc-log": "0.3.0",
+    "@urban-ui/arc-log": "workspace:*",
     "@swc/core": "1.15.8",
     "@swc/plugin-transform-imports": "12.3.0",
     "chalk": "^5.3.0",

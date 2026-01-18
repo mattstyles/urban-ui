@@ -1,10 +1,10 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { base, tone } from './tokens/colors.stylex'
+import { tone } from './tokens/colors.stylex'
 import {
   fontSizes,
-  fontWeights,
   fonts,
+  fontWeights,
   lineHeights,
   tracking,
 } from './tokens/type.stylex'

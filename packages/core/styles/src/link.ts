@@ -1,12 +1,11 @@
 import * as stylex from '@stylexjs/stylex'
-
 import {
   borderStyles,
   borderWidths,
   radii,
 } from '@urban-ui/theme/borders.stylex'
 import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
-import { focus } from '@urban-ui/theme/focus.stylex'
+import { focusVars } from '@urban-ui/theme/focus.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontWeights } from '@urban-ui/theme/type.stylex'
 
@@ -17,11 +16,11 @@ export const styles = stylex.create({
     textBox: 'trim-both cap alphabetic',
 
     ':is(:focus-visible, [data-focus-visible])': {
-      outlineColor: focus.outlineColor,
-      outlineOffset: `calc(${focus.outlineOffset} * 1)`,
-      outlineStyle: focus.outlineStyle,
-      outlineWidth: focus.outlineSize,
-      // boxShadow: `0 0 0 calc(${focus.outlineSize}* 2) ${base.white}`,
+      outlineColor: focusVars.outlineColor,
+      outlineOffset: `calc(${focusVars.outlineOffset} * 1)`,
+      outlineStyle: focusVars.outlineStyle,
+      outlineWidth: focusVars.outlineSize,
+      // boxShadow: `0 0 0 calc(${focusVars.outlineSize}* 2) ${base.white}`,
       zIndex: 1,
     },
   },
