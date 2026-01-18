@@ -22,6 +22,8 @@ Use this structure for PR descriptions:
 <How to test these changes, or note if no testing required>
 ```
 
+- Do NOT add generated-by information or co-author lines
+
 ## Instructions
 
 1. Check the current branch with `git branch --show-current`
