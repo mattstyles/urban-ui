@@ -1,16 +1,15 @@
-import type { CommandModule } from 'yargs'
-import type { Config } from '../config'
-
 import chalk from 'chalk'
 import { globby as glob } from 'globby'
 import prettyBytes from 'pretty-bytes'
 import prettyTime from 'pretty-time'
+import type { CommandModule } from 'yargs'
+
 import pkg from '../../package.json'
 import { generateOptions } from '../arguments'
+import type { Config } from '../config'
 import { generateDefinitions } from '../definition'
 import { log, padRight } from '../log'
 import { transformFiles } from '../transform'
-
 import { testPipeline } from '../transform/pipeline.example.ts'
 
 type CommandOptions = Required<Config>

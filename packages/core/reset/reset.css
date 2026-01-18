@@ -8,17 +8,18 @@
 @layer reset, base, components, utilities;
 
 @layer reset {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     box-sizing: border-box;
   }
 
-  * {
+  *:not(dialog) {
     margin: 0;
   }
 
   @media (prefers-reduced-motion: no-preference) {
     html {
-      /* biome-ignore lint/correctness/noUnknownProperty: new css property */
       interpolate-size: allow-keywords;
     }
   }
@@ -28,28 +29,60 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  img, picture, video, canvas, svg {
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
     display: block;
     max-width: 100%;
   }
 
-  input, button, textarea, select {
+  input,
+  button,
+  textarea,
+  select {
     font: inherit;
   }
 
-  p, h1, h2, h3, h4, h5, h6 {
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     overflow-wrap: break-word;
   }
 
   p {
     text-wrap: pretty;
   }
-
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     text-wrap: balance;
   }
 
-  #root, #__next {
+  #root,
+  #__next {
     isolation: isolate;
+  }
+
+  /**
+   * Disable animations and transitions when the user has requested reduced motion
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
