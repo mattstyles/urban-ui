@@ -65,7 +65,9 @@ export function TextExample() {
 
 function TextContrast({
   theme = themes.neutral,
-}: { theme?: Theme<typeof tone> }) {
+}: {
+  theme?: Theme<typeof tone>
+}) {
   return (
     <Flex direction="v" gap="200" style={theme}>
       <Flex direction="h" gap="200" align="center" style={[styles.container]}>

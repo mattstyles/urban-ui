@@ -15,7 +15,10 @@
     "./focus.stylex": "./dist/tokens/focus.stylex.js",
     "./shadows.stylex": "./dist/tokens/shadows.stylex.js"
   },
-  "files": ["src", "dist"],
+  "files": [
+    "src",
+    "dist"
+  ],
   "license": "MIT",
   "scripts": {
     "lint": "biome lint src",

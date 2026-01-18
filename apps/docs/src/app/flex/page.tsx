@@ -325,10 +325,7 @@ export default function FlexPage() {
             gap="50"
             align="center"
             justify="space-between"
-            style={[
-              styles.exampleInnerContainer,
-              styles.alignmentContainer,
-            ]}
+            style={[styles.exampleInnerContainer, styles.alignmentContainer]}
           >
             <Box>1</Box>
             <Box>2</Box>
