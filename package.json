@@ -26,7 +26,7 @@
   "scripts": {
     "test": "CI=true turbo run test",
     "build:ci": "turbo run build --filter=\"./packages/**\"",
-    "build:all": "turbo run build",
+    "build": "turbo run build",
     "dev": "turbo run clean && turbo run dev --parallel --filter=\"./packages/**\"",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
