@@ -1,10 +1,12 @@
 import * as stylex from '@stylexjs/stylex'
 import { Test } from '@urban-ui/test'
+import { space } from '@urban-ui/theme/layout.stylex'
+import { accent } from '@urban-ui/theme/colors.stylex'
 
 const styles = stylex.create({
   page: {
-    padding: '1rem',
-    color: 'hotpink',
+    padding: space.md,
+    color: accent.fgHi,
   },
 })
 

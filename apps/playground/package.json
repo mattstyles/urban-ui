@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@stylexjs/open-props": "0.11.1",
-    "@stylexjs/stylex": "0.11.1",
+    "@stylexjs/stylex": "0.17.5",
     "@urban-ui/button": "workspace:*",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/icon": "workspace:*",
@@ -25,9 +25,9 @@
     "delay": "^6.0.0",
     "motion": "^12.8.0",
     "next": "15.2.2",
-    "react": "^19.0.0",
-    "react-aria-components": "^1.8.0",
-    "react-dom": "^19.0.0"
+    "react": "19.2.3",
+    "react-aria-components": "1.14.0",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@stylexswc/postcss-plugin": "0.7.0",

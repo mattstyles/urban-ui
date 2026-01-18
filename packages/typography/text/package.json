@@ -24,12 +24,12 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@urban-ui/theme": "^0.8.0",
+    "@urban-ui/theme": "workspace:*",
     "@radix-ui/react-slot": "^1.1.2"
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "@stylexjs/stylex": "0.11.1"
+    "react": "19.2.3",
+    "@stylexjs/stylex": "0.17.5"
   },
   "devDependencies": {
     "@happy-dom/jest-environment": "^17.1.0",
@@ -48,7 +48,7 @@
     "del-cli": "^6.0.0",
     "jest": "^29.7.0",
     "jest-chain-transform": "^0.0.8",
-    "react": "^19.0.0",
+    "react": "19.2.3",
     "typescript": "^5.7.3"
   }
 }

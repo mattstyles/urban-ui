@@ -23,7 +23,7 @@
         "@mdx-js/react": "^3.0.1",
         "@next/mdx": "14.1.3",
         "@radix-ui/react-slot": "^1.1.2",
-        "@stylexjs/stylex": "0.11.1",
+        "@stylexjs/stylex": "0.17.5",
         "@urban-ui/button": "workspace:*",
         "@urban-ui/flex": "workspace:*",
         "@urban-ui/icon": "workspace:*",
@@ -42,9 +42,9 @@
         "lorem-ipsum": "^2.0.8",
         "lucide-react": "^0.503.0",
         "next": "15.2.2",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "react-docgen-typescript": "^2.2.2",
-        "react-dom": "^19.0.0",
+        "react-dom": "19.2.3",
         "react-icons": "^5.5.0",
         "react-live": "^4.1.6",
         "remark-gfm": "^3.0.1",
@@ -73,7 +73,9 @@
       "version": "0.1.0",
       "dependencies": {
         "@stylexjs/stylex": "^0.17.5",
+        "@urban-ui/reset": "workspace:*",
         "@urban-ui/test": "workspace:*",
+        "@urban-ui/theme": "workspace:*",
         "lucide-react": "^0.562.0",
         "next": "16.1.3",
         "react": "19.2.3",
@@ -96,7 +98,7 @@
       "version": "0.1.1",
       "dependencies": {
         "@stylexjs/open-props": "0.11.1",
-        "@stylexjs/stylex": "0.11.1",
+        "@stylexjs/stylex": "0.17.5",
         "@urban-ui/button": "workspace:*",
         "@urban-ui/flex": "workspace:*",
         "@urban-ui/icon": "workspace:*",
@@ -110,9 +112,9 @@
         "delay": "^6.0.0",
         "motion": "^12.8.0",
         "next": "15.2.2",
-        "react": "^19.0.0",
-        "react-aria-components": "^1.8.0",
-        "react-dom": "^19.0.0",
+        "react": "19.2.3",
+        "react-aria-components": "1.14.0",
+        "react-dom": "19.2.3",
       },
       "devDependencies": {
         "@stylexswc/nextjs-plugin": "0.7.0",
@@ -130,10 +132,10 @@
       "name": "@urban-ui/button",
       "version": "0.8.0",
       "dependencies": {
-        "@urban-ui/styles": "^0.8.0",
-        "@urban-ui/text": "^0.8.0",
-        "@urban-ui/theme": "^0.8.0",
-        "react-aria-components": "^1.7.1",
+        "@urban-ui/styles": "workspace:*",
+        "@urban-ui/text": "workspace:*",
+        "@urban-ui/theme": "workspace:*",
+        "react-aria-components": "1.14.0",
       },
       "devDependencies": {
         "@happy-dom/jest-environment": "^17.1.0",
@@ -154,12 +156,12 @@
         "expect-type": "^1.2.1",
         "jest": "^29.7.0",
         "jest-chain-transform": "^0.0.8",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/core/reset": {
@@ -170,7 +172,7 @@
       "name": "@urban-ui/styles",
       "version": "0.8.0",
       "dependencies": {
-        "@urban-ui/theme": "^0.8.0",
+        "@urban-ui/theme": "workspace:*",
       },
       "devDependencies": {
         "@happy-dom/jest-environment": "^17.1.0",
@@ -190,12 +192,12 @@
         "del-cli": "^6.0.0",
         "jest": "^29.7.0",
         "jest-chain-transform": "^0.0.8",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/core/theme": {
@@ -209,12 +211,12 @@
         "@types/react-dom": "^19.0.0",
         "@urban-ui/tsconfig": "workspace:*",
         "del-cli": "^6.0.0",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/display/icon": {
@@ -222,7 +224,7 @@
       "version": "0.8.0",
       "dependencies": {
         "@radix-ui/react-slot": "^1.1.2",
-        "@urban-ui/theme": "^0.8.0",
+        "@urban-ui/theme": "workspace:*",
       },
       "devDependencies": {
         "@rsbuild/plugin-react": "1.4.2",
@@ -232,21 +234,21 @@
         "@types/react-dom": "^19.0.0",
         "@urban-ui/tsconfig": "workspace:*",
         "del-cli": "^6.0.0",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/feedback/tag": {
       "name": "@urban-ui/tag",
       "version": "0.8.0",
       "dependencies": {
-        "@urban-ui/flex": "^0.8.0",
-        "@urban-ui/text": "^0.8.0",
-        "@urban-ui/theme": "^0.8.0",
+        "@urban-ui/flex": "workspace:*",
+        "@urban-ui/text": "workspace:*",
+        "@urban-ui/theme": "workspace:*",
       },
       "devDependencies": {
         "@rsbuild/plugin-react": "1.4.2",
@@ -256,12 +258,12 @@
         "@types/react-dom": "^19.0.0",
         "@urban-ui/tsconfig": "workspace:*",
         "del-cli": "^6.0.0",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/layout/flex": {
@@ -269,7 +271,7 @@
       "version": "0.8.0",
       "dependencies": {
         "@radix-ui/react-slot": "^1.1.2",
-        "@urban-ui/theme": "^0.8.0",
+        "@urban-ui/theme": "workspace:*",
       },
       "devDependencies": {
         "@rsbuild/plugin-react": "1.4.2",
@@ -279,12 +281,12 @@
         "@types/react-dom": "^19.0.0",
         "@urban-ui/tsconfig": "workspace:*",
         "del-cli": "^6.0.0",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/navigation/link": {
@@ -292,10 +294,10 @@
       "version": "0.8.0",
       "dependencies": {
         "@radix-ui/react-slot": "^1.1.2",
-        "@urban-ui/styles": "^0.8.0",
-        "@urban-ui/text": "^0.8.0",
-        "@urban-ui/theme": "^0.8.0",
-        "react-aria-components": "^1.7.1",
+        "@urban-ui/styles": "workspace:*",
+        "@urban-ui/text": "workspace:*",
+        "@urban-ui/theme": "workspace:*",
+        "react-aria-components": "1.14.0",
       },
       "devDependencies": {
         "@happy-dom/jest-environment": "^17.1.0",
@@ -316,12 +318,12 @@
         "expect-type": "^1.2.1",
         "jest": "^29.7.0",
         "jest-chain-transform": "^0.0.8",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/typography/text": {
@@ -329,7 +331,7 @@
       "version": "0.8.0",
       "dependencies": {
         "@radix-ui/react-slot": "^1.1.2",
-        "@urban-ui/theme": "^0.8.0",
+        "@urban-ui/theme": "workspace:*",
       },
       "devDependencies": {
         "@happy-dom/jest-environment": "^17.1.0",
@@ -348,12 +350,12 @@
         "del-cli": "^6.0.0",
         "jest": "^29.7.0",
         "jest-chain-transform": "^0.0.8",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/stylex": "0.11.1",
-        "react": "^19.0.0",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
       },
     },
     "packages/utility/test": {
@@ -373,8 +375,8 @@
         "typescript": "^5.7.3",
       },
       "peerDependencies": {
-        "@stylexjs/open-props": "^0.11.1",
-        "@stylexjs/stylex": "^0.11.1",
+        "@stylexjs/open-props": "0.11.1",
+        "@stylexjs/stylex": "0.17.5",
         "react": "19.2.3",
       },
     },
@@ -387,7 +389,7 @@
       "dependencies": {
         "@swc/core": "1.15.8",
         "@swc/plugin-transform-imports": "12.3.0",
-        "@urban-ui/arc-log": "0.3.0",
+        "@urban-ui/arc-log": "workspace:*",
         "chalk": "^5.3.0",
         "cosmiconfig": "^9.0.0",
         "debug": "^4.3.4",
@@ -400,7 +402,7 @@
         "yargs": "^17.7.2",
       },
       "devDependencies": {
-        "@stylexjs/stylex": "0.11.1",
+        "@stylexjs/stylex": "0.17.5",
         "@types/bun": "latest",
         "@types/debug": "^4.1.12",
         "@types/fb-watchman": "^2.0.4",
@@ -409,7 +411,7 @@
         "@types/uuid": "^9.0.8",
         "@types/yargs": "^17.0.32",
         "@urban-ui/tsconfig": "workspace:*",
-        "react": "^19.0.0",
+        "react": "19.2.3",
         "typescript": "^5.4.2",
       },
       "peerDependencies": {
@@ -448,8 +450,8 @@
         "@vitest/ui": "^1.0.1",
         "eslint": "^8.56.0",
         "jsdom": "^23.0.1",
-        "react": "^19.0.0",
-        "react-dom": "^19.0.0",
+        "react": "19.2.3",
+        "react-dom": "19.2.3",
         "rollup-plugin-preserve-directives": "^0.2.0",
         "typescript": "^5.1.3",
         "vite": "^5.0.7",
@@ -1223,7 +1225,7 @@
 
     "@stylexjs/shared": ["@stylexjs/shared@0.11.1", "", { "dependencies": { "postcss-value-parser": "^4.1.0" } }, "sha512-siBoO0yg6KbhHbtkwWGhZWu0pH61gEAsdSYYv+vQRkaX3iSADByrqFuhD/KQku8AfKq78u5dWGc3FDA0H90VEw=="],
 
-    "@stylexjs/stylex": ["@stylexjs/stylex@0.11.1", "", { "dependencies": { "css-mediaquery": "^0.1.2", "invariant": "^2.2.4", "styleq": "0.2.1" } }, "sha512-1OofsiCP2DYV+Cw/iIuHYTAJRy34TtxQt0FDuQGTnNH915hb6NkPmX6iPa++9t4KP3HWR9oVRmAHkpP58BIYbw=="],
+    "@stylexjs/stylex": ["@stylexjs/stylex@0.17.5", "", { "dependencies": { "css-mediaquery": "^0.1.2", "invariant": "^2.2.4", "styleq": "0.2.1" } }, "sha512-mV+mIXqj1AsnGHFj/hyno7YOBjBpgRzvD00iif0w/LExeN8mwNb2yTfnTHkx62fLaM7vUtoIEcO/bFHqmiOtpw=="],
 
     "@stylexswc/jest": ["@stylexswc/jest@0.7.1", "", { "dependencies": { "@stylexswc/rs-compiler": "0.7.1" } }, "sha512-MsSD2Ef4PwCRPonFaFvv1LWomekJSwrV9+z3AjUv+CUuybms9nglM0ea/1SUib4mBGmvW8oXXK8YEs07C/Sehg=="],
 
@@ -3007,6 +3009,10 @@
 
     "@sinonjs/commons/type-detect": ["type-detect@4.0.8", "", {}, "sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g=="],
 
+    "@stylexjs/babel-plugin/@stylexjs/stylex": ["@stylexjs/stylex@0.11.1", "", { "dependencies": { "css-mediaquery": "^0.1.2", "invariant": "^2.2.4", "styleq": "0.2.1" } }, "sha512-1OofsiCP2DYV+Cw/iIuHYTAJRy34TtxQt0FDuQGTnNH915hb6NkPmX6iPa++9t4KP3HWR9oVRmAHkpP58BIYbw=="],
+
+    "@stylexjs/open-props/@stylexjs/stylex": ["@stylexjs/stylex@0.11.1", "", { "dependencies": { "css-mediaquery": "^0.1.2", "invariant": "^2.2.4", "styleq": "0.2.1" } }, "sha512-1OofsiCP2DYV+Cw/iIuHYTAJRy34TtxQt0FDuQGTnNH915hb6NkPmX6iPa++9t4KP3HWR9oVRmAHkpP58BIYbw=="],
+
     "@stylexswc/jest/@stylexswc/rs-compiler": ["@stylexswc/rs-compiler@0.7.1", "", { "optionalDependencies": { "@stylexswc/rs-compiler-darwin-arm64": "0.7.1", "@stylexswc/rs-compiler-darwin-x64": "0.7.1", "@stylexswc/rs-compiler-linux-arm64-gnu": "0.7.1", "@stylexswc/rs-compiler-linux-x64-gnu": "0.7.1", "@stylexswc/rs-compiler-linux-x64-musl": "0.7.1", "@stylexswc/rs-compiler-win32-x64-msvc": "0.7.1" } }, "sha512-NbyZjO4BfCBXvv/W5lSNgyJxCKPMGrBaklk3Q0Q0I1jMqg5jFK3PRPIrkzmGnXSV13OWDidLSpBWvqOTU69VlQ=="],
 
     "@stylexswc/turbopack-plugin/@stylexswc/rs-compiler": ["@stylexswc/rs-compiler@0.14.1", "", { "optionalDependencies": { "@stylexswc/rs-compiler-darwin-arm64": "0.14.1", "@stylexswc/rs-compiler-darwin-x64": "0.14.1", "@stylexswc/rs-compiler-linux-arm64-gnu": "0.14.1", "@stylexswc/rs-compiler-linux-x64-gnu": "0.14.1", "@stylexswc/rs-compiler-linux-x64-musl": "0.14.1", "@stylexswc/rs-compiler-win32-arm64-msvc": "0.14.1", "@stylexswc/rs-compiler-win32-x64-msvc": "0.14.1" }, "peerDependencies": { "@swc/core": "^1" } }, "sha512-50R7T8ac1TEamxNPuOwEDxSk1/QSNB1EMN6YqQB6oBJTWFkulPa7naO+qKNqDFp4GFnBHwkSj1oNhPgYFfgGsA=="],
@@ -3268,8 +3274,6 @@
     "p-locate/p-limit": ["p-limit@3.1.0", "", { "dependencies": { "yocto-queue": "^0.1.0" } }, "sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ=="],
 
     "pkg-dir/find-up": ["find-up@4.1.0", "", { "dependencies": { "locate-path": "^5.0.0", "path-exists": "^4.0.0" } }, "sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw=="],
-
-    "pkg-rslib/@stylexjs/stylex": ["@stylexjs/stylex@0.17.5", "", { "dependencies": { "css-mediaquery": "^0.1.2", "invariant": "^2.2.4", "styleq": "0.2.1" } }, "sha512-mV+mIXqj1AsnGHFj/hyno7YOBjBpgRzvD00iif0w/LExeN8mwNb2yTfnTHkx62fLaM7vUtoIEcO/bFHqmiOtpw=="],
 
     "pkg-rslib/@stylexswc/nextjs-plugin": ["@stylexswc/nextjs-plugin@0.14.1", "", { "dependencies": { "@stylexswc/rs-compiler": "0.14.1", "@stylexswc/turbopack-plugin": "0.14.1", "@stylexswc/webpack-plugin": "0.14.1" }, "peerDependencies": { "next": ">=15.0.0" } }, "sha512-Mo79bYXaPqy7XToPTd9CdoIu91WmwNgR809g3+H7aiCm/XyhV2Y0AlyreU54L3wzXcmpvHDSgEIQwCnUtwtYLw=="],
 

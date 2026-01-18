@@ -10,7 +10,9 @@
     "lint": "biome check ."
   },
   "dependencies": {
+    "@urban-ui/reset": "workspace:*",
     "@urban-ui/test": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
     "@stylexjs/stylex": "^0.17.5",
     "lucide-react": "^0.562.0",
     "next": "16.1.3",
