@@ -29,7 +29,6 @@ export default function RootLayout({
 }>) {
   const bodyStyles = stylex.props(presets.body)
 
-  console.log(bodyStyles)
   return (
     <html lang="en">
       <body
