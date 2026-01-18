@@ -13,6 +13,7 @@
     "@stylexjs/stylex": "^0.17.5",
     "@urban-ui/reset": "workspace:*",
     "@urban-ui/test": "workspace:*",
+    "@urban-ui/test2": "workspace:*",
     "@urban-ui/theme": "workspace:*",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",

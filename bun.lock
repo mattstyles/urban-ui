@@ -75,6 +75,7 @@
         "@stylexjs/stylex": "^0.17.5",
         "@urban-ui/reset": "workspace:*",
         "@urban-ui/test": "workspace:*",
+        "@urban-ui/test2": "workspace:*",
         "@urban-ui/theme": "workspace:*",
         "clsx": "^2.1.1",
         "lucide-react": "^0.562.0",
@@ -377,6 +378,27 @@
       },
       "peerDependencies": {
         "@stylexjs/open-props": "0.11.1",
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
+      },
+    },
+    "packages/utility/test2": {
+      "name": "@urban-ui/test2",
+      "version": "0.1.0",
+      "dependencies": {
+        "@urban-ui/theme": "workspace:*",
+      },
+      "devDependencies": {
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@types/react": "19.2.8",
+        "@types/react-dom": "19.2.3",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "react": "19.2.3",
+        "typescript": "^5.7.3",
+      },
+      "peerDependencies": {
         "@stylexjs/stylex": "0.17.5",
         "react": "19.2.3",
       },
@@ -1409,6 +1431,8 @@
     "@urban-ui/tag": ["@urban-ui/tag@workspace:packages/feedback/tag"],
 
     "@urban-ui/test": ["@urban-ui/test@workspace:packages/utility/test"],
+
+    "@urban-ui/test2": ["@urban-ui/test2@workspace:packages/utility/test2"],
 
     "@urban-ui/text": ["@urban-ui/text@workspace:packages/typography/text"],
 
