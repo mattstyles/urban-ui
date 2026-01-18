@@ -1,5 +1,10 @@
+import * as stylex from '@stylexjs/stylex'
+import { presets } from '@urban-ui/theme'
+import cx from 'clsx'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+
+import '@urban-ui/reset/reset.css'
 import './globals.css'
 
 const geistSans = Geist({
@@ -22,10 +27,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const bodyStyles = stylex.props(presets.body)
+
+  console.log(bodyStyles)
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cx(
+          geistSans.variable,
+          geistMono.variable,
+          bodyStyles.className,
+        )}
       >
         {children}
       </body>

@@ -36,6 +36,7 @@ const includePaths = [
   // '@stylexjs/open-props',
   // '@stylexswc/design-system',
   '@urban-ui/test',
+  '@urban-ui/theme',
 ].flatMap((packageName) =>
   getPackageIncludePaths(packageName, [
     path.join(projectRoot, 'node_modules'),
