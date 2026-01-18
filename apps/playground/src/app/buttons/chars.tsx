@@ -26,7 +26,12 @@ function CharactersRemaining() {
         damping: 80,
       },
     )
-  }, [animate, charactersRemaining])
+  }, [
+    animate,
+    charactersRemaining,
+    counterRef.current,
+    mapRemainingToSpringVelocity,
+  ])
 
   return (
     <div className="container">
