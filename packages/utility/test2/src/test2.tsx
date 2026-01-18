@@ -7,7 +7,8 @@ import { themes } from '@urban-ui/theme'
 
 const styles = stylex.create({
   container: {
-    padding: space.md,
+    paddingBlock: space.xs,
+    paddingInline: space.md,
     backgroundColor: surface.subtle,
     color: tone.fgHi,
     borderRadius: space.xs,
