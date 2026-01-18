@@ -18,8 +18,8 @@
     "format": "biome format src --write",
     "typecheck": "tsc",
     "clean": "del dist",
-    "dev": "arc watch",
-    "build": "arc build"
+    "dev": "rslib build --watch",
+    "build": "rslib build"
   },
   "dependencies": {
     "@urban-ui/text": "^0.8.0",
@@ -44,7 +44,8 @@
     "@types/node": "^22.10.6",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@urban-ui/arc": "workspace:*",
+    "@rsbuild/plugin-react": "1.4.2",
+    "@rslib/core": "0.19.2",
     "@urban-ui/tsconfig": "workspace:*",
     "del-cli": "^6.0.0",
     "expect-type": "^1.2.1",
