@@ -1,0 +1,39 @@
+{
+  "name": "pkg-rslib",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "@urban-ui/test": "workspace:*",
+    "@stylexjs/stylex": "^0.17.5",
+    "lucide-react": "^0.562.0",
+    "next": "16.1.3",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@stylexswc/nextjs-plugin": "^0.14.1",
+    "@stylexswc/postcss-plugin": "^0.14.1",
+    "@stylexswc/rs-compiler": "^0.14.1",
+    "@stylexswc/turbopack-plugin": "^0.14.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.23",
+    "typescript": "^5.9.3"
+  },
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
+}
