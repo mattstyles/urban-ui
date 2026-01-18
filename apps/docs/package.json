@@ -14,7 +14,7 @@
     "@stylexswc/nextjs-plugin": "0.14.1",
     "@stylexswc/postcss-plugin": "0.14.1",
     "@stylexswc/rs-compiler": "0.14.1",
-    "@stylexswc/webpack-plugin": "0.7.0",
+    "@stylexswc/turbopack-plugin": "0.14.1",
     "@types/chroma-js": "^2.4.0",
     "@types/culori": "^2.1.1",
     "@types/lodash": "^4.14.196",

@@ -21,6 +21,7 @@
     "@urban-ui/test": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
+    "@urban-ui/styles": "workspace:*",
     "clsx": "^2.1.1",
     "delay": "^6.0.0",
     "motion": "^12.8.0",
@@ -30,14 +31,15 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@stylexswc/nextjs-plugin": "0.14.1",
     "@stylexswc/postcss-plugin": "0.14.1",
     "@stylexswc/rs-compiler": "0.14.1",
-    "@stylexswc/nextjs-plugin": "0.14.1",
     "@stylexswc/turbopack-plugin": "0.14.1",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@urban-ui/tsconfig": "workspace:*",
+    "autoprefixer": "^10.4.23",
     "typescript": "^5.9.3"
   }
 }
