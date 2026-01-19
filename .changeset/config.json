@@ -8,11 +8,16 @@
   "fixed": [],
   "linked": [
     [
-      "@urban-ui/theme",
+      "@urban-ui/button",
       "@urban-ui/flex",
-      "@urban-ui/text",
+      "@urban-ui/icon",
+      "@urban-ui/link",
+      "@urban-ui/postcss-plugin",
+      "@urban-ui/reset",
+      "@urban-ui/styles",
       "@urban-ui/tag",
-      "@urban-ui/reset"
+      "@urban-ui/text",
+      "@urban-ui/theme"
     ]
   ],
   "access": "public",
