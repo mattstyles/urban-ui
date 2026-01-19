@@ -1,7 +1,7 @@
 'use client'
 
-import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 // import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
@@ -41,7 +41,7 @@ const styles = stylex.create({
     padding: space[400],
   },
   panelMuted: {
-    background: tone.surfaceMuted,
+    backgroundColor: tone.surfaceMuted,
   },
   panelNoBorder: {
     borderColor: base.transparent,

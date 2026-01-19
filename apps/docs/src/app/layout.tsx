@@ -22,7 +22,7 @@ const styles = stylex.create({
     padding: space[800],
   },
   bar: {
-    background: `linear-gradient(90deg, ${accent.solid}, ${accent.border})`,
+    backgroundColor: `linear-gradient(90deg, ${accent.solid}, ${accent.border})`,
     height: '4px',
     position: 'absolute',
     top: 0,

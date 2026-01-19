@@ -70,7 +70,7 @@ export const variants = stylex.create({
       color: 'inherit',
     },
     ':visited': {
-      background: 'hotpink',
+      backgroundColor: 'hotpink',
     },
   },
 })

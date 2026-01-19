@@ -78,7 +78,7 @@ function Stylesheet() {
 
         .container div {
           color: #ccc;
-          background: linear-gradient(
+          backgroundColor: linear-gradient(
             to right,
             rgba(255, 255, 255, 0) 0%,
             #0b1011 20%

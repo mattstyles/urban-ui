@@ -1,7 +1,7 @@
 'use client'
 
-import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 // import { critical, neutral, primary, success, warning } from '@urban-ui/theme'
@@ -150,7 +150,7 @@ function ContrastBlock({
   background,
 }: {
   foreground: 'hi' | 'lo' | 'onBlock'
-  background:
+  backgroundColor:
     | 'white'
     | 'surfaceMuted'
     | 'surface'

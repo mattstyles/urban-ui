@@ -14,7 +14,7 @@ const styles = stylex.create({
   container: {
     margin: space[100],
     color: tone.fgHi,
-    background: tone.surfaceBase
+    backgroundColor: tone.surfaceBase
   },
 })
 
@@ -34,7 +34,7 @@ import { tone } from '@urban-ui/theme/colors.stylex'
 const styles = stylex.create({
   container: {
     color: tone.fgHi,
-    background: tone.surfaceBase
+    backgroundColor: tone.surfaceBase
   },
 })
 
@@ -65,7 +65,7 @@ import { primary } from '@urban-ui/theme
 const styles = stylex.create({
   container: {
     color: primaryTokens.fgHi,
-    background: tone.surfaceBase
+    backgroundColor: tone.surfaceBase
   },
 })
 

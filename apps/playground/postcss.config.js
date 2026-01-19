@@ -60,8 +60,8 @@ export default {
   plugins: {
     '@stylexswc/postcss-plugin': {
       include: [
-        'app/**/*.{js,jsx,ts,tsx}',
-        'components/**/*.{js,jsx,ts,tsx}',
+        'src/app/**/*.{js,jsx,ts,tsx}',
+        'src/components/**/*.{js,jsx,ts,tsx}',
         ...externalImportPaths,
       ],
       useCSSLayers: true,

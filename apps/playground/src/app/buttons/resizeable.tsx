@@ -2,9 +2,6 @@
 
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
-import { AnimatePresence, motion, useAnimate } from 'motion/react'
-import { useState } from 'react'
-
 import {
   borderStyles,
   borderWidths,
@@ -13,6 +10,8 @@ import {
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
+import { AnimatePresence, motion, useAnimate } from 'motion/react'
+import { useState } from 'react'
 
 const styles = stylex.create({
   base: {
@@ -26,7 +25,7 @@ const styles = stylex.create({
   },
   x: {
     borderRadius: radii.full,
-    background: tone.solid,
+    backgroundColor: tone.solid,
     color: tone.fgOnBlock,
     fontSize: fontSizes.md,
     lineHeight: fontSizes.lg,

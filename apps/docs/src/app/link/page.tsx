@@ -212,7 +212,7 @@ const imageStyles = stylex.create({
     borderWidth: borderWidths.md,
     borderColor: tone.border,
     borderStyle: 'solid',
-    background: tone.component,
+    backgroundColor: tone.component,
   },
   image: {
     borderRadius: radii.md,

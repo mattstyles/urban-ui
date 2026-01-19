@@ -1,7 +1,6 @@
 'use client'
 
 import * as stylex from '@stylexjs/stylex'
-
 import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
 import { Icon } from '@urban-ui/icon'
@@ -9,7 +8,6 @@ import { Text } from '@urban-ui/text'
 import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-
 import { ChevronRight, HeartPlus, Plus } from 'lucide-react'
 import * as React from 'react'
 import { RxCross2, RxHeartFilled } from 'react-icons/rx'
@@ -317,7 +315,9 @@ export default function ButtonPage() {
           </Text>
 
           <Flex gap="200" wrap="wrap" align="center">
-            <div style={{ background: 'hotpink', height: 100, width: 12 }} />
+            <div
+              style={{ backgroundColor: 'hotpink', height: 100, width: 12 }}
+            />
             <Button variant="solid">Only text</Button>
 
             <Button variant="solid">
@@ -434,7 +434,7 @@ const imageStyles = stylex.create({
     borderWidth: borderWidths.md,
     borderColor: base.transparent,
     borderStyle: 'solid',
-    background: tone.component,
+    backgroundColor: tone.component,
     transition: 'border-color 200ms',
 
     ':hover': {
