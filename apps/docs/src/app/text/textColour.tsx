@@ -1,5 +1,4 @@
 import * as stylex from '@stylexjs/stylex'
-
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
@@ -9,7 +8,7 @@ import { fontSizes } from '@urban-ui/theme/type.stylex'
 
 const styles = stylex.create({
   container: {
-    background: tone.surface,
+    backgroundColor: tone.surface,
     padding: space[100],
     width: '100%',
   },
@@ -24,7 +23,7 @@ const styles = stylex.create({
     maxWidth: '48rem',
   },
   onBlockContainer: {
-    background: tone.solid,
+    backgroundColor: tone.solid,
     padding: space[100],
     width: '100%',
   },

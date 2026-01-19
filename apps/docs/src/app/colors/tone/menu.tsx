@@ -1,7 +1,7 @@
 'use client'
 
-import * as stylex from '@stylexjs/stylex'
 import type { Theme } from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
@@ -28,7 +28,7 @@ const styles = stylex.create({
   menuItem: {
     backgroundColor: base.transparent,
     color: tone.fgHi,
-    border: 'none',
+    borderColor: base.transparent,
     paddingTop: space[100],
     paddingBottom: space[100],
     paddingLeft: space[600],
@@ -71,7 +71,7 @@ const fadedStyles = stylex.create({
   menuItemFaded: {
     backgroundColor: base.transparent,
     color: tone.fgHi,
-    border: 'none',
+    borderColor: base.transparent,
     paddingTop: space[100],
     paddingBottom: space[100],
     paddingLeft: space[600],
