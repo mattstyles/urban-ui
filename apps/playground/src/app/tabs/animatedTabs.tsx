@@ -137,7 +137,7 @@ export function AnimatedTabs() {
     const percent = (tabElements.length - 1) * x - index
 
     // Linearly interpolate to calculate the position of the selection indicator.
-    // @ts-ignore
+    // @ts-expect-error
     const value = tabElements[index][property] + difference * percent
 
     // iOS scrolls weird when translateX is 0 for some reason. 🤷‍♂️

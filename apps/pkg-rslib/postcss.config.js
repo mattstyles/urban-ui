@@ -1,6 +1,5 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-
 import { urbanui } from '@urban-ui/postcss-plugin'
 
 const __filename = fileURLToPath(import.meta.url)

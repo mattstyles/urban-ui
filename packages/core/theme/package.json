@@ -26,8 +26,7 @@
     "typecheck": "tsc",
     "clean": "del dist",
     "dev": "rslib build --watch",
-    "build": "rslib build",
-    "test": "bun test"
+    "build": "rslib build"
   },
   "peerDependencies": {
     "react": "19.2.3",

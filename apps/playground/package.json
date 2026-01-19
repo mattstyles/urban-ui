@@ -31,6 +31,7 @@
     "react-dom": "19.2.3"
   },
   "devDependencies": {
+    "@react-types/shared": "^3.32.1",
     "@stylexswc/nextjs-plugin": "0.14.1",
     "@stylexswc/postcss-plugin": "0.14.1",
     "@stylexswc/rs-compiler": "0.14.1",

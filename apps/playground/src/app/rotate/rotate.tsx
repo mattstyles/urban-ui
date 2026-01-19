@@ -5,9 +5,9 @@ import { AnimatePresence, motion } from 'framer-motion'
 import type React from 'react'
 import {
   Children,
+  isValidElement,
   type Key,
   type ReactElement,
-  isValidElement,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -155,7 +155,7 @@ export function RotatingView({
     } else if (validChildrenArray.length === 0) {
       setDimensions({ width: 0, height: 0 })
     }
-  }, [validChildrenArray]) // Dependency on validChildrenArray only
+  }, [validChildrenArray, dimensions]) // Dependency on validChildrenArray only
 
   const activeChild = useMemo(() => {
     return validChildrenArray.find((child) => child.props.id === activeId)
