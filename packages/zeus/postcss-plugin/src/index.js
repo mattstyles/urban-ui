@@ -118,7 +118,9 @@ function findAllPackages(searchRoots, scopes) {
   }
 
   if (queue.length === 0) {
-    console.warn(`[urban-ui/postcss] No packages found matching scopes: ${scopes.join(', ')}`)
+    console.warn(
+      `[urban-ui/postcss] No packages found matching scopes: ${scopes.join(', ')}`,
+    )
     return found
   }
 
