@@ -32,7 +32,7 @@
     "dev": "turbo run clean && turbo run dev --parallel --filter=\"./packages/**\"",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "format": "biome format --write {packages,scripts,apps}",
+    "format": "biome format --write {packages,apps}",
     "scaffold": "node packages/tmpl/dist/bin/tmpl.js",
     "gen": "turbo gen",
     "publish-packages": "CI=true turbo run build lint test && changeset version && changeset publish"

@@ -12,8 +12,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "biome check .",
-    "format": "biome format --write .",
-    "test": "bun test"
+    "format": "biome format --write ."
   },
   "devDependencies": {
     "@types/node": "^24"
