@@ -1,60 +1,19 @@
-// const fs = require('node:fs')
-// const path = require('node:path')
-import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { urbanui } from '@urban-ui/postcss-plugin'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const projectRoot = __dirname
-const monorepoRoot = path.join(projectRoot, '../../')
+const monorepoRoot = path.join(projectRoot, '../..')
 
-function getPackageIncludePaths(packageName, nodeModulePaths) {
-  let packagePath = null
-
-  for (const nodeModulePath of nodeModulePaths) {
-    const packageJsonPath = path.resolve(
-      nodeModulePath,
-      packageName,
-      'package.json',
-    )
-    if (fs.existsSync(packageJsonPath)) {
-      packagePath = path.dirname(packageJsonPath)
-      break
-    }
-  }
-  if (!packagePath) {
-    throw new Error(`Could not find package ${packageName}`)
-  }
-
-  return [
-    path.join(packagePath, '**/*.{js,mjs}'),
-    `!${path.join(packagePath, 'node_modules/**/*.{js,mjs}')}`,
-  ]
-}
-
-/**
- * Plugin will automatically include all of these variables, if you add @stylex/open-props then it will include those variables in the output and whilst classnames will not be generated the variables will be, even though they are unused.
- */
-const pkgs = [
-  '@urban-ui/theme',
-  '@urban-ui/styles',
-  '@urban-ui/flex',
-  '@urban-ui/text',
-  '@urban-ui/test',
-  '@urban-ui/tag',
-  '@urban-ui/button',
-  '@urban-ui/link',
-  '@urban-ui/icon',
-]
-
-const externalImportPaths = pkgs.flatMap((pkg) =>
-  getPackageIncludePaths(pkg, [
-    path.join(projectRoot, 'node_modules'),
-    path.join(monorepoRoot, 'node_modules'),
-  ]),
-)
+// Find all @urban-ui packages (including transitive deps)
+const urbanUiPaths = urbanui.paths({
+  appRoot: projectRoot,
+  monorepoRoot: monorepoRoot,
+  scopes: ['@urban-ui'],
+})
 
 export default {
   plugins: {
@@ -62,7 +21,7 @@ export default {
       include: [
         'src/app/**/*.{js,jsx,ts,tsx}',
         'src/components/**/*.{js,jsx,ts,tsx}',
-        ...externalImportPaths,
+        ...urbanUiPaths,
       ],
       useCSSLayers: true,
       rsOptions: {
