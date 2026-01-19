@@ -150,7 +150,7 @@ function ContrastBlock({
   background,
 }: {
   foreground: 'hi' | 'lo' | 'onBlock'
-  backgroundColor:
+  background:
     | 'white'
     | 'surfaceMuted'
     | 'surface'
