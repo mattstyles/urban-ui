@@ -1,11 +1,12 @@
 ---
 created: 2026-01-19
-status: exploring
+acceptedOn: 2026-01-19
+status: implemented
 authors:
   - Matt Styles
 ---
 
-# Style Compilation for Transient Dependencies
+# ADR: Style Compilation for Transient Dependencies
 
 ## Problem Space
 
@@ -106,65 +107,101 @@ The package only exists at:
 Error: Could not find package @internal/item
 ```
 
-## Current State
+## Options Considered
 
-The build currently **fails** because postcss cannot resolve transient StyleX dependencies with bun's isolated install structure.
-
-## Solutions Explored
-
-### 1. Change package resolution
+### Option 1: Change package resolution
 
 Make postcss search nested node_modules recursively to find transient dependencies.
 
-**Status:** DONE
+**Verdict:** ACCEPTED
 
-Added `@urban-ui/postcss-plugin` to recursively look for all `@urban-ui` (configurable) workspace items to add to the postcss includes list.
-
-### 2. Change install behavior
+### Option 2: Change install behavior
 
 Use bun's hoisting options or switch package managers to hoist all dependencies to the root.
 
-**Status:** REJECTED
+**Verdict:** REJECTED
 
 Not a viable solution for all consumers. We cannot dictate package manager choice or configuration to downstream users.
 
-> Note: We should validate that the problem does not exist when dependencies ARE hoisted, to confirm this is specifically an isolated install issue.
-
-### 3. Explicit direct dependencies
+### Option 3: Explicit direct dependencies
 
 Require apps to declare all StyleX packages as direct dependencies, not just the packages they directly import.
 
-1. add `@urban-ui/item` to postcss rules
-2. add `@urban-ui/item` to package.json specifically as a direct dependencies
-
-**Status:** IN-PROGRESS (but undesirable)
+**Verdict:** REJECTED
 
 Manually managing the dependency graph is painful and error-prone. Consumers would need to know the full transitive dependency tree of every component they use.
 
-An alternative to giving clues to manually manage the dependency tree:
-* Packages specify internal deps using peer dependencies, giving clues to consumers that each one should be installed (rather than handled automatically via dependencies).
-* This does mean that the entire collection of components always needs to be versioned together. This is probably acceptable.
-
-An alternative approach: ship a single package containing the entire design system. Consumers take everything and rely on tree shaking. However, given the complexity of modern toolchains, this would still result (in some cases) in excessive file-system scanning and potentially parsing and processing even for unused components.
-
-### 4. Monorepo symlink approach
+### Option 4: Monorepo symlink approach
 
 Leverage that workspace packages symlink to source locations, allowing resolution via monorepo paths rather than node_modules.
 
-**Status:** REJECTED
+**Verdict:** REJECTED
 
-This would require consumers to have even more tooling to manage workspace symlinks. It feels too similar to changing the install behavior - we're just shifting the problem to a different configuration burden.
+This would require consumers to have even more tooling to manage workspace symlinks. It shifts the problem to a different configuration burden.
 
-### 5. Compile CSS at library build time
+### Option 5: Compile CSS at library build time
 
 Instead of deferring StyleX compilation to the app, compile CSS during library builds and ship pre-compiled styles.
 
-**Status:** REJECTED
+**Verdict:** REJECTED
 
-Not viable. A key value of StyleX is smaller bundles through deduplication and atomic CSS. Compiling CSS individually per library would result in:
+Not viable. A key value of StyleX is smaller bundles through deduplication and atomic CSS. Compiling CSS individually per library would result in CSS duplication and defeat the purpose of using StyleX.
 
-1. CSS duplication across packages (shared tokens, common patterns)
-2. Duplicate class definitions that would need a consumer-level post-process to deduplicate
-3. Classname references in JavaScript/HTML that may conflict or require reconciliation
+## Conclusion
 
-This defeats the purpose of using StyleX in the first place.
+**Decision:** Implement Option 1 via `@urban-ui/postcss-plugin`.
+
+The plugin recursively discovers all packages matching configured scopes (e.g., `@urban-ui`) by traversing nested `node_modules` directories. It reads each package's dependencies and peer dependencies to build the complete transitive dependency graph, then generates glob patterns for PostCSS to include.
+
+This approach:
+- Works with any package manager's install behavior (hoisted or isolated)
+- Requires no manual dependency tracking from consumers
+- Automatically adapts as component dependencies change
+
+### Example Usage
+
+```javascript
+// postcss.config.js
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { urbanui } from '@urban-ui/postcss-plugin'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const projectRoot = __dirname
+const monorepoRoot = path.join(projectRoot, '../..')
+
+// Find all @urban-ui packages (including transitive deps)
+const urbanUiPaths = urbanui.paths({
+  appRoot: projectRoot,
+  monorepoRoot: monorepoRoot,
+  scopes: ['@urban-ui'],
+})
+
+export default {
+  plugins: {
+    '@stylexswc/postcss-plugin': {
+      include: [
+        'src/app/**/*.{js,jsx,ts,tsx}',
+        'src/components/**/*.{js,jsx,ts,tsx}',
+        ...urbanUiPaths,
+      ],
+      useCSSLayers: true,
+      rsOptions: {
+        aliases: {
+          '@/*': [path.join(projectRoot, '*')],
+        },
+        unstable_moduleResolution: {
+          type: 'commonJS',
+        },
+        dev: process.env.NODE_ENV === 'development',
+        treeshakeCompensation: true,
+        styleResolution: 'application-order',
+        enableDebugClassNames: process.env.NODE_ENV === 'development',
+      },
+    },
+    autoprefixer: {},
+  },
+}
+```
