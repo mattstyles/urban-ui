@@ -72,6 +72,7 @@
       "name": "pkg-rslib",
       "version": "0.1.0",
       "dependencies": {
+        "@internal/container": "workspace:*",
         "@stylexjs/stylex": "^0.17.5",
         "@urban-ui/reset": "workspace:*",
         "@urban-ui/test": "workspace:*",
@@ -258,6 +259,49 @@
         "@rsbuild/plugin-react": "1.4.2",
         "@rslib/core": "0.19.2",
         "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "react": "19.2.3",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
+      },
+    },
+    "packages/internal/container": {
+      "name": "@internal/container",
+      "version": "0.1.0",
+      "dependencies": {
+        "@internal/item": "workspace:*",
+        "@urban-ui/theme": "workspace:*",
+      },
+      "devDependencies": {
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "react": "19.2.3",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
+      },
+    },
+    "packages/internal/item": {
+      "name": "@internal/item",
+      "version": "0.1.0",
+      "dependencies": {
+        "@urban-ui/theme": "workspace:*",
+      },
+      "devDependencies": {
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "@urban-ui/tsconfig": "workspace:*",
@@ -748,6 +792,10 @@
     "@img/sharp-win32-x64": ["@img/sharp-win32-x64@0.34.5", "", { "os": "win32", "cpu": "x64" }, "sha512-+29YMsqY2/9eFEiW93eqWnuLcWcufowXewwSNIT6UwZdUUCrM3oFjMWH/Z6/TMmb4hlFenmfAVbpWeup2jryCw=="],
 
     "@inquirer/external-editor": ["@inquirer/external-editor@1.0.3", "", { "dependencies": { "chardet": "^2.1.1", "iconv-lite": "^0.7.0" }, "peerDependencies": { "@types/node": ">=18" }, "optionalPeers": ["@types/node"] }, "sha512-RWbSrDiYmO4LbejWY7ttpxczuwQyZLBUyygsA9Nsv95hpzUWwnNTVQmAq3xuh7vNwCp07UTmE5i11XAEExx4RA=="],
+
+    "@internal/container": ["@internal/container@workspace:packages/internal/container"],
+
+    "@internal/item": ["@internal/item@workspace:packages/internal/item"],
 
     "@internationalized/date": ["@internationalized/date@3.10.1", "", { "dependencies": { "@swc/helpers": "^0.5.0" } }, "sha512-oJrXtQiAXLvT9clCf1K4kxp3eKsQhIaZqxEyowkBcsvZDdZkbWrVmnGknxs5flTD0VGsxrxKgBCZty1EzoiMzA=="],
 

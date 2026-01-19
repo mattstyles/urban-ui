@@ -35,6 +35,8 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
 const includePaths = [
   // '@stylexjs/open-props',
   // '@stylexswc/design-system',
+  '@internal/container',
+  '@internal/item',
   '@urban-ui/test',
   '@urban-ui/test2',
   '@urban-ui/theme',
