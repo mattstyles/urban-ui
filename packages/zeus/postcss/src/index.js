@@ -4,6 +4,7 @@ import path from 'node:path'
 /**
  * @typedef {Object} PathsOptions
  * @property {string} appRoot - The root directory of the consuming app
+ * @property {string} [monorepoRoot] - The root directory of the monorepo (for hoisted dependencies)
  * @property {string[]} [scopes] - Package scopes to include (default: ['@urban-ui'])
  */
 
@@ -63,12 +64,41 @@ function matchesScope(packageName, scopes) {
 }
 
 /**
+ * Scan a node_modules directory for packages matching the given scopes
+ * @param {string} rootDir - Directory containing node_modules
+ * @param {string[]} scopes - Package scopes to look for
+ * @returns {string[]} Array of package names found
+ */
+function scanForScopedPackages(rootDir, scopes) {
+  const nodeModulesPath = path.join(rootDir, 'node_modules')
+  const packages = []
+
+  if (!fs.existsSync(nodeModulesPath)) {
+    return packages
+  }
+
+  for (const scope of scopes) {
+    const scopeDir = path.join(nodeModulesPath, scope)
+
+    if (fs.existsSync(scopeDir) && fs.statSync(scopeDir).isDirectory()) {
+      const scopePackages = fs.readdirSync(scopeDir)
+
+      for (const pkg of scopePackages) {
+        packages.push(`${scope}/${pkg}`)
+      }
+    }
+  }
+
+  return packages
+}
+
+/**
  * Find all packages matching scopes, traversing transitive dependencies
- * @param {string} appRoot
+ * @param {string[]} searchRoots - Directories to search for packages (appRoot, monorepoRoot)
  * @param {string[]} scopes
  * @returns {Map<string, string>} Map of package name to resolved path
  */
-function findAllPackages(appRoot, scopes) {
+function findAllPackages(searchRoots, scopes) {
   /** @type {Map<string, string>} */
   const found = new Map()
 
@@ -78,26 +108,18 @@ function findAllPackages(appRoot, scopes) {
   /** @type {Array<{ packageName: string, searchFrom: string }>} */
   const queue = []
 
-  // Start by finding direct dependencies in app's node_modules
-  const appNodeModules = path.join(appRoot, 'node_modules')
+  // Scan all search roots for matching scoped packages
+  for (const root of searchRoots) {
+    const packages = scanForScopedPackages(root, scopes)
 
-  if (!fs.existsSync(appNodeModules)) {
-    console.warn(`[urban-ui/postcss] No node_modules found at ${appNodeModules}`)
-    return found
+    for (const packageName of packages) {
+      queue.push({ packageName, searchFrom: root })
+    }
   }
 
-  // Scan app's node_modules for matching scoped packages
-  for (const scope of scopes) {
-    const scopeDir = path.join(appNodeModules, scope)
-
-    if (fs.existsSync(scopeDir) && fs.statSync(scopeDir).isDirectory()) {
-      const packages = fs.readdirSync(scopeDir)
-
-      for (const pkg of packages) {
-        const packageName = `${scope}/${pkg}`
-        queue.push({ packageName, searchFrom: appRoot })
-      }
-    }
+  if (queue.length === 0) {
+    console.warn(`[urban-ui/postcss] No packages found matching scopes: ${scopes.join(', ')}`)
+    return found
   }
 
   // Process queue with BFS
@@ -129,8 +151,10 @@ function findAllPackages(appRoot, scopes) {
       if (matchesScope(depName, scopes) && !visited.has(depName)) {
         // Search from the current package's directory (for nested node_modules)
         queue.push({ packageName: depName, searchFrom: packagePath })
-        // Also search from app root (for hoisted deps)
-        queue.push({ packageName: depName, searchFrom: appRoot })
+        // Also search from all configured roots (for hoisted deps)
+        for (const root of searchRoots) {
+          queue.push({ packageName: depName, searchFrom: root })
+        }
       }
     }
   }
@@ -165,14 +189,19 @@ export const urbanui = {
    * @returns {string[]}
    */
   paths(options) {
-    const { appRoot, scopes = ['@urban-ui'] } = options
+    const { appRoot, monorepoRoot, scopes = ['@urban-ui'] } = options
 
     if (!appRoot) {
       throw new Error('[urban-ui/postcss] appRoot is required')
     }
 
-    const resolvedAppRoot = path.resolve(appRoot)
-    const packages = findAllPackages(resolvedAppRoot, scopes)
+    const searchRoots = [path.resolve(appRoot)]
+
+    if (monorepoRoot) {
+      searchRoots.push(path.resolve(monorepoRoot))
+    }
+
+    const packages = findAllPackages(searchRoots, scopes)
 
     return toIncludePaths(packages)
   },

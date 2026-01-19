@@ -7,10 +7,12 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const projectRoot = __dirname
+const monorepoRoot = path.join(projectRoot, '../..')
 
 // Find all @urban-ui and @internal packages (including transitive deps)
 const urbanUiPaths = urbanui.paths({
   appRoot: projectRoot,
+  monorepoRoot: monorepoRoot,
   scopes: ['@urban-ui', '@internal'],
 })
 
