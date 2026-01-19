@@ -92,6 +92,7 @@
         "@types/node": "^24",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "@urban-ui/postcss-plugin": "workspace:*",
         "autoprefixer": "^10.4.23",
         "typescript": "^5.9.3",
       },
@@ -167,6 +168,13 @@
       "peerDependencies": {
         "@stylexjs/stylex": "0.17.5",
         "react": "19.2.3",
+      },
+    },
+    "packages/build/postcss": {
+      "name": "@urban-ui/postcss-plugin",
+      "version": "0.1.0",
+      "devDependencies": {
+        "@types/node": "^24",
       },
     },
     "packages/core/reset": {
@@ -1406,6 +1414,8 @@
     "@urban-ui/icon": ["@urban-ui/icon@workspace:packages/display/icon"],
 
     "@urban-ui/link": ["@urban-ui/link@workspace:packages/navigation/link"],
+
+    "@urban-ui/postcss-plugin": ["@urban-ui/postcss-plugin@workspace:packages/build/postcss"],
 
     "@urban-ui/reset": ["@urban-ui/reset@workspace:packages/core/reset"],
 

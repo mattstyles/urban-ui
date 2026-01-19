@@ -1,51 +1,18 @@
-import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+
+import { urbanui } from '@urban-ui/postcss-plugin'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const projectRoot = __dirname
-const monorepoRoot = path.join(projectRoot, '../../')
 
-function getPackageIncludePaths(packageName, nodeModulePaths) {
-  let packagePath = null
-
-  for (const nodeModulePath of nodeModulePaths) {
-    const packageJsonPath = path.resolve(
-      nodeModulePath,
-      packageName,
-      'package.json',
-    )
-    if (fs.existsSync(packageJsonPath)) {
-      packagePath = path.dirname(packageJsonPath)
-      break
-    }
-  }
-  if (!packagePath) {
-    throw new Error(`Could not find package ${packageName}`)
-  }
-
-  return [
-    path.join(packagePath, '**/*.{js,mjs}'),
-    `!${path.join(packagePath, 'node_modules/**/*.{js,mjs}')}`,
-  ]
-}
-
-const includePaths = [
-  // '@stylexjs/open-props',
-  // '@stylexswc/design-system',
-  '@internal/container',
-  '@internal/item',
-  '@urban-ui/test',
-  '@urban-ui/test2',
-  '@urban-ui/theme',
-].flatMap((packageName) =>
-  getPackageIncludePaths(packageName, [
-    path.join(projectRoot, 'node_modules'),
-    path.join(monorepoRoot, 'node_modules'),
-  ]),
-)
+// Find all @urban-ui and @internal packages (including transitive deps)
+const urbanUiPaths = urbanui.paths({
+  appRoot: projectRoot,
+  scopes: ['@urban-ui', '@internal'],
+})
 
 export default {
   plugins: {
@@ -53,7 +20,7 @@ export default {
       include: [
         'app/**/*.{js,jsx,ts,tsx}',
         'components/**/*.{js,jsx,ts,tsx}',
-        ...includePaths,
+        ...urbanUiPaths,
       ],
       useCSSLayers: true,
       rsOptions: {

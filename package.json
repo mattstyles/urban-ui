@@ -10,6 +10,7 @@
     "packages/*",
     "scripts/*",
     "tooling/*",
+    "packages/build/*",
     "packages/core/*",
     "packages/internal/*",
     "packages/layout/*",
