@@ -170,13 +170,6 @@
         "react": "19.2.3",
       },
     },
-    "packages/build/postcss": {
-      "name": "@urban-ui/postcss-plugin",
-      "version": "0.1.0",
-      "devDependencies": {
-        "@types/node": "^24",
-      },
-    },
     "packages/core/reset": {
       "name": "@urban-ui/reset",
       "version": "0.8.0",
@@ -455,6 +448,13 @@
       "peerDependencies": {
         "@stylexjs/stylex": "0.17.5",
         "react": "19.2.3",
+      },
+    },
+    "packages/zeus/postcss": {
+      "name": "@urban-ui/postcss-plugin",
+      "version": "0.1.0",
+      "devDependencies": {
+        "@types/node": "^24",
       },
     },
     "tooling/config-vite": {
@@ -1415,7 +1415,7 @@
 
     "@urban-ui/link": ["@urban-ui/link@workspace:packages/navigation/link"],
 
-    "@urban-ui/postcss-plugin": ["@urban-ui/postcss-plugin@workspace:packages/build/postcss"],
+    "@urban-ui/postcss-plugin": ["@urban-ui/postcss-plugin@workspace:packages/zeus/postcss"],
 
     "@urban-ui/reset": ["@urban-ui/reset@workspace:packages/core/reset"],
 
