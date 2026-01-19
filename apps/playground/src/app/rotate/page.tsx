@@ -47,10 +47,30 @@ const styles = stylex.create({
 })
 
 const items = [
-  { key: 'item1', id: 'view-item-1', style: styles.item1, content: 'View 1 (200x150)' },
-  { key: 'item2', id: 'view-item-2', style: styles.item2, content: 'View 2 (300x100)' },
-  { key: 'item3', id: 'view-item-3', style: styles.item3, content: 'View 3 (150x200)' },
-  { key: 'item4', id: 'view-item-4', style: styles.item4, content: 'View 4 (250x250) - Largest' },
+  {
+    key: 'item1',
+    id: 'view-item-1',
+    style: styles.item1,
+    content: 'View 1 (200x150)',
+  },
+  {
+    key: 'item2',
+    id: 'view-item-2',
+    style: styles.item2,
+    content: 'View 2 (300x100)',
+  },
+  {
+    key: 'item3',
+    id: 'view-item-3',
+    style: styles.item3,
+    content: 'View 3 (150x200)',
+  },
+  {
+    key: 'item4',
+    id: 'view-item-4',
+    style: styles.item4,
+    content: 'View 4 (250x250) - Largest',
+  },
 ]
 
 export default function RotatePage() {
@@ -89,7 +109,11 @@ export default function RotatePage() {
 
       <RotatingView activeId={activeItemId} animationVariant={animationType}>
         {items.map((item) => (
-          <div key={item.key} id={item.id} {...stylex.props(styles.viewItem, item.style)}>
+          <div
+            key={item.key}
+            id={item.id}
+            {...stylex.props(styles.viewItem, item.style)}
+          >
             {item.content}
           </div>
         ))}

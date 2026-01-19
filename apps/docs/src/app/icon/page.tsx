@@ -1,13 +1,3 @@
-import * as stylex from '@stylexjs/stylex'
-
-import { Flex } from '@urban-ui/flex'
-import { Icon } from '@urban-ui/icon'
-import { Text } from '@urban-ui/text'
-import { themes } from '@urban-ui/theme'
-import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
-import { tone } from '@urban-ui/theme/colors.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
-
 import {
   BellAlertIcon,
   CheckCircleIcon,
@@ -22,6 +12,14 @@ import {
   GlobeAsiaAustraliaIcon,
   GlobeEuropeAfricaIcon,
 } from '@heroicons/react/24/solid'
+import * as stylex from '@stylexjs/stylex'
+import { Flex } from '@urban-ui/flex'
+import { Icon } from '@urban-ui/icon'
+import { Text } from '@urban-ui/text'
+import { themes } from '@urban-ui/theme'
+import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
+import { tone } from '@urban-ui/theme/colors.stylex'
+import { space } from '@urban-ui/theme/layout.stylex'
 import { Banana } from 'lucide-react'
 import { GiBowlSpiral } from 'react-icons/gi'
 
@@ -47,7 +45,7 @@ const styles = stylex.create({
   },
   onBlock: {
     color: tone.fgOnBlock,
-    background: tone.solid,
+    backgroundColor: tone.solid,
     padding: space[200],
   },
 })

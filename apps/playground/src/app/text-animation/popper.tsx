@@ -7,7 +7,10 @@ import React from 'react'
 export function Popper({
   children,
   id,
-}: { children: React.ReactNode; id: string }) {
+}: {
+  children: React.ReactNode
+  id: string
+}) {
   const childrenKey = React.Children.toArray(children).toString()
 
   console.log(childrenKey, id)

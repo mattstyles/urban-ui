@@ -4,7 +4,8 @@ import { accent, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import cx from 'clsx'
 import type { Metadata } from 'next'
-import { inter, roboto } from '~/app/font.ts'
+
+import { inter, roboto } from '@/app/font'
 
 import '@urban-ui/reset/reset.css'
 import './globals.css'
@@ -21,7 +22,7 @@ const styles = stylex.create({
     padding: space[800],
   },
   bar: {
-    background: `linear-gradient(90deg, ${accent.solid}, ${accent.border})`,
+    backgroundColor: `linear-gradient(90deg, ${accent.solid}, ${accent.border})`,
     height: '4px',
     position: 'absolute',
     top: 0,
@@ -37,7 +38,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode
+}) {
   const htmlStyles = stylex.props(styles.html)
   const bodyStyles = stylex.props(presets.body, styles.body)
 

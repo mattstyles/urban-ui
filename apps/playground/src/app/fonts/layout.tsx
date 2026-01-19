@@ -3,7 +3,9 @@
  */
 export default function FontsLayout({
   children,
-}: { children: React.ReactNode }) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <>
       <link

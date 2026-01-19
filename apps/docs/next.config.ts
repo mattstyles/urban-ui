@@ -19,17 +19,7 @@ const withStylexPlugin = createStylexPlugin({
 })
 
 const nextConfig: NextConfig = {
-  transpilePackages: [
-    '@urban-ui/theme',
-    '@urban-ui/styles',
-    '@urban-ui/text',
-    '@urban-ui/flex',
-    '@urban-ui/test',
-    '@urban-ui/tag',
-    '@urban-ui/button',
-    '@urban-ui/link',
-    '@urban-ui/icon',
-  ],
+  //
 }
 
 export default withStylexPlugin(nextConfig)

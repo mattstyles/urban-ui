@@ -8,11 +8,11 @@ import { forwardRef } from 'react'
 const styles = stylex.create({
   container: {
     fontSize: fonts.size3,
-    background: colorsHSL.blue7,
+    backgroundColor: colorsHSL.blue7,
     padding: sizes.spacing3,
   },
   box: {
-    background: colors.blue3,
+    backgroundColor: colors.blue3,
   },
   p: {
     fontSize: '1rem',

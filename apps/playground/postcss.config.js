@@ -47,7 +47,6 @@ const pkgs = [
   '@urban-ui/button',
   '@urban-ui/link',
   '@urban-ui/icon',
-  '@stylexjs/open-props',
 ]
 
 const externalImportPaths = pkgs.flatMap((pkg) =>
@@ -57,26 +56,27 @@ const externalImportPaths = pkgs.flatMap((pkg) =>
   ]),
 )
 
-// CJS or ESM makes no difference to the paths
 export default {
-  // module.exports = {
   plugins: {
     '@stylexswc/postcss-plugin': {
-      include: ['src/app/**/*.{js,jsx,ts,tsx}', ...externalImportPaths],
+      include: [
+        'src/app/**/*.{js,jsx,ts,tsx}',
+        'src/components/**/*.{js,jsx,ts,tsx}',
+        ...externalImportPaths,
+      ],
+      useCSSLayers: true,
       rsOptions: {
         aliases: {
           '@/*': [path.join(projectRoot, '*')],
         },
         unstable_moduleResolution: {
           type: 'commonJS',
-          // rootDir: projectRoot,
         },
         dev: process.env.NODE_ENV === 'development',
-        genConditionalClasses: true,
-        treeshakeCompensation: false,
+        treeshakeCompensation: true,
+        styleResolution: 'application-order',
+        enableDebugClassNames: process.env.NODE_ENV === 'development',
       },
-      useCSSLayers: true,
-      isDev: process.env.NODE_ENV === 'development',
     },
     autoprefixer: {},
   },

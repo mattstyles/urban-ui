@@ -1,13 +1,12 @@
 'use client'
 
 import * as stylex from '@stylexjs/stylex'
-import { useState } from 'react'
-
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { critical, primary, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
+import { useState } from 'react'
 
 const styles = stylex.create({
   checkboxContainer: {
@@ -40,7 +39,7 @@ const styles = stylex.create({
 
 const themed = stylex.create({
   textContainer: {
-    background: tone.surface,
+    backgroundColor: tone.surface,
     padding: space[100],
     width: '100%',
   },

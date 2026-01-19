@@ -123,7 +123,9 @@ export function MenuExample() {
 
 function MenuContrast({
   theme = themes.neutral,
-}: { theme?: Theme<typeof tone> }) {
+}: {
+  theme?: Theme<typeof tone>
+}) {
   const [selected, setSelected] = useState(0)
   return (
     <Flex direction="h" gap="400" style={[styles.container, theme]}>

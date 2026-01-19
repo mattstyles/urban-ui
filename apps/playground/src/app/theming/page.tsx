@@ -3,11 +3,10 @@
 import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
+import { themes } from '@urban-ui/theme'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { primary, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-
-import { themes } from '@urban-ui/theme'
 
 const styles = stylex.create({
   page: {
@@ -20,10 +19,8 @@ const styles = stylex.create({
   },
   tonalTag: {
     backgroundColor: primary.solid,
-    paddingLeft: space[300],
-    paddingRight: space[300],
-    paddingTop: space[100],
-    paddingBottom: space[100],
+    paddingBlock: space[300],
+    paddingInline: space[100],
     borderRadius: radii.full,
   },
 })

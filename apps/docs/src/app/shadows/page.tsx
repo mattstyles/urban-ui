@@ -147,7 +147,10 @@ function Block({ shadow }: { shadow: keyof typeof baseShadows }) {
 function ThemedBlock({
   theme,
   shadow,
-}: { theme: keyof typeof themes; shadow: keyof typeof baseShadows }) {
+}: {
+  theme: keyof typeof themes
+  shadow: keyof typeof baseShadows
+}) {
   return (
     <Flex style={[themes[theme], styles.tonalContainer, tonalShadows]}>
       <Flex

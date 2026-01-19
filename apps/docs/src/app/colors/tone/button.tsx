@@ -30,43 +30,43 @@ export function ButtonExample() {
 const styles = stylex.create({
   solid: {
     color: tone.fgOnBlock,
-    background: tone.solid,
+    backgroundColor: tone.solid,
     borderRadius: radii.lg,
     borderStyle: borderStyles.none,
     fontWeight: fontWeights.medium,
     ':hover': {
-      background: tone.solidHover,
+      backgroundColor: tone.solidHover,
     },
     ':active': {
-      background: tone.solidActive,
+      backgroundColor: tone.solidActive,
     },
   },
   component: {
     color: tone.fgHi,
-    background: tone.component,
+    backgroundColor: tone.component,
     borderRadius: radii.lg,
     borderColor: tone.borderMuted,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
     ':hover': {
-      background: tone.componentHover,
+      backgroundColor: tone.componentHover,
     },
     ':active': {
-      background: tone.componentActive,
+      backgroundColor: tone.componentActive,
     },
   },
   transparent: {
-    background: base.transparent,
+    backgroundColor: base.transparent,
     color: tone.fgHi,
     borderColor: tone.border,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
     borderRadius: radii.lg,
     ':hover': {
-      background: tone.componentHover,
+      backgroundColor: tone.componentHover,
     },
     ':active': {
-      background: tone.componentActive,
+      backgroundColor: tone.componentActive,
     },
   },
   shape: {
