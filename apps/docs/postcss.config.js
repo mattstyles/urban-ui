@@ -28,7 +28,7 @@ function getPackageIncludePaths(packageName, nodeModulePaths) {
 
   return [
     path.join(packagePath, '**/*.{js,mjs}'),
-    `!${path.join(packagePath, 'node_modules/**/*.{js,mjs}')}`,
+    // `!${path.join(packagePath, 'node_modules/**/*.{js,mjs}')}`,
   ]
 }
 
@@ -70,6 +70,7 @@ export default {
         dev: process.env.NODE_ENV === 'development',
         genConditionalClasses: true,
         treeshakeCompensation: true,
+        enableDebugClassNames: process.env.NODE_ENV === 'development',
       },
     },
     autoprefixer: {},

@@ -1,10 +1,10 @@
 import * as stylex from '@stylexjs/stylex'
-
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
+
 import { CapHeight } from './capHeight'
 import { FontFamilies } from './fontFamilies'
 import { TextColour } from './textColour'

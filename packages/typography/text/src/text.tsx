@@ -1,13 +1,12 @@
 import { Slot } from '@radix-ui/react-slot'
-import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import { themes } from '@urban-ui/theme'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import {
-  capsize,
   fontSizes,
-  fontWeights,
   fonts,
+  fontWeights,
   lineHeights,
   tracking,
 } from '@urban-ui/theme/type.stylex'
@@ -16,18 +15,6 @@ import { forwardRef } from 'react'
 const styles = stylex.create({
   // Base text styles
   base: {
-    // Polyfill for leading-trim
-    // lineHeight: 'initial',
-    // '::before': {
-    //   content: '',
-    //   display: 'table',
-    //   marginBottom: capsize.trimStartCap,
-    // },
-    // '::after': {
-    //   content: '',
-    //   display: 'table',
-    //   marginTop: capsize.trimEndAlphabetic,
-    // },
     textBox: 'trim-both cap alphabetic',
   },
 })
@@ -68,6 +55,9 @@ const fontColors = stylex.create({
   },
   onBlock: {
     color: tone.fgOnBlock,
+  },
+  transparent: {
+    color: base.transparent,
   },
 })
 
@@ -190,7 +180,7 @@ const textBoxStyles = stylex.create({
   },
 })
 
-// @ts-ignore typing for var group prefers a known object for its keys, we want a generic object and let the compiler work it out
+// @ts-expect-error typing for var group prefers a known object for its keys, we want a generic object and let the compiler work it out
 type GenericTheme = Theme<VarGroup<unknown>> | Array<Theme<VarGroup<unknown>>>
 
 export interface TextProps
