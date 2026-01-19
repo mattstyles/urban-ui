@@ -36,6 +36,7 @@
     "@stylexswc/postcss-plugin": "0.14.1",
     "@stylexswc/rs-compiler": "0.14.1",
     "@stylexswc/turbopack-plugin": "0.14.1",
+    "@urban-ui/postcss-plugin": "workspace:*",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",

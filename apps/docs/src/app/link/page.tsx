@@ -4,11 +4,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Link } from '@urban-ui/link'
 import { Text } from '@urban-ui/text'
-import {
-  borderStyles,
-  borderWidths,
-  radii,
-} from '@urban-ui/theme/borders.stylex'
+import { borderWidths, radii } from '@urban-ui/theme/borders.stylex'
 import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import NextLink from 'next/link'
