@@ -450,7 +450,7 @@
         "react": "19.2.3",
       },
     },
-    "packages/zeus/postcss": {
+    "packages/zeus/postcss-plugin": {
       "name": "@urban-ui/postcss-plugin",
       "version": "0.1.0",
       "devDependencies": {
@@ -1415,7 +1415,7 @@
 
     "@urban-ui/link": ["@urban-ui/link@workspace:packages/navigation/link"],
 
-    "@urban-ui/postcss-plugin": ["@urban-ui/postcss-plugin@workspace:packages/zeus/postcss"],
+    "@urban-ui/postcss-plugin": ["@urban-ui/postcss-plugin@workspace:packages/zeus/postcss-plugin"],
 
     "@urban-ui/reset": ["@urban-ui/reset@workspace:packages/core/reset"],
 
