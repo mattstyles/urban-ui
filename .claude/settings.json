@@ -17,6 +17,7 @@
       "Bash(gh label:*)",
 
       "Bash(grep:*)",
+      "Bash(xargs:*)",
 
       "Bash(bd:*)",
 
@@ -25,9 +26,11 @@
       "Bash(bun run lint:*)",
       "Bash(bun run typecheck:*)",
       "Bash(bun run:*)",
+      "Bash(bun info:*)",
 
       "Skill(git:*)",
       "Skill(components:*)",
+      "Skill(bump:dependencies)",
 
       "mcp__plugin_figma_figma-desktop__get_code_connect_map",
       "mcp__plugin_figma_figma-desktop__get_design_context",
