@@ -6,7 +6,7 @@
     },
     "urban-ui": {
       "command": "bun",
-      "args": ["run", "packages/zeus/mcp/src/index.ts"]
+      "args": ["run", "packages/zeus/mcp/dist/index.js"]
     }
   }
 }
