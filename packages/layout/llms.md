@@ -78,3 +78,17 @@ Use `asChild` to apply Flex styles to a semantic element instead of a `div`:
 ```
 
 The child element receives all Flex layout styles while preserving its semantic meaning.
+
+## Center
+
+The `Center` component is a convenience wrapper around Flex for centering content.
+
+```tsx
+import { Center } from '@urban-ui/center'
+
+<Center>
+  <div>Centered content</div>
+</Center>
+```
+
+Equivalent to `<Flex align="center" justify="center">`.

@@ -1,0 +1,43 @@
+{
+  "name": "@urban-ui/center",
+  "version": "0.0.1",
+  "type": "module",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "lint": "biome lint src",
+    "format": "biome format src --write",
+    "typecheck": "tsc",
+    "clean": "del dist",
+    "dev": "rslib build --watch",
+    "build": "rslib build"
+  },
+  "dependencies": {
+    "@urban-ui/flex": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "19.2.3",
+    "@stylexjs/stylex": "0.17.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@rsbuild/plugin-react": "1.4.2",
+    "@rslib/core": "0.19.2",
+    "@stylexjs/stylex": "0.17.5",
+    "@urban-ui/tsconfig": "workspace:*",
+    "del-cli": "^6.0.0",
+    "react": "19.2.3",
+    "typescript": "^5.9.3"
+  }
+}

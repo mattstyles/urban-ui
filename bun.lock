@@ -351,6 +351,29 @@
         "react": "19.2.3",
       },
     },
+    "packages/layout/center": {
+      "name": "@urban-ui/center",
+      "version": "0.0.1",
+      "dependencies": {
+        "@urban-ui/flex": "workspace:*",
+      },
+      "devDependencies": {
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@stylexjs/stylex": "0.17.5",
+        "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "react": "19.2.3",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
+      },
+    },
     "packages/layout/flex": {
       "name": "@urban-ui/flex",
       "version": "0.9.0",
@@ -493,7 +516,7 @@
         "urban-ui-mcp": "./dist/index.js",
       },
       "dependencies": {
-        "@modelcontextprotocol/sdk": "^1.17.3",
+        "@modelcontextprotocol/sdk": "^1.25.3",
         "zod": "^3.23.8",
       },
       "devDependencies": {
@@ -1545,6 +1568,8 @@
     "@unrs/resolver-binding-win32-x64-msvc": ["@unrs/resolver-binding-win32-x64-msvc@1.11.1", "", { "os": "win32", "cpu": "x64" }, "sha512-lrW200hZdbfRtztbygyaq/6jP6AKE8qQN2KvPcJ+x7wiD038YtnYtZ82IMNJ69GJibV7bwL3y9FgK+5w/pYt6g=="],
 
     "@urban-ui/button": ["@urban-ui/button@workspace:packages/action/button"],
+
+    "@urban-ui/center": ["@urban-ui/center@workspace:packages/layout/center"],
 
     "@urban-ui/flex": ["@urban-ui/flex@workspace:packages/layout/flex"],
 
