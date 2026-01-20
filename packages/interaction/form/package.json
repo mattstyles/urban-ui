@@ -20,7 +20,7 @@
     "clean": "del dist",
     "dev": "rslib build --watch",
     "build": "rslib build",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:watch": "jest --watch"
   },
   "dependencies": {
