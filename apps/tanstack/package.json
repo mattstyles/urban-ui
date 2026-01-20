@@ -19,6 +19,7 @@
     "@urban-ui/content": "workspace:*",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/icon": "workspace:*",
+    "@urban-ui/input": "workspace:*",
     "@urban-ui/link": "workspace:*",
     "@urban-ui/reset": "workspace:*",
     "@urban-ui/styles": "workspace:*",
