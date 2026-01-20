@@ -4,7 +4,7 @@ import { Text, type TextProps } from '@urban-ui/text'
 import type { TextProps as AriaTextProps } from 'react-aria-components'
 import { Text as AriaText } from 'react-aria-components'
 
-export interface DropdownListBoxItemTextProps
+export interface DropdownItemTextProps
   extends Omit<TextProps, 'asChild'>,
     Pick<AriaTextProps, 'slot'> {
   /**
@@ -15,20 +15,19 @@ export interface DropdownListBoxItemTextProps
 }
 
 /**
- * Text component for use within ListBoxItem.
+ * Text component for use within DropdownItem.
  * Supports "label" and "description" slots for semantic structure.
  * Uses @urban-ui/text for consistent typography styling.
  */
-export function DropdownListBoxItemText({
+export function DropdownItemText({
   children,
   slot,
   ...props
-}: DropdownListBoxItemTextProps) {
+}: DropdownItemTextProps) {
   return (
     <Text asChild {...props}>
       <AriaText slot={slot}>{children}</AriaText>
     </Text>
   )
 }
-DropdownListBoxItemText.displayName =
-  '@urban-ui/listbox/DropdownListBoxItemText'
+DropdownItemText.displayName = '@urban-ui/listbox/DropdownItemText'

@@ -18,42 +18,81 @@ bun add react-aria-components @stylexjs/stylex
 
 ### DropdownListBox
 
-A styled ListBox container for use within Select and other dropdown components.
+A styled ListBox container for use within Select and other dropdown components. Provides keyboard navigation and selection support.
 
-### DropdownListBoxItemText
+### DropdownItem
 
-Text component for use within `ListBoxItem`. Supports "label" and "description" slots for semantic structure. Built on `@urban-ui/text` for consistent typography.
+Styled list item for use within DropdownListBox. Supports all interactive states with built-in styling.
+
+### DropdownItemText
+
+Text component for use within DropdownItem. Supports "label" and "description" slots for semantic structure. Built on `@urban-ui/text` for consistent typography.
 
 ## Usage
 
 ```tsx
-import { DropdownListBox, DropdownListBoxItemText } from '@urban-ui/listbox'
-import { ListBoxItem } from 'react-aria-components'
+import {
+  DropdownListBox,
+  DropdownItem,
+  DropdownItemText
+} from '@urban-ui/listbox'
 
 function Example() {
   return (
     <DropdownListBox aria-label="Options" selectionMode="single">
-      <ListBoxItem textValue="Option 1">
-        <DropdownListBoxItemText slot="label">
+      <DropdownItem textValue="Option 1">
+        <DropdownItemText slot="label">
           Option 1
-        </DropdownListBoxItemText>
-        <DropdownListBoxItemText slot="description" size="sm" color="lo">
+        </DropdownItemText>
+        <DropdownItemText slot="description" size="sm" color="lo">
           Description text
-        </DropdownListBoxItemText>
-      </ListBoxItem>
-      <ListBoxItem textValue="Option 2">
-        <DropdownListBoxItemText slot="label">
+        </DropdownItemText>
+      </DropdownItem>
+      <DropdownItem textValue="Option 2">
+        <DropdownItemText slot="label">
           Option 2
-        </DropdownListBoxItemText>
-      </ListBoxItem>
+        </DropdownItemText>
+      </DropdownItem>
     </DropdownListBox>
   )
 }
 ```
 
+## Visual States
+
+DropdownItem supports the following visual states, modeled using CSS `:is()` selectors:
+
+| State | Description | Token |
+|-------|-------------|-------|
+| `isHovered` | Mouse is over the item | `tone.componentHover` |
+| `isPressed` | Item is being pressed | `tone.componentActive` |
+| `isSelected` | Item is currently selected | `tone.solid` |
+| `isFocused` | Item has keyboard focus | `tone.componentHover` |
+| `isFocusVisible` | Focus ring for keyboard navigation | Focus ring via `focusVars` |
+| `isDisabled` | Item cannot be interacted with | `disabled.background`, `disabled.fg` |
+
+### State Priority (highest to lowest)
+
+1. **isDisabled** - Overrides all other states
+2. **isSelected** - Shows selection state (`tone.solid`)
+3. **isPressed** - Shows press feedback (`tone.componentActive` or `tone.solidActive` when selected)
+4. **isFocusVisible** - Shows focus ring for keyboard navigation
+5. **isHovered/isFocused** - Shows hover/focus highlight (`tone.componentHover` or `tone.solidHover` when selected)
+
 ## Props
 
-### DropdownListBoxItemText
+### DropdownItem
+
+Extends `ListBoxItemProps` from react-aria-components.
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `id` | `Key` | Unique identifier for the item |
+| `textValue` | `string` | Text used for typeahead and accessibility |
+| `isDisabled` | `boolean` | Whether the item is disabled |
+| `style` | `StyleXStyles` | Additional StyleX styles |
+
+### DropdownItemText
 
 Extends all props from `@urban-ui/text` plus:
 
@@ -62,3 +101,10 @@ Extends all props from `@urban-ui/text` plus:
 | `slot` | `'label' \| 'description'` | Required. The semantic slot for this text element. |
 
 See `@urban-ui/text` for typography props like `size`, `weight`, `color`, etc.
+
+## Backwards Compatibility
+
+The old component names are still exported as aliases:
+
+- `DropdownListBoxItem` → `DropdownItem`
+- `DropdownListBoxItemText` → `DropdownItemText`

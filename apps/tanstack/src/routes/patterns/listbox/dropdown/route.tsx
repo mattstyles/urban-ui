@@ -2,9 +2,9 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
 import {
+  DropdownItem,
+  DropdownItemText,
   DropdownListBox,
-  DropdownListBoxItem,
-  DropdownListBoxItemText,
 } from '@urban-ui/listbox'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
@@ -51,9 +51,9 @@ function DropdownListBoxPatterns() {
           selectionMode="single"
           style={styles.listbox}
         >
-          <DropdownListBoxItem id="option1">Option 1</DropdownListBoxItem>
-          <DropdownListBoxItem id="option2">Option 2</DropdownListBoxItem>
-          <DropdownListBoxItem id="option3">Option 3</DropdownListBoxItem>
+          <DropdownItem id="option1">Option 1</DropdownItem>
+          <DropdownItem id="option2">Option 2</DropdownItem>
+          <DropdownItem id="option3">Option 3</DropdownItem>
         </DropdownListBox>
       </Flex>
 
@@ -63,37 +63,37 @@ function DropdownListBoxPatterns() {
           With Label and Description
         </Text>
         <Text size="sm" color="lo">
-          Using DropdownListBoxItemText for structured content.
+          Using DropdownItemText for structured content.
         </Text>
         <DropdownListBox
           aria-label="Select a permission"
           selectionMode="single"
           style={styles.listbox}
         >
-          <DropdownListBoxItem id="read" textValue="Read">
-            <DropdownListBoxItemText slot="label">
+          <DropdownItem id="read" textValue="Read">
+            <DropdownItemText slot="label">
               Read
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="sm" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="sm" color="lo">
               View content only
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
-          <DropdownListBoxItem id="write" textValue="Write">
-            <DropdownListBoxItemText slot="label">
+            </DropdownItemText>
+          </DropdownItem>
+          <DropdownItem id="write" textValue="Write">
+            <DropdownItemText slot="label">
               Write
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="sm" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="sm" color="lo">
               Create and edit content
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
-          <DropdownListBoxItem id="admin" textValue="Admin">
-            <DropdownListBoxItemText slot="label">
+            </DropdownItemText>
+          </DropdownItem>
+          <DropdownItem id="admin" textValue="Admin">
+            <DropdownItemText slot="label">
               Admin
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="sm" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="sm" color="lo">
               Full access to all features
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
+            </DropdownItemText>
+          </DropdownItem>
         </DropdownListBox>
       </Flex>
 
@@ -110,11 +110,11 @@ function DropdownListBoxPatterns() {
           selectionMode="multiple"
           style={styles.listbox}
         >
-          <DropdownListBoxItem id="cheese">Cheese</DropdownListBoxItem>
-          <DropdownListBoxItem id="pepperoni">Pepperoni</DropdownListBoxItem>
-          <DropdownListBoxItem id="mushrooms">Mushrooms</DropdownListBoxItem>
-          <DropdownListBoxItem id="olives">Olives</DropdownListBoxItem>
-          <DropdownListBoxItem id="onions">Onions</DropdownListBoxItem>
+          <DropdownItem id="cheese">Cheese</DropdownItem>
+          <DropdownItem id="pepperoni">Pepperoni</DropdownItem>
+          <DropdownItem id="mushrooms">Mushrooms</DropdownItem>
+          <DropdownItem id="olives">Olives</DropdownItem>
+          <DropdownItem id="onions">Onions</DropdownItem>
         </DropdownListBox>
       </Flex>
 
@@ -131,30 +131,30 @@ function DropdownListBoxPatterns() {
           selectionMode="single"
           style={styles.listbox}
         >
-          <DropdownListBoxItem id="free" textValue="Free">
-            <DropdownListBoxItemText slot="label">
+          <DropdownItem id="free" textValue="Free">
+            <DropdownItemText slot="label">
               Free
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="sm" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="sm" color="lo">
               Basic features
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
-          <DropdownListBoxItem id="pro" textValue="Pro">
-            <DropdownListBoxItemText slot="label">
+            </DropdownItemText>
+          </DropdownItem>
+          <DropdownItem id="pro" textValue="Pro">
+            <DropdownItemText slot="label">
               Pro
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="sm" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="sm" color="lo">
               Advanced features
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
-          <DropdownListBoxItem id="enterprise" textValue="Enterprise" isDisabled>
-            <DropdownListBoxItemText slot="label">
+            </DropdownItemText>
+          </DropdownItem>
+          <DropdownItem id="enterprise" textValue="Enterprise" isDisabled>
+            <DropdownItemText slot="label">
               Enterprise
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="sm" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="sm" color="lo">
               Coming soon
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
+            </DropdownItemText>
+          </DropdownItem>
         </DropdownListBox>
       </Flex>
 
@@ -171,30 +171,30 @@ function DropdownListBoxPatterns() {
           selectionMode="single"
           style={styles.listbox}
         >
-          <DropdownListBoxItem id="bold" textValue="Bold Label">
-            <DropdownListBoxItemText slot="label" weight="bold">
+          <DropdownItem id="bold" textValue="Bold Label">
+            <DropdownItemText slot="label" weight="bold">
               Bold Label
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="xs" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="xs" color="lo">
               Using weight=&quot;bold&quot;
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
-          <DropdownListBoxItem id="mono" textValue="Monospace">
-            <DropdownListBoxItemText slot="label" font="mono">
+            </DropdownItemText>
+          </DropdownItem>
+          <DropdownItem id="mono" textValue="Monospace">
+            <DropdownItemText slot="label" font="mono">
               Monospace Font
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="xs" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="xs" color="lo">
               Using font=&quot;mono&quot;
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
-          <DropdownListBoxItem id="large" textValue="Large Text">
-            <DropdownListBoxItemText slot="label" size="lg">
+            </DropdownItemText>
+          </DropdownItem>
+          <DropdownItem id="large" textValue="Large Text">
+            <DropdownItemText slot="label" size="lg">
               Large Text
-            </DropdownListBoxItemText>
-            <DropdownListBoxItemText slot="description" size="sm" color="lo">
+            </DropdownItemText>
+            <DropdownItemText slot="description" size="sm" color="lo">
               Using size=&quot;lg&quot;
-            </DropdownListBoxItemText>
-          </DropdownListBoxItem>
+            </DropdownItemText>
+          </DropdownItem>
         </DropdownListBox>
       </Flex>
     </Flex>
