@@ -74,9 +74,9 @@ DropdownItem uses CSS `:is()` selectors to style interactive states. The styling
 | Hover | Subtle background | `tone.componentHover` |
 | Focus Visible | Focus ring | `focusVars.*` |
 | Pressed | Darker background | `tone.componentActive` |
-| Selected | Solid background | `tone.solid` |
-| Selected + Hover | Lighter solid | `tone.solidHover` |
-| Selected + Pressed | Darker solid | `tone.solidActive` |
+| Selected | Accent background | `accent.solid` |
+| Selected + Hover | Lighter accent | `accent.solidHover` |
+| Selected + Pressed | Darker accent | `accent.solidActive` |
 | Disabled | Muted, no interaction | `disabled.background`, `disabled.fg` |
 
 ### State Data Attributes

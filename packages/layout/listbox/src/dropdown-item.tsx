@@ -3,7 +3,7 @@
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { radii } from '@urban-ui/theme/borders.stylex'
-import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
+import { accent, base, disabled, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components'
@@ -33,7 +33,6 @@ const styles = stylex.create({
     padding: space[100],
     paddingInline: space[150],
     borderRadius: radii.md,
-    cursor: 'pointer',
     outline: 'none',
     color: tone.fgHi,
     backgroundColor: base.transparent,
@@ -71,12 +70,12 @@ const styles = stylex.create({
   },
   /**
    * Selected state - item is currently selected
-   * Takes precedence over hover/focus for background color
+   * Uses accent colors for selection indication
    */
   selected: {
     ':is([data-selected])': {
-      backgroundColor: tone.solid,
-      color: tone.fgOnBlock,
+      backgroundColor: accent.solid,
+      color: accent.fgOnBlock,
     },
   },
   /**
@@ -84,7 +83,7 @@ const styles = stylex.create({
    */
   selectedHover: {
     ':is([data-selected][data-hovered], [data-selected]:hover)': {
-      backgroundColor: tone.solidHover,
+      backgroundColor: accent.solidHover,
     },
   },
   /**
@@ -92,7 +91,7 @@ const styles = stylex.create({
    */
   selectedPressed: {
     ':is([data-selected][data-pressed], [data-selected]:active)': {
-      backgroundColor: tone.solidActive,
+      backgroundColor: accent.solidActive,
     },
   },
   /**
