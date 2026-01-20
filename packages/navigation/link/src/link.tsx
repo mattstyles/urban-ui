@@ -73,7 +73,7 @@ export function Link({
   variant = 'text',
   size,
   shape,
-  tone = 'info',
+  tone,
   asChild = false,
   style,
   // @TODO add ref
@@ -92,7 +92,7 @@ export function Link({
           buttonStyles.variants[buttonVariant],
           size ? buttonStyles.sizes[size] : buttonStyles.sizes.md,
           shape ? buttonStyles.shapes[shape] : buttonStyles.shapes.rounded,
-          tones[tone],
+          tone ? tones[tone] : undefined,
           props?.isDisabled === true && styles.disabled,
           style,
         ])}
@@ -108,7 +108,7 @@ export function Link({
       {...stylex.props([
         styles.base,
         variants[variant as keyof typeof variants],
-        tones[tone],
+        tone ? tones[tone] : undefined,
         props?.isDisabled === true && styles.disabled,
         style,
       ])}
