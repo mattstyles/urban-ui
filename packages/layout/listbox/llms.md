@@ -72,7 +72,6 @@ DropdownItem uses CSS `:is()` selectors to style interactive states. The styling
 |-------|--------|-------|
 | Default | Transparent background | `base.transparent` |
 | Hover | Subtle background | `tone.componentHover` |
-| Focus | Subtle background | `tone.componentHover` |
 | Focus Visible | Focus ring | `focusVars.*` |
 | Pressed | Darker background | `tone.componentActive` |
 | Selected | Solid background | `tone.solid` |
@@ -85,8 +84,7 @@ DropdownItem uses CSS `:is()` selectors to style interactive states. The styling
 React Aria sets these data attributes that the component styles respond to:
 
 - `[data-hovered]` - Mouse over
-- `[data-focused]` - Has focus
-- `[data-focus-visible]` - Keyboard focus
+- `[data-focus-visible]` - Keyboard focus (shows focus ring)
 - `[data-pressed]` - Being pressed
 - `[data-selected]` - Currently selected
 - `[data-disabled]` - Cannot interact

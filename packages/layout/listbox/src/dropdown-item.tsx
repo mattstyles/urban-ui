@@ -15,7 +15,6 @@ import { ListBoxItem as AriaListBoxItem } from 'react-aria-components'
  * - isHovered: Mouse is over the item
  * - isPressed: Item is being pressed (mouse down or touch)
  * - isSelected: Item is currently selected
- * - isFocused: Item has keyboard focus
  * - isFocusVisible: Item has visible focus indicator (keyboard navigation)
  * - isDisabled: Item is not interactive
  *
@@ -24,7 +23,7 @@ import { ListBoxItem as AriaListBoxItem } from 'react-aria-components'
  * 2. isSelected - shows selection state
  * 3. isPressed/isActive - shows press feedback
  * 4. isFocusVisible - shows focus ring for keyboard navigation
- * 5. isHovered/isFocused - shows hover/focus highlight
+ * 5. isHovered - shows hover highlight
  */
 const styles = stylex.create({
   base: {
@@ -46,15 +45,6 @@ const styles = stylex.create({
    */
   hover: {
     ':is([data-hovered], :hover)': {
-      backgroundColor: tone.componentHover,
-    },
-  },
-  /**
-   * Focus state - item has focus (keyboard or programmatic)
-   * Applied when navigating with keyboard
-   */
-  focus: {
-    ':is([data-focused])': {
       backgroundColor: tone.componentHover,
     },
   },
@@ -129,7 +119,7 @@ export interface DropdownItemProps<T extends object>
 
 /**
  * DropdownItem component for use within DropdownListBox.
- * Provides styled items with hover, focus, focus-visible, pressed, selected, and disabled states.
+ * Provides styled items with hover, focus-visible, pressed, selected, and disabled states.
  *
  * Visual states are modeled using CSS :is() selectors to handle both
  * native CSS pseudo-classes and react-aria data attributes.
@@ -145,14 +135,13 @@ export function DropdownItem<T extends object>({
       {...stylex.props(
         styles.base,
         styles.hover,
-        styles.focus,
         styles.focusVisible,
         styles.pressed,
         styles.selected,
         styles.selectedHover,
         styles.selectedPressed,
         styles.disabled,
-        style
+        style,
       )}
     >
       {children}

@@ -67,7 +67,6 @@ DropdownItem supports the following visual states, modeled using CSS `:is()` sel
 | `isHovered` | Mouse is over the item | `tone.componentHover` |
 | `isPressed` | Item is being pressed | `tone.componentActive` |
 | `isSelected` | Item is currently selected | `tone.solid` |
-| `isFocused` | Item has keyboard focus | `tone.componentHover` |
 | `isFocusVisible` | Focus ring for keyboard navigation | Focus ring via `focusVars` |
 | `isDisabled` | Item cannot be interacted with | `disabled.background`, `disabled.fg` |
 
@@ -77,7 +76,7 @@ DropdownItem supports the following visual states, modeled using CSS `:is()` sel
 2. **isSelected** - Shows selection state (`tone.solid`)
 3. **isPressed** - Shows press feedback (`tone.componentActive` or `tone.solidActive` when selected)
 4. **isFocusVisible** - Shows focus ring for keyboard navigation
-5. **isHovered/isFocused** - Shows hover/focus highlight (`tone.componentHover` or `tone.solidHover` when selected)
+5. **isHovered** - Shows hover highlight (`tone.componentHover` or `tone.solidHover` when selected)
 
 ## Props
 
