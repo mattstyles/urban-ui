@@ -29,6 +29,14 @@ bun run format       # Format with Biome
 - `scripts` - Various scripts to run the project
 - `tooling` - Shared tooling for packages
 
+## Documentation
+
+When writing application code with urban-ui:
+
+- StyleX: Read `docs/stylex-authoring-guide.md` when writing styles
+- Tokens: Read `packages/core/theme/llms.md` when using theme tokens (colors, space, typography)
+- Patterns: Read `docs/application-patterns.md` for composition patterns
+
 ## Component Conventions
 
 - RSC ready
@@ -36,7 +44,6 @@ bun run format       # Format with Biome
 - Tones: neutral, primary, accent, positive, warning, critical, info
 - Tests: `*.test.tsx` (Jest + happy-dom)
 - Type tests: `*.typetest.tsx` (expect-type)
-- StyleX: Read `docs/stylex-authoring-guide.md` when writing styles
 
 ## Code Style (Biome)
 
