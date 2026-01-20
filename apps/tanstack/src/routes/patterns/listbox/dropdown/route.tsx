@@ -71,25 +71,19 @@ function DropdownListBoxPatterns() {
           style={styles.listbox}
         >
           <DropdownItem id="read" textValue="Read">
-            <DropdownItemText slot="label">
-              Read
-            </DropdownItemText>
+            <DropdownItemText slot="label">Read</DropdownItemText>
             <DropdownItemText slot="description" size="sm" color="lo">
               View content only
             </DropdownItemText>
           </DropdownItem>
           <DropdownItem id="write" textValue="Write">
-            <DropdownItemText slot="label">
-              Write
-            </DropdownItemText>
+            <DropdownItemText slot="label">Write</DropdownItemText>
             <DropdownItemText slot="description" size="sm" color="lo">
               Create and edit content
             </DropdownItemText>
           </DropdownItem>
           <DropdownItem id="admin" textValue="Admin">
-            <DropdownItemText slot="label">
-              Admin
-            </DropdownItemText>
+            <DropdownItemText slot="label">Admin</DropdownItemText>
             <DropdownItemText slot="description" size="sm" color="lo">
               Full access to all features
             </DropdownItemText>
@@ -132,25 +126,19 @@ function DropdownListBoxPatterns() {
           style={styles.listbox}
         >
           <DropdownItem id="free" textValue="Free">
-            <DropdownItemText slot="label">
-              Free
-            </DropdownItemText>
+            <DropdownItemText slot="label">Free</DropdownItemText>
             <DropdownItemText slot="description" size="sm" color="lo">
               Basic features
             </DropdownItemText>
           </DropdownItem>
           <DropdownItem id="pro" textValue="Pro">
-            <DropdownItemText slot="label">
-              Pro
-            </DropdownItemText>
+            <DropdownItemText slot="label">Pro</DropdownItemText>
             <DropdownItemText slot="description" size="sm" color="lo">
               Advanced features
             </DropdownItemText>
           </DropdownItem>
           <DropdownItem id="enterprise" textValue="Enterprise" isDisabled>
-            <DropdownItemText slot="label">
-              Enterprise
-            </DropdownItemText>
+            <DropdownItemText slot="label">Enterprise</DropdownItemText>
             <DropdownItemText slot="description" size="sm" color="lo">
               Coming soon
             </DropdownItemText>

@@ -2,6 +2,17 @@
 
 Selection list components for dropdown menus and selection interfaces.
 
+## Accessibility
+
+Always use `DropdownListBox` and `DropdownItem` for selection interfaces - never build custom lists with divs or other generic elements. These components handle:
+
+- ARIA roles (`listbox`, `option`) and properties
+- Keyboard navigation (arrows, Home, End, typeahead search)
+- Selection state management and screen reader announcements
+- Focus management and roving tabindex
+
+The components route props correctly for selection behavior. Custom implementations will lack proper accessibility.
+
 ## Dropdown Components
 
 These components are styled for use in dropdown contexts (Select, ComboBox, Menu).
@@ -97,7 +108,7 @@ States are styled using `:is()` to handle both CSS pseudo-classes and data attri
 :is([data-hovered], :hover) { background: tone.componentHover }
 :is([data-pressed], :active) { background: tone.componentActive }
 :is([data-focus-visible], :focus-visible) { outline: ... }
-:is([data-selected]) { background: tone.solid }
+:is([data-selected]) { background: accent.solid }
 ```
 
 ## Components

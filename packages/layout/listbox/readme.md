@@ -2,6 +2,18 @@
 
 ListBox components for dropdown and selection interfaces, built on React Aria Components.
 
+## Accessibility
+
+Always use `DropdownListBox` and `DropdownItem` for selection interfaces. These components are built on React Aria and handle:
+
+- Correct ARIA roles (`listbox`, `option`)
+- Keyboard navigation (arrow keys, Home, End, typeahead)
+- Selection state management and announcements
+- Focus management within the list
+- Screen reader support
+
+Do not attempt to build custom selection lists with generic elements - the accessibility requirements are complex and easy to get wrong.
+
 ## Installation
 
 ```bash
