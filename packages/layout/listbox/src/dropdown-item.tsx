@@ -9,9 +9,10 @@ import { space } from '@urban-ui/theme/layout.stylex'
 import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components'
 import {
   ListBoxItem as AriaListBoxItem,
-  Text as AriaText,
   composeRenderProps,
 } from 'react-aria-components'
+
+import { DropdownItemText } from './dropdown-item-text'
 
 /**
  * Visual states for DropdownItem:
@@ -41,21 +42,11 @@ const styles = stylex.create({
     color: tone.fgHi,
     backgroundColor: base.transparent,
     transition: 'background 0.15s, color 0.15s',
-  },
-  /**
-   * Hover state - mouse over the item
-   * Uses :is() to handle both CSS hover and data attribute from react-aria
-   */
-  hover: {
+    // Hover state
     ':is([data-hovered], :hover)': {
       backgroundColor: tone.componentHover,
     },
-  },
-  /**
-   * Focus visible state - shows focus ring for keyboard navigation
-   * Only appears for keyboard navigation, not mouse clicks
-   */
-  focusVisible: {
+    // Focus visible state - keyboard navigation
     ':is([data-focus-visible], :focus-visible)': {
       outlineColor: focusVars.outlineColor,
       outlineOffset: focusVars.outlineOffset,
@@ -63,47 +54,24 @@ const styles = stylex.create({
       outlineWidth: focusVars.outlineSize,
       zIndex: 1,
     },
-  },
-  /**
-   * Pressed/Active state - item is being pressed
-   * Uses :is() to handle both CSS active and data attribute from react-aria
-   */
-  pressed: {
+    // Pressed state
     ':is([data-pressed], :active)': {
       backgroundColor: tone.componentActive,
     },
-  },
-  /**
-   * Selected state - item is currently selected
-   * Uses accent colors for selection indication
-   */
-  selected: {
+    // Selected state
     ':is([data-selected])': {
       backgroundColor: accent.solid,
       color: accent.fgOnBlock,
     },
-  },
-  /**
-   * Selected + hover - subtle feedback when hovering selected item
-   */
-  selectedHover: {
+    // Selected + hover
     ':is([data-selected][data-hovered], [data-selected]:hover)': {
       backgroundColor: accent.solidHover,
     },
-  },
-  /**
-   * Selected + pressed - feedback when pressing selected item
-   */
-  selectedPressed: {
+    // Selected + pressed
     ':is([data-selected][data-pressed], [data-selected]:active)': {
       backgroundColor: accent.solidActive,
     },
-  },
-  /**
-   * Disabled state - item cannot be interacted with
-   * Uses data attribute from react-aria
-   */
-  disabled: {
+    // Disabled state
     ':is([data-disabled])': {
       backgroundColor: disabled.background,
       color: disabled.fg,
@@ -134,23 +102,10 @@ export function DropdownItem<T extends object>({
   ...props
 }: DropdownItemProps<T>) {
   return (
-    <AriaListBoxItem
-      {...props}
-      {...stylex.props(
-        styles.base,
-        styles.hover,
-        styles.focusVisible,
-        styles.pressed,
-        styles.selected,
-        styles.selectedHover,
-        styles.selectedPressed,
-        styles.disabled,
-        style,
-      )}
-    >
+    <AriaListBoxItem {...props} {...stylex.props(styles.base, style)}>
       {composeRenderProps(children, (children) =>
         typeof children === 'string' ? (
-          <AriaText slot="label">{children}</AriaText>
+          <DropdownItemText slot="label">{children}</DropdownItemText>
         ) : (
           children
         ),
