@@ -1,0 +1,38 @@
+{
+  "name": "tanstack",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "rsbuild dev",
+    "build": "rsbuild build",
+    "preview": "rsbuild preview",
+    "lint": "biome lint src"
+  },
+  "dependencies": {
+    "@stylexjs/stylex": "0.17.5",
+    "@tanstack/react-router": "^1.120.6",
+    "@urban-ui/button": "workspace:*",
+    "@urban-ui/flex": "workspace:*",
+    "@urban-ui/reset": "workspace:*",
+    "@urban-ui/styles": "workspace:*",
+    "@urban-ui/text": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@rsbuild/core": "^1.6.11",
+    "@rsbuild/plugin-react": "^1.4.2",
+    "@rspack/core": "^1.7.2",
+    "@stylexswc/rs-compiler": "0.14.2",
+    "@stylexswc/unplugin": "0.14.2",
+    "@tanstack/router-plugin": "^1.120.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@urban-ui/postcss-plugin": "workspace:*",
+    "@urban-ui/tsconfig": "workspace:*",
+    "autoprefixer": "^10.4.23",
+    "typescript": "^5.9.3"
+  }
+}
