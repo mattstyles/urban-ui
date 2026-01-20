@@ -7,6 +7,9 @@ import { themes } from '@urban-ui/theme'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import { Bell, Home, Search, Settings, User } from 'lucide-react'
+
+import { NavItem } from './nav-item'
 
 export const Route = createFileRoute('/patterns/link/')({
   component: LinkPatterns,
@@ -21,6 +24,11 @@ const styles = stylex.create({
     backgroundColor: base.white,
     color: tone.fgHi,
     borderRadius: radii.md,
+  },
+  nav: {
+    backgroundColor: tone.solid,
+    borderRadius: radii.md,
+    padding: space[100],
   },
 })
 
@@ -235,19 +243,54 @@ function LinkPatterns() {
         </Flex>
       </Flex>
 
-      {/* Custom Navigation Example */}
+      {/* Icon Navigation Bar */}
       <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
-          Custom Styled Navigation
+          Icon Navigation Bar
         </Text>
-        <Text>
-          See the{' '}
-          <Link asChild>
-            <RouterLink to="/patterns/link/navigation">
-              custom navigation example
-            </RouterLink>
-          </Link>{' '}
-          for completely custom link styling with icons and hover effects.
+        <Text size="sm" color="lo">
+          Custom styled links with hover accent bar using variant="clear"
+        </Text>
+
+        <Flex gap="50" style={[styles.nav, themes.primary]}>
+          <NavItem to="/" icon={Home} label="Home" />
+          <NavItem to="/patterns" icon={Search} label="Search" />
+          <NavItem to="/patterns/link" icon={Bell} label="Notifications" />
+          <NavItem to="/patterns/text" icon={User} label="Profile" />
+          <NavItem to="/patterns/button" icon={Settings} label="Settings" />
+        </Flex>
+      </Flex>
+
+      {/* Navigation Tones */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Navigation Tones
+        </Text>
+
+        <Flex gap="300" wrap="wrap">
+          <Flex gap="50" style={[styles.nav, themes.accent]}>
+            <NavItem to="/" icon={Home} label="Home" />
+            <NavItem to="/patterns" icon={Search} label="Search" />
+            <NavItem to="/patterns/link" icon={Settings} label="Settings" />
+          </Flex>
+
+          <Flex gap="50" style={[styles.nav, themes.neutral]}>
+            <NavItem to="/" icon={Home} label="Home" />
+            <NavItem to="/patterns" icon={Search} label="Search" />
+            <NavItem to="/patterns/link" icon={Settings} label="Settings" />
+          </Flex>
+
+          <Flex gap="50" style={[styles.nav, themes.positive]}>
+            <NavItem to="/" icon={Home} label="Home" />
+            <NavItem to="/patterns" icon={Search} label="Search" />
+            <NavItem to="/patterns/link" icon={Settings} label="Settings" />
+          </Flex>
+        </Flex>
+
+        <Text size="sm" color="lo">
+          This pattern uses Link with variant="clear" to remove default link
+          styling, then applies custom styles via the style prop. The accent bar
+          uses CSS transitions on width with absolute positioning.
         </Text>
       </Flex>
     </Flex>
