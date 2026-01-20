@@ -6,6 +6,7 @@ import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import { ChevronLeft, ChevronRight, Plus } from 'lucide-react'
 
 export const Route = createFileRoute('/patterns/button/')({
   component: ButtonPatterns,
@@ -139,11 +140,11 @@ function ButtonPatterns() {
           Equal padding (for icon buttons):
         </Text>
         <Flex gap="200" wrap="wrap" align="center">
-          <Button size="md-equal" tone="primary">
-            +
+          <Button size="md-equal" tone="primary" aria-label="Add">
+            <Plus size={16} />
           </Button>
-          <Button size="lg-equal" tone="primary">
-            +
+          <Button size="lg-equal" tone="primary" aria-label="Add">
+            <Plus size={20} />
           </Button>
         </Flex>
       </Flex>
@@ -215,11 +216,21 @@ function ButtonPatterns() {
           Action group:
         </Text>
         <Flex gap="100" wrap="wrap">
-          <Button variant="ghost" tone="neutral" size="md-equal">
-            ←
+          <Button
+            variant="ghost"
+            tone="neutral"
+            size="md-equal"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={16} />
           </Button>
-          <Button variant="ghost" tone="neutral" size="md-equal">
-            →
+          <Button
+            variant="ghost"
+            tone="neutral"
+            size="md-equal"
+            aria-label="Next"
+          >
+            <ChevronRight size={16} />
           </Button>
         </Flex>
       </Flex>
