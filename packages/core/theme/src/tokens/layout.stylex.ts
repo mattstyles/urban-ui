@@ -97,8 +97,31 @@ export const sizes = defineVars({
   min: 'min-content',
   max: 'max-content',
   fit: 'fit-content',
-  contentWide: '48rem',
-  contentNarrow: '32rem',
+})
+
+/**
+ * @tokens content
+ * @css maxWidth
+ * @description Content width constraints for layout containers
+ */
+export const content = defineVars({
+  wide: '48rem',
+  narrow: '32rem',
+})
+
+/**
+ * @tokens edge
+ * @css paddingBlock, paddingInline
+ * @description Edge spacing for distance from inner components to container edge
+ */
+export const edge = defineVars({
+  none: '0px',
+  xxs: '2px',
+  xs: '4px',
+  sm: '8px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px',
 })
 
 /**

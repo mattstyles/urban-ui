@@ -16,6 +16,7 @@
     "@tanstack/react-router": "^1.120.6",
     "@urban-ui/button": "workspace:*",
     "@urban-ui/center": "workspace:*",
+    "@urban-ui/content": "workspace:*",
     "@urban-ui/flex": "workspace:*",
     "@urban-ui/icon": "workspace:*",
     "@urban-ui/link": "workspace:*",

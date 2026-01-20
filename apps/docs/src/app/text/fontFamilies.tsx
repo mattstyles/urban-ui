@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
 import { tone } from '@urban-ui/theme/colors.stylex'
-import { sizes, space } from '@urban-ui/theme/layout.stylex'
+import { content, space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fonts } from '@urban-ui/theme/type.stylex'
 
 const styles = stylex.create({
@@ -19,7 +19,7 @@ const styles = stylex.create({
     flexShrink: 0,
   },
   textContent: {
-    maxWidth: sizes.contentWide,
+    maxWidth: content.wide,
   },
 })
 

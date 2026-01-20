@@ -145,6 +145,7 @@
         "@tanstack/react-router": "^1.120.6",
         "@urban-ui/button": "workspace:*",
         "@urban-ui/center": "workspace:*",
+        "@urban-ui/content": "workspace:*",
         "@urban-ui/flex": "workspace:*",
         "@urban-ui/icon": "workspace:*",
         "@urban-ui/link": "workspace:*",
@@ -357,6 +358,30 @@
       "version": "0.0.1",
       "dependencies": {
         "@urban-ui/flex": "workspace:*",
+      },
+      "devDependencies": {
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@stylexjs/stylex": "0.17.5",
+        "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "react": "19.2.3",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
+      },
+    },
+    "packages/layout/content": {
+      "name": "@urban-ui/content",
+      "version": "0.0.1",
+      "dependencies": {
+        "@radix-ui/react-slot": "^1.2.3",
+        "@urban-ui/theme": "workspace:*",
       },
       "devDependencies": {
         "@rsbuild/plugin-react": "1.4.2",
@@ -1571,6 +1596,8 @@
     "@urban-ui/button": ["@urban-ui/button@workspace:packages/action/button"],
 
     "@urban-ui/center": ["@urban-ui/center@workspace:packages/layout/center"],
+
+    "@urban-ui/content": ["@urban-ui/content@workspace:packages/layout/content"],
 
     "@urban-ui/flex": ["@urban-ui/flex@workspace:packages/layout/flex"],
 

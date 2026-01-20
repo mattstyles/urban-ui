@@ -64,7 +64,7 @@ const styles = stylex.create({
 
 ```tsx
 import { Flex } from '@urban-ui/flex'
-import { sizes, space } from '@urban-ui/theme/layout.stylex'
+import { content, sizes, space } from '@urban-ui/theme/layout.stylex'
 
 const styles = stylex.create({
   page: {
@@ -73,7 +73,7 @@ const styles = stylex.create({
     paddingInline: space['200'],
   },
   content: {
-    maxWidth: sizes.contentWide,
+    maxWidth: content.wide,
     marginInline: 'auto',
     width: sizes.full,
   },
