@@ -1,6 +1,12 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
+import {
+  fontColors,
+  sizes,
+  styles as textStyles,
+  weights,
+} from '@urban-ui/styles/text'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
 import { radii } from '@urban-ui/theme/borders.stylex'
@@ -41,22 +47,46 @@ function TextPatterns() {
           <p>Paragraph with text styles applied to the p element.</p>
         </Text>
         <Text size="sm" color="lo" asChild>
-          <a href="#">Link with text styles</a>
+          <a href="/">Link with text styles</a>
         </Text>
       </Flex>
 
       <Flex direction="h" gap="200">
-        <Flex direction="v" gap="100" style={[styles.container, themes.critical]}>
-          <Text size="md" weight="semibold" color="hi">Error</Text>
-          <Text size="sm" color="lo">Something went wrong</Text>
+        <Flex
+          direction="v"
+          gap="100"
+          style={[styles.container, themes.critical]}
+        >
+          <Text size="md" weight="semibold" color="hi">
+            Error
+          </Text>
+          <Text size="sm" color="lo">
+            Something went wrong
+          </Text>
         </Flex>
-        <Flex direction="v" gap="100" style={[styles.container, themes.positive]}>
-          <Text size="md" weight="semibold" color="hi">Success</Text>
-          <Text size="sm" color="lo">Operation completed</Text>
+        <Flex
+          direction="v"
+          gap="100"
+          style={[styles.container, themes.positive]}
+        >
+          <Text size="md" weight="semibold" color="hi">
+            Success
+          </Text>
+          <Text size="sm" color="lo">
+            Operation completed
+          </Text>
         </Flex>
-        <Flex direction="v" gap="100" style={[styles.container, themes.warning]}>
-          <Text size="md" weight="semibold" color="hi">Warning</Text>
-          <Text size="sm" color="lo">Please review</Text>
+        <Flex
+          direction="v"
+          gap="100"
+          style={[styles.container, themes.warning]}
+        >
+          <Text size="md" weight="semibold" color="hi">
+            Warning
+          </Text>
+          <Text size="sm" color="lo">
+            Please review
+          </Text>
         </Flex>
       </Flex>
 
@@ -75,6 +105,18 @@ function TextPatterns() {
           </Text>{' '}
           and cannot be undone.
         </Text>
+      </Flex>
+
+      <Flex direction="v" gap="200" style={[styles.container]}>
+        <h1 {...stylex.props(textStyles.base, sizes.xxl, weights.bold, fontColors.hi)}>
+          Manual styled heading
+        </h1>
+        <p {...stylex.props(textStyles.base, sizes.md, fontColors.hi)}>
+          Paragraph styled directly with text style objects.
+        </p>
+        <span {...stylex.props(textStyles.base, sizes.sm, weights.semibold, fontColors.lo)}>
+          Secondary caption text
+        </span>
       </Flex>
     </Flex>
   )

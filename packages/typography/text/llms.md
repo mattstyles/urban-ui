@@ -84,3 +84,25 @@ Use `asChild` with a theme to emphasize a word within a sentence:
   built in.
 </Text>
 ```
+
+## Manual Styling
+
+Apply text styles directly to elements without the Text component:
+
+```tsx
+import * as stylex from '@stylexjs/stylex'
+import { styles, sizes, weights, fontColors } from '@urban-ui/styles/text'
+
+<h1 {...stylex.props(styles.base, sizes.xxl, weights.bold, fontColors.hi)}>
+  Styled heading
+</h1>
+```
+
+Available style objects:
+- `styles` - Base text styles
+- `sizes` - Font size scale (`xxs`, `xs`, `sm`, `md`, `lg`, `xl`, `xxl`, `inherit`)
+- `weights` - Font weights (`light`, `normal`, `medium`, `semibold`, `bold`)
+- `fontFamilies` - Font families (`display`, `body`, `mono`)
+- `fontColors` - Text colors (`current`, `hi`, `lo`, `onBlock`, `transparent`)
+- `tracking` - Letter spacing (`tighter`, `tight`, `normal`, `wide`, `wider`, `widest`)
+- `textBox` - Text box trimming (`alphabetic`, `auto`, `none`)
