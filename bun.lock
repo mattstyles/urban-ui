@@ -151,6 +151,7 @@
         "@urban-ui/icon": "workspace:*",
         "@urban-ui/input": "workspace:*",
         "@urban-ui/link": "workspace:*",
+        "@urban-ui/listbox": "workspace:*",
         "@urban-ui/reset": "workspace:*",
         "@urban-ui/styles": "workspace:*",
         "@urban-ui/text": "workspace:*",
@@ -158,6 +159,7 @@
         "@urban-ui/theme": "workspace:*",
         "lucide-react": "0.562.0",
         "react": "19.2.3",
+        "react-aria-components": "1.14.0",
         "react-dom": "19.2.3",
       },
       "devDependencies": {
