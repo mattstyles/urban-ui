@@ -22,7 +22,6 @@
     "build": "rslib build"
   },
   "dependencies": {
-    "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
     "@urban-ui/styles": "workspace:*",
     "@radix-ui/react-slot": "^1.1.2",

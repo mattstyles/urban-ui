@@ -16,10 +16,28 @@ bun run format       # Format with Biome
 
 ## Structure
 
-- `packages/{category}/{component}/` - UI components (action, core, layout, typography, feedback, navigation, display)
+- `packages/{category}/{component}/` - UI components
+  - `action/` - Buttons and interactive elements for generic actions
+  - `core/` - Fundamental pieces such as themes
+  - `layout/` - Building blocks to construct pages and features
+  - `typography/` - Text and type elements
+  - `feedback/` - Visual elements providing user feedback
+  - `navigation/` - Elements for site navigation
+  - `input/` - Elements to gather information
+  - `utility/` - Catch-all bucket for other components
 - `apps/` - Applications
 - `scripts` - Various scripts to run the project
 - `tooling` - Shared tooling for packages
+
+## Documentation
+
+When writing application code with urban-ui:
+
+- StyleX: Read `docs/stylex-authoring-guide.md` when writing styles
+- Tokens: Read `packages/core/theme/llms.md` when using theme tokens (colors, space, typography)
+- Patterns: Read `docs/application-patterns.md` for composition patterns
+- Text: Read `packages/typography/text/llms.md` for typography
+- Link: Read `packages/navigation/link/llms.md` for link component
 
 ## Component Conventions
 

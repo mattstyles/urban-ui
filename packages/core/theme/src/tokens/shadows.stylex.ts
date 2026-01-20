@@ -1,5 +1,6 @@
 import { defineVars } from '@stylexjs/stylex'
-import { neutral, tone } from './colors.stylex'
+
+import { neutral } from './colors.stylex'
 
 export const DARK = '@media (prefers-color-scheme: dark)'
 

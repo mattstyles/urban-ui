@@ -8,7 +8,8 @@
   "exports": {
     ".": "./dist/index.js",
     "./button": "./dist/button.js",
-    "./link": "./dist/link.js"
+    "./link": "./dist/link.js",
+    "./text": "./dist/text.js"
   },
   "files": [
     "src",

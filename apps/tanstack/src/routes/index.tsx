@@ -1,21 +1,13 @@
 import * as stylex from '@stylexjs/stylex'
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link as RouterLink } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
+import { Link } from '@urban-ui/link'
 import { Text } from '@urban-ui/text'
+import { space } from '@urban-ui/theme/layout.stylex'
 
 const styles = stylex.create({
   container: {
-    padding: '2rem',
-  },
-  nav: {
-    gap: '0.5rem',
-  },
-  link: {
-    color: 'var(--color-primary)',
-    textDecoration: 'none',
-    ':hover': {
-      textDecoration: 'underline',
-    },
+    padding: space[400],
   },
 })
 
@@ -32,20 +24,23 @@ function HomePage() {
       <Text>
         This application demonstrates Urban UI components with TanStack Router.
       </Text>
-      <Flex direction="column" style={styles.nav}>
-        <Text weight="semibold">Component Demos:</Text>
-        <Link to="/components" {...stylex.props(styles.link)}>
-          All Components
-        </Link>
-        <Link to="/components/button" {...stylex.props(styles.link)}>
-          Button
-        </Link>
-        <Link to="/components/text" {...stylex.props(styles.link)}>
-          Text
-        </Link>
-        <Link to="/components/flex" {...stylex.props(styles.link)}>
-          Flex
-        </Link>
+      <Flex direction="column" gap="100">
+        <Text weight="semibold">Patterns:</Text>
+        <Text>
+          <Link asChild>
+            <RouterLink to="/patterns">All Patterns</RouterLink>
+          </Link>
+        </Text>
+        <Text>
+          <Link asChild>
+            <RouterLink to="/patterns/text">Text</RouterLink>
+          </Link>
+        </Text>
+        <Text>
+          <Link asChild>
+            <RouterLink to="/patterns/link">Link</RouterLink>
+          </Link>
+        </Text>
       </Flex>
     </Flex>
   )

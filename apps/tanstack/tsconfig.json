@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@urban-ui/tsconfig/client.json",
+  "extends": "@urban-ui/tsconfig/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

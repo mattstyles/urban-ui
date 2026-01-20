@@ -1,184 +1,16 @@
 import { Slot } from '@radix-ui/react-slot'
 import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
-import { themes } from '@urban-ui/theme'
-import { base, tone } from '@urban-ui/theme/colors.stylex'
 import {
-  fontSizes,
-  fonts,
-  fontWeights,
-  lineHeights,
-  tracking,
-} from '@urban-ui/theme/type.stylex'
+  fontColors,
+  fontFamilies,
+  sizes,
+  styles,
+  textBox,
+  tracking as trackingStyles,
+  weights,
+} from '@urban-ui/styles/text'
 import { forwardRef } from 'react'
-
-const styles = stylex.create({
-  // Base text styles
-  base: {
-    textBox: 'trim-both cap alphabetic',
-  },
-})
-
-const fontFamilies = stylex.create({
-  display: {
-    fontFamily: fonts.display,
-  },
-  body: {
-    fontFamily: fonts.body,
-  },
-  mono: {
-    fontFamily: fonts.mono,
-  },
-})
-
-/**
- * Font colour options
- */
-const fontColors = stylex.create({
-  current: {
-    color: base.current,
-  },
-  /**
-   * Deprecated, in favour of flat tokens rather than themed application
-   */
-  // foreground: {
-  //   color: tokens.foreground,
-  // },
-  // contrast: {
-  //   color: `oklch(from ${tokens.background} clamp(0, (l / 0.7 - 1) * -infinity, 1) 0 h)`,
-  // },
-  hi: {
-    color: tone.fgHi,
-  },
-  lo: {
-    color: tone.fgLo,
-  },
-  onBlock: {
-    color: tone.fgOnBlock,
-  },
-  transparent: {
-    color: base.transparent,
-  },
-})
-
-/**
- * Font sizes with corresponding line heights and letter spacing
- */
-const sizeValues = stylex.create({
-  inherit: {
-    fontSize: 'inherit',
-    lineHeight: 'inherit',
-    letterSpacing: 'inherit',
-  },
-  xxs: {
-    fontSize: fontSizes.xxs,
-    lineHeight: lineHeights.xxs,
-    letterSpacing: tracking.xxs,
-  },
-  xs: {
-    fontSize: fontSizes.xs,
-    lineHeight: lineHeights.xs,
-    letterSpacing: tracking.xs,
-  },
-  sm: {
-    fontSize: fontSizes.sm,
-    lineHeight: lineHeights.sm,
-    letterSpacing: tracking.sm,
-  },
-  md: {
-    fontSize: fontSizes.md,
-    lineHeight: lineHeights.md,
-    letterSpacing: tracking.md,
-  },
-  lg: {
-    fontSize: fontSizes.lg,
-    lineHeight: lineHeights.lg,
-    letterSpacing: tracking.lg,
-  },
-  xl: {
-    fontSize: fontSizes.xl,
-    lineHeight: lineHeights.xl,
-    letterSpacing: tracking.xl,
-  },
-  xxl: {
-    fontSize: fontSizes.xxl,
-    lineHeight: lineHeights.xxl,
-    letterSpacing: tracking.xxl,
-  },
-})
-
-/**
- * Font weights
- */
-const weights = stylex.create({
-  light: {
-    fontWeight: fontWeights.light,
-  },
-  normal: {
-    fontWeight: fontWeights.normal,
-  },
-  medium: {
-    fontWeight: fontWeights.medium,
-  },
-  semibold: {
-    fontWeight: fontWeights.semibold,
-  },
-  bold: {
-    fontWeight: fontWeights.bold,
-  },
-})
-
-/**
- * Tones
- */
-const tones = {
-  neutral: themes.neutral,
-  primary: themes.primary,
-  critical: themes.critical,
-  positive: themes.positive,
-  warning: themes.warning,
-}
-
-/**
- * Tracking
- * @css letter-spacing
- */
-const trackingClasses = stylex.create({
-  tighter: {
-    letterSpacing: tracking.tighter,
-  },
-  tight: {
-    letterSpacing: tracking.tight,
-  },
-  normal: {
-    letterSpacing: tracking.normal,
-  },
-  wide: {
-    letterSpacing: tracking.wide,
-  },
-  wider: {
-    letterSpacing: tracking.wider,
-  },
-  widest: {
-    letterSpacing: tracking.widest,
-  },
-})
-
-/**
- * Text-box properties
- * @css text-box
- */
-const textBoxStyles = stylex.create({
-  alphabetic: {
-    textBox: 'trim-both cap alphabetic',
-  },
-  auto: {
-    textBox: 'auto',
-  },
-  none: {
-    textBox: 'none',
-  },
-})
 
 // @ts-expect-error typing for var group prefers a known object for its keys, we want a generic object and let the compiler work it out
 type GenericTheme = Theme<VarGroup<unknown>> | Array<Theme<VarGroup<unknown>>>
@@ -234,17 +66,12 @@ export interface TextProps
 
 export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const {
-    // size = 'inherit',
-    // weight = 'normal',
-    // font = 'body',
-    // color = 'current',
-    // tone,
     size,
     weight,
     font,
     color = 'current',
     tracking,
-    textBox = 'alphabetic',
+    textBox: textBoxProp = 'alphabetic',
     style,
     asChild = false,
     children,
@@ -258,12 +85,12 @@ export const Text = forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
       ref={ref}
       {...stylex.props(
         styles.base,
-        size != null && sizeValues[size],
+        size != null && sizes[size],
         weight != null && weights[weight],
         font != null && fontFamilies[font],
         color != null && fontColors[color],
-        tracking != null && trackingClasses[tracking],
-        textBoxStyles[textBox],
+        tracking != null && trackingStyles[tracking],
+        textBox[textBoxProp],
         style,
       )}
       {...rest}

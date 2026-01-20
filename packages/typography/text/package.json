@@ -24,8 +24,9 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@urban-ui/theme": "workspace:*",
-    "@radix-ui/react-slot": "^1.1.2"
+    "@radix-ui/react-slot": "^1.1.2",
+    "@urban-ui/styles": "workspace:*",
+    "@urban-ui/theme": "workspace:*"
   },
   "peerDependencies": {
     "react": "19.2.3",
