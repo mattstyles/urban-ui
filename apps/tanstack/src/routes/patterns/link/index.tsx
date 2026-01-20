@@ -166,6 +166,41 @@ function LinkPatterns() {
             </Link>
           </Text>
         </Flex>
+        <Text size="sm" color="lo">
+          With variant=&quot;solid&quot;:
+        </Text>
+        <Flex gap="200" wrap="wrap">
+          <Text>
+            <Link href="#tone" tone="info" variant="solid">
+              Info (default)
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="neutral" variant="solid">
+              Neutral
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="primary" variant="solid">
+              Primary
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="positive" variant="solid">
+              Positive
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="warning" variant="solid">
+              Warning
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="critical" variant="solid">
+              Critical
+            </Link>
+          </Text>
+        </Flex>
       </Flex>
 
       {/* Navigation Pattern */}

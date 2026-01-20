@@ -125,6 +125,52 @@ The child element receives Link styling while using its native navigation behavi
 </Text>
 ```
 
+## Custom Styling for Navigation
+
+Use `variant="clear"` to strip default link styles and apply fully custom styling via the `style` prop. This is useful for site navigation elements like icon bars or custom nav items.
+
+```tsx
+import { Link as RouterLink } from '@tanstack/react-router'
+import { Link } from '@urban-ui/link'
+
+// Simplified nav item with custom hover states
+<Link asChild variant="clear" style={[styles.navItem, stylex.defaultMarker()]}>
+  <RouterLink to="/home" aria-label="Home">
+    <HomeIcon />
+  </RouterLink>
+</Link>
+```
+
+Style the nav item with StyleX pseudo-selectors for hover and active states:
+
+```tsx
+// styles.navItem (simplified)
+{
+  backgroundColor: {
+    default: 'transparent',
+    ':hover': tone.solidHover,
+    ':active': tone.solidActive,
+  },
+}
+```
+
+For child elements that respond to parent hover state, use `stylex.when.ancestor(':hover')` with `stylex.defaultMarker()` on the parent:
+
+```tsx
+// Parent element must include stylex.defaultMarker() in its style array
+<Link style={[styles.navItem, stylex.defaultMarker()]}>...</Link>
+
+// Child style using ancestor selector
+{
+  width: {
+    default: 0,
+    [stylex.when.ancestor(':hover')]: 24,
+  },
+}
+```
+
+See `apps/tanstack/src/routes/patterns/link/nav-item.tsx` for a complete implementation with hover accent bar animation.
+
 ## Accessibility
 
 - Built on React Aria's Link component

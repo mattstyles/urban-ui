@@ -1,14 +1,14 @@
 import * as stylex from '@stylexjs/stylex'
-import { createFileRoute, Link as RouterLink } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
-import { Icon } from '@urban-ui/icon'
-import { Link } from '@urban-ui/link'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { Bell, Home, Search, Settings, User } from 'lucide-react'
+
+import { NavItem } from './nav-item'
 
 export const Route = createFileRoute('/patterns/link/navigation')({
   component: NavigationPatterns,
@@ -29,38 +29,6 @@ const styles = stylex.create({
     borderRadius: radii.md,
     padding: space[100],
   },
-  navItem: {
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 48,
-    height: 48,
-    borderRadius: radii.md,
-    color: tone.fgOnBlock,
-    backgroundColor: {
-      default: 'transparent',
-      ':hover': tone.solidHover,
-      ':active': tone.solidActive,
-    },
-    transition: 'background-color 150ms ease',
-    overflow: 'hidden',
-  },
-  accentBar: {
-    position: 'absolute',
-    bottom: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    height: 3,
-    width: {
-      default: 0,
-      [stylex.when.ancestor(':hover')]: 24,
-    },
-    backgroundColor: base.white,
-    borderRadius: radii.full,
-    transition: 'width 200ms ease',
-    pointerEvents: 'none',
-  },
 })
 
 function NavigationPatterns() {
@@ -69,6 +37,10 @@ function NavigationPatterns() {
       <Text size="xxl" weight="bold">
         Custom Navigation Links
       </Text>
+
+      <div {...stylex.props(themes.accent)}>
+        <NavItem to="/" icon={Home} label="Home" />
+      </div>
 
       <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
@@ -137,24 +109,5 @@ function NavigationPatterns() {
         </Text>
       </Flex>
     </Flex>
-  )
-}
-
-interface NavItemProps {
-  to: string
-  icon: React.ComponentType
-  label: string
-}
-
-function NavItem({ to, icon: LucideIcon, label }: NavItemProps) {
-  return (
-    <Link asChild variant="clear" style={[styles.navItem, stylex.defaultMarker()]}>
-      <RouterLink to={to} aria-label={label}>
-        <Icon size="xl">
-          <LucideIcon />
-        </Icon>
-        <span {...stylex.props(styles.accentBar)} />
-      </RouterLink>
-    </Link>
   )
 }
