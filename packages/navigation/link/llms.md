@@ -1,14 +1,27 @@
 # Link
 
-Navigation component for navigating between pages or to external resources.
+Enriches elements with link behavior for navigation. Primarily used within Text to create inline links.
 
 ## Basic Usage
 
+Link should be placed within Text to inherit typography styling:
+
 ```tsx
 import { Link } from '@urban-ui/link'
+import { Text } from '@urban-ui/text'
 
-<Link href="/about">About us</Link>
+// Inline link within text
+<Text>
+  Read our <Link href="/about">about page</Link> for more information.
+</Text>
+
+// Standalone link
+<Text>
+  <Link href="/about">About us</Link>
+</Text>
 ```
+
+Using Link bare (outside Text) will not have correct text styling. The exception is `display="button"` which provides its own styling.
 
 ## Variants
 
@@ -21,9 +34,15 @@ Links have three display variants:
 | `clear` | Inherits all styles from parent |
 
 ```tsx
-<Link href="/docs" variant="text">Documentation</Link>
-<Link href="/docs" variant="solid">Documentation</Link>
-<Link href="/docs" variant="clear">Documentation</Link>
+<Text>
+  <Link href="/docs" variant="text">Documentation</Link>
+</Text>
+<Text>
+  <Link href="/docs" variant="solid">Documentation</Link>
+</Text>
+<Text>
+  <Link href="/docs" variant="clear">Documentation</Link>
+</Text>
 ```
 
 ## Tones
@@ -41,13 +60,17 @@ Color tones for semantic meaning:
 | `critical` | Destructive actions |
 
 ```tsx
-<Link href="/help" tone="info">Help</Link>
-<Link href="/delete" tone="critical">Delete account</Link>
+<Text>
+  <Link href="/help" tone="info">Help</Link>
+</Text>
+<Text>
+  <Link href="/delete" tone="critical">Delete account</Link>
+</Text>
 ```
 
 ## Display as Button
 
-Use `display="button"` to render a link with button styling:
+Use `display="button"` to render a link with button styling. This does not require Text wrapping:
 
 ```tsx
 <Link href="/signup" display="button" variant="solid" tone="primary">
@@ -61,51 +84,45 @@ Use `display="button"` to render a link with button styling:
 
 When `display="button"`, these props are available:
 - `variant`: `solid`, `ghost`, `outline`, `muted` (button variants)
-- `size`: `sm`, `md`, `lg`
+- `size`: `md`, `lg`
 - `shape`: `square`, `rounded`, `pill`
 
 ## asChild
 
-Use `asChild` to apply Link styles to a custom link element. This is essential for framework-specific routing:
+Use `asChild` on Link to apply styles to a custom link element. This is essential for framework-specific routing:
 
 ```tsx
 // With Tanstack Router
 import { Link as RouterLink } from '@tanstack/react-router'
 import { Link } from '@urban-ui/link'
+import { Text } from '@urban-ui/text'
 
-<Link asChild>
-  <RouterLink to="/dashboard">Dashboard</RouterLink>
-</Link>
+<Text>
+  <Link asChild>
+    <RouterLink to="/dashboard">Dashboard</RouterLink>
+  </Link>
+</Text>
 
 // With Next.js
 import NextLink from 'next/link'
 
-<Link asChild>
-  <NextLink href="/dashboard">Dashboard</NextLink>
-</Link>
+<Text>
+  <Link asChild>
+    <NextLink href="/dashboard">Dashboard</NextLink>
+  </Link>
+</Text>
 ```
 
 The child element receives Link styling while using its native navigation behavior.
 
-## Inline Links
-
-Links work naturally within Text components:
-
-```tsx
-import { Link } from '@urban-ui/link'
-import { Text } from '@urban-ui/text'
-
-<Text>
-  Read our <Link href="/privacy">privacy policy</Link> for more information.
-</Text>
-```
-
 ## Disabled State
 
 ```tsx
-<Link href="/unavailable" isDisabled>
-  Currently unavailable
-</Link>
+<Text>
+  <Link href="/unavailable" isDisabled>
+    Currently unavailable
+  </Link>
+</Text>
 ```
 
 ## Accessibility

@@ -22,12 +22,6 @@ const styles = stylex.create({
     color: tone.fgHi,
     borderRadius: radii.md,
   },
-  section: {
-    borderBottomWidth: 1,
-    borderBottomStyle: 'solid',
-    borderBottomColor: tone.border,
-    paddingBottom: space[300],
-  },
 })
 
 function LinkPatterns() {
@@ -38,23 +32,29 @@ function LinkPatterns() {
       </Text>
 
       {/* Basic Link */}
-      <Flex direction="v" gap="200" style={[styles.container, styles.section]}>
+      <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
           Basic Link
         </Text>
         <Flex gap="200" wrap="wrap">
-          <Link href="#basic">Default link</Link>
-          <Link href="#basic" variant="solid">
-            Solid variant
-          </Link>
-          <Link href="#basic" variant="clear">
-            Clear variant
-          </Link>
+          <Text>
+            <Link href="#basic">Default link</Link>
+          </Text>
+          <Text>
+            <Link href="#basic" variant="solid">
+              Solid variant
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#basic" variant="clear">
+              Clear variant
+            </Link>
+          </Text>
         </Flex>
       </Flex>
 
       {/* Tanstack Router Integration */}
-      <Flex direction="v" gap="200" style={[styles.container, styles.section]}>
+      <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
           Tanstack Router Integration
         </Text>
@@ -62,20 +62,26 @@ function LinkPatterns() {
           Use asChild to apply Link styles to RouterLink
         </Text>
         <Flex gap="200" wrap="wrap">
-          <Link asChild>
-            <RouterLink to="/">Home</RouterLink>
-          </Link>
-          <Link asChild tone="primary">
-            <RouterLink to="/patterns">Patterns</RouterLink>
-          </Link>
-          <Link asChild tone="accent">
-            <RouterLink to="/patterns/text">Text Patterns</RouterLink>
-          </Link>
+          <Text>
+            <Link asChild>
+              <RouterLink to="/">Home</RouterLink>
+            </Link>
+          </Text>
+          <Text>
+            <Link asChild tone="primary">
+              <RouterLink to="/patterns">Patterns</RouterLink>
+            </Link>
+          </Text>
+          <Text>
+            <Link asChild tone="accent">
+              <RouterLink to="/patterns/text">Text Patterns</RouterLink>
+            </Link>
+          </Text>
         </Flex>
       </Flex>
 
       {/* Inline Links */}
-      <Flex direction="v" gap="200" style={[styles.container, styles.section]}>
+      <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
           Inline Links
         </Text>
@@ -95,7 +101,7 @@ function LinkPatterns() {
       </Flex>
 
       {/* Button-styled Links */}
-      <Flex direction="v" gap="200" style={[styles.container, styles.section]}>
+      <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
           Button-styled Links
         </Text>
@@ -124,52 +130,64 @@ function LinkPatterns() {
       </Flex>
 
       {/* Tones */}
-      <Flex direction="v" gap="200" style={[styles.container, styles.section]}>
+      <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
           Tones
         </Text>
         <Flex gap="200" wrap="wrap">
-          <Link href="#tone" tone="info">
-            Info (default)
-          </Link>
-          <Link href="#tone" tone="neutral">
-            Neutral
-          </Link>
-          <Link href="#tone" tone="primary">
-            Primary
-          </Link>
-          <Link href="#tone" tone="positive">
-            Positive
-          </Link>
-          <Link href="#tone" tone="warning">
-            Warning
-          </Link>
-          <Link href="#tone" tone="critical">
-            Critical
-          </Link>
+          <Text>
+            <Link href="#tone" tone="info">
+              Info (default)
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="neutral">
+              Neutral
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="primary">
+              Primary
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="positive">
+              Positive
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="warning">
+              Warning
+            </Link>
+          </Text>
+          <Text>
+            <Link href="#tone" tone="critical">
+              Critical
+            </Link>
+          </Text>
         </Flex>
       </Flex>
 
       {/* Navigation Pattern */}
-      <Flex direction="v" gap="200" style={[styles.container]}>
+      <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
           Navigation Header Pattern
         </Text>
-        <Flex
-          justify="space-between"
-          align="center"
-          style={[themes.neutral]}
-        >
+        <Flex justify="space-between" align="center" style={[themes.neutral]}>
           <Text size="lg" weight="bold">
             Logo
           </Text>
           <Flex gap="300">
-            <Link asChild variant="solid" tone="neutral">
-              <RouterLink to="/patterns">Features</RouterLink>
-            </Link>
-            <Link asChild variant="solid" tone="neutral">
-              <RouterLink to="/patterns/text">Docs</RouterLink>
-            </Link>
+            <Text>
+              <Link asChild variant="solid" tone="neutral">
+                <RouterLink to="/patterns">Features</RouterLink>
+              </Link>
+            </Text>
+            <Text>
+              <Link asChild variant="solid" tone="neutral">
+                <RouterLink to="/patterns/text">Docs</RouterLink>
+              </Link>
+            </Text>
           </Flex>
           <Flex gap="100">
             <Link asChild display="button" variant="ghost" tone="neutral">

@@ -26,15 +26,21 @@ function HomePage() {
       </Text>
       <Flex direction="column" gap="100">
         <Text weight="semibold">Patterns:</Text>
-        <Link asChild>
-          <RouterLink to="/patterns">All Patterns</RouterLink>
-        </Link>
-        <Link asChild>
-          <RouterLink to="/patterns/text">Text</RouterLink>
-        </Link>
-        <Link asChild>
-          <RouterLink to="/patterns/link">Link</RouterLink>
-        </Link>
+        <Text>
+          <Link asChild>
+            <RouterLink to="/patterns">All Patterns</RouterLink>
+          </Link>
+        </Text>
+        <Text>
+          <Link asChild>
+            <RouterLink to="/patterns/text">Text</RouterLink>
+          </Link>
+        </Text>
+        <Text>
+          <Link asChild>
+            <RouterLink to="/patterns/link">Link</RouterLink>
+          </Link>
+        </Text>
       </Flex>
     </Flex>
   )
