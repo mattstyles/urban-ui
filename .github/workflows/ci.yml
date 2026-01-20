@@ -58,6 +58,30 @@ jobs:
       - name: Build packages
         run: bun run build:ci
       - name: Lint
-        run: bun run lint
+        run: bun turbo run lint --filter="./packages/**"
       - name: Type check
-        run: bun run typecheck
+        run: bun turbo run typecheck --filter="./packages/**"
+  test:
+    runs-on: ubuntu-latest
+    needs: init
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Bun setup
+        uses: oven-sh/setup-bun@v1
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.bun/install/cache
+            node_modules
+            **/node_modules
+            !**/node_modules/.cache
+          key: ${{ runner.os }}-${{ runner.arch }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ runner.arch }}-bun-
+      - name: Build packages
+        run: bun run build:ci
+      - name: Test
+        run: CI=true bun turbo run test --filter="./packages/**"
