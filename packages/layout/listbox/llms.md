@@ -23,6 +23,7 @@ These components are styled for use in dropdown contexts (Select, ComboBox, Menu
 import {
   DropdownListBox,
   DropdownItem,
+  DropdownItemContent,
   DropdownItemText
 } from '@urban-ui/listbox'
 
@@ -35,24 +36,30 @@ import {
 
 ### With Label and Description
 
-Use `DropdownItemText` with slots for structured content:
+Use `DropdownItemContent` for layout and `DropdownItemText` with slots for structured content:
 
 ```tsx
 <DropdownListBox aria-label="Permissions" selectionMode="single">
   <DropdownItem id="read" textValue="Read">
-    <DropdownItemText slot="label">Read</DropdownItemText>
-    <DropdownItemText slot="description" size="sm" color="lo">
-      View content only
-    </DropdownItemText>
+    <DropdownItemContent>
+      <DropdownItemText slot="label">Read</DropdownItemText>
+      <DropdownItemText slot="description" size="sm" color="lo">
+        View content only
+      </DropdownItemText>
+    </DropdownItemContent>
   </DropdownItem>
   <DropdownItem id="write" textValue="Write">
-    <DropdownItemText slot="label">Write</DropdownItemText>
-    <DropdownItemText slot="description" size="sm" color="lo">
-      Create and edit content
-    </DropdownItemText>
+    <DropdownItemContent>
+      <DropdownItemText slot="label">Write</DropdownItemText>
+      <DropdownItemText slot="description" size="sm" color="lo">
+        Create and edit content
+      </DropdownItemText>
+    </DropdownItemContent>
   </DropdownItem>
 </DropdownListBox>
 ```
+
+**Note:** `DropdownItem` handles colors and interactive states (hover, selected, pressed, etc.) but does not impose layout on its children. This allows custom content structures. Use `DropdownItemContent` for standard label/description layouts, or compose your own layout for custom needs.
 
 ### Multiple Selection
 
@@ -68,10 +75,12 @@ Use `DropdownItemText` with slots for structured content:
 
 ```tsx
 <DropdownItem id="premium" isDisabled>
-  <DropdownItemText slot="label">Premium</DropdownItemText>
-  <DropdownItemText slot="description" size="sm" color="lo">
-    Coming soon
-  </DropdownItemText>
+  <DropdownItemContent>
+    <DropdownItemText slot="label">Premium</DropdownItemText>
+    <DropdownItemText slot="description" size="sm" color="lo">
+      Coming soon
+    </DropdownItemText>
+  </DropdownItemContent>
 </DropdownItem>
 ```
 
@@ -134,6 +143,15 @@ Styled list item with interactive states.
 - `textValue` - Text for typeahead/accessibility
 - `isDisabled` - Disable the item
 - `style` - StyleX styles
+
+### DropdownItemContent
+
+Layout wrapper for item content, built on `@urban-ui/flex`. Provides consistent padding and gap for label/description structures.
+
+**Props:**
+- `direction` - Flex direction (default: `'column'`)
+- `gap` - Gap between children (default: `'100'`)
+- Inherits all `@urban-ui/flex` props
 
 ### DropdownItemText
 

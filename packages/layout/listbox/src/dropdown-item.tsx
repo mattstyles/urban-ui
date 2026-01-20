@@ -5,14 +5,13 @@ import * as stylex from '@stylexjs/stylex'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { accent, base, disabled, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
 import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components'
 import {
   ListBoxItem as AriaListBoxItem,
   composeRenderProps,
 } from 'react-aria-components'
 
-import { DropdownItemText } from './dropdown-item-text'
+import { DropdownItemTextInline } from './dropdown-item-text'
 
 /**
  * Visual states for DropdownItem:
@@ -33,10 +32,6 @@ import { DropdownItemText } from './dropdown-item-text'
 const styles = stylex.create({
   base: {
     display: 'flex',
-    flexDirection: 'column',
-    gap: space[200],
-    paddingBlock: space[100],
-    paddingInline: space[150],
     borderRadius: radii.md,
     outline: 'none',
     color: tone.fgHi,
@@ -105,7 +100,9 @@ export function DropdownItem<T extends object>({
     <AriaListBoxItem {...props} {...stylex.props(styles.base, style)}>
       {composeRenderProps(children, (children) =>
         typeof children === 'string' ? (
-          <DropdownItemText slot="label">{children}</DropdownItemText>
+          <DropdownItemTextInline slot="label">
+            {children}
+          </DropdownItemTextInline>
         ) : (
           children
         ),

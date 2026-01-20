@@ -537,6 +537,7 @@
       "name": "@urban-ui/listbox",
       "version": "0.9.0",
       "dependencies": {
+        "@urban-ui/flex": "workspace:*",
         "@urban-ui/text": "workspace:*",
         "@urban-ui/theme": "workspace:*",
       },

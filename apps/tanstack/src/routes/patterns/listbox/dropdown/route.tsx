@@ -3,6 +3,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
 import {
   DropdownItem,
+  DropdownItemContent,
   DropdownItemText,
   DropdownListBox,
 } from '@urban-ui/listbox'
@@ -71,22 +72,28 @@ function DropdownListBoxPatterns() {
           style={styles.listbox}
         >
           <DropdownItem id="read" textValue="Read">
-            <DropdownItemText slot="label">Read</DropdownItemText>
-            <DropdownItemText slot="description" size="sm" color="lo">
-              View content only
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label">Read</DropdownItemText>
+              <DropdownItemText slot="description" size="sm" color="lo">
+                View content only
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
           <DropdownItem id="write" textValue="Write">
-            <DropdownItemText slot="label">Write</DropdownItemText>
-            <DropdownItemText slot="description" size="sm" color="lo">
-              Create and edit content
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label">Write</DropdownItemText>
+              <DropdownItemText slot="description" size="sm" color="lo">
+                Create and edit content
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
           <DropdownItem id="admin" textValue="Admin">
-            <DropdownItemText slot="label">Admin</DropdownItemText>
-            <DropdownItemText slot="description" size="sm" color="lo">
-              Full access to all features
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label">Admin</DropdownItemText>
+              <DropdownItemText slot="description" size="sm" color="lo">
+                Full access to all features
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
         </DropdownListBox>
       </Flex>
@@ -126,22 +133,28 @@ function DropdownListBoxPatterns() {
           style={styles.listbox}
         >
           <DropdownItem id="free" textValue="Free">
-            <DropdownItemText slot="label">Free</DropdownItemText>
-            <DropdownItemText slot="description" size="sm" color="lo">
-              Basic features
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label">Free</DropdownItemText>
+              <DropdownItemText slot="description" size="sm" color="lo">
+                Basic features
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
           <DropdownItem id="pro" textValue="Pro">
-            <DropdownItemText slot="label">Pro</DropdownItemText>
-            <DropdownItemText slot="description" size="sm" color="lo">
-              Advanced features
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label">Pro</DropdownItemText>
+              <DropdownItemText slot="description" size="sm" color="lo">
+                Advanced features
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
           <DropdownItem id="enterprise" textValue="Enterprise" isDisabled>
-            <DropdownItemText slot="label">Enterprise</DropdownItemText>
-            <DropdownItemText slot="description" size="sm" color="lo">
-              Coming soon
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label">Enterprise</DropdownItemText>
+              <DropdownItemText slot="description" size="sm" color="lo">
+                Coming soon
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
         </DropdownListBox>
       </Flex>
@@ -160,28 +173,34 @@ function DropdownListBoxPatterns() {
           style={styles.listbox}
         >
           <DropdownItem id="bold" textValue="Bold Label">
-            <DropdownItemText slot="label" weight="bold">
-              Bold Label
-            </DropdownItemText>
-            <DropdownItemText slot="description" size="xs" color="lo">
-              Using weight=&quot;bold&quot;
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label" weight="bold">
+                Bold Label
+              </DropdownItemText>
+              <DropdownItemText slot="description" size="xs" color="lo">
+                Using weight=&quot;bold&quot;
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
           <DropdownItem id="mono" textValue="Monospace">
-            <DropdownItemText slot="label" font="mono">
-              Monospace Font
-            </DropdownItemText>
-            <DropdownItemText slot="description" size="xs" color="lo">
-              Using font=&quot;mono&quot;
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label" font="mono">
+                Monospace Font
+              </DropdownItemText>
+              <DropdownItemText slot="description" size="xs" color="lo">
+                Using font=&quot;mono&quot;
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
           <DropdownItem id="large" textValue="Large Text">
-            <DropdownItemText slot="label" size="lg">
-              Large Text
-            </DropdownItemText>
-            <DropdownItemText slot="description" size="sm" color="lo">
-              Using size=&quot;lg&quot;
-            </DropdownItemText>
+            <DropdownItemContent>
+              <DropdownItemText slot="label" size="lg">
+                Large Text
+              </DropdownItemText>
+              <DropdownItemText slot="description" size="sm" color="lo">
+                Using size=&quot;lg&quot;
+              </DropdownItemText>
+            </DropdownItemContent>
           </DropdownItem>
         </DropdownListBox>
       </Flex>
