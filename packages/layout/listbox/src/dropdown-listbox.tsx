@@ -2,6 +2,8 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
+import { radii } from '@urban-ui/theme/borders.stylex'
+import { tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import type { ListBoxProps as AriaListBoxProps } from 'react-aria-components'
 import { ListBox as AriaListBox } from 'react-aria-components'
@@ -10,10 +12,15 @@ const styles = stylex.create({
   base: {
     display: 'flex',
     flexDirection: 'column',
-    gap: space[50],
+    gap: space[25],
     padding: space[50],
     outline: 'none',
     overflow: 'auto',
+    backgroundColor: tone.surface,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: tone.border,
+    borderRadius: radii.lg,
   },
 })
 
