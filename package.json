@@ -19,7 +19,8 @@
     "packages/feedback/*",
     "packages/action/*",
     "packages/navigation/*",
-    "packages/display/*"
+    "packages/display/*",
+    "packages/interaction/*"
   ],
   "repository": {
     "type": "git",

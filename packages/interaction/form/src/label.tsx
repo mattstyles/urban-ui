@@ -2,7 +2,8 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
-import { fontSizes, fontWeights, lineHeights, space } from '@urban-ui/theme'
+import { space } from '@urban-ui/theme/layout.stylex'
+import { fontSizes, fontWeights, lineHeights } from '@urban-ui/theme/type.stylex'
 import type { LabelProps as AriaLabelProps } from 'react-aria-components'
 import { Label as AriaLabel } from 'react-aria-components'
 
@@ -11,7 +12,7 @@ const styles = stylex.create({
     display: 'block',
     fontSize: fontSizes.sm,
     fontWeight: fontWeights.medium,
-    lineHeight: lineHeights.normal,
+    lineHeight: lineHeights.sm,
     marginBlockEnd: space[100],
   },
 })
