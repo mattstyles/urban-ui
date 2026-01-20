@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
 import { Text } from '@urban-ui/text'
-import { createFileRoute, Link } from '@tanstack/react-router'
 
 const styles = stylex.create({
   container: {
@@ -25,7 +25,7 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
   return (
-    <Flex direction="column" gap="lg" style={styles.container}>
+    <Flex direction="column" gap="300" style={styles.container}>
       <Text size="xl" weight="bold">
         Urban UI - TanStack Router Demo
       </Text>

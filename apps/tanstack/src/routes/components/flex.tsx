@@ -30,7 +30,9 @@ const styles = stylex.create({
     padding: '1rem',
     backgroundColor: 'white',
     borderRadius: '0.25rem',
-    border: '1px dashed #ccc',
+    borderWidth: '1px',
+    borderStyle: 'dashed',
+    borderColor: '#ccc',
   },
 })
 
@@ -40,8 +42,8 @@ export const Route = createFileRoute('/components/flex')({
 
 function FlexDemo() {
   return (
-    <Flex direction="column" gap="lg" style={styles.container}>
-      <Flex gap="md">
+    <Flex direction="column" gap="300" style={styles.container}>
+      <Flex gap="200">
         <Link to="/" {...stylex.props(styles.link)}>
           Home
         </Link>
@@ -54,11 +56,11 @@ function FlexDemo() {
         Flex Component
       </Text>
 
-      <Flex direction="column" gap="md">
-        <Flex direction="column" gap="sm" style={styles.section}>
+      <Flex direction="column" gap="200">
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Direction: Row (default)</Text>
           <div {...stylex.props(styles.demoContainer)}>
-            <Flex gap="sm">
+            <Flex gap="100">
               <div {...stylex.props(styles.box)}>Item 1</div>
               <div {...stylex.props(styles.box)}>Item 2</div>
               <div {...stylex.props(styles.box)}>Item 3</div>
@@ -66,10 +68,10 @@ function FlexDemo() {
           </div>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Direction: Column</Text>
           <div {...stylex.props(styles.demoContainer)}>
-            <Flex direction="column" gap="sm">
+            <Flex direction="column" gap="100">
               <div {...stylex.props(styles.box)}>Item 1</div>
               <div {...stylex.props(styles.box)}>Item 2</div>
               <div {...stylex.props(styles.box)}>Item 3</div>
@@ -77,28 +79,28 @@ function FlexDemo() {
           </div>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Gap Sizes</Text>
-          <Flex direction="column" gap="md">
-            <Text size="sm">gap="xs"</Text>
+          <Flex direction="column" gap="200">
+            <Text size="sm">gap="50"</Text>
             <div {...stylex.props(styles.demoContainer)}>
-              <Flex gap="xs">
+              <Flex gap="50">
                 <div {...stylex.props(styles.box)}>1</div>
                 <div {...stylex.props(styles.box)}>2</div>
                 <div {...stylex.props(styles.box)}>3</div>
               </Flex>
             </div>
-            <Text size="sm">gap="md"</Text>
+            <Text size="sm">gap="200"</Text>
             <div {...stylex.props(styles.demoContainer)}>
-              <Flex gap="md">
+              <Flex gap="200">
                 <div {...stylex.props(styles.box)}>1</div>
                 <div {...stylex.props(styles.box)}>2</div>
                 <div {...stylex.props(styles.box)}>3</div>
               </Flex>
             </div>
-            <Text size="sm">gap="xl"</Text>
+            <Text size="sm">gap="400"</Text>
             <div {...stylex.props(styles.demoContainer)}>
-              <Flex gap="xl">
+              <Flex gap="400">
                 <div {...stylex.props(styles.box)}>1</div>
                 <div {...stylex.props(styles.box)}>2</div>
                 <div {...stylex.props(styles.box)}>3</div>
@@ -107,12 +109,12 @@ function FlexDemo() {
           </Flex>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Alignment</Text>
-          <Flex direction="column" gap="md">
+          <Flex direction="column" gap="200">
             <Text size="sm">justify="center"</Text>
             <div {...stylex.props(styles.demoContainer)}>
-              <Flex justify="center" gap="sm">
+              <Flex justify="center" gap="100">
                 <div {...stylex.props(styles.box)}>1</div>
                 <div {...stylex.props(styles.box)}>2</div>
               </Flex>

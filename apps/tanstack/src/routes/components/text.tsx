@@ -27,8 +27,8 @@ export const Route = createFileRoute('/components/text')({
 
 function TextDemo() {
   return (
-    <Flex direction="column" gap="lg" style={styles.container}>
-      <Flex gap="md">
+    <Flex direction="column" gap="300" style={styles.container}>
+      <Flex gap="200">
         <Link to="/" {...stylex.props(styles.link)}>
           Home
         </Link>
@@ -41,8 +41,8 @@ function TextDemo() {
         Text Component
       </Text>
 
-      <Flex direction="column" gap="md">
-        <Flex direction="column" gap="sm" style={styles.section}>
+      <Flex direction="column" gap="200">
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Sizes</Text>
           <Flex direction="column">
             <Text size="xs">Extra Small Text (xs)</Text>
@@ -53,7 +53,7 @@ function TextDemo() {
           </Flex>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Weights</Text>
           <Flex direction="column">
             <Text weight="light">Light Weight</Text>
@@ -64,12 +64,12 @@ function TextDemo() {
           </Flex>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
-          <Text weight="semibold">Kerning</Text>
+        <Flex direction="column" gap="100" style={styles.section}>
+          <Text weight="semibold">Tracking</Text>
           <Flex direction="column">
-            <Text kerning="tight">Tight Kerning</Text>
-            <Text kerning="normal">Normal Kerning</Text>
-            <Text kerning="loose">Loose Kerning</Text>
+            <Text tracking="tight">Tight Tracking</Text>
+            <Text tracking="normal">Normal Tracking</Text>
+            <Text tracking="wide">Wide Tracking</Text>
           </Flex>
         </Flex>
       </Flex>

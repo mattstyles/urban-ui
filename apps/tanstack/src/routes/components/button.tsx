@@ -28,8 +28,8 @@ export const Route = createFileRoute('/components/button')({
 
 function ButtonDemo() {
   return (
-    <Flex direction="column" gap="lg" style={styles.container}>
-      <Flex gap="md">
+    <Flex direction="column" gap="300" style={styles.container}>
+      <Flex gap="200">
         <Link to="/" {...stylex.props(styles.link)}>
           Home
         </Link>
@@ -42,10 +42,10 @@ function ButtonDemo() {
         Button Component
       </Text>
 
-      <Flex direction="column" gap="md">
-        <Flex direction="column" gap="sm" style={styles.section}>
+      <Flex direction="column" gap="200">
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Tones</Text>
-          <Flex gap="sm" wrap="wrap">
+          <Flex gap="100" wrap="wrap">
             <Button tone="neutral">Neutral</Button>
             <Button tone="primary">Primary</Button>
             <Button tone="accent">Accent</Button>
@@ -56,18 +56,17 @@ function ButtonDemo() {
           </Flex>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Sizes</Text>
-          <Flex gap="sm" align="center">
-            <Button size="sm">Small</Button>
+          <Flex gap="100" align="center">
             <Button size="md">Medium</Button>
             <Button size="lg">Large</Button>
           </Flex>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">States</Text>
-          <Flex gap="sm">
+          <Flex gap="100">
             <Button>Default</Button>
             <Button isDisabled>Disabled</Button>
           </Flex>

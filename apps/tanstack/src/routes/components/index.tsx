@@ -28,7 +28,7 @@ export const Route = createFileRoute('/components/')({
 
 function ComponentsIndex() {
   return (
-    <Flex direction="column" gap="lg" style={styles.container}>
+    <Flex direction="column" gap="300" style={styles.container}>
       <Link to="/" {...stylex.props(styles.link)}>
         ← Back to Home
       </Link>
@@ -37,11 +37,11 @@ function ComponentsIndex() {
         Component Overview
       </Text>
 
-      <Flex direction="column" gap="md">
-        <Flex direction="column" gap="sm" style={styles.section}>
+      <Flex direction="column" gap="200">
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Button</Text>
           <Text size="sm">Interactive button component with variants and tones.</Text>
-          <Flex gap="sm">
+          <Flex gap="100">
             <Button>Default</Button>
             <Button tone="primary">Primary</Button>
             <Button tone="critical">Critical</Button>
@@ -51,7 +51,7 @@ function ComponentsIndex() {
           </Link>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Text</Text>
           <Text size="sm">Typography component with size and weight options.</Text>
           <Flex direction="column">
@@ -64,10 +64,10 @@ function ComponentsIndex() {
           </Link>
         </Flex>
 
-        <Flex direction="column" gap="sm" style={styles.section}>
+        <Flex direction="column" gap="100" style={styles.section}>
           <Text weight="semibold">Flex</Text>
           <Text size="sm">Flexible layout component for arranging elements.</Text>
-          <Flex gap="sm">
+          <Flex gap="100">
             <div style={{ padding: '0.5rem', backgroundColor: '#ddd' }}>Item 1</div>
             <div style={{ padding: '0.5rem', backgroundColor: '#ddd' }}>Item 2</div>
             <div style={{ padding: '0.5rem', backgroundColor: '#ddd' }}>Item 3</div>
