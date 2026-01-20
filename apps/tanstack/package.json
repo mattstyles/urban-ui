@@ -16,11 +16,13 @@
     "@tanstack/react-router": "^1.120.6",
     "@urban-ui/button": "workspace:*",
     "@urban-ui/flex": "workspace:*",
+    "@urban-ui/icon": "workspace:*",
     "@urban-ui/link": "workspace:*",
     "@urban-ui/reset": "workspace:*",
     "@urban-ui/styles": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
+    "lucide-react": "0.562.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },

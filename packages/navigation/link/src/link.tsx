@@ -2,14 +2,13 @@
 // react-aria-components link is a client-side component, but is not marked as such
 
 import { Slot } from '@radix-ui/react-slot'
-import * as stylex from '@stylexjs/stylex'
 import type { StyleXStyles } from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
 import * as buttonStyles from '@urban-ui/styles/button'
 import { styles, variants } from '@urban-ui/styles/link'
-import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
-import { Link as AriaLink } from 'react-aria-components'
 import type { LinkProps as AriaLinkProps } from 'react-aria-components'
+import { Link as AriaLink } from 'react-aria-components'
 
 const tones = {
   neutral: themes.neutral,

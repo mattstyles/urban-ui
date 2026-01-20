@@ -199,6 +199,22 @@ function LinkPatterns() {
           </Flex>
         </Flex>
       </Flex>
+
+      {/* Custom Navigation Example */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Custom Styled Navigation
+        </Text>
+        <Text>
+          See the{' '}
+          <Link asChild>
+            <RouterLink to="/patterns/link/navigation">
+              custom navigation example
+            </RouterLink>
+          </Link>{' '}
+          for completely custom link styling with icons and hover effects.
+        </Text>
+      </Flex>
     </Flex>
   )
 }
