@@ -59,13 +59,25 @@ Color tones for semantic meaning:
 |------|-----|
 | `md` | Standard buttons (default) |
 | `lg` | Prominent actions |
-| `md-equal` | Square icon buttons |
-| `lg-equal` | Large square icon buttons |
+| `md-equal` | Icon-only buttons with equal width/height |
+| `lg-equal` | Large icon-only buttons with equal width/height |
 
 ```tsx
 <Button size="md">Standard</Button>
 <Button size="lg">Large</Button>
-<Button size="md-equal"><Icon /></Button>
+```
+
+### Icon Buttons
+
+Use `md-equal` or `lg-equal` for buttons containing only an icon. These sizes apply equal padding on all sides, creating a square button:
+
+```tsx
+<Button size="md-equal" aria-label="Add item">
+  <PlusIcon />
+</Button>
+<Button size="lg-equal" aria-label="Settings">
+  <SettingsIcon />
+</Button>
 ```
 
 ## Shapes
