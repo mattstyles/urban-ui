@@ -48,7 +48,11 @@ interface NavItemProps {
 
 export function NavItem({ to, icon: LucideIcon, label }: NavItemProps) {
   return (
-    <Link asChild variant="clear" style={[styles.navItem, stylex.defaultMarker()]}>
+    <Link
+      asChild
+      variant="clear"
+      style={[styles.navItem, stylex.defaultMarker()]}
+    >
       <RouterLink to={to} aria-label={label}>
         <Icon size="xl">
           <LucideIcon />

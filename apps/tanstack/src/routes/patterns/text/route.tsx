@@ -108,13 +108,27 @@ function TextPatterns() {
       </Flex>
 
       <Flex direction="v" gap="200" style={[styles.container]}>
-        <h1 {...stylex.props(textStyles.base, sizes.xxl, weights.bold, fontColors.hi)}>
+        <h1
+          {...stylex.props(
+            textStyles.base,
+            sizes.xxl,
+            weights.bold,
+            fontColors.hi,
+          )}
+        >
           Manual styled heading
         </h1>
         <p {...stylex.props(textStyles.base, sizes.md, fontColors.hi)}>
           Paragraph styled directly with text style objects.
         </p>
-        <span {...stylex.props(textStyles.base, sizes.sm, weights.semibold, fontColors.lo)}>
+        <span
+          {...stylex.props(
+            textStyles.base,
+            sizes.sm,
+            weights.semibold,
+            fontColors.lo,
+          )}
+        >
           Secondary caption text
         </span>
       </Flex>

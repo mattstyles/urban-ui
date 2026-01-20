@@ -23,7 +23,7 @@ export async function createServer(version: string): Promise<McpServer> {
       return {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
       }
-    }
+    },
   )
 
   // Register get_urban_ui_page_info tool
@@ -40,7 +40,7 @@ export async function createServer(version: string): Promise<McpServer> {
       return {
         content: [{ type: 'text', text: JSON.stringify(result, null, 2) }],
       }
-    }
+    },
   )
 
   // Register get_urban_ui_page tool
@@ -57,7 +57,7 @@ export async function createServer(version: string): Promise<McpServer> {
       return {
         content: [{ type: 'text', text: content }],
       }
-    }
+    },
   )
 
   return server

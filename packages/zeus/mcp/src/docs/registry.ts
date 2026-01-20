@@ -4,13 +4,15 @@ export const pageRegistry: PageRegistry = {
   'Theme Tokens': {
     name: 'Theme Tokens',
     category: 'core',
-    description: 'Color system, spacing, typography, borders, and shadows using StyleX tokens',
+    description:
+      'Color system, spacing, typography, borders, and shadows using StyleX tokens',
     filePath: 'docs/theme-tokens.md',
   },
   Text: {
     name: 'Text',
     category: 'typography',
-    description: 'Text component for rendering typography with semantic variants and tones',
+    description:
+      'Text component for rendering typography with semantic variants and tones',
     filePath: 'docs/text.md',
   },
   Link: {
@@ -22,7 +24,8 @@ export const pageRegistry: PageRegistry = {
   Button: {
     name: 'Button',
     category: 'action',
-    description: 'Button component with variants, tones, sizes, and icon support',
+    description:
+      'Button component with variants, tones, sizes, and icon support',
     filePath: 'docs/button.md',
   },
   Layout: {
@@ -34,13 +37,15 @@ export const pageRegistry: PageRegistry = {
   'StyleX Authoring Guide': {
     name: 'StyleX Authoring Guide',
     category: 'guides',
-    description: 'Best practices for writing StyleX styles in urban-ui applications',
+    description:
+      'Best practices for writing StyleX styles in urban-ui applications',
     filePath: 'docs/stylex-authoring-guide.md',
   },
   'Application Patterns': {
     name: 'Application Patterns',
     category: 'guides',
-    description: 'Common patterns for composing urban-ui components in applications',
+    description:
+      'Common patterns for composing urban-ui components in applications',
     filePath: 'docs/application-patterns.md',
   },
 }

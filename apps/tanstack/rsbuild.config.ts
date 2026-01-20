@@ -20,6 +20,9 @@ export default defineConfig({
         tanstackRouter({
           target: 'react',
           autoCodeSplitting: true,
+          indexToken: 'route',
+          routeToken: 'page',
+          routeFileIgnorePattern: '.-.',
         }),
         styleXRSPlugin({
           useCSSLayers: true,

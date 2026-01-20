@@ -35,7 +35,7 @@ export async function loadDocContent(filePath: string): Promise<string> {
     return await readFile(fullPath, 'utf-8')
   } catch {
     throw new Error(
-      `Failed to load documentation file: ${filePath}. Make sure the package is built correctly.`
+      `Failed to load documentation file: ${filePath}. Make sure the package is built correctly.`,
     )
   }
 }

@@ -14,7 +14,7 @@ async function main(): Promise<void> {
         'Tools provided:\n' +
         '  list_urban_ui_pages     - List all available documentation pages\n' +
         '  get_urban_ui_page_info  - Get page description and section list\n' +
-        '  get_urban_ui_page       - Get full page content or specific section'
+        '  get_urban_ui_page       - Get full page content or specific section',
     )
     process.exit(0)
   }
@@ -29,7 +29,7 @@ async function main(): Promise<void> {
   } catch (error) {
     console.error(
       'Failed to start MCP server:',
-      error instanceof Error ? error.message : error
+      error instanceof Error ? error.message : error,
     )
     process.exit(1)
   }

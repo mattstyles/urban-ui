@@ -21,7 +21,7 @@ export async function getPageInfo(params: {
 
   if (!page) {
     throw new Error(
-      `Page '${params.page_name}' not found. Use list_urban_ui_pages to see available pages.`
+      `Page '${params.page_name}' not found. Use list_urban_ui_pages to see available pages.`,
     )
   }
 
