@@ -69,14 +69,53 @@ Color tones for semantic meaning:
 
 ### Icon Buttons
 
-Use `md-equal` or `lg-equal` for buttons containing only an icon. These sizes apply equal padding on all sides, creating a square button:
+Use `md-equal` or `lg-equal` for buttons containing only an icon. These sizes apply equal padding on all sides, creating a square button.
+
+Wrap icons in `@urban-ui/icon` to ensure consistent sizing with button content. The Icon component sizes icons based on the font size scale:
 
 ```tsx
+import { Icon } from '@urban-ui/icon'
+import { Plus } from 'lucide-react'
+
 <Button size="md-equal" aria-label="Add item">
-  <PlusIcon />
+  <Icon size="md">
+    <Plus />
+  </Icon>
 </Button>
 <Button size="lg-equal" aria-label="Settings">
-  <SettingsIcon />
+  <Icon size="lg">
+    <Settings />
+  </Icon>
+</Button>
+```
+
+### Buttons with Icons
+
+For buttons with both text and icons, use Icon with `size="sm"` for md buttons and `size="md"` for lg buttons:
+
+```tsx
+// Prefix icon
+<Button tone="primary">
+  <Icon size="sm">
+    <Plus />
+  </Icon>
+  Add Item
+</Button>
+
+// Suffix icon
+<Button tone="primary">
+  Continue
+  <Icon size="sm">
+    <ArrowRight />
+  </Icon>
+</Button>
+
+// Large button with icon
+<Button tone="primary" size="lg">
+  <Icon size="md">
+    <Plus />
+  </Icon>
+  Create New
 </Button>
 ```
 
