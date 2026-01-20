@@ -1,5 +1,5 @@
-import { Flex } from '@urban-ui/flex'
 import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
+import { Flex } from '@urban-ui/flex'
 import type { PropsWithChildren } from 'react'
 
 // @ts-expect-error typing for var group prefers a known object for its keys, we want a generic object and let the compiler work it out

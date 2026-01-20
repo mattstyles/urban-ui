@@ -16,7 +16,7 @@ export async function getPageContent(params: {
 
   if (!page) {
     throw new Error(
-      `Page '${params.page_name}' not found. Use list_urban_ui_pages to see available pages.`
+      `Page '${params.page_name}' not found. Use list_urban_ui_pages to see available pages.`,
     )
   }
 
@@ -36,7 +36,7 @@ export async function getPageContent(params: {
     const available = sections.map((s) => s.name).join(', ')
     throw new Error(
       `Section '${params.section_name}' not found in ${params.page_name}. ` +
-        `Available sections: ${available}`
+        `Available sections: ${available}`,
     )
   }
 

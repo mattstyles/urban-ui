@@ -38,9 +38,10 @@ export function parseSections(lines: string[]): Section[] {
 /**
  * Extract the page title (H1) and description (first paragraph after H1).
  */
-export function extractTitleAndDescription(
-  lines: string[]
-): { title: string; description?: string } {
+export function extractTitleAndDescription(lines: string[]): {
+  title: string
+  description?: string
+} {
   let title = ''
   let description: string | undefined
   let i = 0
@@ -103,7 +104,7 @@ export function extractTitleAndDescription(
  */
 export function extractSection(
   lines: string[],
-  sectionName: string
+  sectionName: string,
 ): string | null {
   const sections = parseSections(lines)
 
@@ -113,7 +114,7 @@ export function extractSection(
   // Fall back to case-insensitive match
   if (!section) {
     section = sections.find(
-      (s) => s.name.toLowerCase() === sectionName.toLowerCase()
+      (s) => s.name.toLowerCase() === sectionName.toLowerCase(),
     )
   }
 
