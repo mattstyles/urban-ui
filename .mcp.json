@@ -3,6 +3,10 @@
     "react-aria": {
       "command": "bunx",
       "args": ["@react-aria/mcp@latest"]
+    },
+    "urban-ui": {
+      "command": "bun",
+      "args": ["run", "packages/zeus/mcp/dist/index.js"]
     }
   }
 }
