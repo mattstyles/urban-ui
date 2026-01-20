@@ -2,17 +2,15 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
+import { Text } from '@urban-ui/text'
+import { themes } from '@urban-ui/theme'
 import { space } from '@urban-ui/theme/layout.stylex'
-import { fontSizes, lineHeights } from '@urban-ui/theme/type.stylex'
 import type { FieldErrorProps as AriaFieldErrorProps } from 'react-aria-components'
 import { FieldError as AriaFieldError } from 'react-aria-components'
 
 const styles = stylex.create({
   base: {
     display: 'block',
-    fontSize: fontSizes.sm,
-    lineHeight: lineHeights.sm,
-    color: 'var(--text-critical, #dc2626)',
     marginBlockStart: space[100],
   },
 })
@@ -30,9 +28,14 @@ export interface FieldErrorProps extends Omit<AriaFieldErrorProps, 'style'> {
  */
 export function FieldError({ children, style, ...props }: FieldErrorProps) {
   return (
-    <AriaFieldError {...props} {...stylex.props([styles.base, style])}>
-      {children}
-    </AriaFieldError>
+    <Text
+      asChild
+      size="sm"
+      color="hi"
+      style={[styles.base, themes.critical, style]}
+    >
+      <AriaFieldError {...props}>{children}</AriaFieldError>
+    </Text>
   )
 }
 FieldError.displayName = '@urban-ui/form/field-error'

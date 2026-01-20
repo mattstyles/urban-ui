@@ -2,17 +2,14 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
+import { Text } from '@urban-ui/text'
 import { space } from '@urban-ui/theme/layout.stylex'
-import { fontSizes, lineHeights } from '@urban-ui/theme/type.stylex'
 import type { TextProps as AriaTextProps } from 'react-aria-components'
 import { Text as AriaText } from 'react-aria-components'
 
 const styles = stylex.create({
   base: {
     display: 'block',
-    fontSize: fontSizes.sm,
-    lineHeight: lineHeights.sm,
-    color: 'var(--text-muted, #6b7280)',
     marginBlockStart: space[100],
   },
 })
@@ -30,13 +27,11 @@ export interface DescriptionProps extends Omit<AriaTextProps, 'style' | 'slot'> 
  */
 export function Description({ children, style, ...props }: DescriptionProps) {
   return (
-    <AriaText
-      {...props}
-      slot="description"
-      {...stylex.props([styles.base, style])}
-    >
-      {children}
-    </AriaText>
+    <Text asChild size="sm" color="lo" style={[styles.base, style]}>
+      <AriaText {...props} slot="description">
+        {children}
+      </AriaText>
+    </Text>
   )
 }
 Description.displayName = '@urban-ui/form/description'
