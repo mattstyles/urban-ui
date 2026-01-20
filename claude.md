@@ -36,6 +36,8 @@ When writing application code with urban-ui:
 - StyleX: Read `docs/stylex-authoring-guide.md` when writing styles
 - Tokens: Read `packages/core/theme/llms.md` when using theme tokens (colors, space, typography)
 - Patterns: Read `docs/application-patterns.md` for composition patterns
+- Text: Read `packages/typography/text/llms.md` for typography
+- Link: Read `packages/navigation/link/llms.md` for link component
 
 ## Component Conventions
 

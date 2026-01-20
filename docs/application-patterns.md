@@ -89,18 +89,25 @@ const styles = stylex.create({
 ### Header with navigation
 
 ```tsx
+import { Button } from '@urban-ui/button'
+import { Flex } from '@urban-ui/flex'
+import { Link } from '@urban-ui/link'
+import { Text } from '@urban-ui/text'
+
 <Flex justify="space-between" align="center">
   <Text size="lg" weight="bold">Logo</Text>
   <Flex gap="300">
-    <Link href="/features">Features</Link>
-    <Link href="/docs">Docs</Link>
+    <Link href="/features" variant="solid" tone="neutral">Features</Link>
+    <Link href="/docs" variant="solid" tone="neutral">Docs</Link>
   </Flex>
   <Flex gap="100">
-    <Button variant="ghost" tone="neutral">Sign in</Button>
-    <Button tone="primary">Get started</Button>
+    <Link href="/login" display="button" variant="ghost" tone="neutral">Sign in</Link>
+    <Link href="/signup" display="button" variant="solid" tone="primary">Get started</Link>
   </Flex>
 </Flex>
 ```
+
+See [Navigation Links](./patterns/links/navigation-links.md) for more header patterns.
 
 ### Card
 
