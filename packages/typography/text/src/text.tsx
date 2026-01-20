@@ -1,7 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import type { StyleXStyles, Theme, VarGroup } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
-import { themes } from '@urban-ui/theme'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import {
   fontSizes,
@@ -127,17 +126,6 @@ const weights = stylex.create({
     fontWeight: fontWeights.bold,
   },
 })
-
-/**
- * Tones
- */
-const tones = {
-  neutral: themes.neutral,
-  primary: themes.primary,
-  critical: themes.critical,
-  positive: themes.positive,
-  warning: themes.warning,
-}
 
 /**
  * Tracking
