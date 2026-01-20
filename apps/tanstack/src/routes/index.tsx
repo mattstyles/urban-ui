@@ -33,18 +33,12 @@ function HomePage() {
         This application demonstrates Urban UI components with TanStack Router.
       </Text>
       <Flex direction="column" style={styles.nav}>
-        <Text weight="semibold">Component Demos:</Text>
-        <Link to="/components" {...stylex.props(styles.link)}>
-          All Components
+        <Text weight="semibold">Patterns:</Text>
+        <Link to="/patterns" {...stylex.props(styles.link)}>
+          All Patterns
         </Link>
-        <Link to="/components/button" {...stylex.props(styles.link)}>
-          Button
-        </Link>
-        <Link to="/components/text" {...stylex.props(styles.link)}>
+        <Link to="/patterns/text" {...stylex.props(styles.link)}>
           Text
-        </Link>
-        <Link to="/components/flex" {...stylex.props(styles.link)}>
-          Flex
         </Link>
       </Flex>
     </Flex>

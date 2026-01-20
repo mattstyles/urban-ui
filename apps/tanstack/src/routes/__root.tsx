@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
-import { presets } from '@urban-ui/theme'
 import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { presets } from '@urban-ui/theme'
 
 const styles = stylex.create({
   container: {
