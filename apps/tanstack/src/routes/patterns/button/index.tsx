@@ -2,11 +2,20 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
+import { Icon } from '@urban-ui/icon'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-import { ChevronLeft, ChevronRight, Plus } from 'lucide-react'
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Download,
+  Plus,
+  Send,
+  Trash2,
+} from 'lucide-react'
 
 export const Route = createFileRoute('/patterns/button/')({
   component: ButtonPatterns,
@@ -141,10 +150,14 @@ function ButtonPatterns() {
         </Text>
         <Flex gap="200" wrap="wrap" align="center">
           <Button size="md-equal" tone="primary" aria-label="Add">
-            <Plus size={16} />
+            <Icon size="md">
+              <Plus />
+            </Icon>
           </Button>
           <Button size="lg-equal" tone="primary" aria-label="Add">
-            <Plus size={20} />
+            <Icon size="lg">
+              <Plus />
+            </Icon>
           </Button>
         </Flex>
       </Flex>
@@ -222,7 +235,9 @@ function ButtonPatterns() {
             size="md-equal"
             aria-label="Previous"
           >
-            <ChevronLeft size={16} />
+            <Icon size="md">
+              <ChevronLeft />
+            </Icon>
           </Button>
           <Button
             variant="ghost"
@@ -230,7 +245,73 @@ function ButtonPatterns() {
             size="md-equal"
             aria-label="Next"
           >
-            <ChevronRight size={16} />
+            <Icon size="md">
+              <ChevronRight />
+            </Icon>
+          </Button>
+        </Flex>
+      </Flex>
+
+      {/* Buttons with Icons */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Buttons with Icons
+        </Text>
+        <Text size="sm" color="lo">
+          Prefix icon:
+        </Text>
+        <Flex gap="200" wrap="wrap">
+          <Button tone="primary">
+            <Icon size="sm">
+              <Plus />
+            </Icon>
+            Add Item
+          </Button>
+          <Button tone="positive">
+            <Icon size="sm">
+              <Download />
+            </Icon>
+            Download
+          </Button>
+          <Button tone="critical">
+            <Icon size="sm">
+              <Trash2 />
+            </Icon>
+            Delete
+          </Button>
+        </Flex>
+        <Text size="sm" color="lo">
+          Suffix icon:
+        </Text>
+        <Flex gap="200" wrap="wrap">
+          <Button tone="primary">
+            Continue
+            <Icon size="sm">
+              <ArrowRight />
+            </Icon>
+          </Button>
+          <Button tone="accent">
+            Send
+            <Icon size="sm">
+              <Send />
+            </Icon>
+          </Button>
+        </Flex>
+        <Text size="sm" color="lo">
+          Large size with icons:
+        </Text>
+        <Flex gap="200" wrap="wrap">
+          <Button tone="primary" size="lg">
+            <Icon size="md">
+              <Plus />
+            </Icon>
+            Create New
+          </Button>
+          <Button tone="neutral" size="lg" variant="outline">
+            Learn More
+            <Icon size="md">
+              <ArrowRight />
+            </Icon>
           </Button>
         </Flex>
       </Flex>
