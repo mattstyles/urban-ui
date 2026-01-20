@@ -5,8 +5,6 @@ import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
 import { space } from '@urban-ui/theme/layout.stylex'
-import type { FieldErrorProps as AriaFieldErrorProps } from 'react-aria-components'
-import { FieldError as AriaFieldError } from 'react-aria-components'
 
 const styles = stylex.create({
   base: {
@@ -15,7 +13,8 @@ const styles = stylex.create({
   },
 })
 
-export interface FieldErrorProps extends Omit<AriaFieldErrorProps, 'style'> {
+export interface FieldErrorProps
+  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'style'> {
   /**
    * Additional styles to apply
    */
@@ -23,7 +22,7 @@ export interface FieldErrorProps extends Omit<AriaFieldErrorProps, 'style'> {
 }
 
 /**
- * FieldError component built on react-aria-components.
+ * FieldError component for form fields.
  * Displays validation error messages for form fields.
  */
 export function FieldError({ children, style, ...props }: FieldErrorProps) {
@@ -34,7 +33,7 @@ export function FieldError({ children, style, ...props }: FieldErrorProps) {
       color="hi"
       style={[styles.base, themes.critical, style]}
     >
-      <AriaFieldError {...props}>{children}</AriaFieldError>
+      <span {...props}>{children}</span>
     </Text>
   )
 }
