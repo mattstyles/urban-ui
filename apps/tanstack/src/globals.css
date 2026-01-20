@@ -8,4 +8,5 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+/* biome-ignore lint/suspicious/noUnknownAtRules: stylex integration */
 @stylex;

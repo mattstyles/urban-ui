@@ -1,6 +1,5 @@
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
-import rspack from '@rspack/core'
 import styleXRSPlugin from '@stylexswc/unplugin/rspack'
 import { tanstackRouter } from '@tanstack/router-plugin/rspack'
 
@@ -14,15 +13,6 @@ export default defineConfig({
   },
   html: {
     template: './index.html',
-  },
-  optimization: {
-    minimize: true, // Ensure minification is enabled
-    minimizer: [
-      // If using a specific CSS minifier plugin
-      new rspack.LightningCssMinimizerRspackPlugin({
-        // options for cssnano or Lightning CSS
-      }),
-    ],
   },
   tools: {
     rspack: {
