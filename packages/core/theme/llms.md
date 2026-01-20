@@ -11,6 +11,8 @@ import { tone, surface, base, disabled } from '@urban-ui/theme/colors.stylex'
 import { space, sizes } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights, fonts, lineHeights, tracking } from '@urban-ui/theme/type.stylex'
 import { radii, borderWidths } from '@urban-ui/theme/borders.stylex'
+import { shadows } from '@urban-ui/theme/shadows.stylex'
+import { shadows as tonalShadows } from '@urban-ui/theme/xstyle'
 ```
 
 ## Colors
@@ -83,6 +85,43 @@ import { themes } from '@urban-ui/theme'
 ```
 
 Available themes: `neutral`, `primary`, `accent`, `positive`, `warning`, `critical`, `info`
+
+## Shadows
+
+```tsx
+import { shadows } from '@urban-ui/theme/shadows.stylex'
+
+const styles = stylex.create({
+  card: {
+    boxShadow: shadows.md,
+  },
+})
+```
+
+Scale: `sm`, `md`, `lg`
+
+### Tonal Shadows
+
+Shadows can inherit color from the active theme. Apply the `shadows` theme from `xstyle` alongside a theme:
+
+```tsx
+import { themes } from '@urban-ui/theme'
+import { shadows } from '@urban-ui/theme/shadows.stylex'
+import { shadows as tonalShadows } from '@urban-ui/theme/xstyle'
+
+const styles = stylex.create({
+  card: {
+    boxShadow: shadows.md,
+  },
+})
+
+// Shadow color matches the positive theme
+<div {...stylex.props(styles.card, themes.positive, tonalShadows)}>
+  Content with green-tinted shadow
+</div>
+```
+
+The `tonalShadows` theme overrides the shadow scale to use `tone.shadow`, which changes based on the active theme.
 
 ## Space
 
