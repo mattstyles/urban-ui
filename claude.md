@@ -16,10 +16,19 @@ bun run format       # Format with Biome
 
 ## Structure
 
-- `packages/{category}/{component}/` - UI components (action, core, layout, typography, feedback, navigation, display)
+- `packages/{category}/{component}/` - UI components
+  - `action/` - Buttons and interactive elements for generic actions
+  - `core/` - Fundamental pieces such as themes
+  - `layout/` - Building blocks to construct pages and features
+  - `typography/` - Text and type elements
+  - `feedback/` - Visual elements providing user feedback
+  - `navigation/` - Elements for site navigation
+  - `input/` - Elements to gather information
+  - `utility/` - Catch-all bucket for other components
 - `apps/` - Applications
 - `scripts` - Various scripts to run the project
 - `tooling` - Shared tooling for packages
+
 
 ## Component Conventions
 
@@ -28,6 +37,7 @@ bun run format       # Format with Biome
 - Tones: neutral, primary, accent, positive, warning, critical, info
 - Tests: `*.test.tsx` (Jest + happy-dom)
 - Type tests: `*.typetest.tsx` (expect-type)
+- StyleX: Read `docs/stylex-authoring-guides.md` when writing styles
 
 ## Code Style (Biome)
 
