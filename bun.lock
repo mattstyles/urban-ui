@@ -148,6 +148,7 @@
         "@urban-ui/content": "workspace:*",
         "@urban-ui/flex": "workspace:*",
         "@urban-ui/icon": "workspace:*",
+        "@urban-ui/input": "workspace:*",
         "@urban-ui/link": "workspace:*",
         "@urban-ui/reset": "workspace:*",
         "@urban-ui/styles": "workspace:*",
@@ -315,6 +316,40 @@
       "version": "0.1.0",
       "dependencies": {
         "@urban-ui/text": "workspace:*",
+        "@urban-ui/theme": "workspace:*",
+        "react-aria-components": "1.14.0",
+      },
+      "devDependencies": {
+        "@happy-dom/jest-environment": "^20.3.3",
+        "@jest/globals": "^30.2.0",
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@stylexswc/jest": "0.14.2",
+        "@swc/jest": "^0.2.39",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.6.1",
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "expect-type": "^1.2.1",
+        "jest": "^30.2.0",
+        "jest-chain-transform": "^0.0.8",
+        "react": "19.2.3",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
+      },
+    },
+    "packages/interaction/input": {
+      "name": "@urban-ui/input",
+      "version": "0.1.0",
+      "dependencies": {
         "@urban-ui/theme": "workspace:*",
         "react-aria-components": "1.14.0",
       },
@@ -1639,6 +1674,8 @@
     "@urban-ui/form": ["@urban-ui/form@workspace:packages/interaction/form"],
 
     "@urban-ui/icon": ["@urban-ui/icon@workspace:packages/display/icon"],
+
+    "@urban-ui/input": ["@urban-ui/input@workspace:packages/interaction/input"],
 
     "@urban-ui/link": ["@urban-ui/link@workspace:packages/navigation/link"],
 
