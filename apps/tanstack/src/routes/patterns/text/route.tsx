@@ -32,6 +32,43 @@ const styles = stylex.create({
 function TextPatterns() {
   return (
     <Flex direction="column" gap="200" style={[styles.page]}>
+      {/* All Sizes */}
+      <Flex direction="v" gap="200" style={[styles.container]}>
+        <Text size="lg" weight="semibold">
+          All Sizes
+        </Text>
+        <Flex direction="v" gap="100">
+          <Text size="xxl">
+            <Text weight="semibold">xxl:</Text> The quick brown fox jumps over
+            the lazy dog.
+          </Text>
+          <Text size="xl">
+            <Text weight="semibold">xl:</Text> The quick brown fox jumps over
+            the lazy dog.
+          </Text>
+          <Text size="lg">
+            <Text weight="semibold">lg:</Text> The quick brown fox jumps over
+            the lazy dog.
+          </Text>
+          <Text size="md">
+            <Text weight="semibold">md:</Text> The quick brown fox jumps over
+            the lazy dog.
+          </Text>
+          <Text size="sm">
+            <Text weight="semibold">sm:</Text> The quick brown fox jumps over
+            the lazy dog.
+          </Text>
+          <Text size="xs">
+            <Text weight="semibold">xs:</Text> The quick brown fox jumps over
+            the lazy dog.
+          </Text>
+          <Text size="xxs">
+            <Text weight="semibold">xxs:</Text> The quick brown fox jumps over
+            the lazy dog.
+          </Text>
+        </Flex>
+      </Flex>
+
       <Flex direction="v" gap="200" style={[styles.container]}>
         <Text size="xxl">Page Title</Text>
         <Text size="lg">Section heading</Text>

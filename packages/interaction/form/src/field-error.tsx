@@ -4,14 +4,13 @@ import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
-import { space } from '@urban-ui/theme/layout.stylex'
 import type { FieldErrorProps as AriaFieldErrorProps } from 'react-aria-components'
 import { FieldError as AriaFieldError } from 'react-aria-components'
 
 const styles = stylex.create({
   base: {
     display: 'block',
-    marginBlockStart: space[100],
+    lineHeight: '1.2',
   },
 })
 
@@ -30,7 +29,7 @@ export function FieldError({ children, style, ...props }: FieldErrorProps) {
   return (
     <Text
       asChild
-      size="sm"
+      size="xs"
       color="hi"
       style={[styles.base, themes.critical, style]}
     >
