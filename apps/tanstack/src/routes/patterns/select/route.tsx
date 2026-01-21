@@ -4,7 +4,7 @@ import { Flex } from '@urban-ui/flex'
 import { Select, SelectItem } from '@urban-ui/select'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
-import { base, tone } from '@urban-ui/theme/colors.stylex'
+import { surface, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 
 export const Route = createFileRoute('/patterns/select/')({
@@ -17,7 +17,7 @@ const styles = stylex.create({
   },
   container: {
     padding: space[300],
-    backgroundColor: base.white,
+    backgroundColor: surface.muted,
     color: tone.fgHi,
     borderRadius: radii.md,
   },
@@ -95,11 +95,7 @@ function SelectPatterns() {
         <Text size="sm" color="lo">
           The entire select can be disabled.
         </Text>
-        <Select
-          aria-label="Status"
-          isDisabled
-          defaultSelectedKey="locked"
-        >
+        <Select aria-label="Status" isDisabled defaultSelectedKey="locked">
           <SelectItem id="locked">Locked</SelectItem>
           <SelectItem id="unlocked">Unlocked</SelectItem>
         </Select>

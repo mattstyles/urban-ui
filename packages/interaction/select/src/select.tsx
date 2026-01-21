@@ -2,19 +2,21 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
+import { Icon } from '@urban-ui/icon'
+import { Popover } from '@urban-ui/popover'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
-import { shadows } from '@urban-ui/theme/shadows.stylex'
+import { ChevronDown } from 'lucide-react'
 import type { SelectProps as AriaSelectProps } from 'react-aria-components'
 import {
-  Button,
-  ListBox,
-  Popover,
   Select as AriaSelect,
+  Button,
   SelectValue,
 } from 'react-aria-components'
+
+import { SelectListBox } from './select-dropdown'
 
 const styles = stylex.create({
   base: {
@@ -60,41 +62,8 @@ const styles = stylex.create({
     flex: 1,
     textAlign: 'start',
   },
-  placeholder: {
-    color: tone.fgLo,
-  },
-  chevron: {
-    width: 16,
-    height: 16,
-    flexShrink: 0,
-    transition: 'transform 0.2s',
-    color: tone.fgLo,
-  },
-  chevronOpen: {
-    transform: 'rotate(180deg)',
-  },
   popover: {
-    backgroundColor: {
-      default: base.white,
-      '@media (prefers-color-scheme: dark)': tone.surfaceMuted,
-    },
-    borderWidth: 1,
-    borderStyle: 'solid',
-    borderColor: tone.border,
-    borderRadius: radii.lg,
-    boxShadow: shadows.md,
-    outline: 'none',
-    overflow: 'hidden',
     minWidth: 'var(--trigger-width)',
-  },
-  listbox: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: space[25],
-    padding: space[50],
-    outline: 'none',
-    overflow: 'auto',
-    maxHeight: 300,
   },
 })
 
@@ -114,33 +83,16 @@ export interface SelectProps<T extends object>
    * Additional styles to apply to the trigger button
    */
   triggerStyle?: StyleXStyles
-}
 
-/**
- * Chevron icon that rotates when the select is open
- */
-function ChevronIcon({ isOpen }: { isOpen: boolean }) {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      fill="none"
-      {...stylex.props(styles.chevron, isOpen && styles.chevronOpen)}
-    >
-      <path
-        d="M4 6L8 10L12 6"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
+  /**
+   * Optional items to use for the Collection API
+   */
+  items?: Iterable<T>
 }
 
 /**
  * Select component for selecting a single value from a list of options.
- * Provides a simple, opinionated API with built-in styling.
+ * Composes @urban-ui/popover and @urban-ui/listbox (DropdownListBox) internally.
  *
  * @example
  * ```tsx
@@ -155,21 +107,20 @@ export function Select<T extends object>({
   children,
   style,
   triggerStyle,
+  items,
   ...props
 }: SelectProps<T>) {
   return (
     <AriaSelect {...props} {...stylex.props(styles.base, style)}>
-      {({ isOpen }) => (
-        <>
-          <Button {...stylex.props(styles.trigger, triggerStyle)}>
-            <SelectValue {...stylex.props(styles.selectValue)} />
-            <ChevronIcon isOpen={isOpen} />
-          </Button>
-          <Popover {...stylex.props(styles.popover)}>
-            <ListBox {...stylex.props(styles.listbox)}>{children}</ListBox>
-          </Popover>
-        </>
-      )}
+      <Button {...stylex.props(styles.trigger, triggerStyle)}>
+        <SelectValue {...stylex.props(styles.selectValue)} />
+        <Icon size="sm" color="lo">
+          <ChevronDown />
+        </Icon>
+      </Button>
+      <Popover style={styles.popover}>
+        <SelectListBox items={items}>{children}</SelectListBox>
+      </Popover>
     </AriaSelect>
   )
 }
