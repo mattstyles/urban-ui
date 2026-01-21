@@ -3,14 +3,12 @@
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
-import { space } from '@urban-ui/theme/layout.stylex'
 import type { TextProps as AriaTextProps } from 'react-aria-components'
 import { Text as AriaText } from 'react-aria-components'
 
 const styles = stylex.create({
   base: {
     display: 'block',
-    marginBlockStart: space[100],
   },
 })
 
