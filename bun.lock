@@ -568,6 +568,40 @@
         "react-aria-components": "1.14.0",
       },
     },
+    "packages/layout/popover": {
+      "name": "@urban-ui/popover",
+      "version": "0.9.0",
+      "dependencies": {
+        "@urban-ui/theme": "workspace:*",
+      },
+      "devDependencies": {
+        "@happy-dom/jest-environment": "^20.3.3",
+        "@jest/globals": "^30.0.0",
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@stylexswc/jest": "0.14.2",
+        "@swc/jest": "^0.2.39",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.6.1",
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "jest": "^30.2.0",
+        "jest-chain-transform": "^0.0.8",
+        "react": "19.2.3",
+        "react-aria-components": "1.14.0",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
+        "@stylexjs/stylex": "0.17.5",
+        "react": "19.2.3",
+        "react-aria-components": "1.14.0",
+      },
+    },
     "packages/navigation/link": {
       "name": "@urban-ui/link",
       "version": "0.9.0",
@@ -1757,6 +1791,8 @@
     "@urban-ui/listbox": ["@urban-ui/listbox@workspace:packages/layout/listbox"],
 
     "@urban-ui/mcp": ["@urban-ui/mcp@workspace:packages/zeus/mcp"],
+
+    "@urban-ui/popover": ["@urban-ui/popover@workspace:packages/layout/popover"],
 
     "@urban-ui/postcss-plugin": ["@urban-ui/postcss-plugin@workspace:packages/zeus/postcss-plugin"],
 
