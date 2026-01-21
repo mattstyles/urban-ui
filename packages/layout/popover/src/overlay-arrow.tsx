@@ -9,31 +9,26 @@ import { OverlayArrow as AriaOverlayArrow } from 'react-aria-components'
 const styles = stylex.create({
   base: {
     display: 'block',
+    ':is([data-placement="top"]) svg': {
+      transform: 'rotate(0deg)',
+    },
+    ':is([data-placement="bottom"]) svg': {
+      transform: 'rotate(180deg)',
+    },
+    ':is([data-placement="left"]) svg': {
+      transform: 'rotate(-90deg)',
+    },
+    ':is([data-placement="right"]) svg': {
+      transform: 'rotate(90deg)',
+    },
   },
+
   svg: {
     maxWidth: 'unset',
     display: 'block',
     fill: tone.surface,
     stroke: tone.border,
     strokeWidth: 1,
-  },
-})
-
-const rotations = stylex.create({
-  top: {
-    transform: 'rotate(0deg)',
-  },
-  bottom: {
-    transform: 'rotate(180deg)',
-  },
-  left: {
-    transform: 'rotate(-90deg)',
-  },
-  right: {
-    transform: 'rotate(90deg)',
-  },
-  center: {
-    transform: 'rotate(0deg)',
   },
 })
 
@@ -74,24 +69,20 @@ export function OverlayArrow({
   ...props
 }: OverlayArrowProps) {
   return (
-    <AriaOverlayArrow {...props} {...stylex.props([styles.base, style])}>
-      {({ placement }) => {
-        return (
-          <svg
-            aria-hidden="true"
-            width={width}
-            height={height}
-            viewBox="0 0 12 12"
-            {...stylex.props([
-              styles.svg,
-              placement && rotations[placement],
-              svgStyle,
-            ])}
-          >
-            <path d="M0 0 L6 6 L12 0" />
-          </svg>
-        )
-      }}
+    <AriaOverlayArrow
+      {...props}
+      {...stylex.props([styles.base, style])}
+      data-overlay-arrow
+    >
+      <svg
+        aria-hidden="true"
+        width={width}
+        height={height}
+        viewBox="0 0 12 12"
+        {...stylex.props([styles.svg, svgStyle])}
+      >
+        <path d="M0 0 L6 6 L12 0" />
+      </svg>
     </AriaOverlayArrow>
   )
 }

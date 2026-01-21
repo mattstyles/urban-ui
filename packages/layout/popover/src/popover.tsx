@@ -22,6 +22,38 @@ const styles = stylex.create({
     borderRadius: radii.lg,
     boxShadow: shadows.md,
     outline: 'none',
+
+    /**
+     * Complex selectors to handle the arrow positioning based on placement.
+     */
+    ':is([data-placement="top"])': {
+      '--origin': 'translateY(8px)',
+
+      ':has([data-overlay-arrow])': {
+        marginBottom: '6px',
+      },
+    },
+    ':is([data-placement="bottom"])': {
+      '--origin': 'translateY(-8px)',
+
+      ':has([data-overlay-arrow])': {
+        marginTop: '6px',
+      },
+    },
+    ':is([data-placement="right"])': {
+      '--origin': 'translateX(8px)',
+
+      ':has([data-overlay-arrow])': {
+        marginLeft: '6px',
+      },
+    },
+    ':is([data-placement="left"])': {
+      '--origin': 'translateX(-8px)',
+
+      ':has([data-overlay-arrow])': {
+        marginRight: '6px',
+      },
+    },
   },
 })
 
