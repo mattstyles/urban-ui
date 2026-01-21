@@ -3,7 +3,7 @@
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { radii } from '@urban-ui/theme/borders.stylex'
-import { tone } from '@urban-ui/theme/colors.stylex'
+import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { shadows } from '@urban-ui/theme/shadows.stylex'
 import type { PopoverProps as AriaPopoverProps } from 'react-aria-components'
 import { Popover as AriaPopover } from 'react-aria-components'
@@ -12,7 +12,10 @@ import { OverlayArrow } from './overlay-arrow'
 
 const styles = stylex.create({
   base: {
-    backgroundColor: tone.surface,
+    backgroundColor: {
+      default: base.white,
+      '@media (prefers-color-scheme: dark)': tone.surfaceMuted,
+    },
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: tone.border,
