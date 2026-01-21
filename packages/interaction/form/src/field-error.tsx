@@ -10,6 +10,7 @@ import { FieldError as AriaFieldError } from 'react-aria-components'
 const styles = stylex.create({
   base: {
     display: 'block',
+    lineHeight: '1.2',
   },
 })
 

@@ -40,6 +40,10 @@ const styles = stylex.create({
     ':is(:focus-visible, [data-focus-visible])': {
       borderColor: accent.solid,
     },
+
+    ':where([data-invalid])': {
+      borderColor: critical.solid,
+    },
   },
   disabled: {
     ':disabled': {
