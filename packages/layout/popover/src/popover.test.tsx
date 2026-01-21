@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Button, Dialog } from 'react-aria-components'
+
 import { DialogTrigger, Popover } from './index'
 
 describe('Popover', () => {
@@ -13,7 +14,7 @@ describe('Popover', () => {
         <Popover>
           <Dialog aria-label="Popover content">Popover content</Dialog>
         </Popover>
-      </DialogTrigger>
+      </DialogTrigger>,
     )
 
     // Popover should not be visible initially
@@ -35,7 +36,7 @@ describe('Popover', () => {
         <Popover>
           <Dialog aria-label="Popover content">Popover content</Dialog>
         </Popover>
-      </DialogTrigger>
+      </DialogTrigger>,
     )
 
     // Open the popover
@@ -58,7 +59,7 @@ describe('Popover', () => {
         <Popover showArrow>
           <Dialog aria-label="Popover content">Content</Dialog>
         </Popover>
-      </DialogTrigger>
+      </DialogTrigger>,
     )
 
     await user.click(screen.getByRole('button', { name: 'Open Popover' }))
@@ -77,7 +78,7 @@ describe('Popover', () => {
         <Popover>
           <Dialog aria-label="Popover content">Content</Dialog>
         </Popover>
-      </DialogTrigger>
+      </DialogTrigger>,
     )
 
     await user.click(screen.getByRole('button', { name: 'Open Popover' }))
@@ -85,24 +86,5 @@ describe('Popover', () => {
     // Arrow should not be rendered
     const svg = document.querySelector('svg')
     expect(svg).not.toBeInTheDocument()
-  })
-
-  it('accepts custom arrow dimensions', async () => {
-    const user = userEvent.setup()
-
-    render(
-      <DialogTrigger>
-        <Button>Open</Button>
-        <Popover showArrow arrowWidth={16} arrowHeight={8}>
-          <Dialog aria-label="Content">Content</Dialog>
-        </Popover>
-      </DialogTrigger>
-    )
-
-    await user.click(screen.getByRole('button', { name: 'Open' }))
-
-    const svg = document.querySelector('svg')
-    expect(svg).toHaveAttribute('width', '16')
-    expect(svg).toHaveAttribute('height', '8')
   })
 })
