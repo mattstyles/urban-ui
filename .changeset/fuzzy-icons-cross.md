@@ -6,3 +6,6 @@
 ---
 
 :rocket: Textfield
+:godmode: Update text scale to provide a smoother curve for max sizes from xxs to md
+:godmode: More consistent handling of input error states
+:godmode: Balance adjustments for form field elements
