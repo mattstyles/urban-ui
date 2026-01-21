@@ -390,6 +390,7 @@
       "name": "@urban-ui/select",
       "version": "0.1.0",
       "dependencies": {
+        "@urban-ui/text": "workspace:*",
         "@urban-ui/theme": "workspace:*",
         "react-aria-components": "1.14.0",
       },
