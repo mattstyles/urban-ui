@@ -24,6 +24,7 @@
     "@urban-ui/link": "workspace:*",
     "@urban-ui/listbox": "workspace:*",
     "@urban-ui/popover": "workspace:*",
+    "@urban-ui/select": "workspace:*",
     "@urban-ui/reset": "workspace:*",
     "@urban-ui/styles": "workspace:*",
     "@urban-ui/text": "workspace:*",
