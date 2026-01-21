@@ -52,18 +52,14 @@ function InputPatterns() {
           Sizes
         </Text>
         <Flex direction="column" gap="200" style={styles.inputContainer}>
-          <Text size="sm" color="lo">
-            Small:
+          <Text size="md" color="lo">
+            Small (32px):
           </Text>
           <Input size="sm" placeholder="Small input" />
-          <Text size="sm" color="lo">
-            Medium (default):
+          <Text size="md" color="lo">
+            Medium (default, ~47px):
           </Text>
           <Input size="md" placeholder="Medium input" />
-          <Text size="sm" color="lo">
-            Large:
-          </Text>
-          <Input size="lg" placeholder="Large input" />
         </Flex>
       </Flex>
 
@@ -148,19 +144,27 @@ function InputPatterns() {
           With Button (Horizontal)
         </Text>
         <Text size="sm" color="lo">
-          Medium size:
+          Input sm + Button md (32px):
         </Text>
         <Flex gap="200" align="center">
-          <Input size="md" placeholder="Search..." style={styles.inputContainer} />
+          <Input
+            size="sm"
+            placeholder="Search..."
+            style={styles.inputContainer}
+          />
           <Button size="md" tone="primary">
             Search
           </Button>
         </Flex>
         <Text size="sm" color="lo">
-          Large size:
+          Input md + Button lg (~47px):
         </Text>
         <Flex gap="200" align="center">
-          <Input size="lg" placeholder="Enter email address" style={styles.inputContainer} />
+          <Input
+            size="md"
+            placeholder="Enter email address"
+            style={styles.inputContainer}
+          />
           <Button size="lg" tone="primary">
             Subscribe
           </Button>
@@ -173,19 +177,19 @@ function InputPatterns() {
           With Button (Vertical)
         </Text>
         <Text size="sm" color="lo">
-          Medium size:
+          Input sm + Button md (32px):
         </Text>
         <Flex direction="column" gap="200" style={styles.inputContainer}>
-          <Input size="md" placeholder="Enter your name" />
+          <Input size="sm" placeholder="Enter your name" />
           <Button size="md" tone="primary">
             Submit
           </Button>
         </Flex>
         <Text size="sm" color="lo">
-          Large size:
+          Input md + Button lg (~47px):
         </Text>
         <Flex direction="column" gap="200" style={styles.inputContainer}>
-          <Input size="lg" placeholder="Enter your message" />
+          <Input size="md" placeholder="Enter your message" />
           <Button size="lg" tone="primary">
             Send Message
           </Button>
