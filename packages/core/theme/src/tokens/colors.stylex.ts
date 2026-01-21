@@ -44,7 +44,7 @@ export const disabled = defineVars({
  */
 export const surface = defineVars({
   muted: {
-    default: 'oklch(99.25% 0.0007 228.76)',
+    default: 'oklch(100% 0 0)',
     [DARK]: 'oklch(21.66% 0.0074 229.24)',
   },
   base: {
