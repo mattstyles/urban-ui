@@ -28,7 +28,7 @@
   },
   "peerDependencies": {
     "react": "19.2.3",
-    "@stylexjs/stylex": "0.17.5"
+    "@stylexjs/stylex": "^0.17.5"
   },
   "devDependencies": {
     "@types/node": "^24",

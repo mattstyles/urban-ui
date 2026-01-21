@@ -26,14 +26,15 @@
   "dependencies": {
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
-    "@urban-ui/styles": "workspace:*",
-    "react-aria-components": "1.14.0"
+    "@urban-ui/styles": "workspace:*"
   },
   "peerDependencies": {
     "react": "19.2.3",
-    "@stylexjs/stylex": "0.17.5"
+    "@stylexjs/stylex": "^0.17.5",
+    "react-aria-components": "^1.14.0"
   },
   "devDependencies": {
+    "react-aria-components": "^1.14.0",
     "@happy-dom/jest-environment": "^20.3.3",
     "@jest/globals": "^30.2.0",
     "@stylexswc/jest": "0.14.2",
