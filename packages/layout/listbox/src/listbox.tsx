@@ -24,7 +24,7 @@ const styles = stylex.create({
   },
 })
 
-export interface DropdownListBoxProps<T extends object>
+export interface ListboxProps<T extends object>
   extends Omit<AriaListBoxProps<T>, 'style'> {
   /**
    * Additional styles to apply
@@ -33,18 +33,18 @@ export interface DropdownListBoxProps<T extends object>
 }
 
 /**
- * DropdownListBox component for use within Select and other dropdown components.
+ * Listbox component for standalone list selection.
  * Provides a styled container for list items with keyboard navigation support.
  */
-export function DropdownListBox<T extends object>({
+export function Listbox<T extends object>({
   children,
   style,
   ...props
-}: DropdownListBoxProps<T>) {
+}: ListboxProps<T>) {
   return (
     <AriaListBox {...props} {...stylex.props([styles.base, style])}>
       {children}
     </AriaListBox>
   )
 }
-DropdownListBox.displayName = '@urban-ui/listbox/DropdownListBox'
+Listbox.displayName = '@urban-ui/listbox/Listbox'

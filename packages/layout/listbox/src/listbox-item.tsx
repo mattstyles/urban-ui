@@ -1,0 +1,113 @@
+'use client'
+
+import type { StyleXStyles } from '@stylexjs/stylex'
+import * as stylex from '@stylexjs/stylex'
+import { radii } from '@urban-ui/theme/borders.stylex'
+import { accent, base, disabled, tone } from '@urban-ui/theme/colors.stylex'
+import { focusVars } from '@urban-ui/theme/focus.stylex'
+import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components'
+import {
+  ListBoxItem as AriaListBoxItem,
+  composeRenderProps,
+} from 'react-aria-components'
+
+import { ListboxItemTextInline } from './listbox-item-text'
+
+/**
+ * Visual states for ListboxItem:
+ *
+ * - isHovered: Mouse is over the item
+ * - isPressed: Item is being pressed (mouse down or touch)
+ * - isSelected: Item is currently selected
+ * - isFocusVisible: Item has visible focus indicator (keyboard navigation)
+ * - isDisabled: Item is not interactive
+ *
+ * State priority (highest to lowest):
+ * 1. isDisabled - overrides all other states
+ * 2. isSelected - shows selection state
+ * 3. isPressed/isActive - shows press feedback
+ * 4. isFocusVisible - shows focus ring for keyboard navigation
+ * 5. isHovered - shows hover highlight
+ */
+const styles = stylex.create({
+  base: {
+    display: 'flex',
+    borderRadius: radii.md,
+    outline: 'none',
+    color: tone.fgHi,
+    backgroundColor: base.transparent,
+    transition: 'background 0.15s, color 0.15s',
+    // Hover state
+    ':is([data-hovered], :hover)': {
+      backgroundColor: tone.componentHover,
+    },
+    // Focus visible state - keyboard navigation
+    ':is([data-focus-visible], :focus-visible)': {
+      outlineColor: focusVars.outlineColor,
+      outlineOffset: focusVars.outlineOffset,
+      outlineStyle: focusVars.outlineStyle,
+      outlineWidth: focusVars.outlineSize,
+      zIndex: 1,
+    },
+    // Pressed state
+    ':is([data-pressed], :active)': {
+      backgroundColor: tone.componentActive,
+    },
+    // Selected state
+    ':is([data-selected])': {
+      backgroundColor: accent.solid,
+      color: accent.fgOnBlock,
+    },
+    // Selected + hover
+    ':is([data-selected][data-hovered], [data-selected]:hover)': {
+      backgroundColor: accent.solidHover,
+    },
+    // Selected + pressed
+    ':is([data-selected][data-pressed], [data-selected]:active)': {
+      backgroundColor: accent.solidActive,
+    },
+    // Disabled state
+    ':is([data-disabled])': {
+      backgroundColor: disabled.background,
+      color: disabled.fg,
+      cursor: 'not-allowed',
+      opacity: 0.6,
+    },
+  },
+})
+
+export interface ListboxItemProps<T extends object>
+  extends Omit<AriaListBoxItemProps<T>, 'style' | 'className'> {
+  /**
+   * Additional styles to apply
+   */
+  style?: StyleXStyles
+}
+
+/**
+ * ListboxItem component for use within Listbox.
+ * Provides styled items with hover, focus-visible, pressed, selected, and disabled states.
+ *
+ * Visual states are modeled using CSS :is() selectors to handle both
+ * native CSS pseudo-classes and react-aria data attributes.
+ */
+export function ListboxItem<T extends object>({
+  children,
+  style,
+  ...props
+}: ListboxItemProps<T>) {
+  return (
+    <AriaListBoxItem {...props} {...stylex.props(styles.base, style)}>
+      {composeRenderProps(children, (children) =>
+        typeof children === 'string' ? (
+          <ListboxItemTextInline slot="label">
+            {children}
+          </ListboxItemTextInline>
+        ) : (
+          children
+        ),
+      )}
+    </AriaListBoxItem>
+  )
+}
+ListboxItem.displayName = '@urban-ui/listbox/ListboxItem'

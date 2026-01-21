@@ -1,19 +1,33 @@
-export type { DropdownItemProps as DropdownListBoxItemProps } from './dropdown-item'
-// Backwards compatibility aliases
+// Dropdown components
+export {
+  Dropdown,
+  DropdownListBox,
+  type DropdownProps,
+  type DropdownListBoxProps,
+} from './dropdown'
 export {
   DropdownItem,
-  DropdownItem as DropdownListBoxItem,
   type DropdownItemProps,
 } from './dropdown-item'
-export type { DropdownItemTextProps as DropdownListBoxItemTextProps } from './dropdown-item-text'
-export {
-  DropdownItemText,
-  DropdownItemText as DropdownListBoxItemText,
-  DropdownItemTextInline,
-  type DropdownItemTextProps,
-} from './dropdown-item-text'
 export {
   DropdownItemContent,
   type DropdownItemContentProps,
 } from './dropdown-item-content'
-export { DropdownListBox, type DropdownListBoxProps } from './dropdown-listbox'
+export {
+  DropdownItemText,
+  DropdownItemTextInline,
+  type DropdownItemTextProps,
+} from './dropdown-item-text'
+
+// Listbox components
+export { Listbox, type ListboxProps } from './listbox'
+export { ListboxItem, type ListboxItemProps } from './listbox-item'
+export {
+  ListboxItemContent,
+  type ListboxItemContentProps,
+} from './listbox-item-content'
+export {
+  ListboxItemText,
+  ListboxItemTextInline,
+  type ListboxItemTextProps,
+} from './listbox-item-text'
