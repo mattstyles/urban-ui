@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
-import { DialogTrigger, OverlayArrow, Popover } from '@urban-ui/popover'
+import { DialogTrigger, Popover } from '@urban-ui/popover'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
@@ -112,13 +112,13 @@ function PopoverPatterns() {
           With Arrow
         </Text>
         <Text size="sm" color="lo">
-          Add an arrow pointing to the trigger element.
+          Add an arrow pointing to the trigger element using showArrow prop.
+          Arrow rotates automatically based on placement.
         </Text>
         <Flex gap="200" wrap="wrap">
           <DialogTrigger>
-            <Button>With Arrow (Bottom)</Button>
-            <Popover placement="bottom">
-              <OverlayArrow />
+            <Button>Bottom Arrow</Button>
+            <Popover placement="bottom" showArrow>
               <Dialog {...stylex.props(styles.popoverContent)}>
                 <Text>Arrow points up to trigger</Text>
               </Dialog>
@@ -126,11 +126,28 @@ function PopoverPatterns() {
           </DialogTrigger>
 
           <DialogTrigger>
-            <Button variant="outline">With Arrow (Top)</Button>
-            <Popover placement="top">
-              <OverlayArrow />
+            <Button variant="outline">Top Arrow</Button>
+            <Popover placement="top" showArrow>
               <Dialog {...stylex.props(styles.popoverContent)}>
                 <Text>Arrow points down to trigger</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Left Arrow</Button>
+            <Popover placement="left" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Arrow points right</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Right Arrow</Button>
+            <Popover placement="right" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Arrow points left</Text>
               </Dialog>
             </Popover>
           </DialogTrigger>
@@ -270,20 +287,34 @@ function PopoverPatterns() {
           Flipping Behavior
         </Text>
         <Text size="sm" color="lo">
-          Popovers automatically flip when there&apos;s not enough space (scroll
-          down to test).
+          Popovers automatically flip when there&apos;s not enough space. Arrow
+          rotation updates automatically based on resolved placement.
         </Text>
-        <DialogTrigger>
-          <Button>Auto-flip Popover</Button>
-          <Popover placement="bottom">
-            <Dialog {...stylex.props(styles.popoverWide)}>
-              <Text>
-                This popover will flip to the top if there&apos;s not enough
-                space below. Try scrolling the page while this is open.
-              </Text>
-            </Dialog>
-          </Popover>
-        </DialogTrigger>
+        <Flex gap="200" wrap="wrap">
+          <DialogTrigger>
+            <Button>Auto-flip (no arrow)</Button>
+            <Popover placement="bottom">
+              <Dialog {...stylex.props(styles.popoverWide)}>
+                <Text>
+                  This popover will flip to the top if there&apos;s not enough
+                  space below.
+                </Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Auto-flip (with arrow)</Button>
+            <Popover placement="bottom" showArrow>
+              <Dialog {...stylex.props(styles.popoverWide)}>
+                <Text>
+                  Watch the arrow rotate when the popover flips! Try scrolling
+                  while this is open.
+                </Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+        </Flex>
       </Flex>
     </Flex>
   )
