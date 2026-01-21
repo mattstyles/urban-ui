@@ -28,7 +28,7 @@ export function FieldError({ children, style, ...props }: FieldErrorProps) {
   return (
     <Text
       asChild
-      size="sm"
+      size="xs"
       color="hi"
       style={[styles.base, themes.critical, style]}
     >

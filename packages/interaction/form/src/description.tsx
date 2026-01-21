@@ -25,7 +25,7 @@ export interface DescriptionProps extends Omit<AriaTextProps, 'style' | 'slot'> 
  */
 export function Description({ children, style, ...props }: DescriptionProps) {
   return (
-    <Text asChild size="sm" color="lo" style={[styles.base, style]}>
+    <Text asChild size="xs" color="lo" style={[styles.base, style]}>
       <AriaText {...props} slot="description">
         {children}
       </AriaText>
