@@ -34,9 +34,9 @@ Font sizes use a fluid type scale that responds to viewport width.
 
 | Size | Min (320px) | Max (1240px) | Use Case |
 |------|-------------|--------------|----------|
-| xxs  | 0.58rem (9px) | 0.53rem (8px) | Fine print, labels |
-| xs   | 0.69rem (11px) | 0.70rem (11px) | Captions, metadata |
-| sm   | 0.83rem (13px) | 0.94rem (15px) | Secondary text, descriptions |
+| xxs  | 0.58rem (9px) | 0.70rem (11px) | Fine print, labels |
+| xs   | 0.69rem (11px) | 0.88rem (14px) | Captions, metadata |
+| sm   | 0.83rem (13px) | 0.99rem (16px) | Secondary text, descriptions |
 | md   | 1rem (16px) | 1.25rem (20px) | Body text (baseline) |
 | lg   | 1.2rem (19px) | 1.67rem (27px) | Subheadings |
 | xl   | 1.44rem (23px) | 2.22rem (36px) | Headings |

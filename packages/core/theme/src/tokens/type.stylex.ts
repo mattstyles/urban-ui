@@ -25,10 +25,7 @@ const MAX_SCALE = 1.333
 const MIN_BASE_SIZE = 16
 const MAX_BASE_SIZE = 20
 
-// Using a scale factor of 1.2 (MIN_SCALE)
 // md is our baseline at 1rem (16px)
-// Each step up multiplies by 1.2
-// Each step down divides by 1.2
 
 // Font sizes in `rem` units
 const MIN_FONT = {
@@ -50,12 +47,12 @@ const MIN_FONT = {
 
 // Font sizes in `rem` units
 const MAX_FONT = {
-  // 0.53rem (8px)
-  xxs: Math.round(MAX_BASE_SIZE / MAX_SCALE ** 3 / 0.16) / 100,
   // 0.70rem (11px)
-  xs: Math.round(MAX_BASE_SIZE / MAX_SCALE ** 2 / 0.16) / 100,
-  // 0.94rem (15px)
-  sm: Math.round(MAX_BASE_SIZE / MAX_SCALE / 0.16) / 100,
+  xxs: Math.round(MAX_BASE_SIZE / MAX_SCALE ** 2 / 0.16) / 100,
+  // 0.88rem (14px)
+  xs: Math.round(MAX_BASE_SIZE / MAX_SCALE ** 1.2 / 0.16) / 100,
+  // 0.99rem (16px)
+  sm: Math.round(MAX_BASE_SIZE / MAX_SCALE ** 0.8 / 0.16) / 100,
   // 1.25rem (20px) - baseline
   md: Math.round(MAX_BASE_SIZE / 0.16) / 100,
   // 1.67rem (27px)
@@ -91,11 +88,11 @@ const INTERCEPT = {
  * @css fontSize
  */
 export const fontSizes = defineVars({
-  // 0.58rem (9px) → 0.53rem (8px)
+  // 0.58rem (9px) → 0.70rem (11px)
   xxs: `clamp(${Math.min(MIN_FONT.xxs)}rem, calc(${INTERCEPT.xxs}rem + ${Math.round(10000 * SLOPE.xxs) / 100}vw), ${Math.max(MAX_FONT.xxs)}rem)`,
-  // 0.69rem (11px) → 0.70rem (11px)
+  // 0.69rem (11px) → 0.88rem (14px)
   xs: `clamp(${Math.min(MIN_FONT.xs)}rem, calc(${INTERCEPT.xs}rem + ${Math.round(10000 * SLOPE.xs) / 100}vw), ${Math.max(MAX_FONT.xs)}rem)`,
-  // 0.83rem (13px) → 0.94rem (15px)
+  // 0.83rem (13px) → 0.99rem (16px)
   sm: `clamp(${Math.min(MIN_FONT.sm)}rem, calc(${INTERCEPT.sm}rem + ${Math.round(10000 * SLOPE.sm) / 100}vw), ${Math.max(MAX_FONT.sm)}rem)`,
   // 1rem (16px) → 1.25rem (20px) - baseline
   md: `clamp(${Math.min(MIN_FONT.md)}rem, calc(${INTERCEPT.md}rem + ${Math.round(10000 * SLOPE.md) / 100}vw), ${Math.max(MAX_FONT.md)}rem)`,
