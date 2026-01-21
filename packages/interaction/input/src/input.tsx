@@ -7,11 +7,15 @@ import {
   borderWidths,
   radii,
 } from '@urban-ui/theme/borders.stylex'
-import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
-import { focusVars } from '@urban-ui/theme/focus.stylex'
+import {
+  accent,
+  base,
+  critical,
+  disabled,
+  tone,
+} from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
-import { themes } from '@urban-ui/theme'
 import type { InputProps as AriaInputProps } from 'react-aria-components'
 import { Input as AriaInput } from 'react-aria-components'
 
@@ -21,10 +25,10 @@ const styles = stylex.create({
     width: '100%',
     boxSizing: 'border-box',
     margin: 0,
-    borderColor: tone.border,
+    borderColor: tone.borderMuted,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
-    borderRadius: radii.md,
+    borderRadius: radii.lg,
     backgroundColor: base.white,
     color: tone.fgHi,
     fontSize: fontSizes.md,
@@ -32,14 +36,9 @@ const styles = stylex.create({
     transition: 'border-color 0.2s, box-shadow 0.2s',
     '::placeholder': {
       color: tone.fgLo,
-      opacity: 0.6,
     },
-    ':is(:focus, [data-focused])': {
-      borderColor: tone.solid,
-      outlineColor: focusVars.outlineColor,
-      outlineOffset: focusVars.outlineOffset,
-      outlineStyle: focusVars.outlineStyle,
-      outlineWidth: focusVars.outlineSize,
+    ':is(:focus-visible, [data-focus-visible])': {
+      borderColor: accent.solid,
     },
   },
   disabled: {
@@ -54,25 +53,28 @@ const styles = stylex.create({
     },
   },
   error: {
-    borderColor: tone.border,
+    borderColor: critical.solid,
   },
 })
 
 const sizes = stylex.create({
   sm: {
     fontSize: fontSizes.sm,
-    paddingInline: space['100'],
+    lineHeight: fontSizes.sm,
+    paddingInline: space['200'],
     paddingBlock: space['50'],
     minHeight: `calc(${fontSizes.sm} + ((${space['50']} + ${borderWidths.md}) * 2))`,
   },
   md: {
-    fontSize: fontSizes.md,
+    fontSize: fontSizes.sm,
+    lineHeight: fontSizes.md,
     paddingInline: space['200'],
-    paddingBlock: space['100'],
-    minHeight: `calc(${fontSizes.md} + ((${space['100']} + ${borderWidths.md}) * 2))`,
+    paddingBlock: space['50'],
+    minHeight: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md}) * 2))`,
   },
   lg: {
-    fontSize: fontSizes.lg,
+    fontSize: fontSizes.md,
+    lineHeight: fontSizes.lg,
     paddingInline: space['200'],
     paddingBlock: space['100'],
     minHeight: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md}) * 2))`,
@@ -116,7 +118,6 @@ export function Input({
         sizes[size],
         styles.disabled,
         hasError && styles.error,
-        hasError && themes.critical,
         style,
       )}
     />

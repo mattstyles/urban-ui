@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
+import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
 import { Input } from '@urban-ui/input'
 import { Text } from '@urban-ui/text'
@@ -138,6 +139,56 @@ function InputPatterns() {
             Read-only:
           </Text>
           <Input value="Read-only value" readOnly />
+        </Flex>
+      </Flex>
+
+      {/* Input with Button - Horizontal */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          With Button (Horizontal)
+        </Text>
+        <Text size="sm" color="lo">
+          Medium size:
+        </Text>
+        <Flex gap="200" align="center">
+          <Input size="md" placeholder="Search..." style={styles.inputContainer} />
+          <Button size="md" tone="primary">
+            Search
+          </Button>
+        </Flex>
+        <Text size="sm" color="lo">
+          Large size:
+        </Text>
+        <Flex gap="200" align="center">
+          <Input size="lg" placeholder="Enter email address" style={styles.inputContainer} />
+          <Button size="lg" tone="primary">
+            Subscribe
+          </Button>
+        </Flex>
+      </Flex>
+
+      {/* Input with Button - Vertical */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          With Button (Vertical)
+        </Text>
+        <Text size="sm" color="lo">
+          Medium size:
+        </Text>
+        <Flex direction="column" gap="200" style={styles.inputContainer}>
+          <Input size="md" placeholder="Enter your name" />
+          <Button size="md" tone="primary">
+            Submit
+          </Button>
+        </Flex>
+        <Text size="sm" color="lo">
+          Large size:
+        </Text>
+        <Flex direction="column" gap="200" style={styles.inputContainer}>
+          <Input size="lg" placeholder="Enter your message" />
+          <Button size="lg" tone="primary">
+            Send Message
+          </Button>
         </Flex>
       </Flex>
     </Flex>
