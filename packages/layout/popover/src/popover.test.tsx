@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { Button, Dialog } from 'react-aria-components'
-import { DialogTrigger, OverlayArrow, Popover } from './index'
+import { DialogTrigger, Popover } from './index'
 
 describe('Popover', () => {
   it('renders popover content when triggered', async () => {
@@ -48,17 +48,14 @@ describe('Popover', () => {
     // Popover should be closed
     expect(screen.queryByText('Popover content')).not.toBeInTheDocument()
   })
-})
 
-describe('OverlayArrow', () => {
-  it('renders an SVG arrow', async () => {
+  it('renders arrow when showArrow is true', async () => {
     const user = userEvent.setup()
 
     render(
       <DialogTrigger>
         <Button>Open Popover</Button>
-        <Popover>
-          <OverlayArrow data-testid="arrow" />
+        <Popover showArrow>
           <Dialog aria-label="Popover content">Content</Dialog>
         </Popover>
       </DialogTrigger>
@@ -66,19 +63,37 @@ describe('OverlayArrow', () => {
 
     await user.click(screen.getByRole('button', { name: 'Open Popover' }))
 
-    const arrow = screen.getByTestId('arrow')
-    expect(arrow).toBeInTheDocument()
-    expect(arrow.querySelector('svg')).toBeInTheDocument()
+    // Arrow should be rendered with an SVG
+    const svg = document.querySelector('svg')
+    expect(svg).toBeInTheDocument()
   })
 
-  it('accepts custom width and height', async () => {
+  it('does not render arrow by default', async () => {
+    const user = userEvent.setup()
+
+    render(
+      <DialogTrigger>
+        <Button>Open Popover</Button>
+        <Popover>
+          <Dialog aria-label="Popover content">Content</Dialog>
+        </Popover>
+      </DialogTrigger>
+    )
+
+    await user.click(screen.getByRole('button', { name: 'Open Popover' }))
+
+    // Arrow should not be rendered
+    const svg = document.querySelector('svg')
+    expect(svg).not.toBeInTheDocument()
+  })
+
+  it('accepts custom arrow dimensions', async () => {
     const user = userEvent.setup()
 
     render(
       <DialogTrigger>
         <Button>Open</Button>
-        <Popover>
-          <OverlayArrow width={16} height={8} data-testid="arrow" />
+        <Popover showArrow arrowWidth={16} arrowHeight={8}>
           <Dialog aria-label="Content">Content</Dialog>
         </Popover>
       </DialogTrigger>
@@ -86,7 +101,7 @@ describe('OverlayArrow', () => {
 
     await user.click(screen.getByRole('button', { name: 'Open' }))
 
-    const svg = screen.getByTestId('arrow').querySelector('svg')
+    const svg = document.querySelector('svg')
     expect(svg).toHaveAttribute('width', '16')
     expect(svg).toHaveAttribute('height', '8')
   })

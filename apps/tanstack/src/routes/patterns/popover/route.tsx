@@ -115,39 +115,119 @@ function PopoverPatterns() {
           Add an arrow pointing to the trigger element using showArrow prop.
           Arrow rotates automatically based on placement.
         </Text>
+
+        {/* Cardinal directions */}
         <Flex gap="200" wrap="wrap">
           <DialogTrigger>
-            <Button>Bottom Arrow</Button>
-            <Popover placement="bottom" showArrow>
-              <Dialog {...stylex.props(styles.popoverContent)}>
-                <Text>Arrow points up to trigger</Text>
-              </Dialog>
-            </Popover>
-          </DialogTrigger>
-
-          <DialogTrigger>
-            <Button variant="outline">Top Arrow</Button>
+            <Button variant="outline">Top</Button>
             <Popover placement="top" showArrow>
               <Dialog {...stylex.props(styles.popoverContent)}>
-                <Text>Arrow points down to trigger</Text>
+                <Text>Placement: top</Text>
               </Dialog>
             </Popover>
           </DialogTrigger>
 
           <DialogTrigger>
-            <Button variant="outline">Left Arrow</Button>
+            <Button variant="outline">Bottom</Button>
+            <Popover placement="bottom" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: bottom</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Left</Button>
             <Popover placement="left" showArrow>
               <Dialog {...stylex.props(styles.popoverContent)}>
-                <Text>Arrow points right</Text>
+                <Text>Placement: left</Text>
               </Dialog>
             </Popover>
           </DialogTrigger>
 
           <DialogTrigger>
-            <Button variant="outline">Right Arrow</Button>
+            <Button variant="outline">Right</Button>
             <Popover placement="right" showArrow>
               <Dialog {...stylex.props(styles.popoverContent)}>
-                <Text>Arrow points left</Text>
+                <Text>Placement: right</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+        </Flex>
+
+        {/* Top/Bottom with start/end alignment */}
+        <Flex gap="200" wrap="wrap">
+          <DialogTrigger>
+            <Button variant="outline">Top Start</Button>
+            <Popover placement="top start" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: top start</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Top End</Button>
+            <Popover placement="top end" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: top end</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Bottom Start</Button>
+            <Popover placement="bottom start" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: bottom start</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Bottom End</Button>
+            <Popover placement="bottom end" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: bottom end</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+        </Flex>
+
+        {/* Start/End (left/right in LTR) with top/bottom alignment */}
+        <Flex gap="200" wrap="wrap">
+          <DialogTrigger>
+            <Button variant="outline">Start Top</Button>
+            <Popover placement="start top" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: start top</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">Start Bottom</Button>
+            <Popover placement="start bottom" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: start bottom</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">End Top</Button>
+            <Popover placement="end top" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: end top</Text>
+              </Dialog>
+            </Popover>
+          </DialogTrigger>
+
+          <DialogTrigger>
+            <Button variant="outline">End Bottom</Button>
+            <Popover placement="end bottom" showArrow>
+              <Dialog {...stylex.props(styles.popoverContent)}>
+                <Text>Placement: end bottom</Text>
               </Dialog>
             </Popover>
           </DialogTrigger>

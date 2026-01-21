@@ -11,6 +11,7 @@ const styles = stylex.create({
     display: 'block',
   },
   svg: {
+    maxWidth: 'unset',
     display: 'block',
     fill: tone.surface,
     stroke: tone.border,
@@ -18,7 +19,26 @@ const styles = stylex.create({
   },
 })
 
-export interface OverlayArrowProps extends Omit<AriaOverlayArrowProps, 'style'> {
+const rotations = stylex.create({
+  top: {
+    transform: 'rotate(0deg)',
+  },
+  bottom: {
+    transform: 'rotate(180deg)',
+  },
+  left: {
+    transform: 'rotate(-90deg)',
+  },
+  right: {
+    transform: 'rotate(90deg)',
+  },
+  center: {
+    transform: 'rotate(0deg)',
+  },
+})
+
+export interface OverlayArrowProps
+  extends Omit<AriaOverlayArrowProps, 'style'> {
   /**
    * Width of the arrow in pixels
    * @default 12
@@ -43,16 +63,8 @@ export interface OverlayArrowProps extends Omit<AriaOverlayArrowProps, 'style'> 
 }
 
 /**
- * Arrow indicator for Popover components.
+ * Internal arrow indicator for Popover components.
  * Renders an SVG arrow that points to the trigger element.
- *
- * @example
- * ```tsx
- * <Popover>
- *   <OverlayArrow />
- *   <Dialog>Content</Dialog>
- * </Popover>
- * ```
  */
 export function OverlayArrow({
   width = 12,
@@ -63,15 +75,23 @@ export function OverlayArrow({
 }: OverlayArrowProps) {
   return (
     <AriaOverlayArrow {...props} {...stylex.props([styles.base, style])}>
-      <svg
-        width={width}
-        height={height}
-        viewBox="0 0 12 12"
-        {...stylex.props([styles.svg, svgStyle])}
-      >
-        <path d="M0 0 L6 6 L12 0" />
-      </svg>
+      {({ placement }) => {
+        return (
+          <svg
+            aria-hidden="true"
+            width={width}
+            height={height}
+            viewBox="0 0 12 12"
+            {...stylex.props([
+              styles.svg,
+              placement && rotations[placement],
+              svgStyle,
+            ])}
+          >
+            <path d="M0 0 L6 6 L12 0" />
+          </svg>
+        )
+      }}
     </AriaOverlayArrow>
   )
 }
-OverlayArrow.displayName = '@urban-ui/popover/OverlayArrow'
