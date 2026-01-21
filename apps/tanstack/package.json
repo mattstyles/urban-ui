@@ -18,6 +18,7 @@
     "@urban-ui/center": "workspace:*",
     "@urban-ui/content": "workspace:*",
     "@urban-ui/flex": "workspace:*",
+    "@urban-ui/form": "workspace:*",
     "@urban-ui/icon": "workspace:*",
     "@urban-ui/input": "workspace:*",
     "@urban-ui/link": "workspace:*",
