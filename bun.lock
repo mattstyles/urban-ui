@@ -152,6 +152,7 @@
         "@urban-ui/input": "workspace:*",
         "@urban-ui/link": "workspace:*",
         "@urban-ui/listbox": "workspace:*",
+        "@urban-ui/popover": "workspace:*",
         "@urban-ui/reset": "workspace:*",
         "@urban-ui/styles": "workspace:*",
         "@urban-ui/text": "workspace:*",
