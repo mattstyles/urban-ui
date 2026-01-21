@@ -2,7 +2,6 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
-import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
@@ -11,7 +10,6 @@ import { shadows } from '@urban-ui/theme/shadows.stylex'
 import type { SelectProps as AriaSelectProps } from 'react-aria-components'
 import {
   Button,
-  Label,
   ListBox,
   Popover,
   Select as AriaSelect,
@@ -103,11 +101,6 @@ const styles = stylex.create({
 export interface SelectProps<T extends object>
   extends Omit<AriaSelectProps<T>, 'style' | 'className' | 'children'> {
   /**
-   * Label text for the select field
-   */
-  label?: string
-
-  /**
    * The SelectItem children
    */
   children: React.ReactNode
@@ -151,7 +144,7 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
  *
  * @example
  * ```tsx
- * <Select label="Favorite Animal">
+ * <Select placeholder="Select an animal">
  *   <SelectItem>Aardvark</SelectItem>
  *   <SelectItem>Cat</SelectItem>
  *   <SelectItem>Dog</SelectItem>
@@ -159,7 +152,6 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
  * ```
  */
 export function Select<T extends object>({
-  label,
   children,
   style,
   triggerStyle,
@@ -169,11 +161,6 @@ export function Select<T extends object>({
     <AriaSelect {...props} {...stylex.props(styles.base, style)}>
       {({ isOpen }) => (
         <>
-          {label && (
-            <Text asChild size="sm" weight="medium">
-              <Label>{label}</Label>
-            </Text>
-          )}
           <Button {...stylex.props(styles.trigger, triggerStyle)}>
             <SelectValue {...stylex.props(styles.selectValue)} />
             <ChevronIcon isOpen={isOpen} />

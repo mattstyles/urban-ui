@@ -39,31 +39,13 @@ function SelectPatterns() {
           Basic Usage
         </Text>
         <Text size="sm" color="lo">
-          A simple select with label and checkmark indicators for selected
-          items.
+          A simple select with checkmark indicators for selected items.
         </Text>
-        <Select label="Favorite Animal" placeholder="Select an animal">
+        <Select aria-label="Favorite Animal" placeholder="Select an animal">
           <SelectItem id="cat">Cat</SelectItem>
           <SelectItem id="dog">Dog</SelectItem>
           <SelectItem id="rabbit">Rabbit</SelectItem>
           <SelectItem id="hamster">Hamster</SelectItem>
-        </Select>
-      </Flex>
-
-      {/* Without Label */}
-      <Flex direction="v" gap="200" style={styles.container}>
-        <Text size="lg" weight="semibold">
-          Without Label
-        </Text>
-        <Text size="sm" color="lo">
-          Select without a visible label (uses aria-label for accessibility).
-        </Text>
-        <Select aria-label="Favorite Color" placeholder="Choose a color">
-          <SelectItem id="red">Red</SelectItem>
-          <SelectItem id="green">Green</SelectItem>
-          <SelectItem id="blue">Blue</SelectItem>
-          <SelectItem id="yellow">Yellow</SelectItem>
-          <SelectItem id="purple">Purple</SelectItem>
         </Select>
       </Flex>
 
@@ -75,7 +57,7 @@ function SelectPatterns() {
         <Text size="sm" color="lo">
           Select with a pre-selected default value.
         </Text>
-        <Select label="T-Shirt Size" defaultSelectedKey="medium">
+        <Select aria-label="T-Shirt Size" defaultSelectedKey="medium">
           <SelectItem id="xs">Extra Small</SelectItem>
           <SelectItem id="small">Small</SelectItem>
           <SelectItem id="medium">Medium</SelectItem>
@@ -93,7 +75,7 @@ function SelectPatterns() {
           Some items can be disabled and cannot be selected.
         </Text>
         <Select
-          label="Subscription Plan"
+          aria-label="Subscription Plan"
           placeholder="Select a plan"
           triggerStyle={styles.wideSelect}
         >
@@ -113,7 +95,11 @@ function SelectPatterns() {
         <Text size="sm" color="lo">
           The entire select can be disabled.
         </Text>
-        <Select label="Status" isDisabled defaultSelectedKey="locked">
+        <Select
+          aria-label="Status"
+          isDisabled
+          defaultSelectedKey="locked"
+        >
           <SelectItem id="locked">Locked</SelectItem>
           <SelectItem id="unlocked">Unlocked</SelectItem>
         </Select>
@@ -128,7 +114,7 @@ function SelectPatterns() {
           Lists with many items are scrollable within a constrained height.
         </Text>
         <Select
-          label="Country"
+          aria-label="Country"
           placeholder="Select a country"
           triggerStyle={styles.wideSelect}
         >
@@ -156,13 +142,13 @@ function SelectPatterns() {
           Multiple select components working together.
         </Text>
         <Flex gap="200" wrap="wrap">
-          <Select label="Year" placeholder="Year">
+          <Select aria-label="Year" placeholder="Year">
             <SelectItem id="2024">2024</SelectItem>
             <SelectItem id="2025">2025</SelectItem>
             <SelectItem id="2026">2026</SelectItem>
           </Select>
 
-          <Select label="Month" placeholder="Month">
+          <Select aria-label="Month" placeholder="Month">
             <SelectItem id="jan">January</SelectItem>
             <SelectItem id="feb">February</SelectItem>
             <SelectItem id="mar">March</SelectItem>
@@ -171,7 +157,7 @@ function SelectPatterns() {
             <SelectItem id="jun">June</SelectItem>
           </Select>
 
-          <Select label="Day" placeholder="Day">
+          <Select aria-label="Day" placeholder="Day">
             <SelectItem id="1">1</SelectItem>
             <SelectItem id="2">2</SelectItem>
             <SelectItem id="3">3</SelectItem>

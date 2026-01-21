@@ -24,7 +24,6 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*",
     "react-aria-components": "1.14.0"
   },
