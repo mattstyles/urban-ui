@@ -2,7 +2,6 @@
 
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
 import { Button } from '@urban-ui/button'
 import { Flex } from '@urban-ui/flex'
 import { Form } from '@urban-ui/form'
@@ -12,6 +11,7 @@ import { themes } from '@urban-ui/theme'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import { useState } from 'react'
 
 export const Route = createFileRoute('/patterns/form/')({
   component: FormPatterns,
@@ -90,11 +90,16 @@ function FormPatterns() {
               description="Must be at least 8 characters."
             />
 
-            <Flex gap="200">
-              <Button type="submit" tone="primary" size="lg">
+            <Flex gap="200" justify="flex-end">
+              <Button type="submit" tone="primary" size="md">
                 Sign In
               </Button>
-              <Button type="reset" tone="neutral" size="lg" onPress={handleReset}>
+              <Button
+                type="reset"
+                tone="neutral"
+                size="md"
+                onPress={handleReset}
+              >
                 Reset
               </Button>
             </Flex>
