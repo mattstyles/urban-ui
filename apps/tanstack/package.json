@@ -22,6 +22,7 @@
     "@urban-ui/icon": "workspace:*",
     "@urban-ui/input": "workspace:*",
     "@urban-ui/link": "workspace:*",
+    "@urban-ui/dropdown": "workspace:*",
     "@urban-ui/listbox": "workspace:*",
     "@urban-ui/popover": "workspace:*",
     "@urban-ui/select": "workspace:*",

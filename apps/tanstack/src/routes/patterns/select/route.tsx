@@ -46,7 +46,31 @@ function SelectPatterns() {
           <SelectItem id="dog">Dog</SelectItem>
           <SelectItem id="rabbit">Rabbit</SelectItem>
           <SelectItem id="hamster">Hamster</SelectItem>
+          <SelectItem id="bird">Bird</SelectItem>
+          <SelectItem id="fish">Fish</SelectItem>
+          <SelectItem id="snake">Snake</SelectItem>
+          <SelectItem id="turtle">Turtle</SelectItem>
         </Select>
+      </Flex>
+
+      {/* Native select */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Native select
+        </Text>
+        <Text size="sm" color="lo">
+          A simple select with checkmark indicators for selected items.
+        </Text>
+        <select aria-label="Favorite Animal">
+          <option value="cat">Cat</option>
+          <option value="dog">Dog</option>
+          <option value="rabbit">Rabbit</option>
+          <option value="hamster">Hamster</option>
+          <option value="bird">Bird</option>
+          <option value="fish">Fish</option>
+          <option value="snake">Snake</option>
+          <option value="turtle">Turtle</option>
+        </select>
       </Flex>
 
       {/* Default Value */}

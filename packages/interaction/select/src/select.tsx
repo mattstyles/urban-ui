@@ -11,8 +11,8 @@ import { space } from '@urban-ui/theme/layout.stylex'
 import { ChevronDown } from 'lucide-react'
 import type { SelectProps as AriaSelectProps } from 'react-aria-components'
 import {
+  Button as AriaButton,
   Select as AriaSelect,
-  Button,
   SelectValue,
 } from 'react-aria-components'
 
@@ -112,12 +112,12 @@ export function Select<T extends object>({
 }: SelectProps<T>) {
   return (
     <AriaSelect {...props} {...stylex.props(styles.base, style)}>
-      <Button {...stylex.props(styles.trigger, triggerStyle)}>
+      <AriaButton {...stylex.props(styles.trigger, triggerStyle)}>
         <SelectValue {...stylex.props(styles.selectValue)} />
         <Icon size="sm" color="lo">
           <ChevronDown />
         </Icon>
-      </Button>
+      </AriaButton>
       <Popover style={styles.popover}>
         <SelectListBox items={items}>{children}</SelectListBox>
       </Popover>

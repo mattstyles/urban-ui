@@ -16,6 +16,8 @@ const styles = stylex.create({
     padding: space[50],
     outline: 'none',
     overflow: 'auto',
+
+    // Remove all these (or apply as a convenience, see docs/dialog-trigger-patterns)
     backgroundColor: tone.surface,
     borderWidth: 1,
     borderStyle: 'solid',

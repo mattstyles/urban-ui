@@ -105,6 +105,57 @@ Selection state behaviours differ inline (i.e. in the page, initially visible) v
 - Composes dropdown for styling (consistency)
 - Creates a variant of Dropdown and DropdownItem
 
+### ChoiceList
+- Variants of ListBox and ListBoxItem
+
+### Alerts
+- e.g. Toasts
+- e.g. Toast variants like highlights
+- Typically anchored to the screen
+- Used for feedback, could be interactive (how to handle keyboard interaction?)
 
 
+## Relation to modals
 
+### Modal
+- Modal dialog - in-dialog and modal
+- Usually has a background for prominence
+
+### Drawer
+- in-dialog and non-modal
+- Usually also preserved across most page movements
+
+### Fullscreen modal
+- in-dialog and modal
+- Variant of a modal (positioning)
+
+### Wizard
+- in-dialog and modal
+- Variant of a fullscreen modal with >1 number of 'pages'/screens
+
+### Flow
+- in-dialog and modal
+- Variant of Modal with >1 number of 'pages'/screens
+
+### Modal stacking context
+- Defines indices/ordering for contents (which are typically modals)
+
+### Modal stack
+- Visual representation for modal dialogs
+- Looks like a stack of modals
+
+### Dialog / Window (?)
+- in-dialog and non-modal
+- can usually be dragged around the page
+
+## Customisation steps
+
+Dropdown and listbox are synonymous implementations of the AriaListBox pattern.
+
+```jsx
+<Listbox>
+  <ListboxItem id="option1">Option 1</ListboxItem>
+  <ListboxItem id="option2">Option 2</ListboxItem>
+  <ListboxItem id="option3">Option 3</ListboxItem>
+</Listbox>
+```

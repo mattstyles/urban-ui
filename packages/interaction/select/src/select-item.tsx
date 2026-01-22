@@ -1,6 +1,7 @@
 'use client'
 
-import { DropdownItem, type DropdownItemProps } from '@urban-ui/listbox'
+import { DropdownItem, type DropdownItemProps } from '@urban-ui/dropdown'
+// import { ListboxItem, type ListboxItemProps } from '@urban-ui/listbox'
 
 export type SelectItemProps<T extends object> = DropdownItemProps<T>
 

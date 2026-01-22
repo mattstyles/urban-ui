@@ -4,7 +4,6 @@ import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { accent, base, disabled, tone } from '@urban-ui/theme/colors.stylex'
-import { focusVars } from '@urban-ui/theme/focus.stylex'
 import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components'
 import {
   ListBoxItem as AriaListBoxItem,
@@ -39,19 +38,15 @@ const styles = stylex.create({
     transition: 'background 0.15s, color 0.15s',
     // Hover state
     ':is([data-hovered], :hover)': {
-      backgroundColor: tone.componentHover,
+      backgroundColor: accent.solidHover,
     },
     // Focus visible state - keyboard navigation
     ':is([data-focus-visible], :focus-visible)': {
-      outlineColor: focusVars.outlineColor,
-      outlineOffset: focusVars.outlineOffset,
-      outlineStyle: focusVars.outlineStyle,
-      outlineWidth: focusVars.outlineSize,
-      zIndex: 1,
+      backgroundColor: accent.solidHover,
     },
     // Pressed state
     ':is([data-pressed], :active)': {
-      backgroundColor: tone.componentActive,
+      backgroundColor: tone.solidActive,
     },
     // Selected state
     ':is([data-selected])': {
@@ -104,7 +99,7 @@ export function DropdownItem<T extends object>({
             {children}
           </DropdownItemTextInline>
         ) : (
-          children
+          <>{children} foo</>
         ),
       )}
     </AriaListBoxItem>

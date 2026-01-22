@@ -6,7 +6,7 @@ import {
   DropdownItemContent,
   DropdownItemText,
   DropdownListBox,
-} from '@urban-ui/listbox'
+} from '@urban-ui/dropdown'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
