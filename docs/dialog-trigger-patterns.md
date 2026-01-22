@@ -153,9 +153,43 @@ Selection state behaviours differ inline (i.e. in the page, initially visible) v
 Dropdown and listbox are synonymous implementations of the AriaListBox pattern.
 
 ```jsx
-<Listbox>
-  <ListboxItem id="option1">Option 1</ListboxItem>
+<Listbox aria-label="Select an option" selectionMode='single'> -> padding, colour, shape, border, gap
+  <ListboxItem id="option1">Option 1</ListboxItem> -> colour, shape, 
   <ListboxItem id="option2">Option 2</ListboxItem>
   <ListboxItem id="option3">Option 3</ListboxItem>
 </Listbox>
 ```
+
+To customise it is generally best to work from the underlying AriaListBox unstyled primitives, using ListBox as a template, however, if you want a 'standard' styled listbox with custom content then ListBoxItem accepts any slotted content (a string, as above, can be supplied and will be styled as a convenience around manually calling styling the item contents).
+
+```js
+const styles = stylex.create({
+  item: {
+    padding: space[150]
+  }
+})
+
+// with custom content but standard visual behaviours (background colour and shape)
+<Listbox aria-label="Select an option" selectionMode="single">
+  <ListboxItem id="option1">
+    <Flex
+      direction="row"
+      gap="100"
+      align="center"
+      style={styles.customItem}
+    >
+      <Icon size="md">
+        <CirclePlus />
+      </Icon>
+      <Text size="md" slot="label">
+        Add
+      </Text>
+    </Flex>
+  </ListboxItem>
+  <ListboxItem id="option2">Option 2</ListboxItem>
+  <ListboxItem id="option3">Option 3</ListboxItem>
+</Listbox>
+```
+
+Full customisation requires a bit more effort to add styling to the primitives.
+@see apps/tanstack/src/routes/patterns/listbox/listbox/-customListBox.tsx.

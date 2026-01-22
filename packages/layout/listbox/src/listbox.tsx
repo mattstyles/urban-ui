@@ -15,7 +15,6 @@ const styles = stylex.create({
     gap: space[25],
     padding: space[50],
     outline: 'none',
-    overflow: 'auto',
 
     // Remove all these (or apply as a convenience, see docs/dialog-trigger-patterns)
     backgroundColor: tone.surface,
@@ -23,6 +22,8 @@ const styles = stylex.create({
     borderStyle: 'solid',
     borderColor: tone.border,
     borderRadius: radii.lg,
+
+    // Or, for convenience, add padding as well as most things will want consistent side/top padding _within_ this pressable region
   },
 })
 

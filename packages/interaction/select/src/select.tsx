@@ -37,14 +37,13 @@ const styles = stylex.create({
     borderStyle: 'solid',
     borderColor: tone.border,
     borderRadius: radii.md,
-    cursor: 'pointer',
     outline: 'none',
     transition: 'border-color 0.15s, background-color 0.15s',
     color: tone.fgHi,
     ':is([data-hovered], :hover)': {
       borderColor: tone.fgLo,
     },
-    ':is([data-focus-visible], :focus-visible)': {
+    ':is([data-focus-visible])': {
       outlineColor: focusVars.outlineColor,
       outlineOffset: focusVars.outlineOffset,
       outlineStyle: focusVars.outlineStyle,

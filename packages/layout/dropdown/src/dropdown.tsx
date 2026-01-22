@@ -15,7 +15,6 @@ const styles = stylex.create({
     gap: space[25],
     padding: space[50],
     outline: 'none',
-    overflow: 'auto',
     backgroundColor: tone.surface,
     borderWidth: 1,
     borderStyle: 'solid',

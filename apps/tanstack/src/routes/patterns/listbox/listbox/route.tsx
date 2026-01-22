@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
+import { Icon } from '@urban-ui/icon'
 import {
   Listbox,
   ListboxItem,
@@ -9,8 +10,11 @@ import {
 } from '@urban-ui/listbox'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
-import { base, tone } from '@urban-ui/theme/colors.stylex'
+import { surface, tone } from '@urban-ui/theme/colors.stylex'
 import { space } from '@urban-ui/theme/layout.stylex'
+import { CirclePlus } from 'lucide-react'
+
+import { CustomListBoxItem, CustomListbox } from './-customListBox'
 
 export const Route = createFileRoute('/patterns/listbox/listbox/')({
   component: ListboxPatterns,
@@ -22,7 +26,7 @@ const styles = stylex.create({
   },
   container: {
     padding: space[300],
-    backgroundColor: base.white,
+    backgroundColor: surface.muted,
     color: tone.fgHi,
     borderRadius: radii.md,
   },
@@ -30,6 +34,14 @@ const styles = stylex.create({
     maxWidth: 300,
     maxHeight: 300,
   },
+  customItem: {
+    padding: space[150],
+  },
+  customListbox: {
+    padding: space[100],
+    gap: space[100],
+  },
+  customListBoxItem: {},
 })
 
 function ListboxPatterns() {
@@ -56,6 +68,50 @@ function ListboxPatterns() {
           <ListboxItem id="option2">Option 2</ListboxItem>
           <ListboxItem id="option3">Option 3</ListboxItem>
         </Listbox>
+      </Flex>
+
+      {/* Custom content */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Custom content
+        </Text>
+        <Text size="sm" color="lo">
+          With icons.
+        </Text>
+        <Listbox aria-label="Select an option" selectionMode="single">
+          <ListboxItem id="option1">
+            <Flex
+              direction="row"
+              gap="100"
+              align="center"
+              style={styles.customItem}
+            >
+              <Icon size="sm">
+                <CirclePlus />
+              </Icon>
+              <Text size="md" slot="label">
+                Add
+              </Text>
+            </Flex>
+          </ListboxItem>
+          <ListboxItem id="option2">Option 2</ListboxItem>
+          <ListboxItem id="option3">Option 3</ListboxItem>
+        </Listbox>
+      </Flex>
+
+      {/* Full custom */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Fully customised
+        </Text>
+        <Text size="sm" color="lo">
+          Styles added to primitives from react-aria-components.
+        </Text>
+        <CustomListbox aria-label="Select an option" selectionMode="single">
+          <CustomListBoxItem id="option1">Option 1</CustomListBoxItem>
+          <CustomListBoxItem id="option2">Option 2</CustomListBoxItem>
+          <CustomListBoxItem id="option3">Option 3</CustomListBoxItem>
+        </CustomListbox>
       </Flex>
 
       {/* With Label and Description */}

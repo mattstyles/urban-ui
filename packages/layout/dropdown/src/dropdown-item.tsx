@@ -4,6 +4,7 @@ import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { accent, base, disabled, tone } from '@urban-ui/theme/colors.stylex'
+import { focusVars } from '@urban-ui/theme/focus.stylex'
 import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components'
 import {
   ListBoxItem as AriaListBoxItem,
@@ -36,29 +37,34 @@ const styles = stylex.create({
     color: tone.fgHi,
     backgroundColor: base.transparent,
     transition: 'background 0.15s, color 0.15s',
-    // Hover state
-    ':is([data-hovered], :hover)': {
-      backgroundColor: accent.solidHover,
+    // Hover state (data-hovered or :hover)
+    ':is([data-hovered])': {
+      backgroundColor: tone.componentHover,
     },
-    // Focus visible state - keyboard navigation
-    ':is([data-focus-visible], :focus-visible)': {
-      backgroundColor: accent.solidHover,
+    // Focus visible state - keyboard navigation (focus-visible or :focus-visible)
+    ':is([data-focus-visible])': {
+      // backgroundColor: accent.solidHover,
+      outlineColor: focusVars.outlineColor,
+      outlineOffset: focusVars.outlineOffset,
+      outlineStyle: focusVars.outlineStyle,
+      outlineWidth: focusVars.outlineSize,
+      zIndex: 1,
     },
-    // Pressed state
-    ':is([data-pressed], :active)': {
+    // Pressed state (data-pressed or :active)
+    ':is([data-pressed])': {
       backgroundColor: tone.solidActive,
     },
-    // Selected state
+    // Selected state (data-selected)
     ':is([data-selected])': {
       backgroundColor: accent.solid,
       color: accent.fgOnBlock,
     },
-    // Selected + hover
-    ':is([data-selected][data-hovered], [data-selected]:hover)': {
+    // Selected + hover (data-selected and data-hovered or [data-selected]:hover)
+    ':is([data-selected][data-hovered])': {
       backgroundColor: accent.solidHover,
     },
-    // Selected + pressed
-    ':is([data-selected][data-pressed], [data-selected]:active)': {
+    // Selected + pressed (data-selected and data-pressed or [data-selected]:active)
+    ':is([data-selected][data-pressed])': {
       backgroundColor: accent.solidActive,
     },
     // Disabled state
