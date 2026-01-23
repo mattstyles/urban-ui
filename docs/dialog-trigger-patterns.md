@@ -193,3 +193,15 @@ const styles = stylex.create({
 
 Full customisation requires a bit more effort to add styling to the primitives.
 @see apps/tanstack/src/routes/patterns/listbox/listbox/-customListBox.tsx.
+
+## Inheritance and reuse
+
+### Popover
+
+* Edge padding 
+* Background colour
+* Border
+
+### Listbox
+
+####
