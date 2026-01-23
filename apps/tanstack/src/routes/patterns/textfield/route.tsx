@@ -41,7 +41,11 @@ function TextFieldPatterns() {
         </Text>
         <Flex direction="column" gap="300" style={styles.fieldContainer}>
           <TextField label="Name" placeholder="Enter your name" />
-          <TextField label="Email" placeholder="email@example.com" type="email" />
+          <TextField
+            label="Email"
+            placeholder="email@example.com"
+            type="email"
+          />
           <TextField
             label="Password"
             placeholder="Enter password"
@@ -90,20 +94,13 @@ function TextFieldPatterns() {
           States
         </Text>
         <Flex direction="column" gap="300" style={styles.fieldContainer}>
-          <TextField
-            label="Default"
-            placeholder="Default text field"
-          />
+          <TextField label="Default" placeholder="Default text field" />
           <TextField
             label="Disabled"
             placeholder="Disabled text field"
             isDisabled
           />
-          <TextField
-            label="Read Only"
-            value="Read-only value"
-            isReadOnly
-          />
+          <TextField label="Read Only" value="Read-only value" isReadOnly />
         </Flex>
       </Flex>
 
@@ -141,11 +138,7 @@ function TextFieldPatterns() {
           Form Example
         </Text>
         <Flex direction="column" gap="300" style={styles.fieldContainer}>
-          <TextField
-            label="Full Name"
-            placeholder="John Doe"
-            isRequired
-          />
+          <TextField label="Full Name" placeholder="John Doe" isRequired />
           <TextField
             label="Email Address"
             placeholder="john@example.com"

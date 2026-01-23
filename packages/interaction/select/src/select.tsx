@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from 'react-aria-components'
 
-import { SelectListBox } from './select-dropdown'
+import { SelectListBox } from './select-listbox'
 
 const styles = stylex.create({
   base: {
