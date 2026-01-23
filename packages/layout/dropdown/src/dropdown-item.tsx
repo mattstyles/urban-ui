@@ -105,7 +105,7 @@ export function DropdownItem<T extends object>({
             {children}
           </DropdownItemTextInline>
         ) : (
-          <>{children} foo</>
+          children
         ),
       )}
     </AriaListBoxItem>
