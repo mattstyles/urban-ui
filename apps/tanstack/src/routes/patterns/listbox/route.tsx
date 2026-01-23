@@ -1,7 +1,12 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
-import { Header, ListBox, ListBoxItem, ListBoxSection } from '@urban-ui/listbox'
+import {
+  ListBox,
+  ListBoxHeader,
+  ListBoxItem,
+  ListBoxSection,
+} from '@urban-ui/listbox'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, tone } from '@urban-ui/theme/colors.stylex'
@@ -86,13 +91,13 @@ function ListBoxPatterns() {
         <div {...stylex.props(styles.listboxContainer)}>
           <ListBox aria-label="Food" selectionMode="single">
             <ListBoxSection>
-              <Header>Fruits</Header>
+              <ListBoxHeader>Fruits</ListBoxHeader>
               <ListBoxItem id="apple">Apple</ListBoxItem>
               <ListBoxItem id="banana">Banana</ListBoxItem>
               <ListBoxItem id="orange">Orange</ListBoxItem>
             </ListBoxSection>
             <ListBoxSection>
-              <Header>Vegetables</Header>
+              <ListBoxHeader>Vegetables</ListBoxHeader>
               <ListBoxItem id="carrot">Carrot</ListBoxItem>
               <ListBoxItem id="broccoli">Broccoli</ListBoxItem>
               <ListBoxItem id="spinach">Spinach</ListBoxItem>

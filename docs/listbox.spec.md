@@ -17,7 +17,7 @@ ListBox
 ├── ListBoxItem
 │   └── Slotted content        (string converted to Text)
 ├── ListBoxSection            (optional, for grouped items)
-│   ├── Header
+│   ├── ListBoxHeader
 │   └── ListBoxItem[]
 └── ListBoxLoadMoreItem       (optional, for infinite scroll)
 ```
@@ -34,7 +34,7 @@ ListBox
 │ └───────────────────────────────────────────┘ │
 │                                               │
 │ ListBoxSection (block padding only)           │
-│   ┊ Header (inset aligns with item content)   │
+│   ┊ ListBoxHeader (aligns with item content)  │
 │ ┌───────────────────────────────────────────┐ │
 │ │ ListBoxItem                               │ │
 │ │ ┊ Label                                   │ │
@@ -88,16 +88,16 @@ import { ListBox, ListBoxItem, Text } from '@urban-ui/listbox'
 ### With Sections
 
 ```tsx
-import { ListBox, ListBoxItem, ListBoxSection, Header } from '@urban-ui/listbox'
+import { ListBox, ListBoxHeader, ListBoxItem, ListBoxSection } from '@urban-ui/listbox'
 
 <ListBox aria-label="Food" selectionMode="multiple">
   <ListBoxSection>
-    <Header>Fruits</Header>
+    <ListBoxHeader>Fruits</ListBoxHeader>
     <ListBoxItem id="apple">Apple</ListBoxItem>
     <ListBoxItem id="banana">Banana</ListBoxItem>
   </ListBoxSection>
   <ListBoxSection>
-    <Header>Vegetables</Header>
+    <ListBoxHeader>Vegetables</ListBoxHeader>
     <ListBoxItem id="carrot">Carrot</ListBoxItem>
     <ListBoxItem id="broccoli">Broccoli</ListBoxItem>
   </ListBoxSection>
@@ -202,9 +202,9 @@ Groups related items with an optional header.
 |------|------|-------------|
 | `id` | `Key` | Unique identifier |
 | `items` | `Iterable<T>` | Dynamic section items |
-| `aria-label` | `string` | Required if no Header |
+| `aria-label` | `string` | Required if no ListBoxHeader |
 
-### Header (Section Label)
+### ListBoxHeader (Section Label)
 
 Visual label for a section. Used within ListBoxSection.
 
@@ -336,7 +336,7 @@ packages/layout/listbox/
 │   ├── index.ts              # Public exports
 │   ├── listbox.tsx           # ListBox container
 │   ├── listbox-item.tsx      # ListBoxItem
-│   ├── listbox-section.tsx   # ListBoxSection + Header
+│   ├── listbox-section.tsx   # ListBoxSection + ListBoxHeader
 │   ├── listbox-item-content.tsx  # Layout helper (optional)
 │   ├── listbox-item-text.tsx     # Text helper (optional)
 │   ├── styles.ts             # StyleX styles
@@ -370,7 +370,7 @@ packages/layout/listbox/
 - Never use custom divs/lists - always use React Aria's components
 - `aria-label` is required on ListBox
 - `textValue` on ListBoxItem for typeahead and screen readers
-- Sections without Header must have `aria-label`
+- Sections without ListBoxHeader must have `aria-label`
 - Interactive elements inside items break navigation (use GridList instead)
 
 ### Styling Considerations
@@ -391,7 +391,7 @@ Headers and items use consistent inline padding to align content.
 | ListBox container | `space['100']` inline | Visual breathing room from edges |
 | ListBoxItem | `space['100']` inline, block varies by size | Content inset, matches container |
 | ListBoxSection | `space['100']` block only | Vertical separation between sections |
-| Header | `space['100']` inline | Aligns with item content |
+| ListBoxHeader | `space['100']` inline | Aligns with item content |
 
 **Note:** ListBoxItem uses `control.md` and `control.lg` tokens for minHeight to match Button and Input component heights with responsive scaling.
 

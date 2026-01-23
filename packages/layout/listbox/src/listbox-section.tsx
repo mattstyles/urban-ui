@@ -89,17 +89,17 @@ export interface HeaderProps
 }
 
 /**
- * Visual label for a ListBoxSection.
+ * Visual label for a ListBoxSection. Sets correct padding for alignment with items.
  *
  * @example
  * ```tsx
  * <ListBoxSection>
- *   <Header>Category Name</Header>
+ *   <ListBoxHeader>Category Name</ListBoxHeader>
  *   <ListBoxItem>...</ListBoxItem>
  * </ListBoxSection>
  * ```
  */
-export function Header({ style, children, ...props }: HeaderProps) {
+export function ListBoxHeader({ style, children, ...props }: HeaderProps) {
   return (
     <AriaHeader {...props} {...stylex.props(headerStyles.header, style)}>
       {typeof children === 'string' ? (
@@ -112,4 +112,4 @@ export function Header({ style, children, ...props }: HeaderProps) {
     </AriaHeader>
   )
 }
-Header.displayName = '@urban-ui/listbox-header'
+ListBoxHeader.displayName = '@urban-ui/listbox-header'
