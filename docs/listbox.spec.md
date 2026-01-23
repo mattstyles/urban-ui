@@ -15,9 +15,7 @@ A listbox displays a list of options and allows a user to select one or more of 
 ```
 ListBox
 ├── ListBoxItem
-│   ├── Text slot="label"      (optional)
-│   ├── Text slot="description" (optional)
-│   └── SelectionIndicator     (optional)
+│   └── Slotted content        (string converted to Text)
 ├── ListBoxSection            (optional, for grouped items)
 │   ├── Header
 │   └── ListBoxItem[]
@@ -27,22 +25,32 @@ ListBox
 ### Visual Hierarchy
 
 ```
-┌─────────────────────────────────────────┐
-│ ListBox                                 │
-│ ┌─────────────────────────────────────┐ │
-│ │ ListBoxItem                         │ │
-│ │  [SelectionIndicator] Label         │ │
-│ │                       Description   │ │
-│ └─────────────────────────────────────┘ │
-│ ┌─────────────────────────────────────┐ │
-│ │ ListBoxSection                      │ │
-│ │  Header                             │ │
-│ │ ┌─────────────────────────────────┐ │ │
-│ │ │ ListBoxItem                     │ │ │
-│ │ └─────────────────────────────────┘ │ │
-│ └─────────────────────────────────────┘ │
-└─────────────────────────────────────────┘
+┌───────────────────────────────────────────────┐
+│ ListBox                                       │
+│ ┌───────────────────────────────────────────┐ │
+│ │ ListBoxItem (hover fills to here)         │ │
+│ │ ┊ Label                                   │ │
+│ │ ┊ Description                             │ │
+│ └───────────────────────────────────────────┘ │
+│                                               │
+│ ListBoxSection (block padding only)           │
+│   ┊ Header (inset aligns with item content)   │
+│ ┌───────────────────────────────────────────┐ │
+│ │ ListBoxItem                               │ │
+│ │ ┊ Label                                   │ │
+│ └───────────────────────────────────────────┘ │
+│ ┌───────────────────────────────────────────┐ │
+│ │ ListBoxItem                               │ │
+│ │ ┊ Label                                   │ │
+│ └───────────────────────────────────────────┘ │
+│                                               │
+└───────────────────────────────────────────────┘
+ ↑   ↑
+ │   └── item padding / header inset (content alignment)
+ └────── container padding
 ```
+
+The dotted line (┊) indicates the consistent text alignment edge. Sections have no inline padding—items within sections align with items outside sections. Item hover/pressed states extend from the content alignment edge to the container padding boundary.
 
 ---
 
@@ -107,6 +115,23 @@ const items = [
 
 <ListBox aria-label="Pets" items={items} selectionMode="single">
   {(item) => <ListBoxItem>{item.name}</ListBoxItem>}
+</ListBox>
+```
+
+### Render Props for Item State
+
+ListBoxItem accepts a render function to access the current item state:
+
+```tsx
+<ListBox aria-label="Options" selectionMode="single">
+  <ListBoxItem id="option1">
+    {({ isSelected, isHovered, isFocusVisible }) => (
+      <>
+        <Text slot="label">Option 1</Text>
+        {isSelected && <Icon><Check /></Icon>}
+      </>
+    )}
+  </ListBoxItem>
 </ListBox>
 ```
 
@@ -191,59 +216,43 @@ Semantic content slots within ListBoxItem:
 
 ---
 
-## Questions for Implementation
+## Implementation Decisions
 
-### 1. Context Questions
+### Context
 
-**Q1.1: What context will this listbox be used in?**
-- [ ] Dropdown (inside Select, ComboBox, Menu popups)
-- [ ] Inline (standalone selection list on page)
-- [ ] Both (need variants for each context)
+- **Inline only** — This ListBox is designed for in-page selection lists. A separate Dropdown component will handle popup contexts (Select, ComboBox, Menu) with its own visual language.
+- **Standalone component** — Exports ListBox directly for independent use.
 
-> Dropdown context typically has popup styling (shadows, borders), while inline may have different container styling.
+### Styling
 
-**Q1.2: Is this a standalone component or part of a composite?**
-- [ ] Standalone (exports ListBox directly)
-- [ ] Part of Select component
-- [ ] Part of ComboBox component
-- [ ] Utility for multiple composites
+**Visual variants:** Support all behavioral variants required for selection with a consistent visual language.
 
-### 2. Styling Questions
+**Tone:** Neutral for all unselected states; accent theme for selected states (with `fgOnSolid` for text on selected backgrounds).
 
-**Q2.1: What visual variants are needed for ListBoxItem?**
+**Sizes:** `md` (default) and `lg` only. Small size is not supported as it would result in touch targets that are too small.
 
-| Variant | Description | Use Case |
-|---------|-------------|----------|
-| `default` | Standard item styling | General use |
-| `ghost` | Transparent background, color on hover | Dropdown menus |
-| `muted` | Subtle background | Inline lists |
+**Selection indication:** Background color change only.
 
-**Q2.2: What tone support is needed?**
-- [ ] Uses parent theme context (tone.* tokens)
-- [ ] Accepts explicit tone prop
-- [ ] Fixed tone (e.g., always neutral)
+### Visual States
 
-**Q2.3: What size variants are needed?**
+| State | Data Attribute | Visual Treatment |
+|-------|---------------|------------------|
+| Default | - | Transparent background, high contrast neutral text (`tone.fgHi`) |
+| Hovered | `[data-hovered]` | `tone.componentHover` background |
+| Focused | `[data-focused]` | - |
+| Focus Visible | `[data-focus-visible]` | Focus ring |
+| Pressed | `[data-pressed]` | `tone.componentActive` background |
+| Selected | `[data-selected]` | `accent.solid` background, `accent.fgOnSolid` text |
+| Selected + Hovered | `[data-selected][data-hovered]` | `accent.solidHover` background |
+| Selected + Pressed | `[data-selected][data-pressed]` | `accent.solidActive` background |
+| Disabled | `[data-disabled]` | Standard disabled token scale |
 
-| Size | Padding | Font Size | Use Case |
-|------|---------|-----------|----------|
-| `sm` | Compact | Small | Dense lists |
-| `md` | Standard | Base | Default |
-| `lg` | Spacious | Large | Touch targets |
+### Composition
 
-**Q2.4: How should selection be indicated?**
-- [ ] Background color change only
-- [ ] Checkmark icon (single selection)
-- [ ] Checkbox (multiple selection)
-- [ ] Both background + indicator
-- [ ] Configurable per instance
-
-### 3. Composition Questions
-
-**Q3.1: What child composition is needed for ListBoxItem?**
+**Child patterns:** Support all patterns — simple text, slotted (label + description), and custom content.
 
 ```tsx
-// Simple - text only
+// Simple - text only (converted to Text structure internally)
 <ListBoxItem>Label</ListBoxItem>
 
 // Slotted - label + description
@@ -261,66 +270,15 @@ Semantic content slots within ListBoxItem:
 </ListBoxItem>
 ```
 
-- [ ] Support all patterns
-- [ ] Only simple + slotted
-- [ ] Custom layout component needed (e.g., `ListBoxItemContent`)
+**Convenience sub-components:** Planned for later. Initial implementation accepts a string (converted to Text structure) or slotted content (rendered directly).
 
-**Q3.2: Should there be convenience sub-components?**
-- [ ] `ListBoxItemContent` - Layout wrapper for item content
-- [ ] `ListBoxItemText` - Pre-configured Text with slots
-- [ ] `ListBoxItemIcon` - Icon positioning helper
-- [ ] None - use composition with existing components
+### Features & Behavior
 
-### 4. Feature Questions
+Inherit all functionality from React Aria Components. This component focuses on styling; all selection modes, keyboard interactions, and accessibility features come from React Aria.
 
-**Q4.1: What features are required?**
-- [ ] Single selection
-- [ ] Multiple selection
-- [ ] No selection (action-only items)
-- [ ] Sections with headers
-- [ ] Disabled items
-- [ ] Links (href items)
-- [ ] Async loading / infinite scroll
-- [ ] Drag and drop reordering
-- [ ] Grid layout
-- [ ] Horizontal orientation
-- [ ] Empty state
-- [ ] Typeahead search
+### Tokens
 
-**Q4.2: What keyboard interactions must work?**
-| Key | Action |
-|-----|--------|
-| Arrow Down/Up | Move focus |
-| Arrow Left/Right | Grid navigation / Horizontal lists |
-| Home/End | First/last item |
-| Space | Toggle selection |
-| Enter | Select / Activate action |
-| Type characters | Typeahead search |
-| Escape | Clear selection (configurable) |
-
-### 5. State Questions
-
-**Q5.1: What visual states need styling?**
-
-| State | Data Attribute | Visual Treatment |
-|-------|---------------|------------------|
-| Default | - | Base styling |
-| Hovered | `[data-hovered]` | Subtle background |
-| Focused | `[data-focused]` | - |
-| Focus Visible | `[data-focus-visible]` | Focus ring |
-| Pressed | `[data-pressed]` | Darker background |
-| Selected | `[data-selected]` | Accent background |
-| Disabled | `[data-disabled]` | Muted, no pointer |
-
-**Q5.2: How should combined states render?**
-- Selected + Hovered
-- Selected + Pressed
-- Selected + Disabled
-- Disabled + Hovered (should be no-op)
-
-### 6. Token Questions
-
-**Q6.1: What theme tokens will be used?**
+**Theme tokens:**
 
 ```tsx
 // Background states
@@ -344,7 +302,7 @@ disabled.fg
 focusVars.*         // focus ring
 ```
 
-**Q6.2: What spacing tokens are needed?**
+**Spacing tokens:**
 
 ```tsx
 space['100']  // gap between label/description
@@ -406,3 +364,24 @@ packages/layout/listbox/
 - Combine states with CSS `:is()` selector for both pseudo-classes and data attributes
 - Let parent theme context flow through - avoid hardcoding colors
 - Item styling should not impose layout on children (allow custom content structures)
+
+### Edge Padding & Alignment
+
+Headers and items should be inset by a consistent amount to align inner content.
+
+**Padding layers:**
+
+| Element | Padding | Purpose |
+|---------|---------|---------|
+| ListBox container | `space['100']` inline | Visual breathing room from edges |
+| ListBoxItem | `space['200']` inline | Content inset from item edges |
+| ListBoxSection | `space['100']` block only | Vertical separation between sections |
+| Header | `space['200']` inline | Aligns with item inner content |
+
+**Why this matters:**
+
+- Item hover/pressed states extend to the container padding edge
+- Text content (in items and headers) aligns on a consistent vertical line
+- The visual distance from text to container edge equals container padding + item padding
+- Sections have no inline padding—items inside sections align with items outside
+- Headers sit outside items but their text aligns with item text through matching inline padding
