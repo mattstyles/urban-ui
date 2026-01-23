@@ -7,7 +7,7 @@ import {
 } from '@urban-ui/theme/borders.stylex'
 import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
+import { control, space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes, fontWeights } from '@urban-ui/theme/type.stylex'
 
 export const styles = stylex.create({
@@ -67,7 +67,7 @@ export const sizes = stylex.create({
     gap: space['100'],
     paddingInline: space['200'],
     paddingBlock: space['50'],
-    minHeight: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
+    minHeight: control.md,
   },
   lg: {
     fontSize: fontSizes.md,
@@ -75,19 +75,19 @@ export const sizes = stylex.create({
     gap: space['100'],
     paddingInline: space['300'],
     paddingBlock: space['100'],
-    minHeight: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
+    minHeight: control.lg,
   },
   'md-equal': {
     paddingInline: space['50'],
     paddingBlock: space['50'],
-    minHeight: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
-    minWidth: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md})  * 2))`,
+    minHeight: control.md,
+    minWidth: control.md,
   },
   'lg-equal': {
     paddingInline: space['100'],
     paddingBlock: space['100'],
-    minHeight: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
-    minWidth: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md})  * 2))`,
+    minHeight: control.lg,
+    minWidth: control.lg,
   },
 })
 

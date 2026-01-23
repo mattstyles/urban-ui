@@ -44,11 +44,32 @@ Font sizes use a fluid type scale that responds to viewport width.
 
 ## Interactive Element Size Composition
 
-Element minimum height is calculated using:
+Element minimum height is defined via the `control` token scale, which provides responsive heights that scale with typography.
+
+### Control Tokens
+
+Import from `@urban-ui/theme/layout.stylex`:
+
+```tsx
+import { control } from '@urban-ui/theme/layout.stylex'
+
+// Usage
+minHeight: control.md,  // ~28px → 32px
+minHeight: control.lg,  // ~40px → 48px
+```
+
+### Height Formula
 
 ```
 minHeight = lineHeight + ((paddingBlock + borderWidth) * 2)
 ```
+
+| Size | lineHeight | paddingBlock | borderWidth | Min (320px) | Max (1240px) |
+|------|------------|--------------|-------------|-------------|--------------|
+| md   | fontSizes.md | 4px | 2px | ~28px | 32px |
+| lg   | fontSizes.lg | 8.5px | 2px | ~40px | 48px |
+
+### Component Composition
 
 | Size | Button | Input | ListBox |
 |------|--------|-------|---------|
@@ -65,26 +86,12 @@ ListBox items use:
 - `borderRadius: radii.md` (4px)
 - No border
 
-### Calculated Heights at 320px viewport (min)
+### Target Heights
 
-| lineHeight | paddingBlock | borderWidth | minHeight |
-|------------|--------------|-------------|-----------|
-| 16px (md)  | 4px | 2px | 28px |
-| 19px (lg)  | 8px | 2px | ~39px |
-
-### Calculated Heights at 1240px viewport (max)
-
-| lineHeight | paddingBlock | borderWidth | minHeight |
-|------------|--------------|-------------|-----------|
-| 20px (md)  | 4px | 2px | 32px |
-| 27px (lg)  | 8px | 2px | ~47px |
-
-### Target Heights (max viewport)
-
-| Size | Button | Input | ListBox | minHeight |
-|------|--------|-------|---------|-----------|
-| md   | 32px   | 32px  | 32px    | 32px      |
-| lg   | ~47px  | ~47px | ~47px   | 47px      |
+| Size | minHeight (320px) | minHeight (1240px) |
+|------|-------------------|---------------------|
+| md   | ~28px | 32px |
+| lg   | ~40px | 48px |
 
 ## Focus States
 

@@ -1,5 +1,8 @@
 import { defineVars } from '@stylexjs/stylex'
 
+import { borderWidths } from './borders.stylex'
+import { fontSizes } from './type.stylex'
+
 const MIN_WIDTH = 320
 const MAX_WIDTH = 1240
 
@@ -141,4 +144,22 @@ export const breakpoints = defineVars({
 export const zIndices = defineVars({
   hide: '-1',
   base: '0',
+})
+
+/**
+ * @tokens control
+ * @css minHeight
+ * @description Common heights for interactive control elements (buttons, inputs, listbox items).
+ * Uses fluid typography scale for responsive behavior.
+ *
+ * Height formula: lineHeight + ((paddingBlock + borderWidth) * 2)
+ * - md: ~28px → 32px (uses fontSizes.md as lineHeight)
+ * - lg: ~39px → 48px (uses fontSizes.lg as lineHeight)
+ */
+export const control = defineVars({
+  // md: fontSizes.md (16px→20px) + ((4px + 2px) * 2) = 28px→32px
+  md: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md}) * 2))`,
+  // lg: fontSizes.lg (19px→27px) + ((8.5px + 2px) * 2) = 40px→48px
+  // Using calc to achieve 48px at max viewport
+  lg: `calc(${fontSizes.lg} + ((${space['100']} + 0.5px + ${borderWidths.md}) * 2))`,
 })

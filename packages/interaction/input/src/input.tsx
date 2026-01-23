@@ -14,7 +14,7 @@ import {
   disabled,
   tone,
 } from '@urban-ui/theme/colors.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
+import { control, space } from '@urban-ui/theme/layout.stylex'
 import { fontSizes } from '@urban-ui/theme/type.stylex'
 import type { InputProps as AriaInputProps } from 'react-aria-components'
 import { Input as AriaInput } from 'react-aria-components'
@@ -67,14 +67,14 @@ const sizes = stylex.create({
     lineHeight: fontSizes.md,
     paddingInline: space['200'],
     paddingBlock: space['50'],
-    minHeight: 32,
+    minHeight: control.md,
   },
   lg: {
     fontSize: fontSizes.md,
     lineHeight: fontSizes.lg,
     paddingInline: space['200'],
     paddingBlock: space['100'],
-    minHeight: 47,
+    minHeight: control.lg,
   },
 })
 

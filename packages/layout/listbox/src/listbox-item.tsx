@@ -6,7 +6,7 @@ import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { accent, base, disabled, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
+import { control, space } from '@urban-ui/theme/layout.stylex'
 import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components'
 import {
   ListBoxItem as AriaListBoxItem,
@@ -67,12 +67,12 @@ const sizeStyles = stylex.create({
   md: {
     paddingInline: space['200'],
     paddingBlock: space['100'],
-    minHeight: 32,
+    minHeight: control.md,
   },
   lg: {
     paddingInline: space['200'],
     paddingBlock: space['150'],
-    minHeight: 47,
+    minHeight: control.lg,
   },
 })
 
