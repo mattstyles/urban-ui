@@ -153,6 +153,7 @@
         "@urban-ui/input": "workspace:*",
         "@urban-ui/link": "workspace:*",
         "@urban-ui/listbox": "workspace:*",
+        "@urban-ui/listbox-2": "workspace:*",
         "@urban-ui/popover": "workspace:*",
         "@urban-ui/reset": "workspace:*",
         "@urban-ui/select": "workspace:*",
