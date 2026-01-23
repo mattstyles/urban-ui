@@ -8,9 +8,9 @@ You are a component architecture assistant that creates anatomy specifications f
 
 ## Input
 
-The component name to specify, and optionally the React Aria component it wraps.
+The component name to specify, and optionally a link to the React Aria component documentation page.
 
-Format: `<component-name>` or `<component-name> wrapping <react-aria-component>`
+Format: `<component-name>` or `<component-name> <react-aria-docs-url>`
 
 $ARGUMENTS
 
@@ -20,16 +20,21 @@ $ARGUMENTS
 
 Extract from the arguments:
 - **componentName**: The urban-ui component name (e.g., "listbox", "combobox", "menu")
-- **reactAriaComponent**: The React Aria component to wrap (defaults to componentName with PascalCase)
+- **docsUrl**: URL to the React Aria component documentation page (optional)
 
 If no component name is provided, ask the user which component they want to specify.
 
 ### Step 2: Gather React Aria Documentation
 
-Use the react-aria MCP tools to fetch documentation:
+If a documentation URL was not provided, prompt the user for it:
+
+> Please provide the URL to the React Aria component documentation page.
+> Example: `https://react-spectrum.adobe.com/react-aria/ListBox.html`
+
+Once you have the URL, use WebFetch to retrieve the page content:
 
 ```
-mcp__react-aria__get_react_aria_page({ page_name: "<ReactAriaComponent>" })
+WebFetch({ url: "<docs-url>", prompt: "Extract the full documentation content" })
 ```
 
 Extract from the documentation:
@@ -44,7 +49,6 @@ Extract from the documentation:
 
 Read these project files for context:
 - `docs/stylex-authoring-guide.md` - Styling patterns
-- `docs/application-patterns.md` - Composition patterns
 - `packages/core/theme/llms.md` - Theme tokens
 - `packages/action/button/src/button.tsx` - Reference component implementation
 
@@ -134,59 +138,85 @@ ComponentName
 
 ## Questions for Implementation
 
-### 1. Context Questions
+> **Note:** All functionality (selection modes, keyboard interactions, accessibility features) is inherited verbatim from React Aria Components. These questions focus on defining the visual language for the component.
+
+### 1. Context & Composition
 
 **Q1.1: What context will this component be used in?**
-[List relevant context options with checkboxes]
+[Inline, dropdown, both — affects container styling]
 
-**Q1.2: Is this a standalone component or part of a composite?**
-[Options]
+**Q1.2: Is this standalone or part of a composite?**
+[Standalone export vs internal to another component]
 
-### 2. Styling Questions
+**Q1.3: What child composition patterns are needed?**
+[Simple text, slotted content, custom content]
 
-**Q2.1: What visual variants are needed?**
-[Table of variant options]
+### 2. Visual States
 
-**Q2.2: What tone support is needed?**
-[Options for theme integration]
+For each state exposed by React Aria, define the visual treatment:
 
-**Q2.3: What size variants are needed?**
-[Table of size options]
+| State | Data Attribute | Background | Text | Border | Other |
+|-------|---------------|------------|------|--------|-------|
+| Default | - | | | | |
+| Hovered | `[data-hovered]` | | | | |
+| Focused | `[data-focused]` | | | | |
+| Focus Visible | `[data-focus-visible]` | | | | |
+| Pressed | `[data-pressed]` | | | | |
+| Selected | `[data-selected]` | | | | |
+| Selected + Hovered | `[data-selected][data-hovered]` | | | | |
+| Selected + Pressed | `[data-selected][data-pressed]` | | | | |
+| Disabled | `[data-disabled]` | | | | |
 
-**Q2.4: How should [component-specific visual state] be indicated?**
-[Options specific to this component type]
+[Fill in the visual treatment for each state using theme tokens]
 
-### 3. Composition Questions
+### 3. Size Variants
 
-**Q3.1: What child composition patterns are needed?**
-[Code examples of different composition approaches]
+**Q3.1: What size variants are supported?**
 
-**Q3.2: Should there be convenience sub-components?**
-[List of potential helper components]
+| Size | Supported | Padding | Font Size | Notes |
+|------|-----------|---------|-----------|-------|
+| `sm` | | | | |
+| `md` | | | | |
+| `lg` | | | | |
 
-### 4. Feature Questions
+### 4. Spacing & Alignment
 
-**Q4.1: What features are required?**
-[Checklist of features from React Aria docs]
+**Q4.1: What is the padding model?**
 
-**Q4.2: What keyboard interactions must work?**
-[Table of keyboard shortcuts and actions]
+| Element | Inline Padding | Block Padding | Purpose |
+|---------|---------------|---------------|---------|
+| Container | | | |
+| Item | | | |
+| Section | | | |
+| Header | | | |
 
-### 5. State Questions
+**Q4.2: How should content align?**
+[Describe alignment requirements for text, icons, indicators]
 
-**Q5.1: What visual states need styling?**
-[Table of states, data attributes, and visual treatments]
+### 5. Theme Tokens
 
-**Q5.2: How should combined states render?**
-[List of state combinations]
+**Q5.1: What tokens are used for each visual treatment?**
 
-### 6. Token Questions
+```tsx
+// Unselected states
+[token]  // default
+[token]  // hovered
+[token]  // pressed
 
-**Q6.1: What theme tokens will be used?**
-[Code block showing token usage]
+// Selected states
+[token]  // selected
+[token]  // selected + hovered
+[token]  // selected + pressed
 
-**Q6.2: What spacing tokens are needed?**
-[Code block showing spacing tokens]
+// Text
+[token]  // primary text
+[token]  // secondary text
+[token]  // text on selected
+
+// Other
+[token]  // disabled
+[token]  // focus ring
+```
 
 ---
 
@@ -252,6 +282,8 @@ Use these categories for file structure:
 - `feedback/` - Alerts, toasts, progress
 - `navigation/` - Tabs, breadcrumbs, links
 - `utility/` - Modals, popovers, tooltips
+
+If the new component does not fit into one of these categories, then we need to prompt for a new category type, or, at least, confirm the category at the end of the flow.
 
 ## Standard Props Pattern
 
