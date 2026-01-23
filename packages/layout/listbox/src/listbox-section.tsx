@@ -74,29 +74,14 @@ ListBoxSection.displayName = '@urban-ui/listbox-section'
 // Header styles
 const headerStyles = stylex.create({
   header: {
-    paddingInline: space['200'],
+    paddingInline: space['100'],
     paddingBlock: space['100'],
     color: tone.fgLo,
   },
 })
 
-const headerSizeStyles = stylex.create({
-  md: {
-    paddingInline: space['200'],
-  },
-  lg: {
-    paddingInline: space['300'],
-  },
-})
-
 export interface HeaderProps
   extends Omit<React.HTMLAttributes<HTMLElement>, 'style' | 'className'> {
-  /**
-   * Size variant affects padding to align with items
-   * @default 'md'
-   */
-  size?: 'md' | 'lg'
-
   /**
    * Additional styles to apply
    */
@@ -114,21 +99,11 @@ export interface HeaderProps
  * </ListBoxSection>
  * ```
  */
-export function Header({
-  size = 'md',
-  style,
-  children,
-  ...props
-}: HeaderProps) {
-  const textSize = size === 'md' ? 'sm' : 'md'
-
+export function Header({ style, children, ...props }: HeaderProps) {
   return (
-    <AriaHeader
-      {...props}
-      {...stylex.props(headerStyles.header, headerSizeStyles[size], style)}
-    >
+    <AriaHeader {...props} {...stylex.props(headerStyles.header, style)}>
       {typeof children === 'string' ? (
-        <Text size={textSize} weight="medium" color="current">
+        <Text size="sm" weight="medium" color="current">
           {children}
         </Text>
       ) : (

@@ -17,6 +17,7 @@ const styles = stylex.create({
   item: {
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'center',
     gap: space['100'],
     borderRadius: radii.md,
     outline: 'none',
@@ -65,12 +66,12 @@ const styles = stylex.create({
 
 const sizeStyles = stylex.create({
   md: {
-    paddingInline: space['200'],
+    paddingInline: space['100'],
     paddingBlock: space['100'],
     minHeight: control.md,
   },
   lg: {
-    paddingInline: space['200'],
+    paddingInline: space['100'],
     paddingBlock: space['150'],
     minHeight: control.lg,
   },

@@ -321,8 +321,10 @@ radii.md      // item border radius (if any)
 
 | Size | paddingBlock | paddingInline | minHeight |
 |------|--------------|---------------|-----------|
-| `md` | `space['100']` | `space['200']` | `control.md` (~28px→32px) |
-| `lg` | `space['150']` | `space['200']` | `control.lg` (~40px→48px) |
+| `md` | `space['100']` | `space['100']` | `control.md` (~28px→32px) |
+| `lg` | `space['150']` | `space['100']` | `control.lg` (~40px→48px) |
+
+**Note:** Items use `justifyContent: 'center'` to vertically center content within the minHeight.
 
 ---
 
@@ -380,23 +382,22 @@ packages/layout/listbox/
 
 ### Edge Padding & Alignment
 
-Headers and items should be inset by a consistent amount to align inner content.
+Headers and items use consistent inline padding to align content.
 
 **Padding layers:**
 
 | Element | Padding | Purpose |
 |---------|---------|---------|
 | ListBox container | `space['100']` inline | Visual breathing room from edges |
-| ListBoxItem | `space['200']` inline, block varies by size | Content inset from item edges |
+| ListBoxItem | `space['100']` inline, block varies by size | Content inset, matches container |
 | ListBoxSection | `space['100']` block only | Vertical separation between sections |
-| Header | `space['200']` inline | Aligns with item inner content |
+| Header | `space['100']` inline | Aligns with item content |
 
 **Note:** ListBoxItem uses `control.md` and `control.lg` tokens for minHeight to match Button and Input component heights with responsive scaling.
 
 **Why this matters:**
 
-- Item hover/pressed states extend to the container padding edge
+- Item hover/pressed states extend edge-to-edge within the container padding
 - Text content (in items and headers) aligns on a consistent vertical line
-- The visual distance from text to container edge equals container padding + item padding
 - Sections have no inline padding—items inside sections align with items outside
-- Headers sit outside items but their text aligns with item text through matching inline padding
+- Headers use matching inline padding for consistent text alignment
