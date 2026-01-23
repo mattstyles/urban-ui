@@ -22,10 +22,12 @@ const headerStyles = stylex.create({
 const headerSizeStyles = stylex.create({
   md: {
     paddingBlock: space['100'],
+    paddingBlockEnd: space['50'],
     minHeight: control.md,
   },
   lg: {
     paddingBlock: space['150'],
+    paddingBlockEnd: space['100'],
     minHeight: control.lg,
   },
 })
