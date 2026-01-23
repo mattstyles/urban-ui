@@ -36,6 +36,14 @@ export interface ListBoxProps<T extends object>
   size?: 'md' | 'lg'
 
   /**
+   * Placement variant affects hover and focus state styling.
+   * - 'inline': For lists placed directly in the page (default)
+   * - 'dialog': For lists within dialogs (popovers, dropdowns, modals)
+   * @default 'inline'
+   */
+  variant?: 'inline' | 'dialog'
+
+  /**
    * Additional styles to apply
    */
   style?: StyleXStyles
@@ -55,12 +63,13 @@ export interface ListBoxProps<T extends object>
  */
 export function ListBox<T extends object>({
   size = 'md',
+  variant = 'inline',
   style,
   children,
   ...props
 }: ListBoxProps<T>) {
   return (
-    <ListBoxProvider size={size}>
+    <ListBoxProvider size={size} variant={variant}>
       <AriaListBox
         {...props}
         {...stylex.props(styles.base, sizeStyles[size], style)}

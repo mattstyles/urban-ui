@@ -27,18 +27,6 @@ const styles = stylex.create({
     // Default state
     backgroundColor: base.transparent,
     color: tone.fgHi,
-    // Hovered state
-    ':is([data-hovered])': {
-      backgroundColor: tone.componentHover,
-    },
-    // Focus visible state - keyboard navigation
-    ':is([data-focus-visible])': {
-      outlineColor: focusVars.outlineColor,
-      outlineOffset: focusVars.outlineOffset,
-      outlineStyle: focusVars.outlineStyle,
-      outlineWidth: focusVars.outlineSize,
-      zIndex: 1,
-    },
     // Pressed state
     ':is([data-pressed])': {
       backgroundColor: tone.componentActive,
@@ -62,6 +50,37 @@ const styles = stylex.create({
       color: disabled.fg,
       cursor: 'not-allowed',
       opacity: 0.6,
+    },
+  },
+})
+
+// Variant-specific styles for hover and focus states
+const variantStyles = stylex.create({
+  // Inline variant: standard hover/focus for items in the page
+  inline: {
+    // Hovered state
+    ':is([data-hovered])': {
+      backgroundColor: tone.componentHover,
+    },
+    // Focus visible state - keyboard navigation
+    ':is([data-focus-visible])': {
+      outlineColor: focusVars.outlineColor,
+      outlineOffset: focusVars.outlineOffset,
+      outlineStyle: focusVars.outlineStyle,
+      outlineWidth: focusVars.outlineSize,
+      zIndex: 1,
+    },
+  },
+  // Dialog variant: focus highlight for items within dialogs (popovers, dropdowns)
+  dialog: {
+    // Hovered state - transparent to match default (focus takes precedence in dialogs)
+    ':is([data-hovered])': {
+      backgroundColor: base.transparent,
+    },
+    // Focus visible state - highlighted background for clear keyboard indication
+    ':is([data-focus-visible])': {
+      backgroundColor: accent.solidHover,
+      color: accent.fgOnBlock,
     },
   },
 })
@@ -120,6 +139,7 @@ export function ListBoxItem<T extends object>({
 }: ListBoxItemProps<T>) {
   const context = useListBoxContext()
   const size = sizeProp ?? context?.size ?? 'md'
+  const variant = context?.variant ?? 'inline'
   const textSize = size === 'md' ? 'sm' : 'md'
 
   // Auto-derive textValue from string children if not provided
@@ -130,7 +150,7 @@ export function ListBoxItem<T extends object>({
     <AriaListBoxItem
       {...props}
       textValue={derivedTextValue}
-      {...stylex.props(styles.item, sizeStyles[size], style)}
+      {...stylex.props(styles.item, variantStyles[variant], sizeStyles[size], style)}
     >
       {composeRenderProps(children, (children) => {
         // If children is a string, wrap in Text
