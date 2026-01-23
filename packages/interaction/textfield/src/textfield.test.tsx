@@ -47,7 +47,7 @@ describe('TextField', () => {
   })
 
   it('should apply size styles', () => {
-    render(<TextField label="Email" size="sm" data-testid="test-field" />)
+    render(<TextField label="Email" size="lg" data-testid="test-field" />)
     expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 

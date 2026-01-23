@@ -62,19 +62,19 @@ const styles = stylex.create({
 })
 
 const sizes = stylex.create({
-  sm: {
+  md: {
     fontSize: fontSizes.sm,
     lineHeight: fontSizes.md,
     paddingInline: space['200'],
     paddingBlock: space['50'],
-    minHeight: `calc(${fontSizes.md} + ((${space['50']} + ${borderWidths.md}) * 2))`,
+    minHeight: 32,
   },
-  md: {
-    fontSize: fontSizes.sm,
+  lg: {
+    fontSize: fontSizes.md,
     lineHeight: fontSizes.lg,
     paddingInline: space['200'],
     paddingBlock: space['100'],
-    minHeight: `calc(${fontSizes.lg} + ((${space['100']} + ${borderWidths.md}) * 2))`,
+    minHeight: 47,
   },
 })
 

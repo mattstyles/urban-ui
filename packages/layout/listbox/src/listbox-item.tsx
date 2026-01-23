@@ -67,10 +67,12 @@ const sizeStyles = stylex.create({
   md: {
     paddingInline: space['200'],
     paddingBlock: space['100'],
+    minHeight: 32,
   },
   lg: {
     paddingInline: space['200'],
     paddingBlock: space['150'],
+    minHeight: 47,
   },
 })
 

@@ -79,12 +79,12 @@ function TextFieldPatterns() {
           Sizes
         </Text>
         <Flex direction="column" gap="300" style={styles.fieldContainer}>
-          <TextField label="Small (32px)" placeholder="Small input" size="sm" />
           <TextField
-            label="Medium (~47px)"
+            label="Medium (32px, default)"
             placeholder="Medium input"
             size="md"
           />
+          <TextField label="Large (47px)" placeholder="Large input" size="lg" />
         </Flex>
       </Flex>
 

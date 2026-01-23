@@ -50,15 +50,20 @@ Element minimum height is calculated using:
 minHeight = lineHeight + ((paddingBlock + borderWidth) * 2)
 ```
 
-| Size | Button | Input |
-|------|--------|-------|
-| sm   | - | fontSize: sm, lineHeight: md, paddingBlock: 4px |
-| md   | fontSize: sm, lineHeight: md, paddingBlock: 4px | fontSize: md, lineHeight: lg, paddingBlock: 8px |
-| lg   | fontSize: md, lineHeight: lg, paddingBlock: 8px | - |
+| Size | Button | Input | ListBox |
+|------|--------|-------|---------|
+| md   | fontSize: sm, lineHeight: md, paddingBlock: 4px | fontSize: sm, lineHeight: md, paddingBlock: 4px | fontSize: sm, paddingBlock: 8px |
+| lg   | fontSize: md, lineHeight: lg, paddingBlock: 8px | fontSize: md, lineHeight: lg, paddingBlock: 8px | fontSize: md, paddingBlock: 12px |
 
-Both Button and Input use:
+**Note:** ListBox items use a different text box model (no explicit lineHeight), so paddingBlock values differ to achieve the same visual height.
+
+Button and Input use:
 - `borderRadius: radii.lg` (8px)
 - `borderWidth: borderWidths.md` (2px)
+
+ListBox items use:
+- `borderRadius: radii.md` (4px)
+- No border
 
 ### Calculated Heights at 320px viewport (min)
 
@@ -74,13 +79,12 @@ Both Button and Input use:
 | 20px (md)  | 4px | 2px | 32px |
 | 27px (lg)  | 8px | 2px | ~47px |
 
-### Button and Input Heights (max viewport)
+### Target Heights (max viewport)
 
-| Size | Button | Input |
-|------|--------|-------|
-| sm   | -      | 32px  |
-| md   | 32px   | ~47px |
-| lg   | ~47px  | -     |
+| Size | Button | Input | ListBox | minHeight |
+|------|--------|-------|---------|-----------|
+| md   | 32px   | 32px  | 32px    | 32px      |
+| lg   | ~47px  | ~47px | ~47px   | 47px      |
 
 ## Focus States
 

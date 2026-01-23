@@ -317,12 +317,12 @@ space['200']  // item padding inline
 radii.md      // item border radius (if any)
 ```
 
-**Size-based padding (matches Input component):**
+**Size-based dimensions (matches Button/Input components):**
 
-| Size | paddingBlock | paddingInline |
-|------|--------------|---------------|
-| `md` | `space['100']` | `space['200']` |
-| `lg` | `space['150']` | `space['200']` |
+| Size | paddingBlock | paddingInline | minHeight |
+|------|--------------|---------------|-----------|
+| `md` | `space['100']` | `space['200']` | 32px |
+| `lg` | `space['150']` | `space['200']` | 47px |
 
 ---
 
@@ -391,7 +391,7 @@ Headers and items should be inset by a consistent amount to align inner content.
 | ListBoxSection | `space['100']` block only | Vertical separation between sections |
 | Header | `space['200']` inline | Aligns with item inner content |
 
-**Note:** ListBoxItem block padding is sized to match Input component heights (`space['100']` for md, `space['150']` for lg).
+**Note:** ListBoxItem uses explicit minHeight values (32px for md, 47px for lg) to match Button and Input component heights.
 
 **Why this matters:**
 
