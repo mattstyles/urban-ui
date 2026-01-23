@@ -46,6 +46,7 @@ When writing application code with urban-ui:
 - Tones: neutral, primary, accent, positive, warning, critical, info
 - Tests: `*.test.tsx` (Jest + happy-dom)
 - Type tests: `*.typetest.tsx` (expect-type)
+- **NEVER use `cursor: pointer`** on interactive elements (buttons, list items, etc.) — it's for links only. The default cursor is correct for non-link interactive elements.
 
 ## Code Style (Biome)
 

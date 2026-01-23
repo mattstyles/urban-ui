@@ -231,6 +231,13 @@ Semantic content slots within ListBoxItem:
 
 **Sizes:** `md` (default) and `lg` only. Small size is not supported as it would result in touch targets that are too small.
 
+**Typography:** Text size follows UI conventions — `sm` text for `md` size, `md` text for `lg` size.
+
+| Component Size | Text Size |
+|----------------|-----------|
+| `md` | `sm` |
+| `lg` | `md` |
+
 **Selection indication:** Background color change only.
 
 ### Visual States
@@ -305,11 +312,17 @@ focusVars.*         // focus ring
 **Spacing tokens:**
 
 ```tsx
-space['100']  // gap between label/description
+space['100']  // gap between label/description, container padding
 space['200']  // item padding inline
-space['150']  // item padding block
 radii.md      // item border radius (if any)
 ```
+
+**Size-based padding (matches Input component):**
+
+| Size | paddingBlock | paddingInline |
+|------|--------------|---------------|
+| `md` | `space['100']` | `space['200']` |
+| `lg` | `space['150']` | `space['200']` |
 
 ---
 
@@ -374,9 +387,11 @@ Headers and items should be inset by a consistent amount to align inner content.
 | Element | Padding | Purpose |
 |---------|---------|---------|
 | ListBox container | `space['100']` inline | Visual breathing room from edges |
-| ListBoxItem | `space['200']` inline | Content inset from item edges |
+| ListBoxItem | `space['200']` inline, block varies by size | Content inset from item edges |
 | ListBoxSection | `space['100']` block only | Vertical separation between sections |
 | Header | `space['200']` inline | Aligns with item inner content |
+
+**Note:** ListBoxItem block padding is sized to match Input component heights (`space['100']` for md, `space['150']` for lg).
 
 **Why this matters:**
 

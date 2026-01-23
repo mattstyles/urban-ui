@@ -555,6 +555,43 @@ const styles = stylex.create({
 });
 ```
 
+### Don't use `cursor: pointer` on non-link elements
+
+The pointer cursor is **only for links**. Interactive elements like buttons, list items, checkboxes, and other controls should use the default cursor. This is a web platform convention — changing it confuses users about what type of element they're interacting with.
+
+```tsx
+// invalid: pointer cursor on a button or interactive element
+const styles = stylex.create({
+  button: {
+    cursor: 'pointer', // NO!
+  },
+  listItem: {
+    cursor: 'pointer', // NO!
+  },
+});
+
+// valid: no cursor override (uses default)
+const styles = stylex.create({
+  button: {
+    // cursor is inherited, leave it alone
+  },
+});
+
+// valid: pointer cursor on a link
+const styles = stylex.create({
+  link: {
+    cursor: 'pointer', // OK - this is a link
+  },
+});
+
+// valid: not-allowed cursor for disabled states
+const styles = stylex.create({
+  disabled: {
+    cursor: 'not-allowed', // OK - communicates non-interactivity
+  },
+});
+```
+
 ---
 
 ## More resources
