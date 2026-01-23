@@ -165,19 +165,14 @@ function ListBoxPatterns() {
           Large Size
         </Text>
         <Text size="sm" color="lo">
-          Larger touch targets for improved accessibility.
+          Larger touch targets for improved accessibility. Items inherit size
+          from ListBox.
         </Text>
         <div {...stylex.props(styles.listboxContainer)}>
           <ListBox aria-label="Options" selectionMode="single" size="lg">
-            <ListBoxItem id="option1" size="lg">
-              Option 1
-            </ListBoxItem>
-            <ListBoxItem id="option2" size="lg">
-              Option 2
-            </ListBoxItem>
-            <ListBoxItem id="option3" size="lg">
-              Option 3
-            </ListBoxItem>
+            <ListBoxItem id="option1">Option 1</ListBoxItem>
+            <ListBoxItem id="option2">Option 2</ListBoxItem>
+            <ListBoxItem id="option3">Option 3</ListBoxItem>
           </ListBox>
         </div>
       </Flex>

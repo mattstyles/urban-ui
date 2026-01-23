@@ -4,18 +4,23 @@ import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { Text } from '@urban-ui/text'
 import { tone } from '@urban-ui/theme/colors.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
+import { control, space } from '@urban-ui/theme/layout.stylex'
 import type { ListBoxSectionProps as AriaListBoxSectionProps } from 'react-aria-components'
 import {
   Header as AriaHeader,
   ListBoxSection as AriaListBoxSection,
 } from 'react-aria-components'
 
+import { useListBoxContext } from './listbox-context'
+
 const sectionStyles = stylex.create({
   section: {
     display: 'flex',
     flexDirection: 'column',
-    paddingBlock: space['100'],
+    paddingBlockEnd: {
+      default: space['150'],
+      ':last-of-type': 0,
+    },
   },
 })
 
@@ -55,11 +60,14 @@ export interface ListBoxSectionProps<T extends object>
  * ```
  */
 export function ListBoxSection<T extends object>({
-  size = 'md',
+  size: sizeProp,
   style,
   children,
   ...props
 }: ListBoxSectionProps<T>) {
+  const context = useListBoxContext()
+  const size = sizeProp ?? context?.size ?? 'md'
+
   return (
     <AriaListBoxSection
       {...props}
@@ -74,14 +82,33 @@ ListBoxSection.displayName = '@urban-ui/listbox-section'
 // Header styles
 const headerStyles = stylex.create({
   header: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
     paddingInline: space['100'],
-    paddingBlock: space['100'],
     color: tone.fgLo,
+  },
+})
+
+const headerSizeStyles = stylex.create({
+  md: {
+    paddingBlock: space['100'],
+    minHeight: control.md,
+  },
+  lg: {
+    paddingBlock: space['150'],
+    minHeight: control.lg,
   },
 })
 
 export interface HeaderProps
   extends Omit<React.HTMLAttributes<HTMLElement>, 'style' | 'className'> {
+  /**
+   * Size variant affects padding and height
+   * @default 'md'
+   */
+  size?: 'md' | 'lg'
+
   /**
    * Additional styles to apply
    */
@@ -99,11 +126,23 @@ export interface HeaderProps
  * </ListBoxSection>
  * ```
  */
-export function ListBoxHeader({ style, children, ...props }: HeaderProps) {
+export function ListBoxHeader({
+  size: sizeProp,
+  style,
+  children,
+  ...props
+}: HeaderProps) {
+  const context = useListBoxContext()
+  const size = sizeProp ?? context?.size ?? 'md'
+  const textSize = size === 'md' ? 'xs' : 'sm'
+
   return (
-    <AriaHeader {...props} {...stylex.props(headerStyles.header, style)}>
+    <AriaHeader
+      {...props}
+      {...stylex.props(headerStyles.header, headerSizeStyles[size], style)}
+    >
       {typeof children === 'string' ? (
-        <Text size="sm" weight="medium" color="current">
+        <Text size={textSize} weight="semibold" tracking="wider" color="lo">
           {children}
         </Text>
       ) : (

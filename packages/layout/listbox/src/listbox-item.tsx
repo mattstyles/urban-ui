@@ -13,6 +13,8 @@ import {
   composeRenderProps,
 } from 'react-aria-components'
 
+import { useListBoxContext } from './listbox-context'
+
 const styles = stylex.create({
   item: {
     display: 'flex',
@@ -110,12 +112,14 @@ export interface ListBoxItemProps<T extends object>
  * ```
  */
 export function ListBoxItem<T extends object>({
-  size = 'md',
+  size: sizeProp,
   style,
   children,
   textValue,
   ...props
 }: ListBoxItemProps<T>) {
+  const context = useListBoxContext()
+  const size = sizeProp ?? context?.size ?? 'md'
   const textSize = size === 'md' ? 'sm' : 'md'
 
   // Auto-derive textValue from string children if not provided

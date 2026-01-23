@@ -6,6 +6,8 @@ import { space } from '@urban-ui/theme/layout.stylex'
 import type { ListBoxProps as AriaListBoxProps } from 'react-aria-components'
 import { ListBox as AriaListBox } from 'react-aria-components'
 
+import { ListBoxProvider } from './listbox-context'
+
 const styles = stylex.create({
   base: {
     display: 'flex',
@@ -58,12 +60,14 @@ export function ListBox<T extends object>({
   ...props
 }: ListBoxProps<T>) {
   return (
-    <AriaListBox
-      {...props}
-      {...stylex.props(styles.base, sizeStyles[size], style)}
-    >
-      {children}
-    </AriaListBox>
+    <ListBoxProvider size={size}>
+      <AriaListBox
+        {...props}
+        {...stylex.props(styles.base, sizeStyles[size], style)}
+      >
+        {children}
+      </AriaListBox>
+    </ListBoxProvider>
   )
 }
 ListBox.displayName = '@urban-ui/listbox'
