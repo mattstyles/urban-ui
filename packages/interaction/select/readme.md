@@ -13,9 +13,7 @@ bun add @urban-ui/select
 Select internally composes:
 
 - **@urban-ui/popover** - Provides the dropdown overlay container with positioning, animations, and focus management
-- **@urban-ui/listbox** (DropdownListBox) - Provides the styled list container and item components with keyboard navigation
-
-This composition gives you a fully-featured select component while allowing the underlying Popover and Dropdown components to be used independently for other use cases.
+- Internal ListBox and Item components with styling and keyboard navigation
 
 ## Usage
 
@@ -84,8 +82,6 @@ function ControlledExample() {
 | `triggerStyle` | `StyleXStyles` | - | Additional styles for trigger button |
 
 ### SelectItem
-
-SelectItem re-exports `DropdownItem` from `@urban-ui/listbox`. See the listbox documentation for full props.
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |

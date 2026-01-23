@@ -7,7 +7,6 @@
 "@urban-ui/link": minor
 "@urban-ui/text": minor
 "@urban-ui/content": minor
-"@urban-ui/listbox": minor
 "@urban-ui/popover": minor
 "@urban-ui/button": minor
 "@internal/item": minor

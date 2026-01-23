@@ -25,9 +25,8 @@
   },
   "dependencies": {
     "@urban-ui/icon": "workspace:*",
-    "@urban-ui/listbox": "workspace:*",
-    "@urban-ui/dropdown": "workspace:*",
     "@urban-ui/popover": "workspace:*",
+    "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*"
   },
   "peerDependencies": {

@@ -91,7 +91,7 @@ export interface SelectProps<T extends object>
 
 /**
  * Select component for selecting a single value from a list of options.
- * Composes @urban-ui/popover and @urban-ui/listbox (DropdownListBox) internally.
+ * Composes @urban-ui/popover internally.
  *
  * @example
  * ```tsx
