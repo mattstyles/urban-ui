@@ -94,11 +94,15 @@ export interface ListBoxItemProps<T extends object>
 /**
  * Individual selectable option within a ListBox.
  *
+ * Automatically derives textValue from string children for accessibility.
+ * For non-string children, provide textValue explicitly.
+ *
  * @example
  * ```tsx
+ * // Simple - textValue auto-derived from string
  * <ListBoxItem id="cat">Cat</ListBoxItem>
  *
- * // With label and description slots
+ * // With label and description - textValue required
  * <ListBoxItem id="read" textValue="Read">
  *   <Text slot="label">Read</Text>
  *   <Text slot="description">View content only</Text>
@@ -109,13 +113,19 @@ export function ListBoxItem<T extends object>({
   size = 'md',
   style,
   children,
+  textValue,
   ...props
 }: ListBoxItemProps<T>) {
   const textSize = size === 'md' ? 'sm' : 'md'
 
+  // Auto-derive textValue from string children if not provided
+  const derivedTextValue =
+    textValue ?? (typeof children === 'string' ? children : undefined)
+
   return (
     <AriaListBoxItem
       {...props}
+      textValue={derivedTextValue}
       {...stylex.props(styles.item, sizeStyles[size], style)}
     >
       {composeRenderProps(children, (children) => {

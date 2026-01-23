@@ -169,13 +169,13 @@ function ListBoxPatterns() {
         </Text>
         <div {...stylex.props(styles.listboxContainer)}>
           <ListBox aria-label="Options" selectionMode="single" size="lg">
-            <ListBoxItem id="option1" size="lg" textValue="Option 1">
+            <ListBoxItem id="option1" size="lg">
               Option 1
             </ListBoxItem>
-            <ListBoxItem id="option2" size="lg" textValue="Option 2">
+            <ListBoxItem id="option2" size="lg">
               Option 2
             </ListBoxItem>
-            <ListBoxItem id="option3" size="lg" textValue="Option 3">
+            <ListBoxItem id="option3" size="lg">
               Option 3
             </ListBoxItem>
           </ListBox>
