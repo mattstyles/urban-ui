@@ -11,13 +11,21 @@ import { composeRenderProps } from 'react-aria-components'
 const styles = stylex.create({
   item: {
     // Override to row layout for checkmark positioning
-    // flexDirection: 'row',
-    // alignItems: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  itemText: {
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflowX: 'clip',
+    maxWidth: 'calc(100% - 32px)',
   },
   check: {
     marginInlineStart: 'auto',
     flexShrink: 0,
     paddingInlineStart: space[100],
+    boxSizing: 'content-box',
   },
 })
 
@@ -38,15 +46,24 @@ export type SelectItemProps<T extends object> = ListBoxItemProps<T>
 export function SelectItem<T extends object>({
   children,
   style,
+  textValue,
   ...props
 }: SelectItemProps<T>) {
+  // Auto-derive textValue from string children if not provided
+  const derivedTextValue =
+    textValue ?? (typeof children === 'string' ? children : undefined)
+
   return (
-    <ListBoxItem {...props} style={[styles.item, style]}>
+    <ListBoxItem
+      {...props}
+      textValue={derivedTextValue}
+      style={[styles.item, style]}
+    >
       {composeRenderProps(children, (children, { isSelected }) => (
         <>
           {typeof children === 'string' ? (
-            <Text slot="label" color="current">
-              {children}
+            <Text slot="label" color="current" style={styles.itemText}>
+              {children} some really long text that should be truncated
             </Text>
           ) : (
             children
