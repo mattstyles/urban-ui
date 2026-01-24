@@ -4,7 +4,7 @@ import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { Icon } from '@urban-ui/icon'
 import { ListBox } from '@urban-ui/listbox'
-import { Popover } from '@urban-ui/popover'
+import { Popover, type PopoverWidth } from '@urban-ui/popover'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, critical, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
@@ -64,12 +64,13 @@ const styles = stylex.create({
   selectValue: {
     flex: 1,
     textAlign: 'start',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflowX: 'clip',
+    maxWidth: 'calc(100% - 32px)',
     ':is([data-placeholder])': {
       color: tone.fgLo,
     },
-  },
-  popover: {
-    minWidth: 'var(--trigger-width)',
   },
 })
 
@@ -100,6 +101,16 @@ export interface SelectProps<T extends object>
    * @default 'md'
    */
   size?: SelectSize
+
+  /**
+   * How the dropdown width relates to the trigger width.
+   * - `trigger`: Both min and max width match trigger
+   * - `trigger-min`: Min width matches trigger, can grow wider (default)
+   * - `trigger-max`: Max width matches trigger, can be narrower
+   * - `content`: No width constraints
+   * @default 'trigger-min'
+   */
+  width?: PopoverWidth
 
   /**
    * Additional styles to apply to the root element
@@ -133,6 +144,7 @@ export interface SelectProps<T extends object>
 export function Select<T extends object>({
   children,
   size = 'md',
+  width = 'trigger',
   style,
   triggerStyle,
   items,
@@ -150,7 +162,7 @@ export function Select<T extends object>({
           <ChevronDown />
         </Icon>
       </AriaButton>
-      <Popover style={styles.popover}>
+      <Popover width={width}>
         <ListBox items={items} size={size} variant="dialog">
           {children}
         </ListBox>

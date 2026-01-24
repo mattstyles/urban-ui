@@ -2,4 +2,4 @@
 export type { PopoverRenderProps } from 'react-aria-components'
 
 export { DialogTrigger, type DialogTriggerProps } from './dialog-trigger'
-export { Popover, type PopoverProps } from './popover'
+export { Popover, type PopoverProps, type PopoverWidth } from './popover'

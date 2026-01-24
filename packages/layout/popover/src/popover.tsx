@@ -57,10 +57,40 @@ const styles = stylex.create({
   },
 })
 
+const widthStyles = stylex.create({
+  // Width matches trigger exactly
+  trigger: {
+    minWidth: 'var(--trigger-width)',
+    maxWidth: 'var(--trigger-width)',
+  },
+  // Min width matches trigger, can grow wider
+  'trigger-min': {
+    minWidth: 'var(--trigger-width)',
+  },
+  // Max width matches trigger, can be narrower
+  'trigger-max': {
+    maxWidth: 'var(--trigger-width)',
+  },
+  // No width constraints (default)
+  content: {},
+})
+
 // Triggers that should not show arrows (dropdown-style menus)
 const noArrowTriggers = ['MenuTrigger', 'SubmenuTrigger']
 
+export type PopoverWidth = 'trigger' | 'trigger-min' | 'trigger-max' | 'content'
+
 export interface PopoverProps extends Omit<AriaPopoverProps, 'style'> {
+  /**
+   * How the popover width relates to the trigger width.
+   * - `trigger`: Both min and max width match trigger
+   * - `trigger-min`: Min width matches trigger, can grow wider
+   * - `trigger-max`: Max width matches trigger, can be narrower
+   * - `content`: No width constraints (default)
+   * @default 'content'
+   */
+  width?: PopoverWidth
+
   /**
    * Whether to show the arrow indicator pointing to the trigger.
    * Automatically hidden for MenuTrigger and SubmenuTrigger.
@@ -98,6 +128,7 @@ export function Popover({
   style,
   arrowStyle,
   placement = 'bottom',
+  width = 'content',
   showArrow = false,
   trigger,
   ...props
@@ -107,7 +138,7 @@ export function Popover({
       placement={placement}
       trigger={trigger}
       {...props}
-      {...stylex.props([styles.base, style])}
+      {...stylex.props(styles.base, widthStyles[width], style)}
     >
       {(renderProps) => {
         // Determine if arrow should be shown based on trigger type
