@@ -3,6 +3,7 @@
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { Icon } from '@urban-ui/icon'
+import { ListBox } from '@urban-ui/listbox'
 import { Popover } from '@urban-ui/popover'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, critical, tone } from '@urban-ui/theme/colors.stylex'
@@ -17,8 +18,7 @@ import {
   SelectValue,
 } from 'react-aria-components'
 
-import { SelectListBox } from './select-listbox'
-import { SelectSizeContext, type SelectSize } from './select-context'
+export type SelectSize = 'md' | 'lg'
 
 const styles = stylex.create({
   base: {
@@ -141,21 +141,21 @@ export function Select<T extends object>({
   const iconSize = size === 'lg' ? 'md' : 'sm'
 
   return (
-    <SelectSizeContext value={size}>
-      <AriaSelect {...props} {...stylex.props(styles.base, style)}>
-        <AriaButton
-          {...stylex.props(styles.trigger, sizeStyles[size], triggerStyle)}
-        >
-          <SelectValue {...stylex.props(styles.selectValue)} />
-          <Icon size={iconSize} color="lo">
-            <ChevronDown />
-          </Icon>
-        </AriaButton>
-        <Popover style={styles.popover}>
-          <SelectListBox items={items}>{children}</SelectListBox>
-        </Popover>
-      </AriaSelect>
-    </SelectSizeContext>
+    <AriaSelect {...props} {...stylex.props(styles.base, style)}>
+      <AriaButton
+        {...stylex.props(styles.trigger, sizeStyles[size], triggerStyle)}
+      >
+        <SelectValue {...stylex.props(styles.selectValue)} />
+        <Icon size={iconSize} color="lo">
+          <ChevronDown />
+        </Icon>
+      </AriaButton>
+      <Popover style={styles.popover}>
+        <ListBox items={items} size={size} variant="dialog">
+          {children}
+        </ListBox>
+      </Popover>
+    </AriaSelect>
   )
 }
 Select.displayName = '@urban-ui/select'

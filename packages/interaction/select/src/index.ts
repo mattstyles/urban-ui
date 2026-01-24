@@ -1,3 +1,2 @@
-export { Select, type SelectProps } from './select'
+export { Select, type SelectProps, type SelectSize } from './select'
 export { SelectItem, type SelectItemProps } from './select-item'
-export { type SelectSize } from './select-context'
