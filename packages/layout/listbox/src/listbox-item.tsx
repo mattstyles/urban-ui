@@ -72,15 +72,28 @@ const variantStyles = stylex.create({
     },
   },
   // Dialog variant: focus highlight for items within dialogs (popovers, dropdowns)
+  // Uses data-focused which is applied on both mouse hover and keyboard navigation
   dialog: {
-    // Hovered state - transparent to match default (focus takes precedence in dialogs)
-    ':is([data-hovered])': {
-      backgroundColor: base.transparent,
-    },
-    // Focus visible state - highlighted background for clear keyboard indication
-    ':is([data-focus-visible])': {
-      backgroundColor: accent.solidHover,
+    // Selected state
+    ':is([data-selected])': {
+      backgroundColor: accent.solid,
       color: accent.fgOnBlock,
+    },
+    // Focused state - highlighted background for mouse and keyboard interaction
+    ':is([data-focused])': {
+      backgroundColor: tone.componentHover,
+    },
+    // Selected + Hovered
+    ':is([data-selected][data-hovered])': {
+      backgroundColor: accent.solidHover,
+    },
+    // Selected + Pressed
+    ':is([data-selected][data-pressed])': {
+      backgroundColor: accent.solidActive,
+    },
+    // Selected + Focused
+    ':is([data-selected][data-focused])': {
+      backgroundColor: accent.solidActive,
     },
   },
 })
@@ -150,7 +163,12 @@ export function ListBoxItem<T extends object>({
     <AriaListBoxItem
       {...props}
       textValue={derivedTextValue}
-      {...stylex.props(styles.item, variantStyles[variant], sizeStyles[size], style)}
+      {...stylex.props(
+        styles.item,
+        variantStyles[variant],
+        sizeStyles[size],
+        style,
+      )}
     >
       {composeRenderProps(children, (children) => {
         // If children is a string, wrap in Text
