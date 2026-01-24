@@ -29,7 +29,7 @@ If no component name is provided, ask the user which component they want to spec
 If a documentation URL was not provided, prompt the user for it:
 
 > Please provide the URL to the React Aria component documentation page.
-> Example: `https://react-spectrum.adobe.com/react-aria/ListBox.html`
+> Example: `https://react-spectrum.adobe.com/react-aria/ListBox.md`
 
 Once you have the URL, use WebFetch to retrieve the page content:
 
