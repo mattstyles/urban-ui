@@ -52,7 +52,7 @@ export function SelectItem<T extends object>({
             children
           )}
           {isSelected && (
-            <Icon size="sm" style={styles.check} color="current">
+            <Icon size="md" style={styles.check} color="current">
               <Check />
             </Icon>
           )}
