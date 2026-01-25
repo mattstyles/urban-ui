@@ -2,8 +2,8 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
-import { Icon } from '@urban-ui/icon'
 import { Dropdown } from '@urban-ui/dropdown'
+import { Icon } from '@urban-ui/icon'
 import { Popover, type PopoverWidth } from '@urban-ui/popover'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, critical, tone } from '@urban-ui/theme/colors.stylex'
