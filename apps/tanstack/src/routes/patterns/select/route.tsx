@@ -190,7 +190,11 @@ function SelectPatterns() {
             <SelectItem id="jun">June</SelectItem>
           </Select>
 
-          <Select aria-label="Year" placeholder="Year" style={styles.dateSelect}>
+          <Select
+            aria-label="Year"
+            placeholder="Year"
+            style={styles.dateSelect}
+          >
             <SelectItem id="2024">2024</SelectItem>
             <SelectItem id="2025">2025</SelectItem>
             <SelectItem id="2026">2026</SelectItem>
