@@ -1,8 +1,8 @@
 'use client'
 
 import * as stylex from '@stylexjs/stylex'
-import { Icon } from '@urban-ui/icon'
 import { DropdownItem, type DropdownItemProps } from '@urban-ui/dropdown'
+import { Icon } from '@urban-ui/icon'
 import { Text } from '@urban-ui/text'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { Check } from 'lucide-react'
