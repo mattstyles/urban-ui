@@ -223,6 +223,47 @@ const actions = [
 </MenuTrigger>
 ```
 
+### With Variants and Tones
+
+```tsx
+import { MenuTrigger, Menu, MenuItem, Separator } from '@urban-ui/menu'
+import { Popover } from '@urban-ui/popover'
+import { Button } from '@urban-ui/button'
+
+<MenuTrigger>
+  <Button>Actions</Button>
+  <Popover>
+    <Menu>
+      <MenuItem>Edit</MenuItem>
+      <MenuItem>Duplicate</MenuItem>
+      <Separator />
+      <MenuItem variant="success">Publish</MenuItem>
+      <MenuItem variant="destructive">Delete</MenuItem>
+    </Menu>
+  </Popover>
+</MenuTrigger>
+```
+
+### With Size (Large)
+
+```tsx
+import { MenuTrigger, Menu, MenuItem } from '@urban-ui/menu'
+import { Popover } from '@urban-ui/popover'
+import { Button } from '@urban-ui/button'
+
+// Size is set on Menu and passed via context to children
+<MenuTrigger>
+  <Button>Touch Menu</Button>
+  <Popover>
+    <Menu size="lg">
+      <MenuItem>Option 1</MenuItem>
+      <MenuItem>Option 2</MenuItem>
+      <MenuItem>Option 3</MenuItem>
+    </Menu>
+  </Popover>
+</MenuTrigger>
+```
+
 ---
 
 ## Component Breakdown
@@ -256,6 +297,12 @@ The menu container managing items, selection, and keyboard navigation.
 | `items` | `Iterable<T>` | Dynamic collection items |
 | `aria-label` | `string` | Accessibility label |
 
+**Custom Urban-UI Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `'md' \| 'lg'` | `'md'` | Size for all menu items (passed via context) |
+| `style` | `StyleXStyles` | - | Additional StyleX styles |
+
 ### MenuItem (Action/Option)
 
 Individual menu item that can trigger an action or be selected.
@@ -268,6 +315,14 @@ Individual menu item that can trigger an action or be selected.
 | `isDisabled` | `boolean` | Disable interaction |
 | `href` | `string` | Make item a link |
 | `onAction` | `() => void` | Action handler |
+
+**Custom Urban-UI Props:**
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'default' \| 'destructive' \| 'success'` | `'default'` | Visual variant for semantic meaning |
+| `tone` | `Tone` | - | Explicit tone override (full palette supported) |
+| `size` | `'md' \| 'lg'` | from context | Size override (usually inherited from Menu) |
+| `style` | `StyleXStyles` | - | Additional StyleX styles |
 
 **Render Props (from React Aria):**
 | Prop | Type | Description |
@@ -323,120 +378,53 @@ Semantic content slots within MenuItem:
 
 ---
 
-## Questions for Implementation
+## Design Decisions
 
-### 1. Context Questions
+### 1. Context & Architecture
 
-**Q1.1: What context will this menu be used in?**
-- [ ] Context menus (right-click)
-- [ ] Dropdown menus (button trigger)
-- [ ] Action menus (toolbar buttons)
-- [ ] All of the above
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| **Usage Context** | All contexts | Supports context menus (right-click), dropdown menus (button trigger), and action menus (toolbar buttons) |
+| **Architecture** | Standalone | Exports Menu, MenuTrigger, MenuItem etc. directly as independent components |
 
-> Menus are always in a popup/overlay context, but trigger behavior may vary.
+### 2. Styling
 
-**Q1.2: Is this a standalone component or part of a composite?**
-- [ ] Standalone (exports Menu, MenuTrigger, etc. directly)
-- [ ] Part of a larger menu system with shared styling
-- [ ] Utility for other composites (Select, ComboBox use similar patterns)
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| **Variants** | `default`, `destructive`, `success` | Standard styling plus critical (delete) and positive (confirm) variants |
+| **Tone Support** | Full tone palette | MenuItem accepts any tone (neutral, primary, accent, critical, positive, etc.) for maximum flexibility |
+| **Sizes** | `md`, `lg` | Matches ListBox and Dropdown patterns. Size prop on Menu, passed via context to children |
+| **Selection Indicator** | Checkmark icon | Checkmark for both single and multiple selection modes |
+| **Submenu Indicator** | Chevron icon | Right-aligned chevron/arrow icon on items with submenus |
 
-### 2. Styling Questions
+### 3. Composition
 
-**Q2.1: What visual variants are needed for MenuItem?**
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| **Composition Patterns** | All patterns supported | Simple text, keyboard shortcuts, label+description slots, icons, and full composition |
+| **Convenience Components** | `Keyboard` + `Separator` | Minimal additions - Keyboard shortcut display and divider. Use existing Text/Icon for other needs |
 
-| Variant | Description | Use Case |
-|---------|-------------|----------|
-| `default` | Standard item styling | General use |
-| `destructive` | Red/critical styling | Delete actions |
+### 4. Features
 
-**Q2.2: What tone support is needed?**
-- [ ] Uses parent theme context (tone.* tokens)
-- [ ] MenuItem accepts explicit tone prop (for destructive items)
-- [ ] Fixed neutral tone
+**Full React Aria feature set** - Everything React Aria supports for Menu should be supported:
 
-**Q2.3: What size variants are needed?**
+- [x] Action items (onAction)
+- [x] Single selection (radio-style)
+- [x] Multiple selection (checkbox-style)
+- [x] Sections with headers
+- [x] Section-level selection
+- [x] Separators
+- [x] Disabled items
+- [x] Links (href items)
+- [x] Keyboard shortcuts display
+- [x] Submenus (included in initial implementation)
+- [x] Long press trigger
+- [x] Icons
+- [x] Destructive/critical items
+- [x] Empty state
 
-| Size | Padding | Font Size | Use Case |
-|------|---------|-----------|----------|
-| `sm` | Compact | Small | Dense menus |
-| `md` | Standard | Base | Default |
+**Keyboard Interactions (via React Aria):**
 
-**Q2.4: How should selection be indicated?**
-- [ ] Checkmark icon (single selection)
-- [ ] Checkbox icon (multiple selection)
-- [ ] Background color change
-- [ ] Configurable per instance
-
-**Q2.5: How should submenus be indicated?**
-- [ ] Chevron/arrow icon on right
-- [ ] No indicator (rely on hover behavior)
-
-### 3. Composition Questions
-
-**Q3.1: What child composition patterns are needed for MenuItem?**
-
-```tsx
-// Simple - text only
-<MenuItem>Label</MenuItem>
-
-// With keyboard shortcut
-<MenuItem>
-  Save
-  <Keyboard>⌘S</Keyboard>
-</MenuItem>
-
-// Slotted - label + description
-<MenuItem>
-  <Text slot="label">Export</Text>
-  <Text slot="description">Save as PDF</Text>
-</MenuItem>
-
-// With icon
-<MenuItem>
-  <Icon><Trash /></Icon>
-  Delete
-</MenuItem>
-
-// Full composition
-<MenuItem>
-  <Icon><Share /></Icon>
-  <MenuItemContent>
-    <MenuItemText slot="label">Share</MenuItemText>
-    <MenuItemText slot="description">Send to others</MenuItemText>
-  </MenuItemContent>
-  <Keyboard>⌘⇧S</Keyboard>
-</MenuItem>
-```
-
-- [ ] Support all patterns
-- [ ] Needs layout helpers for consistent spacing
-
-**Q3.2: Should there be convenience sub-components?**
-- [ ] `MenuItemContent` - Layout wrapper for icon + text + shortcut
-- [ ] `MenuItemText` - Pre-configured Text with slots
-- [ ] `MenuItemIcon` - Icon positioning helper
-- [ ] `Keyboard` - Styled keyboard shortcut display
-- [ ] `Separator` - Styled divider (or re-export from React Aria)
-
-### 4. Feature Questions
-
-**Q4.1: What features are required?**
-- [ ] Action items (onAction)
-- [ ] Single selection (radio-style)
-- [ ] Multiple selection (checkbox-style)
-- [ ] Sections with headers
-- [ ] Section-level selection
-- [ ] Separators
-- [ ] Disabled items
-- [ ] Links (href items)
-- [ ] Keyboard shortcuts display
-- [ ] Submenus
-- [ ] Long press trigger
-- [ ] Icons
-- [ ] Destructive/critical items
-- [ ] Empty state
-
-**Q4.2: What keyboard interactions must work?**
 | Key | Action |
 |-----|--------|
 | Arrow Down/Up | Move focus |
@@ -447,70 +435,59 @@ Semantic content slots within MenuItem:
 | Escape | Close menu |
 | Type characters | Typeahead search |
 
-### 5. State Questions
+### 5. State Styling
 
-**Q5.1: What visual states need styling?**
+**Visual States:** Match `@urban-ui/dropdown` patterns exactly.
 
 | State | Data Attribute | Visual Treatment |
 |-------|---------------|------------------|
 | Default | - | Transparent background |
 | Hovered | `[data-hovered]` | Subtle background |
-| Focused | `[data-focused]` | - |
+| Focused | `[data-focused]` | Highlighted background |
 | Focus Visible | `[data-focus-visible]` | Focus ring |
 | Pressed | `[data-pressed]` | Darker background |
-| Selected | `[data-selected]` | Checkmark + background |
-| Disabled | `[data-disabled]` | Muted, no pointer |
+| Selected | `[data-selected]` | Accent solid background |
+| Disabled | `[data-disabled]` | Muted, no pointer, reduced opacity |
 | Has Submenu | `[data-has-submenu]` | Show chevron |
 | Submenu Open | `[data-open]` | Highlight state |
 
-**Q5.2: How should combined states render?**
-- Selected + Hovered
-- Selected + Disabled
-- Has Submenu + Hovered
-- Has Submenu + Open
+**Combined States:** Follow DropdownItem patterns:
+- Selected + Hovered → `accent.solidHover`
+- Selected + Pressed → `accent.solidActive`
+- Selected + Focused → `accent.solidActive`
 
-### 6. Token Questions
+### 6. Tokens & Location
 
-**Q6.1: What theme tokens will be used?**
+| Decision | Choice | Rationale |
+|----------|--------|-----------|
+| **Theme Tokens** | Match Dropdown exactly | Use same tokens as DropdownItem for consistency across the design system |
+| **Package Location** | `packages/interaction/menu/` | Interaction category alongside Select |
+
+**Tokens (matching DropdownItem):**
 
 ```tsx
 // Background states
 base.transparent        // default background
-tone.componentHover     // hovered
+tone.componentHover     // hovered/focused
 tone.componentActive    // pressed
-tone.component          // selected background (subtle)
+accent.solid            // selected background
+accent.solidHover       // selected + hovered
+accent.solidActive      // selected + pressed/focused
 
 // Text colors
 tone.fgHi              // primary text (label)
-tone.fgLo              // secondary text (description, shortcuts)
+accent.fgOnBlock       // selected text
 
 // Disabled
 disabled.background
 disabled.fg
 
-// Focus
-focusVars.*            // focus ring
-
-// Destructive variant
-critical.fgHi          // destructive text
-critical.componentHover // destructive hover
-
-// Separator
-tone.borderMuted       // separator line
-
-// Section header
-tone.fgLo              // muted header text
-```
-
-**Q6.2: What spacing tokens are needed?**
-
-```tsx
-space['100']   // gap between icon and text
-space['150']   // item padding block
-space['200']   // item padding inline
-space['050']   // separator margin block
-radii.md       // menu border radius
-radii.sm       // item border radius
+// Spacing (matching Dropdown sizes)
+space['100']           // padding, gaps
+space['150']           // lg padding block
+control.md             // md min height
+control.lg             // lg min height
+radii.md               // item border radius
 ```
 
 ---
@@ -523,14 +500,13 @@ packages/interaction/menu/
 │   ├── index.ts              # Public exports
 │   ├── menu.tsx              # Menu container
 │   ├── menu-trigger.tsx      # MenuTrigger
-│   ├── menu-item.tsx         # MenuItem
-│   ├── menu-section.tsx      # MenuSection + Header
+│   ├── menu-item.tsx         # MenuItem with tone/variant support
+│   ├── menu-section.tsx      # MenuSection
+│   ├── menu-header.tsx       # Section Header
 │   ├── submenu-trigger.tsx   # SubmenuTrigger
 │   ├── separator.tsx         # Separator
 │   ├── keyboard.tsx          # Keyboard shortcut display
-│   ├── menu-item-content.tsx # Layout helper (optional)
-│   ├── menu-item-text.tsx    # Text helper (optional)
-│   ├── styles.ts             # StyleX styles
+│   ├── menu-context.tsx      # Size context (like DropdownContext)
 │   └── types.ts              # Shared types
 ├── llms.md                   # AI documentation
 ├── package.json
@@ -541,17 +517,28 @@ packages/interaction/menu/
 
 ## Implementation Checklist
 
-- [ ] Define component props extending React Aria types
-- [ ] Create StyleX styles for all visual states
-- [ ] Implement MenuTrigger wrapper
-- [ ] Implement Menu container with styling
-- [ ] Implement MenuItem with state-based styling
-- [ ] Implement MenuSection and Header
-- [ ] Implement Separator
-- [ ] Implement SubmenuTrigger
-- [ ] Implement Keyboard shortcut component
-- [ ] Add convenience components if needed
-- [ ] Handle destructive variant styling
+### Core Components
+- [ ] Create `menu-context.tsx` - Size context provider (pattern from DropdownContext)
+- [ ] Implement `menu-trigger.tsx` - Wrapper around React Aria MenuTrigger
+- [ ] Implement `menu.tsx` - Menu container with size prop and context provider
+- [ ] Implement `menu-item.tsx` - MenuItem with tone/variant props, matching DropdownItem styling
+- [ ] Implement `menu-section.tsx` - MenuSection wrapper
+- [ ] Implement `menu-header.tsx` - Section Header component
+- [ ] Implement `submenu-trigger.tsx` - SubmenuTrigger wrapper
+- [ ] Implement `separator.tsx` - Visual divider
+- [ ] Implement `keyboard.tsx` - Keyboard shortcut display component
+
+### Styling
+- [ ] Create StyleX styles matching DropdownItem patterns
+- [ ] Add size variants (md, lg) with context inheritance
+- [ ] Add tone support (full palette)
+- [ ] Add variant support (default, destructive, success)
+- [ ] Style all visual states (hover, focus, pressed, selected, disabled)
+- [ ] Style combined states (selected+hovered, etc.)
+- [ ] Add submenu chevron indicator styling
+- [ ] Add selection checkmark indicator
+
+### Testing & Documentation
 - [ ] Write tests for rendering and interactions
 - [ ] Write type tests for prop types
 - [ ] Create llms.md documentation
@@ -579,14 +566,20 @@ packages/interaction/menu/
 - Submenu indicator (chevron) should be right-aligned
 - Consider animation for popover appearance
 
-### Relationship to ListBox
+### Relationship to Dropdown and ListBox
 
-Menu and ListBox share similar patterns but have different purposes:
-- **ListBox**: Selection from a list of options (forms, settings)
-- **Menu**: Actions and commands (toolbars, context menus)
+Menu, Dropdown, and ListBox share similar visual patterns but have different purposes:
+- **ListBox**: Selection from a list of options (forms, settings) - uses `ListBoxItem`
+- **Dropdown**: Styled ListBox items used by Select - uses `ListBoxItem` via `DropdownItem`
+- **Menu**: Actions and commands (toolbars, context menus) - uses `MenuItem` from React Aria
 
-They may share styling for items but Menu has additional concerns:
-- Keyboard shortcuts
-- Submenus
+**Key difference:** Menu uses React Aria's `MenuItem` (action-based) while Dropdown uses `ListBoxItem` (selection-based). However, the visual styling should be consistent:
+- Match `DropdownItem` styling patterns exactly
+- Use the same size context pattern (`MenuContext` like `DropdownContext`)
+- Use the same tokens and state styling
+
+Menu has additional concerns beyond Dropdown:
+- Keyboard shortcuts display (`Keyboard` component)
+- Submenus (`SubmenuTrigger`)
 - Action callbacks (not just selection)
-- Destructive actions
+- Destructive/success variants with tone support

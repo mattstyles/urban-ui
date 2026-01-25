@@ -23,6 +23,7 @@ const styles = stylex.create({
     borderRadius: radii.md,
     outline: 'none',
     transition: 'background 0.15s, color 0.15s',
+    userSelect: 'none',
     // Default state
     backgroundColor: base.transparent,
     color: tone.fgHi,
@@ -64,12 +65,12 @@ const styles = stylex.create({
 const sizeStyles = stylex.create({
   md: {
     paddingInline: space['100'],
-    paddingBlock: space['100'],
+    paddingBlock: space['25'],
     minHeight: control.md,
   },
   lg: {
     paddingInline: space['100'],
-    paddingBlock: space['150'],
+    paddingBlock: space['50'],
     minHeight: control.lg,
   },
 })
