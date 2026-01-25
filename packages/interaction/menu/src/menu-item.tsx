@@ -115,9 +115,6 @@ const checkStyles = stylex.create({
     paddingInlineStart: space['100'],
     boxSizing: 'content-box',
   },
-  checkHidden: {
-    visibility: 'hidden',
-  },
 })
 
 const chevronStyles = stylex.create({
@@ -217,13 +214,11 @@ export function MenuItem<T extends object>({
           ) : (
             children
           )}
-          <Icon
-            size="md"
-            style={[checkStyles.check, !isSelected && checkStyles.checkHidden]}
-            color="current"
-          >
-            <Check />
-          </Icon>
+          {isSelected && (
+            <Icon size="md" style={checkStyles.check} color="current">
+              <Check />
+            </Icon>
+          )}
           {hasSubmenu && (
             <Icon size="md" style={chevronStyles.chevron} color="current">
               <ChevronRight />
