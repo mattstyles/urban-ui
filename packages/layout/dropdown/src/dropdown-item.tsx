@@ -23,6 +23,7 @@ const styles = stylex.create({
     borderRadius: radii.md,
     outline: 'none',
     transition: 'background 0.15s, color 0.15s',
+    userSelect: 'none',
     // Default state
     backgroundColor: base.transparent,
     color: tone.fgHi,
