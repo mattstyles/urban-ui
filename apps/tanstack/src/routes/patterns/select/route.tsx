@@ -59,6 +59,30 @@ function SelectPatterns() {
         </Select>
       </Flex>
 
+      {/* Large Size */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Large Size
+        </Text>
+        <Text size="sm" color="lo">
+          A larger select with increased padding and font size.
+        </Text>
+        <Select
+          aria-label="Favorite Animal"
+          placeholder="Select an animal"
+          size="lg"
+        >
+          <SelectItem id="cat">Cat</SelectItem>
+          <SelectItem id="dog">Dog</SelectItem>
+          <SelectItem id="rabbit">Rabbit</SelectItem>
+          <SelectItem id="hamster">Hamster</SelectItem>
+          <SelectItem id="bird">Bird</SelectItem>
+          <SelectItem id="fish">Fish</SelectItem>
+          <SelectItem id="snake">Snake</SelectItem>
+          <SelectItem id="turtle">Turtle</SelectItem>
+        </Select>
+      </Flex>
+
       {/* Native select */}
       <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
