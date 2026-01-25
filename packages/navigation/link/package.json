@@ -18,20 +18,21 @@
     "format": "biome format src --write",
     "typecheck": "tsc",
     "clean": "del dist",
-    "dev": "rslib build --watch",
+    "dev": "rslib build --watch --no-clean",
     "build": "rslib build"
   },
   "dependencies": {
     "@urban-ui/theme": "workspace:*",
     "@urban-ui/styles": "workspace:*",
-    "@radix-ui/react-slot": "^1.1.2",
-    "react-aria-components": "1.14.0"
+    "@radix-ui/react-slot": "^1.1.2"
   },
   "peerDependencies": {
     "react": "19.2.3",
-    "@stylexjs/stylex": "0.17.5"
+    "@stylexjs/stylex": "^0.17.5",
+    "react-aria-components": "^1.14.0"
   },
   "devDependencies": {
+    "react-aria-components": "^1.14.0",
     "@happy-dom/jest-environment": "^17.1.0",
     "@jest/globals": "^29.7.0",
     "@stylexswc/jest": "0.7.1",

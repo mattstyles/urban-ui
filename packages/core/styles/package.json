@@ -21,7 +21,7 @@
     "format": "biome format src --write",
     "typecheck": "tsc",
     "clean": "del dist",
-    "dev": "rslib build --watch",
+    "dev": "rslib build --watch --no-clean",
     "build": "rslib build"
   },
   "dependencies": {
@@ -29,7 +29,7 @@
   },
   "peerDependencies": {
     "react": "19.2.3",
-    "@stylexjs/stylex": "0.17.5"
+    "@stylexjs/stylex": "^0.17.5"
   },
   "devDependencies": {
     "@happy-dom/jest-environment": "^17.1.0",

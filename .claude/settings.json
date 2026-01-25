@@ -29,7 +29,7 @@
       "Bash(bun info:*)",
 
       "Skill(git:*)",
-      "Skill(components:*)",
+      "Skill(component:*)",
       "Skill(bump:dependencies)",
 
       "mcp__plugin_figma_figma-desktop__get_code_connect_map",

@@ -37,7 +37,7 @@ export interface TextFieldProps
    * Size of the input
    * @default 'md'
    */
-  size?: 'sm' | 'md'
+  size?: 'md' | 'lg'
 
   /**
    * Additional styles to apply to the container

@@ -44,43 +44,54 @@ Font sizes use a fluid type scale that responds to viewport width.
 
 ## Interactive Element Size Composition
 
-Element minimum height is calculated using:
+Element minimum height is defined via the `control` token scale, which provides responsive heights that scale with typography.
+
+### Control Tokens
+
+Import from `@urban-ui/theme/layout.stylex`:
+
+```tsx
+import { control } from '@urban-ui/theme/layout.stylex'
+
+// Usage
+minHeight: control.md,  // ~28px → 32px
+minHeight: control.lg,  // ~40px → 48px
+```
+
+### Height Formula
 
 ```
 minHeight = lineHeight + ((paddingBlock + borderWidth) * 2)
 ```
 
-| Size | Button | Input |
-|------|--------|-------|
-| sm   | - | fontSize: sm, lineHeight: md, paddingBlock: 4px |
-| md   | fontSize: sm, lineHeight: md, paddingBlock: 4px | fontSize: md, lineHeight: lg, paddingBlock: 8px |
-| lg   | fontSize: md, lineHeight: lg, paddingBlock: 8px | - |
+| Size | lineHeight | paddingBlock | borderWidth | Min (320px) | Max (1240px) |
+|------|------------|--------------|-------------|-------------|--------------|
+| md   | fontSizes.md | 4px | 2px | ~28px | 32px |
+| lg   | fontSizes.lg | 8.5px | 2px | ~40px | 48px |
 
-Both Button and Input use:
+### Component Composition
+
+| Size | Button | Input | ListBox |
+|------|--------|-------|---------|
+| md   | fontSize: sm, lineHeight: md, paddingBlock: 4px | fontSize: sm, lineHeight: md, paddingBlock: 4px | fontSize: sm, paddingBlock: 8px |
+| lg   | fontSize: md, lineHeight: lg, paddingBlock: 8px | fontSize: md, lineHeight: lg, paddingBlock: 8px | fontSize: md, paddingBlock: 12px |
+
+**Note:** ListBox items use a different text box model (no explicit lineHeight), so paddingBlock values differ to achieve the same visual height.
+
+Button and Input use:
 - `borderRadius: radii.lg` (8px)
 - `borderWidth: borderWidths.md` (2px)
 
-### Calculated Heights at 320px viewport (min)
+ListBox items use:
+- `borderRadius: radii.md` (4px)
+- No border
 
-| lineHeight | paddingBlock | borderWidth | minHeight |
-|------------|--------------|-------------|-----------|
-| 16px (md)  | 4px | 2px | 28px |
-| 19px (lg)  | 8px | 2px | ~39px |
+### Target Heights
 
-### Calculated Heights at 1240px viewport (max)
-
-| lineHeight | paddingBlock | borderWidth | minHeight |
-|------------|--------------|-------------|-----------|
-| 20px (md)  | 4px | 2px | 32px |
-| 27px (lg)  | 8px | 2px | ~47px |
-
-### Button and Input Heights (max viewport)
-
-| Size | Button | Input |
-|------|--------|-------|
-| sm   | -      | 32px  |
-| md   | 32px   | ~47px |
-| lg   | ~47px  | -     |
+| Size | minHeight (320px) | minHeight (1240px) |
+|------|-------------------|---------------------|
+| md   | ~28px | 32px |
+| lg   | ~40px | 48px |
 
 ## Focus States
 

@@ -36,7 +36,7 @@ describe('Input', () => {
   })
 
   it('should apply size styles', () => {
-    render(<Input data-testid="test-input" size="sm" />)
+    render(<Input data-testid="test-input" size="lg" />)
     expect(screen.getByTestId('test-input')).toBeInTheDocument()
   })
 

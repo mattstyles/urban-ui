@@ -1,0 +1,30 @@
+# @urban-ui/popover
+
+Popover for positioning overlay content relative to a trigger.
+
+## Basic Example
+
+```tsx
+import { DialogTrigger, Popover } from '@urban-ui/popover'
+import { Button } from '@urban-ui/button'
+import { Dialog } from 'react-aria-components'
+
+function Example() {
+  return (
+    <DialogTrigger>
+      <Button>Open Popover</Button>
+      <Popover placement="bottom" showArrow>
+        <Dialog>
+          <p>Popover content here</p>
+        </Dialog>
+      </Popover>
+    </DialogTrigger>
+  )
+}
+```
+
+## Key Props
+
+- `placement` - Position: `top`, `bottom`, `left`, `right`, `top start`, `bottom end`, etc.
+- `offset` - Distance from trigger (default: 8)
+- `showArrow` - Show arrow pointing to trigger (default: false)

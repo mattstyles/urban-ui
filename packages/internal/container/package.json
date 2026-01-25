@@ -19,7 +19,7 @@
     "format": "biome format --write .",
     "typecheck": "tsc --noEmit",
     "clean": "del dist",
-    "dev": "rslib build --watch",
+    "dev": "rslib build --watch --no-clean",
     "build": "rslib build"
   },
   "dependencies": {
@@ -28,7 +28,7 @@
   },
   "peerDependencies": {
     "react": "19.2.3",
-    "@stylexjs/stylex": "0.17.5"
+    "@stylexjs/stylex": "^0.17.5"
   },
   "devDependencies": {
     "@rsbuild/plugin-react": "1.4.2",

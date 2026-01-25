@@ -30,7 +30,7 @@
     "test": "CI=true turbo run test",
     "build:ci": "turbo run build --filter=\"./packages/**\"",
     "build": "turbo run build",
-    "dev": "turbo run clean && turbo run dev --parallel --filter=\"./packages/**\"",
+    "dev": "turbo run dev",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "format": "biome format --write {packages,apps}",
