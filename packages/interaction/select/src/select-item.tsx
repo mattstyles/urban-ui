@@ -1,7 +1,11 @@
 'use client'
 
 import * as stylex from '@stylexjs/stylex'
-import { DropdownItem, type DropdownItemProps } from '@urban-ui/dropdown'
+import {
+  DropdownItem,
+  type DropdownItemProps,
+  useDropdownContext,
+} from '@urban-ui/dropdown'
 import { Icon } from '@urban-ui/icon'
 import { Text } from '@urban-ui/text'
 import { space } from '@urban-ui/theme/layout.stylex'
@@ -49,6 +53,10 @@ export function SelectItem<T extends object>({
   textValue,
   ...props
 }: SelectItemProps<T>) {
+  const context = useDropdownContext()
+  const size = context?.size ?? 'md'
+  const textSize = size === 'md' ? 'sm' : 'md'
+
   // Auto-derive textValue from string children if not provided
   const derivedTextValue =
     textValue ?? (typeof children === 'string' ? children : undefined)
@@ -62,7 +70,7 @@ export function SelectItem<T extends object>({
       {composeRenderProps(children, (children, { isSelected }) => (
         <>
           {typeof children === 'string' ? (
-            <Text slot="label" color="current" style={styles.itemText}>
+            <Text slot="label" size={textSize} color="current" style={styles.itemText}>
               {children}
             </Text>
           ) : (
