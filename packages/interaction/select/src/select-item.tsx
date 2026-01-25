@@ -27,6 +27,9 @@ const styles = stylex.create({
     paddingInlineStart: space[100],
     boxSizing: 'content-box',
   },
+  checkHidden: {
+    visibility: 'hidden',
+  },
 })
 
 export type SelectItemProps<T extends object> = DropdownItemProps<T>
@@ -68,11 +71,13 @@ export function SelectItem<T extends object>({
           ) : (
             children
           )}
-          {isSelected && (
-            <Icon size="md" style={styles.check} color="current">
-              <Check />
-            </Icon>
-          )}
+          <Icon
+            size="md"
+            style={[styles.check, !isSelected && styles.checkHidden]}
+            color="current"
+          >
+            <Check />
+          </Icon>
         </>
       ))}
     </DropdownItem>
