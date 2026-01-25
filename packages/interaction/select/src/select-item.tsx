@@ -2,7 +2,7 @@
 
 import * as stylex from '@stylexjs/stylex'
 import { Icon } from '@urban-ui/icon'
-import { ListBoxItem, type ListBoxItemProps } from '@urban-ui/listbox'
+import { DropdownItem, type DropdownItemProps } from '@urban-ui/dropdown'
 import { Text } from '@urban-ui/text'
 import { space } from '@urban-ui/theme/layout.stylex'
 import { Check } from 'lucide-react'
@@ -29,7 +29,7 @@ const styles = stylex.create({
   },
 })
 
-export type SelectItemProps<T extends object> = ListBoxItemProps<T>
+export type SelectItemProps<T extends object> = DropdownItemProps<T>
 
 /**
  * Individual selectable option within a Select.
@@ -54,7 +54,7 @@ export function SelectItem<T extends object>({
     textValue ?? (typeof children === 'string' ? children : undefined)
 
   return (
-    <ListBoxItem
+    <DropdownItem
       {...props}
       textValue={derivedTextValue}
       style={[styles.item, style]}
@@ -63,7 +63,7 @@ export function SelectItem<T extends object>({
         <>
           {typeof children === 'string' ? (
             <Text slot="label" color="current" style={styles.itemText}>
-              {children} some really long text that should be truncated
+              {children}
             </Text>
           ) : (
             children
@@ -75,6 +75,6 @@ export function SelectItem<T extends object>({
           )}
         </>
       ))}
-    </ListBoxItem>
+    </DropdownItem>
   )
 }

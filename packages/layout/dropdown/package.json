@@ -1,5 +1,5 @@
 {
-  "name": "@urban-ui/select",
+  "name": "@urban-ui/dropdown",
   "version": "0.1.0",
   "type": "module",
   "module": "./dist/index.js",
@@ -24,20 +24,15 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@urban-ui/icon": "workspace:*",
-    "@urban-ui/dropdown": "workspace:*",
-    "@urban-ui/popover": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*"
   },
   "peerDependencies": {
     "react": "19.2.3",
     "@stylexjs/stylex": "^0.17.5",
-    "lucide-react": ">=0.400.0",
     "react-aria-components": "^1.14.0"
   },
   "devDependencies": {
-    "lucide-react": "^0.511.0",
     "react-aria-components": "^1.14.0",
     "@happy-dom/jest-environment": "^20.3.3",
     "@jest/globals": "^30.2.0",

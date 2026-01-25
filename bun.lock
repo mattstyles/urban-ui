@@ -393,8 +393,8 @@
       "name": "@urban-ui/select",
       "version": "0.1.0",
       "dependencies": {
+        "@urban-ui/dropdown": "workspace:*",
         "@urban-ui/icon": "workspace:*",
-        "@urban-ui/listbox": "workspace:*",
         "@urban-ui/popover": "workspace:*",
         "@urban-ui/text": "workspace:*",
         "@urban-ui/theme": "workspace:*",
@@ -555,6 +555,42 @@
       "peerDependencies": {
         "@stylexjs/stylex": "^0.17.5",
         "react": "19.2.3",
+      },
+    },
+    "packages/layout/dropdown": {
+      "name": "@urban-ui/dropdown",
+      "version": "0.1.0",
+      "dependencies": {
+        "@urban-ui/text": "workspace:*",
+        "@urban-ui/theme": "workspace:*",
+      },
+      "devDependencies": {
+        "@happy-dom/jest-environment": "^20.3.3",
+        "@jest/globals": "^30.2.0",
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@stylexswc/jest": "0.14.2",
+        "@swc/jest": "^0.2.39",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.6.1",
+        "@types/jest": "^30.0.0",
+        "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "del-cli": "^6.0.0",
+        "expect-type": "^1.2.1",
+        "jest": "^30.2.0",
+        "jest-chain-transform": "^0.0.8",
+        "react": "19.2.3",
+        "react-aria-components": "^1.14.0",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
+        "@stylexjs/stylex": "^0.17.5",
+        "react": "19.2.3",
+        "react-aria-components": "^1.14.0",
       },
     },
     "packages/layout/flex": {
@@ -1826,6 +1862,8 @@
     "@urban-ui/center": ["@urban-ui/center@workspace:packages/layout/center"],
 
     "@urban-ui/content": ["@urban-ui/content@workspace:packages/layout/content"],
+
+    "@urban-ui/dropdown": ["@urban-ui/dropdown@workspace:packages/layout/dropdown"],
 
     "@urban-ui/flex": ["@urban-ui/flex@workspace:packages/layout/flex"],
 

@@ -3,7 +3,7 @@
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { Icon } from '@urban-ui/icon'
-import { ListBox } from '@urban-ui/listbox'
+import { Dropdown } from '@urban-ui/dropdown'
 import { Popover, type PopoverWidth } from '@urban-ui/popover'
 import { radii } from '@urban-ui/theme/borders.stylex'
 import { base, critical, tone } from '@urban-ui/theme/colors.stylex'
@@ -163,9 +163,9 @@ export function Select<T extends object>({
         </Icon>
       </AriaButton>
       <Popover width={width}>
-        <ListBox items={items} size={size} variant="dialog">
+        <Dropdown items={items} size={size}>
           {children}
-        </ListBox>
+        </Dropdown>
       </Popover>
     </AriaSelect>
   )
