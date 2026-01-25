@@ -16,6 +16,7 @@ const headerStyles = stylex.create({
     justifyContent: 'center',
     paddingInline: space['100'],
     color: tone.fgLo,
+    userSelect: 'none',
   },
 })
 
