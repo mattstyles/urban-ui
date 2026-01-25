@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 
 import { Select } from './select'
 import { SelectItem } from './select-item'
@@ -34,6 +34,7 @@ describe('Select', () => {
       </Select>,
     )
 
-    expect(screen.getByText('Option B')).toBeInTheDocument()
+    const trigger = screen.getByRole('button')
+    expect(within(trigger).getByText('Option B')).toBeInTheDocument()
   })
 })
