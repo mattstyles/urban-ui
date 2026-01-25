@@ -1,7 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { Flex } from '@urban-ui/flex'
-import { ListBox, ListBoxItem } from '@urban-ui/listbox'
 import { Select, SelectItem } from '@urban-ui/select'
 import { Text } from '@urban-ui/text'
 import { radii } from '@urban-ui/theme/borders.stylex'
@@ -30,11 +29,6 @@ const styles = stylex.create({
   },
   truncateSelect: {
     width: 200,
-  },
-  listBox: {
-    backgroundColor: surface.base,
-    borderRadius: radii.md,
-    minWidth: 200,
   },
 })
 
@@ -231,52 +225,6 @@ function SelectPatterns() {
           </SelectItem>
           <SelectItem id="none">No notifications at all</SelectItem>
         </Select>
-      </Flex>
-
-      {/* Multiple Selection */}
-      <Flex direction="v" gap="200" style={styles.container}>
-        <Text size="lg" weight="semibold">
-          Multiple Selection
-        </Text>
-        <Text size="sm" color="lo">
-          React Aria's Select only supports single selection. For multiple
-          selection, use ListBox directly with selectionMode="multiple".
-        </Text>
-        <ListBox
-          aria-label="Favorite fruits"
-          selectionMode="multiple"
-          style={styles.listBox}
-        >
-          <ListBoxItem id="apple">Apple</ListBoxItem>
-          <ListBoxItem id="banana">Banana</ListBoxItem>
-          <ListBoxItem id="cherry">Cherry</ListBoxItem>
-          <ListBoxItem id="date">Date</ListBoxItem>
-          <ListBoxItem id="elderberry">Elderberry</ListBoxItem>
-          <ListBoxItem id="fig">Fig</ListBoxItem>
-        </ListBox>
-      </Flex>
-
-      {/* Multiple Selection with Default */}
-      <Flex direction="v" gap="200" style={styles.container}>
-        <Text size="lg" weight="semibold">
-          Multiple Selection with Default Values
-        </Text>
-        <Text size="sm" color="lo">
-          ListBox with pre-selected default values.
-        </Text>
-        <ListBox
-          aria-label="Select toppings"
-          selectionMode="multiple"
-          defaultSelectedKeys={['cheese', 'pepperoni']}
-          style={styles.listBox}
-        >
-          <ListBoxItem id="cheese">Cheese</ListBoxItem>
-          <ListBoxItem id="pepperoni">Pepperoni</ListBoxItem>
-          <ListBoxItem id="mushrooms">Mushrooms</ListBoxItem>
-          <ListBoxItem id="olives">Olives</ListBoxItem>
-          <ListBoxItem id="onions">Onions</ListBoxItem>
-          <ListBoxItem id="peppers">Peppers</ListBoxItem>
-        </ListBox>
       </Flex>
     </Flex>
   )
