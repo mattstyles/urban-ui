@@ -40,9 +40,7 @@ export function MenuTrigger({
   return (
     <AriaMenuTrigger {...props}>
       {trigger}
-      <Popover placement="bottom start" style={popoverStyle}>
-        {menu}
-      </Popover>
+      <Popover style={popoverStyle}>{menu}</Popover>
     </AriaMenuTrigger>
   )
 }
