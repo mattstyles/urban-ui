@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@urban-ui/icon": "workspace:*",
+    "@urban-ui/popover": "workspace:*",
     "@urban-ui/text": "workspace:*",
     "@urban-ui/theme": "workspace:*"
   },

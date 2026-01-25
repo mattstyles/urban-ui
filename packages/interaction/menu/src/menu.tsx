@@ -36,24 +36,23 @@ export interface MenuProps<T extends object>
   size?: MenuSize
 
   /**
-   * Additional styles to apply
+   * Additional styles to apply to the menu
    */
   style?: StyleXStyles
 }
 
 /**
- * Menu container managing items, selection, and keyboard navigation.
+ * Menu container for items, selection, and keyboard navigation.
+ * Place inside a Popover within MenuTrigger or SubmenuTrigger.
  *
  * @example
  * ```tsx
  * <MenuTrigger>
  *   <Button>Actions</Button>
- *   <Popover>
- *     <Menu>
- *       <MenuItem onAction={() => console.log('cut')}>Cut</MenuItem>
- *       <MenuItem onAction={() => console.log('copy')}>Copy</MenuItem>
- *     </Menu>
- *   </Popover>
+ *   <Menu>
+ *     <MenuItem onAction={() => console.log('cut')}>Cut</MenuItem>
+ *     <MenuItem onAction={() => console.log('copy')}>Copy</MenuItem>
+ *   </Menu>
  * </MenuTrigger>
  * ```
  */
@@ -65,7 +64,10 @@ export function Menu<T extends object>({
 }: MenuProps<T>) {
   return (
     <MenuProvider size={size}>
-      <AriaMenu {...props} {...stylex.props(styles.menu, sizeStyles[size], style)}>
+      <AriaMenu
+        {...props}
+        {...stylex.props(styles.menu, sizeStyles[size], style)}
+      >
         {children}
       </AriaMenu>
     </MenuProvider>
