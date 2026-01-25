@@ -24,6 +24,12 @@ const styles = stylex.create({
   wideSelect: {
     minWidth: 280,
   },
+  dateSelect: {
+    width: 120,
+  },
+  truncateSelect: {
+    width: 200,
+  },
 })
 
 function SelectPatterns() {
@@ -162,13 +168,20 @@ function SelectPatterns() {
           Multiple select components working together.
         </Text>
         <Flex gap="200" wrap="wrap">
-          <Select aria-label="Year" placeholder="Year">
-            <SelectItem id="2024">2024</SelectItem>
-            <SelectItem id="2025">2025</SelectItem>
-            <SelectItem id="2026">2026</SelectItem>
+          <Select aria-label="Day" placeholder="Day" style={styles.dateSelect}>
+            <SelectItem id="1">1</SelectItem>
+            <SelectItem id="2">2</SelectItem>
+            <SelectItem id="3">3</SelectItem>
+            <SelectItem id="15">15</SelectItem>
+            <SelectItem id="28">28</SelectItem>
+            <SelectItem id="30">30</SelectItem>
           </Select>
 
-          <Select aria-label="Month" placeholder="Month">
+          <Select
+            aria-label="Month"
+            placeholder="Month"
+            style={styles.dateSelect}
+          >
             <SelectItem id="jan">January</SelectItem>
             <SelectItem id="feb">February</SelectItem>
             <SelectItem id="mar">March</SelectItem>
@@ -177,15 +190,37 @@ function SelectPatterns() {
             <SelectItem id="jun">June</SelectItem>
           </Select>
 
-          <Select aria-label="Day" placeholder="Day">
-            <SelectItem id="1">1</SelectItem>
-            <SelectItem id="2">2</SelectItem>
-            <SelectItem id="3">3</SelectItem>
-            <SelectItem id="15">15</SelectItem>
-            <SelectItem id="28">28</SelectItem>
-            <SelectItem id="30">30</SelectItem>
+          <Select aria-label="Year" placeholder="Year" style={styles.dateSelect}>
+            <SelectItem id="2024">2024</SelectItem>
+            <SelectItem id="2025">2025</SelectItem>
+            <SelectItem id="2026">2026</SelectItem>
           </Select>
         </Flex>
+      </Flex>
+
+      {/* Item Truncation */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Item Truncation
+        </Text>
+        <Text size="sm" color="lo">
+          Long option text is truncated with ellipsis when it exceeds the
+          available width.
+        </Text>
+        <Select
+          aria-label="Notification Preference"
+          placeholder="Select preference"
+          style={styles.truncateSelect}
+        >
+          <SelectItem id="all">All notifications enabled</SelectItem>
+          <SelectItem id="important">
+            Important notifications and mentions only
+          </SelectItem>
+          <SelectItem id="direct">
+            Direct messages and replies to my posts
+          </SelectItem>
+          <SelectItem id="none">No notifications at all</SelectItem>
+        </Select>
       </Flex>
     </Flex>
   )
