@@ -30,6 +30,10 @@ export default defineConfig({
     trace: 'on-first-retry',
     ctPort: 3100,
     ctViteConfig: {
+      // Note: @stylexswc/unplugin specifies vite v7 as a direct dependency,
+      // but @playwright/experimental-ct-react tops out at vite v6.
+      // This causes a type mismatch on the plugins array but has no runtime effect.
+      // Tracking as external dependency issue - no action required.
       plugins: [
         react(),
         stylexPlugin({
