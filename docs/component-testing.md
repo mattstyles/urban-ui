@@ -132,15 +132,21 @@ Add these scripts to the root `package.json` for convenience:
 ```json
 {
   "scripts": {
-    "test:visual": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.50.0-noble npx playwright test --project=visual",
-    "test:visual:update": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.50.0-noble npx playwright test --project=visual --update-snapshots"
+    "test:visual": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.50.0-noble bunx playwright test --project=visual",
+    "test:visual:update": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.50.0-noble bunx playwright test --project=visual --update-snapshots"
   }
 }
 ```
 
 ### Writing Visual Tests
 
-Visual tests use Playwright's experimental component testing with `toHaveScreenshot()`:
+Playwright provides two relevant features for visual testing:
+
+1. **`toHaveScreenshot()`** - A stable assertion from `@playwright/test` that captures and compares screenshots. This is the core visual comparison API.
+
+2. **Component Testing (`mount()`)** - An [experimental feature](https://playwright.dev/docs/test-components) from `@playwright/experimental-ct-react` that lets you render React components directly in a real browser without spinning up a dev server.
+
+We use experimental component testing because it's convenient for a component library - we can mount components in isolation without creating test pages. The `toHaveScreenshot()` assertion itself is stable.
 
 ```tsx
 import { test, expect } from '@playwright/experimental-ct-react'
