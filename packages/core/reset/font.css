@@ -1,0 +1,16 @@
+/*
+ * Font Stack Defaults
+ * Sets up CSS custom properties that urban-ui font tokens alias to.
+ * Import this file to provide sensible font defaults.
+ */
+
+:root {
+  --font-display: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+}

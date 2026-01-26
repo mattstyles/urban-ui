@@ -4,7 +4,8 @@
   "private": true,
   "license": "MIT",
   "files": [
-    "reset.css"
+    "reset.css",
+    "font.css"
   ],
   "sideEffects": true
 }

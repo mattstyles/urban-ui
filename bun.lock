@@ -205,6 +205,7 @@
         "@types/node": "^24",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "@urban-ui/reset": "workspace:*",
         "@urban-ui/test-utils": "workspace:*",
         "@urban-ui/tsconfig": "workspace:*",
         "@vitejs/plugin-react": "^4.2.1",
