@@ -1,0 +1,15 @@
+services:
+  visual-test:
+    image: mcr.microsoft.com/playwright:v1.58.0-noble
+    working_dir: /work
+    ipc: host
+    volumes:
+      - .:/work
+      - visual_test_node_modules:/work/node_modules
+    environment:
+      - CI=${CI:-false}
+    entrypoint: ["sh", "-c", "npm install -g bun && bun install && exec \"$@\"", "--"]
+
+volumes:
+  visual_test_node_modules:
+    name: urban-ui-visual-test-node-modules
