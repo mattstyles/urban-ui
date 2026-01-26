@@ -204,6 +204,7 @@
         "@types/node": "^24",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "@urban-ui/test-utils": "workspace:*",
         "@urban-ui/tsconfig": "workspace:*",
         "@vitejs/plugin-react": "^4.2.1",
         "del-cli": "^6.0.0",
@@ -820,6 +821,25 @@
       "peerDependencies": {
         "@stylexjs/open-props": "0.11.1",
         "@stylexjs/stylex": "^0.17.5",
+        "react": "19.2.3",
+      },
+    },
+    "packages/utility/test-utils": {
+      "name": "@urban-ui/test-utils",
+      "version": "0.1.0",
+      "devDependencies": {
+        "@rsbuild/plugin-react": "1.4.2",
+        "@rslib/core": "0.19.2",
+        "@types/node": "^24",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@urban-ui/tsconfig": "workspace:*",
+        "bun-types": "^1.3.6",
+        "del-cli": "^6.0.0",
+        "react": "19.2.3",
+        "typescript": "^5.9.3",
+      },
+      "peerDependencies": {
         "react": "19.2.3",
       },
     },
@@ -1943,6 +1963,8 @@
     "@urban-ui/tag": ["@urban-ui/tag@workspace:packages/feedback/tag"],
 
     "@urban-ui/test": ["@urban-ui/test@workspace:packages/utility/test"],
+
+    "@urban-ui/test-utils": ["@urban-ui/test-utils@workspace:packages/utility/test-utils"],
 
     "@urban-ui/test2": ["@urban-ui/test2@workspace:packages/utility/test2"],
 
