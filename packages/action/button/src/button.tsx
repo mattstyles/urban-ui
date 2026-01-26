@@ -2,11 +2,22 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
-import { shapes, sizes, styles, variants } from '@urban-ui/styles/button'
-import { Text } from '@urban-ui/text'
+import {
+  content,
+  shapes,
+  sizes,
+  styles,
+  variants,
+} from '@urban-ui/styles/button'
 import { themes } from '@urban-ui/theme'
+import { base } from '@urban-ui/theme/colors.stylex'
+import { useMemo } from 'react'
 import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
-import { Button as AriaButton } from 'react-aria-components'
+import {
+  Button as AriaButton,
+  composeRenderProps,
+  ProgressBar,
+} from 'react-aria-components'
 
 const tones = {
   neutral: themes.neutral,
@@ -18,10 +29,43 @@ const tones = {
   info: themes.info,
 }
 
-export interface ButtonProps
-  extends Omit<AriaButtonProps, 'style'>,
-    React.RefAttributes<HTMLButtonElement>,
-    Partial<Pick<HTMLButtonElement, 'disabled'>> {
+const pendingStyles = stylex.create({
+  pending: {
+    pointerEvents: 'none',
+  },
+  content: {
+    display: 'flex',
+  },
+  contentHidden: {
+    // display: 'contents',
+    opacity: 0,
+  },
+  spinnerContainer: {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  spinner: {
+    width: '1em',
+    height: '1em',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: base.current,
+    borderTopColor: base.transparent,
+    borderRadius: '50%',
+    animationName: stylex.keyframes({
+      from: { transform: 'rotate(0deg)' },
+      to: { transform: 'rotate(360deg)' },
+    }),
+    animationDuration: '0.8s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+  },
+})
+
+export interface ButtonProps extends Omit<AriaButtonProps, 'style'> {
   /**
    * Visual variant
    * @default 'solid'
@@ -30,7 +74,7 @@ export interface ButtonProps
 
   /**
    * Color tone
-   * @default 'neutral'
+   * @default 'primary'
    */
   tone?: keyof typeof tones
 
@@ -50,6 +94,25 @@ export interface ButtonProps
    * Additional styles to apply
    */
   style?: StyleXStyles
+
+  /**
+   * Whether the button is disabled (standard HTML attribute).
+   * Alias for isDisabled.
+   */
+  disabled?: boolean
+}
+
+const sizeMap: Record<keyof typeof sizes, StyleXStyles> = {
+  md: sizes.md,
+  lg: sizes.lg,
+  'md-equal': sizes['md-equal'],
+  'lg-equal': sizes['lg-equal'],
+}
+const contentSizeMap: Record<keyof typeof sizes, StyleXStyles> = {
+  md: content.md,
+  lg: content.lg,
+  'md-equal': content['md-equal'],
+  'lg-equal': content['lg-equal'],
 }
 
 /**
@@ -57,30 +120,56 @@ export interface ButtonProps
  * Provides consistent styling with the Urban UI design system.
  */
 export function Button({
-  children,
   variant = 'solid',
   tone = 'primary',
   size = 'md',
   shape = 'rounded',
   style,
+  disabled,
+  isDisabled,
+  children,
   ...props
 }: ButtonProps) {
+  const [baseSize, contentSize] = useMemo(() => {
+    return [sizeMap[size], contentSizeMap[size]]
+  }, [size])
+
   return (
     <AriaButton
       {...props}
-      isDisabled={props.isDisabled || props.disabled}
-      {...stylex.props([
+      isDisabled={isDisabled ?? disabled}
+      {...stylex.props(
         styles.base,
-        styles.content,
-        sizes[size],
+        baseSize,
         shapes[shape],
         variants[variant],
         tones[tone],
         styles.disabled,
+        props.isPending && pendingStyles.pending,
         style,
-      ])}
+      )}
     >
-      {children}
+      {composeRenderProps(children, (children, { isPending }) => (
+        <>
+          <span
+            {...stylex.props(
+              content.base,
+              contentSize,
+              variant === 'clear' && content.clear,
+              isPending && content.hidden,
+            )}
+          >
+            {children}
+          </span>
+          {isPending && (
+            <ProgressBar aria-label="Loading" isIndeterminate>
+              <span {...stylex.props(pendingStyles.spinnerContainer)}>
+                <span {...stylex.props(pendingStyles.spinner)} />
+              </span>
+            </ProgressBar>
+          )}
+        </>
+      ))}
     </AriaButton>
   )
 }

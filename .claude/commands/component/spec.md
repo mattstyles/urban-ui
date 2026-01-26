@@ -278,10 +278,9 @@ Use these categories for file structure:
 - `action/` - Buttons, toggles, interactive actions
 - `input/` - Form inputs, text fields, checkboxes
 - `interaction/` - Select, combobox, menus
-- `layout/` - Containers, grids, dividers
+- `layout/` - Containers, grids, dividers, Modals, popovers, tooltips
 - `feedback/` - Alerts, toasts, progress
 - `navigation/` - Tabs, breadcrumbs, links
-- `utility/` - Modals, popovers, tooltips
 
 If the new component does not fit into one of these categories, then we need to prompt for a new category type, or, at least, confirm the category at the end of the flow.
 

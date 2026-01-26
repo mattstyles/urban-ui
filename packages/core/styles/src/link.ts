@@ -1,12 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
-import {
-  borderStyles,
-  borderWidths,
-  radii,
-} from '@urban-ui/theme/borders.stylex'
 import { base, disabled, tone } from '@urban-ui/theme/colors.stylex'
 import { focusVars } from '@urban-ui/theme/focus.stylex'
-import { space } from '@urban-ui/theme/layout.stylex'
 import { fontWeights } from '@urban-ui/theme/type.stylex'
 
 export const styles = stylex.create({

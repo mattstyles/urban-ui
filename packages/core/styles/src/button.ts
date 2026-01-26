@@ -15,10 +15,14 @@ export const styles = stylex.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    position: 'relative',
+    padding: space[0],
     borderColor: base.transparent,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
     textDecoration: 'none',
+    fontWeight: fontWeights.semibold,
+    fontSize: fontSizes.md,
     transition:
       'background 0.2s, border-color 0.2s, color 0.2s, transform 0.1s ease-out',
     ':is([data-pressed], :active)': {
@@ -34,24 +38,59 @@ export const styles = stylex.create({
       zIndex: 1,
     },
   },
-  content: {
-    fontWeight: fontWeights.semibold,
-    fontSize: fontSizes.md,
-  },
   disabled: {
-    ':disabled': {
+    ':is(:disabled, [data-disabled])': {
       backgroundColor: disabled.background,
       color: disabled.fg,
+      borderColor: base.transparent,
       cursor: 'not-allowed',
       opacity: 0.5,
     },
-    ':disabled:hover': {
+    ':is(:disabled, [data-disabled]):hover': {
       backgroundColor: disabled.background,
       color: disabled.fg,
     },
-    ':disabled:active': {
+    ':is(:disabled, [data-disabled]):active': {
       transform: 'scale(1)',
     },
+  },
+})
+
+export const content = stylex.create({
+  base: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'opacity 0.2s',
+    opacity: 1,
+  },
+  hidden: {
+    transition: 'opacity 0s',
+    opacity: 0,
+  },
+  md: {
+    gap: space['100'],
+    paddingInline: space['200'],
+    paddingBlock: space['25'],
+  },
+  lg: {
+    gap: space['100'],
+    paddingInline: space['300'],
+    paddingBlock: space['50'],
+  },
+  'md-equal': {
+    gap: space[0],
+    paddingInline: space['50'],
+    paddingBlock: space['50'],
+  },
+  'lg-equal': {
+    gap: space[0],
+    paddingInline: space['100'],
+    paddingBlock: space['100'],
+  },
+  clear: {
+    paddingBlock: space[0],
+    gap: space[0],
   },
 })
 
@@ -64,28 +103,28 @@ export const sizes = stylex.create({
     fontSize: fontSizes.sm,
     // This is to provide a consistent height as we do not enforce cap heights for controls
     lineHeight: fontSizes.md,
-    gap: space['100'],
-    paddingInline: space['200'],
-    paddingBlock: space['50'],
+    // gap: space['100'],
+    // paddingInline: space['200'],
+    // paddingBlock: space['50'],
     minHeight: control.md,
   },
   lg: {
     fontSize: fontSizes.md,
     lineHeight: fontSizes.lg,
-    gap: space['100'],
-    paddingInline: space['300'],
-    paddingBlock: space['100'],
+    // gap: space['100'],
+    // paddingInline: space['300'],
+    // paddingBlock: space['100'],
     minHeight: control.lg,
   },
   'md-equal': {
-    paddingInline: space['50'],
-    paddingBlock: space['50'],
+    // paddingInline: space['50'],
+    // paddingBlock: space['50'],
     minHeight: control.md,
     minWidth: control.md,
   },
   'lg-equal': {
-    paddingInline: space['100'],
-    paddingBlock: space['100'],
+    // paddingInline: space['100'],
+    // paddingBlock: space['100'],
     minHeight: control.lg,
     minWidth: control.lg,
   },
