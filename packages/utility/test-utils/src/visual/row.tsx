@@ -12,7 +12,7 @@ export interface RowProps {
  */
 export function Row({ children, gap = 12, align = 'center' }: RowProps) {
   return (
-    <div style={{ display: 'flex', alignItems: align, gap }}>
+    <div style={{ display: 'flex', alignItems: align, gap, width: 'fit-content' }}>
       {children}
     </div>
   )
