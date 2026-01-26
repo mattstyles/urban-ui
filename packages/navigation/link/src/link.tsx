@@ -88,8 +88,9 @@ export function Link({
         {...props}
         {...stylex.props([
           buttonStyles.styles.base,
-          buttonStyles.styles.content,
           buttonStyles.variants[buttonVariant],
+          buttonStyles.content.base,
+          size ? buttonStyles.content[size] : buttonStyles.content.md,
           size ? buttonStyles.sizes[size] : buttonStyles.sizes.md,
           shape ? buttonStyles.shapes[shape] : buttonStyles.shapes.rounded,
           tone ? tones[tone] : undefined,
