@@ -93,7 +93,7 @@ Playwright provides official Docker images based on Ubuntu with all browsers pre
 Use the official Playwright image, pinned to match your installed Playwright version:
 
 ```bash
-docker pull mcr.microsoft.com/playwright:v1.50.0-noble
+docker pull mcr.microsoft.com/playwright:v1.58.0-noble
 ```
 
 **Important**: The Docker image version must match your project's Playwright version exactly. If they differ, Playwright cannot locate browser executables.
@@ -106,7 +106,7 @@ docker run --rm -it \
   --ipc=host \
   -v $(pwd):/work \
   -w /work \
-  mcr.microsoft.com/playwright:v1.50.0-noble \
+  mcr.microsoft.com/playwright:v1.58.0-noble \
   npx playwright test --project=visual
 
 # Update baseline screenshots
@@ -114,7 +114,7 @@ docker run --rm -it \
   --ipc=host \
   -v $(pwd):/work \
   -w /work \
-  mcr.microsoft.com/playwright:v1.50.0-noble \
+  mcr.microsoft.com/playwright:v1.58.0-noble \
   npx playwright test --project=visual --update-snapshots
 ```
 
@@ -132,8 +132,8 @@ Add these scripts to the root `package.json` for convenience:
 ```json
 {
   "scripts": {
-    "test:visual": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.50.0-noble bunx playwright test --project=visual",
-    "test:visual:update": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.50.0-noble bunx playwright test --project=visual --update-snapshots"
+    "test:visual": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.58.0-noble bunx playwright test --project=visual",
+    "test:visual:update": "docker run --rm -it --ipc=host -v $(pwd):/work -w /work mcr.microsoft.com/playwright:v1.58.0-noble bunx playwright test --project=visual --update-snapshots"
   }
 }
 ```
@@ -149,32 +149,68 @@ Playwright provides two relevant features for visual testing:
 We use experimental component testing because it's convenient for a component library - we can mount components in isolation without creating test pages. The `toHaveScreenshot()` assertion itself is stable.
 
 ```tsx
-import { test, expect } from '@playwright/experimental-ct-react'
-import { Button } from './button'
+import { expect, test } from '@playwright/experimental-ct-react'
+import { Row } from '@urban-ui/test-utils/visual'
 
-test.describe('Button visual', () => {
-  test('default appearance', async ({ mount }) => {
-    const component = await mount(<Button>Click me</Button>)
-    await expect(component).toHaveScreenshot('button-default.png')
+import { Component } from './component'
+
+test.describe('Component visual', () => {
+  // Grouped: static properties
+  test('variants', async ({ mount }) => {
+    const component = await mount(
+      <Row>
+        <Component variant="solid">Solid</Component>
+        <Component variant="muted">Muted</Component>
+        <Component variant="outline">Outline</Component>
+      </Row>,
+    )
+    await expect(component).toHaveScreenshot('component-variants.png')
   })
 
-  test('primary tone', async ({ mount }) => {
-    const component = await mount(<Button tone="primary">Primary</Button>)
-    await expect(component).toHaveScreenshot('button-primary.png')
-  })
-
+  // Individual: interactive states
   test('hover state', async ({ mount }) => {
-    const component = await mount(<Button>Hover me</Button>)
+    const component = await mount(<Component>Hover me</Component>)
     await component.hover()
-    await expect(component).toHaveScreenshot('button-hover.png')
-  })
-
-  test('disabled state', async ({ mount }) => {
-    const component = await mount(<Button isDisabled>Disabled</Button>)
-    await expect(component).toHaveScreenshot('button-disabled.png')
+    await expect(component).toHaveScreenshot('component-hover.png')
   })
 })
 ```
+
+The `Row` component from `@urban-ui/test-utils/visual` provides consistent layout for grouped screenshots. Playwright component testing requires wrapper components to be defined outside test files, which is why we use a shared utility.
+
+### Screenshot Grouping Strategy
+
+We use a **hybrid approach** for organizing visual tests:
+
+| Category | Strategy | Rationale |
+|----------|----------|-----------|
+| Static properties (variants, tones, sizes, shapes) | **Grouped** into single screenshots | These change together during design updates; easier to review side-by-side |
+| Interactive states (hover, focus, disabled, pending) | **Individual** screenshots | These can regress independently; clearer failure isolation |
+
+**Grouped screenshots** render multiple component variations in a row:
+
+```
+┌─────────┬─────────┬─────────┬─────────┬─────────┐
+│  Solid  │  Muted  │ Outline │  Ghost  │  Clear  │
+└─────────┴─────────┴─────────┴─────────┴─────────┘
+```
+
+This results in fewer files while maintaining clear test coverage. For example, a component with variants, tones, sizes, and interactive states:
+
+```
+component-variants.png    → all variants in a row
+component-tones.png       → all tones in a row
+component-sizes.png       → all sizes in a row
+component-hover.png       → single hover state
+component-focus.png       → single focus state
+component-disabled.png    → single disabled state
+```
+
+**Benefits:**
+- Faster visual review - see related variants at a glance
+- Fewer files to manage
+- Design changes update one grouped screenshot rather than many individual ones
+- Interactive state failures remain isolated and easy to debug
 
 ### Screenshot Configuration
 
@@ -211,19 +247,21 @@ export default defineConfig({
 
 ### Screenshot Organization
 
-Screenshots are stored alongside tests in a `__snapshots__` directory:
+Screenshots are stored in a `__snapshots__` directory at the package root:
 
 ```
-packages/action/button/
+packages/category/component/
 ├── src/
-│   ├── button.tsx
-│   ├── button.test.tsx           # Jest functional tests
-│   └── button.visual.test.tsx    # Playwright visual tests
+│   ├── component.tsx
+│   ├── component.test.tsx           # Jest functional tests
+│   └── component.visual.test.tsx    # Playwright visual tests
 └── __snapshots__/
-    ├── button-default.png
-    ├── button-primary.png
-    ├── button-hover.png
-    └── button-disabled.png
+    ├── component-variants.png       # Grouped: all variants
+    ├── component-tones.png          # Grouped: all tones
+    ├── component-sizes.png          # Grouped: all sizes
+    ├── component-hover.png          # Individual: hover state
+    ├── component-focus.png          # Individual: focus state
+    └── component-disabled.png       # Individual: disabled state
 ```
 
 ### Workflow
@@ -236,8 +274,8 @@ packages/action/button/
 
 ### Best Practices
 
-- **Test components in isolation** - One component per screenshot, minimal context
-- **Use descriptive names** - `button-primary-hover.png` not `screenshot-1.png`
+- **Group static, isolate interactive** - Combine variants/tones/sizes in rows; keep hover/focus/disabled separate
+- **Use descriptive names** - `component-variants.png`, `component-hover.png` not `screenshot-1.png`
 - **Set reasonable thresholds** - A few pixels of variance is normal
 - **Separate visual from functional** - Use `.visual.test.tsx` suffix
 - **Review diffs carefully** - Understand why screenshots changed before updating
@@ -254,7 +292,7 @@ jobs:
   visual-tests:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.50.0-noble
+      image: mcr.microsoft.com/playwright:v1.58.0-noble
       options: --ipc=host
     steps:
       - uses: actions/checkout@v4
