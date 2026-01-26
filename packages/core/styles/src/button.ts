@@ -39,17 +39,18 @@ export const styles = stylex.create({
     fontSize: fontSizes.md,
   },
   disabled: {
-    ':disabled': {
+    ':is(:disabled, [data-disabled])': {
       backgroundColor: disabled.background,
       color: disabled.fg,
+      borderColor: base.transparent,
       cursor: 'not-allowed',
       opacity: 0.5,
     },
-    ':disabled:hover': {
+    ':is(:disabled, [data-disabled]):hover': {
       backgroundColor: disabled.background,
       color: disabled.fg,
     },
-    ':disabled:active': {
+    ':is(:disabled, [data-disabled]):active': {
       transform: 'scale(1)',
     },
   },

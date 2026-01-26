@@ -3,21 +3,15 @@ import { Button } from './button'
 
 // Valid cases
 const validButton = <Button>Content</Button>
-const validDisabledButton = <Button disabled>Content</Button>
-const validDisabledButton2 = <Button isDisabled>Content</Button>
-// const validLinkButton = (
-//   <Button as="link" href="https://example.com">
-//     Content
-//   </Button>
-// )
-
-// @ts-expect-error href cannot be used without as="link"
-const invalidHrefButton = <Button href="https://example.com">Content</Button>
-
-// @ts-expect-error href is required when as="link" is specified
-const invalidLinkButton = <Button as="link">Content</Button>
+const validDisabledButton = <Button isDisabled>Content</Button>
+const validDisabledButton2 = <Button disabled>Content</Button>
 
 // Type tests
+expectTypeOf<typeof Button>().toBeCallableWith({
+  children: 'Content',
+  isDisabled: true,
+})
+
 expectTypeOf<typeof Button>().toBeCallableWith({
   children: 'Content',
   disabled: true,

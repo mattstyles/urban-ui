@@ -3,7 +3,6 @@
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import { shapes, sizes, styles, variants } from '@urban-ui/styles/button'
-import { Text } from '@urban-ui/text'
 import { themes } from '@urban-ui/theme'
 import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
 import { Button as AriaButton } from 'react-aria-components'
@@ -18,10 +17,7 @@ const tones = {
   info: themes.info,
 }
 
-export interface ButtonProps
-  extends Omit<AriaButtonProps, 'style'>,
-    React.RefAttributes<HTMLButtonElement>,
-    Partial<Pick<HTMLButtonElement, 'disabled'>> {
+export interface ButtonProps extends Omit<AriaButtonProps, 'style'> {
   /**
    * Visual variant
    * @default 'solid'
@@ -30,7 +26,7 @@ export interface ButtonProps
 
   /**
    * Color tone
-   * @default 'neutral'
+   * @default 'primary'
    */
   tone?: keyof typeof tones
 
@@ -50,6 +46,12 @@ export interface ButtonProps
    * Additional styles to apply
    */
   style?: StyleXStyles
+
+  /**
+   * Whether the button is disabled (standard HTML attribute).
+   * Alias for isDisabled.
+   */
+  disabled?: boolean
 }
 
 /**
@@ -57,19 +59,20 @@ export interface ButtonProps
  * Provides consistent styling with the Urban UI design system.
  */
 export function Button({
-  children,
   variant = 'solid',
   tone = 'primary',
   size = 'md',
   shape = 'rounded',
   style,
+  disabled,
+  isDisabled,
   ...props
 }: ButtonProps) {
   return (
     <AriaButton
       {...props}
-      isDisabled={props.isDisabled || props.disabled}
-      {...stylex.props([
+      isDisabled={isDisabled ?? disabled}
+      {...stylex.props(
         styles.base,
         styles.content,
         sizes[size],
@@ -77,11 +80,9 @@ export function Button({
         variants[variant],
         tones[tone],
         styles.disabled,
-        style,
-      ])}
-    >
-      {children}
-    </AriaButton>
+        style
+      )}
+    />
   )
 }
 Button.displayName = '@urban-ui/button'
