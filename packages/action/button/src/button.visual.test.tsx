@@ -73,6 +73,7 @@ test.describe('Button interactive states', () => {
 
   test('focus', async ({ mount }) => {
     const component = await mount(<Button>Focus</Button>)
+    // This actually will not work as we only use the visual state for focus-visible which we can not programmatically trigger.
     await component.focus()
     await expect(component).toHaveScreenshot('button-focus.png')
   })
