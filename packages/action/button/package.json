@@ -21,7 +21,11 @@
     "dev": "rslib build --watch --no-clean",
     "build": "rslib build",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:visual": "playwright test -c playwright-ct.config.ts",
+    "test:visual:update": "playwright test -c playwright-ct.config.ts --update-snapshots",
+    "test:visual:docker": "docker compose -f ../../../docker-compose.yml run --rm -w /work/packages/action/button visual-test bunx playwright test -c playwright-ct.config.ts",
+    "test:visual:docker:update": "docker compose -f ../../../docker-compose.yml run --rm -w /work/packages/action/button visual-test bunx playwright test -c playwright-ct.config.ts --update-snapshots"
   },
   "dependencies": {
     "@urban-ui/text": "workspace:*",
@@ -34,6 +38,10 @@
     "react-aria-components": "^1.14.0"
   },
   "devDependencies": {
+    "@playwright/experimental-ct-react": "^1.58.0",
+    "playwright": "^1.58.0",
+    "@stylexswc/unplugin": "^0.14.2",
+    "@vitejs/plugin-react": "^4.2.1",
     "react-aria-components": "^1.14.0",
     "@happy-dom/jest-environment": "^20.3.3",
     "@jest/globals": "^30.2.0",
@@ -48,12 +56,15 @@
     "@types/react-dom": "^19",
     "@rsbuild/plugin-react": "1.4.2",
     "@rslib/core": "0.19.2",
+    "@urban-ui/reset": "workspace:*",
+    "@urban-ui/test-utils": "workspace:*",
     "@urban-ui/tsconfig": "workspace:*",
     "del-cli": "^6.0.0",
     "expect-type": "^1.2.1",
     "jest": "^30.2.0",
     "jest-chain-transform": "^0.0.8",
     "react": "19.2.3",
+    "react-dom": "19.2.3",
     "typescript": "^5.9.3"
   }
 }

@@ -7,6 +7,7 @@ const rootDir = path.dirname(fileURLToPath(import.meta.url))
 export default {
   setupFilesAfterEnv: [path.join(rootDir, 'jest.setup.js')],
   testEnvironment: '@happy-dom/jest-environment',
+  testPathIgnorePatterns: ['/node_modules/', '\\.visual\\.test\\.'],
   transform: {
     '^.+\\.(ts|tsx|js|jsx|mjs|cjs|html)$': [
       'jest-chain-transform',

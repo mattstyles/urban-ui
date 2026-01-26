@@ -1,0 +1,22 @@
+import { pluginReact } from '@rsbuild/plugin-react'
+import { defineConfig } from '@rslib/core'
+
+export default defineConfig({
+  plugins: [pluginReact()],
+  lib: [
+    {
+      format: 'esm',
+      syntax: ['node 18'],
+      dts: true,
+      bundle: false,
+    },
+  ],
+  output: {
+    target: 'web',
+  },
+  source: {
+    entry: {
+      main: ['./src/**'],
+    },
+  },
+})

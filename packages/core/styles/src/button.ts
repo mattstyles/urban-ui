@@ -80,15 +80,16 @@ export const content = stylex.create({
   },
   'md-equal': {
     gap: space[0],
-    paddingInline: space['50'],
-    paddingBlock: space['50'],
+    paddingInline: space['25'],
+    paddingBlock: space['25'],
   },
   'lg-equal': {
     gap: space[0],
-    paddingInline: space['100'],
-    paddingBlock: space['100'],
+    paddingInline: space['50'],
+    paddingBlock: space['50'],
   },
   clear: {
+    paddingInline: space[0],
     paddingBlock: space[0],
     gap: space[0],
   },

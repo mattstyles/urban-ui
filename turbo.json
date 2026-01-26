@@ -26,6 +26,18 @@
     "test": {
       "outputs": []
     },
+    "test:visual": {
+      "dependsOn": ["^build"],
+      "outputs": [],
+      "cache": false,
+      "passThroughEnv": ["PLAYWRIGHT_BROWSERS_PATH"]
+    },
+    "test:visual:update": {
+      "dependsOn": ["^build"],
+      "outputs": ["__snapshots__/**"],
+      "cache": false,
+      "passThroughEnv": ["PLAYWRIGHT_BROWSERS_PATH"]
+    },
     "scaffold": {
       "dependsOn": ["^build"]
     }
