@@ -25,10 +25,27 @@ Button (AriaButton wrapper)
 ### Visual Hierarchy
 
 ```
-┌─────────────────────────────────────────┐
-│ [Icon?] Label Text [Icon?]              │
+┌─ Button ────────────────────────────────┐
+│ ┌─ [data-content] ───────────────────┐  │
+│ │ [Icon?] Label Text [Icon?]         │  │
+│ └────────────────────────────────────┘  │
+│ ┌─ ProgressBar (when isPending) ─────┐  │
+│ │ ◐ Spinner (absolute, centered)     │  │
+│ └────────────────────────────────────┘  │
 └─────────────────────────────────────────┘
 ```
+
+### Interior Content Element
+
+The Button component uses an interior `<span data-content>` element to wrap children. This element is required because:
+
+1. **Pending state overlay:** When `isPending` is true, the content must be hidden (via `opacity: 0`) while maintaining layout so the button doesn't collapse. The spinner overlays this content using absolute positioning.
+
+2. **Gap control:** The interior element provides the `gap` between child elements (e.g., icon and text). Moving gap to the button itself would affect the spinner positioning.
+
+3. **External styling target:** The `data-content` attribute allows external consumers to target the content wrapper for custom styling if needed.
+
+**Why not remove it?** We explored using CSS descendant selectors with `display: contents` on the spinner to hide children without a wrapper, but this approach doesn't work for text node children (which aren't matched by `> *` selectors).
 
 ---
 

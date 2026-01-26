@@ -4,6 +4,7 @@ import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
 import {
   content,
+  contentGap,
   shapes,
   sizes,
   styles,
@@ -108,11 +109,11 @@ const sizeMap: Record<keyof typeof sizes, StyleXStyles> = {
   'md-equal': sizes['md-equal'],
   'lg-equal': sizes['lg-equal'],
 }
-const contentSizeMap: Record<keyof typeof sizes, StyleXStyles> = {
-  md: content.md,
-  lg: content.lg,
-  'md-equal': content['md-equal'],
-  'lg-equal': content['lg-equal'],
+const gapMap: Record<keyof typeof sizes, StyleXStyles> = {
+  md: contentGap.md,
+  lg: contentGap.lg,
+  'md-equal': contentGap['md-equal'],
+  'lg-equal': contentGap['lg-equal'],
 }
 
 /**
@@ -130,8 +131,8 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const [baseSize, contentSize] = useMemo(() => {
-    return [sizeMap[size], contentSizeMap[size]]
+  const [baseSize, gapSize] = useMemo(() => {
+    return [sizeMap[size], gapMap[size]]
   }, [size])
 
   return (
@@ -152,10 +153,11 @@ export function Button({
       {composeRenderProps(children, (children, { isPending }) => (
         <>
           <span
+            data-content=""
             {...stylex.props(
               content.base,
-              contentSize,
-              variant === 'clear' && content.clear,
+              gapSize,
+              variant === 'clear' && contentGap.clear,
               isPending && content.hidden,
             )}
           >

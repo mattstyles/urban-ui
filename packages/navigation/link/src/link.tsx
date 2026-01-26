@@ -90,7 +90,7 @@ export function Link({
           buttonStyles.styles.base,
           buttonStyles.variants[buttonVariant],
           buttonStyles.content.base,
-          size ? buttonStyles.content[size] : buttonStyles.content.md,
+          size ? buttonStyles.contentGap[size] : buttonStyles.contentGap.md,
           size ? buttonStyles.sizes[size] : buttonStyles.sizes.md,
           shape ? buttonStyles.shapes[shape] : buttonStyles.shapes.rounded,
           tone ? tones[tone] : undefined,
