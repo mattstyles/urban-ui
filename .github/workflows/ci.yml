@@ -96,8 +96,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Install Bun
+        run: npm install -g bun
 
       - name: Cache dependencies
         uses: actions/cache@v4
