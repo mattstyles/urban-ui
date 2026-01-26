@@ -41,43 +41,24 @@ export default defineConfig({
           },
         }),
       ],
-      // resolve: {
-      //   alias: [
-      //     {
-      //       find: /^@urban-ui\/styles\/(.+)$/,
-      //       replacement: path.resolve(dirname, '../../core/styles/src/$1.ts'),
-      //     },
-      //     {
-      //       find: '@urban-ui/styles',
-      //       replacement: path.resolve(
-      //         dirname,
-      //         '../../core/styles/src/index.ts',
-      //       ),
-      //     },
-      //     {
-      //       find: /^@urban-ui\/theme\/(.+\.stylex)$/,
-      //       replacement: path.resolve(
-      //         dirname,
-      //         '../../core/theme/src/tokens/$1.ts',
-      //       ),
-      //     },
-      //     {
-      //       find: /^@urban-ui\/theme\/(.+)$/,
-      //       replacement: path.resolve(dirname, '../../core/theme/src/$1.ts'),
-      //     },
-      //     {
-      //       find: '@urban-ui/theme',
-      //       replacement: path.resolve(dirname, '../../core/theme/src/index.ts'),
-      //     },
-      //     {
-      //       find: '@urban-ui/text',
-      //       replacement: path.resolve(
-      //         dirname,
-      //         '../../typography/text/src/index.ts',
-      //       ),
-      //     },
-      //   ],
-      // },
+      resolve: {
+        alias: [
+          {
+            find: /^@urban-ui\/test-utils\/(.+)$/,
+            replacement: path.resolve(
+              dirname,
+              '../../utility/test-utils/src/$1/index.ts',
+            ),
+          },
+          {
+            find: '@urban-ui/test-utils',
+            replacement: path.resolve(
+              dirname,
+              '../../utility/test-utils/src/index.ts',
+            ),
+          },
+        ],
+      },
     },
   },
 
