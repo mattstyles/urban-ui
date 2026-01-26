@@ -319,6 +319,56 @@ function ButtonPatterns() {
           </Button>
         </Flex>
       </Flex>
+
+      {/* Wrapping Elements */}
+      <Flex direction="v" gap="200" style={styles.container}>
+        <Text size="lg" weight="semibold">
+          Wrapping Elements
+        </Text>
+        <Text size="sm" color="lo">
+          Use variant=&quot;clear&quot; to wrap other elements and give them
+          button behavior without adding visual styling:
+        </Text>
+        <Flex gap="300" wrap="wrap">
+          <Button
+            variant="clear"
+            onPress={() => alert('Image clicked!')}
+            aria-label="View sunset image"
+          >
+            <img
+              src="https://picsum.photos/seed/sunset/160/120"
+              alt="Sunset landscape"
+              style={{ borderRadius: 8, display: 'block' }}
+            />
+          </Button>
+          <Button
+            variant="clear"
+            onPress={() => alert('Image clicked!')}
+            aria-label="View mountain image"
+          >
+            <img
+              src="https://picsum.photos/seed/mountain/160/120"
+              alt="Mountain landscape"
+              style={{ borderRadius: 8, display: 'block' }}
+            />
+          </Button>
+          <Button
+            variant="clear"
+            onPress={() => alert('Image clicked!')}
+            aria-label="View ocean image"
+          >
+            <img
+              src="https://picsum.photos/seed/ocean/160/120"
+              alt="Ocean landscape"
+              style={{ borderRadius: 8, display: 'block' }}
+            />
+          </Button>
+        </Flex>
+        <Text size="sm" color="lo">
+          This provides keyboard navigation, focus handling, and press events
+          while letting the wrapped content control its own appearance.
+        </Text>
+      </Flex>
     </Flex>
   )
 }
