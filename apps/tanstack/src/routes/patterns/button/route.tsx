@@ -381,6 +381,57 @@ function PendingStateSection() {
         </Button>
       </Flex>
       <Text size="sm" color="lo">
+        Icon-only (md-equal):
+      </Text>
+      <Flex gap="200" wrap="wrap">
+        <Button
+          isPending={isPending}
+          onPress={handlePress}
+          tone="primary"
+          size="md-equal"
+          aria-label="Add"
+        >
+          <Icon size="md">
+            <Plus />
+          </Icon>
+        </Button>
+        <Button
+          isPending={isPending}
+          onPress={handlePress}
+          tone="positive"
+          size="md-equal"
+          aria-label="Download"
+        >
+          <Icon size="md">
+            <Download />
+          </Icon>
+        </Button>
+        <Button
+          isPending={isPending}
+          onPress={handlePress}
+          tone="critical"
+          size="md-equal"
+          variant="outline"
+          aria-label="Delete"
+        >
+          <Icon size="md">
+            <Trash2 />
+          </Icon>
+        </Button>
+        <Button
+          isPending={isPending}
+          onPress={handlePress}
+          tone="neutral"
+          size="md-equal"
+          variant="ghost"
+          aria-label="Send"
+        >
+          <Icon size="md">
+            <Send />
+          </Icon>
+        </Button>
+      </Flex>
+      <Text size="sm" color="lo">
         Always pending (static examples):
       </Text>
       <Flex gap="200" wrap="wrap">
