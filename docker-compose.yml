@@ -8,6 +8,7 @@ services:
       - visual_test_node_modules:/work/node_modules
     environment:
       - CI=${CI:-false}
+      - PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
     entrypoint: ["sh", "-c", "npm install -g bun && bun install && exec \"$@\"", "--"]
 
 volumes:
