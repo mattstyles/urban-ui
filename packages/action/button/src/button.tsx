@@ -2,10 +2,22 @@
 
 import type { StyleXStyles } from '@stylexjs/stylex'
 import * as stylex from '@stylexjs/stylex'
-import { shapes, sizes, styles, variants } from '@urban-ui/styles/button'
+import {
+  content,
+  shapes,
+  sizes,
+  styles,
+  variants,
+} from '@urban-ui/styles/button'
 import { themes } from '@urban-ui/theme'
+import { base } from '@urban-ui/theme/colors.stylex'
+import { useMemo } from 'react'
 import type { ButtonProps as AriaButtonProps } from 'react-aria-components'
-import { Button as AriaButton } from 'react-aria-components'
+import {
+  Button as AriaButton,
+  composeRenderProps,
+  ProgressBar,
+} from 'react-aria-components'
 
 const tones = {
   neutral: themes.neutral,
@@ -16,6 +28,42 @@ const tones = {
   critical: themes.critical,
   info: themes.info,
 }
+
+const pendingStyles = stylex.create({
+  pending: {
+    pointerEvents: 'none',
+  },
+  content: {
+    display: 'flex',
+  },
+  contentHidden: {
+    // display: 'contents',
+    opacity: 0,
+  },
+  spinnerContainer: {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  spinner: {
+    width: '1em',
+    height: '1em',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: base.current,
+    borderTopColor: base.transparent,
+    borderRadius: '50%',
+    animationName: stylex.keyframes({
+      from: { transform: 'rotate(0deg)' },
+      to: { transform: 'rotate(360deg)' },
+    }),
+    animationDuration: '0.8s',
+    animationTimingFunction: 'linear',
+    animationIterationCount: 'infinite',
+  },
+})
 
 export interface ButtonProps extends Omit<AriaButtonProps, 'style'> {
   /**
@@ -54,6 +102,19 @@ export interface ButtonProps extends Omit<AriaButtonProps, 'style'> {
   disabled?: boolean
 }
 
+const sizeMap: Record<keyof typeof sizes, StyleXStyles> = {
+  md: sizes.md,
+  lg: sizes.lg,
+  'md-equal': sizes['md-equal'],
+  'lg-equal': sizes['lg-equal'],
+}
+const contentSizeMap: Record<keyof typeof sizes, StyleXStyles> = {
+  md: content.md,
+  lg: content.lg,
+  'md-equal': content['md-equal'],
+  'lg-equal': content['lg-equal'],
+}
+
 /**
  * Button component built on react-aria-components.
  * Provides consistent styling with the Urban UI design system.
@@ -66,23 +127,50 @@ export function Button({
   style,
   disabled,
   isDisabled,
+  children,
   ...props
 }: ButtonProps) {
+  const [baseSize, contentSize] = useMemo(() => {
+    return [sizeMap[size], contentSizeMap[size]]
+  }, [size])
+
   return (
     <AriaButton
       {...props}
       isDisabled={isDisabled ?? disabled}
       {...stylex.props(
         styles.base,
-        styles.content,
-        sizes[size],
+        baseSize,
         shapes[shape],
         variants[variant],
         tones[tone],
         styles.disabled,
-        style
+        props.isPending && pendingStyles.pending,
+        style,
       )}
-    />
+    >
+      {composeRenderProps(children, (children, { isPending }) => (
+        <>
+          <span
+            {...stylex.props(
+              content.base,
+              contentSize,
+              variant === 'clear' && content.clear,
+              isPending && content.hidden,
+            )}
+          >
+            {children}
+          </span>
+          {isPending && (
+            <ProgressBar aria-label="Loading" isIndeterminate>
+              <span {...stylex.props(pendingStyles.spinnerContainer)}>
+                <span {...stylex.props(pendingStyles.spinner)} />
+              </span>
+            </ProgressBar>
+          )}
+        </>
+      ))}
+    </AriaButton>
   )
 }
 Button.displayName = '@urban-ui/button'

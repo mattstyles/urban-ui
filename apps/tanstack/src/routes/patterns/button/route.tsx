@@ -16,6 +16,7 @@ import {
   Send,
   Trash2,
 } from 'lucide-react'
+import { useState } from 'react'
 
 export const Route = createFileRoute('/patterns/button/')({
   component: ButtonPatterns,
@@ -198,6 +199,9 @@ function ButtonPatterns() {
         </Flex>
       </Flex>
 
+      {/* Pending State */}
+      <PendingStateSection />
+
       {/* Common Patterns */}
       <Flex direction="v" gap="200" style={styles.container}>
         <Text size="lg" weight="semibold">
@@ -314,6 +318,81 @@ function ButtonPatterns() {
             </Icon>
           </Button>
         </Flex>
+      </Flex>
+    </Flex>
+  )
+}
+
+function PendingStateSection() {
+  const [isPending, setIsPending] = useState(false)
+
+  const handlePress = () => {
+    setIsPending(true)
+    setTimeout(() => {
+      setIsPending(false)
+    }, 2000)
+  }
+
+  return (
+    <Flex direction="v" gap="200" style={styles.container}>
+      <Text size="lg" weight="semibold">
+        Pending State
+      </Text>
+      <Text size="sm" color="lo">
+        Shows a loading spinner while maintaining button dimensions. Click to
+        simulate a 2 second async operation:
+      </Text>
+      <Flex gap="200" wrap="wrap">
+        <Button isPending={isPending} onPress={handlePress} tone="primary">
+          Save Changes
+        </Button>
+        <Button
+          isPending={isPending}
+          onPress={handlePress}
+          tone="primary"
+          variant="outline"
+        >
+          Save Changes
+        </Button>
+        <Button
+          isPending={isPending}
+          onPress={handlePress}
+          tone="neutral"
+          variant="muted"
+        >
+          Save Changes
+        </Button>
+      </Flex>
+      <Text size="sm" color="lo">
+        With icons:
+      </Text>
+      <Flex gap="200" wrap="wrap">
+        <Button isPending={isPending} onPress={handlePress} tone="positive">
+          <Icon size="sm">
+            <Download />
+          </Icon>
+          Download
+        </Button>
+        <Button isPending={isPending} onPress={handlePress} tone="critical">
+          <Icon size="sm">
+            <Trash2 />
+          </Icon>
+          Delete
+        </Button>
+      </Flex>
+      <Text size="sm" color="lo">
+        Always pending (static examples):
+      </Text>
+      <Flex gap="200" wrap="wrap">
+        <Button isPending tone="primary">
+          Saving...
+        </Button>
+        <Button isPending tone="accent" variant="outline">
+          Loading
+        </Button>
+        <Button isPending tone="neutral" variant="ghost">
+          Please wait
+        </Button>
       </Flex>
     </Flex>
   )
