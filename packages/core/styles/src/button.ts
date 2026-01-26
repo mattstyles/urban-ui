@@ -89,6 +89,7 @@ export const content = stylex.create({
     paddingBlock: space['100'],
   },
   clear: {
+    paddingInline: space[0],
     paddingBlock: space[0],
     gap: space[0],
   },
