@@ -16,7 +16,8 @@ export const styles = stylex.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    padding: space[0],
+    // Padding is set by size variants (sizes.md, sizes.lg, etc.)
+    // and can be overridden by variants (e.g., clear sets padding to 0)
     borderColor: base.transparent,
     borderStyle: borderStyles.solid,
     borderWidth: borderWidths.md,
@@ -37,6 +38,8 @@ export const styles = stylex.create({
       boxShadow: `0 0 0 ${focusVars.outlineSize} ${base.white}`,
       zIndex: 1,
     },
+    // Content element layout - gap is applied to the [data-content] element
+    // while other layout properties are inherited from the button
   },
   disabled: {
     ':is(:disabled, [data-disabled])': {
@@ -56,6 +59,10 @@ export const styles = stylex.create({
   },
 })
 
+/**
+ * Content styles for the interior [data-content] element.
+ * Only controls opacity for pending state - layout is handled by button sizes.
+ */
 export const content = stylex.create({
   base: {
     display: 'flex',
@@ -68,29 +75,25 @@ export const content = stylex.create({
     transition: 'opacity 0s',
     opacity: 0,
   },
+})
+
+/**
+ * Gap styles for the interior [data-content] element, applied per size variant.
+ */
+export const contentGap = stylex.create({
   md: {
     gap: space['100'],
-    paddingInline: space['200'],
-    paddingBlock: space['25'],
   },
   lg: {
     gap: space['100'],
-    paddingInline: space['300'],
-    paddingBlock: space['50'],
   },
   'md-equal': {
     gap: space[0],
-    paddingInline: space['25'],
-    paddingBlock: space['25'],
   },
   'lg-equal': {
     gap: space[0],
-    paddingInline: space['50'],
-    paddingBlock: space['50'],
   },
   clear: {
-    paddingInline: space[0],
-    paddingBlock: space[0],
     gap: space[0],
   },
 })
@@ -98,34 +101,33 @@ export const content = stylex.create({
 /**
  * Buttons are sized by using a defined line height which matches the expected size of the icon at that size (which, in turn, is a font size). Text supplied to buttons as content can be plain strings, or set textbox to none for Text components.
  * Buttons are sized by their content and can handle overflow or differing content.
+ * Padding is applied to the button element itself, while gap is applied to the interior [data-content] element.
  */
 export const sizes = stylex.create({
   md: {
     fontSize: fontSizes.sm,
     // This is to provide a consistent height as we do not enforce cap heights for controls
     lineHeight: fontSizes.md,
-    // gap: space['100'],
-    // paddingInline: space['200'],
-    // paddingBlock: space['50'],
+    paddingInline: space['200'],
+    paddingBlock: space['25'],
     minHeight: control.md,
   },
   lg: {
     fontSize: fontSizes.md,
     lineHeight: fontSizes.lg,
-    // gap: space['100'],
-    // paddingInline: space['300'],
-    // paddingBlock: space['100'],
+    paddingInline: space['300'],
+    paddingBlock: space['50'],
     minHeight: control.lg,
   },
   'md-equal': {
-    // paddingInline: space['50'],
-    // paddingBlock: space['50'],
+    paddingInline: space['25'],
+    paddingBlock: space['25'],
     minHeight: control.md,
     minWidth: control.md,
   },
   'lg-equal': {
-    // paddingInline: space['100'],
-    // paddingBlock: space['100'],
+    paddingInline: space['50'],
+    paddingBlock: space['50'],
     minHeight: control.lg,
     minWidth: control.lg,
   },
@@ -147,8 +149,8 @@ export const variants = stylex.create({
   clear: {
     backgroundColor: base.transparent,
     color: tone.fgHi,
-    padding: space[0],
-    gap: space[0],
+    paddingInline: space[0],
+    paddingBlock: space[0],
   },
   solid: {
     backgroundColor: tone.solid,

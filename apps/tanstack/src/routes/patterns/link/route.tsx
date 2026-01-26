@@ -135,6 +135,44 @@ function LinkPatterns() {
             <RouterLink to="/">Back Home</RouterLink>
           </Link>
         </Flex>
+        <Text size="sm" color="lo">
+          With icons (tests gap styling):
+        </Text>
+        <Flex gap="200" wrap="wrap">
+          <Link href="#icon" display="button" variant="solid" tone="primary">
+            <Home size="1em" />
+            Home
+          </Link>
+          <Link href="#icon" display="button" variant="muted" tone="neutral">
+            <Settings size="1em" />
+            Settings
+          </Link>
+          <Link href="#icon" display="button" variant="outline" tone="accent">
+            <Search size="1em" />
+            Search
+          </Link>
+          <Link href="#icon" display="button" variant="ghost" tone="info">
+            <Bell size="1em" />
+            Notifications
+          </Link>
+          <Link href="#icon" display="button" variant="solid" tone="positive">
+            <User size="1em" />
+            Profile
+          </Link>
+        </Flex>
+        <Text size="sm" color="lo">
+          Icon on right side:
+        </Text>
+        <Flex gap="200" wrap="wrap">
+          <Link href="#icon" display="button" variant="solid" tone="primary">
+            Continue
+            <Search size="1em" />
+          </Link>
+          <Link href="#icon" display="button" variant="outline" tone="neutral">
+            Open Settings
+            <Settings size="1em" />
+          </Link>
+        </Flex>
       </Flex>
 
       {/* Tones */}
