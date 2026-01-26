@@ -114,6 +114,9 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Install Playwright browsers
+        run: bunx playwright install chromium
+
       - name: Build packages
         run: bun run build:ci
 
