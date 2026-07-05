@@ -1,8 +1,0 @@
-{
-  "extends": "@urban-ui/tsconfig/react-library.json",
-  "compilerOptions": {
-    "rootDir": "src"
-  },
-  "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"]
-}

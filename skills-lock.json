@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "skills": {
+    "gorilla": {
+      "source": "mattstyles/skills",
+      "sourceType": "github",
+      "skillPath": "gorilla/SKILL.md",
+      "computedHash": "ba7418ed286b392c0a0b8a64b7ddd23be52371ec387b9981490cd5f6f54e9ff3"
+    },
+    "react-aria": {
+      "source": "react-aria.adobe.com",
+      "sourceType": "well-known",
+      "computedHash": "c778864aedee25fb7dfe980f772954e13ac76cdf3ff00879dd59b72621d797ae"
+    }
+  }
+}

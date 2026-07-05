@@ -1,6 +1,9 @@
 {
+  "companyAnnouncements": [
+    "The sky above the port was the colour of television, tuned to a dead channel."
+  ],
+  "enabledMcpjsonServers": ["playwright"],
   "permissions": {
-    "ask": ["Bash(gh merge:*)"],
     "allow": [
       "Bash(git add:*)",
       "Bash(git branch:*)",
@@ -10,40 +13,47 @@
       "Bash(git worktree:*)",
       "Bash(git pull:*)",
       "Bash(git fetch:*)",
-
+      "Bash(git mv:*)",
+      "Bash(git status:*)",
       "Bash(gh pr create:*)",
       "Bash(gh pr edit:*)",
       "Bash(gh pr list:*)",
       "Bash(gh label:*)",
-
+      "Bash(gh workflow run:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run watch:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh api:*)",
+      "Bash(gh project:*)",
+      "Bash(gh pr checks:*)",
       "Bash(grep:*)",
-      "Bash(xargs:*)",
-
-      "Bash(bd:*)",
-
-      "Bash(bun run build:*)",
-      "Bash(bun run format:*)",
-      "Bash(bun run lint:*)",
-      "Bash(bun run typecheck:*)",
+      "Bash(tree:*)",
+      "Bash(wc:*)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(docker info:*)",
       "Bash(bun run:*)",
-      "Bash(bun info:*)",
-
-      "Skill(git:*)",
-      "Skill(component:*)",
-      "Skill(bump:dependencies)",
-
+      "Bash(bun install:*)",
+      "Bash(python3:*)",
+      "Bash(bd:*)",
+      "Skill(gq)",
+      "Skill(gc)",
+      "Skill(gbr)",
+      "Skill(gpr)",
       "mcp__plugin_figma_figma-desktop__get_code_connect_map",
       "mcp__plugin_figma_figma-desktop__get_design_context",
       "mcp__plugin_figma_figma-desktop__get_metadata",
       "mcp__plugin_figma_figma-desktop__get_screenshot",
       "mcp__plugin_figma_figma-desktop__get_variable_defs",
-
-      "mcp__react-aria__get_react_aria_page",
-      "mcp__react-aria__get_react_aria_page_info",
-      "mcp__react-aria__list_react_aria_pages"
-    ]
-  },
-  "enabledPlugins": {
-    "beads@beads-marketplace": true
+      "mcp__playwright__*",
+      "WebFetch(domain:react-aria.adobe.com)",
+      "WebFetch(domain:react-spectrum.adobe.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:vite.dev)",
+      "WebFetch(domain:vitest.dev)",
+      "WebFetch(domain:playwright.dev)"
+    ],
+    "ask": ["Bash(gh pr merge:*)"]
   }
 }
