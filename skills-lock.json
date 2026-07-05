@@ -1,11 +1,29 @@
 {
   "version": 1,
   "skills": {
+    "breakdown": {
+      "source": "mattstyles/skills",
+      "sourceType": "github",
+      "skillPath": "breakdown/SKILL.md",
+      "computedHash": "aed3c1e6e7847902f4bcc79d68a4f9033e55adcf24ee4d65c540c5b6b7cbf629"
+    },
     "gorilla": {
       "source": "mattstyles/skills",
       "sourceType": "github",
       "skillPath": "gorilla/SKILL.md",
       "computedHash": "ba7418ed286b392c0a0b8a64b7ddd23be52371ec387b9981490cd5f6f54e9ff3"
+    },
+    "plan": {
+      "source": "mattstyles/skills",
+      "sourceType": "github",
+      "skillPath": "plan/SKILL.md",
+      "computedHash": "db3babb0b941c9ecf8710dd9fdbf975b48c8ed7fb8f3e9204ee39f5aebb7d5ce"
+    },
+    "prd": {
+      "source": "mattstyles/skills",
+      "sourceType": "github",
+      "skillPath": "prd/SKILL.md",
+      "computedHash": "024e053c6648e50419a83802e0c4ae4b20dd8554c6350815678b4ae1bc79bb69"
     },
     "react-aria": {
       "source": "react-aria.adobe.com",
