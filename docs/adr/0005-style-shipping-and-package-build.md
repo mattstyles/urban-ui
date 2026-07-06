@@ -29,4 +29,4 @@ tags: [adr, stylex, build, publishing]
 - Precompiled-CSS-by-default is the recorded intended evolution — revisit when StyleX ships first-class library precompilation or the Astryx pattern stabilises; adopting it adds artifacts without breaking existing consumers.
 - Watch items: TypeScript 7.0 GA (emit cutover) and 7.1 (programmatic API for the extractor); StyleX `unstable_moduleResolution` stabilisation; facebook/stylex#1399 (test-time compilation of external packages) mitigations required in Vitest config.
 
-Related: [[package-anatomy]], [[0006-component-quality-stack]].
+Related: [[package-anatomy]], [[0002-package-architecture]], [[0006-component-quality-stack]].

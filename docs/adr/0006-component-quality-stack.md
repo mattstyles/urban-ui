@@ -14,7 +14,7 @@ tags: [adr, testing, workbench, visual-regression, a11y]
 
 ## Decision
 
-- **Workbench: hand-rolled `apps/playground`** (Vite) — globs `*.visual.tsx` scenes and `examples/` across packages, renders each on a stable route. It is both the dev exploration surface and the VRT render target. Published to GitHub Pages.
+- **Workbench: hand-rolled `apps/workbench`** (Vite) — globs `*.visual.tsx` scenes and `examples/` across packages, renders each on a stable route. It is both the dev exploration surface and the VRT render target. Published to GitHub Pages.
 - **Visual regression: Playwright `toHaveScreenshot` with baselines committed to the repo**, co-located per component (`__screenshots__/`, named by scene export).
   - The authoring agent regenerates baselines in its PR; GitHub's native image diff is the review UI.
   - **CI verifies reproducibility, not change**: it re-renders and fails on mismatch with committed baselines — intentional change never blocks, invisible change is impossible, doctored images can't survive.
@@ -22,13 +22,13 @@ tags: [adr, testing, workbench, visual-regression, a11y]
 - **A11y gate: `@axe-core/playwright` in the same suite** — per scene and per example, real browser, compiled StyleX (contrast is actually checked). Per-scene exception list maintained for Adobe's documented axe false-positives on react-aria. Later layer (parked): Guidepup screen-reader smokes on flagship composites.
 - **Unit/pattern tests: Vitest 4 (jsdom project)** + testing-library + `@react-aria/test-utils` pattern testers — verifies our wrappers still satisfy ARIA pattern contracts fast, without a browser. Known pins: user-event `useFocusVisible` regression; stylex#1399 (`externalPackages` / `server.deps.inline` for token packages).
 - **Static gates, orchestrated by hk** (oxlint and oxfmt are hk builtins): TypeScript 7 typecheck (native compiler, RC today); **oxlint** 1.x — note jsx-a11y coverage is partial (28 of ~37 upstream rules), so the axe browser gate remains the a11y authority; **oxfmt** (0.x beta, Prettier-conformant output, version pinned) — changed-files on commit, `--all` in CI.
-- **Manifest extraction: custom ts-morph extractor in `tooling/`** — resolves wrapped RAC prop types via the checker; no off-the-shelf tool handles this shape (verified: react-docgen punts on intersections, react-docgen-typescript drops props under `Omit`). Fallback if extraction fights us: Astryx-style curated manifest + CI drift checks.
+- **Manifest extraction: custom ts-morph extractor in `internal/`** — resolves wrapped RAC prop types via the checker; no off-the-shelf tool handles this shape (verified: react-docgen punts on intersections, react-docgen-typescript drops props under `Omit`). Fallback if extraction fights us: Astryx-style curated manifest + CI drift checks.
 
 ## Consequences
 
-- No Storybook, no VRT SaaS: fewer moving parts, no vendor risk; the costs are owning a small playground app and Docker discipline for deterministic rendering.
+- No Storybook, no VRT SaaS: fewer moving parts, no vendor risk; the costs are owning a small workbench app and Docker discipline for deterministic rendering.
 - Screenshot baselines add repo weight — accepted; plain git now, Git LFS documented as the escape hatch (with its CI-bandwidth caveat).
-- Examples are verified four ways with zero bespoke harness (typecheck, render, axe, screenshot) via the playground bridge; scene baselines gate regressions, example baselines are review evidence.
+- Examples are verified four ways with zero bespoke harness (typecheck, render, axe, screenshot) via the workbench bridge; scene baselines gate regressions, example baselines are review evidence.
 - oxfmt is pre-1.0 (pinned; Prettier-conformant output keeps Prettier/Biome as drop-in fallbacks); oxlint's type-aware mode (`oxlint-tsgolint`) is late-beta — adopt once its monorepo memory behaviour proves out. The ts-morph extractor rides the TS 6.x API until TypeScript 7.1.
 - bun test is not used for component packages (no StyleX transform; axe incompatible with happy-dom) — reassess as Bun's runner matures.
 

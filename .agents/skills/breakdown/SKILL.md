@@ -2,6 +2,7 @@
 name: breakdown
 description: Convert an accepted plan into beads issues for implementation tracking. Creates an epic and one child issue per phase with dependencies. Use when a plan is accepted and ready for implementation, or when the user says "break this down", "create beads", "set up tracking".
 argument-hint: "<plan reference, e.g. docs/plans/020-workspace-snapshots.md>"
+model: sonnet
 ---
 
 # Breakdown

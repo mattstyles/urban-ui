@@ -2,7 +2,22 @@
   "companyAnnouncements": [
     "The sky above the port was the colour of television, tuned to a dead channel."
   ],
-  "enabledMcpjsonServers": ["playwright"],
+  "enabledMcpjsonServers": [
+    "playwright"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bd prime --hook-json",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(git add:*)",
@@ -54,6 +69,8 @@
       "WebFetch(domain:vitest.dev)",
       "WebFetch(domain:playwright.dev)"
     ],
-    "ask": ["Bash(gh pr merge:*)"]
+    "ask": [
+      "Bash(gh pr merge:*)"
+    ]
   }
 }
