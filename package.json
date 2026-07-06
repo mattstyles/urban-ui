@@ -27,6 +27,7 @@
   "scripts": {},
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.4",
+    "@typescript/native-preview": "7.0.0-dev.20260706.1",
     "oxfmt": "0.57.0",
     "oxlint": "1.72.0",
     "publint": "0.3.21",
