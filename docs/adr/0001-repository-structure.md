@@ -31,16 +31,15 @@ tags: [adr, monorepo, tooling, dev-environment]
 ### Monorepo layout
 
 ```
-apps/          deployable applications (docs site, playgrounds)
-packages/      stable published packages (core, tokens) — versioned in lockstep
-labs/          experimental packages — 0.x, independently versioned
-tools/         CLIs (Rust/Go) — standalone, never build-dependencies of JS packages
-tooling/       internal-only shared config (tsconfig base, lint presets, build presets, test setup) — never published
-docs/          this documentation brain (ADRs, specs)
+apps/          deployable applications (workbench; docs site deferred)
+packages/      stable published packages (react, theme, the urban CLI) — versioned per release train
+labs/          the labs package — experimental components, 0.x, independent version line
+internal/      internal-only shared config and scripts (tsconfig base, lint presets, extractor, release scripts) — never published
+docs/          this documentation brain (ADRs, PRDs, knowledge)
 ```
 
 - The `packages/` vs `labs/` boundary is the stability tier boundary, made structural — see [[0002-package-architecture]] for the versioning and graduation model.
-- `tools/` shares the repository, CI, and mise tasks, but not the JS dependency graph.
+- Rust/Go CLIs are packages too — published products regardless of language — and live in `packages/`. They share CI and mise tasks but never join the JS dependency graph: JS packages never depend on CLI build output.
 - Apps and docs are private workspaces; they consume packages via `workspace:*` and are never published.
 
 ## Consequences
@@ -54,4 +53,4 @@ docs/          this documentation brain (ADRs, specs)
 
 - How the `urban` CLI gathers and surfaces design-system knowledge — manifests shipped inside packages vs alternatives → [[0003-urban-cli]]
 - Release strategy: intent capture and changelog assembly (meta plane) and npm/binary publish mechanics (publish plane) → [[0004-release-strategy]]
-- Deploy target for apps; npm scope; aube adoption timing.
+- npm scope; aube adoption timing; docs-site timing — the workbench deploys to GitHub Pages ([[0006-component-quality-stack]]), and `playground` is reserved as the name for the future docs site's live-preview surface.

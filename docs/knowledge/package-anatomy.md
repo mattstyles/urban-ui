@@ -4,7 +4,7 @@ tags: [conventions, packages, knowledge]
 
 # Package anatomy
 
-The contract for what every publishable package contains. This anatomy is load-bearing: it is what makes packages legible to agents, to repo tooling (extractor, validators, playground, VRT), and to the `urban` CLI ([[001-urban-cli]]). Tooling globs by these conventions and never assumes beyond them.
+The contract for what every publishable package contains. This anatomy is load-bearing: it is what makes packages legible to agents, to repo tooling (extractor, validators, workbench, VRT), and to the `urban` CLI ([[001-urban-cli]]). Tooling globs by these conventions and never assumes beyond them.
 
 ## Package layout
 
@@ -37,7 +37,7 @@ src/button/
 └── index.ts
 ```
 
-There is no spec file: **component specs live in the epic bead** (design-time intent; the `breakdown` flow creates the epic + child issues). Durable spec content graduates on completion — behavioural requirements → tests, usage intent → `button.md`, planned examples/scenes → their files. The spec template lives with the spec skill: overview, anatomy tree, API sketch, behaviour & states, styling plan, a11y contract, decisions & open questions, graduation checklist.
+There is no spec file: **the spec is a working draft in the epic bead** (the `breakdown` flow creates the epic + child issues). Beads track work and are never a knowledge source — closed beads are retained but not read ([[0007-working-model]]). Durable spec content graduates on completion: behavioural requirements → tests, usage intent → `button.md`, planned examples/scenes → their files, design decisions worth keeping → ADRs ([[adr]]). The spec template lives with the spec skill: overview, anatomy tree, API sketch, behaviour & states, styling plan, a11y contract, decisions & open questions, graduation checklist.
 
 ## Authored guidance (`<component>.md`)
 
@@ -57,11 +57,11 @@ Every component/prop/token/example name referenced in prose is validated against
 
 - Plain consumer code: real imports via the package's public exports, no framework idioms — the primary reader is an LLM learning usage.
 - Pedagogy over coverage: demonstrate each axis once; never enumerate matrices.
-- Verified four ways, all via the generated playground bridge: typecheck (against public exports), real-browser render, axe pass, committed screenshot.
+- Verified four ways, all via the generated workbench bridge: typecheck (against public exports), real-browser render, axe pass, committed screenshot.
 
 ## Visual scenes (`*.visual.tsx`)
 
-- Coverage over pedagogy: exhaustive state/prop matrices (`crossProps` helper in `tooling/`), stress cases, interaction states.
+- Coverage over pedagogy: exhaustive state/prop matrices (`crossProps` helper in `internal/`), stress cases, interaction states.
 - **One export = one screenshot** — named exports are the diff unit; adding coverage never reshuffles existing baselines.
 - Screenshot naming schema: `src/<component>/__screenshots__/<file-stem>/<export-name>.png` — stable paths keep PR image diffs meaningful.
 - Overlay scenes capture at viewport level (portals escape element roots).
@@ -69,14 +69,14 @@ Every component/prop/token/example name referenced in prose is validated against
 
 ## Manifest
 
-- Generated at build (ts-morph extractor in `tooling/`); never authored, never contains prose.
+- Generated at build (ts-morph extractor in `internal/`); never authored, never contains prose.
 - Single discovery entrypoint: `package.json` → `"urban": { "manifest": ... }`; the manifest indexes every doc, pattern, and example with published paths.
 - Carries typed graph edges extracted from wiki-links in authored prose. Direction rule: labs may link into stable; **stable never links into labs**.
 - `schemaVersion`ed; name uniqueness across components/patterns/token-groups enforced at build.
-- Doubles as the semver oracle (see release strategy) and the validation spine for all authored content.
+- Doubles as the semver oracle ([[0004-release-strategy]]) and the validation spine for all authored content.
 
 ## Definition of done (per component)
 
-spec bead accepted → implement + document + examples → tests pass → scenes + baselines committed → manifest generates; prose/example/graph validation passes → changeset filed. Every gate is PR-reviewable and agent-self-serviceable.
+spec bead accepted → implement + document + examples → tests pass → scenes + baselines committed → manifest generates; prose/example/graph validation passes → release intent filed (`.changes/`, [[0004-release-strategy]]). Every gate is PR-reviewable and agent-self-serviceable.
 
-Related: [[0001-repository-structure]], [[0005-style-shipping-and-package-build]], [[0006-component-quality-stack]], [[001-urban-cli]].
+Related: [[0001-repository-structure]], [[0002-package-architecture]], [[0005-style-shipping-and-package-build]], [[0006-component-quality-stack]], [[001-urban-cli]].

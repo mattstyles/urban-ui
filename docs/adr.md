@@ -21,13 +21,11 @@ Records live in `docs/adr/` and are numbered `NNNN-title.md`. Link between recor
 ## Records
 
 - [[0001-repository-structure]] — dev environment (mise/hk/bun), no build orchestrator, monorepo layout — **accepted**
+- [[0002-package-architecture]] — two tiers, three packages: lockstep react+theme core train, single 0.x labs package, graduation by move — **accepted**
+- [[0003-urban-cli]] — Rust, engine/frontend split, installed-first knowledge home, independent 0.x versioning on the binary train (see [[001-urban-cli]] PRD) — **accepted**
+- [[0004-release-strategy]] — custom skills+scripts release cycle: intent files on disk, deliberate release trains, AI-narrated changelogs — **accepted**
 - [[0005-style-shipping-and-package-build]] — consumer-compiles StyleX, peer-dep trio, tsc-only ESM build — **accepted**
-- [[0006-component-quality-stack]] — hand-rolled playground, committed VRT baselines via Playwright, Vitest units, oxc static gates — **accepted**
+- [[0006-component-quality-stack]] — hand-rolled workbench, committed VRT baselines via Playwright, Vitest units, oxc static gates — **accepted**
+- [[0007-working-model]] — agent-authored, human-reviewed: every gate PR-reviewable and agent-self-serviceable — **accepted**
 
-## Planned
-
-- [[0002-package-architecture]] — two-tier publish shape: lockstep core + independently versioned labs
-- [[0003-urban-cli]] — the `urban` CLI: how it gathers and surfaces design-system knowledge to AI agents (see [[001-urban-cli]] PRD)
-- [[0004-release-strategy]] — intent capture, changelog assembly, and publish mechanics for npm packages and CLI binaries
-
-Conventions notes (not ADRs): [[package-anatomy]]
+Living conventions and contracts are not ADRs — they live in the [[knowledge]] index.
