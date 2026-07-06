@@ -7,11 +7,29 @@
       "skillPath": "breakdown/SKILL.md",
       "computedHash": "aed3c1e6e7847902f4bcc79d68a4f9033e55adcf24ee4d65c540c5b6b7cbf629"
     },
+    "gbr": {
+      "source": "mattstyles/skills",
+      "sourceType": "github",
+      "skillPath": "gbr/SKILL.md",
+      "computedHash": "e44ca04274a474282075b2ef11e33c1c181476e101141d672fc0259debf292a7"
+    },
+    "gco": {
+      "source": "mattstyles/skills",
+      "sourceType": "github",
+      "skillPath": "gco/SKILL.md",
+      "computedHash": "02bde455d0d7312aad2a983175bb5db885674aeaf2b2b226f93f8951dd32ede5"
+    },
     "gorilla": {
       "source": "mattstyles/skills",
       "sourceType": "github",
       "skillPath": "gorilla/SKILL.md",
       "computedHash": "ba7418ed286b392c0a0b8a64b7ddd23be52371ec387b9981490cd5f6f54e9ff3"
+    },
+    "gpr": {
+      "source": "mattstyles/skills",
+      "sourceType": "github",
+      "skillPath": "gpr/SKILL.md",
+      "computedHash": "716099b296a1ce9f17f137094d07ef7a93dec17b8eae1b389647224d91488997"
     },
     "plan": {
       "source": "mattstyles/skills",
