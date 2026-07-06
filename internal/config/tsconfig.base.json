@@ -1,18 +1,27 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  // Shaped by https://www.totaltypescript.com/tsconfig-cheat-sheet.
+  // Module strategy is deliberately absent: tsc-transpiled packages set
+  // "module": "nodenext" (+ declaration/sourceMap); bundler-built apps set
+  // "module": "preserve" + "noEmit".
   "compilerOptions": {
-    "target": "ES2022",
-    "lib": ["ES2023", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx",
+    /* Base options */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    /* Strictness */
     "strict": true,
     "noUncheckedIndexedAccess": true,
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "skipLibCheck": true
+    "noImplicitOverride": true,
+
+    /* DOM runtime + React */
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "jsx": "react-jsx"
   }
 }
