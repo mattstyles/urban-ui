@@ -59,6 +59,14 @@ This protocol applies when ending a Beads implementation workflow. It is subordi
 <!-- END BEADS INTEGRATION -->
 
 
+## Knowledge Graph
+
+Repository documentation is a wiki-linked graph under `docs/`. Enter through the indexes:
+
+- [docs/adr.md](docs/adr.md) — architectural decision records
+- [docs/knowledge.md](docs/knowledge.md) — durable conventions and contracts
+- [docs/prd.md](docs/prd.md) — product requirements documents
+
 ## Build & Test
 
 _Add your build and test commands here_
