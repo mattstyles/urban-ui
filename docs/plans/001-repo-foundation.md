@@ -61,7 +61,7 @@ Covers: AC 1, 2 (fully proven once real packages exist in Phase 2)
 - Committing triggers hk-run oxlint + oxfmt (changed files) + typecheck; CI runs the same gates via mise with `--all` formatting.
 - `internal/` carries the shared tsconfig base and lint presets; the `@urban-ui` npm scope is claimed.
 
-### Phase 2: The core train exists — theme, react, and the style pipeline proven — urban-ui-qup
+### ✅ Phase 2: The core train exists — theme, react, and the style pipeline proven — urban-ui-qup — [PR #27](https://github.com/mattstyles/urban-ui/pull/27)
 
 Delivers: `@urban-ui/theme` (placeholder tokens) and `@urban-ui/react` (minimal Button), built per [[0005-style-shipping-and-package-build]], rendering with correct styles in a minimal workbench — the riskiest ADR bet proven end-to-end.
 Covers: AC 3 (render), AC 4
