@@ -2,6 +2,7 @@
 name: gbr
 description: Use when the user asks to create a branch, start a new feature, begin working on a fix, or switch to a new task that requires a fresh branch
 argument-hint: [branch-name]
+model: haiku
 ---
 
 # Git Branch Skill

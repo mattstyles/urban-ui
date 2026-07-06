@@ -2,6 +2,7 @@
 name: gpr
 description: Use when the user asks to create a PR, open a pull request, submit changes for review, or after completing a feature/fix that needs to be merged
 argument-hint: [title]
+model: sonnet
 ---
 
 # Git PR Skill

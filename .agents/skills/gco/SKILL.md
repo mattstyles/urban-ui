@@ -2,6 +2,7 @@
 name: gco
 description: Use when the user asks to commit changes, save work, checkpoint progress, or after completing a unit of work that should be committed
 argument-hint: [message]
+model: sonnet
 ---
 
 # Git Commit Skill
