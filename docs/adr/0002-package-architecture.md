@@ -52,4 +52,4 @@ Two tiers, three published npm packages. (The `urban` CLI also lives under `pack
 
 ## Open questions
 
-- npm scope and package naming.
+- npm scope and package naming. — *Resolved in [[001-repo-foundation]] Phase 1: `@urban-ui/react`, `@urban-ui/theme`, `@urban-ui/labs`; the `@urban-ui` scope is already owned (prior-iteration packages live there).*

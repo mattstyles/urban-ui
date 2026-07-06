@@ -69,13 +69,13 @@ Repository documentation is a wiki-linked graph under `docs/`. Enter through the
 
 ## Build & Test
 
-_Add your build and test commands here_
-
 ```bash
-# Example:
-# npm install
-# npm test
+mise install && bun install   # bootstrap: pinned toolchains, workspace deps, git hooks
+mise run '//...:build'        # run a task across all workspaces (also :lint, :typecheck)
+hk check --all                # all gates (oxlint, oxfmt, typecheck) against all files — CI parity
 ```
+
+Canonical `build`/`lint`/`typecheck` scripts live in each package's `package.json`; mise tasks are thin wrappers with declared `sources`/`outputs` (content-hash freshness). See [[0001-repository-structure]].
 
 ## Architecture Overview
 

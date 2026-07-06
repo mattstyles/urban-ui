@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: jdx/mise-action@v4
+
+      - name: Install workspace dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Gates — oxlint, oxfmt, typecheck (all files)
+        run: hk check --all
+
+      - name: Build all workspaces
+        run: mise run '//...:build'

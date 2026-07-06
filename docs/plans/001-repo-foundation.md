@@ -49,7 +49,7 @@ The ADRs are the substrate; this plan implements without re-litigating. Plan-lev
 
 ## Phases
 
-### Phase 1: Bootstrap — the jdx stack and repo skeleton — urban-ui-aad
+### ✅ Phase 1: Bootstrap — the jdx stack and repo skeleton — urban-ui-aad — [PR #26](https://github.com/mattstyles/urban-ui/pull/26)
 
 Delivers: a clone-to-committing developer/agent experience — toolchain, layout, hooks, CI skeleton all live.
 Covers: AC 1, 2 (fully proven once real packages exist in Phase 2)
