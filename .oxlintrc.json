@@ -1,0 +1,4 @@
+{
+  "extends": ["./internal/config/oxlint.base.json"],
+  "ignorePatterns": ["**/dist/**", "**/node_modules/**"]
+}

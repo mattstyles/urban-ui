@@ -5,11 +5,19 @@
   "private": true,
   "license": "MIT",
   "author": "Matt Styles",
-  "workspaces": [],
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "internal/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattstyles/urban-ui.git"
   },
   "scripts": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "oxfmt": "0.57.0",
+    "oxlint": "1.72.0",
+    "typescript": "6.0.3"
+  }
 }
