@@ -1,0 +1,46 @@
+{
+  "name": "@urban-ui/theme",
+  "version": "0.0.0",
+  "description": "Design tokens for Urban UI — StyleX defineVars groups and their documentation.",
+  "license": "MIT",
+  "author": "Matt Styles",
+  "type": "module",
+  "sideEffects": [
+    "**/*.stylex.*"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./tokens.stylex": {
+      "source": "./src/tokens.stylex.ts",
+      "types": "./dist/tokens.stylex.d.ts",
+      "default": "./dist/tokens.stylex.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "philosophy.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src",
+    "check-package": "publint && attw --pack . --profile esm-only"
+  },
+  "peerDependencies": {
+    "@stylexjs/stylex": "catalog:"
+  },
+  "devDependencies": {
+    "@stylexjs/stylex": "catalog:",
+    "@urban-ui/config": "workspace:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattstyles/urban-ui.git",
+    "directory": "packages/theme"
+  }
+}

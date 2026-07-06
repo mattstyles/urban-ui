@@ -5,19 +5,31 @@
   "private": true,
   "license": "MIT",
   "author": "Matt Styles",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "internal/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "internal/*"
+    ],
+    "catalog": {
+      "react": "^19.2.7",
+      "react-dom": "^19.2.7",
+      "react-aria-components": "^1.19.0",
+      "@stylexjs/stylex": "^0.19.0",
+      "@types/react": "^19.2.7",
+      "@types/react-dom": "^19.2.3"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattstyles/urban-ui.git"
   },
   "scripts": {},
   "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.4",
     "oxfmt": "0.57.0",
     "oxlint": "1.72.0",
+    "publint": "0.3.21",
     "typescript": "6.0.3"
   }
 }

@@ -1,0 +1,20 @@
+[tasks.build]
+description = "Vite production build (compiles StyleX from installed packages)"
+depends = ["//packages/theme:build", "//packages/react:build"]
+run = "bun run build"
+sources = ["src/**/*", "index.html", "vite.config.ts", "tsconfig.json", "package.json"]
+outputs = ["dist/**/*"]
+
+[tasks.dev]
+description = "Vite dev server"
+depends = ["//packages/theme:build", "//packages/react:build"]
+run = "bun run dev"
+
+[tasks.typecheck]
+description = "Typecheck without emitting"
+depends = ["//packages/theme:build", "//packages/react:build"]
+run = "bun run typecheck"
+
+[tasks.lint]
+description = "oxlint over app sources"
+run = "bun run lint"

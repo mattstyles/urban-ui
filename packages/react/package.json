@@ -1,0 +1,54 @@
+{
+  "name": "@urban-ui/react",
+  "version": "0.0.0",
+  "description": "Urban UI component library — react-aria-components styled with StyleX.",
+  "license": "MIT",
+  "author": "Matt Styles",
+  "type": "module",
+  "sideEffects": [
+    "**/*.stylex.*"
+  ],
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./button": {
+      "source": "./src/button/index.ts",
+      "types": "./dist/button/index.d.ts",
+      "default": "./dist/button/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src/**/*.md",
+    "src/**/examples/*"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint src",
+    "check-package": "publint && attw --pack . --profile esm-only"
+  },
+  "peerDependencies": {
+    "@stylexjs/stylex": "catalog:",
+    "@urban-ui/theme": "workspace:*",
+    "react": "catalog:",
+    "react-aria-components": "catalog:"
+  },
+  "devDependencies": {
+    "@stylexjs/stylex": "catalog:",
+    "@types/react": "catalog:",
+    "@urban-ui/config": "workspace:*",
+    "@urban-ui/theme": "workspace:*",
+    "react": "catalog:",
+    "react-aria-components": "catalog:"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattstyles/urban-ui.git",
+    "directory": "packages/react"
+  }
+}
