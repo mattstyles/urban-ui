@@ -49,7 +49,7 @@ The ADRs are the substrate; this plan implements without re-litigating. Plan-lev
 
 ## Phases
 
-### Phase 1: Bootstrap — the jdx stack and repo skeleton
+### Phase 1: Bootstrap — the jdx stack and repo skeleton — urban-ui-aad
 
 Delivers: a clone-to-committing developer/agent experience — toolchain, layout, hooks, CI skeleton all live.
 Covers: AC 1, 2 (fully proven once real packages exist in Phase 2)
@@ -61,7 +61,7 @@ Covers: AC 1, 2 (fully proven once real packages exist in Phase 2)
 - Committing triggers hk-run oxlint + oxfmt (changed files) + typecheck; CI runs the same gates via mise with `--all` formatting.
 - `internal/` carries the shared tsconfig base and lint presets; the `@urban-ui` npm scope is claimed.
 
-### Phase 2: The core train exists — theme, react, and the style pipeline proven
+### Phase 2: The core train exists — theme, react, and the style pipeline proven — urban-ui-qup
 
 Delivers: `@urban-ui/theme` (placeholder tokens) and `@urban-ui/react` (minimal Button), built per [[0005-style-shipping-and-package-build]], rendering with correct styles in a minimal workbench — the riskiest ADR bet proven end-to-end.
 Covers: AC 3 (render), AC 4
@@ -73,7 +73,7 @@ Covers: AC 3 (render), AC 4
 - `apps/workbench` (Vite + `@stylexjs/unplugin`) renders Button with theme tokens correctly resolved cross-package — compiled CSS contains token-derived values.
 - `publint` + `@arethetypeswrong/cli` pass in CI for both packages.
 
-### Phase 3: Component quality gates — tests, axe, VRT, and the workbench as render target
+### Phase 3: Component quality gates — tests, axe, VRT, and the workbench as render target — urban-ui-bke
 
 Delivers: the full [[0006-component-quality-stack]] verification loop on Button; workbench deploys to GitHub Pages.
 Covers: AC 3 (Pages), AC 5
@@ -86,7 +86,7 @@ Covers: AC 3 (Pages), AC 5
 - CI re-renders and fails on mismatch with committed baselines; a deliberate style change demonstrates the loop: VRT fails → regenerate → PR image diff.
 - Workbench deploys to GitHub Pages on merge to main.
 
-### Phase 4: The knowledge layer — manifest extraction and prose validation
+### Phase 4: The knowledge layer — manifest extraction and prose validation — urban-ui-es3
 
 Delivers: the [[package-anatomy]] contract enforced by machines — generated manifests, drift gates, validated prose. The `urban` CLI's future data source exists and cannot rot.
 Covers: AC 6
@@ -98,7 +98,7 @@ Covers: AC 6
 - Prose validation in CI: names in authored guidance checked against the manifest; wiki-links become typed graph edges; labs direction rule enforced; name uniqueness enforced at build.
 - Examples verified against public exports by typecheck (completing four-way verification with Phase 3's render/axe/screenshot).
 
-### Phase 5: Release meta plane — intent capture, gates, and assembly
+### Phase 5: Release meta plane — intent capture, gates, and assembly — urban-ui-750
 
 Delivers: every PR carries reviewable release intent; `/release` produces a complete, reviewable release PR.
 Covers: AC 7, 8
@@ -110,7 +110,7 @@ Covers: AC 7, 8
 - Version math implemented and fixture-tested: max-bump per train; pre-1.0 semantics mapping; graduation semantics (`core: minor`, `labs: major`); binary-train intent shape accepted by the parser (for the future CLI).
 - `/release` assembles the release PR: versions applied, intents consumed, per-package `CHANGELOG.md` + narrative synthesized from intent prose, manifest diffs, and linked PR descriptions + release meta JSON; assembly works offline.
 
-### Phase 6: Publish plane — release-ready, rehearsed, not published
+### Phase 6: Publish plane — release-ready, rehearsed, not published — urban-ui-e9l
 
 Delivers: the complete publish pipeline verified in rehearsal; previews installable from every PR. The first real train departure becomes a one-decision act.
 Covers: AC 9, 11
@@ -121,7 +121,7 @@ Covers: AC 9, 11
 - pkg.pr.new preview builds run from PRs; a scratch consumer installs the preview `react`+`theme` pair with the one-line unplugin config and renders Button correctly.
 - The first real release is documented as a deliberate act: merge a real release PR when there's content worth 0.10.0 — no code changes required, only the decision.
 
-### Phase 7: Labs tier and the graduation rehearsal
+### Phase 7: Labs tier and the graduation rehearsal — urban-ui-syo
 
 Delivers: the experimental channel is real and graduation is demonstrated as a move.
 Covers: AC 10
