@@ -2,17 +2,15 @@
 description = "Vite production build (compiles StyleX from installed packages)"
 depends = ["//packages/theme:build", "//packages/react:build", "//packages/labs:build"]
 run = "bun run build"
-# Scenes and examples are globbed straight from package sources, so they are
-# build inputs here even though they never ship in the packages' dist.
+# The workbench consumes the packages like a real app: production builds
+# resolve @urban-ui/* to built dist, so package dist is a build input.
 sources = [
   "src/**/*",
-  "tooling/**/*",
   "index.html",
   "vite.config.ts",
   "tsconfig.json",
   "package.json",
-  "../../packages/*/src/**/*.visual.tsx",
-  "../../packages/*/src/**/examples/*",
+  "../../packages/*/dist/**/*",
 ]
 outputs = ["dist/**/*"]
 

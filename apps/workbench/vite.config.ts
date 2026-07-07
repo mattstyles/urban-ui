@@ -1,6 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import stylex from "@stylexjs/unplugin";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
@@ -9,9 +10,13 @@ const pkg = (...segments: string[]) => path.join(workspaceRoot, "packages", ...s
 
 export default defineConfig(({ command }) => ({
   // GitHub Pages serves the workbench from /<repo>/ — the deploy workflow
-  // sets WORKBENCH_BASE; local dev, preview, and VRT stay at "/".
+  // sets WORKBENCH_BASE; local dev and preview stay at "/".
   base: process.env.WORKBENCH_BASE ?? "/",
   plugins: [
+    // File-based routing: generates src/routeTree.gen.ts (gitignored) from
+    // src/routes/. Must come before react() so route files are transformed
+    // against an up-to-date tree.
+    tanstackRouter({ target: "react" }),
     // Before the react plugin to preserve Fast Refresh. The unplugin
     // auto-discovers StyleX packages in node_modules (@urban-ui/theme,
     // @urban-ui/react) — the consumer-compiles contract of ADR-0005.
