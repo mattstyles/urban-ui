@@ -14,7 +14,7 @@ tags: [adr, testing, workbench, visual-regression, a11y]
 
 ## Decision
 
-- **Workbench: hand-rolled `apps/workbench`** (Vite) — globs `*.visual.tsx` scenes and `examples/` across packages, renders each on a stable route. It is both the dev exploration surface and the VRT render target. Published to GitHub Pages.
+- **Workbench: hand-rolled `apps/workbench`** (Vite) — globs `*.visual.tsx` scenes and `examples/` across packages, renders each on a stable route. It is the dev exploration surface, published to GitHub Pages. The VRT render target is the dedicated **`apps/vrt`** app (same globs, minimal hash-route renderer) so the test surface stays isolated from playground concerns.
 - **Visual regression: Playwright `toHaveScreenshot` with baselines committed to the repo**, co-located per component (`__screenshots__/`, named by scene export).
   - The authoring agent regenerates baselines in its PR; GitHub's native image diff is the review UI.
   - **CI verifies reproducibility, not change**: it re-renders and fails on mismatch with committed baselines — intentional change never blocks, invisible change is impossible, doctored images can't survive.
@@ -26,9 +26,9 @@ tags: [adr, testing, workbench, visual-regression, a11y]
 
 ## Consequences
 
-- No Storybook, no VRT SaaS: fewer moving parts, no vendor risk; the costs are owning a small workbench app and Docker discipline for deterministic rendering.
+- No Storybook, no VRT SaaS: fewer moving parts, no vendor risk; the costs are owning two small apps (workbench playground, VRT render target) and Docker discipline for deterministic rendering.
 - Screenshot baselines add repo weight — accepted; plain git now, Git LFS documented as the escape hatch (with its CI-bandwidth caveat).
-- Examples are verified four ways with zero bespoke harness (typecheck, render, axe, screenshot) via the workbench bridge; scene baselines gate regressions, example baselines are review evidence.
+- Examples are verified four ways with zero bespoke harness (typecheck, render, axe, screenshot) via the VRT app bridge; scene baselines gate regressions, example baselines are review evidence.
 - oxfmt is pre-1.0 (pinned; Prettier-conformant output keeps Prettier/Biome as drop-in fallbacks); oxlint's type-aware mode (`oxlint-tsgolint`) is late-beta — adopt once its monorepo memory behaviour proves out. The ts-morph extractor rides the TS 6.x API until TypeScript 7.1.
 - bun test is not used for component packages (no StyleX transform; axe incompatible with happy-dom) — reassess as Bun's runner matures.
 

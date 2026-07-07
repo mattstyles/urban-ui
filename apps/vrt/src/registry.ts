@@ -2,9 +2,10 @@
  * The browser-side renderable registry: every scene (`*.visual.tsx`) and
  * example (`examples/*.tsx`) across packages, keyed by stable route.
  *
- * Modules load eagerly — the workbench is small by design and eager loading
- * keeps scene routes render-complete on first paint. The VRT app (apps/vrt)
- * reads the same package convention with its own registry and scanner.
+ * Modules load eagerly — the VRT app is small by design and eager loading
+ * keeps scene routes render-complete on first paint, which is what the VRT
+ * suite screenshots. The node-side scanner (tooling/scan.ts) reads the same
+ * convention for Playwright; both defer to tooling/paths.ts for coordinates.
  */
 
 import type { ComponentType } from "react";

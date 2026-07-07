@@ -31,7 +31,7 @@ tags: [adr, monorepo, tooling, dev-environment]
 ### Monorepo layout
 
 ```
-apps/          runnable applications (workbench; docs site deferred) — never published
+apps/          runnable applications (workbench playground, vrt render target; docs site deferred) — never published
 packages/      every published package (react, theme, labs, the urban CLI) — versioned per release train
 internal/      internal-only shared config and scripts (tsconfig base, lint presets, extractor, release scripts) — never published
 docs/          this documentation brain (ADRs, PRDs, knowledge)

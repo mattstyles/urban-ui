@@ -58,7 +58,7 @@ jobs:
   vrt:
     runs-on: ubuntu-latest
     # The same pinned image tooling/vrt.sh runs locally — keep the tag in
-    # lockstep with @playwright/test in apps/workbench/package.json.
+    # lockstep with @playwright/test in apps/vrt/package.json.
     container:
       image: mcr.microsoft.com/playwright:v1.61.1-noble
     steps:
@@ -67,7 +67,7 @@ jobs:
       # CI verifies reproducibility, not change: re-render and fail on any
       # mismatch with committed baselines (ADR-0006).
       - name: VRT + axe against committed baselines
-        run: bash apps/workbench/tooling/vrt-inner.sh
+        run: bash apps/vrt/tooling/vrt-inner.sh
 
       - name: Upload Playwright report on failure
         if: failure()
@@ -75,5 +75,5 @@ jobs:
         with:
           name: vrt-report
           path: |
-            apps/workbench/playwright-report
-            apps/workbench/test-results
+            apps/vrt/playwright-report
+            apps/vrt/test-results

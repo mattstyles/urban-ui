@@ -17,7 +17,7 @@ sources = [
 outputs = ["dist/**/*"]
 
 [tasks.dev]
-description = "Vite dev server"
+description = "Vite dev server (debug a scene in the same render context VRT captures)"
 depends = ["//packages/theme:build", "//packages/react:build", "//packages/labs:build"]
 run = "bun run dev"
 
@@ -29,3 +29,7 @@ run = "bun run typecheck"
 [tasks.lint]
 description = "oxlint over app sources"
 run = "bun run lint"
+
+[tasks.vrt]
+description = "Playwright VRT + axe in the pinned container; pass -- --update to regenerate baselines"
+run = "bash tooling/vrt.sh"

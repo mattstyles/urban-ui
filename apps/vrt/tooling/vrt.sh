@@ -3,8 +3,8 @@
 # container (ADR-0006), so baselines rasterize identically on every machine
 # and in CI. Usage:
 #
-#   mise run '//apps/workbench:vrt'              # verify against baselines
-#   mise run '//apps/workbench:vrt' -- --update  # regenerate baselines
+#   mise run '//apps/vrt:vrt'              # verify against baselines
+#   mise run '//apps/vrt:vrt' -- --update  # regenerate baselines
 #
 # In CI the job itself runs inside the container (see .github/workflows/
 # ci.yml) and calls vrt-inner.sh directly; this wrapper is the local path.
@@ -14,7 +14,7 @@ cd "$(dirname "$0")/../../.."
 
 # The image tag follows the installed @playwright/test version — bumping the
 # dependency bumps the container in lockstep.
-PLAYWRIGHT_VERSION="$(cd apps/workbench && bun -p 'require("@playwright/test/package.json").version')"
+PLAYWRIGHT_VERSION="$(cd apps/vrt && bun -p 'require("@playwright/test/package.json").version')"
 IMAGE="mcr.microsoft.com/playwright:v${PLAYWRIGHT_VERSION}-noble"
 
 # The host tree is bind-mounted, but every workspace node_modules is shadowed
@@ -32,7 +32,7 @@ for dir in apps/* packages/* internal/*; do
 done
 
 docker run --rm --init --ipc=host "${MOUNTS[@]}" -w /work "$IMAGE" \
-  bash apps/workbench/tooling/vrt-inner.sh "$@"
+  bash apps/vrt/tooling/vrt-inner.sh "$@"
 
 # Losslessly recompress fresh baselines (ADR-0006: oxipng on write). Pixel
 # comparison is unaffected; this only trims committed bytes.

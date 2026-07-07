@@ -31,17 +31,16 @@ const styles = stylex.create({
   link: {
     color: colors.accent,
   },
-  // The VRT capture box: a tight, padded frame around the renderable so
-  // element screenshots carry consistent margins without viewport noise.
+  // A tight, padded frame around the renderable so it presents with
+  // consistent margins against the page background.
   sceneRoot: {
     backgroundColor: colors.surface,
     borderRadius: radii.control,
     display: "inline-block",
     padding: space.md,
   },
-  // Scene pages must be valid pages in their own right (axe rides every
-  // route): a visually-hidden h1 names the renderable without entering the
-  // captured element.
+  // Scene pages must be valid pages in their own right: a visually-hidden h1
+  // names the renderable without entering the framed element.
   visuallyHidden: {
     clipPath: "inset(50%)",
     height: "1px",
@@ -84,14 +83,12 @@ function Index() {
 
 function RenderableView({ entry }: { entry: RenderableEntry }) {
   const Renderable = entry.Component;
-  // data-scene-ready is the VRT navigation guard (right route, module
-  // rendered); data-scene-root is the element the baseline captures.
   return (
-    <main {...stylex.props(styles.page)} data-scene-ready>
+    <main {...stylex.props(styles.page)}>
       <h1 {...stylex.props(styles.visuallyHidden)}>
         {entry.kind}: {entry.pkg}/{entry.component}/{entry.fileStem}/{entry.exportName}
       </h1>
-      <div data-scene-root {...stylex.props(styles.sceneRoot)}>
+      <div {...stylex.props(styles.sceneRoot)}>
         <Renderable />
       </div>
     </main>
@@ -111,8 +108,7 @@ function NotFound() {
 }
 
 // The registry maps onto real route definitions — one route per renderable
-// export — so the router and the VRT scanner agree by construction: both
-// derive paths from tooling/paths.ts routeFor().
+// export — derived from tooling/paths.ts routeFor().
 const rootRoute = createRootRoute({
   notFoundComponent: NotFound,
 });
@@ -132,7 +128,7 @@ const renderableRoutes = renderables.map((entry) =>
 );
 
 // Hash history keeps deep links working on static hosting (GitHub Pages)
-// with no history fallback, and gives Playwright stable URLs.
+// with no history fallback.
 const router = createRouter({
   routeTree: rootRoute.addChildren([indexRoute, ...renderableRoutes]),
   history: createHashHistory(),
