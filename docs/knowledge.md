@@ -18,6 +18,7 @@ Records live in `docs/knowledge/`.
 
 ## Records
 
+- [[product-framing]] — what urban-ui is for: the needle and standing decisions (audience, archetype, coherence model, agents-first, scope, themes) that frame all future PRDs
 - [[package-anatomy]] — the contract for what every publishable package contains: layout, component anatomy, authored-guidance template, manifest, definition of done
 - [[release-runbook]] — how a train departs: intent → assembly → merge-as-departure, rehearsal commands, the first-release decision, previews
 - [[watch-items]] — living register of external events, pins, and revisit triggers committed to in ADRs
