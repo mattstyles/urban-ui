@@ -10,6 +10,7 @@ sources = [
   "vite.config.ts",
   "tsconfig.json",
   "package.json",
+  "../../internal/config/src/vite.ts",
   "../../packages/*/dist/**/*",
 ]
 outputs = ["dist/**/*"]

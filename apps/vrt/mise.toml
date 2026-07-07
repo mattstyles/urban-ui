@@ -11,6 +11,7 @@ sources = [
   "vite.config.ts",
   "tsconfig.json",
   "package.json",
+  "../../internal/config/src/vite.ts",
   "../../packages/*/src/**/*.visual.tsx",
   "../../packages/*/src/**/examples/*",
 ]
