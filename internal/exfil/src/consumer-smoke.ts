@@ -12,12 +12,33 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { packAndVerify } from "./publish.js";
 
-/** The accent token value from @urban-ui/theme — the cross-package proof. */
-const TOKEN_PROBE = "#4f46e5";
 const LABEL_PROBE = "Consumer smoke";
+
+/** Where the theme declares its tokens — the accent probe is derived from here. */
+const THEME_TOKENS_PATH = path.join("packages", "theme", "src", "tokens.stylex.ts");
 
 function run(cwd: string, command: string, args: string[]): string {
   return execFileSync(command, args, { cwd, encoding: "utf8" });
+}
+
+/**
+ * Extract the accent token literal from the theme tokens source, so the smoke
+ * probe tracks theme changes instead of duplicating the value.
+ */
+export function extractAccentToken(source: string): string | undefined {
+  return source.match(/\baccent:\s*"([^"]+)"/)?.[1];
+}
+
+/** Read a devDependency version from a workspace package.json. */
+export function devDependencyVersion(
+  repoRoot: string,
+  workspace: string,
+  name: string,
+): string | undefined {
+  const pkg = JSON.parse(readFileSync(path.join(repoRoot, workspace, "package.json"), "utf8")) as {
+    devDependencies?: Record<string, string>;
+  };
+  return pkg.devDependencies?.[name];
 }
 
 function catalogVersions(repoRoot: string): Record<string, string> {
@@ -29,6 +50,49 @@ function catalogVersions(repoRoot: string): Record<string, string> {
 
 export function consumerSmoke(repoRoot: string): { dir: string; issues: string[] } {
   const issues: string[] = [];
+
+  const tokenProbe = extractAccentToken(
+    readFileSync(path.join(repoRoot, THEME_TOKENS_PATH), "utf8"),
+  );
+  if (tokenProbe === undefined) {
+    issues.push(
+      `Could not derive the accent probe from ${THEME_TOKENS_PATH} — no \`accent: "…"\` literal found in the theme source`,
+    );
+  }
+
+  const unpluginVersion = devDependencyVersion(
+    repoRoot,
+    path.join("packages", "react"),
+    "@stylexjs/unplugin",
+  );
+  if (unpluginVersion === undefined) {
+    issues.push(
+      "Could not derive the @stylexjs/unplugin version from packages/react devDependencies",
+    );
+  }
+  const pluginReactVersion = devDependencyVersion(
+    repoRoot,
+    path.join("apps", "workbench"),
+    "@vitejs/plugin-react",
+  );
+  if (pluginReactVersion === undefined) {
+    issues.push(
+      "Could not derive the @vitejs/plugin-react version from apps/workbench devDependencies",
+    );
+  }
+  const viteVersion = devDependencyVersion(repoRoot, path.join("apps", "workbench"), "vite");
+  if (viteVersion === undefined) {
+    issues.push("Could not derive the vite version from apps/workbench devDependencies");
+  }
+  if (
+    tokenProbe === undefined ||
+    unpluginVersion === undefined ||
+    pluginReactVersion === undefined ||
+    viteVersion === undefined
+  ) {
+    return { dir: "", issues };
+  }
+
   const theme = packAndVerify(path.join(repoRoot, "packages", "theme"));
   const react = packAndVerify(path.join(repoRoot, "packages", "react"));
   issues.push(...theme.issues, ...react.issues);
@@ -53,9 +117,9 @@ export function consumerSmoke(repoRoot: string): { dir: string; issues: string[]
           "react-aria-components": catalog["react-aria-components"] ?? "^1.19.0",
         },
         devDependencies: {
-          "@stylexjs/unplugin": "0.19.0",
-          "@vitejs/plugin-react": "6.0.3",
-          vite: "8.1.3",
+          "@stylexjs/unplugin": unpluginVersion,
+          "@vitejs/plugin-react": pluginReactVersion,
+          vite: viteVersion,
         },
       },
       null,
@@ -106,9 +170,9 @@ export function consumerSmoke(repoRoot: string): { dir: string; issues: string[]
     .map((file) => readFileSync(path.join(assets, file), "utf8"))
     .join("\n");
 
-  if (!css.includes(TOKEN_PROBE)) {
+  if (!css.includes(tokenProbe)) {
     issues.push(
-      `Compiled consumer CSS lacks the theme accent value ${TOKEN_PROBE} — cross-package StyleX compilation failed`,
+      `Compiled consumer CSS lacks the theme accent value ${tokenProbe} (derived from ${THEME_TOKENS_PATH}) — cross-package StyleX compilation failed`,
     );
   }
   if (!js.includes(LABEL_PROBE)) {
