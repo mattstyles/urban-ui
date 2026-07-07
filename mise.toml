@@ -17,3 +17,13 @@ oxipng = "10.1.1"
 
 [hooks]
 postinstall = "hk install --mise"
+
+# Manifests are a cross-package concern (name uniqueness, the labs direction
+# rule), so generation and the drift gate live at the root, not per package.
+[tasks.manifest]
+description = "Generate urban-manifest.json for every urban package"
+run = "bun internal/extractor/src/cli.ts generate"
+
+[tasks.manifest-check]
+description = "Fail on manifest drift or prose/graph violations (CI gate)"
+run = "bun internal/extractor/src/cli.ts check"

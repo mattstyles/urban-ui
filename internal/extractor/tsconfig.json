@@ -1,0 +1,9 @@
+{
+  "extends": "@urban-ui/config/tsconfig.base.json",
+  "compilerOptions": {
+    "module": "preserve",
+    "noEmit": true,
+    "types": ["bun"]
+  },
+  "include": ["src", "test"]
+}

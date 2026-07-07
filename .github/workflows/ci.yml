@@ -25,6 +25,9 @@ jobs:
       - name: Package shape — publint + attw
         run: mise run '//...:check-package'
 
+      - name: Manifest drift + prose validation
+        run: mise run manifest-check
+
   test:
     runs-on: ubuntu-latest
     steps:

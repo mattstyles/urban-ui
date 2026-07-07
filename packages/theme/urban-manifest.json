@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "package": "@urban-ui/theme",
+  "tier": "stable",
+  "components": [],
+  "patterns": [],
+  "tokenGroups": [
+    {
+      "name": "colors",
+      "path": "src/tokens.stylex.ts",
+      "tokens": [
+        "accent",
+        "accentText",
+        "surface",
+        "text"
+      ]
+    },
+    {
+      "name": "radii",
+      "path": "src/tokens.stylex.ts",
+      "tokens": [
+        "control"
+      ]
+    },
+    {
+      "name": "space",
+      "path": "src/tokens.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm"
+      ]
+    }
+  ],
+  "docs": [
+    {
+      "name": "philosophy",
+      "path": "philosophy.md"
+    }
+  ],
+  "graph": [
+    {
+      "from": "doc:philosophy",
+      "to": "repo-doc:0005-style-shipping-and-package-build",
+      "type": "repo-doc"
+    }
+  ]
+}
