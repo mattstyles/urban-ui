@@ -14,8 +14,8 @@ import path from "node:path";
 import type { DocEntry, ExampleEntry, PatternEntry, Tier } from "./manifest.js";
 
 /**
- * Renderable-export convention shared with the workbench scanner
- * (apps/workbench/tooling/scan.ts): top-level `export function Name` /
+ * Renderable-export convention shared with the VRT scanner
+ * (apps/vrt/tooling/scan.ts): top-level `export function Name` /
  * `export const Name =` with a capitalized name.
  */
 const EXPORT_PATTERN = /^export\s+(?:async\s+)?(?:function|const)\s+([A-Z][A-Za-z0-9_]*)/gm;

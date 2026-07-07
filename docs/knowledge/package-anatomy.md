@@ -4,7 +4,7 @@ tags: [conventions, packages, knowledge]
 
 # Package anatomy
 
-The contract for what every publishable package contains. This anatomy is load-bearing: it is what makes packages legible to agents, to repo tooling (extractor, validators, workbench, VRT), and to the `urban` CLI ([[001-urban-cli]]). Tooling globs by these conventions and never assumes beyond them.
+The contract for what every publishable package contains. This anatomy is load-bearing: it is what makes packages legible to agents, to repo tooling (extractor, validators, the workbench playground, the VRT app), and to the `urban` CLI ([[001-urban-cli]]). Tooling globs by these conventions and never assumes beyond them.
 
 ## Package layout
 
@@ -57,7 +57,7 @@ Every component/prop/token/example name referenced in prose is validated against
 
 - Plain consumer code: real imports via the package's public exports, no framework idioms — the primary reader is an LLM learning usage.
 - Pedagogy over coverage: demonstrate each axis once; never enumerate matrices.
-- Verified four ways, all via the generated workbench bridge: typecheck (against public exports), real-browser render, axe pass, committed screenshot.
+- Verified four ways, all via the generated VRT app bridge: typecheck (against public exports), real-browser render, axe pass, committed screenshot.
 
 ## Visual scenes (`*.visual.tsx`)
 
