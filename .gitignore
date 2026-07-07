@@ -45,4 +45,7 @@ yarn-error.log*
 *.db
 .beads-credential-key
 .beads/proxieddb/
+# Derived audit-log export — canonical history lives in the Dolt DB
+# (synced via refs/dolt/data); tracking it dirties every bd operation.
+.beads/interactions.jsonl
 .playwright-mcp/
