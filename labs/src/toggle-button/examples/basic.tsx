@@ -1,4 +1,4 @@
-import { ToggleButton } from "@urban-ui/react/toggle-button";
+import { ToggleButton } from "@urban-ui/labs/toggle-button";
 
 /**
  * An uncontrolled mute toggle.
