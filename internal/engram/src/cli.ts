@@ -7,24 +7,9 @@
  *                     prose/graph/uniqueness violation (the CI gate)
  */
 
-import { existsSync } from "node:fs";
-import path from "node:path";
+import { findRepoRoot } from "@urban-ui/workspace";
 import { defineCommand, runMain } from "citty";
 import { runExtractor } from "./generate.js";
-
-function findRepoRoot(start: string): string {
-  let dir = start;
-  while (true) {
-    if (existsSync(path.join(dir, "bun.lock"))) {
-      return dir;
-    }
-    const parent = path.dirname(dir);
-    if (parent === dir) {
-      throw new Error(`Repo root not found walking up from ${start} (no bun.lock)`);
-    }
-    dir = parent;
-  }
-}
 
 function extract(mode: "generate" | "check"): void {
   const repoRoot = findRepoRoot(process.cwd());

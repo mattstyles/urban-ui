@@ -1,4 +1,7 @@
 {
   "name": "@fix/react",
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "urban": {
+    "manifest": "./urban-manifest.json"
+  }
 }
