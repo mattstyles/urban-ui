@@ -1,6 +1,6 @@
 [tasks.build]
 description = "Vite production build (compiles StyleX from installed packages)"
-depends = ["//packages/theme:build", "//packages/react:build"]
+depends = ["//packages/theme:build", "//packages/react:build", "//labs:build"]
 run = "bun run build"
 # Scenes and examples are globbed straight from package sources, so they are
 # build inputs here even though they never ship in the packages' dist.
@@ -18,12 +18,12 @@ outputs = ["dist/**/*"]
 
 [tasks.dev]
 description = "Vite dev server"
-depends = ["//packages/theme:build", "//packages/react:build"]
+depends = ["//packages/theme:build", "//packages/react:build", "//labs:build"]
 run = "bun run dev"
 
 [tasks.typecheck]
 description = "Typecheck without emitting"
-depends = ["//packages/theme:build", "//packages/react:build"]
+depends = ["//packages/theme:build", "//packages/react:build", "//labs:build"]
 run = "bun run typecheck"
 
 [tasks.lint]
