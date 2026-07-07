@@ -12,7 +12,7 @@ const styles = stylex.create({
     borderStyle: "none",
     color: colors.accentText,
     paddingBlock: space.sm,
-    paddingInline: space.md,
+    paddingInline: space.lg,
   },
 });
 
