@@ -1,0 +1,25 @@
+name: Preview packages
+
+# pkg.pr.new preview builds from every PR — the installable artifact that
+# stands in for a real npm publish (ADR-0004: no other prerelease channel).
+# Requires the pkg.pr.new GitHub App on this repository; until it is
+# installed the publish step is allowed to fail without blocking the PR.
+on: pull_request
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: jdx/mise-action@v4
+
+      - name: Install workspace dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build publishable packages
+        run: mise run '//packages/theme:build' '//packages/react:build'
+
+      - name: Publish previews to pkg.pr.new
+        continue-on-error: true
+        run: bunx pkg-pr-new publish ./packages/theme ./packages/react

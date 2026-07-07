@@ -12,8 +12,10 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { assembleRelease, releaseStatus } from "./assemble.js";
+import { consumerSmoke } from "./consumer-smoke.js";
 import { runGates } from "./gates.js";
 import { CHANGES_DIR, parseIntent } from "./intent.js";
+import { planDepartures, rehearse } from "./publish.js";
 import { discoverTrains } from "./trains.js";
 
 function findRepoRoot(start: string): string {
@@ -111,8 +113,104 @@ switch (command) {
     break;
   }
 
+  case "publish": {
+    const rehearsal = rest.includes("--rehearsal");
+    if (rehearsal) {
+      const report = rehearse(repoRoot);
+      for (const verification of report.verifications) {
+        console.log(`packed ${verification.package} → ${verification.tarball} (rewrites verified)`);
+      }
+      if (report.departures.length === 0) {
+        console.log(
+          "No releases/ meta present — no departures pending; rehearsed against current packages.",
+        );
+      }
+      for (const departure of report.departures) {
+        const state = departure.tagged ? "already tagged" : "PENDING";
+        console.log(
+          `departure ${departure.train} v${departure.version} → tag ${departure.tag} (${state})`,
+        );
+        console.log(`  release body: ${departure.narrativePath}`);
+        console.log(
+          `  packages: ${departure.packages.map((pkg) => `${pkg.name}@${pkg.version}`).join(", ")}`,
+        );
+      }
+      if (report.issues.length > 0) {
+        console.error(`\nRehearsal failed (${report.issues.length} issue(s)):`);
+        for (const issue of report.issues) {
+          console.error(`  - ${issue}`);
+        }
+        process.exit(1);
+      }
+      console.log(
+        "\nRehearsal passed — everything short of npm publish and Release creation verified.",
+      );
+      break;
+    }
+
+    // Real departures: idempotent by construction — --tolerate-republish
+    // lets a partial failure re-run safely, tags and Releases are skipped
+    // when they already exist.
+    const pending = planDepartures(repoRoot).filter((departure) => !departure.tagged);
+    if (pending.length === 0) {
+      console.log("No untagged departures in releases/ — nothing to publish.");
+      break;
+    }
+    const trains = discoverTrains(repoRoot);
+    for (const departure of pending) {
+      const train = trains.find((candidate) => candidate.name === departure.train);
+      if (train?.kind === "npm") {
+        for (const pkg of train.packages) {
+          console.log(`publishing ${pkg.name}@${departure.version}`);
+          execFileSync("bun", ["publish", "--tolerate-republish"], {
+            cwd: pkg.dir,
+            stdio: "inherit",
+          });
+        }
+      } else {
+        console.log(
+          `binary train ${departure.train}: tagging only — the artifact pipeline lands with the first CLI package`,
+        );
+      }
+      git(repoRoot, ["tag", departure.tag]);
+      git(repoRoot, ["push", "origin", departure.tag]);
+      execFileSync(
+        "gh",
+        [
+          "release",
+          "create",
+          departure.tag,
+          "--title",
+          `${departure.train} v${departure.version}`,
+          "--notes-file",
+          path.join(repoRoot, departure.narrativePath),
+        ],
+        { cwd: repoRoot, stdio: "inherit" },
+      );
+      console.log(`departed ${departure.train} v${departure.version} (${departure.tag})`);
+    }
+    break;
+  }
+
+  case "consumer-smoke": {
+    const result = consumerSmoke(repoRoot);
+    if (result.issues.length > 0) {
+      console.error(`Consumer smoke failed (${result.issues.length} issue(s)):`);
+      for (const issue of result.issues) {
+        console.error(`  - ${issue}`);
+      }
+      process.exit(1);
+    }
+    console.log(
+      `Consumer smoke passed — packed tarballs compile and render in a scratch Vite app (${result.dir})`,
+    );
+    break;
+  }
+
   default: {
-    console.error("Usage: release-tool <status|gate --base <ref>|assemble>");
+    console.error(
+      "Usage: release-tool <status|gate --base <ref>|assemble|publish [--rehearsal]|consumer-smoke>",
+    );
     process.exit(2);
   }
 }
