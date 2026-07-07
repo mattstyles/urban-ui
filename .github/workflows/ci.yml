@@ -24,3 +24,39 @@ jobs:
 
       - name: Package shape — publint + attw
         run: mise run '//...:check-package'
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: jdx/mise-action@v4
+
+      - name: Install workspace dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Unit and pattern tests
+        run: mise run '//...:test'
+
+  vrt:
+    runs-on: ubuntu-latest
+    # The same pinned image tooling/vrt.sh runs locally — keep the tag in
+    # lockstep with @playwright/test in apps/workbench/package.json.
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+    steps:
+      - uses: actions/checkout@v7
+
+      # CI verifies reproducibility, not change: re-render and fail on any
+      # mismatch with committed baselines (ADR-0006).
+      - name: VRT + axe against committed baselines
+        run: bash apps/workbench/tooling/vrt-inner.sh
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: vrt-report
+          path: |
+            apps/workbench/playwright-report
+            apps/workbench/test-results

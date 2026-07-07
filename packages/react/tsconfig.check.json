@@ -1,0 +1,17 @@
+{
+  // Whole-surface typecheck: the build tsconfig excludes tests, scenes, and
+  // examples from emit; this config puts them back for `bun run typecheck`.
+  // Examples and scenes import via @urban-ui/react public exports (self-
+  // reference), so the typecheck task depends on build for dist types.
+  // Module preserve (bundler resolution) because tests and configs execute
+  // under vitest/vite; the build tsconfig still checks product code under
+  // nodenext.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "preserve",
+    "rootDir": ".",
+    "noEmit": true
+  },
+  "include": ["src", "vitest.config.ts"],
+  "exclude": []
+}

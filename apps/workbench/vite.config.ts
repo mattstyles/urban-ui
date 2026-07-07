@@ -8,6 +8,9 @@ const workspaceRoot = fileURLToPath(new URL("../..", import.meta.url));
 const pkg = (...segments: string[]) => path.join(workspaceRoot, "packages", ...segments);
 
 export default defineConfig(({ command }) => ({
+  // GitHub Pages serves the workbench from /<repo>/ — the deploy workflow
+  // sets WORKBENCH_BASE; local dev, preview, and VRT stay at "/".
+  base: process.env.WORKBENCH_BASE ?? "/",
   plugins: [
     // Before the react plugin to preserve Fast Refresh. The unplugin
     // auto-discovers StyleX packages in node_modules (@urban-ui/theme,
