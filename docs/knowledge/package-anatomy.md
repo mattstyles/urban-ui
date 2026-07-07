@@ -57,7 +57,7 @@ Every component/prop/token/example name referenced in prose is validated against
 
 - Plain consumer code: real imports via the package's public exports, no framework idioms — the primary reader is an LLM learning usage.
 - Pedagogy over coverage: demonstrate each axis once; never enumerate matrices.
-- Verified four ways, all via the generated VRT app bridge: typecheck (against public exports), real-browser render, axe pass, committed screenshot.
+- Verified three ways, all via the generated VRT app bridge: typecheck (against public exports), real-browser render, axe pass. No committed screenshot — examples are usage documentation for LLMs, not regression surface, and pixel-pinning them would turn doc edits into baseline churn.
 
 ## Visual scenes (`*.visual.tsx`)
 
@@ -65,7 +65,7 @@ Every component/prop/token/example name referenced in prose is validated against
 - **One export = one screenshot, and exports are logical groupings** — one scene per axis (states, colour, size, content stress), composing its members in a single capture with a caption naming each. Per-state exports create baseline churn and review fatigue; grouped scenes make an axis one reviewable image. Adding a member changes only that group's baseline; a new axis is a new export, so groups never reshuffle each other.
 - Screenshot naming schema: `src/<component>/__screenshots__/<file-stem>/<export-name>.png` — stable paths keep PR image diffs meaningful.
 - Overlay scenes capture at viewport level (portals escape element roots).
-- Scene baselines are the **regression gate**; example baselines are **review evidence** (expected to change with legitimate visual change).
+- Scene baselines are the **regression gate** — the only committed screenshots. Examples ride the same suite for render + axe but carry no baselines.
 
 ## Manifest
 

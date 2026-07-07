@@ -28,7 +28,7 @@ tags: [adr, testing, workbench, visual-regression, a11y]
 
 - No Storybook, no VRT SaaS: fewer moving parts, no vendor risk; the costs are owning two small apps (workbench playground, VRT render target) and Docker discipline for deterministic rendering.
 - Screenshot baselines add repo weight — accepted; plain git now, Git LFS documented as the escape hatch (with its CI-bandwidth caveat).
-- Examples are verified four ways with zero bespoke harness (typecheck, render, axe, screenshot) via the VRT app bridge; scene baselines gate regressions, example baselines are review evidence.
+- Examples are verified three ways with zero bespoke harness (typecheck, render, axe) via the VRT app bridge; scene baselines are the only committed screenshots and gate regressions — examples are LLM-facing usage docs, so they carry no baselines.
 - oxfmt is pre-1.0 (pinned; Prettier-conformant output keeps Prettier/Biome as drop-in fallbacks); oxlint's type-aware mode (`oxlint-tsgolint`) is late-beta — adopt once its monorepo memory behaviour proves out. The ts-morph extractor rides the TS 6.x API until TypeScript 7.1.
 - bun test is not used for component packages (no StyleX transform; axe incompatible with happy-dom) — reassess as Bun's runner matures.
 
