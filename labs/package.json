@@ -25,11 +25,6 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./toggle-button": {
-      "source": "./src/toggle-button/index.ts",
-      "types": "./dist/toggle-button/index.d.ts",
-      "default": "./dist/toggle-button/index.js"
-    },
     "./package.json": "./package.json"
   },
   "scripts": {

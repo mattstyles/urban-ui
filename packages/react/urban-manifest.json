@@ -310,7 +310,13 @@
         {
           "name": "GlobalDOMAttributes",
           "count": 5,
-          "props": ["dir", "hidden", "inert", "lang", "translate"]
+          "props": [
+            "dir",
+            "hidden",
+            "inert",
+            "lang",
+            "translate"
+          ]
         },
         {
           "name": "GlobalDOMEvents",
@@ -386,7 +392,348 @@
         {
           "name": "basic",
           "path": "src/button/examples/basic.tsx",
-          "exports": ["Basic"]
+          "exports": [
+            "Basic"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "toggle-button",
+      "displayName": "ToggleButton",
+      "experimental": false,
+      "exportPath": "@urban-ui/react/toggle-button",
+      "doc": "src/toggle-button/toggle-button.md",
+      "propsType": "ToggleButtonProps",
+      "props": [
+        {
+          "name": "aria-controls",
+          "type": "string | undefined",
+          "optional": true,
+          "description": "Identifies the element (or elements) whose contents or presence are controlled by the current\nelement.",
+          "declaredIn": "AriaBaseButtonProps"
+        },
+        {
+          "name": "aria-describedby",
+          "type": "string | undefined",
+          "optional": true,
+          "description": "Identifies the element (or elements) that describes the object.",
+          "declaredIn": "AriaLabelingProps"
+        },
+        {
+          "name": "aria-details",
+          "type": "string | undefined",
+          "optional": true,
+          "description": "Identifies the element (or elements) that provide a detailed, extended description for the\nobject.",
+          "declaredIn": "AriaLabelingProps"
+        },
+        {
+          "name": "aria-disabled",
+          "type": "boolean | \"true\" | \"false\" | undefined",
+          "optional": true,
+          "description": "Indicates whether the element is disabled to users of assistive technology.",
+          "declaredIn": "AriaBaseButtonProps"
+        },
+        {
+          "name": "aria-expanded",
+          "type": "boolean | \"true\" | \"false\" | undefined",
+          "optional": true,
+          "description": "Indicates whether the element, or another grouping element it controls, is currently expanded\nor collapsed.",
+          "declaredIn": "AriaBaseButtonProps"
+        },
+        {
+          "name": "aria-haspopup",
+          "type": "boolean | \"true\" | \"false\" | \"menu\" | \"listbox\" | \"tree\" | \"grid\" | \"dialog\" | undefined",
+          "optional": true,
+          "description": "Indicates the availability and type of interactive popup element, such as menu or dialog, that\ncan be triggered by an element.",
+          "declaredIn": "AriaBaseButtonProps"
+        },
+        {
+          "name": "aria-label",
+          "type": "string | undefined",
+          "optional": true,
+          "description": "Defines a string value that labels the current element.",
+          "declaredIn": "AriaLabelingProps"
+        },
+        {
+          "name": "aria-labelledby",
+          "type": "string | undefined",
+          "optional": true,
+          "description": "Identifies the element (or elements) that labels the current element.",
+          "declaredIn": "AriaLabelingProps"
+        },
+        {
+          "name": "aria-pressed",
+          "type": "boolean | \"true\" | \"false\" | \"mixed\" | undefined",
+          "optional": true,
+          "description": "Indicates the current \"pressed\" state of toggle buttons.",
+          "declaredIn": "AriaBaseButtonProps"
+        },
+        {
+          "name": "autoFocus",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the element should receive focus on render.",
+          "declaredIn": "FocusableProps"
+        },
+        {
+          "name": "children",
+          "type": "ChildrenOrFunction<ToggleButtonRenderProps>",
+          "optional": true,
+          "description": "The children of the component. A function may be provided to alter the children based on\ncomponent state.",
+          "declaredIn": "RenderProps"
+        },
+        {
+          "name": "defaultSelected",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the element should be selected (uncontrolled).",
+          "declaredIn": "ToggleButtonProps"
+        },
+        {
+          "name": "excludeFromTabOrder",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether to exclude the element from the sequential tab order. If true,\nthe element will not be focusable via the keyboard by tabbing. This should\nbe avoided except in rare scenarios where an alternative means of accessing\nthe element or its functionality via the keyboard is available.",
+          "declaredIn": "FocusableDOMProps"
+        },
+        {
+          "name": "id",
+          "type": "Key | undefined",
+          "optional": true,
+          "description": "When used in a ToggleButtonGroup, an identifier for the item in `selectedKeys`. When used\nstandalone, a DOM id.",
+          "declaredIn": "ToggleButtonProps"
+        },
+        {
+          "name": "isDisabled",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the button is disabled.",
+          "declaredIn": "ButtonProps"
+        },
+        {
+          "name": "isSelected",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether the element should be selected (controlled).",
+          "declaredIn": "ToggleButtonProps"
+        },
+        {
+          "name": "onBlur",
+          "type": "((e: React.FocusEvent<Element, Element>) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when the element loses focus.",
+          "declaredIn": "FocusEvents"
+        },
+        {
+          "name": "onChange",
+          "type": "((isSelected: boolean) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when the element's selection state changes.",
+          "declaredIn": "ToggleButtonProps"
+        },
+        {
+          "name": "onClick",
+          "type": "((e: React.MouseEvent<FocusableElement>) => void) | undefined",
+          "optional": true,
+          "description": "**Not recommended – use `onPress` instead.** `onClick` is an alias for `onPress`\nprovided for compatibility with other libraries. `onPress` provides\nadditional event details for non-mouse interactions.",
+          "declaredIn": "PressEvents"
+        },
+        {
+          "name": "onFocus",
+          "type": "((e: React.FocusEvent<Element, Element>) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when the element receives focus.",
+          "declaredIn": "FocusEvents"
+        },
+        {
+          "name": "onFocusChange",
+          "type": "((isFocused: boolean) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when the element's focus status changes.",
+          "declaredIn": "FocusEvents"
+        },
+        {
+          "name": "onHoverChange",
+          "type": "((isHovering: boolean) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when the hover state changes.",
+          "declaredIn": "HoverEvents"
+        },
+        {
+          "name": "onHoverEnd",
+          "type": "((e: HoverEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when a hover interaction ends.",
+          "declaredIn": "HoverEvents"
+        },
+        {
+          "name": "onHoverStart",
+          "type": "((e: HoverEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when a hover interaction starts.",
+          "declaredIn": "HoverEvents"
+        },
+        {
+          "name": "onKeyDown",
+          "type": "((e: KeyboardEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when a key is pressed.",
+          "declaredIn": "KeyboardEvents"
+        },
+        {
+          "name": "onKeyUp",
+          "type": "((e: KeyboardEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when a key is released.",
+          "declaredIn": "KeyboardEvents"
+        },
+        {
+          "name": "onPress",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when the press is released over the target.",
+          "declaredIn": "PressEvents"
+        },
+        {
+          "name": "onPressChange",
+          "type": "((isPressed: boolean) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when the press state changes.",
+          "declaredIn": "PressEvents"
+        },
+        {
+          "name": "onPressEnd",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when a press interaction ends, either\nover the target or when the pointer leaves the target.",
+          "declaredIn": "PressEvents"
+        },
+        {
+          "name": "onPressStart",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when a press interaction starts.",
+          "declaredIn": "PressEvents"
+        },
+        {
+          "name": "onPressUp",
+          "type": "((e: PressEvent) => void) | undefined",
+          "optional": true,
+          "description": "Handler that is called when a press is released over the target, regardless of\nwhether it started on the target or not.",
+          "declaredIn": "PressEvents"
+        },
+        {
+          "name": "preventFocusOnPress",
+          "type": "boolean | undefined",
+          "optional": true,
+          "description": "Whether to prevent focus from moving to the button when pressing it.\n\nCaution, this can make the button inaccessible and should only be used when alternative\nkeyboard interaction is provided, such as ComboBox's MenuTrigger or a NumberField's\nincrement/decrement control.",
+          "declaredIn": "AriaBaseButtonProps"
+        },
+        {
+          "name": "render",
+          "type": "DOMRenderFunction<\"button\", ToggleButtonRenderProps> | undefined",
+          "optional": true,
+          "description": "Overrides the default DOM element with a custom render function.\nThis allows rendering existing components with built-in styles and behaviors\nsuch as router links, animation libraries, and pre-styled components.\n\nRequirements:\n\n- You must render the expected element type (e.g. if `<button>` is expected, you cannot render an\n  `<a>`).\n- Only a single root DOM element can be rendered (no fragments).\n- You must pass through props and ref to the underlying DOM element, merging with your own prop\n  as appropriate.",
+          "declaredIn": "DOMRenderProps"
+        },
+        {
+          "name": "slot",
+          "type": "string | null | undefined",
+          "optional": true,
+          "description": "A slot name for the component. Slots allow the component to receive props from a parent\ncomponent. An explicit `null` value indicates that the local props completely override all\nprops received from a parent.",
+          "declaredIn": "SlotProps"
+        }
+      ],
+      "propGroups": [
+        {
+          "name": "GlobalDOMAttributes",
+          "count": 5,
+          "props": [
+            "dir",
+            "hidden",
+            "inert",
+            "lang",
+            "translate"
+          ]
+        },
+        {
+          "name": "GlobalDOMEvents",
+          "count": 63,
+          "props": [
+            "onAnimationEnd",
+            "onAnimationEndCapture",
+            "onAnimationIteration",
+            "onAnimationIterationCapture",
+            "onAnimationStart",
+            "onAnimationStartCapture",
+            "onAuxClick",
+            "onAuxClickCapture",
+            "onClickCapture",
+            "onContextMenu",
+            "onContextMenuCapture",
+            "onDoubleClick",
+            "onDoubleClickCapture",
+            "onGotPointerCapture",
+            "onGotPointerCaptureCapture",
+            "onLostPointerCapture",
+            "onLostPointerCaptureCapture",
+            "onMouseDown",
+            "onMouseDownCapture",
+            "onMouseEnter",
+            "onMouseLeave",
+            "onMouseMove",
+            "onMouseMoveCapture",
+            "onMouseOut",
+            "onMouseOutCapture",
+            "onMouseOver",
+            "onMouseOverCapture",
+            "onMouseUp",
+            "onMouseUpCapture",
+            "onPointerCancel",
+            "onPointerCancelCapture",
+            "onPointerDown",
+            "onPointerDownCapture",
+            "onPointerEnter",
+            "onPointerLeave",
+            "onPointerMove",
+            "onPointerMoveCapture",
+            "onPointerOut",
+            "onPointerOutCapture",
+            "onPointerOver",
+            "onPointerOverCapture",
+            "onPointerUp",
+            "onPointerUpCapture",
+            "onScroll",
+            "onScrollCapture",
+            "onTouchCancel",
+            "onTouchCancelCapture",
+            "onTouchEnd",
+            "onTouchEndCapture",
+            "onTouchMove",
+            "onTouchMoveCapture",
+            "onTouchStart",
+            "onTouchStartCapture",
+            "onTransitionCancel",
+            "onTransitionCancelCapture",
+            "onTransitionEnd",
+            "onTransitionEndCapture",
+            "onTransitionRun",
+            "onTransitionRunCapture",
+            "onTransitionStart",
+            "onTransitionStartCapture",
+            "onWheel",
+            "onWheelCapture"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "name": "basic",
+          "path": "src/toggle-button/examples/basic.tsx",
+          "exports": [
+            "Basic"
+          ]
         }
       ]
     }
@@ -402,6 +749,16 @@
     },
     {
       "from": "component:button",
+      "to": "repo-doc:package-anatomy",
+      "type": "repo-doc"
+    },
+    {
+      "from": "component:toggle-button",
+      "to": "component:button",
+      "type": "component"
+    },
+    {
+      "from": "component:toggle-button",
       "to": "repo-doc:package-anatomy",
       "type": "repo-doc"
     }
