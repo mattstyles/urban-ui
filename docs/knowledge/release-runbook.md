@@ -4,8 +4,8 @@ tags: [knowledge, release, publishing]
 
 # Release runbook
 
-How a train departs, end to end. The mechanics are scripts in
-`internal/release` ([[0004-release-strategy]]: deterministic mechanics are
+How a train departs, end to end. The mechanics are the `exfil` CLI in
+`internal/exfil` ([[0004-release-strategy]]: deterministic mechanics are
 scripts, judgment is skills); this record is the operator's contract.
 
 ## The cycle

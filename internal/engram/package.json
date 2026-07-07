@@ -1,15 +1,19 @@
 {
-  "name": "@urban-ui/extractor",
+  "name": "@urban-ui/engram",
   "version": "0.0.0",
   "private": true,
   "description": "Internal manifest extractor and prose validator — generates urban-manifest.json and enforces the package-anatomy contract. Never published.",
   "type": "module",
+  "bin": {
+    "engram": "./src/cli.ts"
+  },
   "scripts": {
     "test": "bun test",
     "typecheck": "tsgo --noEmit",
     "lint": "oxlint src test"
   },
   "dependencies": {
+    "citty": "0.2.2",
     "ts-morph": "28.0.0"
   },
   "devDependencies": {
