@@ -18,7 +18,7 @@
  * (@urban-ui/theme, @urban-ui/react) — the consumer-compiles contract of
  * ADR-0005.
  */
-export function stylexPluginOptions(command: "build" | "serve") {
+export function stylexPluginOptions({ command }: { command: "build" | "serve" }) {
   return {
     useCSSLayers: true,
     // Readable debug class names while developing.
@@ -38,12 +38,18 @@ export function stylexPluginOptions(command: "build" | "serve") {
  * (react-aria-components) declare `source` conditions pointing at files absent
  * from their published tarballs, which breaks resolution outright.
  *
- * @param workspaceRoot Absolute path to the repository root. Compute it at
- *   the call site — `fileURLToPath(new URL("../..", import.meta.url))` — Vite
- *   bundles config files and rewrites `import.meta.url` to the config file's
- *   own path, so it cannot be derived reliably in here.
+ * @param options.workspaceRoot Absolute path to the repository root. Compute
+ *   it at the call site — `fileURLToPath(new URL("../..", import.meta.url))` —
+ *   Vite bundles config files and rewrites `import.meta.url` to the config
+ *   file's own path, so it cannot be derived reliably in here.
  */
-export function workspaceSourceAliases(workspaceRoot: string, command: "build" | "serve") {
+export function workspaceSourceAliases({
+  workspaceRoot,
+  command,
+}: {
+  workspaceRoot: string;
+  command: "build" | "serve";
+}) {
   if (command !== "serve") {
     return [];
   }

@@ -16,13 +16,13 @@ export default defineConfig(({ command }) => ({
     // src/routes/. Must come before react() so route files are transformed
     // against an up-to-date tree.
     tanstackRouter({ target: "react" }),
-    stylex.vite(stylexPluginOptions(command)),
+    stylex.vite(stylexPluginOptions({ command })),
     react(),
   ],
   resolve: {
     // Dev aliases workspace packages to their sources so edits in packages/*
     // HMR straight into the workbench without a rebuild; production builds
     // consume built dist — consumer fidelity. Rationale lives with the helper.
-    alias: workspaceSourceAliases(workspaceRoot, command),
+    alias: workspaceSourceAliases({ workspaceRoot, command }),
   },
 }));
