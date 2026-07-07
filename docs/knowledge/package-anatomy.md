@@ -62,7 +62,7 @@ Every component/prop/token/example name referenced in prose is validated against
 ## Visual scenes (`*.visual.tsx`)
 
 - Coverage over pedagogy: exhaustive state/prop matrices (`crossProps` helper in `internal/`), stress cases, interaction states.
-- **One export = one screenshot** — named exports are the diff unit; adding coverage never reshuffles existing baselines.
+- **One export = one screenshot, and exports are logical groupings** — one scene per axis (states, colour, size, content stress), composing its members in a single capture with a caption naming each. Per-state exports create baseline churn and review fatigue; grouped scenes make an axis one reviewable image. Adding a member changes only that group's baseline; a new axis is a new export, so groups never reshuffle each other.
 - Screenshot naming schema: `src/<component>/__screenshots__/<file-stem>/<export-name>.png` — stable paths keep PR image diffs meaningful.
 - Overlay scenes capture at viewport level (portals escape element roots).
 - Scene baselines are the **regression gate**; example baselines are **review evidence** (expected to change with legitimate visual change).
