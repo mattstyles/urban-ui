@@ -73,7 +73,7 @@ Covers: AC 3 (render), AC 4
 - `apps/workbench` (Vite + `@stylexjs/unplugin`) renders Button with theme tokens correctly resolved cross-package — compiled CSS contains token-derived values.
 - `publint` + `@arethetypeswrong/cli` pass in CI for both packages.
 
-### Phase 3: Component quality gates — tests, axe, VRT, and the workbench as render target — urban-ui-bke
+### ✅ Phase 3: Component quality gates — tests, axe, VRT, and the workbench as render target — urban-ui-bke — [PR #29](https://github.com/mattstyles/urban-ui/pull/29)
 
 Delivers: the full [[0006-component-quality-stack]] verification loop on Button; workbench deploys to GitHub Pages.
 Covers: AC 3 (Pages), AC 5
