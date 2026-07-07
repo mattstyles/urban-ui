@@ -1,5 +1,6 @@
 ---
 tags: [theme, tokens, philosophy]
+prose-ignore: [defineVars, createTheme]
 ---
 
 # Theme — token philosophy

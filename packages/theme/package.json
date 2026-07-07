@@ -23,8 +23,12 @@
   },
   "files": [
     "dist",
-    "philosophy.md"
+    "philosophy.md",
+    "urban-manifest.json"
   ],
+  "urban": {
+    "manifest": "./urban-manifest.json"
+  },
   "scripts": {
     "build": "tsc",
     "typecheck": "tsgo --noEmit",

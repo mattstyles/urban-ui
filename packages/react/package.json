@@ -12,8 +12,12 @@
   "files": [
     "dist",
     "src/**/*.md",
-    "src/**/examples/*"
+    "src/**/examples/*",
+    "urban-manifest.json"
   ],
+  "urban": {
+    "manifest": "./urban-manifest.json"
+  },
   "type": "module",
   "sideEffects": [
     "**/*.stylex.*"
