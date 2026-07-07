@@ -121,7 +121,7 @@ Covers: AC 9, 11
 - pkg.pr.new preview builds run from PRs; a scratch consumer installs the preview `react`+`theme` pair with the one-line unplugin config and renders Button correctly.
 - The first real release is documented as a deliberate act: merge a real release PR when there's content worth 0.10.0 — no code changes required, only the decision.
 
-### Phase 7: Labs tier and the graduation rehearsal — urban-ui-syo
+### ✅ Phase 7: Labs tier and the graduation rehearsal — urban-ui-syo — [PR #33](https://github.com/mattstyles/urban-ui/pull/33)
 
 Delivers: the experimental channel is real and graduation is demonstrated as a move.
 Covers: AC 10
