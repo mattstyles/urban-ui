@@ -1,7 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { devDependencyVersion, extractAccentToken } from "../src/consumer-smoke.js";
+import { devDependencyVersion, extractAccentToken } from "./consumer-smoke.js";
 
 const REPO_ROOT = path.join(import.meta.dirname, "..", "..", "..");
 
