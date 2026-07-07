@@ -1,12 +1,11 @@
-import path from "node:path";
 import { fileURLToPath } from "node:url";
 import stylex from "@stylexjs/unplugin";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import { stylexPluginOptions, workspaceSourceAliases } from "@urban-ui/config/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 const workspaceRoot = fileURLToPath(new URL("../..", import.meta.url));
-const pkg = (...segments: string[]) => path.join(workspaceRoot, "packages", ...segments);
 
 export default defineConfig(({ command }) => ({
   // GitHub Pages serves the workbench from /<repo>/ — the deploy workflow
@@ -17,58 +16,13 @@ export default defineConfig(({ command }) => ({
     // src/routes/. Must come before react() so route files are transformed
     // against an up-to-date tree.
     tanstackRouter({ target: "react" }),
-    // Before the react plugin to preserve Fast Refresh. The unplugin
-    // auto-discovers StyleX packages in node_modules (@urban-ui/theme,
-    // @urban-ui/react) — the consumer-compiles contract of ADR-0005.
-    stylex.vite({
-      useCSSLayers: true,
-      // Readable debug class names while developing.
-      dev: command === "serve",
-      devMode: "full",
-    }),
+    stylex.vite(stylexPluginOptions(command)),
     react(),
   ],
   resolve: {
     // Dev aliases workspace packages to their sources so edits in packages/*
     // HMR straight into the workbench without a rebuild; production builds
-    // consume built dist — consumer fidelity. Deliberately NOT a global
-    // `source` resolve condition: third-party packages (react-aria-components)
-    // declare `source` conditions pointing at files absent from their
-    // published tarballs, which breaks resolution outright.
-    alias:
-      command === "serve"
-        ? [
-            {
-              find: /^@urban-ui\/theme$/,
-              replacement: pkg("theme", "src", "index.ts"),
-            },
-            {
-              // tokens.stylex is deliberately NOT aliased: StyleX hashes var
-              // names from the defining module's identity, and the compiler
-              // resolves token imports in *other* files through package
-              // exports to dist. Serving the source tokens module would
-              // define source-hashed vars that no compiled rule references —
-              // classes apply but every var() is undefined (unstyled page).
-              find: /^@urban-ui\/theme\/(?!tokens\.stylex$)(.+)$/,
-              replacement: pkg("theme", "src", "$1.ts"),
-            },
-            {
-              find: /^@urban-ui\/react$/,
-              replacement: pkg("react", "src", "index.ts"),
-            },
-            {
-              find: /^@urban-ui\/react\/(.+)$/,
-              replacement: pkg("react", "src", "$1", "index.ts"),
-            },
-            {
-              find: /^@urban-ui\/labs$/,
-              replacement: pkg("labs", "src", "index.ts"),
-            },
-            {
-              find: /^@urban-ui\/labs\/(.+)$/,
-              replacement: pkg("labs", "src", "$1", "index.ts"),
-            },
-          ]
-        : [],
+    // consume built dist — consumer fidelity. Rationale lives with the helper.
+    alias: workspaceSourceAliases(workspaceRoot, command),
   },
 }));
