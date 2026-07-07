@@ -1,8 +1,7 @@
 monorepo_root = true
 
 [monorepo]
-# labs/ is itself the @urban-ui/labs package — one name everywhere (ADR-0002)
-config_roots = ["apps/*", "packages/*", "internal/*", "labs"]
+config_roots = ["apps/*", "packages/*", "internal/*"]
 
 [settings]
 task.source_freshness_hash_contents = true

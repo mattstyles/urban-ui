@@ -10,7 +10,7 @@ tags: [adr, packages, versioning, publishing]
 
 - The design system's components share runtime singletons: StyleX `defineVars` token objects and React Aria contexts. Split across independently versioned packages, version skew breaks these silently — two copies of a context don't compose, two token objects double-emit CSS. Radix's consolidation from per-primitive packages into a single `radix-ui` package is the ecosystem precedent for this failure mode.
 - Consumers still legitimately want the *effects* of small packages: install only what you need, and a clear boundary between stable API and experiments.
-- The stability boundary is already structural in the repo layout — `packages/` vs `labs/` ([[0001-repository-structure]]).
+- The stability boundary is structural in the repo layout — `packages/labs` vs the rest of `packages/` ([[0001-repository-structure]]: `packages/` holds every published package).
 - Package count is the main input to two other systems: release version math ([[0004-release-strategy]]) and the `urban` CLI's discovery surface ([[0003-urban-cli]], [[001-urban-cli]]). A small, fixed shape keeps both simple.
 
 ## Decision
@@ -34,7 +34,7 @@ Two tiers, three published npm packages. (The `urban` CLI also lives under `pack
 
 ### Graduation
 
-- Graduation is **a move, not a version event**: the component folder moves from `labs` into `packages/react` with its anatomy intact — docs, examples, tests, scenes travel as-is. This is why labs mirrors the stable component anatomy: graduation is a move, not a rewrite.
+- Graduation is **a move, not a version event**: the component folder moves from `packages/labs` into `packages/react` with its anatomy intact — docs, examples, tests, scenes travel as-is. This is why labs mirrors the stable component anatomy: graduation is a move, not a rewrite.
 - On the release trains, one graduation lands as a `minor` on core (new component) and a `minor` on labs (component removed — a breaking change under the 0.x convention). The intent file declares the *semantics* — `core: minor`, `labs: major` — and the version math maps the labs breaking change to a minor number while the train sits pre-1.0 ([[0004-release-strategy]]).
 
 ### Extraction rule

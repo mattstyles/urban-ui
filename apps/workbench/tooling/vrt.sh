@@ -26,7 +26,7 @@ MOUNTS=(
   -v "urban-ui-vrt-nm-root:/work/node_modules"
   -v "urban-ui-vrt-bun-cache:/root/.bun/install/cache"
 )
-for dir in apps/* packages/* internal/* labs/*; do
+for dir in apps/* packages/* internal/*; do
   [[ -f "$dir/package.json" ]] || continue
   MOUNTS+=(-v "urban-ui-vrt-nm-${dir//\//-}:/work/$dir/node_modules")
 done
@@ -38,7 +38,7 @@ docker run --rm --init --ipc=host "${MOUNTS[@]}" -w /work "$IMAGE" \
 # comparison is unaffected; this only trims committed bytes.
 if [[ "${1:-}" == "--update" ]]; then
   if command -v oxipng >/dev/null 2>&1; then
-    find packages labs -path '*/__screenshots__/*.png' \
+    find packages -path '*/__screenshots__/*.png' \
       -exec oxipng --opt 4 --strip safe --quiet {} +
   else
     echo "warn: oxipng not found — baselines committed unoptimized (mise install provides it)" >&2

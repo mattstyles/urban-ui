@@ -16,9 +16,9 @@ export type RenderableKind = "scene" | "example";
 
 export interface RenderableMeta {
   kind: RenderableKind;
-  /** Route key: package directory name under packages/, or "labs". */
+  /** Route key: package directory name under packages/. */
   pkg: string;
-  /** Repo-relative package root, e.g. "packages/react" or "labs". */
+  /** Repo-relative package root, e.g. "packages/react". */
   pkgRoot: string;
   /** Component folder name under src/, e.g. "button". */
   component: string;
@@ -37,16 +37,15 @@ export function parseRenderablePath(
   repoRelPath: string,
   exportName: string,
 ): RenderableMeta | null {
-  // labs/ is itself the labs package root; packages/<name> for stable.
-  const match = repoRelPath.match(/^(packages\/([^/]+)|labs)\/src\/([^/]+)\/(.+)\.tsx$/);
+  const match = repoRelPath.match(/^packages\/([^/]+)\/src\/([^/]+)\/(.+)\.tsx$/);
   if (!match) {
     return null;
   }
-  const [, pkgRoot, packagesName, component, fileStem] = match;
-  const pkg = packagesName ?? "labs";
-  if (fileStem === undefined || pkgRoot === undefined || component === undefined) {
+  const [, pkg, component, fileStem] = match;
+  if (fileStem === undefined || pkg === undefined || component === undefined) {
     return null;
   }
+  const pkgRoot = `packages/${pkg}`;
   const kind: RenderableKind | null = fileStem.endsWith(".visual")
     ? "scene"
     : fileStem.startsWith("examples/")

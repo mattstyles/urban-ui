@@ -4,7 +4,9 @@
  * beyond them.
  *
  * A package participates when its package.json carries the `"urban"` marker.
- * Tier comes from location: labs/ is the labs train, packages/ is stable.
+ * Tier comes from location: packages/labs is the labs train
+ * ([[0002-package-architecture]]: one name everywhere); every other
+ * packages/ entry is stable.
  */
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -145,15 +147,7 @@ function discoverPackage(dir: string, tier: Tier): DiscoveredPackage | null {
 export function discoverUrbanPackages(repoRoot: string): DiscoveredPackage[] {
   const discovered: DiscoveredPackage[] = [];
   for (const dir of listDirs(path.join(repoRoot, "packages"))) {
-    const pkg = discoverPackage(dir, "stable");
-    if (pkg) {
-      discovered.push(pkg);
-    }
-  }
-  // labs/ is itself the @urban-ui/labs package (one name everywhere);
-  // nested labs/* packages are also honoured.
-  for (const dir of [path.join(repoRoot, "labs"), ...listDirs(path.join(repoRoot, "labs"))]) {
-    const pkg = discoverPackage(dir, "labs");
+    const pkg = discoverPackage(dir, path.basename(dir) === "labs" ? "labs" : "stable");
     if (pkg) {
       discovered.push(pkg);
     }

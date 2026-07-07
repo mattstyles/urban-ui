@@ -19,8 +19,6 @@ export interface RenderableEntry extends RenderableMeta {
 const modules = {
   ...import.meta.glob("../../../packages/*/src/**/*.visual.tsx", { eager: true }),
   ...import.meta.glob("../../../packages/*/src/**/examples/*.tsx", { eager: true }),
-  ...import.meta.glob("../../../labs/src/**/*.visual.tsx", { eager: true }),
-  ...import.meta.glob("../../../labs/src/**/examples/*.tsx", { eager: true }),
 } as Record<string, Record<string, unknown>>;
 
 function collect(): RenderableEntry[] {

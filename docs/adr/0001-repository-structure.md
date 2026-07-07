@@ -31,14 +31,13 @@ tags: [adr, monorepo, tooling, dev-environment]
 ### Monorepo layout
 
 ```
-apps/          deployable applications (workbench; docs site deferred)
-packages/      stable published packages (react, theme, the urban CLI) — versioned per release train
-labs/          the labs package — experimental components, 0.x, independent version line
+apps/          runnable applications (workbench; docs site deferred) — never published
+packages/      every published package (react, theme, labs, the urban CLI) — versioned per release train
 internal/      internal-only shared config and scripts (tsconfig base, lint presets, extractor, release scripts) — never published
 docs/          this documentation brain (ADRs, PRDs, knowledge)
 ```
 
-- The `packages/` vs `labs/` boundary is the stability tier boundary, made structural — see [[0002-package-architecture]] for the versioning and graduation model.
+- The top-level boundary is publishability: everything under `packages/` publishes, `internal/` is private, `apps/` are runnable applications. The stability tier boundary is structural *within* `packages/`: `packages/labs` is the experimental labs package on its own 0.x line; every other npm package rides the lockstep core train — see [[0002-package-architecture]] for the versioning and graduation model.
 - Rust/Go CLIs are packages too — published products regardless of language — and live in `packages/`. They share CI and mise tasks but never join the JS dependency graph: JS packages never depend on CLI build output.
 - Apps and docs are private workspaces; they consume packages via `workspace:*` and are never published.
 
