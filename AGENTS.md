@@ -77,6 +77,11 @@ hk check --all                # all gates (oxlint, oxfmt, typecheck) against all
 
 Canonical `build`/`lint`/`typecheck` scripts live in each package's `package.json`; mise tasks are thin wrappers with declared `sources`/`outputs` (content-hash freshness). See [[0001-repository-structure]].
 
+## Workflow
+
+- Never push to `main` — work on branches and merge via pull requests.
+- For segmented work (e.g. multi-phase plans), use `stack` to split it across a stack of PRs, one per segment. See the `stack` skill.
+
 ## Architecture Overview
 
 _Add a brief overview of your project architecture_
