@@ -1,21 +1,15 @@
 import * as stylex from "@stylexjs/stylex";
+import {
+  createHashHistory,
+  createRootRoute,
+  createRoute,
+  createRouter,
+  Link,
+  RouterProvider,
+  useLocation,
+} from "@tanstack/react-router";
 import { colors, radii, space } from "@urban-ui/theme/tokens.stylex";
-import { useEffect, useState } from "react";
-import { findRenderable, type RenderableEntry, renderables } from "./registry.js";
-
-// Hash-based routing keeps deep links working on static hosting (GitHub
-// Pages) with no history fallback, and gives Playwright stable URLs.
-const readRoute = () => window.location.hash.replace(/^#/, "") || "/";
-
-function useHashRoute(): string {
-  const [route, setRoute] = useState(readRoute);
-  useEffect(() => {
-    const onHashChange = () => setRoute(readRoute());
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
-  return route;
-}
+import { type RenderableEntry, renderables } from "./registry.js";
 
 const styles = stylex.create({
   page: {
@@ -76,9 +70,9 @@ function Index() {
           <ul>
             {entries.map((entry) => (
               <li key={entry.route}>
-                <a href={`#${entry.route}`} {...stylex.props(styles.link)}>
+                <Link to={entry.route} {...stylex.props(styles.link)}>
                   {entry.kind}: {entry.fileStem}/{entry.exportName}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -104,22 +98,52 @@ function RenderableView({ entry }: { entry: RenderableEntry }) {
   );
 }
 
-function NotFound({ route }: { route: string }) {
+function NotFound() {
+  const { pathname } = useLocation();
   return (
     <main {...stylex.props(styles.page)}>
-      <h1>No renderable at {route}</h1>
-      <a href="#/" {...stylex.props(styles.link)}>
+      <h1>No renderable at {pathname}</h1>
+      <Link to="/" {...stylex.props(styles.link)}>
         Back to index
-      </a>
+      </Link>
     </main>
   );
 }
 
-export function App() {
-  const route = useHashRoute();
-  if (route === "/") {
-    return <Index />;
+// The registry maps onto real route definitions — one route per renderable
+// export — so the router and the VRT scanner agree by construction: both
+// derive paths from tooling/paths.ts routeFor().
+const rootRoute = createRootRoute({
+  notFoundComponent: NotFound,
+});
+
+const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: Index,
+});
+
+const renderableRoutes = renderables.map((entry) =>
+  createRoute({
+    getParentRoute: () => rootRoute,
+    path: entry.route,
+    component: () => <RenderableView entry={entry} />,
+  }),
+);
+
+// Hash history keeps deep links working on static hosting (GitHub Pages)
+// with no history fallback, and gives Playwright stable URLs.
+const router = createRouter({
+  routeTree: rootRoute.addChildren([indexRoute, ...renderableRoutes]),
+  history: createHashHistory(),
+});
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
   }
-  const entry = findRenderable(route);
-  return entry ? <RenderableView entry={entry} /> : <NotFound route={route} />;
+}
+
+export function App() {
+  return <RouterProvider router={router} />;
 }
