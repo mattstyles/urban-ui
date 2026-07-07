@@ -11,8 +11,9 @@
  */
 
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import path from "node:path";
+import { findRepoRoot } from "@urban-ui/workspace";
 import { defineCommand, runMain } from "citty";
 import { assembleRelease, releaseStatus } from "./assemble.js";
 import { consumerSmoke } from "./consumer-smoke.js";
@@ -20,18 +21,6 @@ import { runGates } from "./gates.js";
 import { CHANGES_DIR, parseIntent } from "./intent.js";
 import { planDepartures, rehearse } from "./publish.js";
 import { discoverTrains } from "./trains.js";
-
-function findRepoRoot(start: string): string {
-  let dir = start;
-  while (!existsSync(path.join(dir, "bun.lock"))) {
-    const parent = path.dirname(dir);
-    if (parent === dir) {
-      throw new Error(`Repo root not found walking up from ${start} (no bun.lock)`);
-    }
-    dir = parent;
-  }
-  return dir;
-}
 
 function git(repoRoot: string, args: string[]): string {
   return execFileSync("git", args, { cwd: repoRoot, encoding: "utf8" }).trim();

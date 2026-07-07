@@ -1,6 +1,6 @@
 {
-  "name": "@fix/labs",
-  "version": "0.2.0",
+  "name": "@fix/aster",
+  "version": "0.1.0",
   "urban": {
     "manifest": "./urban-manifest.json"
   }
