@@ -13,7 +13,17 @@ const styles = stylex.create({
   index: {
     display: "flex",
     flexDirection: "column",
+    gap: space.lg,
+  },
+  tier: {
+    display: "flex",
+    flexDirection: "column",
     gap: space.md,
+  },
+  group: {
+    display: "flex",
+    flexDirection: "column",
+    gap: space.sm,
   },
   link: {
     color: colors.accent,
@@ -54,19 +64,58 @@ function currentRoute(): string {
   return hash === "" ? "/" : hash;
 }
 
+// TOC: stability tier first (labs is the experimental package, everything
+// else rides the stable core train), then one group per component.
+const TIERS = ["Stable", "Labs"] as const;
+
+function tierOf(entry: RenderableEntry): (typeof TIERS)[number] {
+  return entry.pkg === "labs" ? "Labs" : "Stable";
+}
+
 function Index() {
+  const groups = new Map<string, Map<string, RenderableEntry[]>>(
+    TIERS.map((tier) => [tier, new Map()]),
+  );
+  for (const entry of renderables) {
+    const components = groups.get(tierOf(entry));
+    if (components === undefined) {
+      continue;
+    }
+    // Labs is one package, so the pkg prefix is noise under its tier heading;
+    // stable components keep it (react/button) since the tier spans packages.
+    const key = entry.pkg === "labs" ? entry.component : `${entry.pkg}/${entry.component}`;
+    const group = components.get(key) ?? [];
+    group.push(entry);
+    components.set(key, group);
+  }
   return (
     <main {...stylex.props(styles.page, styles.index)}>
       <h1>Urban UI VRT scenes</h1>
-      <ul>
-        {renderables.map((entry) => (
-          <li key={entry.route}>
-            <a href={`#${entry.route}`} {...stylex.props(styles.link)}>
-              {entry.kind}: {entry.pkg}/{entry.component}/{entry.fileStem}/{entry.exportName}
-            </a>
-          </li>
-        ))}
-      </ul>
+      {TIERS.map((tier) => {
+        const components = groups.get(tier);
+        if (components === undefined || components.size === 0) {
+          return null;
+        }
+        return (
+          <section key={tier} {...stylex.props(styles.tier)}>
+            <h2>{tier}</h2>
+            {[...components.entries()].map(([key, entries]) => (
+              <section key={key} {...stylex.props(styles.group)}>
+                <h3>{key}</h3>
+                <ul>
+                  {entries.map((entry) => (
+                    <li key={entry.route}>
+                      <a href={`#${entry.route}`} {...stylex.props(styles.link)}>
+                        {entry.kind}: {entry.fileStem}/{entry.exportName}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </section>
+        );
+      })}
     </main>
   );
 }

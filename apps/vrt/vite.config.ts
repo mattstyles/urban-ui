@@ -17,14 +17,6 @@ export default defineConfig(({ command }) => ({
       // Readable debug class names while developing.
       dev: command === "serve",
       devMode: "full",
-      // Dev serves package *sources* (aliases below), so the StyleX compiler
-      // must resolve token imports to the same source files — it has its own
-      // resolver that would otherwise walk package exports to dist.
-      ...(command === "serve" && {
-        aliases: {
-          "@urban-ui/theme/tokens.stylex": [pkg("theme", "src", "tokens.stylex.ts")],
-        },
-      }),
     }),
     react(),
   ],
@@ -43,7 +35,13 @@ export default defineConfig(({ command }) => ({
               replacement: pkg("theme", "src", "index.ts"),
             },
             {
-              find: /^@urban-ui\/theme\/(.+)$/,
+              // tokens.stylex is deliberately NOT aliased: StyleX hashes var
+              // names from the defining module's identity, and the compiler
+              // resolves token imports in *other* files through package
+              // exports to dist. Serving the source tokens module would
+              // define source-hashed vars that no compiled rule references —
+              // classes apply but every var() is undefined (unstyled page).
+              find: /^@urban-ui\/theme\/(?!tokens\.stylex$)(.+)$/,
               replacement: pkg("theme", "src", "$1.ts"),
             },
             {
