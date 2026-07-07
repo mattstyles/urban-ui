@@ -110,7 +110,7 @@ Covers: AC 7, 8
 - Version math implemented and fixture-tested: max-bump per train; pre-1.0 semantics mapping; graduation semantics (`core: minor`, `labs: major`); binary-train intent shape accepted by the parser (for the future CLI).
 - `/release` assembles the release PR: versions applied, intents consumed, per-package `CHANGELOG.md` + narrative synthesized from intent prose, manifest diffs, and linked PR descriptions + release meta JSON; assembly works offline.
 
-### Phase 6: Publish plane — release-ready, rehearsed, not published — urban-ui-e9l
+### ✅ Phase 6: Publish plane — release-ready, rehearsed, not published — urban-ui-e9l — [PR #32](https://github.com/mattstyles/urban-ui/pull/32)
 
 Delivers: the complete publish pipeline verified in rehearsal; previews installable from every PR. The first real train departure becomes a one-decision act.
 Covers: AC 9, 11
