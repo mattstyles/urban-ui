@@ -37,10 +37,10 @@ jobs:
         run: mise run '//...:build'
 
       - name: Rehearsal — pack, verify rewrites, publint/attw, dry-run publish
-        run: bun internal/release/src/cli.ts publish --rehearsal
+        run: bun run exfil publish --rehearsal
 
       - name: Consumer smoke — packed tarballs compile in a scratch Vite app
-        run: bun internal/release/src/cli.ts consumer-smoke
+        run: bun run exfil consumer-smoke
 
       - name: Depart pending trains — publish, tag, GitHub Release
         if: github.event_name == 'push' || inputs.mode == 'real'
@@ -49,4 +49,4 @@ jobs:
           # granular token via secret until that lands.
           NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ github.token }}
-        run: bun internal/release/src/cli.ts publish
+        run: bun run exfil publish

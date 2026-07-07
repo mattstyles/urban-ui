@@ -1,5 +1,5 @@
 [tasks.test]
-description = "bun test over release mechanics and fixtures"
+description = "bun test over engram (manifest extractor) units and fixtures"
 run = "bun run test"
 
 [tasks.typecheck]

@@ -5,7 +5,7 @@ description: Assemble a reviewable release PR — versions computed from accumul
 
 # Release assembly
 
-Deterministic mechanics are scripts (`internal/release`, fixture-tested);
+Deterministic mechanics are scripts (`internal/exfil`, fixture-tested);
 judgment — the release narrative — is yours. The release PR is the review
 surface and merge is the commitment point ([[0004-release-strategy]]).
 
@@ -14,7 +14,7 @@ surface and merge is the commitment point ([[0004-release-strategy]]).
 1. **Preflight** — on a clean `main`, run:
 
    ```bash
-   bun internal/release/src/cli.ts status
+   bun run exfil status
    ```
 
    If no train has pending intents, stop and say so. Confirm with the user
@@ -26,7 +26,7 @@ surface and merge is the commitment point ([[0004-release-strategy]]).
 3. **Assemble** — run:
 
    ```bash
-   bun internal/release/src/cli.ts assemble
+   bun run exfil assemble
    ```
 
    This applies versions to every train member, prepends per-package

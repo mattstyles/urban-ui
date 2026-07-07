@@ -39,8 +39,12 @@ jobs:
 
       - uses: jdx/mise-action@v4
 
+      # exfil depends on citty — the bin needs installed workspace deps.
+      - name: Install workspace dependencies
+        run: bun install --frozen-lockfile
+
       - name: Release intent gates
-        run: bun internal/release/src/cli.ts gate --base "origin/${{ github.base_ref }}"
+        run: bun run exfil gate --base "origin/${{ github.base_ref }}"
 
   test:
     runs-on: ubuntu-latest
