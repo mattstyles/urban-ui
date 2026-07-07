@@ -44,8 +44,6 @@ interface AuthoredDoc {
   context: DocContext;
   /** Absolute path. */
   absolutePath: string;
-  /** Extra names this doc may reference beyond the global universe. */
-  localNames: Set<string>;
 }
 
 function buildManifest(
@@ -101,10 +99,6 @@ function authoredDocsFor(
     if (!component.doc) {
       continue;
     }
-    const localNames = new Set<string>();
-    for (const prop of component.props) {
-      localNames.add(prop.name);
-    }
     docs.push({
       context: {
         file: path.relative(repoRoot, path.join(pkg.dir, component.doc)),
@@ -112,7 +106,6 @@ function authoredDocsFor(
         tier: pkg.tier,
       },
       absolutePath: path.join(pkg.dir, component.doc),
-      localNames,
     });
   }
   for (const pattern of manifest.patterns) {
@@ -123,7 +116,6 @@ function authoredDocsFor(
         tier: pkg.tier,
       },
       absolutePath: path.join(pkg.dir, pattern.path),
-      localNames: new Set(),
     });
   }
   for (const doc of manifest.docs) {
@@ -134,7 +126,6 @@ function authoredDocsFor(
         tier: pkg.tier,
       },
       absolutePath: path.join(pkg.dir, doc.path),
-      localNames: new Set(),
     });
   }
   return docs;
@@ -204,8 +195,9 @@ export function runExtractor(repoRoot: string, mode: Mode): RunResult {
       const resolved = resolveWikiLinks(doc.context, prose.wikiLinks, registry);
       edges.push(...resolved.edges);
       issues.push(...resolved.issues);
-      const universe = new Set([...globalUniverse, ...doc.localNames]);
-      issues.push(...validateNameSpans(doc.context, prose.nameSpans, universe, prose.ignored));
+      issues.push(
+        ...validateNameSpans(doc.context, prose.nameSpans, globalUniverse, prose.ignored),
+      );
     }
     manifest.graph = edges.sort((a, b) => `${a.from} ${a.to}`.localeCompare(`${b.from} ${b.to}`));
   }
