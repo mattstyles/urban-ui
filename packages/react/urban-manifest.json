@@ -310,7 +310,13 @@
         {
           "name": "GlobalDOMAttributes",
           "count": 5,
-          "props": ["dir", "hidden", "inert", "lang", "translate"]
+          "props": [
+            "dir",
+            "hidden",
+            "inert",
+            "lang",
+            "translate"
+          ]
         },
         {
           "name": "GlobalDOMEvents",
@@ -386,7 +392,9 @@
         {
           "name": "basic",
           "path": "src/button/examples/basic.tsx",
-          "exports": ["Basic"]
+          "exports": [
+            "Basic"
+          ]
         }
       ]
     }

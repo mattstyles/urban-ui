@@ -1,3 +1,6 @@
 {
-  "$schema": "./node_modules/oxfmt/configuration_schema.json"
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  // Generated files are byte-exact CI artifacts (manifest staleness gate,
+  // release meta) — the formatter must never touch them.
+  "ignorePatterns": ["**/urban-manifest.json", "releases/**"]
 }
