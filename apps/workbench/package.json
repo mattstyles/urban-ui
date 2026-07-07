@@ -2,14 +2,14 @@
   "name": "@urban-ui/workbench",
   "version": "0.0.0",
   "private": true,
-  "description": "Dev playground for Urban UI — browse component scenes and examples on stable routes.",
+  "description": "Dev playground for Urban UI — primitives, scales, experiments, and labs pages consuming the packages like a real app.",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "tsgo --noEmit",
-    "lint": "oxlint src tooling"
+    "typecheck": "tsr generate && tsgo --noEmit",
+    "lint": "oxlint src"
   },
   "dependencies": {
     "@stylexjs/stylex": "catalog:",
@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@stylexjs/unplugin": "0.19.0",
+    "@tanstack/router-cli": "1.167.18",
+    "@tanstack/router-plugin": "1.168.19",
     "@types/node": "24.10.9",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
