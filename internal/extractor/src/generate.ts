@@ -62,6 +62,7 @@ function buildManifest(
       components.push({
         name: component.name,
         displayName: extracted.displayName,
+        experimental: pkg.tier === "labs",
         exportPath: `${pkg.name}/${component.name}`,
         doc: component.doc,
         propsType: extracted.propsType,

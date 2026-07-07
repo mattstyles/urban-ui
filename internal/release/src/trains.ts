@@ -81,7 +81,9 @@ export function discoverTrains(repoRoot: string): Train[] {
       core.push({ name: pkg.name, dir, version: pkg.version ?? "0.0.0" });
     }
   }
-  for (const dir of listDirs(path.join(repoRoot, "labs"))) {
+  // labs/ is itself the @urban-ui/labs package ([[0002-package-architecture]]:
+  // one name everywhere); nested labs/* packages are also honoured.
+  for (const dir of [path.join(repoRoot, "labs"), ...listDirs(path.join(repoRoot, "labs"))]) {
     const pkg = readPackageJson(dir);
     if (pkg?.name && pkg.private !== true) {
       labs.push({ name: pkg.name, dir, version: pkg.version ?? "0.0.0" });

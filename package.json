@@ -9,7 +9,8 @@
     "packages": [
       "apps/*",
       "packages/*",
-      "internal/*"
+      "internal/*",
+      "labs"
     ],
     "catalog": {
       "react": "^19.2.7",

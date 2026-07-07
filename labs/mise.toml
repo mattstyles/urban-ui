@@ -1,0 +1,25 @@
+[tasks.build]
+description = "Compile to dist/ via tsc (ESM, per-file, declarations)"
+depends = ["//packages/theme:build"]
+run = "bun run build"
+sources = ["src/**/*", "tsconfig.json", "package.json"]
+outputs = ["dist/**/*"]
+
+[tasks.test]
+description = "Vitest pattern tests (jsdom)"
+depends = ["//packages/theme:build"]
+run = "bun run test"
+
+[tasks.typecheck]
+description = "Typecheck the full surface — src, tests, scenes, examples (examples resolve self-referenced dist types)"
+depends = ["build"]
+run = "bun run typecheck"
+
+[tasks.lint]
+description = "oxlint over package sources"
+run = "bun run lint"
+
+[tasks.check-package]
+description = "publint + attw against the packed artifact"
+depends = ["build"]
+run = "bun run check-package"

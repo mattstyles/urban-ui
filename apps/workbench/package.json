@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@stylexjs/stylex": "catalog:",
+    "@urban-ui/labs": "workspace:*",
     "@urban-ui/react": "workspace:*",
     "@urban-ui/theme": "workspace:*",
     "react": "catalog:",

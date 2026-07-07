@@ -8,28 +8,17 @@
     {
       "name": "colors",
       "path": "src/tokens.stylex.ts",
-      "tokens": [
-        "accent",
-        "accentText",
-        "surface",
-        "text"
-      ]
+      "tokens": ["accent", "accentText", "surface", "text"]
     },
     {
       "name": "radii",
       "path": "src/tokens.stylex.ts",
-      "tokens": [
-        "control"
-      ]
+      "tokens": ["control"]
     },
     {
       "name": "space",
       "path": "src/tokens.stylex.ts",
-      "tokens": [
-        "lg",
-        "md",
-        "sm"
-      ]
+      "tokens": ["lg", "md", "sm"]
     }
   ],
   "docs": [

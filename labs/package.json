@@ -1,13 +1,13 @@
 {
-  "name": "@urban-ui/react",
+  "name": "@urban-ui/labs",
   "version": "0.0.0",
-  "description": "Urban UI component library — react-aria-components styled with StyleX.",
+  "description": "Urban UI labs — experimental components on their own release train; APIs move fast and graduate to @urban-ui/react when proven.",
   "license": "MIT",
   "author": "Matt Styles",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mattstyles/urban-ui.git",
-    "directory": "packages/react"
+    "directory": "labs"
   },
   "files": [
     "dist",
@@ -25,10 +25,10 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./button": {
-      "source": "./src/button/index.ts",
-      "types": "./dist/button/index.d.ts",
-      "default": "./dist/button/index.js"
+    "./toggle-button": {
+      "source": "./src/toggle-button/index.ts",
+      "types": "./dist/toggle-button/index.d.ts",
+      "default": "./dist/toggle-button/index.js"
     },
     "./package.json": "./package.json"
   },

@@ -57,6 +57,14 @@ export default defineConfig(({ command }) => ({
               find: /^@urban-ui\/react\/(.+)$/,
               replacement: pkg("react", "src", "$1", "index.ts"),
             },
+            {
+              find: /^@urban-ui\/labs$/,
+              replacement: path.join(workspaceRoot, "labs", "src", "index.ts"),
+            },
+            {
+              find: /^@urban-ui\/labs\/(.+)$/,
+              replacement: path.join(workspaceRoot, "labs", "src", "$1", "index.ts"),
+            },
           ]
         : [],
   },
