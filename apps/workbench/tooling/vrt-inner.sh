@@ -15,7 +15,7 @@ bun install --frozen-lockfile
 # dependency order (theme → react → workbench).
 (cd packages/theme && bun run build)
 (cd packages/react && bun run build)
-(cd labs && bun run build)
+(cd packages/labs && bun run build)
 (cd apps/workbench && bun run build)
 
 cd apps/workbench

@@ -13,7 +13,7 @@ const stableDoc: DocContext = {
   tier: "stable",
 };
 const labsDoc: DocContext = {
-  file: "labs/lab/src/gadget/gadget.md",
+  file: "packages/labs/src/gadget/gadget.md",
   from: "component:gadget",
   tier: "labs",
 };

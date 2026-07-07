@@ -65,7 +65,7 @@
         "@urban-ui/config": "workspace:*",
       },
     },
-    "labs": {
+    "packages/labs": {
       "name": "@urban-ui/labs",
       "version": "0.0.0",
       "devDependencies": {
@@ -434,7 +434,7 @@
 
     "@urban-ui/extractor": ["@urban-ui/extractor@workspace:internal/extractor"],
 
-    "@urban-ui/labs": ["@urban-ui/labs@workspace:labs"],
+    "@urban-ui/labs": ["@urban-ui/labs@workspace:packages/labs"],
 
     "@urban-ui/react": ["@urban-ui/react@workspace:packages/react"],
 

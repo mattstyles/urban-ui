@@ -187,7 +187,7 @@ describe("assembleRelease", () => {
       );
       expect(json.version).toBe("0.10.0");
     }
-    const labs = JSON.parse(readFileSync(path.join(repo, "labs/widgets/package.json"), "utf8"));
+    const labs = JSON.parse(readFileSync(path.join(repo, "packages/labs/package.json"), "utf8"));
     expect(labs.version).toBe("0.3.0");
   });
 

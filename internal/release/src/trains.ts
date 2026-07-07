@@ -2,9 +2,10 @@
  * Release-train discovery ([[0004-release-strategy]]).
  *
  * Trains are derived from repository shape, never configured per package:
- * - `core` — every publishable npm package under packages/, versioned in
- *   lockstep as one group.
- * - `labs` — every publishable npm package under labs/, its own 0.x line.
+ * - `core` — every publishable npm package under packages/ except
+ *   packages/labs, versioned in lockstep as one group.
+ * - `labs` — packages/labs, the labs package ([[0002-package-architecture]]:
+ *   one name everywhere), on its own 0.x line.
  * - One binary train per Rust/Go package under packages/ (Cargo.toml or
  *   go.mod), named by directory — e.g. packages/urban → train "urban".
  *   Binaries never ride the npm train.
@@ -78,15 +79,8 @@ export function discoverTrains(repoRoot: string): Train[] {
     }
     const pkg = readPackageJson(dir);
     if (pkg?.name && pkg.private !== true) {
-      core.push({ name: pkg.name, dir, version: pkg.version ?? "0.0.0" });
-    }
-  }
-  // labs/ is itself the @urban-ui/labs package ([[0002-package-architecture]]:
-  // one name everywhere); nested labs/* packages are also honoured.
-  for (const dir of [path.join(repoRoot, "labs"), ...listDirs(path.join(repoRoot, "labs"))]) {
-    const pkg = readPackageJson(dir);
-    if (pkg?.name && pkg.private !== true) {
-      labs.push({ name: pkg.name, dir, version: pkg.version ?? "0.0.0" });
+      const train = path.basename(dir) === "labs" ? labs : core;
+      train.push({ name: pkg.name, dir, version: pkg.version ?? "0.0.0" });
     }
   }
 

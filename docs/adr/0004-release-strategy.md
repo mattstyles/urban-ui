@@ -8,7 +8,7 @@ tags: [adr, release, versioning, changelog, publishing]
 
 ## Context
 
-- The repository publishes npm packages in two tiers — a lockstep core train under `packages/`, an independently versioned 0.x labs tier — plus standalone CLI binaries from Rust/Go packages ([[0001-repository-structure]], [[0002-package-architecture]]).
+- The repository publishes npm packages in two tiers under `packages/` — a lockstep core train, and an independently versioned 0.x labs tier (`packages/labs`) — plus standalone CLI binaries from Rust/Go packages ([[0001-repository-structure]], [[0002-package-architecture]]).
 - Working model: agents author most code; the human reviews pull requests. Every quality gate must be PR-reviewable and agent-self-serviceable — GitHub is the review dashboard.
 - The release problem splits into two planes: the **meta plane** (capturing version intent, assembling changelogs) and the **publish plane** (tags, npm publish, GitHub Releases).
 - Prior iterations used changesets end-to-end. Re-evaluated here: `changeset publish` ships broken `workspace:*` in bun repos, while `bun publish` rewrites the workspace protocol correctly at pack time; and the two-tier shape collapses the version math (max-bump over one fixed group plus one 0.x line) to a page of code — the same shape-collapses-complexity argument that removed the build orchestrator in [[0001-repository-structure]].
