@@ -28,6 +28,20 @@ jobs:
       - name: Manifest drift + prose validation
         run: mise run manifest-check
 
+  intent-gate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # The gate diffs against the PR base — it needs history.
+          fetch-depth: 0
+
+      - uses: jdx/mise-action@v4
+
+      - name: Release intent gates
+        run: bun internal/release/src/cli.ts gate --base "origin/${{ github.base_ref }}"
+
   test:
     runs-on: ubuntu-latest
     steps:

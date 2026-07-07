@@ -98,7 +98,7 @@ Covers: AC 6
 - Prose validation in CI: names in authored guidance checked against the manifest; wiki-links become typed graph edges; labs direction rule enforced; name uniqueness enforced at build.
 - Examples verified against public exports by typecheck (completing four-way verification with Phase 3's render/axe/screenshot).
 
-### Phase 5: Release meta plane — intent capture, gates, and assembly — urban-ui-750
+### ✅ Phase 5: Release meta plane — intent capture, gates, and assembly — urban-ui-750 — [PR #31](https://github.com/mattstyles/urban-ui/pull/31)
 
 Delivers: every PR carries reviewable release intent; `/release` produces a complete, reviewable release PR.
 Covers: AC 7, 8
