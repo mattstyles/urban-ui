@@ -1,0 +1,13 @@
+{
+  // Whole-surface typecheck — mirrors packages/react/tsconfig.check.json:
+  // tests, scenes, and examples ride bundler resolution (vitest/vite);
+  // the build tsconfig still checks product code under nodenext.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "preserve",
+    "rootDir": ".",
+    "noEmit": true
+  },
+  "include": ["src", "vitest.config.ts"],
+  "exclude": []
+}

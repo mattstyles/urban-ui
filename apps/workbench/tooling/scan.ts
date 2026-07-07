@@ -25,6 +25,8 @@ const repoRoot = fileURLToPath(new URL("../../..", import.meta.url));
 export const RENDERABLE_GLOBS = [
   "packages/*/src/**/*.visual.tsx",
   "packages/*/src/**/examples/*.tsx",
+  "labs/src/**/*.visual.tsx",
+  "labs/src/**/examples/*.tsx",
 ];
 
 const EXPORT_PATTERN = /^export\s+(?:async\s+)?(?:function|const)\s+([A-Z][A-Za-z0-9_]*)/gm;

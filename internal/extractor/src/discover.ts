@@ -150,7 +150,9 @@ export function discoverUrbanPackages(repoRoot: string): DiscoveredPackage[] {
       discovered.push(pkg);
     }
   }
-  for (const dir of listDirs(path.join(repoRoot, "labs"))) {
+  // labs/ is itself the @urban-ui/labs package (one name everywhere);
+  // nested labs/* packages are also honoured.
+  for (const dir of [path.join(repoRoot, "labs"), ...listDirs(path.join(repoRoot, "labs"))]) {
     const pkg = discoverPackage(dir, "labs");
     if (pkg) {
       discovered.push(pkg);

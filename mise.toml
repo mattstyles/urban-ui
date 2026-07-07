@@ -1,8 +1,8 @@
 monorepo_root = true
 
 [monorepo]
-# "labs" joins config_roots (and bun workspaces) when the labs package lands in Phase 7
-config_roots = ["apps/*", "packages/*", "internal/*"]
+# labs/ is itself the @urban-ui/labs package — one name everywhere (ADR-0002)
+config_roots = ["apps/*", "packages/*", "internal/*", "labs"]
 
 [settings]
 task.source_freshness_hash_contents = true

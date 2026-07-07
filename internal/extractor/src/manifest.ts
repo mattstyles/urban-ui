@@ -43,6 +43,8 @@ export interface ComponentEntry {
   name: string;
   /** Exported symbol, e.g. "Button". */
   displayName: string;
+  /** Labs-tier components are experimental; graduation flips this to false. */
+  experimental: boolean;
   /** Public subpath consumers import, e.g. "@urban-ui/react/button". */
   exportPath: string;
   /** Published path of the authored guidance doc, e.g. "src/button/button.md". */

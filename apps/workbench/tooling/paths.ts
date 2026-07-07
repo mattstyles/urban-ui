@@ -16,8 +16,10 @@ export type RenderableKind = "scene" | "example";
 
 export interface RenderableMeta {
   kind: RenderableKind;
-  /** Package directory name under packages/, e.g. "react". */
+  /** Route key: package directory name under packages/, or "labs". */
   pkg: string;
+  /** Repo-relative package root, e.g. "packages/react" or "labs". */
+  pkgRoot: string;
   /** Component folder name under src/, e.g. "button". */
   component: string;
   /** Path under the component folder without extension, e.g. "button.visual" or "examples/basic". */
@@ -35,12 +37,14 @@ export function parseRenderablePath(
   repoRelPath: string,
   exportName: string,
 ): RenderableMeta | null {
-  const match = repoRelPath.match(/^packages\/([^/]+)\/src\/([^/]+)\/(.+)\.tsx$/);
+  // labs/ is itself the labs package root; packages/<name> for stable.
+  const match = repoRelPath.match(/^(packages\/([^/]+)|labs)\/src\/([^/]+)\/(.+)\.tsx$/);
   if (!match) {
     return null;
   }
-  const [, pkg, component, fileStem] = match;
-  if (fileStem === undefined || pkg === undefined || component === undefined) {
+  const [, pkgRoot, packagesName, component, fileStem] = match;
+  const pkg = packagesName ?? "labs";
+  if (fileStem === undefined || pkgRoot === undefined || component === undefined) {
     return null;
   }
   const kind: RenderableKind | null = fileStem.endsWith(".visual")
@@ -51,7 +55,7 @@ export function parseRenderablePath(
   if (kind === null) {
     return null;
   }
-  return { kind, pkg, component, fileStem, exportName };
+  return { kind, pkg, pkgRoot, component, fileStem, exportName };
 }
 
 /** Stable hash-router path, e.g. "/scene/react/button/button.visual/Base". */
@@ -61,5 +65,5 @@ export function routeFor(meta: RenderableMeta): string {
 
 /** Repo-relative baseline path per the screenshot naming schema. */
 export function screenshotPathFor(meta: RenderableMeta): string {
-  return `packages/${meta.pkg}/src/${meta.component}/__screenshots__/${meta.fileStem}/${meta.exportName}.png`;
+  return `${meta.pkgRoot}/src/${meta.component}/__screenshots__/${meta.fileStem}/${meta.exportName}.png`;
 }
