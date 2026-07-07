@@ -86,7 +86,7 @@ Covers: AC 3 (Pages), AC 5
 - CI re-renders and fails on mismatch with committed baselines; a deliberate style change demonstrates the loop: VRT fails → regenerate → PR image diff.
 - Workbench deploys to GitHub Pages on merge to main.
 
-### Phase 4: The knowledge layer — manifest extraction and prose validation — urban-ui-es3
+### ✅ Phase 4: The knowledge layer — manifest extraction and prose validation — urban-ui-es3 — [PR #30](https://github.com/mattstyles/urban-ui/pull/30)
 
 Delivers: the [[package-anatomy]] contract enforced by machines — generated manifests, drift gates, validated prose. The `urban` CLI's future data source exists and cannot rot.
 Covers: AC 6
