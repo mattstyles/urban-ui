@@ -27,3 +27,13 @@ run = "bun internal/extractor/src/cli.ts generate"
 [tasks.manifest-check]
 description = "Fail on manifest drift or prose/graph violations (CI gate)"
 run = "bun internal/extractor/src/cli.ts check"
+
+[tasks.publish-rehearsal]
+description = "Publish rehearsal — pack, verify rewrites, publint/attw, dry-run publish"
+depends = ["//packages/theme:build", "//packages/react:build"]
+run = "bun internal/release/src/cli.ts publish --rehearsal"
+
+[tasks.consumer-smoke]
+description = "Install packed tarballs into a scratch Vite consumer and build"
+depends = ["//packages/theme:build", "//packages/react:build"]
+run = "bun internal/release/src/cli.ts consumer-smoke"

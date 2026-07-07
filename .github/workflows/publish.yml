@@ -1,0 +1,52 @@
+name: Publish
+
+# The publish plane (ADR-0004). Fires when a release PR merges (releases/
+# meta lands on main) — merging the release PR IS the deliberate departure.
+# workflow_dispatch runs a rehearsal by default: everything short of
+# `npm publish` and Release creation.
+on:
+  push:
+    branches: [main]
+    paths: ["releases/**"]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: rehearsal verifies without publishing; real departs pending trains
+        type: choice
+        options: [rehearsal, real]
+        default: rehearsal
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Departure planning checks existing tags.
+          fetch-depth: 0
+
+      - uses: jdx/mise-action@v4
+
+      - name: Install workspace dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build all workspaces
+        run: mise run '//...:build'
+
+      - name: Rehearsal — pack, verify rewrites, publint/attw, dry-run publish
+        run: bun internal/release/src/cli.ts publish --rehearsal
+
+      - name: Consumer smoke — packed tarballs compile in a scratch Vite app
+        run: bun internal/release/src/cli.ts consumer-smoke
+
+      - name: Depart pending trains — publish, tag, GitHub Release
+        if: github.event_name == 'push' || inputs.mode == 'real'
+        env:
+          # npm auth is an open question (bun #15601, OIDC/provenance);
+          # granular token via secret until that lands.
+          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+        run: bun internal/release/src/cli.ts publish
