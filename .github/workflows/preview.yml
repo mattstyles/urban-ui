@@ -18,7 +18,8 @@ jobs:
         run: bun install --frozen-lockfile
 
       - name: Build publishable packages
-        run: mise run '//packages/theme:build' '//packages/react:build'
+        # A single wildcard: `mise run a b` treats b as an argument to a.
+        run: mise run '//...:build'
 
       - name: Publish previews to pkg.pr.new
         continue-on-error: true
