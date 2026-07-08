@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
-import { Link } from "@tanstack/react-router";
-import { neutral, surface } from "@urban-ui/theme/color.stylex";
+import { Link, useLocation } from "@tanstack/react-router";
+import { accent, neutral, surface } from "@urban-ui/theme/color.stylex";
 import { gap, inset, size } from "@urban-ui/theme/space.stylex";
 import { fontSize, labelVoice } from "@urban-ui/theme/text.stylex";
 import { type ReactNode, useState } from "react";
@@ -68,6 +68,9 @@ const styles = stylex.create({
       ":hover": "underline",
     },
   },
+  linkActive: {
+    color: accent.ink,
+  },
   themes: {
     display: "flex",
     gap: gap.control,
@@ -104,10 +107,12 @@ const styles = stylex.create({
 });
 
 /**
- * App chrome: header with top-level section navigation and the root-level
- * theme switcher, wrapping the routed page content.
+ * App chrome: a full-width header bar carrying the top-level section
+ * navigation and the root-level theme switcher. Everything below is the
+ * routed page's own — pages own their layout, width included.
  */
 export function AppShell({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation();
   const [active, setActive] = useState<Record<AxisKey, boolean>>({
     colour: false,
     text: false,
@@ -125,7 +130,11 @@ export function AppShell({ children }: { children: ReactNode }) {
           </Link>
           <nav {...stylex.props(styles.nav)}>
             {sections.map((section) => (
-              <Link key={section.to} to={section.to} {...stylex.props(styles.link)}>
+              <Link
+                key={section.to}
+                to={section.to}
+                {...stylex.props(styles.link, pathname.startsWith(section.to) && styles.linkActive)}
+              >
                 {section.label}
               </Link>
             ))}
