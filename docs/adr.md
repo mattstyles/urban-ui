@@ -27,5 +27,6 @@ Records live in `docs/adr/` and are numbered `NNNN-title.md`. Link between recor
 - [[0005-style-shipping-and-package-build]] — consumer-compiles StyleX, peer-dep trio, tsc-only ESM build — **accepted**
 - [[0006-component-quality-stack]] — hand-rolled workbench, committed VRT baselines via Playwright, Vitest units, oxc static gates — **accepted**
 - [[0007-working-model]] — agent-authored, human-reviewed: every gate PR-reviewable and agent-self-serviceable — **accepted**
+- [[0008-global-css-distribution]] — `@urban-ui/theme` ships one static `global.css` (`reset` + `base` cascade layers below StyleX); amends the no-CSS letter of [[0005-style-shipping-and-package-build]] — **accepted**
 
 Living conventions and contracts are not ADRs — they live in the [[knowledge]] index.
