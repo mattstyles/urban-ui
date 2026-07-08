@@ -72,10 +72,10 @@ Anchor: `md` = `16px / 1rem`, shared by both scales.
 
 | scale | groups |
 |---|---|
-| UI | `size` ramp + roles: `heading` · `subheading` · `label` · `action` |
-| editorial | roles: `display` · `heading` · `subheading` · `kicker` · `lede` · `body` · `mono` · `caption` |
+| UI | ramp: `{fontSize, lineHeight}` per `size` step · voice roles: `heading` · `subheading` · `label` · `action` · `text` |
+| editorial | full roles: `display` · `heading` · `subheading` · `kicker` · `lede` · `body` · `mono` · `caption` |
 
-Per-role var anatomy (family/weight/size/tracking/leading) — **open** (missing section, [[theme-guidelines]]).
+Role anatomy: UI roles are **voice-only** (`family` · `weight` · `tracking`, + a default ramp step; structural constants like `textTransform` live in recipes) — size comes from context (`label` voice × `sm` step). Editorial roles carry the full set (`family` · `weight` · `size` · `tracking` · `leading`). `text` is the UI running-text workhorse (errors, descriptions, helper text).
 
 ## Space
 
@@ -114,5 +114,4 @@ Categories are empirical ([[design-language]]); these are the earned set. Some c
 | control sizes · content widths · focus-ring vars | urban-ui-6yb |
 | motion tokens | urban-ui-ed9 |
 | material/emission var anatomy | deferred to lab + use-cases — urban-ui-s2e |
-| text role var anatomy · UI running-text role | missing section, [[theme-guidelines]] |
 | global CSS: one shipped file, `reset` + `base` layers | decided — ADR amending [[0005-style-shipping-and-package-build]] pending |

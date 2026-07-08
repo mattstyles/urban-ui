@@ -116,7 +116,7 @@ Two deformation types, by perimeter site; a silhouette is a base rect plus defor
 
 | scale | shape | roles |
 |---|---|---|
-| **UI** | t-shirt ramp `xs · sm · md · lg · xl` (`md` = 16px/1rem, the shared anchor) + thin semantic roles | `heading` · `subheading` · `label` · `action` — growable |
+| **UI** | t-shirt ramp of `{fontSize, lineHeight}` pairs (`md` = 16px/1rem, the shared anchor) + **voice-only** roles (`family`/`weight`/`tracking` + default step) — size comes from context, so role and control size never fight | `heading` · `subheading` · `label` · `action` · `text` (running-text workhorse) — growable |
 | **editorial** | role-first, ramp hidden; generous leading; big differentiation | `display` · `heading` · `subheading` · `kicker` · `lede` · `body` · `mono` · `caption` — growable |
 
 - `heading` exists in both scales and is never shared — a panel heading is wayfinding chrome; an article heading is typographic architecture.
