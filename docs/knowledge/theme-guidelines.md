@@ -127,7 +127,16 @@ Two deformation types, by perimeter site; a silhouette is a base rect plus defor
 - **UI spacing**: `gap` (between items) and `inset` (content → edge) over the shared t-shirt ramp. Margin folds in — margin-to-edge is inset, margin-between is gap; a raw margin is a deviation. Width/height are excluded (control sizing belongs to the component-category area).
 - **Editorial layout is its own subsystem** — the relatedness grammar (`cluster / hug / group / section`) and the recursive container grammar (`header? · body · footer?`) live there, opted into for genuine long-form.
 - Kept as a UI-side rule: **a header sits tighter to its content than peers sit to each other** — the one spacing relationship that keeps headed structure legible at any density.
-- `inset` level naming deferred until the Layers area settles.
+- Both semantic trios (`plane · container · control`) key to the layer model below. Inset's is near-definitive (containment is intrinsic to a layer); gap's is a **defaults layer** — between-ness varies by relatedness within a layer, so the raw ramp refines below the defaults.
+
+## Layers
+
+The plane/layer model — design-language stratum, carried from the poc:
+
+- A **plane** is a stacking context holding four layers. The app is the root plane; modals, popovers, menus open **child planes** — modality is never a special layer. A **modal** child plane recedes its parent down the contrast axis; non-modal child planes (tooltips, menus) don't. The scrim is just the modal child plane's backdrop doing the recession — assembled from existing vocabulary (`shade`, material blur), no modal-specific machinery. Cross-plane stacking is one portal/ordering policy: no z-index arms races.
+- Within a plane, four **layers**, back to front: **backdrop** (contextual ground — solid, image, game viewport, or scrim-over-receded-parent) → **containers** → **controls** → **marks**. Roles, not z-order.
+- The model is the agent decision table: a component's layer role answers its material lean (containers→glass, controls→solid), its inset level, its contrast defaults ("loudness climbs the layers"), and its colour-band usage.
+- **Surface derives from it**: `canvas`/`panel`/`raised` are the ramp band (jobs, not a lightness ladder — a theme may pitch panels below canvas, the Apple "grouped" inversion, and both pitches can coexist via scoped themes); `overlay`/`scrim` are the plane band (a different plane's face and the recession backdrop — related, not on the ramp). Container nesting caps at `raised` — needing a third depth is the over-nesting signal, same as the heading ladder. Deep glass nesting differentiates by transmission anyway; the members anchor the solid/matte case.
 
 ## The size vocabulary
 
@@ -137,7 +146,6 @@ Two deformation types, by perimeter site; a silhouette is a base rect plus defor
 
 Tracked as beads; owned by future sessions or earned by evidence:
 
-- **Layers** — the planes/layer model, `surface` scale anatomy, `inset` level names
 - **Component-category groups** — control sizes, content widths, focus-ring tokens, the t-shirt coordination contract
 - **Motion** — the missing axis; `prefers-reduced-motion` is already law ([[product-framing]])
 - Semantic colour-alias layer (earned by borrow deviations) · `complementary` (earned by accent overload) · emissive-as-material (earned by specimen) · container-grammar componentization

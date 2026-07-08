@@ -52,3 +52,4 @@ Anticipatory entries — not rules yet, waiting for evidence:
 - **accent-overload** — accent does heavy lifting system-wide; cross-scale borrows and accent fatigue in dense screens are the tally that earns a second flavour scale (`complementary` or better-named).
 - **gamepad navigation** — deferred from [[product-framing]]; real game UI will eventually raise it.
 - **spacing-context protocol** — scoped theming covers local pitch; a component needing to *know* its pitch is the evidence for a formal protocol.
+- **well surface** — a surface one step *back* (code blocks, troughs). Input backgrounds are probably `neutral.subtle` (controls, not surfaces); a real specimen needing a well *and* a dark-pitched panel at once is the evidence that mints the member.

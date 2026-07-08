@@ -27,7 +27,7 @@ Format: every colour is `oklch(L C H / α)`.
 | `accent` | flavour scale |
 | `neutral` | flavour scale |
 | `positive` · `warning` · `danger` | status scales |
-| `surface` | planes — anatomy **open** (urban-ui-btl) |
+| `surface` | planes |
 | `static` | scale-less singletons |
 | `advance` · `recede` | emphasis derivation, scheme-variant |
 
@@ -39,6 +39,13 @@ Scale anatomy — identical for every flavour and status scale, 12 members:
 | edge | `border` · `line` |
 | marks | `ink` · `inkSecondary` · `inkTertiary` · `icon` · `onFill` · `onFillSecondary` |
 | materials | `trace` · `glow` |
+
+`surface` anatomy — background-only jobs (no ink members; foreground comes from `neutral`/`accent`); members are jobs, not a lightness ladder — direction (recessed vs raised panels) is a values decision:
+
+| band | members |
+|---|---|
+| ramp | `canvas` (the plane's ground) · `panel` (container face) · `raised` (one step forward) |
+| plane | `overlay` (child-plane face) · `scrim` (modal recession backdrop, authored from `shade`) |
 
 Other groups:
 
@@ -81,8 +88,8 @@ Role anatomy: UI roles are **voice-only** (`family` · `weight` · `tracking`, +
 
 | group | levels |
 |---|---|
-| `gap` | `size` vocabulary — between items |
-| `inset` | level names **open** (urban-ui-btl) — content → edge |
+| `gap` | `plane · container · control` — defaults between siblings, keyed to what the parent contains; the `size` ramp refines (icon↔label sits below `gap.control`) |
+| `inset` | `plane · container · control` — content → edge, keyed to the layer; `inset.control` is the md-anchor, sized controls chain padding via control sizing (urban-ui-6yb) |
 
 Editorial layout subsystem (relatedness levels, container grammar) — **open**, specced with the editorial probe.
 
@@ -110,7 +117,6 @@ Categories are empirical ([[design-language]]); these are the earned set. Some c
 
 | slot | owner |
 |---|---|
-| `surface` anatomy · `inset` levels | urban-ui-btl (Layers) |
 | control sizes · content widths · focus-ring vars | urban-ui-6yb |
 | motion tokens | urban-ui-ed9 |
 | material/emission var anatomy | deferred to lab + use-cases — urban-ui-s2e |
