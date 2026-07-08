@@ -14,6 +14,7 @@ import {
 } from "@urban-ui/theme/color.stylex";
 import { gap, inset } from "@urban-ui/theme/space.stylex";
 import { Page } from "../../ui/page.js";
+import { denseSpace } from "../../ui/themes.js";
 import {
   RampSection,
   ScaleSection,
@@ -106,6 +107,14 @@ export function ScalesPage() {
               description="Identical call sites as the section above; only the ancestor theme differs."
               scale={neutral}
             />
+          </div>
+        </Section>
+        <Section
+          title="Scoped theme — density"
+          description="The dense theme (size-world re-pitch: text ramp, gap and inset moving as one category edit) scoped to this subtree. Compare against the space section above — same call sites, tighter world."
+        >
+          <div {...stylex.props(denseSpace, styles.themedSubtree)}>
+            <SpaceSection />
           </div>
         </Section>
       </div>

@@ -1,4 +1,5 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useContext, useLayoutEffect, useRef, useState } from "react";
+import { ThemeEpochContext } from "../../ui/theme-epoch.js";
 
 /**
  * Resolve StyleX token references (`var(--hash)` strings) to their authored
@@ -39,9 +40,12 @@ export function useTokenValues(tokens: Record<string, string>): {
   // on object identity.
   const tokensRef = useRef(tokens);
   tokensRef.current = tokens;
-  const key = tokenEntries(tokens)
+  // Root-level theme switches re-value the vars without any prop changing;
+  // the epoch tells this snapshot to re-read.
+  const epoch = useContext(ThemeEpochContext);
+  const key = `${epoch}|${tokenEntries(tokens)
     .map(([name, token]) => `${name}:${token}`)
-    .join("|");
+    .join("|")}`;
   useLayoutEffect(() => {
     const element = elementRef.current;
     if (element === null) {
