@@ -98,6 +98,17 @@
       ]
     },
     {
+      "name": "depth",
+      "path": "src/shape.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
       "name": "display",
       "path": "src/editorial.stylex.ts",
       "tokens": [

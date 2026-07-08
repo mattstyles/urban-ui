@@ -1,6 +1,7 @@
 import type { VarGroup } from "@stylexjs/stylex";
 import type * as color from "./color.stylex.js";
 import type * as editorial from "./editorial.stylex.js";
+import type * as shape from "./shape.stylex.js";
 import type * as spaceTokens from "./space.stylex.js";
 import type * as text from "./text.stylex.js";
 import type * as tokens from "./tokens.stylex.js";
@@ -48,6 +49,18 @@ export type CaptionRoleTokens = VarGroup<typeof editorial.caption>;
 export type SizeRampTokens = VarGroup<typeof spaceTokens.size>;
 export type GapTokens = VarGroup<typeof spaceTokens.gap>;
 export type InsetTokens = VarGroup<typeof spaceTokens.inset>;
+
+// Shape domain: the shared cut-depth ramp, plus the profile vocabulary.
+export type DepthTokens = VarGroup<typeof shape.depth>;
+
+/**
+ * Cut profile vocabulary (theme-contract): a chamfer carries one; a notch
+ * carries one per end. Typed rather than a var — it parameterises the shape
+ * generator, not CSS (tokens-are-spec). The one value export in this
+ * otherwise types-only index, precisely because it is not a token value.
+ */
+export const profiles = ["square", "straight", "round"] as const;
+export type Profile = (typeof profiles)[number];
 
 // Pipeline probes — retired when the buildable slice lands in full
 // (docs/plans/002-theme-buildable-slice.md, phase 6).

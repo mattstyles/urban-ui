@@ -22,6 +22,7 @@ import {
   SurfaceSection,
 } from "./color-sections.js";
 import { magentaNeutral } from "./smoke-theme.js";
+import { ShapeSection } from "./shape-sections.js";
 import { SpaceSection } from "./space-sections.js";
 import { EditorialTextSection, UiTextSection } from "./type-sections.js";
 
@@ -94,6 +95,7 @@ export function ScalesPage() {
         <UiTextSection />
         <EditorialTextSection />
         <SpaceSection />
+        <ShapeSection />
         <Section
           title="Scoped theme — smoke proof"
           description="The neutral group fully re-valued (magenta re-hue) by a createTheme applied to this subtree only. Values and ratios below are read live from inside the subtree — the group is the themeable unit, and a theme scopes to any branch point."

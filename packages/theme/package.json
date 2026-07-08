@@ -45,6 +45,11 @@
       "types": "./dist/space.stylex.d.ts",
       "default": "./dist/space.stylex.js"
     },
+    "./shape.stylex": {
+      "source": "./src/shape.stylex.ts",
+      "types": "./dist/shape.stylex.d.ts",
+      "default": "./dist/shape.stylex.js"
+    },
     "./tokens.stylex": {
       "source": "./src/tokens.stylex.ts",
       "types": "./dist/tokens.stylex.d.ts",
