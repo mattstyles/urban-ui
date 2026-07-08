@@ -89,4 +89,4 @@ _Add a brief overview of your project architecture_
 
 ## Conventions & Patterns
 
-_Add your project-specific conventions here_
+Repo-wide conventions live in [docs/knowledge/conventions.md](docs/knowledge/conventions.md) — read it before structuring new code or packages.

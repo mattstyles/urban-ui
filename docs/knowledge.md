@@ -22,6 +22,7 @@ Records live in `docs/knowledge/`.
 - [[design-language]] — how rules work: the three strata (contract/language/flagship), the flat evidence-based rule register, the deviation model, and the seed rules
 - [[theme-contract]] — the normative token inventory: vocabularies, groups, members, cross-scale categories, and open slots — dense and scannable
 - [[theme-guidelines]] — the reasoning behind the token architecture: coherence-group machinery, var/group/category/theme tiers, and per-domain decisions (colour, materials, shape, text, space)
+- [[conventions]] — flat list of repo-wide rules (categorise by intent, …)
 - [[package-anatomy]] — the contract for what every publishable package contains: layout, component anatomy, authored-guidance template, manifest, definition of done
 - [[release-runbook]] — how a train departs: intent → assembly → merge-as-departure, rehearsal commands, the first-release decision, previews
 - [[watch-items]] — living register of external events, pins, and revisit triggers committed to in ADRs

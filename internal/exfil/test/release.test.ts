@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { cpSync, existsSync, mkdtempSync, readFileSync } from "node:fs";
+import { cpSync, existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { assembleRelease, releaseStatus } from "../src/assemble.js";
@@ -44,6 +44,16 @@ describe("discoverTrains", () => {
       ],
     };
     expect(() => trainVersion(diverged)).toThrow("not in lockstep");
+  });
+
+  it("fails loudly when a publishable package lacks the urban marker", () => {
+    const repo = materialize();
+    const file = path.join(repo, "packages/react/package.json");
+    const packageJson = JSON.parse(readFileSync(file, "utf8")) as Record<string, unknown>;
+    delete packageJson["urban"];
+    writeFileSync(file, `${JSON.stringify(packageJson, null, 2)}\n`);
+    expect(() => discoverTrains(repo)).toThrow('missing the "urban" marker');
+    expect(() => discoverTrains(repo)).toThrow("@fix/react");
   });
 });
 

@@ -3,14 +3,15 @@
  * ([[package-anatomy]]): tooling globs by these shapes and never assumes
  * beyond them.
  *
- * A package participates when its package.json carries the `"urban"` marker.
- * Tier comes from location: packages/labs is the labs train
- * ([[0002-package-architecture]]: one name everywhere); every other
- * packages/ entry is stable.
+ * Package enumeration comes from @urban-ui/workspace; a package participates
+ * when its package.json carries the `"urban"` marker. Tier comes from
+ * location: packages/labs is the labs train ([[0002-package-architecture]]:
+ * one name everywhere); every other packages/ entry is stable.
  */
 
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
+import { type NpmWorkspacePackage, workspacePackages } from "@urban-ui/workspace";
 import type { DocEntry, ExampleEntry, PatternEntry, Tier } from "./manifest.js";
 
 /**
@@ -45,16 +46,6 @@ export interface DiscoveredPackage {
   docs: DocEntry[];
   /** Absolute paths of *.stylex.ts token sources under src/. */
   tokenSources: string[];
-}
-
-function listDirs(parent: string): string[] {
-  if (!existsSync(parent)) {
-    return [];
-  }
-  return readdirSync(parent)
-    .map((entry) => path.join(parent, entry))
-    .filter((entry) => statSync(entry).isDirectory())
-    .sort((a, b) => a.localeCompare(b));
 }
 
 function scanExampleExports(filePath: string): string[] {
@@ -95,21 +86,15 @@ function discoverComponent(pkgDir: string, componentDir: string): DiscoveredComp
   };
 }
 
-function discoverPackage(dir: string, tier: Tier): DiscoveredPackage | null {
-  const packageJsonPath = path.join(dir, "package.json");
-  if (!existsSync(packageJsonPath)) {
-    return null;
-  }
-  const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8")) as {
-    name?: string;
-    urban?: unknown;
-  };
-  if (packageJson.urban === undefined || packageJson.name === undefined) {
-    return null;
-  }
+function discoverPackage(entry: NpmWorkspacePackage): DiscoveredPackage {
+  const dir = entry.dir;
+  const tier: Tier = path.basename(dir) === "labs" ? "labs" : "stable";
 
   const srcDir = path.join(dir, "src");
-  const components = listDirs(srcDir)
+  const components = (existsSync(srcDir) ? readdirSync(srcDir, { withFileTypes: true }) : [])
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => path.join(srcDir, dirent.name))
+    .sort((a, b) => a.localeCompare(b))
     .map((componentDir) => discoverComponent(dir, componentDir))
     .filter((component): component is DiscoveredComponent => component !== null);
 
@@ -133,7 +118,7 @@ function discoverPackage(dir: string, tier: Tier): DiscoveredPackage | null {
     : [];
 
   return {
-    name: packageJson.name,
+    name: entry.name,
     dir,
     tier,
     tsconfig: path.join(dir, "tsconfig.json"),
@@ -144,15 +129,15 @@ function discoverPackage(dir: string, tier: Tier): DiscoveredPackage | null {
   };
 }
 
+/** Urban packages are the workspace packages carrying the `"urban"` marker. */
 export function discoverUrbanPackages(repoRoot: string): DiscoveredPackage[] {
-  const discovered: DiscoveredPackage[] = [];
-  for (const dir of listDirs(path.join(repoRoot, "packages"))) {
-    const pkg = discoverPackage(dir, path.basename(dir) === "labs" ? "labs" : "stable");
-    if (pkg) {
-      discovered.push(pkg);
-    }
-  }
-  return discovered.sort((a, b) => a.name.localeCompare(b.name));
+  return workspacePackages(repoRoot)
+    .filter(
+      (pkg): pkg is NpmWorkspacePackage =>
+        pkg.kind === "npm" && pkg.group === "packages" && pkg.urban !== null,
+    )
+    .map((pkg) => discoverPackage(pkg))
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 /** Repo-level docs (docs/**\/*.md) — the wiki-link target universe beyond manifests. */

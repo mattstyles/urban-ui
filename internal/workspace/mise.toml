@@ -1,0 +1,11 @@
+[tasks.test]
+description = "bun test over workspace (shape discovery) units and fixtures"
+run = "bun run test"
+
+[tasks.typecheck]
+description = "Typecheck without emitting"
+run = "bun run typecheck"
+
+[tasks.lint]
+description = "oxlint over package sources"
+run = "bun run lint"

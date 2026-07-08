@@ -1,7 +1,9 @@
 /**
  * Release-train discovery ([[0004-release-strategy]]).
  *
- * Trains are derived from repository shape, never configured per package:
+ * Trains are derived from repository shape, never configured per package —
+ * the shape itself comes from @urban-ui/workspace so exfil and engram share
+ * one view of the workspace:
  * - `core` — every publishable npm package under packages/ except
  *   packages/labs, versioned in lockstep as one group.
  * - `labs` — packages/labs, the labs package ([[0002-package-architecture]]:
@@ -9,10 +11,15 @@
  * - One binary train per Rust/Go package under packages/ (Cargo.toml or
  *   go.mod), named by directory — e.g. packages/urban → train "urban".
  *   Binaries never ride the npm train.
+ *
+ * A publishable npm package must also carry the package.json `"urban"`
+ * marker ([[package-anatomy]]) — otherwise it would ride a release train
+ * while staying invisible to the manifest pipeline. Discovery throws rather
+ * than letting the two views silently diverge.
  */
 
-import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
+import { type NpmWorkspacePackage, workspacePackages } from "@urban-ui/workspace";
 
 export type TrainKind = "npm" | "binary";
 
@@ -36,52 +43,43 @@ export interface Train {
 const LAUNCH_VERSIONS: Record<string, string> = { core: "0.10.0" };
 const DEFAULT_LAUNCH_VERSION = "0.1.0";
 
-function listDirs(parent: string): string[] {
-  if (!existsSync(parent)) {
-    return [];
-  }
-  return readdirSync(parent)
-    .map((entry) => path.join(parent, entry))
-    .filter((entry) => statSync(entry).isDirectory())
-    .sort((a, b) => a.localeCompare(b));
-}
-
-interface PackageJson {
-  name?: string;
-  version?: string;
-  private?: boolean;
-}
-
-function readPackageJson(dir: string): PackageJson | null {
-  const file = path.join(dir, "package.json");
-  return existsSync(file) ? (JSON.parse(readFileSync(file, "utf8")) as PackageJson) : null;
-}
-
-function isBinaryPackage(dir: string): boolean {
-  return existsSync(path.join(dir, "Cargo.toml")) || existsSync(path.join(dir, "go.mod"));
-}
-
 export function discoverTrains(repoRoot: string): Train[] {
   const trains: Train[] = [];
   const core: TrainPackage[] = [];
   const labs: TrainPackage[] = [];
+  const unmarked: NpmWorkspacePackage[] = [];
 
-  for (const dir of listDirs(path.join(repoRoot, "packages"))) {
-    if (isBinaryPackage(dir)) {
-      const name = path.basename(dir);
+  for (const pkg of workspacePackages(repoRoot)) {
+    if (pkg.group !== "packages") {
+      continue;
+    }
+    if (pkg.kind === "binary") {
       trains.push({
-        name,
+        name: pkg.name,
         kind: "binary",
-        packages: [{ name, dir, version: "0.0.0" }],
-        launchVersion: LAUNCH_VERSIONS[name] ?? DEFAULT_LAUNCH_VERSION,
+        packages: [{ name: pkg.name, dir: pkg.dir, version: "0.0.0" }],
+        launchVersion: LAUNCH_VERSIONS[pkg.name] ?? DEFAULT_LAUNCH_VERSION,
       });
       continue;
     }
-    const pkg = readPackageJson(dir);
-    if (pkg?.name && pkg.private !== true) {
-      const train = path.basename(dir) === "labs" ? labs : core;
-      train.push({ name: pkg.name, dir, version: pkg.version ?? "0.0.0" });
+    if (pkg.private) {
+      continue;
     }
+    if (pkg.urban === null) {
+      unmarked.push(pkg);
+      continue;
+    }
+    const train = path.basename(pkg.dir) === "labs" ? labs : core;
+    train.push({ name: pkg.name, dir: pkg.dir, version: pkg.version });
+  }
+
+  if (unmarked.length > 0) {
+    throw new Error(
+      `Publishable package(s) missing the "urban" marker in package.json: ${unmarked
+        .map((pkg) => `${pkg.name} (${path.relative(repoRoot, pkg.dir)})`)
+        .join(", ")} — every published npm package must carry the marker so ` +
+        `manifest tooling (engram) and release trains (exfil) see the same workspace.`,
+    );
   }
 
   if (core.length > 0) {

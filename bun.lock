@@ -76,6 +76,7 @@
         "engram": "./src/cli.ts",
       },
       "dependencies": {
+        "@urban-ui/workspace": "workspace:*",
         "citty": "0.2.2",
         "ts-morph": "28.0.0",
       },
@@ -91,8 +92,17 @@
         "exfil": "./src/cli.ts",
       },
       "dependencies": {
+        "@urban-ui/workspace": "workspace:*",
         "citty": "0.2.2",
       },
+      "devDependencies": {
+        "@types/bun": "1.3.14",
+        "@urban-ui/config": "workspace:*",
+      },
+    },
+    "internal/workspace": {
+      "name": "@urban-ui/workspace",
+      "version": "0.0.0",
       "devDependencies": {
         "@types/bun": "1.3.14",
         "@urban-ui/config": "workspace:*",
@@ -488,6 +498,8 @@
     "@urban-ui/vrt": ["@urban-ui/vrt@workspace:apps/vrt"],
 
     "@urban-ui/workbench": ["@urban-ui/workbench@workspace:apps/workbench"],
+
+    "@urban-ui/workspace": ["@urban-ui/workspace@workspace:internal/workspace"],
 
     "@vitejs/plugin-react": ["@vitejs/plugin-react@6.0.3", "", { "dependencies": { "@rolldown/pluginutils": "^1.0.1" }, "peerDependencies": { "@rolldown/plugin-babel": "^0.1.7 || ^0.2.0", "babel-plugin-react-compiler": "^1.0.0", "vite": "^8.0.0" }, "optionalPeers": ["@rolldown/plugin-babel", "babel-plugin-react-compiler"] }, "sha512-vmFvco5/QuC2f9Oj+wTk0+9XeDFkHxSamwZKYc7MxYwKICfvUvlMhqKI0VuICPltGqh1neqBKDvO4kes1ya8vg=="],
 
