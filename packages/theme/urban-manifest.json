@@ -16,10 +16,43 @@
       ]
     },
     {
+      "name": "neutral",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
+      ]
+    },
+    {
       "name": "radii",
       "path": "src/tokens.stylex.ts",
       "tokens": [
         "control"
+      ]
+    },
+    {
+      "name": "shade",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
       ]
     },
     {
@@ -29,6 +62,43 @@
         "lg",
         "md",
         "sm"
+      ]
+    },
+    {
+      "name": "statics",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "black",
+        "disabledFill",
+        "disabledInk",
+        "focus",
+        "white"
+      ]
+    },
+    {
+      "name": "surface",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "canvas",
+        "overlay",
+        "panel",
+        "raised",
+        "scrim"
+      ]
+    },
+    {
+      "name": "tint",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
       ]
     }
   ],

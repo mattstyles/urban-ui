@@ -1,4 +1,8 @@
+/* Global layers (reset + base) per ADR-0008; StyleX output is configured to
+   declare its layers after both (useCSSLayers.before in the shared config). */
+@import "@urban-ui/theme/global.css";
+
 body {
-  margin: 0;
+  /* Interim: the font vocabulary lands with the text tokens (phase 3). */
   font-family: system-ui, sans-serif;
 }

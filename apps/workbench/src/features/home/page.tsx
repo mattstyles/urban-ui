@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { Link } from "@tanstack/react-router";
-import { colors, radii, space } from "@urban-ui/theme/tokens.stylex";
+import { neutral } from "@urban-ui/theme/color.stylex";
+import { space } from "@urban-ui/theme/tokens.stylex";
 import { Page } from "../../ui/page.js";
 
 const sections = [
@@ -12,7 +13,7 @@ const sections = [
   {
     to: "/scales",
     label: "Scales",
-    summary: "Theme scale groups — colour, space, radii. Shape to be defined.",
+    summary: "The theme contract's token groups — colour, text, space, shape — inventoried live.",
   },
   {
     to: "/playground",
@@ -32,12 +33,12 @@ const styles = stylex.create({
     gap: space.md,
     gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
   },
+  // Square corners: the flagship silhouette baseline (square-baseline).
   card: {
-    borderColor: colors.accent,
-    borderRadius: radii.control,
+    borderColor: neutral.border,
     borderStyle: "solid",
     borderWidth: "1px",
-    color: colors.text,
+    color: neutral.inkSecondary,
     display: "flex",
     flexDirection: "column",
     gap: space.sm,
@@ -45,7 +46,7 @@ const styles = stylex.create({
     textDecoration: "none",
   },
   cardTitle: {
-    color: colors.accent,
+    color: neutral.ink,
     fontWeight: 600,
   },
   cardSummary: {

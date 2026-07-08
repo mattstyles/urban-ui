@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { Link } from "@tanstack/react-router";
-import { colors, space } from "@urban-ui/theme/tokens.stylex";
+import { neutral, surface } from "@urban-ui/theme/color.stylex";
+import { space } from "@urban-ui/theme/tokens.stylex";
 import type { ReactNode } from "react";
 
 const sections = [
@@ -12,21 +13,24 @@ const sections = [
 
 const styles = stylex.create({
   shell: {
-    backgroundColor: colors.surface,
-    color: colors.text,
+    backgroundColor: surface.canvas,
+    color: neutral.ink,
     display: "flex",
     flexDirection: "column",
     minHeight: "100vh",
   },
   header: {
     alignItems: "baseline",
+    borderBottomColor: neutral.border,
+    borderBottomStyle: "solid",
+    borderBottomWidth: "1px",
     display: "flex",
     gap: space.lg,
     paddingBlock: space.md,
     paddingInline: space.lg,
   },
   title: {
-    color: colors.text,
+    color: neutral.ink,
     fontWeight: 600,
     textDecoration: "none",
   },
@@ -35,7 +39,10 @@ const styles = stylex.create({
     gap: space.md,
   },
   link: {
-    color: colors.accent,
+    color: {
+      default: neutral.inkSecondary,
+      ":hover": neutral.ink,
+    },
     textDecoration: {
       default: "none",
       ":hover": "underline",
