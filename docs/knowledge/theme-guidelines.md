@@ -27,7 +27,7 @@ Tokens are **implementation-independent**: the contract is a specification; CSS 
 
 ### Structure rules
 
-- **Two-storey where the system owns the curve** — ramps beneath (const vocabulary), themeable semantics above. Applies to text and space. Colour is hue-seeded instead — no shared palette beneath the scales.
+- **Two-storey where the system owns the curve** — ramps beneath, themeable semantics above; both storeys are groups, configurable whole (a ramp re-pitches as one designed curve, never step-by-step). The vocabulary — the step names — is the invariant, per the coherence model: the contract is fixed, every value behind it is configurable. Applies to text and space. Colour is hue-seeded instead — no shared palette beneath the scales.
 - **Scheme (dark/light) is a facet of values**, not a theme: scheme-affected groups (colour, materials) hold per-scheme values in one entry. Dark is the only authored scheme for now; light is an empty seat at a set table — addable without structural change. Call sites never scheme-switch (see the derivation pairs below).
 - **Scoped application** — a theme applies to a subtree, not only a root. Local pitch (a Card re-pitching spacing for its children) is scoped theming over the one schema, never a second scale.
 
@@ -89,7 +89,8 @@ Two materials, defined by how a surface handles light, plus an orthogonal **emis
 
 - **Interactivity is a class property of the component, never per-instance.** Non-interactive components have no state styling.
 - **Gesture union** (exclusive): `default | hover | press | disabled` — `press`, never `active` (nav-current collision). Disabled suppresses the others.
-- **Additive booleans**: `selected` (a persistent mode — coexists with gestures and disabled) and `focus` (`focus-visible` semantics; composes with everything).
+- **Additive booleans**: `selected` (a persistent mode — coexists with gestures and disabled), `invalid` (failed validation — platform vocabulary via `aria-invalid`/react-aria's `isInvalid`; styles from the `danger` scale, a sanctioned mapping that never counts toward borrow-deviation tallies) and `focus` (`focus-visible` semantics; composes with everything). Nav-current (`aria-current`) renders as `selected` — the collision `press` was chosen to avoid, absorbed rather than minted.
+- **The boolean set is growable.** The test: a persistent mode, spanning component classes, composing with gestures. What fails it stays component-owned (an indeterminate checkbox glyph, a calendar's unavailable day, drag/drop visuals) — the grammar stays small because there's a test, not because reality is ignored.
 - **Focus is structural**: a ring drawn from `static.focus`, never an emission level — glow may garnish a focus ring, never be it. Token home (ring width/offset) deferred to the component-category area.
 - Emission-maps-to-states (hover → ambient, press → hot) is a **flagship leaning**, not a contract binding: panels may run ambient emission as atmosphere; solid controls may have crisp no-emission states.
 

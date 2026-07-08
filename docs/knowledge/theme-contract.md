@@ -8,7 +8,7 @@ The normative inventory of the token system: every vocabulary, group, member, an
 
 ## Vocabularies
 
-The const storey — ramps and enums the themeable semantics draw from.
+The name storey — the step names and enums the themeable semantics draw from. The names are the contract's invariant; the values behind them (a ramp's steps, `shade`/`tint`'s alphas) are group-configurable like every other value in this document ([[theme-guidelines]]).
 
 | vocabulary | values |
 |---|---|
@@ -98,7 +98,11 @@ Editorial layout subsystem (relatedness levels, container grammar) — **open**,
 | axis | values |
 |---|---|
 | gesture (exclusive) | `default · hover · press · disabled` |
-| additive booleans | `selected` · `focus` |
+| additive booleans | `selected` · `invalid` · `focus` |
+
+- `invalid` styles from the status scales (`danger`) — a sanctioned mapping, never a cross-scale borrow.
+- Nav-current (`aria-current`) renders as `selected` — not a separate state.
+- The boolean axis is growable. The test: a persistent mode, spanning component classes, composing with gestures. States that fail it are component-owned styling, not grammar.
 
 ## Cross-scale categories
 
