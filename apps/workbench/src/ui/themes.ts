@@ -37,8 +37,8 @@ const violetAccent = stylex.createTheme(accent, {
   icon: "oklch(0.8 0.11 315)",
   onFill: "oklch(0.16 0.03 315)",
   onFillSecondary: "oklch(0.27 0.045 315)",
-  trace: "oklch(0.7 0.13 315 / 0.5)",
-  glow: "oklch(0.82 0.16 315 / 0.6)",
+  trace: "oklch(0.7 0.13 315 / 0.14)",
+  glow: "oklch(0.82 0.16 315 / 0.12)",
 });
 
 const violetNeutral = stylex.createTheme(neutral, {
@@ -52,8 +52,8 @@ const violetNeutral = stylex.createTheme(neutral, {
   icon: "oklch(0.85 0.014 290)",
   onFill: "oklch(0.96 0.01 290)",
   onFillSecondary: "oklch(0.82 0.012 290)",
-  trace: "oklch(0.62 0.03 290 / 0.5)",
-  glow: "oklch(0.82 0.05 290 / 0.6)",
+  trace: "oklch(0.62 0.03 290 / 0.14)",
+  glow: "oklch(0.82 0.05 290 / 0.12)",
 });
 
 /** Flavour category edit: accent re-hued 195 → 315, neutral cast 255 → 290. */

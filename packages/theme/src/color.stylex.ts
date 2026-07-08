@@ -41,8 +41,8 @@ export const neutral = stylex.defineVars({
   icon: "oklch(0.85 0.014 255)",
   onFill: "oklch(0.96 0.01 255)",
   onFillSecondary: "oklch(0.82 0.012 255)",
-  trace: "oklch(0.62 0.03 255 / 0.5)",
-  glow: "oklch(0.82 0.05 255 / 0.6)",
+  trace: "oklch(0.62 0.03 255 / 0.14)",
+  glow: "oklch(0.82 0.05 255 / 0.12)",
 });
 
 /**
@@ -60,8 +60,8 @@ export const accent = stylex.defineVars({
   icon: "oklch(0.8 0.11 195)",
   onFill: "oklch(0.16 0.03 195)",
   onFillSecondary: "oklch(0.27 0.045 195)",
-  trace: "oklch(0.7 0.13 195 / 0.5)",
-  glow: "oklch(0.82 0.16 195 / 0.6)",
+  trace: "oklch(0.7 0.13 195 / 0.14)",
+  glow: "oklch(0.82 0.16 195 / 0.12)",
 });
 
 /**
@@ -80,8 +80,8 @@ export const positive = stylex.defineVars({
   icon: "oklch(0.8 0.11 150)",
   onFill: "oklch(0.16 0.03 150)",
   onFillSecondary: "oklch(0.27 0.045 150)",
-  trace: "oklch(0.7 0.13 150 / 0.5)",
-  glow: "oklch(0.82 0.16 150 / 0.6)",
+  trace: "oklch(0.7 0.13 150 / 0.14)",
+  glow: "oklch(0.82 0.16 150 / 0.12)",
 });
 
 export const warning = stylex.defineVars({
@@ -95,8 +95,8 @@ export const warning = stylex.defineVars({
   icon: "oklch(0.8 0.11 85)",
   onFill: "oklch(0.16 0.03 85)",
   onFillSecondary: "oklch(0.27 0.045 85)",
-  trace: "oklch(0.7 0.13 85 / 0.5)",
-  glow: "oklch(0.82 0.16 85 / 0.6)",
+  trace: "oklch(0.7 0.13 85 / 0.14)",
+  glow: "oklch(0.82 0.16 85 / 0.12)",
 });
 
 export const danger = stylex.defineVars({
@@ -110,8 +110,8 @@ export const danger = stylex.defineVars({
   icon: "oklch(0.8 0.11 25)",
   onFill: "oklch(0.16 0.03 25)",
   onFillSecondary: "oklch(0.27 0.045 25)",
-  trace: "oklch(0.7 0.13 25 / 0.5)",
-  glow: "oklch(0.82 0.16 25 / 0.6)",
+  trace: "oklch(0.7 0.13 25 / 0.14)",
+  glow: "oklch(0.82 0.16 25 / 0.12)",
 });
 
 /**

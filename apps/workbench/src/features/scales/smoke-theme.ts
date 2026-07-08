@@ -20,6 +20,6 @@ export const magentaNeutral = stylex.createTheme(neutral, {
   icon: "oklch(0.85 0.014 345)",
   onFill: "oklch(0.96 0.01 345)",
   onFillSecondary: "oklch(0.82 0.012 345)",
-  trace: "oklch(0.62 0.03 345 / 0.5)",
-  glow: "oklch(0.82 0.05 345 / 0.6)",
+  trace: "oklch(0.62 0.03 345 / 0.14)",
+  glow: "oklch(0.82 0.05 345 / 0.12)",
 });
