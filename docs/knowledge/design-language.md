@@ -4,7 +4,7 @@ tags: [knowledge, design-language, rules]
 
 # Design language
 
-How rules work in this system: the strata that scope them, the register that holds them, and the deviation model that evolves them. The token schema itself lives in [[theme-contract]]; the product frame in [[product-framing]]. Distilled from the urban-ui-727 tokenisation interrogation.
+How rules work in this system: the strata that scope them, the register that holds them, and the deviation model that evolves them. The token inventory lives in [[theme-contract]], its rationale in [[theme-guidelines]]; the product frame in [[product-framing]]. Distilled from the urban-ui-727 tokenisation interrogation.
 
 ## The three strata
 
@@ -20,12 +20,16 @@ The language was discovered through cyberpunk eyes but is written theme-agnostic
 
 ## The rule register
 
-Rules are a **flat, evidence-based collection**: we hit a snag, we record the rule, we fix current violations, and the record prevents reintroduction. No upfront taxonomy — categorisation and the link-graph come later, from the data. Each rule carries:
+Rules are a **flat, evidence-based collection**: we hit a snag, we record the rule, we fix current violations, and the record prevents reintroduction. No upfront taxonomy — categorisation and the link-graph come later, from the data.
 
+The register lives as **one file per rule** under `docs/rules/`, indexed in [[rules]] (eslint/biome shape: rule-per-page, scannable index). Add rules while they're hot with the `rule` skill; removal is deliberate and separately managed (deferred). Each rule carries:
+
+- **slug** — flat kebab-case identity, cited at deviation sites; no numbers, no category prefixes
 - **stratum** — contract / language / flagship
-- **strictness** — `Law` (breaking it exits the language; written justification required) · `Default` (expected choice; deviate with an inline annotation) · `Leaning` (soft preference; deviate freely)
-- **the rule** — one or two sentences, decision-rule crisp (agents amplify vagueness at machine speed; vague guidance is a correctness bug)
-- **evidence** — what proved it
+- **strictness** — `law` (breaking it exits the language; written justification required) · `default` (expected choice; deviate with an inline annotation) · `leaning` (soft preference; deviate freely)
+- **the rule** — one sentence, decision-rule crisp (agents amplify vagueness at machine speed; vague guidance is a correctness bug)
+- **rationale + examples** — the why, and Biome-style incorrect/correct pairs
+- **evidence** — what proved it; deviation tallies append here
 
 ## Deviation model
 
@@ -37,45 +41,9 @@ A deviation is a call-site contradiction of a decision the system owns — not a
 - **Deviations are data.** Each annotation is a vote: the ramp lacks a step, a rule's stratum/scope is wrong, a predicted category has become real, or a law needs a written exemption. Tallies (greppable by format) drive rule rewrites and demotions.
 - **Standing deviations** (e.g. round avatars under a square-baseline flagship) are annotated once, cited thereafter, and promote into rule text when citations accumulate.
 
-## Seed rules
+## The rules
 
-The register as of the founding session. Format: stratum · strictness — rule.
-
-### Contract
-
-- contract · Law — Every colour is OKLCH (`oklch(L C H / α)`).
-- contract · Law — Tokens are implementation-independent: the contract is a specification; CSS vars, JS values, or conventions are carriers.
-- contract · Law — All text is leading-trimmed; spacing values are tuned to the trimmed rendering.
-- contract · Law — A silhouette never exceeds its bounding box; shape never disturbs spacing.
-- contract · Law — An element's min width/height must exceed its cut size.
-- contract · Law — Categories are empirical: created only on visible clustering + co-movement under real edits.
-- contract · Law — Scheme-flipping derivations are semantic tokens (`advance`/`recede`); call sites never scheme-switch.
-- contract · Default — `fill` takes the scale's seed directly; deviate only when the `fill`×`onFill` AA pairing forces an adjustment.
-- contract · Default — Derived colour values (`color-mix`) are authoring tools; results land as authored group values.
-
-### Language
-
-- language · Law — WCAG AA contrast is the floor for functional content, and it is the material's job to guarantee it ([[product-framing]]).
-- language · Law — Flair never solely carries meaning; a glow may garnish a focus indicator, never be it.
-- language · Law — Interactivity is a class property of a component, never per-instance.
-- language · Law — Interaction states: gesture union `default | hover | press | disabled`; `selected` and `focus` are additive booleans. The word `active` does not exist in the vocabulary.
-- language · Law — Focus is structural: a ring from `static.focus`; emission never substitutes.
-- language · Default — Text is classified by what it balances against: environment → UI scale; itself → editorial scale.
-- language · Default — Emphasis derivations use `advance`/`recede`; the physical pair (`shade`/`tint`) for emphasis is a deviation.
-- language · Default — A header sits tighter to its content than peers sit to each other, at any density.
-- language · Default — Margin folds into the spacing scales: to-edge is `inset`, between is `gap`; a raw margin is a deviation.
-- language · Default — Shape application is site-owned: no theme or global rule dictates which deformations an element carries.
-- language · Default — A chamfer is a single-gesture cut: one profile, no mixed legs-character on one corner.
-- language · Default — Composed components are convenience, never capability: anything shipped composed must be constructable from the language ([[product-framing]]).
-- language · Leaning — Shade/tint are for deriving, not for direct surface colours.
-
-### Flagship
-
-- flagship · Law — Square baseline: chamfers and notches over rounding; `round` profile is the sanctioned exception (standing deviation: avatars, control thumbs).
-- flagship · Law — A cut's job is to host; "nothing, it looks good" fails the existence test. Hosting the light itself counts.
-- flagship · Default — Things light up under the hand: hover → ambient emission, press → hot. A leaning of the identity, not a state-grammar binding.
-- flagship · Default — Emphasis advances by hue, not weight (scope under observation: long-form prose may earn a read-duty exemption via deviation tally).
-- flagship · Leaning — Texture is an abstracted machined motif, never a picture; dense texture crosses into noise field.
+The register lives in [[rules]] — one file per rule under `docs/rules/`, seeded at founding with the contract, language, and flagship rules from the urban-ui-727 sessions.
 
 ### Watches
 

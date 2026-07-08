@@ -26,7 +26,7 @@ Both app-chrome and in-game UI are named use-cases, leaning game UI. Materials a
 
 ### Coherence model
 
-The invariant is the contract, not the values. The theme schema (density, radii, motion, layers, color systems as *slots*) and the primitive prop grammar (`variant`, `material`, `shape`, …) are system-defined; every value behind them is theme-configurable. Coherence emerges from shared vocabulary, strong defaults, and guidelines; deviation is the consumer's dial. Flair is expressed per-component through props; theme-steered flair is an open design question for the theme contract.
+The invariant is the contract, not the values. The theme schema (density, geometry, motion, layers, color systems as *slots*) and the primitive prop grammar (`variant`, `material`, `shape`, …) are system-defined; every value behind them is theme-configurable. Coherence emerges from shared vocabulary, strong defaults, and guidelines; deviation is the consumer's dial. Flair is expressed per-component through props; theme-steered flair is an open design question for the theme contract.
 
 ### Agents-first, human-legible
 

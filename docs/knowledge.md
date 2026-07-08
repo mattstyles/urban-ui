@@ -20,7 +20,8 @@ Records live in `docs/knowledge/`.
 
 - [[product-framing]] — what urban-ui is for: the needle and standing decisions (audience, archetype, coherence model, agents-first, scope, themes) that frame all future PRDs
 - [[design-language]] — how rules work: the three strata (contract/language/flagship), the flat evidence-based rule register, the deviation model, and the seed rules
-- [[theme-contract]] — the token architecture: coherence groups, var/group/category/theme tiers, and the per-domain schema (colour, materials, shape, text, space)
+- [[theme-contract]] — the normative token inventory: vocabularies, groups, members, cross-scale categories, and open slots — dense and scannable
+- [[theme-guidelines]] — the reasoning behind the token architecture: coherence-group machinery, var/group/category/theme tiers, and per-domain decisions (colour, materials, shape, text, space)
 - [[package-anatomy]] — the contract for what every publishable package contains: layout, component anatomy, authored-guidance template, manifest, definition of done
 - [[release-runbook]] — how a train departs: intent → assembly → merge-as-departure, rehearsal commands, the first-release decision, previews
 - [[watch-items]] — living register of external events, pins, and revisit triggers committed to in ADRs
