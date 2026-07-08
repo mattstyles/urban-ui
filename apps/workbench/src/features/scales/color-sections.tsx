@@ -3,7 +3,7 @@ import { surface } from "@urban-ui/theme/color.stylex";
 import { space } from "@urban-ui/theme/tokens.stylex";
 import type { ReactNode } from "react";
 import { contrastRatio, parseOklch } from "./oklch.js";
-import { useTokenValues } from "./use-token-values.js";
+import { tokenEntries, useTokenValues } from "./use-token-values.js";
 
 /**
  * Inventory sections for the colour domain. Swatches render the live token
@@ -13,7 +13,7 @@ import { useTokenValues } from "./use-token-values.js";
  */
 
 /** The 12-member anatomy shared by every flavour and status scale. */
-export interface ScaleTokens {
+export interface ScaleMembers {
   subtle: string;
   fill: string;
   border: string;
@@ -210,7 +210,7 @@ export function ScaleSection({
 }: {
   title: string;
   description: string;
-  scale: ScaleTokens;
+  scale: ScaleMembers;
 }) {
   const measure: Record<string, string> = {
     ...scale,
@@ -225,9 +225,9 @@ export function ScaleSection({
       background: ground,
       floor,
     }));
-  const fillRows: RowSpec[] = ["subtle", "fill"].map((member) => ({
+  const fillRows: RowSpec[] = (["subtle", "fill"] as const).map((member) => ({
     member,
-    chipBackground: scale[member as "subtle" | "fill"],
+    chipBackground: scale[member],
     chipForeground: scale.onFill,
     pairings: [
       { label: "onFill", foreground: "onFill", background: member, floor: TEXT_FLOOR },
@@ -242,33 +242,35 @@ export function ScaleSection({
         : []),
     ],
   }));
-  const edgeRows: RowSpec[] = ["border", "line"].map((member) => ({
+  const edgeRows: RowSpec[] = (["border", "line"] as const).map((member) => ({
     member,
-    chipBackground: scale[member as "border" | "line"],
+    chipBackground: scale[member],
     chipForeground: scale.onFill,
     sample: " ",
   }));
-  const markRows: RowSpec[] = [
-    { member: "ink", floor: TEXT_FLOOR },
-    { member: "inkSecondary", floor: TEXT_FLOOR },
-    { member: "inkTertiary", floor: TEXT_FLOOR },
-    { member: "icon", floor: GRAPHIC_FLOOR },
-    { member: "onFill", floor: TEXT_FLOOR },
-    { member: "onFillSecondary", floor: TEXT_FLOOR },
-  ].map(({ member, floor }) => {
+  const markRows: RowSpec[] = (
+    [
+      { member: "ink", floor: TEXT_FLOOR },
+      { member: "inkSecondary", floor: TEXT_FLOOR },
+      { member: "inkTertiary", floor: TEXT_FLOOR },
+      { member: "icon", floor: GRAPHIC_FLOOR },
+      { member: "onFill", floor: TEXT_FLOOR },
+      { member: "onFillSecondary", floor: TEXT_FLOOR },
+    ] as const
+  ).map(({ member, floor }) => {
     const onFillMember = member.startsWith("onFill");
     return {
       member,
       chipBackground: onFillMember ? scale.fill : surface.panel,
-      chipForeground: scale[member as keyof ScaleTokens],
+      chipForeground: scale[member],
       pairings: onFillMember
         ? [{ label: "on fill", foreground: member, background: "fill", floor }]
         : onSurfaces(member, floor),
     };
   });
-  const materialRows: RowSpec[] = ["trace", "glow"].map((member) => ({
+  const materialRows: RowSpec[] = (["trace", "glow"] as const).map((member) => ({
     member,
-    chipBackground: scale[member as "trace" | "glow"],
+    chipBackground: scale[member],
     chipForeground: scale.onFill,
     sample: " ",
   }));
@@ -286,8 +288,8 @@ export function ScaleSection({
   );
 }
 
-/** Surface tokens the sections below inventory — background-only jobs. */
-export interface SurfaceTokens {
+/** Surface members the sections below inventory — background-only jobs. */
+export interface SurfaceMembers {
   canvas: string;
   panel: string;
   raised: string;
@@ -303,8 +305,8 @@ export function SurfaceSection({
   surfaces,
   marks,
 }: {
-  surfaces: SurfaceTokens;
-  marks: Pick<ScaleTokens, "ink" | "inkSecondary" | "inkTertiary" | "icon">;
+  surfaces: SurfaceMembers;
+  marks: Pick<ScaleMembers, "ink" | "inkSecondary" | "inkTertiary" | "icon">;
 }) {
   const measure: Record<string, string> = { ...surfaces, ...marks };
   const rows: RowSpec[] = (["canvas", "panel", "raised", "overlay"] as const).map((member) => ({
@@ -335,7 +337,7 @@ export function SurfaceSection({
   );
 }
 
-export interface StaticTokens {
+export interface StaticMembers {
   white: string;
   black: string;
   disabledInk: string;
@@ -347,8 +349,8 @@ export function StaticsSection({
   statics,
   grounds,
 }: {
-  statics: StaticTokens;
-  grounds: Pick<SurfaceTokens, "canvas" | "panel" | "raised">;
+  statics: StaticMembers;
+  grounds: Pick<SurfaceMembers, "canvas" | "panel" | "raised">;
 }) {
   const measure: Record<string, string> = { ...statics, ...grounds };
   const rows: RowSpec[] = [
@@ -397,7 +399,7 @@ export function StaticsSection({
 }
 
 /** The numbered steps shared by both physical derivation ramps. */
-export type RampTokens = Record<
+export type RampMembers = Record<
   "_100" | "_200" | "_300" | "_400" | "_500" | "_600" | "_700" | "_800" | "_900",
   string
 >;
@@ -414,21 +416,18 @@ export function RampSection({
 }: {
   title: string;
   description: string;
-  ramp: RampTokens;
+  ramp: RampMembers;
 }) {
   const measure: Record<string, string> = { ...ramp };
   // Translucent chips composite over the page ground, which is exactly how
-  // the ramp is used in anger. VarGroups carry internal dunder keys
-  // (__varGroupHash__) alongside the members — filter them out.
-  const rows: RowSpec[] = Object.entries(ramp)
-    .filter(([member]) => !member.startsWith("__"))
-    .map(([member, token]) => ({
-      member,
-      chipBackground: token,
-      chipForeground: "transparent",
-      outlined: true,
-      sample: " ",
-    }));
+  // the ramp is used in anger.
+  const rows: RowSpec[] = tokenEntries(measure).map(([member, token]) => ({
+    member,
+    chipBackground: token,
+    chipForeground: "oklch(0 0 0 / 0)",
+    outlined: true,
+    sample: " ",
+  }));
   return (
     <Section title={title} description={description}>
       <TokenRows rows={rows} measure={measure} />

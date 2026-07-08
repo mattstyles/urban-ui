@@ -12,6 +12,17 @@
  */
 
 /**
+ * The oldest browser versions whose colour support keeps lightningcss from
+ * rewriting `oklch()` — the first releases with OKLCH support, encoded in
+ * lightningcss's 24-bit `major << 16 | minor << 8 | patch` scheme.
+ */
+const OKLCH_BASELINE_TARGETS = {
+  chrome: 111 << 16,
+  firefox: 113 << 16,
+  safari: (16 << 16) | (4 << 8),
+};
+
+/**
  * Options for the StyleX compiler — pass to `stylex.vite(...)` from
  * `@stylexjs/unplugin`, registered *before* `react()` to preserve Fast
  * Refresh. The unplugin auto-discovers StyleX packages in node_modules
@@ -26,14 +37,9 @@ export function stylexPluginOptions({ command }: { command: "build" | "serve" })
     useCSSLayers: { before: ["reset", "base"] },
     // Preserve authored OKLCH in emitted custom properties (oklch-only is
     // contract law): without explicit modern targets, lightningcss
-    // downlevels oklch() to lab() fallbacks. Versions are the first with
-    // oklch support, encoded in lightningcss's 24-bit major.minor.patch.
+    // downlevels oklch() to lab() fallbacks.
     lightningcssOptions: {
-      targets: {
-        chrome: 111 << 16,
-        firefox: 113 << 16,
-        safari: (16 << 16) | (4 << 8),
-      },
+      targets: OKLCH_BASELINE_TARGETS,
     },
     // Readable debug class names while developing.
     dev: command === "serve",

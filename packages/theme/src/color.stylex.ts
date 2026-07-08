@@ -19,7 +19,8 @@ export const surface = stylex.defineVars({
   panel: "oklch(0.19 0.022 255)",
   raised: "oklch(0.23 0.024 255)",
   overlay: "oklch(0.21 0.022 255)",
-  // Authored from shade (authored-derivation): shade._700-equivalent black.
+  // Authored black-alpha per authored-derivation — derived with the shade
+  // ramp's vocabulary but pitched for modal recession (no step equivalent).
   scrim: "oklch(0 0 0 / 0.6)",
 });
 
@@ -46,8 +47,9 @@ export const neutral = stylex.defineVars({
 
 /**
  * Scale-less app-wide singletons. Contract group name is `static` —
- * exported as `statics` because `static` is a JS reserved word (carrier
- * rename only; docs and the manifest cite the contract name).
+ * exported as `statics` because `static` is a JS reserved word. Carrier
+ * rename only: prose cites the contract name; the generated manifest
+ * records the exported binding.
  */
 export const statics = stylex.defineVars({
   white: "oklch(1 0 0)",

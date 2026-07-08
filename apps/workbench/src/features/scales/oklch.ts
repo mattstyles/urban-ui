@@ -13,25 +13,30 @@ export interface Oklch {
 }
 
 // Accepts both authored (`oklch(0.15 0.02 255)`) and serialized
-// (`oklch(15% .02 255 / .6)`) forms — lightningcss emits percentage L.
+// (`oklch(15% .02 255 / .6)`, `oklch(1 0 none)`) forms — lightningcss emits
+// percentage L, and achromatic colours can serialize hue as `none`.
 const OKLCH_PATTERN =
-  /oklch\(\s*([\d.]+)(%?)\s+([\d.]+)\s+([\d.]+)(?:deg)?\s*(?:\/\s*([\d.]+)(%?))?\s*\)/;
+  /oklch\(\s*([\d.]+)(%?)\s+([\d.]+|none)\s+([\d.]+|none)(?:deg)?\s*(?:\/\s*([\d.]+)(%?))?\s*\)/;
+
+function scaled(raw: string | undefined, percent: string | undefined, fallback: number): number {
+  if (raw === undefined) {
+    return fallback;
+  }
+  if (raw === "none") {
+    return 0;
+  }
+  return percent === "%" ? Number(raw) / 100 : Number(raw);
+}
 
 export function parseOklch(value: string): Oklch | undefined {
   const match = OKLCH_PATTERN.exec(value);
   if (match === null) {
     return undefined;
   }
-  const scaled = (raw: string | undefined, percent: string | undefined, fallback: number) => {
-    if (raw === undefined) {
-      return fallback;
-    }
-    return percent === "%" ? Number(raw) / 100 : Number(raw);
-  };
   return {
     l: scaled(match[1], match[2], 0),
-    c: Number(match[3]),
-    h: Number(match[4]),
+    c: scaled(match[3], undefined, 0),
+    h: scaled(match[4], undefined, 0),
     alpha: scaled(match[5], match[6], 1),
   };
 }

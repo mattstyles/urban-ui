@@ -10,13 +10,22 @@ import { useLayoutEffect, useRef, useState } from "react";
 
 const VAR_PATTERN = /^var\((--[^),\s]+)/;
 
-function resolveToken(element: Element, token: string): string {
+/**
+ * A token group's member entries, with StyleX's internal dunder keys
+ * (__varGroupHash__) stripped. The one place that knows about the internal
+ * key convention.
+ */
+export function tokenEntries(tokens: Record<string, string>): [string, string][] {
+  return Object.entries(tokens).filter(([name]) => !name.startsWith("__"));
+}
+
+function resolveToken(style: CSSStyleDeclaration, token: string): string {
   const name = VAR_PATTERN.exec(token)?.[1];
   if (name === undefined) {
     // A literal value (defineConsts inlines), not a var reference.
     return token;
   }
-  return getComputedStyle(element).getPropertyValue(name).trim();
+  return style.getPropertyValue(name).trim();
 }
 
 export function useTokenValues(tokens: Record<string, string>): {
@@ -25,21 +34,26 @@ export function useTokenValues(tokens: Record<string, string>): {
 } {
   const elementRef = useRef<HTMLElement | null>(null);
   const [values, setValues] = useState<Record<string, string>>();
-  // Token groups are module-level defineVars objects, so identity is stable
-  // and the effect runs once per mounted group.
+  // Callers build the token record inline per render, so key the effect on
+  // the var references themselves — stable for a given group — rather than
+  // on object identity.
+  const tokensRef = useRef(tokens);
+  tokensRef.current = tokens;
+  const key = tokenEntries(tokens)
+    .map(([name, token]) => `${name}:${token}`)
+    .join("|");
   useLayoutEffect(() => {
     const element = elementRef.current;
     if (element === null) {
       return;
     }
+    // Live declaration: one style flush per group, and later reads reflect
+    // styles injected after mount.
+    const style = getComputedStyle(element);
     const read = () => {
       const resolved: Record<string, string> = {};
-      for (const [name, token] of Object.entries(tokens)) {
-        // VarGroups carry internal dunder keys (__varGroupHash__) — skip.
-        if (name.startsWith("__")) {
-          continue;
-        }
-        resolved[name] = resolveToken(element, token);
+      for (const [name, token] of tokenEntries(tokensRef.current)) {
+        resolved[name] = resolveToken(style, token);
       }
       setValues((previous) => {
         if (
@@ -58,7 +72,7 @@ export function useTokenValues(tokens: Record<string, string>): {
     return () => {
       cancelAnimationFrame(frame);
     };
-  }, [tokens]);
+  }, [key]);
   return {
     ref: (element) => {
       elementRef.current = element;

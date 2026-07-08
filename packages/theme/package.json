@@ -42,7 +42,7 @@
     "build": "tsc",
     "typecheck": "tsgo --noEmit",
     "lint": "oxlint src",
-    "check-package": "publint && attw --pack . --profile esm-only"
+    "check-package": "publint && attw --pack . --profile esm-only --exclude-entrypoints ./global.css"
   },
   "devDependencies": {
     "@stylexjs/stylex": "catalog:",

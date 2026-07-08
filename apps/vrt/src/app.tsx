@@ -1,12 +1,13 @@
 import * as stylex from "@stylexjs/stylex";
 import { useSyncExternalStore } from "react";
-import { colors, radii, space } from "@urban-ui/theme/tokens.stylex";
+import { neutral, surface } from "@urban-ui/theme/color.stylex";
+import { space } from "@urban-ui/theme/tokens.stylex";
 import { findRenderable, type RenderableEntry, renderables } from "./registry.js";
 
 const styles = stylex.create({
   page: {
-    backgroundColor: colors.surface,
-    color: colors.text,
+    backgroundColor: surface.canvas,
+    color: neutral.ink,
     minHeight: "100vh",
     padding: space.lg,
   },
@@ -26,13 +27,14 @@ const styles = stylex.create({
     gap: space.sm,
   },
   link: {
-    color: colors.accent,
+    color: neutral.ink,
+    textDecorationLine: "underline",
   },
   // The VRT capture box: a tight, padded frame around the renderable so
   // element screenshots carry consistent margins without viewport noise.
+  // Square corners: the flagship silhouette baseline (square-baseline).
   sceneRoot: {
-    backgroundColor: colors.surface,
-    borderRadius: radii.control,
+    backgroundColor: surface.panel,
     display: "inline-block",
     padding: space.md,
   },
