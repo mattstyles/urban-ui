@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import type { ReactNode } from "react";
 import { Button } from "@urban-ui/react/button";
-import { space } from "@urban-ui/theme/tokens.stylex";
+import { size } from "@urban-ui/theme/space.stylex";
 
 /**
  * Visual scenes: coverage, not pedagogy — each named export is one committed
@@ -19,13 +19,13 @@ const styles = stylex.create({
     alignItems: "flex-start",
     display: "flex",
     flexDirection: "column",
-    gap: space.md,
+    gap: size.md,
   },
   item: {
     alignItems: "flex-start",
     display: "flex",
     flexDirection: "column",
-    gap: space.sm,
+    gap: size.sm,
   },
   caption: {
     fontSize: "12px",

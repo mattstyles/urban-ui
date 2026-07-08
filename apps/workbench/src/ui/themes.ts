@@ -16,10 +16,12 @@ import {
  * switching mechanism (docs/plans/002-theme-buildable-slice.md, phase 5),
  * not shipped theme surface. A theme is a named bundle of per-group
  * createTheme overrides applied together, at the app root or any branch
- * point. Each bundle is one category edit from the contract's cross-scale
- * table: violet is the flavour re-hue, archive the re-voice, dense the
- * size-world re-pitch. Overrides are always total — the coherence group is
- * the themeable unit, never individual vars.
+ * point. violet and dense are category edits from the contract's
+ * cross-scale table (flavour re-hue; size-world re-pitch); archive is a
+ * coordinated re-voice across the five UI voice groups — no table category
+ * yet, exactly the kind of repeated edit that would earn one
+ * (empirical-categories). Overrides are always total — the coherence group
+ * is the themeable unit, never individual vars.
  */
 
 // createTheme() calls must be bound to bare variables (compiler rule);

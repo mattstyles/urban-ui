@@ -70,16 +70,6 @@
       ]
     },
     {
-      "name": "colors",
-      "path": "src/tokens.stylex.ts",
-      "tokens": [
-        "accent",
-        "accentText",
-        "surface",
-        "text"
-      ]
-    },
-    {
       "name": "danger",
       "path": "src/color.stylex.ts",
       "tokens": [
@@ -258,13 +248,6 @@
       ]
     },
     {
-      "name": "radii",
-      "path": "src/tokens.stylex.ts",
-      "tokens": [
-        "control"
-      ]
-    },
-    {
       "name": "recede",
       "path": "src/color.stylex.ts",
       "tokens": [
@@ -303,15 +286,6 @@
         "sm",
         "xl",
         "xs"
-      ]
-    },
-    {
-      "name": "space",
-      "path": "src/tokens.stylex.ts",
-      "tokens": [
-        "lg",
-        "md",
-        "sm"
       ]
     },
     {

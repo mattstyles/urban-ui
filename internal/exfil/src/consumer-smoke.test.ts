@@ -1,32 +1,37 @@
 import { describe, expect, it } from "bun:test";
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { devDependencyVersion, extractAccentToken } from "./consumer-smoke.js";
+import { devDependencyVersion, extractTokenProbe } from "./consumer-smoke.js";
 
 const REPO_ROOT = path.join(import.meta.dirname, "..", "..", "..");
 
-describe("extractAccentToken", () => {
-  it("pulls the accent literal, not accentText", () => {
+describe("extractTokenProbe", () => {
+  it("pulls lineHeight.sm, not fontSize.sm", () => {
     const source = [
-      `export const colors = stylex.defineVars({`,
-      `  surface: "#ffffff",`,
-      `  accent: "#123abc",`,
-      `  accentText: "#ffffff",`,
+      `export const fontSize = stylex.defineVars({`,
+      `  sm: "0.875rem",`,
+      `});`,
+      ``,
+      `export const lineHeight = stylex.defineVars({`,
+      `  xs: "1rem",`,
+      `  sm: "1.25rem",`,
       `});`,
     ].join("\n");
-    expect(extractAccentToken(source)).toBe("#123abc");
+    expect(extractTokenProbe(source)).toBe("1.25rem");
   });
 
-  it("returns undefined when no accent literal exists", () => {
-    expect(extractAccentToken(`const nope = "#4f46e5";`)).toBeUndefined();
+  it("returns undefined when no lineHeight literal exists", () => {
+    expect(extractTokenProbe(`const nope = "1.25rem";`)).toBeUndefined();
   });
 
-  it("derives a probe from the real theme source", () => {
+  it("derives a minification-stable probe from the real theme source", () => {
     const source = readFileSync(
-      path.join(REPO_ROOT, "packages", "theme", "src", "tokens.stylex.ts"),
+      path.join(REPO_ROOT, "packages", "theme", "src", "text.stylex.ts"),
       "utf8",
     );
-    expect(extractAccentToken(source)).toMatch(/^#[0-9a-fA-F]{3,8}$/);
+    // Must not start with "0." — lightningcss strips the leading zero and
+    // the byte-for-byte CSS assertion would miss it.
+    expect(extractTokenProbe(source)).toMatch(/^[1-9][\d.]*(px|rem)$/);
   });
 });
 

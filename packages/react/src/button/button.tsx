@@ -1,18 +1,46 @@
 import * as stylex from "@stylexjs/stylex";
-import { colors, radii, space } from "@urban-ui/theme/tokens.stylex";
+import { accent, advance, statics } from "@urban-ui/theme/color.stylex";
+import { size } from "@urban-ui/theme/space.stylex";
+import { actionVoice, fontSize, lineHeight } from "@urban-ui/theme/text.stylex";
 import { Button as AriaButton, type ButtonProps as AriaButtonProps } from "react-aria-components";
 
-// Deliberately thin pipeline probe (001-repo-foundation): no variants, no
-// tone scales — rewritten when the design-system structural rules land.
-// Buttons never declare `cursor` — the browser default is the convention.
+// Light-touch contract restyle (docs/plans/002-theme-buildable-slice.md,
+// phase 6): enough to see the scales in anger. The variant system, control
+// sizes (urban-ui-6yb) and materials (urban-ui-s2e) are component-plan work.
+// Square baseline (square-baseline); buttons never declare `cursor`.
 const styles = stylex.create({
   base: {
-    backgroundColor: colors.accent,
-    borderRadius: radii.control,
+    // Gesture states derive from the semantic emphasis pair
+    // (emphasis-pair); `:active` is the CSS carrier for the grammar's
+    // `press` (state-grammar names the state, not the selector).
+    backgroundColor: {
+      default: accent.fill,
+      ":hover": `color-mix(in oklch, ${accent.fill}, ${advance._200})`,
+      ":active": `color-mix(in oklch, ${accent.fill}, ${advance._300})`,
+      ":disabled": statics.disabledFill,
+    },
+    color: {
+      default: accent.onFill,
+      ":disabled": statics.disabledInk,
+    },
     borderStyle: "none",
-    color: colors.accentText,
-    paddingBlock: space.sm,
-    paddingInline: space.md,
+    fontFamily: actionVoice.family,
+    fontSize: fontSize.sm,
+    fontWeight: actionVoice.weight,
+    letterSpacing: actionVoice.tracking,
+    lineHeight: lineHeight.sm,
+    // Control padding chains through control sizing when urban-ui-6yb lands.
+    paddingBlock: size.sm,
+    paddingInline: size.md,
+    // Structural focus (structural-focus): a ring from static.focus.
+    // Ring width/offset tokens are urban-ui-6yb's.
+    outlineColor: statics.focus,
+    outlineOffset: "2px",
+    outlineStyle: {
+      default: "none",
+      ":focus-visible": "solid",
+    },
+    outlineWidth: "2px",
   },
 });
 

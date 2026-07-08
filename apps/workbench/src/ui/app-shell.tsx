@@ -40,8 +40,14 @@ const styles = stylex.create({
     borderBottomWidth: "1px",
     display: "flex",
     gap: gap.plane,
+    justifyContent: "space-between",
     paddingBlock: inset.container,
     paddingInline: inset.plane,
+  },
+  wayfinding: {
+    alignItems: "baseline",
+    display: "flex",
+    gap: gap.plane,
   },
   title: {
     color: neutral.ink,
@@ -65,7 +71,6 @@ const styles = stylex.create({
   themes: {
     display: "flex",
     gap: gap.control,
-    marginInlineStart: "auto",
   },
   themeField: {
     alignItems: "center",
@@ -114,16 +119,18 @@ export function AppShell({ children }: { children: ReactNode }) {
       {...stylex.props(styles.shell, ...themeAxes.map((axis) => active[axis.key] && axis.bundle))}
     >
       <header {...stylex.props(styles.header)}>
-        <Link to="/" {...stylex.props(styles.title)}>
-          Urban UI workbench
-        </Link>
-        <nav {...stylex.props(styles.nav)}>
-          {sections.map((section) => (
-            <Link key={section.to} to={section.to} {...stylex.props(styles.link)}>
-              {section.label}
-            </Link>
-          ))}
-        </nav>
+        <div {...stylex.props(styles.wayfinding)}>
+          <Link to="/" {...stylex.props(styles.title)}>
+            Urban UI workbench
+          </Link>
+          <nav {...stylex.props(styles.nav)}>
+            {sections.map((section) => (
+              <Link key={section.to} to={section.to} {...stylex.props(styles.link)}>
+                {section.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
         <div {...stylex.props(styles.themes)}>
           {themeAxes.map((axis) => (
             <label key={axis.key} {...stylex.props(styles.themeField)}>

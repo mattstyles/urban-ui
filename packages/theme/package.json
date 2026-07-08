@@ -50,11 +50,6 @@
       "types": "./dist/shape.stylex.d.ts",
       "default": "./dist/shape.stylex.js"
     },
-    "./tokens.stylex": {
-      "source": "./src/tokens.stylex.ts",
-      "types": "./dist/tokens.stylex.d.ts",
-      "default": "./dist/tokens.stylex.js"
-    },
     "./global.css": "./global.css",
     "./package.json": "./package.json"
   },

@@ -11,8 +11,9 @@ import { useTokenValues } from "./use-token-values.js";
  * control- and panel-sized boxes. The clip-path rendering here is app-side
  * illustration only — the shipped shape mechanism (generator, stroke, halo)
  * is component work, not tokens. Cuts stay inside the box
- * (silhouette-bounding-box) and every box comfortably exceeds its cut size
- * (cut-min-size).
+ * (silhouette-bounding-box); chamfering both corners of an edge needs the
+ * box dimension to exceed twice the cut, so specimen sizes clear 2x the
+ * largest step (cut-min-size states the single-cut floor).
  */
 
 function chamferAllCorners(cut: string): string {
@@ -52,7 +53,7 @@ const styles = stylex.create({
     color: accent.onFill,
     display: "flex",
     fontSize: fontSize.sm,
-    height: "2.5rem",
+    height: "3rem",
     justifyContent: "center",
     width: "8rem",
   }),

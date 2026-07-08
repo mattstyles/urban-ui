@@ -171,9 +171,7 @@ describe("runGates", () => {
   });
 
   it("passes when the touched train is covered by an added intent", () => {
-    expect(runGates(["packages/theme/src/tokens.stylex.ts"], [intent], trains, FIXTURE)).toEqual(
-      [],
-    );
+    expect(runGates(["packages/theme/src/color.stylex.ts"], [intent], trains, FIXTURE)).toEqual([]);
   });
 });
 

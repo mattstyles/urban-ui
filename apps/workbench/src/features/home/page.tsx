@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { Link } from "@tanstack/react-router";
 import { accent, neutral } from "@urban-ui/theme/color.stylex";
-import { space } from "@urban-ui/theme/tokens.stylex";
+import { size } from "@urban-ui/theme/space.stylex";
 import { Page } from "../../ui/page.js";
 
 const sections = [
@@ -30,7 +30,7 @@ const sections = [
 const styles = stylex.create({
   grid: {
     display: "grid",
-    gap: space.md,
+    gap: size.md,
     gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
   },
   // Square corners: the flagship silhouette baseline (square-baseline).
@@ -41,8 +41,8 @@ const styles = stylex.create({
     color: neutral.inkSecondary,
     display: "flex",
     flexDirection: "column",
-    gap: space.sm,
-    padding: space.md,
+    gap: size.sm,
+    padding: size.md,
     textDecoration: "none",
   },
   // Emphasis advances by hue, not weight alone (hue-emphasis).

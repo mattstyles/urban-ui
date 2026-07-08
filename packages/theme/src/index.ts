@@ -4,7 +4,6 @@ import type * as editorial from "./editorial.stylex.js";
 import type * as shape from "./shape.stylex.js";
 import type * as spaceTokens from "./space.stylex.js";
 import type * as text from "./text.stylex.js";
-import type * as tokens from "./tokens.stylex.js";
 
 /**
  * Root entry exports token group *types* only. Token values live in the
@@ -61,9 +60,3 @@ export type DepthTokens = VarGroup<typeof shape.depth>;
  */
 export const profiles = ["square", "straight", "round"] as const;
 export type Profile = (typeof profiles)[number];
-
-// Pipeline probes — retired when the buildable slice lands in full
-// (docs/plans/002-theme-buildable-slice.md, phase 6).
-export type ColorTokens = VarGroup<typeof tokens.colors>;
-export type SpaceTokens = VarGroup<typeof tokens.space>;
-export type RadiiTokens = VarGroup<typeof tokens.radii>;

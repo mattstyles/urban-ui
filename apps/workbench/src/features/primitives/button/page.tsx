@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { Button } from "@urban-ui/react/button";
-import { colors, radii, space } from "@urban-ui/theme/tokens.stylex";
+import { neutral } from "@urban-ui/theme/color.stylex";
+import { size } from "@urban-ui/theme/space.stylex";
 import { type ReactNode, useState } from "react";
 import { Page } from "../../../ui/page.js";
 
@@ -8,25 +9,25 @@ const styles = stylex.create({
   specimens: {
     display: "flex",
     flexDirection: "column",
-    gap: space.md,
+    gap: size.md,
   },
   specimen: {
     display: "flex",
     flexDirection: "column",
-    gap: space.sm,
+    gap: size.sm,
   },
   specimenTitle: {
     fontWeight: 600,
   },
+  // Square corners: the flagship silhouette baseline (square-baseline).
   specimenCanvas: {
     alignItems: "center",
-    borderColor: colors.text,
-    borderRadius: radii.control,
+    borderColor: neutral.border,
     borderStyle: "solid",
     borderWidth: "1px",
     display: "flex",
-    gap: space.sm,
-    padding: space.md,
+    gap: size.sm,
+    padding: size.md,
   },
 });
 

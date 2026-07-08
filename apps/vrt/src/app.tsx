@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { useSyncExternalStore } from "react";
 import { neutral, surface } from "@urban-ui/theme/color.stylex";
-import { space } from "@urban-ui/theme/tokens.stylex";
+import { size } from "@urban-ui/theme/space.stylex";
 import { findRenderable, type RenderableEntry, renderables } from "./registry.js";
 
 const styles = stylex.create({
@@ -9,22 +9,22 @@ const styles = stylex.create({
     backgroundColor: surface.canvas,
     color: neutral.ink,
     minHeight: "100vh",
-    padding: space.lg,
+    padding: size.lg,
   },
   index: {
     display: "flex",
     flexDirection: "column",
-    gap: space.lg,
+    gap: size.lg,
   },
   tier: {
     display: "flex",
     flexDirection: "column",
-    gap: space.md,
+    gap: size.md,
   },
   group: {
     display: "flex",
     flexDirection: "column",
-    gap: space.sm,
+    gap: size.sm,
   },
   link: {
     color: neutral.ink,
@@ -36,7 +36,7 @@ const styles = stylex.create({
   sceneRoot: {
     backgroundColor: surface.panel,
     display: "inline-block",
-    padding: space.md,
+    padding: size.md,
   },
   // Scene pages must be valid pages in their own right (axe rides every
   // route): a visually-hidden h1 names the renderable without entering the

@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "description": "Internal release mechanics — intent parsing, version math, CI gates, and release assembly. Never published.",
-  "type": "module",
   "bin": {
     "exfil": "./src/cli.ts"
   },
+  "type": "module",
   "scripts": {
     "test": "bun test",
     "typecheck": "tsgo --noEmit",

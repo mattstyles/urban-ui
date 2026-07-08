@@ -1,5 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
-import { colors, radii, space } from "@urban-ui/theme/tokens.stylex";
+import { accent, neutral } from "@urban-ui/theme/color.stylex";
+import { size } from "@urban-ui/theme/space.stylex";
 import {
   ToggleButton as AriaToggleButton,
   type ToggleButtonProps as AriaToggleButtonProps,
@@ -8,20 +9,22 @@ import {
 // Experimental labs probe: exercises state-dependent styling through RAC's
 // render-prop className — the pattern candidate for the real variant system.
 // Buttons never declare `cursor` — the browser default is the convention.
+// Mechanical re-point onto the contract groups (probe retirement, phase 6
+// of docs/plans/002-theme-buildable-slice.md); square baseline replaces the
+// probe radius (square-baseline). Real rework is component-plan work.
 const styles = stylex.create({
   base: {
-    backgroundColor: colors.surface,
-    borderColor: colors.accent,
-    borderRadius: radii.control,
+    backgroundColor: neutral.subtle,
+    borderColor: accent.line,
     borderStyle: "solid",
     borderWidth: "1px",
-    color: colors.text,
-    paddingBlock: space.sm,
-    paddingInline: space.md,
+    color: neutral.ink,
+    paddingBlock: size.sm,
+    paddingInline: size.md,
   },
   selected: {
-    backgroundColor: colors.accent,
-    color: colors.accentText,
+    backgroundColor: accent.fill,
+    color: accent.onFill,
   },
 });
 
