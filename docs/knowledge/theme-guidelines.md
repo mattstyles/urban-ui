@@ -55,7 +55,7 @@ Identical across flavour and status scales. Bands are sub-group vocabulary; fg/b
 
 ### Static category
 
-Scale-less app-wide singletons, themeable like any group: `white` · `black` · `disabledInk` · `disabledFill` · `focus`. Disabled is cross-scale by nature (all scales converge on one greyed pair); `focus` is the app-wide focus-ring colour. `currentColor` is CSS machinery, not a token.
+Scale-less app-wide singletons, themeable like any group: `white` · `black` · `disabledInk` · `disabledFill` · `focus` · `currentColor`. Disabled is cross-scale by nature (all scales converge on one greyed pair); `focus` is the app-wide focus-ring colour. `currentColor` is a contextual passthrough — it resolves to the ambient `color` at the use site rather than a themed value; it rides in the contract so token-typed slots can say “follow the text” without escaping to raw CSS.
 
 ### Derivation pairs
 

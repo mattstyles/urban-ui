@@ -126,6 +126,10 @@ export const statics = stylex.defineVars({
   disabledInk: "oklch(0.56 0.01 255)",
   disabledFill: "oklch(0.24 0.012 255)",
   focus: "oklch(0.82 0.14 195)",
+  // Contextual passthrough, not a themed value: resolves to the ambient
+  // `color` at the use site, so token-typed slots can accept "follow the
+  // text" without escaping the contract.
+  currentColor: "currentColor",
 });
 
 /**

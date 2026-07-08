@@ -76,6 +76,13 @@ const styles = stylex.create({
     outlineStyle: "solid",
     outlineWidth: "1px",
   },
+  // A hatch for value-less tokens: the stripes are painted with the token
+  // itself, so a contextual passthrough (currentColor) renders whatever it
+  // resolves to at this point in the tree.
+  chipHatched: (stripe: string) => ({
+    backgroundColor: "transparent",
+    backgroundImage: `repeating-linear-gradient(-45deg, ${stripe} 0, ${stripe} 3px, transparent 3px, transparent 8px)`,
+  }),
   member: {
     fontFamily: "monospace",
     fontSize: fontSize.sm,
@@ -154,6 +161,8 @@ interface RowSpec {
   chipForeground: string;
   /** Outline the chip when it would vanish into the page background. */
   outlined?: boolean;
+  /** Hatch instead of filling — for tokens with no fixed swatch colour. */
+  hatched?: boolean;
   sample?: string;
   pairings?: Pairing[];
 }
@@ -175,6 +184,7 @@ function TokenRows({
             {...stylex.props(
               styles.chip(row.chipBackground, row.chipForeground),
               row.outlined === true && styles.chipOutlined,
+              row.hatched === true && styles.chipHatched(row.chipBackground),
             )}
           >
             {row.sample ?? "Aa"}
@@ -355,6 +365,7 @@ export interface StaticMembers {
   disabledInk: string;
   disabledFill: string;
   focus: string;
+  currentColor: string;
 }
 
 export function StaticsSection({
@@ -399,11 +410,21 @@ export function StaticsSection({
         floor: GRAPHIC_FLOOR,
       })),
     },
+    {
+      // A contextual passthrough has no swatch of its own — the hatch is
+      // painted with the token, so it shows the ambient ink it resolves to.
+      member: "currentColor",
+      chipBackground: statics.currentColor,
+      chipForeground: statics.currentColor,
+      hatched: true,
+      outlined: true,
+      sample: " ",
+    },
   ];
   return (
     <Section
       title="static"
-      description="Scale-less app-wide singletons. Disabled pairs are WCAG-exempt; focus holds the non-text floor on every ground."
+      description="Scale-less app-wide singletons. Disabled pairs are WCAG-exempt; focus holds the non-text floor on every ground; currentColor passes the ambient ink through (hatched with it here)."
     >
       <TokenRows rows={rows} measure={measure} />
     </Section>

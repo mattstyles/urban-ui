@@ -51,7 +51,7 @@ Other groups:
 
 | group | members |
 |---|---|
-| `static` | `white` · `black` · `disabledInk` · `disabledFill` · `focus` |
+| `static` | `white` · `black` · `disabledInk` · `disabledFill` · `focus` · `currentColor` |
 | `advance` / `recede` | numbered, mirroring `shade`/`tint`; values scheme-faceted |
 
 ## Materials
