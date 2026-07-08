@@ -78,10 +78,14 @@ hk check --all                # all gates (oxlint, oxfmt, typecheck) against all
 
 Canonical `build`/`lint`/`typecheck` scripts live in each package's `package.json`; mise tasks are thin wrappers with declared `sources`/`outputs` (content-hash freshness). See [[0001-repository-structure]].
 
+Git hooks (installed by `mise install`, managed by hk) run these gates automatically on commit and push, and block on failure — don't ritually re-run the full suite before committing; commit, and respond to what the hook reports. Keep `hk check --all` for mid-work checks and CI parity.
+
 ## Workflow
 
 - Never push to `main` — work on branches and merge via pull requests.
 - For segmented work (e.g. multi-phase plans), use `stack` to split it across a stack of PRs, one per segment. See the `stack` skill.
+- After adding or changing any `*.stylex.ts` module, rebuild `@urban-ui/theme` and restart running Vite dev servers: dev resolves `.stylex` modules through the built dist (var-name hashing), and Vite caches stale or failed resolutions until restart.
+- Commit-point reviews run in the background: for multi-phase work, launch the review agent for a committed phase and keep building the next — block only on the final review.
 
 ## Architecture Overview
 
