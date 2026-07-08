@@ -90,3 +90,5 @@ _Add a brief overview of your project architecture_
 ## Conventions & Patterns
 
 Repo-wide conventions live in [docs/knowledge/conventions.md](docs/knowledge/conventions.md) — read it before structuring new code or packages.
+
+Design-language rules live in [docs/rules.md](docs/rules.md) — read the register before writing or reviewing UI, component, or theme code. Deviations are cited in place: `// deviation(<slug>): <reason>`.

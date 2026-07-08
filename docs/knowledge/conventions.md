@@ -9,3 +9,4 @@ Repo-wide conventions that don't belong to any single package or record. Flat li
 - **Categorise by intent, not by kind.** No utility buckets (`utils/`, `helpers/`, `tooling/`) — a module or package is named for the question it answers (`internal/workspace`: "what packages exist here?"), never for the shape of the code inside it.
 - **Prefer single-arity functions.** A function that needs more than one value takes a single object with named fields, not a parameter list.
 - **Colocate tests with implementation.** `src/thing.test.ts` sits beside `src/thing.ts` — no separate `test/` trees for test files (fixture directories may still stand alone).
+- **UI work obeys the rule register.** Component, styling, and theme changes follow [[rules]]; deviations are cited in place as `// deviation(<slug>): <reason>`.
