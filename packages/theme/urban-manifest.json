@@ -6,6 +6,39 @@
   "patterns": [],
   "tokenGroups": [
     {
+      "name": "accent",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
+      ]
+    },
+    {
+      "name": "advance",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
+      ]
+    },
+    {
       "name": "colors",
       "path": "src/tokens.stylex.ts",
       "tokens": [
@@ -13,6 +46,24 @@
         "accentText",
         "surface",
         "text"
+      ]
+    },
+    {
+      "name": "danger",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
       ]
     },
     {
@@ -34,10 +85,43 @@
       ]
     },
     {
+      "name": "positive",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
+      ]
+    },
+    {
       "name": "radii",
       "path": "src/tokens.stylex.ts",
       "tokens": [
         "control"
+      ]
+    },
+    {
+      "name": "recede",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
       ]
     },
     {
@@ -99,6 +183,24 @@
         "_700",
         "_800",
         "_900"
+      ]
+    },
+    {
+      "name": "warning",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
       ]
     }
   ],

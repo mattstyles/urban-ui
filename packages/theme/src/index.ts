@@ -12,9 +12,15 @@ import type * as tokens from "./tokens.stylex.js";
 // Colour domain (theme-contract).
 export type SurfaceTokens = VarGroup<typeof color.surface>;
 export type NeutralTokens = VarGroup<typeof color.neutral>;
+export type AccentTokens = VarGroup<typeof color.accent>;
+export type PositiveTokens = VarGroup<typeof color.positive>;
+export type WarningTokens = VarGroup<typeof color.warning>;
+export type DangerTokens = VarGroup<typeof color.danger>;
 export type StaticTokens = VarGroup<typeof color.statics>;
 export type ShadeTokens = VarGroup<typeof color.shade>;
 export type TintTokens = VarGroup<typeof color.tint>;
+export type AdvanceTokens = VarGroup<typeof color.advance>;
+export type RecedeTokens = VarGroup<typeof color.recede>;
 
 // Pipeline probes — retired when the buildable slice lands in full
 // (docs/plans/002-theme-buildable-slice.md, phase 6).

@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import { Link } from "@tanstack/react-router";
-import { neutral } from "@urban-ui/theme/color.stylex";
+import { accent, neutral } from "@urban-ui/theme/color.stylex";
 import { space } from "@urban-ui/theme/tokens.stylex";
 import { Page } from "../../ui/page.js";
 
@@ -45,8 +45,9 @@ const styles = stylex.create({
     padding: space.md,
     textDecoration: "none",
   },
+  // Emphasis advances by hue, not weight alone (hue-emphasis).
   cardTitle: {
-    color: neutral.ink,
+    color: accent.ink,
     fontWeight: 600,
   },
   cardSummary: {

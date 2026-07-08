@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { surface } from "@urban-ui/theme/color.stylex";
+import { danger, positive, surface } from "@urban-ui/theme/color.stylex";
 import { space } from "@urban-ui/theme/tokens.stylex";
 import type { ReactNode } from "react";
 import { contrastRatio, parseOklch } from "./oklch.js";
@@ -89,14 +89,13 @@ const styles = stylex.create({
     gap: space.sm,
   },
   badge: {
+    color: positive.ink,
     fontFamily: "monospace",
     fontSize: "0.75rem",
   },
-  // Badge colours re-point to the status scales (positive/danger inks) when
-  // they land in phase 2; until then weight alone separates fail from pass.
   badgeFail: {
+    color: danger.ink,
     fontWeight: 700,
-    textDecorationLine: "underline",
   },
 });
 
@@ -225,23 +224,32 @@ export function ScaleSection({
       background: ground,
       floor,
     }));
-  const fillRows: RowSpec[] = (["subtle", "fill"] as const).map((member) => ({
-    member,
-    chipBackground: scale[member],
-    chipForeground: scale.onFill,
-    pairings: [
-      { label: "onFill", foreground: "onFill", background: member, floor: TEXT_FLOOR },
-      {
-        label: "onFillSecondary",
-        foreground: "onFillSecondary",
-        background: member,
-        floor: TEXT_FLOOR,
-      },
-      ...(member === "subtle"
-        ? [{ label: "ink", foreground: "ink", background: member, floor: TEXT_FLOOR }]
-        : []),
-    ],
-  }));
+  // Pairing spec per the contract's legibility guarantees: `fill` pairs
+  // with the onFill marks; `subtle` (a quiet wash) carries the scale's ink.
+  // onFill is not asserted against subtle — a scale whose fill band spans
+  // dark-wash-to-bright (accent) cannot hold one onFill against both.
+  const fillRows: RowSpec[] = [
+    {
+      member: "subtle",
+      chipBackground: scale.subtle,
+      chipForeground: scale.ink,
+      pairings: [{ label: "ink", foreground: "ink", background: "subtle", floor: TEXT_FLOOR }],
+    },
+    {
+      member: "fill",
+      chipBackground: scale.fill,
+      chipForeground: scale.onFill,
+      pairings: [
+        { label: "onFill", foreground: "onFill", background: "fill", floor: TEXT_FLOOR },
+        {
+          label: "onFillSecondary",
+          foreground: "onFillSecondary",
+          background: "fill",
+          floor: TEXT_FLOOR,
+        },
+      ],
+    },
+  ];
   const edgeRows: RowSpec[] = (["border", "line"] as const).map((member) => ({
     member,
     chipBackground: scale[member],

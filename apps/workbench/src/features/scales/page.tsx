@@ -1,5 +1,17 @@
 import * as stylex from "@stylexjs/stylex";
-import { neutral, shade, statics, surface, tint } from "@urban-ui/theme/color.stylex";
+import {
+  accent,
+  advance,
+  danger,
+  neutral,
+  positive,
+  recede,
+  shade,
+  statics,
+  surface,
+  tint,
+  warning,
+} from "@urban-ui/theme/color.stylex";
 import { space } from "@urban-ui/theme/tokens.stylex";
 import { Page } from "../../ui/page.js";
 import {
@@ -36,7 +48,37 @@ export function ScalesPage() {
           description="Flavour scale — the full 12-member anatomy every flavour and status scale shares: fill, edge, marks, materials."
           scale={neutral}
         />
+        <ScaleSection
+          title="accent"
+          description="Flavour scale — the identity hue. fill is the seed directly (fill-takes-seed)."
+          scale={accent}
+        />
+        <ScaleSection
+          title="positive"
+          description="Status scale — shares every L/C value with warning and danger; only the hue differs (equi-perceptual family)."
+          scale={positive}
+        />
+        <ScaleSection
+          title="warning"
+          description="Status scale — equi-perceptual with positive and danger."
+          scale={warning}
+        />
+        <ScaleSection
+          title="danger"
+          description="Status scale — equi-perceptual with positive and warning. Also the sanctioned source for invalid styling (state-grammar)."
+          scale={danger}
+        />
         <StaticsSection statics={statics} grounds={surface} />
+        <RampSection
+          title="advance"
+          description="Semantic emphasis — moves toward the viewer in the active scheme (dark facet: lightens). All hover/press/selected derivations use this pair (emphasis-pair)."
+          ramp={advance}
+        />
+        <RampSection
+          title="recede"
+          description="Semantic emphasis — moves away from the viewer in the active scheme (dark facet: darkens)."
+          ramp={recede}
+        />
         <RampSection
           title="shade"
           description="Physical darkening — scheme-invariant black alpha steps, for deriving only. Chips composite over the page ground."

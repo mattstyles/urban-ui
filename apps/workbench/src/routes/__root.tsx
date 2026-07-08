@@ -1,11 +1,11 @@
 import * as stylex from "@stylexjs/stylex";
 import { createRootRoute, Link, Outlet, useLocation } from "@tanstack/react-router";
-import { neutral } from "@urban-ui/theme/color.stylex";
+import { accent } from "@urban-ui/theme/color.stylex";
 import { AppShell } from "../ui/app-shell.js";
 
 const styles = stylex.create({
   link: {
-    color: neutral.ink,
+    color: accent.ink,
     textDecorationLine: "underline",
   },
 });
