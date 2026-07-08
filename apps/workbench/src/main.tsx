@@ -1,14 +1,15 @@
-import { createHashHistory, createRouter, RouterProvider } from "@tanstack/react-router";
+import { createRouter, RouterProvider } from "@tanstack/react-router";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { routeTree } from "./routeTree.gen.js";
 import "./index.css";
 
-// Hash history keeps deep links working on static hosting (GitHub Pages)
-// with no history fallback.
+// Browser history; deep-link refreshes on GitHub Pages are covered by the
+// 404.html fallback the deploy workflow ships. basepath tracks Vite's base —
+// "/" locally, "/<repo>/" on Pages (WORKBENCH_BASE).
 const router = createRouter({
   routeTree,
-  history: createHashHistory(),
+  basepath: import.meta.env.BASE_URL,
 });
 
 declare module "@tanstack/react-router" {

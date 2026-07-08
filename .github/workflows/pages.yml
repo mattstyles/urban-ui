@@ -34,6 +34,11 @@ jobs:
           # Project pages are served from /<repo>/
           WORKBENCH_BASE: /urban-ui/
 
+      # SPA fallback: Pages serves 404.html for unknown paths, so deep-link
+      # refreshes boot the app and the router resolves the real pathname.
+      - name: Add SPA fallback
+        run: cp apps/workbench/dist/index.html apps/workbench/dist/404.html
+
       - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
