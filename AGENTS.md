@@ -66,6 +66,7 @@ Repository documentation is a wiki-linked graph under `docs/`. Enter through the
 - [docs/adr.md](docs/adr.md) — architectural decision records
 - [docs/knowledge.md](docs/knowledge.md) — durable conventions and contracts
 - [docs/prd.md](docs/prd.md) — product requirements documents
+- [docs/rules.md](docs/rules.md) — the design-language rule register (add via the `rule` skill)
 
 ## Build & Test
 
