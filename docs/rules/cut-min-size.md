@@ -2,6 +2,7 @@
 slug: cut-min-size
 stratum: contract
 strictness: law
+enforcement: machine
 ---
 
 # cut-min-size

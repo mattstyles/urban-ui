@@ -2,6 +2,7 @@
 slug: no-margin
 stratum: language
 strictness: default
+enforcement: machine
 ---
 
 # no-margin

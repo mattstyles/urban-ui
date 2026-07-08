@@ -2,6 +2,7 @@
 slug: hue-emphasis
 stratum: flagship
 strictness: default
+enforcement: review
 ---
 
 # hue-emphasis

@@ -2,6 +2,7 @@
 slug: emphasis-pair
 stratum: language
 strictness: default
+enforcement: review
 ---
 
 # emphasis-pair

@@ -14,7 +14,8 @@ Record a design-language rule as a per-file entry under `docs/rules/`, indexed i
 2. **Sort it**:
    - **stratum** — `contract` (mechanical/neutral: formats, invariants, schema) · `language` (opinionated but theme-agnostic grammar) · `flagship` (the cyberpunk identity's values). Test: would a non-cyberpunk theme still obey it? yes → language or contract; no → flagship.
    - **strictness** — `law` (breaking it exits the language; written justification) · `default` (expected choice; deviate with annotation) · `leaning` (soft preference; deviate freely).
-   - If genuinely unsure, ask the user — one question, both axes at once.
+   - **enforcement** — `machine` (lintable or computable — a grep, a type, a contrast check) · `review` (a crisp yes/no question answerable at the site) · `judgment` (identity/principle; no per-site check). Test: could a dumb tool flag a violation? yes → machine; could an agent answer one question about the site? yes → review; else judgment.
+   - If genuinely unsure, ask the user — one question, all axes at once.
 3. **Slug it** — flat kebab-case, short, imperative-ish (`no-margin`, `browser-cursor`). Check uniqueness against `docs/rules/`. No numbers, no category prefixes.
 4. **Write `docs/rules/<slug>.md`** in the format below. Rationale carries the *why* (the snag that proved it); examples are Biome-style incorrect/correct pairs, plus a sanctioned-deviation example where one is already known.
 5. **Index it** — add a row to the matching stratum table in `docs/rules.md`: `| [[<slug>]] | <short description distilled from the rationale> |`.
@@ -28,6 +29,7 @@ Record a design-language rule as a per-file entry under `docs/rules/`, indexed i
 slug: <slug>
 stratum: contract | language | flagship
 strictness: law | default | leaning
+enforcement: machine | review | judgment
 ---
 
 # <slug>

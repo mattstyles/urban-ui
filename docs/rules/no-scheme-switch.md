@@ -2,6 +2,7 @@
 slug: no-scheme-switch
 stratum: contract
 strictness: law
+enforcement: machine
 ---
 
 # no-scheme-switch

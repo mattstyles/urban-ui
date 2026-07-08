@@ -2,6 +2,7 @@
 slug: browser-cursor
 stratum: language
 strictness: law
+enforcement: machine
 ---
 
 # browser-cursor

@@ -2,6 +2,7 @@
 slug: tokens-are-spec
 stratum: contract
 strictness: law
+enforcement: judgment
 ---
 
 # tokens-are-spec

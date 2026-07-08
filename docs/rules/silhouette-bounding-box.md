@@ -2,6 +2,7 @@
 slug: silhouette-bounding-box
 stratum: contract
 strictness: law
+enforcement: machine
 ---
 
 # silhouette-bounding-box

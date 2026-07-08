@@ -2,6 +2,7 @@
 slug: chamfer-single-gesture
 stratum: language
 strictness: default
+enforcement: review
 ---
 
 # chamfer-single-gesture

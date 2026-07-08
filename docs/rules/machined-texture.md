@@ -2,6 +2,7 @@
 slug: machined-texture
 stratum: flagship
 strictness: leaning
+enforcement: judgment
 ---
 
 # machined-texture

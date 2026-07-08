@@ -2,6 +2,7 @@
 slug: cut-must-host
 stratum: flagship
 strictness: law
+enforcement: review
 ---
 
 # cut-must-host

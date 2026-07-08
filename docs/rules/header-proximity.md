@@ -2,6 +2,7 @@
 slug: header-proximity
 stratum: language
 strictness: default
+enforcement: review
 ---
 
 # header-proximity

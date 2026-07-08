@@ -2,6 +2,7 @@
 slug: text-balance
 stratum: language
 strictness: default
+enforcement: review
 ---
 
 # text-balance

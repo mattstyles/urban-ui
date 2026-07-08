@@ -2,6 +2,7 @@
 slug: structural-focus
 stratum: language
 strictness: law
+enforcement: review
 ---
 
 # structural-focus

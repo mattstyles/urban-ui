@@ -2,6 +2,7 @@
 slug: shape-site-owned
 stratum: language
 strictness: default
+enforcement: review
 ---
 
 # shape-site-owned

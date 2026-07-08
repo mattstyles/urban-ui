@@ -2,6 +2,7 @@
 slug: interactivity-is-class
 stratum: language
 strictness: law
+enforcement: review
 ---
 
 # interactivity-is-class

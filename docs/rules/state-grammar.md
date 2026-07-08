@@ -2,6 +2,7 @@
 slug: state-grammar
 stratum: language
 strictness: law
+enforcement: machine
 ---
 
 # state-grammar

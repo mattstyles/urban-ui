@@ -2,6 +2,7 @@
 slug: leading-trim
 stratum: contract
 strictness: law
+enforcement: machine
 ---
 
 # leading-trim

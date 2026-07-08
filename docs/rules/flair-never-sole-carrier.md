@@ -2,6 +2,7 @@
 slug: flair-never-sole-carrier
 stratum: language
 strictness: law
+enforcement: review
 ---
 
 # flair-never-sole-carrier

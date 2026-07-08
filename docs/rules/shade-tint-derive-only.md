@@ -2,6 +2,7 @@
 slug: shade-tint-derive-only
 stratum: language
 strictness: leaning
+enforcement: machine
 ---
 
 # shade-tint-derive-only

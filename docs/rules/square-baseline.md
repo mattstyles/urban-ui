@@ -2,6 +2,7 @@
 slug: square-baseline
 stratum: flagship
 strictness: law
+enforcement: machine
 ---
 
 # square-baseline

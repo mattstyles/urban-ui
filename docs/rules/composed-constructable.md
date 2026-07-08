@@ -2,6 +2,7 @@
 slug: composed-constructable
 stratum: language
 strictness: default
+enforcement: review
 ---
 
 # composed-constructable

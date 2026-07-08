@@ -27,6 +27,7 @@ The register lives as **one file per rule** under `docs/rules/`, indexed in [[ru
 - **slug** — flat kebab-case identity, cited at deviation sites; no numbers, no category prefixes
 - **stratum** — contract / language / flagship
 - **strictness** — `law` (breaking it exits the language; written justification required) · `default` (expected choice; deviate with an inline annotation) · `leaning` (soft preference; deviate freely)
+- **enforcement** — `machine` (lintable or computable; destined for the urban cli's gates, surfaced to consumers through their own lint runner) · `review` (a crisp question a reviewer — human or agent — answers at the site) · `judgment` (identity or principle; upheld by taste and discussion, no per-site check). Orthogonal to strictness: a law can be unlintable (`flair-never-sole-carrier`), a default can be numerically checkable (`fill-takes-seed`).
 - **the rule** — one sentence, decision-rule crisp (agents amplify vagueness at machine speed; vague guidance is a correctness bug)
 - **rationale + examples** — the why, and Biome-style incorrect/correct pairs
 - **evidence** — what proved it; deviation tallies append here

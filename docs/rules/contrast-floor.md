@@ -2,6 +2,7 @@
 slug: contrast-floor
 stratum: language
 strictness: law
+enforcement: machine
 ---
 
 # contrast-floor

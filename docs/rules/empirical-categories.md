@@ -2,6 +2,7 @@
 slug: empirical-categories
 stratum: contract
 strictness: law
+enforcement: review
 ---
 
 # empirical-categories

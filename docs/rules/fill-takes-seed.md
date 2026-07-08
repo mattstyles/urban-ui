@@ -2,6 +2,7 @@
 slug: fill-takes-seed
 stratum: contract
 strictness: default
+enforcement: machine
 ---
 
 # fill-takes-seed

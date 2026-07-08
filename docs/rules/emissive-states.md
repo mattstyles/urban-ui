@@ -1,7 +1,8 @@
 ---
 slug: emissive-states
 stratum: flagship
-strictness: default
+strictness: leaning
+enforcement: judgment
 ---
 
 # emissive-states

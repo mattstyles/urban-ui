@@ -2,6 +2,7 @@
 slug: oklch-only
 stratum: contract
 strictness: law
+enforcement: machine
 ---
 
 # oklch-only
