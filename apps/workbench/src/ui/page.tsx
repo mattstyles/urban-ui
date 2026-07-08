@@ -1,23 +1,36 @@
 import * as stylex from "@stylexjs/stylex";
-import { space } from "@urban-ui/theme/tokens.stylex";
+import { neutral } from "@urban-ui/theme/color.stylex";
+import { gap, size } from "@urban-ui/theme/space.stylex";
+import { fontSize, headingVoice, lineHeight, textVoice } from "@urban-ui/theme/text.stylex";
 import type { ReactNode } from "react";
 
 const styles = stylex.create({
   page: {
     display: "flex",
     flexDirection: "column",
-    gap: space.md,
+    gap: gap.container,
   },
+  // A header sits tighter to its content than peers sit to each other
+  // (header-proximity): sm sits below the page's container gap.
   header: {
     display: "flex",
     flexDirection: "column",
-    gap: space.sm,
+    gap: size.sm,
   },
   title: {
-    margin: 0,
+    fontFamily: headingVoice.family,
+    fontSize: fontSize.xl,
+    fontWeight: headingVoice.weight,
+    letterSpacing: headingVoice.tracking,
+    lineHeight: lineHeight.xl,
   },
   description: {
-    margin: 0,
+    color: neutral.inkSecondary,
+    fontFamily: textVoice.family,
+    fontSize: fontSize.md,
+    fontWeight: textVoice.weight,
+    letterSpacing: textVoice.tracking,
+    lineHeight: lineHeight.md,
   },
 });
 

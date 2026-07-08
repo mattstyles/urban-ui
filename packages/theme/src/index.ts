@@ -1,5 +1,8 @@
 import type { VarGroup } from "@stylexjs/stylex";
 import type * as color from "./color.stylex.js";
+import type * as editorial from "./editorial.stylex.js";
+import type * as spaceTokens from "./space.stylex.js";
+import type * as text from "./text.stylex.js";
 import type * as tokens from "./tokens.stylex.js";
 
 /**
@@ -21,6 +24,30 @@ export type ShadeTokens = VarGroup<typeof color.shade>;
 export type TintTokens = VarGroup<typeof color.tint>;
 export type AdvanceTokens = VarGroup<typeof color.advance>;
 export type RecedeTokens = VarGroup<typeof color.recede>;
+
+// UI text scale (theme-contract): coordinated ramps + voice-only roles.
+export type FontSizeTokens = VarGroup<typeof text.fontSize>;
+export type LineHeightTokens = VarGroup<typeof text.lineHeight>;
+export type HeadingVoiceTokens = VarGroup<typeof text.headingVoice>;
+export type SubheadingVoiceTokens = VarGroup<typeof text.subheadingVoice>;
+export type LabelVoiceTokens = VarGroup<typeof text.labelVoice>;
+export type ActionVoiceTokens = VarGroup<typeof text.actionVoice>;
+export type TextVoiceTokens = VarGroup<typeof text.textVoice>;
+
+// Editorial text scale: full-anatomy roles.
+export type DisplayRoleTokens = VarGroup<typeof editorial.display>;
+export type EditorialHeadingRoleTokens = VarGroup<typeof editorial.heading>;
+export type EditorialSubheadingRoleTokens = VarGroup<typeof editorial.subheading>;
+export type KickerRoleTokens = VarGroup<typeof editorial.kicker>;
+export type LedeRoleTokens = VarGroup<typeof editorial.lede>;
+export type BodyRoleTokens = VarGroup<typeof editorial.body>;
+export type MonoRoleTokens = VarGroup<typeof editorial.mono>;
+export type CaptionRoleTokens = VarGroup<typeof editorial.caption>;
+
+// Space domain: the shared size ramp and the layer-keyed trios.
+export type SizeRampTokens = VarGroup<typeof spaceTokens.size>;
+export type GapTokens = VarGroup<typeof spaceTokens.gap>;
+export type InsetTokens = VarGroup<typeof spaceTokens.inset>;
 
 // Pipeline probes — retired when the buildable slice lands in full
 // (docs/plans/002-theme-buildable-slice.md, phase 6).

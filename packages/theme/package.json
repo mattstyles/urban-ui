@@ -30,6 +30,21 @@
       "types": "./dist/color.stylex.d.ts",
       "default": "./dist/color.stylex.js"
     },
+    "./text.stylex": {
+      "source": "./src/text.stylex.ts",
+      "types": "./dist/text.stylex.d.ts",
+      "default": "./dist/text.stylex.js"
+    },
+    "./editorial.stylex": {
+      "source": "./src/editorial.stylex.ts",
+      "types": "./dist/editorial.stylex.d.ts",
+      "default": "./dist/editorial.stylex.js"
+    },
+    "./space.stylex": {
+      "source": "./src/space.stylex.ts",
+      "types": "./dist/space.stylex.d.ts",
+      "default": "./dist/space.stylex.js"
+    },
     "./tokens.stylex": {
       "source": "./src/tokens.stylex.ts",
       "types": "./dist/tokens.stylex.d.ts",

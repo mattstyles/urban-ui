@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { danger, positive, surface } from "@urban-ui/theme/color.stylex";
-import { space } from "@urban-ui/theme/tokens.stylex";
+import { gap, size } from "@urban-ui/theme/space.stylex";
+import { fontSize, headingVoice, lineHeight } from "@urban-ui/theme/text.stylex";
 import type { ReactNode } from "react";
 import { contrastRatio, parseOklch } from "./oklch.js";
 import { tokenEntries, useTokenValues } from "./use-token-values.js";
@@ -35,19 +36,22 @@ const styles = stylex.create({
   section: {
     display: "flex",
     flexDirection: "column",
-    gap: space.md,
+    gap: gap.container,
   },
   heading: {
-    fontSize: "1.125rem",
-    fontWeight: 600,
+    fontFamily: headingVoice.family,
+    fontSize: fontSize.lg,
+    fontWeight: headingVoice.weight,
+    letterSpacing: headingVoice.tracking,
+    lineHeight: lineHeight.lg,
   },
   band: {
     display: "flex",
     flexDirection: "column",
-    gap: space.sm,
+    gap: size.sm,
   },
   bandLabel: {
-    fontSize: "0.75rem",
+    fontSize: fontSize.xs,
     letterSpacing: "0.08em",
     opacity: 0.7,
     textTransform: "uppercase",
@@ -56,7 +60,7 @@ const styles = stylex.create({
     alignItems: "center",
     display: "flex",
     flexWrap: "wrap",
-    gap: space.md,
+    gap: size.md,
   },
   chip: (background: string, foreground: string) => ({
     alignItems: "center",
@@ -74,24 +78,24 @@ const styles = stylex.create({
   },
   member: {
     fontFamily: "monospace",
-    fontSize: "0.875rem",
+    fontSize: fontSize.sm,
     minWidth: "9rem",
   },
   value: {
     fontFamily: "monospace",
-    fontSize: "0.75rem",
+    fontSize: fontSize.xs,
     minWidth: "13rem",
     opacity: 0.75,
   },
   badges: {
     display: "flex",
     flexWrap: "wrap",
-    gap: space.sm,
+    gap: size.sm,
   },
   badge: {
     color: positive.ink,
     fontFamily: "monospace",
-    fontSize: "0.75rem",
+    fontSize: fontSize.xs,
   },
   badgeFail: {
     color: danger.ink,
@@ -406,16 +410,17 @@ export function StaticsSection({
   );
 }
 
-/** The numbered steps shared by both physical derivation ramps. */
+/** The numbered steps shared by every derivation ramp (shade/tint, advance/recede). */
 export type RampMembers = Record<
   "_100" | "_200" | "_300" | "_400" | "_500" | "_600" | "_700" | "_800" | "_900",
   string
 >;
 
 /**
- * A physical derivation ramp (shade/tint) — numbered alpha steps of pure
- * black/white, scheme-invariant, for deriving only (shade-tint-derive-only).
- * Display-only: alpha members have no single contrast ratio.
+ * A numbered derivation ramp — physical (shade/tint: scheme-invariant, for
+ * deriving only per shade-tint-derive-only) or emphasis (advance/recede:
+ * scheme-variant per emphasis-pair). Display-only: alpha members have no
+ * single contrast ratio.
  */
 export function RampSection({
   title,

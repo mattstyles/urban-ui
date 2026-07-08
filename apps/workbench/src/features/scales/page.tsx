@@ -12,7 +12,7 @@ import {
   tint,
   warning,
 } from "@urban-ui/theme/color.stylex";
-import { space } from "@urban-ui/theme/tokens.stylex";
+import { gap, inset } from "@urban-ui/theme/space.stylex";
 import { Page } from "../../ui/page.js";
 import {
   RampSection,
@@ -22,16 +22,18 @@ import {
   SurfaceSection,
 } from "./color-sections.js";
 import { magentaNeutral } from "./smoke-theme.js";
+import { SpaceSection } from "./space-sections.js";
+import { EditorialTextSection, UiTextSection } from "./type-sections.js";
 
 const styles = stylex.create({
   sections: {
     display: "flex",
     flexDirection: "column",
-    gap: space.lg,
+    gap: gap.plane,
   },
   themedSubtree: {
     backgroundColor: surface.panel,
-    padding: space.md,
+    padding: inset.container,
   },
 });
 
@@ -89,6 +91,9 @@ export function ScalesPage() {
           description="Physical lightening — scheme-invariant white alpha steps, for deriving only."
           ramp={tint}
         />
+        <UiTextSection />
+        <EditorialTextSection />
+        <SpaceSection />
         <Section
           title="Scoped theme — smoke proof"
           description="The neutral group fully re-valued (magenta re-hue) by a createTheme applied to this subtree only. Values and ratios below are read live from inside the subtree — the group is the themeable unit, and a theme scopes to any branch point."

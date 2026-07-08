@@ -24,6 +24,15 @@
       ]
     },
     {
+      "name": "actionVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
       "name": "advance",
       "path": "src/color.stylex.ts",
       "tokens": [
@@ -36,6 +45,28 @@
         "_700",
         "_800",
         "_900"
+      ]
+    },
+    {
+      "name": "body",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "caption",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
       ]
     },
     {
@@ -64,6 +95,119 @@
         "onFillSecondary",
         "subtle",
         "trace"
+      ]
+    },
+    {
+      "name": "display",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "fontSize",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
+      "name": "gap",
+      "path": "src/space.stylex.ts",
+      "tokens": [
+        "container",
+        "control",
+        "plane"
+      ]
+    },
+    {
+      "name": "heading",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "headingVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "inset",
+      "path": "src/space.stylex.ts",
+      "tokens": [
+        "container",
+        "control",
+        "plane"
+      ]
+    },
+    {
+      "name": "kicker",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "labelVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "lede",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "lineHeight",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
+      "name": "mono",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
       ]
     },
     {
@@ -140,6 +284,17 @@
       ]
     },
     {
+      "name": "size",
+      "path": "src/space.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
       "name": "space",
       "path": "src/tokens.stylex.ts",
       "tokens": [
@@ -160,6 +315,26 @@
       ]
     },
     {
+      "name": "subheading",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "subheadingVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
       "name": "surface",
       "path": "src/color.stylex.ts",
       "tokens": [
@@ -168,6 +343,15 @@
         "panel",
         "raised",
         "scrim"
+      ]
+    },
+    {
+      "name": "textVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
       ]
     },
     {
