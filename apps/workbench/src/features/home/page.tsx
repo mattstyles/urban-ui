@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { Link } from "@tanstack/react-router";
-import { colors, radii, space } from "@urban-ui/theme/tokens.stylex";
+import { accent, neutral } from "@urban-ui/theme/color.stylex";
+import { size } from "@urban-ui/theme/space.stylex";
 import { Page } from "../../ui/page.js";
 
 const sections = [
@@ -12,7 +13,7 @@ const sections = [
   {
     to: "/scales",
     label: "Scales",
-    summary: "Theme scale groups — colour, space, radii. Shape to be defined.",
+    summary: "The theme contract's token groups — colour, text, space, shape — inventoried live.",
   },
   {
     to: "/playground",
@@ -29,23 +30,24 @@ const sections = [
 const styles = stylex.create({
   grid: {
     display: "grid",
-    gap: space.md,
+    gap: size.md,
     gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))",
   },
+  // Square corners: the flagship silhouette baseline (square-baseline).
   card: {
-    borderColor: colors.accent,
-    borderRadius: radii.control,
+    borderColor: neutral.border,
     borderStyle: "solid",
     borderWidth: "1px",
-    color: colors.text,
+    color: neutral.inkSecondary,
     display: "flex",
     flexDirection: "column",
-    gap: space.sm,
-    padding: space.md,
+    gap: size.sm,
+    padding: size.md,
     textDecoration: "none",
   },
+  // Emphasis advances by hue, not weight alone (hue-emphasis).
   cardTitle: {
-    color: colors.accent,
+    color: accent.ink,
     fontWeight: 600,
   },
   cardSummary: {

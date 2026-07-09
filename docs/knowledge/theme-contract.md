@@ -51,7 +51,7 @@ Other groups:
 
 | group | members |
 |---|---|
-| `static` | `white` · `black` · `disabledInk` · `disabledFill` · `focus` |
+| `static` | `white` · `black` · `disabledInk` · `disabledFill` · `focus` · `currentColor` |
 | `advance` / `recede` | numbered, mirroring `shade`/`tint`; values scheme-faceted |
 
 ## Materials
@@ -124,4 +124,4 @@ Categories are empirical ([[design-language]]); these are the earned set. Some c
 | control sizes · content widths · focus-ring vars | urban-ui-6yb |
 | motion tokens | urban-ui-ed9 |
 | material/emission var anatomy | deferred to lab + use-cases — urban-ui-s2e |
-| global CSS: one shipped file, `reset` + `base` layers | decided — ADR amending [[0005-style-shipping-and-package-build]] pending |
+| global CSS: one shipped file, `reset` + `base` layers | shipped — [[0008-global-css-distribution]] |

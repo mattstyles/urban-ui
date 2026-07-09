@@ -1,0 +1,106 @@
+/**
+ * Urban UI global CSS — ADR-0008.
+ *
+ * One static file, two cascade layers. Consumers import this in their CSS
+ * entry and configure StyleX with `useCSSLayers: { before: ["reset", "base"] }`
+ * so all compiled StyleX output deterministically wins over both layers.
+ *
+ * - `reset`: browser smoothing (adapted Josh Comeau reset + reduced-motion).
+ *   Consumers with their own reset opinion may override this layer.
+ * - `base`: library law — leading-trim (docs/rules/leading-trim.md) and
+ *   color-scheme. Not optional; components and spacing values assume it.
+ */
+
+@layer reset, base;
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  #root {
+    isolation: isolate;
+  }
+
+  /* Reduced motion is honoured globally, once (product-framing). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer base {
+  :root {
+    /* Dark is the authored scheme; light is an empty seat (theme-contract). */
+    color-scheme: dark;
+  }
+
+  /*
+   * Leading-trim law: a font's box equals its ink, so every gap and inset
+   * around text is optical. Spacing values are tuned to the trimmed
+   * rendering; browsers without text-box support degrade gracefully looser.
+   */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  dt,
+  dd,
+  blockquote,
+  figcaption,
+  caption,
+  label,
+  legend,
+  th,
+  td,
+  button {
+    text-box: trim-both cap alphabetic;
+  }
+}

@@ -6,29 +6,371 @@
   "patterns": [],
   "tokenGroups": [
     {
-      "name": "colors",
-      "path": "src/tokens.stylex.ts",
+      "name": "accent",
+      "path": "src/color.stylex.ts",
       "tokens": [
-        "accent",
-        "accentText",
-        "surface",
-        "text"
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
       ]
     },
     {
-      "name": "radii",
-      "path": "src/tokens.stylex.ts",
+      "name": "actionVoice",
+      "path": "src/text.stylex.ts",
       "tokens": [
-        "control"
+        "family",
+        "tracking",
+        "weight"
       ]
     },
     {
-      "name": "space",
-      "path": "src/tokens.stylex.ts",
+      "name": "advance",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
+      ]
+    },
+    {
+      "name": "body",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "caption",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "danger",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
+      ]
+    },
+    {
+      "name": "depth",
+      "path": "src/shape.stylex.ts",
       "tokens": [
         "lg",
         "md",
-        "sm"
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
+      "name": "display",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "fontSize",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
+      "name": "gap",
+      "path": "src/space.stylex.ts",
+      "tokens": [
+        "container",
+        "control",
+        "plane"
+      ]
+    },
+    {
+      "name": "heading",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "headingVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "inset",
+      "path": "src/space.stylex.ts",
+      "tokens": [
+        "container",
+        "control",
+        "plane"
+      ]
+    },
+    {
+      "name": "kicker",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "labelVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "lede",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "lineHeight",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
+      "name": "mono",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "neutral",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
+      ]
+    },
+    {
+      "name": "positive",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
+      ]
+    },
+    {
+      "name": "recede",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
+      ]
+    },
+    {
+      "name": "shade",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
+      ]
+    },
+    {
+      "name": "size",
+      "path": "src/space.stylex.ts",
+      "tokens": [
+        "lg",
+        "md",
+        "sm",
+        "xl",
+        "xs"
+      ]
+    },
+    {
+      "name": "statics",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "black",
+        "currentColor",
+        "disabledFill",
+        "disabledInk",
+        "focus",
+        "white"
+      ]
+    },
+    {
+      "name": "subheading",
+      "path": "src/editorial.stylex.ts",
+      "tokens": [
+        "family",
+        "fontSize",
+        "leading",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "subheadingVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "surface",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "canvas",
+        "overlay",
+        "panel",
+        "raised",
+        "scrim"
+      ]
+    },
+    {
+      "name": "textVoice",
+      "path": "src/text.stylex.ts",
+      "tokens": [
+        "family",
+        "tracking",
+        "weight"
+      ]
+    },
+    {
+      "name": "tint",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "_100",
+        "_200",
+        "_300",
+        "_400",
+        "_500",
+        "_600",
+        "_700",
+        "_800",
+        "_900"
+      ]
+    },
+    {
+      "name": "warning",
+      "path": "src/color.stylex.ts",
+      "tokens": [
+        "border",
+        "fill",
+        "glow",
+        "icon",
+        "ink",
+        "inkSecondary",
+        "inkTertiary",
+        "line",
+        "onFill",
+        "onFillSecondary",
+        "subtle",
+        "trace"
       ]
     }
   ],

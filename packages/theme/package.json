@@ -11,6 +11,7 @@
   },
   "files": [
     "dist",
+    "global.css",
     "philosophy.md",
     "urban-manifest.json"
   ],
@@ -24,18 +25,39 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
-    "./tokens.stylex": {
-      "source": "./src/tokens.stylex.ts",
-      "types": "./dist/tokens.stylex.d.ts",
-      "default": "./dist/tokens.stylex.js"
+    "./color.stylex": {
+      "source": "./src/color.stylex.ts",
+      "types": "./dist/color.stylex.d.ts",
+      "default": "./dist/color.stylex.js"
     },
+    "./text.stylex": {
+      "source": "./src/text.stylex.ts",
+      "types": "./dist/text.stylex.d.ts",
+      "default": "./dist/text.stylex.js"
+    },
+    "./editorial.stylex": {
+      "source": "./src/editorial.stylex.ts",
+      "types": "./dist/editorial.stylex.d.ts",
+      "default": "./dist/editorial.stylex.js"
+    },
+    "./space.stylex": {
+      "source": "./src/space.stylex.ts",
+      "types": "./dist/space.stylex.d.ts",
+      "default": "./dist/space.stylex.js"
+    },
+    "./shape.stylex": {
+      "source": "./src/shape.stylex.ts",
+      "types": "./dist/shape.stylex.d.ts",
+      "default": "./dist/shape.stylex.js"
+    },
+    "./global.css": "./global.css",
     "./package.json": "./package.json"
   },
   "scripts": {
     "build": "tsc",
     "typecheck": "tsgo --noEmit",
     "lint": "oxlint src",
-    "check-package": "publint && attw --pack . --profile esm-only"
+    "check-package": "publint && attw --pack . --profile esm-only --exclude-entrypoints ./global.css"
   },
   "devDependencies": {
     "@stylexjs/stylex": "catalog:",

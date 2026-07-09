@@ -14,19 +14,22 @@ import { packAndVerify } from "./publish.js";
 
 const LABEL_PROBE = "Consumer smoke";
 
-/** Where the theme declares its tokens — the accent probe is derived from here. */
-const THEME_TOKENS_PATH = path.join("packages", "theme", "src", "tokens.stylex.ts");
+/** Where the probe token is declared — Button consumes the UI text ramp. */
+const THEME_TOKENS_PATH = path.join("packages", "theme", "src", "text.stylex.ts");
 
 function run(cwd: string, command: string, args: string[]): string {
   return execFileSync(command, args, { cwd, encoding: "utf8" });
 }
 
 /**
- * Extract the accent token literal from the theme tokens source, so the smoke
- * probe tracks theme changes instead of duplicating the value.
+ * Extract the lineHeight.sm literal from the theme source, so the smoke
+ * probe tracks theme changes instead of duplicating the value. lineHeight
+ * values are chosen as the probe because they survive CSS minification
+ * verbatim (no leading zero for lightningcss to strip, no colour-space
+ * downlevelling as with oklch literals).
  */
-export function extractAccentToken(source: string): string | undefined {
-  return source.match(/\baccent:\s*"([^"]+)"/)?.[1];
+export function extractTokenProbe(source: string): string | undefined {
+  return source.match(/export const lineHeight[^}]*?\bsm:\s*"([^"]+)"/s)?.[1];
 }
 
 /** Read a devDependency version from a workspace package.json. */
@@ -51,12 +54,12 @@ function catalogVersions(repoRoot: string): Record<string, string> {
 export function consumerSmoke(repoRoot: string): { dir: string; issues: string[] } {
   const issues: string[] = [];
 
-  const tokenProbe = extractAccentToken(
+  const tokenProbe = extractTokenProbe(
     readFileSync(path.join(repoRoot, THEME_TOKENS_PATH), "utf8"),
   );
   if (tokenProbe === undefined) {
     issues.push(
-      `Could not derive the accent probe from ${THEME_TOKENS_PATH} — no \`accent: "…"\` literal found in the theme source`,
+      `Could not derive the token probe from ${THEME_TOKENS_PATH} — no \`lineHeight … sm: "…"\` literal found in the theme source`,
     );
   }
 
@@ -172,7 +175,7 @@ export function consumerSmoke(repoRoot: string): { dir: string; issues: string[]
 
   if (!css.includes(tokenProbe)) {
     issues.push(
-      `Compiled consumer CSS lacks the theme accent value ${tokenProbe} (derived from ${THEME_TOKENS_PATH}) — cross-package StyleX compilation failed`,
+      `Compiled consumer CSS lacks the theme token value ${tokenProbe} (derived from ${THEME_TOKENS_PATH}) — cross-package StyleX compilation failed`,
     );
   }
   if (!js.includes(LABEL_PROBE)) {
