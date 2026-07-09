@@ -293,6 +293,7 @@
       "path": "src/color.stylex.ts",
       "tokens": [
         "black",
+        "currentColor",
         "disabledFill",
         "disabledInk",
         "focus",
