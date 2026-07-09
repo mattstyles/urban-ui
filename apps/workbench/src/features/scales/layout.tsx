@@ -30,7 +30,7 @@ const styles = stylex.create({
   frame: {
     display: "flex",
     flexDirection: "column",
-    gap: gap.container,
+    gap: gap.plane,
     marginInline: "auto",
     maxWidth: FRAME_MAX_WIDTH,
     width: "100%",

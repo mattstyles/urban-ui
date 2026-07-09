@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
-import { danger, positive, surface } from "@urban-ui/theme/color.stylex";
-import { gap, size } from "@urban-ui/theme/space.stylex";
+import { danger, neutral, positive, surface } from "@urban-ui/theme/color.stylex";
+import { gap, inset, size } from "@urban-ui/theme/space.stylex";
 import { fontSize, headingVoice, lineHeight } from "@urban-ui/theme/text.stylex";
 import type { ReactNode } from "react";
 import { contrastRatio, parseOklch } from "./oklch.js";
@@ -33,10 +33,20 @@ const TEXT_FLOOR = 4.5;
 const GRAPHIC_FLOOR = 3;
 
 const styles = stylex.create({
+  // A section is a container on the page plane — a boxed panel whose edge
+  // does the separation work, not whitespace. Children (bands) sit at the
+  // container gap; the header cluster hugs itself (header-proximity).
   section: {
+    backgroundColor: surface.panel,
     display: "flex",
     flexDirection: "column",
     gap: gap.container,
+    padding: inset.container,
+  },
+  sectionHeader: {
+    display: "flex",
+    flexDirection: "column",
+    gap: size.xs,
   },
   heading: {
     fontFamily: headingVoice.family,
@@ -45,10 +55,13 @@ const styles = stylex.create({
     letterSpacing: headingVoice.tracking,
     lineHeight: lineHeight.lg,
   },
+  description: {
+    color: neutral.inkSecondary,
+  },
   band: {
     display: "flex",
     flexDirection: "column",
-    gap: size.sm,
+    gap: gap.control,
   },
   bandLabel: {
     fontSize: fontSize.xs,
@@ -121,8 +134,10 @@ export function Section({
 }) {
   return (
     <section {...stylex.props(styles.section)}>
-      <h2 {...stylex.props(styles.heading)}>{title}</h2>
-      <p>{description}</p>
+      <header {...stylex.props(styles.sectionHeader)}>
+        <h2 {...stylex.props(styles.heading)}>{title}</h2>
+        <p {...stylex.props(styles.description)}>{description}</p>
+      </header>
       {children}
     </section>
   );
@@ -203,11 +218,14 @@ function TokenRows({
   );
 }
 
-function bandLabel(label: string) {
+// A band groups its label with its rows (the label is a header — it hugs),
+// so bands read as peers under the section's wider rhythm.
+function Band({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <span key={label} {...stylex.props(styles.bandLabel)}>
-      {label}
-    </span>
+    <div {...stylex.props(styles.band)}>
+      <span {...stylex.props(styles.bandLabel)}>{label}</span>
+      {children}
+    </div>
   );
 }
 
@@ -283,7 +301,9 @@ export function ScaleSection({
     const onFillMember = member.startsWith("onFill");
     return {
       member,
-      chipBackground: onFillMember ? scale.fill : surface.panel,
+      // Sections wear the panel face, so in-situ mark chips step to the
+      // next ground up to stay visible.
+      chipBackground: onFillMember ? scale.fill : surface.raised,
       chipForeground: scale[member],
       pairings: onFillMember
         ? [{ label: "on fill", foreground: member, background: "fill", floor }]
@@ -298,14 +318,18 @@ export function ScaleSection({
   }));
   return (
     <Section title={title} description={description}>
-      {bandLabel("fill")}
-      <TokenRows rows={fillRows} measure={measure} />
-      {bandLabel("edge")}
-      <TokenRows rows={edgeRows} measure={measure} />
-      {bandLabel("marks")}
-      <TokenRows rows={markRows} measure={measure} />
-      {bandLabel("materials — translucent, no single ratio")}
-      <TokenRows rows={materialRows} measure={measure} />
+      <Band label="fill">
+        <TokenRows rows={fillRows} measure={measure} />
+      </Band>
+      <Band label="edge">
+        <TokenRows rows={edgeRows} measure={measure} />
+      </Band>
+      <Band label="marks">
+        <TokenRows rows={markRows} measure={measure} />
+      </Band>
+      <Band label="materials — translucent, no single ratio">
+        <TokenRows rows={materialRows} measure={measure} />
+      </Band>
     </Section>
   );
 }

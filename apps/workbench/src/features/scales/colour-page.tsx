@@ -23,13 +23,17 @@ import {
 import { magentaNeutral } from "./smoke-theme.js";
 
 const styles = stylex.create({
+  // The page is the plane; each section is a boxed panel on it, so the
+  // between-ness is the plane gap.
   sections: {
     display: "flex",
     flexDirection: "column",
     gap: gap.plane,
   },
+  // Nested inside a panel-faced section — one step forward (nesting caps
+  // at raised).
   themedSubtree: {
-    backgroundColor: surface.panel,
+    backgroundColor: surface.raised,
     padding: inset.container,
   },
 });

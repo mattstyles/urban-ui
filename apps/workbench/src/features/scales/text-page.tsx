@@ -3,6 +3,8 @@ import { gap } from "@urban-ui/theme/space.stylex";
 import { EditorialTextSection, UiTextSection } from "./type-sections.js";
 
 const styles = stylex.create({
+  // The page is the plane; each section is a boxed panel on it, so the
+  // between-ness is the plane gap.
   sections: {
     display: "flex",
     flexDirection: "column",
