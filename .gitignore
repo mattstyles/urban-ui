@@ -11,8 +11,9 @@ playwright-report
 test-results
 .cache
 
-# generated (tanstack router file-based route tree)
+# generated (tanstack router file-based route tree + local router cache)
 routeTree.gen.ts
+.tanstack/
 
 # next.js
 .next/
