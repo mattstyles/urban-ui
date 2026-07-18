@@ -82,6 +82,9 @@
    * Leading-trim law: a font's box equals its ink, so every gap and inset
    * around text is optical. Spacing values are tuned to the trimmed
    * rendering; browsers without text-box support degrade gracefully looser.
+   * div and span are included because UI text frequently sits in them;
+   * text-box only bites where an element forms its own line boxes, so
+   * layout-only divs/spans (flex/grid containers, no direct text) no-op.
    */
   h1,
   h2,
@@ -100,7 +103,9 @@
   legend,
   th,
   td,
-  button {
+  button,
+  span,
+  div {
     text-box: trim-both cap alphabetic;
   }
 }
