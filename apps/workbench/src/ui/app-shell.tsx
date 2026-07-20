@@ -7,11 +7,14 @@ import { type ReactNode, useState } from "react";
 import { ThemeEpochContext } from "./theme-epoch.js";
 import { archiveText, denseSpace, violetColour } from "./themes.js";
 
+// Primitives/Scales document the system; Playground uses the system; Labs
+// have knobs to define the system; Experiments are freeform.
 const sections = [
   { to: "/primitives", label: "Primitives" },
   { to: "/scales", label: "Scales" },
   { to: "/playground", label: "Playground" },
   { to: "/labs", label: "Labs" },
+  { to: "/experiments", label: "Experiments" },
 ] as const;
 
 // Root-level theme switching: whole named bundles applied to the shell, so
