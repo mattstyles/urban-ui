@@ -1,0 +1,11 @@
+
+# Developer-only tools, layered in with MISE_ENV=dev. Kept out of mise.toml
+# because aube's reputation gate rejects @kitlangton/stack in any
+# non-interactive context (it is a low-download scoped package), which fails
+# `mise install` outright and takes every CI job with it. Nothing in CI uses
+# the binary, so CI simply never loads this file.
+#
+#   MISE_ENV=dev mise install
+[tools]
+"npm:@kitlangton/stack" = "0.4.2"
+

@@ -71,7 +71,9 @@ Repository documentation is a wiki-linked graph under `docs/`. Enter through the
 ## Build & Test
 
 ```bash
-mise install && bun install   # bootstrap: pinned toolchains, workspace deps, git hooks
+MISE_ENV=dev mise install && bun install   # bootstrap: pinned toolchains, workspace deps, git hooks
+                                          # MISE_ENV=dev adds the dev-only tools in mise.dev.toml (stack).
+                                          # Plain `mise install` gives you everything CI uses, minus those.
 mise run '//...:build'        # run a task across all workspaces (also :lint, :typecheck)
 hk check --all                # all gates (oxlint, oxfmt, typecheck) against all files — CI parity
 ```

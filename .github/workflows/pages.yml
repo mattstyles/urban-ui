@@ -23,7 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # Pinned deliberately: mise-action installs the latest release by
+      # default, so CI tooling can change without a repo change. Bump on
+      # purpose, not by drift.
       - uses: jdx/mise-action@v4
+        with:
+          version: 2026.9.1
 
       - name: Install workspace dependencies
         run: bun install --frozen-lockfile
