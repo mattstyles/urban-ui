@@ -12,7 +12,10 @@ hk = "1.49.0"
 # Lossless PNG recompression for committed VRT baselines (ADR-0006)
 oxipng = "10.1.1"
 "github:gastownhall/beads" = "1.2.2"
-"npm:@kitlangton/stack" = "0.4.2"
+
+# stack lives in mise.dev.toml, not here: aube's reputation gate hard-fails on
+# it in any non-interactive context, which takes CI down with it. No CI job
+# needs the binary. See mise.dev.toml.
 
 [hooks]
 postinstall = "hk install --mise"
